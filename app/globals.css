@@ -1,0 +1,172 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 0 0% 7%;
+    --foreground: 0 0% 98%;
+    --card: 0 0% 10%;
+    --card-foreground: 0 0% 98%;
+    --popover: 0 0% 10%;
+    --popover-foreground: 0 0% 98%;
+    --primary: 248 24% 47%;
+    --primary-foreground: 0 0% 100%;
+    --muted: 0 0% 15%;
+    --muted-foreground: 0 0% 63.9%;
+    --accent: 0 0% 14.9%;
+    --accent-foreground: 0 0% 98%;
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 0 0% 98%;
+    --border: 0 0% 20%;
+    --input: 0 0% 20%;
+    --ring: 248 24% 47%;
+    --radius: 0rem;
+  }
+
+  .light {
+    --background: 0 0% 7%;
+    --foreground: 0 0% 98%;
+    --card: 0 0% 10%;
+    --card-foreground: 0 0% 98%;
+    --popover: 0 0% 10%;
+    --popover-foreground: 0 0% 98%;
+    --primary: 248 24% 47%;
+    --primary-foreground: 0 0% 100%;
+    --muted: 0 0% 15%;
+    --muted-foreground: 0 0% 63.9%;
+    --accent: 0 0% 14.9%;
+    --accent-foreground: 0 0% 98%;
+    --destructive: 0 62.8% 30.6%;
+    --destructive-foreground: 0 0% 98%;
+    --border: 0 0% 20%;
+    --input: 0 0% 20%;
+    --ring: 248 24% 47%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  body {
+    @apply bg-background text-foreground;
+    font-feature-settings: "rlig" 1, "calt" 1;
+  }
+}
+
+.text-balance {
+  text-wrap: balance;
+}
+
+.text-gradient {
+  background: linear-gradient(to right, #5f5c95, #8c89c2);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+/* Neue Stile für das dunklere Design */
+.hero-overlay {
+  background: linear-gradient(to bottom, rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.5));
+}
+
+.nav-blur {
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.btn-primary {
+  @apply bg-primary hover:bg-primary/80 text-white transition-all duration-300 ease-in-out;
+}
+
+.btn-outline {
+  @apply border-2 border-white bg-transparent text-white hover:bg-white/10 transition-all duration-300 ease-in-out;
+}
+
+.section-title {
+  @apply text-4xl font-bold uppercase tracking-tight md:text-5xl;
+}
+
+.section-subtitle {
+  @apply text-lg text-white/70;
+}
+
+.feature-card {
+  @apply bg-card border-primary/20 hover:border-primary transition-all duration-300;
+}
+
+.activity-card {
+  @apply overflow-hidden relative;
+}
+
+.activity-card-overlay {
+  @apply absolute inset-0 bg-gradient-to-t from-black/90 via-black/50 to-transparent opacity-80 transition-all duration-500 ease-in-out;
+}
+
+.activity-card-content {
+  @apply absolute bottom-0 left-0 p-4 text-white w-full transition-all duration-300 ease-in-out;
+}
+
+.testimonial-card {
+  @apply bg-card border-primary/20 hover:border-primary transition-all duration-500 ease-in-out;
+}
+
+.footer {
+  @apply bg-black text-white py-16;
+}
+
+.footer-link {
+  @apply text-sm text-white/60 hover:text-primary transition-all duration-300 ease-in-out;
+}
+
+.footer-heading {
+  @apply text-sm font-bold uppercase mb-2;
+}
+
+/* Verbesserte Animation für die Navigation-Links */
+.nav-link {
+  @apply text-sm font-medium uppercase hover:text-primary transition-all duration-300 ease-in-out text-white;
+}
+
+/* Scale utility classes for the route carousel */
+.scale-85 {
+  transform: scale(0.85);
+}
+
+.scale-75 {
+  transform: scale(0.75);
+}
+
+.scale-50 {
+  transform: scale(0.5);
+}
+
+/* Route carousel styles */
+.route-card {
+  transition: all 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  box-shadow: 0 10px 30px -15px rgba(0, 0, 0, 0.5);
+}
+
+.route-card-active {
+  z-index: 30;
+  transform: scale(1);
+}
+
+.route-card-prev,
+.route-card-next {
+  z-index: 20;
+  transform: scale(0.85);
+  filter: brightness(0.7);
+}
+
+.route-card-prev-2,
+.route-card-next-2 {
+  z-index: 10;
+  transform: scale(0.7);
+  filter: brightness(0.5);
+}
+
+.route-card:hover {
+  transform: translateY(-5px);
+}

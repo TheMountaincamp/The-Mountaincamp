@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+        xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">
+  <url>
+    <loc>https://themountaincamp.de/</loc>
+    <image:image>
+      <image:loc>https://themountaincamp.de/images/alpine-landscape.jpeg</image:loc>
+      <image:title>The Mountaincamp - Trail running in the Austrian Alps</image:title>
+      <image:caption>Experience breathtaking alpine trails at The Mountaincamp</image:caption>
+      <image:geo_location>Austrian Alps, Hochkrimml</image:geo_location>
+    </image:image>
+    <image:image>
+      <image:loc>https://themountaincamp.de/images/mountain-rave.jpeg</image:loc>
+      <image:title>Sunset Rave at The Mountaincamp</image:title>
+      <image:caption>Dance under the stars at our legendary mountain-top party</image:caption>
+      <image:geo_location>Austrian Alps, Hochkrimml</image:geo_location>
+    </image:image>
+    <image:image>
+      <image:loc>https://themountaincamp.de/images/trail-runner-1.jpeg</image:loc>
+      <image:title>Trail running at The Mountaincamp</image:title>
+      <image:caption>Explore beautiful mountain trails with experienced guides</image:caption>
+      <image:geo_location>Austrian Alps, Hochkrimml</image:geo_location>
+    </image:image>
+    <image:image>
+      <image:loc>https://themountaincamp.de/images/campfire-evening.jpeg</image:loc>
+      <image:title>Campfire evening at The Mountaincamp</image:title>
+      <image:caption>Connect with fellow runners around a cozy campfire</image:caption>
+      <image:geo_location>Austrian Alps, Hochkrimml</image:geo_location>
+    </image:image>
+  </url>
+</urlset>
