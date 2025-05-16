@@ -29,6 +29,7 @@ import CountdownTimer from "@/app/components/countdown-timer"
 import CookieSettingsButton from "@/components/cookie-settings-button"
 import ActivityCardMobile from "@/app/components/activity-card-mobile"
 import LanguageSwitcher from "@/app/components/language-switcher"
+import PriceCategoryBars from "@/app/components/price-category-bars"
 
 export default function Home() {
   const { t, language } = useLanguage()
@@ -1085,6 +1086,17 @@ export default function Home() {
             >
               <h3 className="text-3xl font-bold mb-6">{t("communityTitle")}</h3>
               <p className="max-w-2xl mx-auto text-white/80 mb-8">{t("communityDesc")}</p>
+            </motion.div>
+
+            {/* Add the Price Category Bars here, after the Community highlight */}
+            <motion.div
+              initial={{ opacity: 0, y: 50 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.8 }}
+              className="mt-16"
+            >
+              <PriceCategoryBars />
             </motion.div>
           </div>
         </section>
