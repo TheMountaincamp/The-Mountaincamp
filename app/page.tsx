@@ -69,7 +69,7 @@ export default function Home() {
         ],
         offers: {
           "@type": "Offer",
-          price: "380",
+          price: "420",
           priceCurrency: "EUR",
           availability: "https://schema.org/LimitedAvailability",
           url: "https://my.camps.digital/masken/buchungen/vuejs?&vendor=mountaincamp&destination_id=1475&termin_id=35113#/",
@@ -148,7 +148,7 @@ export default function Home() {
           "@type": "Offer",
           url: "https://themountaincamp.de/#register",
           priceCurrency: "EUR",
-          price: "380",
+          price: "420",
           priceValidUntil: "2025-08-01",
           availability: "https://schema.org/LimitedAvailability",
           itemCondition: "https://schema.org/NewCondition",
@@ -1142,7 +1142,7 @@ export default function Home() {
                     <span className="text-sm font-medium text-white uppercase">{t("packageTitle")}</span>
                   </div>
                   <div className="bg-card px-6 py-4 rounded-b-lg">
-                    <span className="text-3xl font-bold text-white">€380</span>
+                    <span className="text-3xl font-bold text-white">€420</span>
                     <span className="text-white/70 ml-2">{t("perPerson")}</span>
                   </div>
                 </div>
