@@ -30,6 +30,8 @@ import CookieSettingsButton from "@/components/cookie-settings-button"
 import ActivityCardMobile from "@/app/components/activity-card-mobile"
 import LanguageSwitcher from "@/app/components/language-switcher"
 import PriceCategoryBars from "@/app/components/price-category-bars"
+// Import the ImageWithFallback component at the top of the file
+import ImageWithFallback from "@/app/components/image-with-fallback"
 
 export default function Home() {
   const { t, language } = useLanguage()
@@ -426,21 +428,25 @@ export default function Home() {
           {/* Logo container with fixed width on mobile */}
           <div className="flex items-center">
             <div className={`relative ${isMobile ? "w-32 h-10" : "w-auto h-14"}`}>
-              <Image
+              <ImageWithFallback
                 src="/images/MTC-Logo_2025.png"
                 alt="The Mountaincamp Logo"
                 width={1000}
                 height={400}
                 className={`h-full w-auto object-contain transition-opacity duration-300 ${hasScrolled ? "opacity-0" : "opacity-0"}`}
                 priority
+                unoptimized={true}
+                fallbackSrc="/placeholder.svg?height=400&width=1000&text=MTC"
               />
-              <Image
+              <ImageWithFallback
                 src="/images/MTC-Logo_2025_weiß.png"
                 alt="The Mountaincamp Logo"
                 width={1000}
                 height={400}
                 className={`absolute top-0 left-0 h-full w-auto object-contain transition-opacity duration-300 opacity-100`}
                 priority
+                unoptimized={true}
+                fallbackSrc="/placeholder.svg?height=400&width=1000&text=MTC"
               />
             </div>
           </div>
@@ -538,6 +544,11 @@ export default function Home() {
                 width={1000}
                 height={400}
                 className="h-10 w-auto"
+                unoptimized={true}
+                onError={(e) => {
+                  console.error("Failed to load image:", e)
+                  e.currentTarget.src = "/placeholder.svg?height=800&width=1200"
+                }}
               />
               <motion.button
                 onClick={handleMenuToggle}
@@ -596,6 +607,11 @@ export default function Home() {
               fill
               className="object-cover"
               priority
+              unoptimized={true}
+              onError={(e) => {
+                console.error("Failed to load image:", e)
+                e.currentTarget.src = "/placeholder.svg?height=800&width=1200"
+              }}
             />
             <div className="absolute inset-0 hero-overlay" />
           </div>
@@ -633,6 +649,11 @@ export default function Home() {
                   height={100}
                   className="mx-auto"
                   priority
+                  unoptimized={true}
+                  onError={(e) => {
+                    console.error("Failed to load image:", e)
+                    e.currentTarget.src = "/placeholder.svg?height=800&width=1200"
+                  }}
                 />
               ) : (
                 <h1 className="text-6xl font-bold uppercase tracking-tight">THE MOUNTAINCAMP</h1>
@@ -795,7 +816,17 @@ export default function Home() {
                 transition={{ duration: 0.8 }}
                 className="relative h-[500px] overflow-hidden rounded-xl"
               >
-                <Image src="/images/trail-runner-1.jpeg" alt="Trailrunner in the Alps" fill className="object-cover" />
+                <Image
+                  src="/images/trail-runner-1.jpeg"
+                  alt="Trailrunner in the Alps"
+                  fill
+                  className="object-cover"
+                  unoptimized={true}
+                  onError={(e) => {
+                    console.error("Failed to load image:", e)
+                    e.currentTarget.src = "/placeholder.svg?height=800&width=1200"
+                  }}
+                />
                 <div className="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent"></div>
                 <div className="absolute bottom-0 left-0 p-6">
                   <span className="bg-primary text-white px-4 py-2 font-bold uppercase text-sm">
@@ -920,7 +951,17 @@ export default function Home() {
                   </ul>
                 </div>
                 <div className="relative h-[400px] md:h-auto">
-                  <Image src="/images/mountain-rave.jpeg" alt="Mountain sunset rave" fill className="object-cover" />
+                  <Image
+                    src="/images/mountain-rave.jpeg"
+                    alt="Mountain sunset rave"
+                    fill
+                    className="object-cover"
+                    unoptimized={true}
+                    onError={(e) => {
+                      console.error("Failed to load image:", e)
+                      e.currentTarget.src = "/placeholder.svg?height=800&width=1200"
+                    }}
+                  />
                   <div className="absolute inset-0 bg-gradient-to-r from-black to-transparent md:bg-gradient-to-l"></div>
                 </div>
               </div>
@@ -961,6 +1002,11 @@ export default function Home() {
                       alt={activity.title}
                       fill
                       className="object-cover transition-transform duration-700 group-hover:scale-110"
+                      unoptimized={true}
+                      onError={(e) => {
+                        console.error("Failed to load image:", e)
+                        e.currentTarget.src = "/placeholder.svg?height=800&width=1200"
+                      }}
                     />
                     <div
                       className={`activity-card-overlay 
@@ -1004,12 +1050,13 @@ export default function Home() {
                   transition={{ duration: 0.5, delay: index * 0.1 }}
                   className="aspect-square overflow-hidden group relative"
                 >
-                  <Image
+                  <ImageWithFallback
                     src={image.src || "/placeholder.svg"}
                     alt={image.alt}
                     width={600}
                     height={600}
                     className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-110"
+                    fallbackSrc="/placeholder.svg?height=600&width=600"
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
                   <div className="absolute bottom-0 left-0 p-4 text-white opacity-0 group-hover:opacity-100 transition-opacity duration-300">
@@ -1051,7 +1098,17 @@ export default function Home() {
             >
               {/* Hintergrundbild */}
               <div className="absolute inset-0 z-0">
-                <Image src="/images/mountain-rave.jpeg" alt="Mountain rave" fill className="object-cover" />
+                <Image
+                  src="/images/mountain-rave.jpeg"
+                  alt="Mountain rave"
+                  fill
+                  className="object-cover"
+                  unoptimized={true}
+                  onError={(e) => {
+                    console.error("Failed to load image:", e)
+                    e.currentTarget.src = "/placeholder.svg?height=800&width=1200"
+                  }}
+                />
                 <div className="absolute inset-0 bg-black/80 backdrop-blur-sm"></div>
               </div>
 
@@ -1196,6 +1253,11 @@ export default function Home() {
                 width={180}
                 height={40}
                 className="h-12 w-auto mb-4"
+                unoptimized={true}
+                onError={(e) => {
+                  console.error("Failed to load image:", e)
+                  e.currentTarget.src = "/placeholder.svg?height=800&width=1200"
+                }}
               />
               <p className="text-white/60">
                 {language === "de"

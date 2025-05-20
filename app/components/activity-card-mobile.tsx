@@ -1,8 +1,9 @@
 "use client"
 
 import { useState } from "react"
-import Image from "next/image"
 import { motion, AnimatePresence } from "framer-motion"
+// Import the ImageWithFallback component
+import ImageWithFallback from "@/app/components/image-with-fallback"
 
 interface ActivityCardMobileProps {
   title: string
@@ -23,7 +24,14 @@ export default function ActivityCardMobile({ title, description, image }: Activi
       whileTap={{ scale: 0.98 }}
       onClick={() => setIsExpanded(!isExpanded)}
     >
-      <Image src={image || "/placeholder.svg"} alt={title} fill className="object-cover" />
+      {/* Replace the Image component with ImageWithFallback */}
+      <ImageWithFallback
+        src={image || "/placeholder.svg"}
+        alt={title}
+        fill
+        className="object-cover"
+        fallbackSrc="/placeholder.svg?height=400&width=400"
+      />
       <motion.div
         className="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent"
         animate={{

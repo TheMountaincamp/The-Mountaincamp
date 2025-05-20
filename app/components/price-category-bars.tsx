@@ -123,6 +123,7 @@ export default function PriceCategoryBars() {
           repeat: Number.POSITIVE_INFINITY,
           repeatType: "reverse",
         }}
+        onError={() => console.error("Error loading background animation")}
       />
     </div>
   )
