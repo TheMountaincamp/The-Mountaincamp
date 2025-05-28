@@ -7,6 +7,19 @@ import { motion } from "framer-motion"
 import { ArrowLeft, Mountain, ArrowUp, Clock, Route } from "lucide-react"
 import { useLanguage } from "@/contexts/language-context"
 import RouteCarousel from "@/app/components/route-carousel"
+import ImagePreloader from "@/app/components/image-preloader"
+
+// Define critical images for the Trails page
+const CRITICAL_IMAGES = [
+  "/images/mountain-trail-runner.jpeg",
+  "/images/alpine-landscape.jpeg",
+  "/images/trail-runner-1.jpeg",
+  "/images/summit-view.jpeg",
+  "/images/trail-runners-group.jpeg",
+  "/images/mountain-lake.png",
+  "/images/canoeing-lake.jpeg",
+  "/images/MTC-Logo_2025_weiß.png",
+]
 
 export default function TrailsPage() {
   const { t } = useLanguage()
@@ -50,7 +63,7 @@ export default function TrailsPage() {
       difficulty: "Medium",
       duration: "02:21",
       distance: "14,5 km",
-      elevation: "970 m",
+      elevation: "970 hm",
       link: "https://www.komoot.com/de-de/tour/1736310471",
       image: "/images/mountain-trail-runner.jpeg",
     },
@@ -151,9 +164,24 @@ export default function TrailsPage() {
 
   return (
     <div className="min-h-screen bg-black text-white">
+      {/* Preload critical images */}
+      <ImagePreloader imageSources={CRITICAL_IMAGES} />
+
       {/* Header with background image */}
       <div className="relative h-[50vh] min-h-[400px]">
-        <Image src="/images/mountain-trail-runner.jpeg" alt="Trail running" fill className="object-cover" priority />
+        <Image
+          src="/images/mountain-trail-runner.jpeg"
+          alt="Trail running"
+          fill
+          className="object-cover"
+          priority
+          fetchPriority="high"
+          unoptimized={true}
+          onError={(e) => {
+            console.error("Failed to load image:", e)
+            e.currentTarget.src = "/placeholder.svg?height=800&width=1200"
+          }}
+        />
         <div className="absolute inset-0 bg-gradient-to-b from-black/70 via-black/50 to-black"></div>
 
         <div className="absolute inset-0 flex flex-col items-center justify-center text-center p-6">

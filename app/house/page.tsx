@@ -6,6 +6,15 @@ import Link from "next/link"
 import { motion } from "framer-motion"
 import { ArrowLeft, Wifi, Utensils, Thermometer, Droplets, Dumbbell, Mountain } from "lucide-react"
 import { useLanguage } from "@/contexts/language-context"
+import ImagePreloader from "@/app/components/image-preloader"
+
+// Define critical images for the House page
+const CRITICAL_IMAGES = [
+  "/images/mountain-lodge.jpeg",
+  "/images/alpine-landscape.jpeg",
+  "/images/trail-runner-1.jpeg",
+  "/images/MTC-Logo_2025_weiß.png",
+]
 
 export default function HousePage() {
   const { t } = useLanguage()
@@ -68,9 +77,24 @@ export default function HousePage() {
 
   return (
     <div className="min-h-screen bg-black text-white">
+      {/* Preload critical images */}
+      <ImagePreloader imageSources={CRITICAL_IMAGES} />
+
       {/* Header with background image */}
       <div className="relative h-[50vh] min-h-[400px]">
-        <Image src="/images/mountain-lodge.jpeg" alt="Mountain house" fill className="object-cover" priority />
+        <Image
+          src="/images/mountain-lodge.jpeg"
+          alt="Mountain house"
+          fill
+          className="object-cover"
+          priority
+          fetchPriority="high"
+          unoptimized={true}
+          onError={(e) => {
+            console.error("Failed to load image:", e)
+            e.currentTarget.src = "/placeholder.svg?height=800&width=1200"
+          }}
+        />
         <div className="absolute inset-0 bg-gradient-to-b from-black/70 via-black/50 to-black"></div>
 
         <div className="absolute inset-0 flex flex-col items-center justify-center text-center p-6">
@@ -195,6 +219,7 @@ export default function HousePage() {
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: isLoaded ? 1 : 0, y: isLoaded ? 0 : 30 }}
             transition={{ duration: 0.8, delay: 0.6 }}
+            className="mb-16"
           >
             <h2 className="text-2xl font-bold mb-8 uppercase">{t("locationTitle")}</h2>
             <div className="aspect-video relative rounded-lg overflow-hidden">
