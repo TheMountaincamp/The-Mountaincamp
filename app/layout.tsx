@@ -1,7 +1,7 @@
 import type React from "react"
 import { Suspense } from "react"
 import type { Metadata } from "next"
-import { Montserrat, Space_Mono, Bebas_Neue } from "next/font/google"
+import { Inter } from "next/font/google"
 import "./globals.css"
 import { ThemeProvider } from "@/components/theme-provider"
 import { CookieConsentProvider } from "@/contexts/cookie-consent-context"
@@ -9,73 +9,91 @@ import { LanguageProvider } from "@/contexts/language-context"
 import CookieBanner from "@/components/cookie-banner"
 import Script from "next/script"
 import { Analytics } from "@vercel/analytics/react"
+import DebugImagePaths from "@/app/components/debug-image-paths"
 
-// Definiere die Schriftarten
-const montserrat = Montserrat({
-  subsets: ["latin"],
-  display: "swap",
-  variable: "--font-montserrat",
-})
+const inter = Inter({ subsets: ["latin"] })
 
-const spaceMono = Space_Mono({
-  weight: ["400", "700"],
-  subsets: ["latin"],
-  display: "swap",
-  variable: "--font-space-mono",
-})
-
-const bebasNeue = Bebas_Neue({
-  weight: ["400"],
-  subsets: ["latin"],
-  display: "swap",
-  variable: "--font-bebas-neue",
-})
+// Define critical images to preload
+const CRITICAL_IMAGES = [
+  "/images/alpine-landscape.jpeg",
+  "/images/MTC-Logo_2025.png",
+  "/images/MTC-Logo_2025_weiß.png",
+  "/images/trail-runner-1.jpeg",
+  "/images/mountain-rave.jpeg",
+]
 
 export const metadata: Metadata = {
-  title: "The Mountaincamp - Das größte Trailrunning-Camp in den Alpen | August 2025",
+  title: "The Mountaincamp - Trailrunning, Community, Party",
   description:
-    "🏔️ THE MOUNTAINCAMP - Das ultimative Trailrunning-Erlebnis in den österreichischen Alpen! 6.-10. August 2025 ⭐ 4 Nächte, epische Trails, unvergessliche Partys ⭐ Jetzt anmelden - begrenzte Plätze!",
+    "Trailrunning, Community, Party - Join the ultimate alpine adventure at The Mountaincamp 2025. Limited spots available. Book now and transform your running experience!",
   keywords: [
     "The Mountaincamp",
-    "Mountaincamp",
-    "Mountain Camp",
-    "trailrunning camp",
-    "trail running austria",
-    "österreichische alpen",
-    "hochkrimml",
-    "salzburg",
-    "trailrunning österreich",
+    "trailrunning",
+    "trail running camp",
     "mountain running",
-    "alpine running",
     "running community",
-    "sunset rave",
-    "bergläufe",
-    "laufcamp",
-    "aktivurlaub",
-    "bergsport",
+    "trail races",
+    "Austrian Alps",
+    "mountain training",
+    "trail community",
     "outdoor adventure",
-    "august 2025",
-    "trail running vacation",
+    "running retreat",
+    "alpine running",
+    "trail running training",
+    "mountain party",
+    "running vacation",
+    "trail running holiday",
+    "mountain experience",
+    "trail running event",
+    "trail running festival",
+    "mountain fitness",
+    "trail running coaching",
+    "alpine trails",
+    "mountain adventure",
+    "trail running Austria",
+    "Hochkrimml",
   ],
   authors: [{ name: "The Mountaincamp Team" }],
   creator: "The Mountaincamp",
   publisher: "The Mountaincamp",
+  category: "Sports & Recreation",
+  formatDetection: {
+    email: false,
+    address: false,
+    telephone: false,
+  },
   metadataBase: new URL("https://themountaincamp.de"),
   alternates: {
     canonical: "/",
+    languages: {
+      "en-US": "/en-US",
+      "de-DE": "/de-DE",
+    },
   },
   openGraph: {
-    title: "The Mountaincamp - Das größte Trailrunning-Camp in den Alpen",
+    title: "The Mountaincamp - Trailrunning, Community, Party",
     description:
-      "🏔️ THE MOUNTAINCAMP - Das ultimative Trailrunning-Erlebnis in den österreichischen Alpen! 6.-10. August 2025",
+      "Experience the ultimate alpine adventure at The Mountaincamp. 4 nights, epic trails, unforgettable parties. Limited spots - secure yours today!",
     url: "https://themountaincamp.de",
     siteName: "The Mountaincamp",
     images: [
       {
-        url: "/images/hero-bg-new.jpg",
+        url: "/images/alpine-landscape.jpeg",
         width: 1200,
         height: 630,
         alt: "The Mountaincamp - Epic trail running in the Austrian Alps",
+      },
+      {
+        url: "/images/mountain-rave.jpeg",
+        width: 1200,
+        height: 630,
+        alt: "Sunset Rave at The Mountaincamp - Party in the mountains",
+      },
+      {
+        url: "/images/trail-runner-1.jpeg",
+        width: 1200,
+        height: 630,
+        alt: "Trail running adventures at The Mountaincamp",
       },
     ],
     locale: "de_DE",
@@ -83,10 +101,10 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "The Mountaincamp - Das größte Trailrunning-Camp in den Alpen",
+    title: "The Mountaincamp - Trailrunning, Community, Party",
     description:
-      "🏔️ THE MOUNTAINCAMP - Das ultimative Trailrunning-Erlebnis! 6.-10. August 2025 in den österreichischen Alpen",
-    images: ["/images/hero-bg-new.jpg"],
+      "Experience the ultimate alpine adventure at The Mountaincamp. 4 nights, epic trails, unforgettable parties. Limited spots - secure yours today!",
+    images: ["/images/alpine-landscape.jpeg"],
     creator: "@themountaincamp",
     site: "@themountaincamp",
   },
@@ -102,6 +120,30 @@ export const metadata: Metadata = {
       "max-snippet": -1,
     },
   },
+  verification: {
+    google: "google-site-verification-code",
+    yandex: "yandex-verification-code",
+    yahoo: "yahoo-verification-code",
+    other: {
+      me: ["info@themountaincamp.de"],
+    },
+  },
+  appLinks: {
+    ios: {
+      url: "https://themountaincamp.de/",
+      app_store_id: "app-store-id",
+    },
+    android: {
+      package: "de.themountaincamp.app",
+      app_name: "The Mountaincamp",
+    },
+    web: {
+      url: "https://themountaincamp.de/",
+      should_fallback: true,
+    },
+  },
+  archives: ["https://themountaincamp.de/archive"],
+  bookmarks: ["https://themountaincamp.de/archive"],
   icons: {
     icon: [
       { url: "/favicon.png" },
@@ -115,8 +157,24 @@ export const metadata: Metadata = {
       { url: "/apple-icon.png" },
       { url: "/apple-icon-180.png", sizes: "180x180", type: "image/png" },
     ],
+    other: [
+      {
+        rel: "mask-icon",
+        url: "/safari-pinned-tab.svg",
+      },
+    ],
   },
   manifest: "/manifest.json",
+  viewport: {
+    width: "device-width",
+    initialScale: 1,
+    maximumScale: 1,
+    userScalable: false,
+  },
+  themeColor: [
+    { media: "(prefers-color-scheme: light)", color: "#5f5c95" },
+    { media: "(prefers-color-scheme: dark)", color: "#000000" },
+  ],
     generator: 'v0.dev'
 }
 
@@ -126,11 +184,7 @@ export default function RootLayout({
   children: React.ReactNode
 }>) {
   return (
-    <html
-      lang="de"
-      suppressHydrationWarning
-      className={`${montserrat.variable} ${spaceMono.variable} ${bebasNeue.variable}`}
-    >
+    <html lang="de" suppressHydrationWarning>
       <head>
         <link rel="canonical" href="https://themountaincamp.de" />
         <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -138,96 +192,35 @@ export default function RootLayout({
         <link rel="dns-prefetch" href="https://my.camps.digital" />
 
         {/* Preload critical images */}
-        <link rel="preload" href="/images/hero-bg-new.jpg" as="image" fetchPriority="high" />
-        <link rel="preload" href="/images/MTC-Logo-2025-new.png" as="image" fetchPriority="high" />
+        {CRITICAL_IMAGES.map((src, index) => (
+          <link key={index} rel="preload" href={src} as="image" fetchPriority="high" crossOrigin="anonymous" />
+        ))}
 
-        {/* Favicon */}
+        {/* Favicon für Safari und andere Browser */}
         <link rel="icon" href="/favicon.png" />
+        {/* Favicon für moderne Browser */}
         <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+        {/* Apple Touch Icon für iOS */}
+        <link rel="apple-touch-icon" href="/favicon.png" />
         <link rel="apple-touch-icon" href="/apple-icon.png" />
-        <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#FF5A5F" />
-
-        {/* SEO Meta Tags */}
-        <meta name="geo.region" content="AT-5" />
-        <meta name="geo.placename" content="Hochkrimml, Austria" />
-        <meta name="geo.position" content="47.2393;12.1735" />
-        <meta name="ICBM" content="47.2393, 12.1735" />
+        <link rel="apple-touch-icon" sizes="180x180" href="/apple-icon-180.png" />
+        {/* Safari Pinned Tab Icon */}
+        <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#000000" />
       </head>
-      <body className="antialiased">
+      <body className={inter.className}>
         <Suspense fallback={<div className="min-h-screen bg-black"></div>}>
           <LanguageProvider>
             <CookieConsentProvider>
-              <ThemeProvider attribute="class" defaultTheme="dark" enableSystem disableTransitionOnChange>
+              <ThemeProvider attribute="class" defaultTheme="light" enableSystem disableTransitionOnChange>
                 {children}
                 <CookieBanner />
                 <Analytics />
+                <DebugImagePaths />
               </ThemeProvider>
             </CookieConsentProvider>
           </LanguageProvider>
         </Suspense>
-
-        {/* Structured Data */}
-        <Script
-          id="structured-data"
-          type="application/ld+json"
-          dangerouslySetInnerHTML={{
-            __html: JSON.stringify({
-              "@context": "https://schema.org",
-              "@type": "Event",
-              name: "The Mountaincamp 2025",
-              description: "Das ultimative Trailrunning-Erlebnis in den österreichischen Alpen",
-              startDate: "2025-08-06",
-              endDate: "2025-08-10",
-              location: {
-                "@type": "Place",
-                name: "Hochkrimml, Austrian Alps",
-                address: {
-                  "@type": "PostalAddress",
-                  addressLocality: "Hochkrimml",
-                  addressRegion: "Salzburg",
-                  addressCountry: "Austria",
-                },
-              },
-              offers: {
-                "@type": "Offer",
-                price: "420",
-                priceCurrency: "EUR",
-                url: "https://my.camps.digital/masken/buchungen/vuejs?&vendor=mountaincamp&destination_id=1475&termin_id=35113#/",
-              },
-              organizer: {
-                "@type": "Organization",
-                name: "The Mountaincamp",
-                url: "https://themountaincamp.de",
-              },
-            }),
-          }}
-        />
-
-        <Script
-          id="organization-data"
-          type="application/ld+json"
-          dangerouslySetInnerHTML={{
-            __html: JSON.stringify({
-              "@context": "https://schema.org",
-              "@type": "Organization",
-              name: "The Mountaincamp",
-              url: "https://themountaincamp.de",
-              logo: "https://themountaincamp.de/images/MTC-Logo-2025-new.png",
-              sameAs: [
-                "https://www.instagram.com/the_mountaincamp/",
-                "https://www.facebook.com/profile.php?id=61566807910764",
-              ],
-              contactPoint: {
-                "@type": "ContactPoint",
-                telephone: "+43-677-63455763",
-                email: "themountaincampde@gmail.com",
-                contactType: "customer service",
-              },
-            }),
-          }}
-        />
-
-        {/* Vercel Speed Insights */}
+        {/* Vercel Speed Insights Script */}
         <Script strategy="afterInteractive" src="/_vercel/speed-insights/script.js" />
       </body>
     </html>

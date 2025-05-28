@@ -2,177 +2,35 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
         xmlns:xhtml="http://www.w3.org/1999/xhtml"
         xmlns:image="http://www.google.com/schemas/sitemap-image/1.1"
-        xmlns:video="http://www.google.com/schemas/sitemap-video/1.1"
-        xmlns:news="http://www.google.com/schemas/sitemap-news/0.9">
-  
-  <!-- Main page - highest priority -->
+        xmlns:video="http://www.google.com/schemas/sitemap-video/1.1">
   <url>
     <loc>https://themountaincamp.de/</loc>
-    <lastmod>2024-12-28</lastmod>
+    <lastmod>2023-04-04</lastmod>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
-    <xhtml:link rel="alternate" hreflang="de" href="https://themountaincamp.de/" />
+    <image:image>
+      <image:loc>https://themountaincamp.de/images/alpine-landscape.jpeg</image:loc>
+      <image:title>The Mountaincamp - Trail running in the Austrian Alps</image:title>
+      <image:caption>Experience breathtaking alpine trails at The Mountaincamp</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://themountaincamp.de/images/mountain-rave.jpeg</image:loc>
+      <image:title>Sunset Rave at The Mountaincamp</image:title>
+      <image:caption>Dance under the stars at our legendary mountain-top party</image:caption>
+    </image:image>
     <xhtml:link rel="alternate" hreflang="en" href="https://themountaincamp.de/en/" />
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://themountaincamp.de/" />
-    
-    <!-- Main hero image -->
-    <image:image>
-      <image:loc>https://themountaincamp.de/images/hero-bg-new.jpg</image:loc>
-      <image:caption>The Mountaincamp - Trailrunning in den österreichischen Alpen</image:caption>
-      <image:title>The Mountaincamp 2025</image:title>
-    </image:image>
-    <image:image>
-      <image:loc>https://themountaincamp.de/images/mountain-rave-new.jpg</image:loc>
-      <image:caption>Sunset Rave Party auf dem Berg</image:caption>
-      <image:title>Sunset Rave - The Mountaincamp</image:title>
-    </image:image>
-  </url>
-
-  <!-- English version -->
-  <url>
-    <loc>https://themountaincamp.de/en/</loc>
-    <lastmod>2025-01-28</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.9</priority>
     <xhtml:link rel="alternate" hreflang="de" href="https://themountaincamp.de/" />
-    <xhtml:link rel="alternate" hreflang="en" href="https://themountaincamp.de/en/" />
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://themountaincamp.de/" />
   </url>
-
-  <!-- House page -->
-  <url>
-    <loc>https://themountaincamp.de/house</loc>
-    <lastmod>2024-12-28</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-    <xhtml:link rel="alternate" hreflang="de" href="https://themountaincamp.de/house" />
-    <xhtml:link rel="alternate" hreflang="en" href="https://themountaincamp.de/en/house" />
-    
-    <image:image>
-      <image:loc>https://themountaincamp.de/images/mountain-lodge.jpeg</image:loc>
-      <image:title>The Mountaincamp House - Berghaus Unterkunft</image:title>
-      <image:caption>Gemütliche Unterkunft im Herzen der österreichischen Alpen</image:caption>
-      <image:geo_location>Hochkrimml, Austria</image:geo_location>
-    </image:image>
-  </url>
-
-  <!-- Trails page -->
-  <url>
-    <loc>https://themountaincamp.de/trails</loc>
-    <lastmod>2024-12-28</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-    <xhtml:link rel="alternate" hreflang="de" href="https://themountaincamp.de/trails" />
-    <xhtml:link rel="alternate" hreflang="en" href="https://themountaincamp.de/en/trails" />
-    
-    <image:image>
-      <image:loc>https://themountaincamp.de/images/mountain-trail-runner.jpeg</image:loc>
-      <image:title>Trailrunning Routes in den österreichischen Alpen</image:title>
-      <image:caption>Entdecke atemberaubende Trailrunning-Strecken für alle Level</image:caption>
-      <image:geo_location>Hochkrimml, Austria</image:geo_location>
-    </image:image>
-    
-    <image:image>
-      <image:loc>https://themountaincamp.de/images/trail-runners-group.jpeg</image:loc>
-      <image:title>Trailrunning Group in den Alpen</image:title>
-      <image:caption>Gemeinsam laufen in der Trailrunning-Community</image:caption>
-      <image:geo_location>Hochkrimml, Austria</image:geo_location>
-    </image:image>
-  </url>
-
-  <!-- Legal pages -->
   <url>
     <loc>https://themountaincamp.de/datenschutz</loc>
-    <lastmod>2024-12-28</lastmod>
+    <lastmod>2023-04-04</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.3</priority>
   </url>
-
   <url>
     <loc>https://themountaincamp.de/impressum</loc>
-    <lastmod>2024-12-28</lastmod>
+    <lastmod>2023-04-04</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.3</priority>
   </url>
-
-  <url>
-    <loc>https://themountaincamp.de/legal</loc>
-    <lastmod>2025-01-28</lastmod>
-    <changefreq>yearly</changefreq>
-    <priority>0.3</priority>
-  </url>
-
-  <url>
-    <loc>https://themountaincamp.de/legal/conditions-of-raffle-participation</loc>
-    <lastmod>2025-01-28</lastmod>
-    <changefreq>yearly</changefreq>
-    <priority>0.2</priority>
-  </url>
-
-  <!-- Registration/booking page -->
-  <url>
-    <loc>https://themountaincamp.de/register</loc>
-    <lastmod>2025-01-28</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.9</priority>
-  </url>
-
-  <!-- Activity pages -->
-  <url>
-    <loc>https://themountaincamp.de/activities</loc>
-    <lastmod>2025-01-28</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.7</priority>
-    
-    <image:image>
-      <image:loc>https://themountaincamp.de/images/archery.jpeg</image:loc>
-      <image:title>Archery at The Mountaincamp</image:title>
-      <image:caption>Bogenschießen in den österreichischen Alpen</image:caption>
-    </image:image>
-    
-    <image:image>
-      <image:loc>https://themountaincamp.de/images/canoeing-lake.jpeg</image:loc>
-      <image:title>Canoeing at The Mountaincamp</image:title>
-      <image:caption>Kanufahren auf kristallklaren Bergseen</image:caption>
-    </image:image>
-    
-    <image:image>
-      <image:loc>https://themountaincamp.de/images/yoga.png</image:loc>
-      <image:title>Yoga at The Mountaincamp</image:title>
-      <image:caption>Yoga und Entspannung in den Bergen</image:caption>
-    </image:image>
-  </url>
-
-  <!-- Blog/News section (for future content) -->
-  <url>
-    <loc>https://themountaincamp.de/blog</loc>
-    <lastmod>2025-01-28</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.6</priority>
-  </url>
-
-  <!-- Contact page -->
-  <url>
-    <loc>https://themountaincamp.de/contact</loc>
-    <lastmod>2025-01-28</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.5</priority>
-  </url>
-
-  <!-- Gallery page -->
-  <url>
-    <loc>https://themountaincamp.de/gallery</loc>
-    <lastmod>2025-01-28</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.6</priority>
-  </url>
-
-  <!-- FAQ page -->
-  <url>
-    <loc>https://themountaincamp.de/faq</loc>
-    <lastmod>2025-01-28</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
-  </url>
-
 </urlset>

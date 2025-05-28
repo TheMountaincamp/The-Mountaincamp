@@ -1,33 +1,21 @@
+# The Mountaincamp - The biggest trailrunning camp in the alps
+# https://themountaincamp.de
+
 User-agent: *
 Allow: /
 
-# Specific rules for search engines
-User-agent: Googlebot
-Allow: /
-Crawl-delay: 1
-
-User-agent: Bingbot
-Allow: /
-Crawl-delay: 1
-
-# Block access to admin areas
+# Disallow admin and private areas
 Disallow: /admin/
+Disallow: /private/
 Disallow: /api/
-Disallow: /_next/
-Disallow: /static/
 
-# Allow important pages
-Allow: /images/
-Allow: /favicon.ico
-Allow: /sitemap.xml
-Allow: /robots.txt
-
-# Sitemap location
+# Sitemap locations
 Sitemap: https://themountaincamp.de/sitemap.xml
+Sitemap: https://themountaincamp.de/sitemap-images.xml
 
-# Additional SEO directives
-User-agent: *
-Disallow: /search?
-Disallow: /*?*
-Allow: /*?utm_*
-Allow: /*?ref=*
+# Crawl delay for specific bots
+User-agent: AhrefsBot
+Crawl-delay: 10
+
+User-agent: SemrushBot
+Crawl-delay: 10
