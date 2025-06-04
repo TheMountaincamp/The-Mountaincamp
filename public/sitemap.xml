@@ -1,70 +1,36 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" 
-        xmlns:xhtml="http://www.w3.org/1999/xhtml"
-        xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">
-  
-  <!-- Homepage - Hauptziel für "The Mountaincamp", "Mountaincamp", "trail running camps austria" -->
-  <url>
-    <loc>https://themountaincamp.de</loc>
-    <lastmod>2024-12-28</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>1.0</priority>
-    <xhtml:link rel="alternate" hreflang="de" href="https://themountaincamp.de" />
-    <xhtml:link rel="alternate" hreflang="en" href="https://themountaincamp.de/en" />
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://themountaincamp.de" />
-    
-    <image:image>
-      <image:loc>https://themountaincamp.de/images/hero-bg-new.jpg</image:loc>
-      <image:title>The Mountaincamp - Austria's Premier Trail Running Camps</image:title>
-      <image:caption>The Mountaincamp offers the best trail running camps Austria experience in the Austrian Alps</image:caption>
-    </image:image>
-    
-    <image:image>
-      <image:loc>https://themountaincamp.de/images/MTC-Logo-2025-new.png</image:loc>
-      <image:title>Mountaincamp 2025 Logo - Trail Running Camps Austria</image:title>
-      <image:caption>Official Mountaincamp logo for Austria's premier trail running camps</image:caption>
-    </image:image>
-  </url>
-
-  <!-- Weitere Seiten für SEO-Unterstützung -->
-  <url>
-    <loc>https://themountaincamp.de/house</loc>
-    <lastmod>2024-12-28</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-    <xhtml:link rel="alternate" hreflang="de" href="https://themountaincamp.de/house" />
-    <xhtml:link rel="alternate" hreflang="en" href="https://themountaincamp.de/en/house" />
-  </url>
-
-  <url>
-    <loc>https://themountaincamp.de/trails</loc>
-    <lastmod>2024-12-28</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-    <xhtml:link rel="alternate" hreflang="de" href="https://themountaincamp.de/trails" />
-    <xhtml:link rel="alternate" hreflang="en" href="https://themountaincamp.de/en/trails" />
-  </url>
-
-  <!-- Rechtliche Seiten -->
-  <url>
-    <loc>https://themountaincamp.de/datenschutz</loc>
-    <lastmod>2024-12-28</lastmod>
-    <changefreq>yearly</changefreq>
-    <priority>0.3</priority>
-  </url>
-
-  <url>
-    <loc>https://themountaincamp.de/impressum</loc>
-    <lastmod>2024-12-28</lastmod>
-    <changefreq>yearly</changefreq>
-    <priority>0.3</priority>
-  </url>
-
-  <url>
-    <loc>https://themountaincamp.de/legal/conditions-of-raffle-participation</loc>
-    <lastmod>2024-12-28</lastmod>
-    <changefreq>yearly</changefreq>
-    <priority>0.2</priority>
-  </url>
-
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+       xmlns:xhtml="http://www.w3.org/1999/xhtml"
+       xmlns:image="http://www.google.com/schemas/sitemap-image/1.1"
+       xmlns:video="http://www.google.com/schemas/sitemap-video/1.1">
+ <url>
+   <loc>https://themountaincamp.de/</loc>
+   <lastmod>2023-04-04</lastmod>
+   <changefreq>weekly</changefreq>
+   <priority>1.0</priority>
+   <image:image>
+     <image:loc>https://themountaincamp.de/images/alpine-landscape.jpeg</image:loc>
+     <image:title>The Mountaincamp - Trail running in the Austrian Alps</image:title>
+     <image:caption>Experience breathtaking alpine trails at The Mountaincamp</image:caption>
+   </image:image>
+   <image:image>
+     <image:loc>https://themountaincamp.de/images/mountain-rave.jpeg</image:loc>
+     <image:title>Sunset Rave at The Mountaincamp</image:title>
+     <image:caption>Dance under the stars at our legendary mountain-top party</image:caption>
+   </image:image>
+   <xhtml:link rel="alternate" hreflang="en" href="https://themountaincamp.de/en/" />
+   <xhtml:link rel="alternate" hreflang="de" href="https://themountaincamp.de/" />
+ </url>
+ <url>
+   <loc>https://themountaincamp.de/datenschutz</loc>
+   <lastmod>2023-04-04</lastmod>
+   <changefreq>yearly</changefreq>
+   <priority>0.3</priority>
+ </url>
+ <url>
+   <loc>https://themountaincamp.de/impressum</loc>
+   <lastmod>2023-04-04</lastmod>
+   <changefreq>yearly</changefreq>
+   <priority>0.3</priority>
+ </url>
 </urlset>
