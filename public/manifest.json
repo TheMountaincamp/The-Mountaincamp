@@ -1,79 +1,64 @@
 {
-  "name": "The Mountaincamp - Austria's Premier Trailrunning Experience",
+  "name": "The Mountaincamp - The biggest trailrunning camp in the alps",
   "short_name": "Mountaincamp",
-  "description": "Das größte Trailrunning-Camp in den österreichischen Alpen. 6.-10. August 2025 in Hochkrimml.",
+  "description": "Trailrunning, Community, Party - Join the ultimate alpine adventure at The Mountaincamp 2025.",
   "start_url": "/",
   "display": "standalone",
-  "background_color": "#000000",
-  "theme_color": "#FF5A5F",
+  "background_color": "#ffffff",
+  "theme_color": "#5f5c95",
   "orientation": "portrait-primary",
-  "scope": "/",
-  "lang": "de",
-  "dir": "ltr",
-  "categories": ["sports", "lifestyle", "travel", "fitness"],
-  "screenshots": [
-    {
-      "src": "/images/screenshot-desktop.png",
-      "sizes": "1280x720",
-      "type": "image/png",
-      "platform": "wide",
-      "label": "The Mountaincamp Desktop View"
-    },
-    {
-      "src": "/images/screenshot-mobile.png",
-      "sizes": "390x844",
-      "type": "image/png",
-      "platform": "narrow",
-      "label": "The Mountaincamp Mobile View"
-    }
-  ],
   "icons": [
     {
-      "src": "/icon-192.png",
-      "sizes": "192x192",
+      "src": "/favicon.png",
       "type": "image/png",
+      "sizes": "32x32"
+    },
+    {
+      "src": "/favicon.svg",
+      "type": "image/svg+xml",
+      "sizes": "any",
+      "purpose": "any"
+    },
+    {
+      "src": "/icon-192.png",
+      "type": "image/png",
+      "sizes": "192x192",
       "purpose": "any maskable"
     },
     {
       "src": "/icon-512.png",
+      "type": "image/png",
       "sizes": "512x512",
-      "type": "image/png",
       "purpose": "any maskable"
+    }
+  ],
+  "screenshots": [
+    {
+      "src": "/screenshot1.jpg",
+      "type": "image/jpeg",
+      "sizes": "1080x1920",
+      "form_factor": "narrow"
     },
     {
-      "src": "/apple-icon.png",
-      "sizes": "180x180",
-      "type": "image/png",
-      "purpose": "any"
-    },
-    {
-      "src": "/favicon.svg",
-      "sizes": "any",
-      "type": "image/svg+xml",
-      "purpose": "any"
+      "src": "/screenshot2.jpg",
+      "type": "image/jpeg",
+      "sizes": "1920x1080",
+      "form_factor": "wide"
     }
   ],
   "shortcuts": [
     {
-      "name": "Jetzt anmelden",
+      "name": "Register Now",
       "short_name": "Register",
-      "description": "Direkt zur Anmeldung für The Mountaincamp 2025",
-      "url": "/register",
-      "icons": [{ "src": "/icon-192.png", "sizes": "192x192" }]
-    },
-    {
-      "name": "Trails entdecken",
-      "short_name": "Trails",
-      "description": "Entdecke unsere Trailrunning-Strecken",
-      "url": "/trails",
-      "icons": [{ "src": "/icon-192.png", "sizes": "192x192" }]
+      "description": "Book your spot at The Mountaincamp",
+      "url": "/#register",
+      "icons": [{ "src": "/shortcut-icon.png", "sizes": "192x192" }]
     }
   ],
   "related_applications": [
     {
-      "platform": "webapp",
-      "url": "https://themountaincamp.de/manifest.json"
+      "platform": "web",
+      "url": "https://themountaincamp.de"
     }
-  ],
-  "prefer_related_applications": false
+  ]
 }
