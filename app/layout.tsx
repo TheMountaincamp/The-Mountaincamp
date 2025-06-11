@@ -1,7 +1,7 @@
 import type React from "react"
 import { Suspense } from "react"
 import type { Metadata } from "next"
-import { Montserrat, Space_Mono, Bebas_Neue } from "next/font/google"
+import { Inter } from "next/font/google"
 import "./globals.css"
 import { ThemeProvider } from "@/components/theme-provider"
 import { CookieConsentProvider } from "@/contexts/cookie-consent-context"
@@ -9,34 +9,17 @@ import { LanguageProvider } from "@/contexts/language-context"
 import CookieBanner from "@/components/cookie-banner"
 import Script from "next/script"
 import { Analytics } from "@vercel/analytics/react"
+import DebugImagePaths from "@/app/components/debug-image-paths"
 
-// Definiere die Schriftarten
-const montserrat = Montserrat({
-  subsets: ["latin"],
-  display: "swap",
-  variable: "--font-montserrat",
-})
+const inter = Inter({ subsets: ["latin"] })
 
-const spaceMono = Space_Mono({
-  weight: ["400", "700"],
-  subsets: ["latin"],
-  display: "swap",
-  variable: "--font-space-mono",
-})
-
-const bebasNeue = Bebas_Neue({
-  weight: ["400"],
-  subsets: ["latin"],
-  display: "swap",
-  variable: "--font-bebas-neue",
-})
-
-// Kritische Bilder zum Vorladen
+// Define critical images to preload
 const CRITICAL_IMAGES = [
-  "/images/hero-bg-new.jpg",
-  "/images/MTC-Logo-2025-new.png",
-  "/images/trail-runner-action.jpg",
-  "/images/mountain-rave-new.jpg",
+  "/images/alpine-landscape.jpeg",
+  "/images/MTC-Logo_2025.png",
+  "/images/MTC-Logo_2025_weiß.png",
+  "/images/trail-runner-1.jpeg",
+  "/images/mountain-rave.jpeg",
 ]
 
 export const metadata: Metadata = {
@@ -45,8 +28,6 @@ export const metadata: Metadata = {
     "Trailrunning, Community, Party - Join the ultimate alpine adventure at The Mountaincamp 2025. Limited spots available. Book now and transform your running experience!",
   keywords: [
     "The Mountaincamp",
-    "Mountaincamp",
-    "trail running camps austria",
     "trailrunning",
     "trail running camp",
     "mountain running",
@@ -97,19 +78,19 @@ export const metadata: Metadata = {
     siteName: "The Mountaincamp",
     images: [
       {
-        url: "/images/hero-bg-new.jpg",
+        url: "/images/alpine-landscape.jpeg",
         width: 1200,
         height: 630,
         alt: "The Mountaincamp - Epic trail running in the Austrian Alps",
       },
       {
-        url: "/images/mountain-rave-new.jpg",
+        url: "/images/mountain-rave.jpeg",
         width: 1200,
         height: 630,
         alt: "Sunset Rave at The Mountaincamp - Party in the mountains",
       },
       {
-        url: "/images/trail-runner-action.jpg",
+        url: "/images/trail-runner-1.jpeg",
         width: 1200,
         height: 630,
         alt: "Trail running adventures at The Mountaincamp",
@@ -123,7 +104,7 @@ export const metadata: Metadata = {
     title: "The Mountaincamp - Trailrunning, Community, Party",
     description:
       "Experience the ultimate alpine adventure at The Mountaincamp. 4 nights, epic trails, unforgettable parties. Limited spots - secure yours today!",
-    images: ["/images/hero-bg-new.jpg"],
+    images: ["/images/alpine-landscape.jpeg"],
     creator: "@themountaincamp",
     site: "@themountaincamp",
   },
@@ -191,7 +172,7 @@ export const metadata: Metadata = {
     userScalable: false,
   },
   themeColor: [
-    { media: "(prefers-color-scheme: light)", color: "#FF5A5F" },
+    { media: "(prefers-color-scheme: light)", color: "#5f5c95" },
     { media: "(prefers-color-scheme: dark)", color: "#000000" },
   ],
     generator: 'v0.dev'
@@ -203,11 +184,7 @@ export default function RootLayout({
   children: React.ReactNode
 }>) {
   return (
-    <html
-      lang="de"
-      suppressHydrationWarning
-      className={`${montserrat.variable} ${spaceMono.variable} ${bebasNeue.variable}`}
-    >
+    <html lang="de" suppressHydrationWarning>
       <head>
         <link rel="canonical" href="https://themountaincamp.de" />
         <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -228,16 +205,17 @@ export default function RootLayout({
         <link rel="apple-touch-icon" href="/apple-icon.png" />
         <link rel="apple-touch-icon" sizes="180x180" href="/apple-icon-180.png" />
         {/* Safari Pinned Tab Icon */}
-        <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#FF5A5F" />
+        <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#000000" />
       </head>
-      <body className="antialiased">
+      <body className={inter.className}>
         <Suspense fallback={<div className="min-h-screen bg-black"></div>}>
           <LanguageProvider>
             <CookieConsentProvider>
-              <ThemeProvider attribute="class" defaultTheme="dark" enableSystem disableTransitionOnChange>
+              <ThemeProvider attribute="class" defaultTheme="light" enableSystem disableTransitionOnChange>
                 {children}
                 <CookieBanner />
                 <Analytics />
+                <DebugImagePaths />
               </ThemeProvider>
             </CookieConsentProvider>
           </LanguageProvider>
