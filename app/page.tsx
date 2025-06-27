@@ -60,8 +60,6 @@ export default function Home() {
 
   // Preload section images after the page has loaded
   useEffect(() => {
-    // This will run after the component mounts, which means the critical images
-    // have already been preloaded by the loading component
     setIsPreloading(false)
   }, [])
 
@@ -94,7 +92,7 @@ export default function Home() {
           },
         },
         image: [
-          "https://themountaincamp.de/images/alpine-landscape.jpeg",
+          "https://themountaincamp.de/images/hero-trail-runners.jpeg",
           "https://themountaincamp.de/images/mountain-rave.jpeg",
           "https://themountaincamp.de/images/trail-runner-1.jpeg",
         ],
@@ -119,169 +117,19 @@ export default function Home() {
         },
       }
 
-      // FAQs structured data
-      const faqStructuredData = {
-        "@context": "https://schema.org",
-        "@type": "FAQPage",
-        mainEntity: [
-          {
-            "@type": "Question",
-            name: "What is included in The Mountaincamp package?",
-            acceptedAnswer: {
-              "@type": "Answer",
-              text: "The Mountaincamp package includes 4 nights accommodation, all meals, guided trail runs for all levels, access to all activities including yoga, creative workshops, and the legendary sunset rave party.",
-            },
-          },
-          {
-            "@type": "Question",
-            name: "Do I need to be an experienced trail runner to join?",
-            acceptedAnswer: {
-              "@type": "Answer",
-              text: "Not at all! The Mountaincamp welcomes runners of all levels, from beginners to advanced. We offer different trail groups based on experience and pace, ensuring everyone has a great time.",
-            },
-          },
-          {
-            "@type": "Question",
-            name: "How do I get to Hochkrimml in the Austrian Alps?",
-            acceptedAnswer: {
-              "@type": "Answer",
-              text: "The nearest airports are Salzburg (100km) and Innsbruck (90km). From there, you can rent a car or take public transportation. Detailed travel information will be provided after registration.",
-            },
-          },
-          {
-            "@type": "Question",
-            name: "What should I pack for The Mountaincamp?",
-            acceptedAnswer: {
-              "@type": "Answer",
-              text: "Trailrunning gear, comfortable clothes for activities, swimwear for lake activities, warm clothes for evenings, and party outfit for the sunset rave. A detailed packing list will be sent to all participants.",
-            },
-          },
-        ],
-      }
-
-      // Product structured data
-      const productStructuredData = {
-        "@context": "https://schema.org",
-        "@type": "Product",
-        name: "The Mountaincamp 2025 Package",
-        description: "Trailrunning, Community, Party - The ultimate alpine adventure at The Mountaincamp 2025.",
-        image: [
-          "https://themountaincamp.de/images/alpine-landscape.jpeg",
-          "https://themountaincamp.de/images/mountain-rave.jpeg",
-        ],
-        sku: "MTC2025-FULL",
-        mpn: "MTC2025-001",
-        brand: {
-          "@type": "Brand",
-          name: "The Mountaincamp",
-        },
-        offers: {
-          "@type": "Offer",
-          url: "https://themountaincamp.de/#register",
-          priceCurrency: "EUR",
-          price: "420",
-          priceValidUntil: "2025-08-01",
-          availability: "https://schema.org/LimitedAvailability",
-          itemCondition: "https://schema.org/NewCondition",
-        },
-        aggregateRating: {
-          "@type": "AggregateRating",
-          ratingValue: "4.9",
-          reviewCount: "87",
-        },
-        review: [
-          {
-            "@type": "Review",
-            reviewRating: {
-              "@type": "Rating",
-              ratingValue: "5",
-              bestRating: "5",
-            },
-            author: {
-              "@type": "Person",
-              name: "Sarah K.",
-            },
-            reviewBody:
-              "The overall organisation of the whole stay there, really good! All the friendly faces, the nature etc.",
-          },
-          {
-            "@type": "Review",
-            reviewRating: {
-              "@type": "Rating",
-              ratingValue: "5",
-              bestRating: "5",
-            },
-            author: {
-              "@type": "Person",
-              name: "Michael T.",
-            },
-            reviewBody:
-              "I loved the experience as a whole, but what stood out was the variety in not only runs, but generally activities, there was always something exciting happening!",
-          },
-        ],
-      }
-
-      // Organization structured data
-      const organizationStructuredData = {
-        "@context": "https://schema.org",
-        "@type": "Organization",
-        name: "The Mountaincamp",
-        url: "https://themountaincamp.de",
-        logo: "https://themountaincamp.de/images/MTC-Logo_2025.png",
-        sameAs: [
-          "https://www.instagram.com/the_mountaincamp/",
-          "https://www.facebook.com/profile.php?id=61566807910764",
-        ],
-        contactPoint: {
-          "@type": "ContactPoint",
-          telephone: "+43-677-63455763",
-          contactType: "customer service",
-          email: "themountaincampde@gmail.com",
-          availableLanguage: ["English", "German"],
-        },
-      }
-
-      // Breadcrumb structured data
-      const breadcrumbStructuredData = {
-        "@context": "https://schema.org",
-        "@type": "BreadcrumbList",
-        itemListElement: [
-          {
-            "@type": "ListItem",
-            position: 1,
-            name: "Home",
-            item: "https://themountaincamp.de",
-          },
-          {
-            "@type": "ListItem",
-            position: 2,
-            name: "Register",
-            item: "https://themountaincamp.de/#register",
-          },
-        ],
-      }
-
-      // Add all structured data to the page
-      const structuredDataElements = [
-        eventStructuredData,
-        faqStructuredData,
-        productStructuredData,
-        organizationStructuredData,
-        breadcrumbStructuredData,
-      ]
-
-      structuredDataElements.forEach((data) => {
-        const script = document.createElement("script")
-        script.type = "application/ld+json"
-        script.text = JSON.stringify(data)
-        document.head.appendChild(script)
-      })
+      // Add structured data to the page
+      const script = document.createElement("script")
+      script.type = "application/ld+json"
+      script.text = JSON.stringify(eventStructuredData)
+      document.head.appendChild(script)
 
       return () => {
         // Clean up scripts when component unmounts
         const scripts = document.querySelectorAll('script[type="application/ld+json"]')
-        scripts.forEach((script) => {
-          document.head.removeChild(script)
+        scripts.forEach((scriptEl) => {
+          if (document.head.contains(scriptEl)) {
+            document.head.removeChild(scriptEl)
+          }
         })
       }
     }
@@ -321,9 +169,9 @@ export default function Home() {
   }, [hasScrolled])
 
   // State to track if the activity card is expanded on mobile
-  const [expandedActivities, setExpandedActivities] = useState({})
+  const [expandedActivities, setExpandedActivities] = useState<Record<number, boolean>>({})
 
-  const toggleActivity = (index) => {
+  const toggleActivity = (index: number) => {
     setExpandedActivities((prevState) => ({
       ...prevState,
       [index]: !prevState[index],
@@ -356,7 +204,7 @@ export default function Home() {
     },
   ]
 
-  // Gallery images - fixed to use only images that exist
+  // Gallery images
   const galleryImages = [
     { src: "/images/trail-runner-1.jpeg", alt: "Trailrunner in the Alps", caption: "Alpine Trails" },
     { src: "/images/summit-view.jpeg", alt: "Summit view", caption: "Summit Views" },
@@ -366,7 +214,7 @@ export default function Home() {
     { src: "/images/alpine-landscape.jpeg", alt: "Alpine landscape", caption: "Alpine Beauty" },
   ]
 
-  // Activities data with new activities and images
+  // Activities data
   const activities = [
     {
       title: "Trailrunning Technique",
@@ -440,7 +288,7 @@ export default function Home() {
     },
   ]
 
-  // Handle menu button click with a more robust approach for iOS
+  // Handle menu button click
   const handleMenuToggle = () => {
     setMobileMenuOpen(!mobileMenuOpen)
   }
@@ -449,6 +297,7 @@ export default function Home() {
     <div className="flex min-h-screen flex-col bg-background text-foreground">
       {/* Preload section images in the background */}
       <ImagePreloader imageSources={SECTION_IMAGES} />
+
       {/* Dynamic header - transparent on top, dark when scrolled */}
       <header
         className={`fixed top-0 z-50 w-full transition-all duration-300 ${
@@ -474,7 +323,7 @@ export default function Home() {
                 alt="The Mountaincamp Logo"
                 width={1000}
                 height={400}
-                className={`absolute top-0 left-0 h-full w-auto object-contain transition-opacity duration-300 opacity-100`}
+                className="absolute top-0 left-0 h-full w-auto object-contain transition-opacity duration-300 opacity-100"
                 priority
                 unoptimized={true}
                 fallbackSrc="/placeholder.svg?height=400&width=1000&text=MTC"
@@ -578,10 +427,6 @@ export default function Home() {
                 height={400}
                 className="h-10 w-auto"
                 unoptimized={true}
-                onError={(e) => {
-                  console.error("Failed to load image:", e)
-                  e.currentTarget.src = "/placeholder.svg?height=800&width=1200"
-                }}
               />
               <motion.button
                 onClick={handleMenuToggle}
@@ -635,17 +480,13 @@ export default function Home() {
         <section ref={heroRef} className="relative h-screen overflow-hidden">
           <div className="absolute inset-0">
             <Image
-              src="/images/alpine-landscape.jpeg"
-              alt="Mountain landscape"
+              src="/images/hero-trail-runners.jpeg"
+              alt="Trail runners in the Austrian Alps"
               fill
               className="object-cover"
               priority
               fetchPriority="high"
               unoptimized={true}
-              onError={(e) => {
-                console.error("Failed to load image:", e)
-                e.currentTarget.src = "/placeholder.svg?height=800&width=1200"
-              }}
             />
             <div className="absolute inset-0 hero-overlay" />
           </div>
@@ -684,10 +525,6 @@ export default function Home() {
                   className="mx-auto"
                   priority
                   unoptimized={true}
-                  onError={(e) => {
-                    console.error("Failed to load image:", e)
-                    e.currentTarget.src = "/placeholder.svg?height=800&width=1200"
-                  }}
                 />
               ) : (
                 <h1 className="text-6xl font-bold uppercase tracking-tight">THE MOUNTAINCAMP</h1>
@@ -856,10 +693,6 @@ export default function Home() {
                   fill
                   className="object-cover"
                   unoptimized={true}
-                  onError={(e) => {
-                    console.error("Failed to load image:", e)
-                    e.currentTarget.src = "/placeholder.svg?height=800&width=1200"
-                  }}
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent"></div>
                 <div className="absolute bottom-0 left-0 p-6">
@@ -991,10 +824,6 @@ export default function Home() {
                     fill
                     className="object-cover"
                     unoptimized={true}
-                    onError={(e) => {
-                      console.error("Failed to load image:", e)
-                      e.currentTarget.src = "/placeholder.svg?height=800&width=1200"
-                    }}
                   />
                   <div className="absolute inset-0 bg-gradient-to-r from-black to-transparent md:bg-gradient-to-l"></div>
                 </div>
@@ -1037,10 +866,6 @@ export default function Home() {
                       fill
                       className="object-cover transition-transform duration-700 group-hover:scale-110"
                       unoptimized={true}
-                      onError={(e) => {
-                        console.error("Failed to load image:", e)
-                        e.currentTarget.src = "/placeholder.svg?height=800&width=1200"
-                      }}
                     />
                     <div
                       className={`activity-card-overlay 
@@ -1130,7 +955,7 @@ export default function Home() {
               transition={{ duration: 0.8 }}
               className="mt-16 mb-16 relative overflow-hidden rounded-xl"
             >
-              {/* Hintergrundbild */}
+              {/* Background image */}
               <div className="absolute inset-0 z-0">
                 <Image
                   src="/images/mountain-rave.jpeg"
@@ -1138,15 +963,11 @@ export default function Home() {
                   fill
                   className="object-cover"
                   unoptimized={true}
-                  onError={(e) => {
-                    console.error("Failed to load image:", e)
-                    e.currentTarget.src = "/placeholder.svg?height=800&width=1200"
-                  }}
                 />
                 <div className="absolute inset-0 bg-black/80 backdrop-blur-sm"></div>
               </div>
 
-              {/* Inhalt */}
+              {/* Content */}
               <div className="relative z-10 p-12 text-white">
                 <div className="text-center mb-8">
                   <h3 className="text-3xl font-bold mb-4">{t("playlistTitle")}</h3>
@@ -1159,7 +980,7 @@ export default function Home() {
                     width="100%"
                     height="380"
                     frameBorder="0"
-                    allowFullScreen=""
+                    allowFullScreen
                     allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
                     className="max-w-3xl shadow-2xl"
                   ></iframe>
@@ -1179,7 +1000,7 @@ export default function Home() {
               <p className="max-w-2xl mx-auto text-white/80 mb-8">{t("communityDesc")}</p>
             </motion.div>
 
-            {/* Add the Price Category Bars here, after the Community highlight */}
+            {/* Price Category Bars */}
             <motion.div
               initial={{ opacity: 0, y: 50 }}
               whileInView={{ opacity: 1, y: 0 }}
@@ -1288,10 +1109,6 @@ export default function Home() {
                 height={40}
                 className="h-12 w-auto mb-4"
                 unoptimized={true}
-                onError={(e) => {
-                  console.error("Failed to load image:", e)
-                  e.currentTarget.src = "/placeholder.svg?height=800&width=1200"
-                }}
               />
               <p className="text-white/60">
                 {language === "de"

@@ -27,5 +27,11 @@
       <image:caption>Connect with fellow runners around a cozy campfire</image:caption>
       <image:geo_location>Austrian Alps, Hochkrimml</image:geo_location>
     </image:image>
+    <image:image>
+      <image:loc>https://themountaincamp.de/images/hero-trail-runners.jpeg</image:loc>
+      <image:title>The Mountaincamp - Trail runners in the Austrian Alps</image:title>
+      <image:caption>Experience trail running with a group in the breathtaking Austrian Alps</image:caption>
+      <image:geo_location>Austrian Alps, Hochkrimml</image:geo_location>
+    </image:image>
   </url>
 </urlset>

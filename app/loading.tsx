@@ -6,7 +6,7 @@ import { useImagePreload } from "@/hooks/use-image-preload"
 
 // Critical images to preload before showing the homepage
 const CRITICAL_IMAGES = [
-  "/images/alpine-landscape.jpeg",
+  "/images/hero-trail-runners.jpeg", // New hero image
   "/images/MTC-Logo_2025.png",
   "/images/MTC-Logo_2025_weiß.png",
   "/images/trail-runner-1.jpeg",

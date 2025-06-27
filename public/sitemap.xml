@@ -9,9 +9,9 @@
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
     <image:image>
-      <image:loc>https://themountaincamp.de/images/alpine-landscape.jpeg</image:loc>
-      <image:title>The Mountaincamp - Trail running in the Austrian Alps</image:title>
-      <image:caption>Experience breathtaking alpine trails at The Mountaincamp</image:caption>
+      <image:loc>https://themountaincamp.de/images/hero-trail-runners.jpeg</image:loc>
+      <image:title>The Mountaincamp - Trail runners in the Austrian Alps</image:title>
+      <image:caption>Experience trail running with a group in the breathtaking Austrian Alps</image:caption>
     </image:image>
     <image:image>
       <image:loc>https://themountaincamp.de/images/mountain-rave.jpeg</image:loc>

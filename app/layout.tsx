@@ -15,7 +15,7 @@ const inter = Inter({ subsets: ["latin"] })
 
 // Define critical images to preload
 const CRITICAL_IMAGES = [
-  "/images/alpine-landscape.jpeg",
+  "/images/hero-trail-runners.jpeg", // New hero image
   "/images/MTC-Logo_2025.png",
   "/images/MTC-Logo_2025_weiß.png",
   "/images/trail-runner-1.jpeg",
@@ -78,10 +78,10 @@ export const metadata: Metadata = {
     siteName: "The Mountaincamp",
     images: [
       {
-        url: "/images/alpine-landscape.jpeg",
+        url: "/images/hero-trail-runners.jpeg",
         width: 1200,
         height: 630,
-        alt: "The Mountaincamp - Epic trail running in the Austrian Alps",
+        alt: "The Mountaincamp - Trail runners in the Austrian Alps",
       },
       {
         url: "/images/mountain-rave.jpeg",
@@ -104,7 +104,7 @@ export const metadata: Metadata = {
     title: "The Mountaincamp - Trailrunning, Community, Party",
     description:
       "Experience the ultimate alpine adventure at The Mountaincamp. 4 nights, epic trails, unforgettable parties. Limited spots - secure yours today!",
-    images: ["/images/alpine-landscape.jpeg"],
+    images: ["/images/hero-trail-runners.jpeg"],
     creator: "@themountaincamp",
     site: "@themountaincamp",
   },
