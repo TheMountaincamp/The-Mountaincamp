@@ -29,7 +29,7 @@ export default function ModernHero() {
       <div className="absolute inset-0 z-0">
         <Image
           src="/images/hero-bg-new.jpg"
-          alt="Mountain landscape"
+          alt="The Mountaincamp - Austria's premier trail running camps in the Austrian Alps"
           fill
           className="object-cover"
           priority
