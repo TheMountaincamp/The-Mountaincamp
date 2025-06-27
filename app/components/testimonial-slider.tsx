@@ -1,11 +1,15 @@
 "use client"
 
 import { useState, useEffect } from "react"
+import Image from "next/image"
 import { motion, AnimatePresence } from "framer-motion"
 import { ChevronLeft, ChevronRight, Quote } from "lucide-react"
 
 interface Testimonial {
+  name: string
+  program: string
   quote: string
+  image?: string
 }
 
 interface TestimonialSliderProps {
@@ -51,12 +55,12 @@ export default function TestimonialSlider({ testimonials, autoPlay = true, inter
   }
 
   return (
-    <div className="relative overflow-hidden bg-transparent p-8">
-      <div className="absolute right-8 top-8 text-gray-600">
+    <div className="relative overflow-hidden rounded-xl bg-gray-50 p-8 shadow-lg">
+      <div className="absolute right-8 top-8 text-primary/20">
         <Quote size={80} />
       </div>
 
-      <div className="relative h-[200px]">
+      <div className="relative h-[300px]">
         <AnimatePresence custom={direction} mode="wait">
           <motion.div
             key={currentIndex}
@@ -68,9 +72,22 @@ export default function TestimonialSlider({ testimonials, autoPlay = true, inter
             transition={{ duration: 0.5 }}
             className="absolute inset-0 flex flex-col justify-center"
           >
-            <p className="mb-8 text-lg italic text-gray-300 text-center max-w-4xl mx-auto">
-              "{testimonials[currentIndex].quote}"
-            </p>
+            <p className="mb-8 text-lg italic text-gray-600">{testimonials[currentIndex].quote}</p>
+            <div className="flex items-center gap-4">
+              <div className="h-16 w-16 overflow-hidden rounded-full bg-gray-200">
+                <Image
+                  src={testimonials[currentIndex].image || "/placeholder.svg?height=100&width=100"}
+                  alt={testimonials[currentIndex].name}
+                  width={64}
+                  height={64}
+                  className="h-full w-full object-cover"
+                />
+              </div>
+              <div>
+                <h3 className="text-xl font-bold text-primary">{testimonials[currentIndex].name}</h3>
+                <p className="text-secondary font-medium">{testimonials[currentIndex].program}</p>
+              </div>
+            </div>
           </motion.div>
         </AnimatePresence>
       </div>
@@ -78,30 +95,18 @@ export default function TestimonialSlider({ testimonials, autoPlay = true, inter
       <div className="absolute bottom-8 right-8 flex gap-2">
         <button
           onClick={goToPrevious}
-          className="rounded-full bg-gray-700 p-2 text-white transition-colors hover:bg-gray-600"
+          className="rounded-full bg-gray-200 p-2 text-primary transition-colors hover:bg-primary hover:text-white"
           aria-label="Previous testimonial"
         >
           <ChevronLeft className="h-5 w-5" />
         </button>
         <button
           onClick={goToNext}
-          className="rounded-full bg-gray-700 p-2 text-white transition-colors hover:bg-gray-600"
+          className="rounded-full bg-gray-200 p-2 text-primary transition-colors hover:bg-primary hover:text-white"
           aria-label="Next testimonial"
         >
           <ChevronRight className="h-5 w-5" />
         </button>
-      </div>
-
-      {/* Indicators */}
-      <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2 flex gap-2">
-        {testimonials.map((_, index) => (
-          <button
-            key={index}
-            onClick={() => setCurrentIndex(index)}
-            className={`h-2 w-2 rounded-full transition-all ${index === currentIndex ? "w-4 bg-white" : "bg-gray-500"}`}
-            aria-label={`Go to testimonial ${index + 1}`}
-          />
-        ))}
       </div>
     </div>
   )

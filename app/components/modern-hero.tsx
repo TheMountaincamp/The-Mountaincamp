@@ -5,8 +5,13 @@ import Image from "next/image"
 import Link from "next/link"
 import { motion, useScroll, useTransform } from "framer-motion"
 import { ChevronDown } from "lucide-react"
+import { Button } from "@/components/ui/button"
+import { useLanguage } from "@/contexts/language-context"
+import { useMobile } from "@/hooks/use-mobile"
 
 export default function ModernHero() {
+  const { t, language } = useLanguage()
+  const isMobile = useMobile()
   const heroRef = useRef(null)
 
   const { scrollYProgress } = useScroll({
@@ -23,15 +28,35 @@ export default function ModernHero() {
       {/* Background Image */}
       <div className="absolute inset-0 z-0">
         <Image
-          src="/images/250621_SGR_Trainingslager_RUN-062.jpg"
+          src="/images/hero-mountaincamp-runners.jpg"
           alt="Trail runners at The Mountaincamp in the Austrian Alps"
           fill
           className="object-cover"
           priority
-          unoptimized
+          fetchPriority="high"
         />
         <div className="absolute inset-0 bg-gradient-to-b from-black/70 via-black/40 to-black/60" />
+
+        {/* Animated color overlay */}
         <div className="absolute inset-0 bg-primary/20 mix-blend-overlay animate-pulse-light" />
+      </div>
+
+      {/* Diagonal lines decoration */}
+      <div className="absolute inset-0 z-10 pointer-events-none">
+        <svg width="100%" height="100%" className="opacity-20">
+          <defs>
+            <pattern
+              id="diagonalLines"
+              width="40"
+              height="40"
+              patternUnits="userSpaceOnUse"
+              patternTransform="rotate(45)"
+            >
+              <line x1="0" y1="0" x2="0" y2="40" stroke="white" strokeWidth="1" />
+            </pattern>
+          </defs>
+          <rect width="100%" height="100%" fill="url(#diagonalLines)" />
+        </svg>
       </div>
 
       {/* Hero Content */}
@@ -45,7 +70,7 @@ export default function ModernHero() {
           transition={{ delay: 0.2, duration: 0.8 }}
           className="mb-6 inline-block border-2 border-primary px-6 py-2 rounded-full"
         >
-          <span className="text-sm md:text-base font-mono uppercase tracking-widest">6.-10. August 2025</span>
+          <span className="text-sm md:text-base font-mono uppercase tracking-widest">{t("heroDate")}</span>
         </motion.div>
 
         <motion.div
@@ -74,10 +99,11 @@ export default function ModernHero() {
           className="mb-8 max-w-2xl text-lg md:text-xl font-light"
         >
           <span className="bg-black/50 px-2 py-1 rounded-sm">
-            Das größte Trailrunning-Camp in den österreichischen Alpen
-            <br />4 Nächte voller epischer Trails, Community und unvergesslicher Partys
+            {t("heroSubtitle1")}
             <br />
-            <span className="font-bold text-primary">Für alle Laufniveaus - von Anfängern bis zu Profis</span>
+            {t("heroSubtitle2")}
+            <br />
+            <span className="font-bold text-primary">{t("heroSubtitle3")}</span>
           </span>
         </motion.p>
 
@@ -94,22 +120,28 @@ export default function ModernHero() {
           className="flex flex-col sm:flex-row gap-4"
         >
           <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
-            <Link
-              href="#about"
-              className="inline-flex items-center justify-center px-8 py-3 bg-primary hover:bg-primary-dark text-white rounded-full text-lg shadow-lg transition-colors"
+            <Button
+              size="lg"
+              className="bg-primary hover:bg-primary-dark text-white rounded-full text-lg px-8 shadow-lg"
+              asChild
             >
-              Mehr erfahren
-            </Link>
+              <Link href="#about">{t("learnMore")}</Link>
+            </Button>
           </motion.div>
           <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
-            <a
-              href="https://my.camps.digital/masken/buchungen/vuejs?&vendor=mountaincamp&destination_id=1475&termin_id=35113#/"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="inline-flex items-center justify-center px-8 py-3 border-2 border-white bg-transparent text-white hover:bg-white/10 rounded-full text-lg transition-colors"
+            <Button
+              size="lg"
+              className="border-2 border-white bg-transparent text-white hover:bg-white/10 rounded-full text-lg px-8"
+              asChild
             >
-              Jetzt anmelden
-            </a>
+              <a
+                href="https://my.camps.digital/masken/buchungen/vuejs?&vendor=mountaincamp&destination_id=1475&termin_id=35113#/"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                {t("registerNow")}
+              </a>
+            </Button>
           </motion.div>
         </motion.div>
       </motion.div>
