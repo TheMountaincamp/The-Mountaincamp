@@ -299,11 +299,7 @@ export default function Home() {
       <ImagePreloader imageSources={SECTION_IMAGES} />
 
       {/* Dynamic header - transparent on top, dark when scrolled */}
-      <header
-        className={`fixed top-0 z-50 w-full transition-all duration-300 ${
-          hasScrolled ? "bg-black/90 nav-blur border-b border-primary/20" : "bg-transparent"
-        }`}
-      >
+      <header className="absolute top-0 z-50 w-full bg-transparent">
         <div className="container flex h-20 items-center justify-between">
           {/* Logo container with fixed width on mobile */}
           <div className="flex items-center">
@@ -313,7 +309,7 @@ export default function Home() {
                 alt="The Mountaincamp Logo"
                 width={1000}
                 height={400}
-                className={`h-full w-auto object-contain transition-opacity duration-300 ${hasScrolled ? "opacity-0" : "opacity-0"}`}
+                className={`h-full w-auto object-contain transition-opacity duration-300 opacity-0`}
                 priority
                 unoptimized={true}
                 fallbackSrc="/placeholder.svg?height=400&width=1000&text=MTC"
