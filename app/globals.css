@@ -10,38 +10,42 @@
     --card-foreground: 0 0% 98%;
     --popover: 0 0% 10%;
     --popover-foreground: 0 0% 98%;
-    --primary: 248 24% 47%;
+    --primary: 358 100% 68%;
     --primary-foreground: 0 0% 100%;
+    --secondary: 217 100% 61%;
+    --secondary-foreground: 0 0% 100%;
+    --accent: 44 100% 52%;
+    --accent-foreground: 0 0% 0%;
     --muted: 0 0% 15%;
     --muted-foreground: 0 0% 63.9%;
-    --accent: 0 0% 14.9%;
-    --accent-foreground: 0 0% 98%;
     --destructive: 0 84.2% 60.2%;
     --destructive-foreground: 0 0% 98%;
     --border: 0 0% 20%;
     --input: 0 0% 20%;
-    --ring: 248 24% 47%;
-    --radius: 0rem;
+    --ring: 358 100% 68%;
+    --radius: 0.5rem;
   }
 
   .light {
-    --background: 0 0% 7%;
-    --foreground: 0 0% 98%;
-    --card: 0 0% 10%;
-    --card-foreground: 0 0% 98%;
-    --popover: 0 0% 10%;
-    --popover-foreground: 0 0% 98%;
-    --primary: 248 24% 47%;
+    --background: 0 0% 100%;
+    --foreground: 0 0% 7%;
+    --card: 0 0% 98%;
+    --card-foreground: 0 0% 7%;
+    --popover: 0 0% 98%;
+    --popover-foreground: 0 0% 7%;
+    --primary: 358 100% 68%;
     --primary-foreground: 0 0% 100%;
-    --muted: 0 0% 15%;
-    --muted-foreground: 0 0% 63.9%;
-    --accent: 0 0% 14.9%;
-    --accent-foreground: 0 0% 98%;
-    --destructive: 0 62.8% 30.6%;
+    --secondary: 217 100% 61%;
+    --secondary-foreground: 0 0% 100%;
+    --accent: 44 100% 52%;
+    --accent-foreground: 0 0% 0%;
+    --muted: 0 0% 96%;
+    --muted-foreground: 0 0% 45%;
+    --destructive: 0 84.2% 60.2%;
     --destructive-foreground: 0 0% 98%;
-    --border: 0 0% 20%;
-    --input: 0 0% 20%;
-    --ring: 248 24% 47%;
+    --border: 0 0% 89.8%;
+    --input: 0 0% 89.8%;
+    --ring: 358 100% 68%;
   }
 }
 
@@ -50,42 +54,58 @@
     @apply border-border;
   }
   body {
-    @apply bg-background text-foreground;
+    @apply bg-background text-foreground font-sans;
     font-feature-settings: "rlig" 1, "calt" 1;
+  }
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    @apply font-display tracking-wide;
   }
 }
 
+/* Moderne Stile für das neue Design */
 .text-balance {
   text-wrap: balance;
 }
 
 .text-gradient {
-  background: linear-gradient(to right, #5f5c95, #8c89c2);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
+  @apply bg-clip-text text-transparent bg-gradient-to-r from-primary to-secondary;
 }
 
-/* Neue Stile für das dunklere Design */
+.text-gradient-accent {
+  @apply bg-clip-text text-transparent bg-gradient-to-r from-accent to-neon-green;
+}
+
 .hero-overlay {
-  background: linear-gradient(to bottom, rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.5));
+  @apply bg-gradient-to-b from-black/70 via-black/50 to-transparent;
 }
 
 .nav-blur {
-  backdrop-filter: blur(10px);
-  -webkit-backdrop-filter: blur(10px);
-  transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+  @apply backdrop-blur-md transition-all duration-500;
 }
 
 .btn-primary {
-  @apply bg-primary hover:bg-primary/80 text-white transition-all duration-300 ease-in-out;
+  @apply bg-primary hover:bg-primary-dark text-white transition-all duration-300 ease-in-out rounded-lg;
+}
+
+.btn-secondary {
+  @apply bg-secondary hover:bg-secondary-dark text-white transition-all duration-300 ease-in-out rounded-lg;
+}
+
+.btn-accent {
+  @apply bg-accent hover:bg-accent-dark text-black transition-all duration-300 ease-in-out rounded-lg;
 }
 
 .btn-outline {
-  @apply border-2 border-white bg-transparent text-white hover:bg-white/10 transition-all duration-300 ease-in-out;
+  @apply border-2 border-white bg-transparent text-white hover:bg-white/10 transition-all duration-300 ease-in-out rounded-lg;
 }
 
 .section-title {
-  @apply text-4xl font-bold uppercase tracking-tight md:text-5xl;
+  @apply text-4xl md:text-6xl font-bold uppercase tracking-tight;
 }
 
 .section-subtitle {
@@ -93,11 +113,11 @@
 }
 
 .feature-card {
-  @apply bg-card border-primary/20 hover:border-primary transition-all duration-300;
+  @apply bg-card border-primary/20 hover:border-primary transition-all duration-300 rounded-xl overflow-hidden;
 }
 
 .activity-card {
-  @apply overflow-hidden relative;
+  @apply overflow-hidden relative rounded-xl;
 }
 
 .activity-card-overlay {
@@ -109,7 +129,7 @@
 }
 
 .testimonial-card {
-  @apply bg-card border-primary/20 hover:border-primary transition-all duration-500 ease-in-out;
+  @apply bg-card border-primary/20 hover:border-primary transition-all duration-500 ease-in-out rounded-xl;
 }
 
 .footer {
@@ -126,47 +146,74 @@
 
 /* Verbesserte Animation für die Navigation-Links */
 .nav-link {
-  @apply text-sm font-medium uppercase hover:text-primary transition-all duration-300 ease-in-out text-white;
+  @apply text-sm font-medium uppercase hover:text-primary transition-all duration-300 ease-in-out text-white relative;
 }
 
-/* Scale utility classes for the route carousel */
-.scale-85 {
-  transform: scale(0.85);
+.nav-link::after {
+  @apply content-[''] absolute left-0 bottom-0 w-0 h-0.5 bg-primary transition-all duration-300;
 }
 
-.scale-75 {
-  transform: scale(0.75);
+.nav-link:hover::after {
+  @apply w-full;
 }
 
-.scale-50 {
-  transform: scale(0.5);
+/* Neue Stile für das moderne Design */
+.clip-diagonal {
+  clip-path: polygon(0 0, 100% 0, 100% 85%, 0 100%);
 }
 
-/* Route carousel styles */
-.route-card {
-  transition: all 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-  box-shadow: 0 10px 30px -15px rgba(0, 0, 0, 0.5);
+.clip-diagonal-reverse {
+  clip-path: polygon(0 15%, 100% 0, 100% 100%, 0 100%);
 }
 
-.route-card-active {
-  z-index: 30;
-  transform: scale(1);
+.noise-bg {
+  @apply bg-noise;
+  background-size: 200px;
+  background-repeat: repeat;
 }
 
-.route-card-prev,
-.route-card-next {
-  z-index: 20;
-  transform: scale(0.85);
-  filter: brightness(0.7);
+.glow {
+  box-shadow: 0 0 15px 5px rgba(255, 90, 95, 0.3);
 }
 
-.route-card-prev-2,
-.route-card-next-2 {
-  z-index: 10;
-  transform: scale(0.7);
-  filter: brightness(0.5);
+.glow-blue {
+  box-shadow: 0 0 15px 5px rgba(58, 134, 255, 0.3);
 }
 
-.route-card:hover {
-  transform: translateY(-5px);
+.glow-yellow {
+  box-shadow: 0 0 15px 5px rgba(255, 190, 11, 0.3);
+}
+
+.marquee {
+  @apply overflow-hidden whitespace-nowrap;
+}
+
+.marquee-content {
+  @apply inline-block animate-[marquee_20s_linear_infinite];
+}
+
+@keyframes marquee {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+/* Moderne Scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  @apply bg-black;
+}
+
+::-webkit-scrollbar-thumb {
+  @apply bg-primary/50 rounded-full;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  @apply bg-primary;
 }
