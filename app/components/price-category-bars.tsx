@@ -43,7 +43,7 @@ export default function PriceCategoryBars() {
       id: 3,
       name: t("late"),
       price: "€460",
-      discount: "20%", // Increased from 10% to 20%
+      discount: "10%",
       status: "upcoming",
       date: lateDate,
       color: "from-secondary to-secondary-light",

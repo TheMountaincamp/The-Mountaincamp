@@ -1,10 +1,9 @@
 "use client"
 
 import { motion } from "framer-motion"
-import { ArrowRight, Bus } from "lucide-react"
+import { ArrowRight } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import { useLanguage } from "@/contexts/language-context"
-import Link from "next/link"
 
 export default function ModernRegister() {
   const { t, language } = useLanguage()
@@ -101,7 +100,7 @@ export default function ModernRegister() {
                 </h3>
                 <p className="text-white/70 mb-6">{t("bookDesc")}</p>
                 <Button
-                  className="w-full bg-gradient-to-r from-primary to-secondary hover:from-primary-dark hover:to-secondary-dark transition-colors text-white py-3 text-lg rounded-full mb-4"
+                  className="w-full bg-gradient-to-r from-primary to-secondary hover:from-primary-dark hover:to-secondary-dark transition-colors text-white py-3 text-lg rounded-full"
                   asChild
                 >
                   <a
@@ -112,17 +111,6 @@ export default function ModernRegister() {
                     {t("registerNow")}
                   </a>
                 </Button>
-
-                {/* Bus Schedule Link */}
-                <div className="text-center">
-                  <Link
-                    href="/bus-schedule"
-                    className="inline-flex items-center text-primary hover:text-primary-light transition-colors text-sm"
-                  >
-                    <Bus className="mr-2 h-4 w-4" />
-                    Bus Schedule & Transport Info
-                  </Link>
-                </div>
 
                 {/* Decorative corner */}
                 <div className="absolute top-0 right-0 w-16 h-16 overflow-hidden">
