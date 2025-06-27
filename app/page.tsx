@@ -488,7 +488,7 @@ export default function Home() {
               fetchPriority="high"
               unoptimized={true}
             />
-            <div className="absolute inset-0 hero-overlay" />
+            <div className="absolute inset-0 bg-gradient-to-b from-black/50 via-black/30 to-black/60" />
           </div>
 
           <motion.div
@@ -1130,6 +1130,9 @@ export default function Home() {
                 </Link>
                 <Link href="#register" className="footer-link">
                   {t("register")}
+                </Link>
+                <Link href="/bus-departures" className="footer-link">
+                  {language === "de" ? "Bus Anreise" : "Bus Transport"}
                 </Link>
               </div>
 

@@ -124,6 +124,7 @@ export const translations = {
     guidedRunsTitle: "GEFÜHRTE LÄUFE",
     trailTipsTitle: "TRAIL-TIPPS",
     raffleConditions: "Teilnahmebedingungen Gewinnspiel",
+    busTransport: "Bus Anreise",
   },
   en: {
     // Navigation
@@ -249,6 +250,7 @@ export const translations = {
     guidedRunsTitle: "GUIDED RUNS",
     trailTipsTitle: "TRAIL TIPS",
     raffleConditions: "Raffle Conditions",
+    busTransport: "Bus Transport",
   },
 }
 
