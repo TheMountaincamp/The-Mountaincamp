@@ -505,11 +505,11 @@ export default function Home() {
             </motion.div>
 
             <motion.div
-              initial={{ opacity: 0, scale: 0.8 }}
+              initial={{ opacity: 1, scale: 1 }}
               animate={{ opacity: 1, scale: 1 }}
               transition={{
-                delay: 0.4,
-                duration: 0.8,
+                delay: 0,
+                duration: 0,
                 type: "spring",
                 stiffness: 100,
                 damping: 15,
@@ -532,9 +532,9 @@ export default function Home() {
             </motion.div>
 
             <motion.p
-              initial={{ opacity: 0, y: 20 }}
+              initial={{ opacity: 1, y: 0 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.6, duration: 0.8 }}
+              transition={{ delay: 0, duration: 0 }}
               className="mb-6 max-w-2xl text-lg sm:text-xl md:text-2xl font-light px-4 sm:px-0"
             >
               {t("heroSubtitle1")}
