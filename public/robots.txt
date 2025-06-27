@@ -1,102 +1,21 @@
-# The Mountaincamp - Austria's Premier Trail Running Camps
-# Optimiert für "The Mountaincamp", "Mountaincamp", "trail running camps austria"
+# The Mountaincamp - The biggest trailrunning camp in the alps
 # https://themountaincamp.de
 
 User-agent: *
 Allow: /
 
-# Wichtige Seiten für Ziel-Keywords
-Allow: /house
-Allow: /trails
-Allow: /datenschutz
-Allow: /impressum
-Allow: /legal/
-
-# Assets erlauben
-Allow: /images/
-Allow: /icons/
-Allow: /favicon.ico
-Allow: /manifest.json
-
-# Unnötige Bereiche blockieren
+# Disallow admin and private areas
 Disallow: /admin/
-Disallow: /api/
-Disallow: /_next/
-Disallow: /node_modules/
-Disallow: /temp/
 Disallow: /private/
-Disallow: /search?
-Disallow: /*?*
-Allow: /*?utm_*
-Allow: /*?ref=*
+Disallow: /api/
 
-# Spezifische Regeln für Suchmaschinen
-User-agent: Googlebot
-Allow: /
-Crawl-delay: 1
-# Focus on target keywords
-Allow: /the-mountaincamp
-Allow: /mountaincamp
-Allow: /trail-running-camps-austria
+# Sitemap locations
+Sitemap: https://themountaincamp.de/sitemap.xml
+Sitemap: https://themountaincamp.de/sitemap-images.xml
 
-User-agent: Bingbot
-Allow: /
-Crawl-delay: 1
-
-User-agent: Slurp
-Allow: /
-Crawl-delay: 2
-
-# Social media crawlers for sharing
-User-agent: facebookexternalhit
-Allow: /
-
-User-agent: Twitterbot
-Allow: /
-
-User-agent: LinkedInBot
-Allow: /
-
-User-agent: WhatsApp
-Allow: /
-
-User-agent: TelegramBot
-Allow: /
-
-# SEO-Tools
+# Crawl delay for specific bots
 User-agent: AhrefsBot
 Crawl-delay: 10
 
 User-agent: SemrushBot
 Crawl-delay: 10
-
-User-agent: MJ12bot
-Crawl-delay: 10
-
-# Sitemap-Standorte
-Sitemap: https://themountaincamp.de/sitemap.xml
-Sitemap: https://themountaincamp.de/sitemap-images.xml
-Sitemap: https://themountaincamp.de/sitemap-news.xml
-
-# Additional directives for better indexing
-User-agent: *
-# Allow indexing of key landing pages
-Allow: /the-mountaincamp*
-Allow: /mountaincamp*
-Allow: /trail-running-camps-austria*
-Allow: /austrian-alps*
-Allow: /hochkrimml*
-Allow: /salzburg*
-
-# Block parameter variations that could create duplicate content
-Disallow: /*?sort=*
-Disallow: /*?filter=*
-Disallow: /*?page=*
-Disallow: /*?lang=*
-
-# Allow important tracking parameters
-Allow: /*?utm_source=*
-Allow: /*?utm_medium=*
-Allow: /*?utm_campaign=*
-Allow: /*?ref=*
-Allow: /*?source=*
