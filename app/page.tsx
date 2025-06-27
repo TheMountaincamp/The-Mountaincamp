@@ -1150,9 +1150,6 @@ export default function Home() {
                 <a href="mailto:themountaincampde@gmail.com" className="footer-link">
                   themountaincampde@gmail.com
                 </a>
-                <a href="tel:+43677634557633" className="footer-link">
-                  +43 677 63455763
-                </a>
               </div>
 
               <div className="flex flex-col gap-3">

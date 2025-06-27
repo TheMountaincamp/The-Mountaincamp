@@ -25,11 +25,7 @@ export default function ImpressumPage() {
             </p>
 
             <h2 className="text-xl font-bold mt-8 mb-4">Kontakt</h2>
-            <p>
-              E-Mail: themountaincampde@gmail.com
-              <br />
-              Telefon: +43 677 63455763
-            </p>
+            <p>E-Mail: themountaincampde@gmail.com</p>
 
             <h2 className="text-xl font-bold mt-8 mb-4">Datenschutz</h2>
             <p>

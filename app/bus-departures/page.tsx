@@ -270,7 +270,7 @@ export default function BusDeparturesPage() {
                   </li>
                   <li>• {language === "de" ? "Begrenzte Plätze verfügbar" : "Limited seats available"}</li>
                   <li>
-                    • {language === "de" ? "Buchung über unser Anmeldeformular" : "Booking via our registration form"}
+                    • {language === "de" ? "Buchung über unser Anmeldeformular" : "Booking über unser Anmeldeformular"}
                   </li>
                 </ul>
               </div>
@@ -312,12 +312,6 @@ export default function BusDeparturesPage() {
                 className="bg-primary hover:bg-primary-dark text-white px-6 py-3 rounded-lg transition-colors"
               >
                 themountaincampde@gmail.com
-              </a>
-              <a
-                href="tel:+43677634557633"
-                className="bg-card hover:bg-primary/20 text-white px-6 py-3 rounded-lg border border-primary/20 transition-colors"
-              >
-                +43 677 63455763
               </a>
             </div>
           </motion.div>
