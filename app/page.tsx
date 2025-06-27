@@ -66,6 +66,42 @@ export default function Home() {
       icon: <Users className="h-6 w-6" />,
     },
     {
+      title: "Backflip Lesson",
+      description: "Lerne spektakuläre Backflips in sicherer Umgebung",
+      image: "/images/backflip-lesson.png",
+      icon: <Star className="h-6 w-6" />,
+    },
+    {
+      title: "Upcycling Class",
+      description: "Kreative Workshops für nachhaltiges Gestalten",
+      image: "/images/upcycling-class.png",
+      icon: <Users className="h-6 w-6" />,
+    },
+    {
+      title: "Aquarell Painting",
+      description: "Künstlerische Entspannung mit Aquarellmalerei",
+      image: "/images/aquarell-painting.png",
+      icon: <Star className="h-6 w-6" />,
+    },
+    {
+      title: "Clay Class",
+      description: "Töpfern und kreatives Arbeiten mit Ton",
+      image: "/images/clay-class.png",
+      icon: <Users className="h-6 w-6" />,
+    },
+    {
+      title: "Movie Night",
+      description: "Entspannte Filmabende unter dem Sternenhimmel",
+      image: "/images/movie-night.png",
+      icon: <Star className="h-6 w-6" />,
+    },
+    {
+      title: "Knitting",
+      description: "Entspannendes Stricken in gemütlicher Atmosphäre",
+      image: "/images/knitting.png",
+      icon: <Users className="h-6 w-6" />,
+    },
+    {
       title: "Lagerfeuer",
       description: "Gemeinschaftsabende am Lagerfeuer unter dem Sternenhimmel",
       image: "/images/campfire-evening.jpeg",
@@ -81,23 +117,18 @@ export default function Home() {
 
   const testimonials = [
     {
-      name: "Sarah K.",
-      program: "Intermediate Runner",
       quote: "The overall organisation of the whole stay there, really good! All the friendly faces, the nature etc.",
-      image: "/placeholder.svg?height=100&width=100",
     },
     {
-      name: "Michael T.",
-      program: "Advanced Runner",
       quote:
         "I loved the experience as a whole, but what stood out was the variety in not only runs, but generally activities, there was always something exciting happening!",
-      image: "/placeholder.svg?height=100&width=100",
     },
     {
-      name: "Emma L.",
-      program: "Beginner Runner",
       quote: "The location was spectacular, the organisation was really detailed.",
-      image: "/placeholder.svg?height=100&width=100",
+    },
+    {
+      quote:
+        "The opportunities to do different routes, activities and always meeting different people. The area is awesome and the house is very nice. Loved the sauna / lounge area a lot and the flexibility we had.",
     },
   ]
 
@@ -106,8 +137,8 @@ export default function Home() {
     { src: "/images/summit-view.jpeg", alt: "Summit view" },
     { src: "/images/canoeing-activity.jpeg", alt: "Canoeing activity" },
     { src: "/images/campfire-evening.jpeg", alt: "Campfire evening" },
-    { src: "/images/mountain-rave.jpeg", alt: "Mountain rave party" },
     { src: "/images/alpine-landscape.jpeg", alt: "Alpine landscape" },
+    { src: "/images/trail-runners-group.jpeg", alt: "Trail runners group" },
   ]
 
   return (
@@ -229,9 +260,16 @@ export default function Home() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.2 }}
-            className="text-4xl md:text-6xl lg:text-7xl font-bold mb-6"
+            className="mb-6"
           >
-            THE MOUNTAINCAMP
+            <Image
+              src="/images/MTC-Logo_2025_weiß.png"
+              alt="The Mountaincamp"
+              width={400}
+              height={120}
+              className="h-20 md:h-32 w-auto mx-auto"
+              unoptimized
+            />
           </motion.h1>
 
           <motion.p
@@ -315,7 +353,7 @@ export default function Home() {
             </p>
           </div>
 
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
+          <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-7 gap-4">
             {activities.map((activity, index) => (
               <ActivityCard
                 key={index}
