@@ -268,7 +268,7 @@ export default function Home() {
     },
     {
       title: "Climbing Class",
-      image: "/images/climbing-class.png",
+      image: "/images/climbing-class-real.jpeg",
       description: "Build strength and confidence with indoor climbing sessions led by experienced instructors.",
     },
     {
@@ -1089,6 +1089,15 @@ export default function Home() {
                     >
                       {t("registerNow")}
                     </a>
+                  </Button>
+                  {/* Add the bus transfer button here */}
+                  <Button
+                    className="w-full mt-4 bg-card hover:bg-primary/20 text-white py-3 text-lg rounded-md border border-primary/20 transition-colors"
+                    asChild
+                  >
+                    <Link href="/bus-departures">
+                      {language === "de" ? "Bus Anreise Details" : "Bus Transfer Details"}
+                    </Link>
                   </Button>
                 </div>
               </motion.div>
