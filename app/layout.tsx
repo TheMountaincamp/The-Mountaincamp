@@ -1,7 +1,7 @@
 import type React from "react"
 import { Suspense } from "react"
 import type { Metadata } from "next"
-import { Montserrat, Space_Mono, Bebas_Neue } from "next/font/google"
+import { Montserrat, Space_Mono, Bebas_Neue, Inter } from "next/font/google"
 import "./globals.css"
 import { ThemeProvider } from "@/components/theme-provider"
 import { CookieConsentProvider } from "@/contexts/cookie-consent-context"
@@ -31,6 +31,8 @@ const bebasNeue = Bebas_Neue({
   variable: "--font-bebas-neue",
 })
 
+const inter = Inter({ subsets: ["latin"] })
+
 // Kritische Bilder zum Vorladen - Updated with new hero image
 const CRITICAL_IMAGES = [
   "/images/hero-mountaincamp-runners.jpg",
@@ -40,8 +42,9 @@ const CRITICAL_IMAGES = [
 ]
 
 export const metadata: Metadata = {
-  title: "The Mountaincamp - Trailrunning, Community, Party",
-  description: "Das größte Trailrunning-Camp in den österreichischen Alpen. 6.-10. August 2025 in Hochkrimml.",
+  title: "The Mountaincamp - Das größte Trailrunning-Camp in den österreichischen Alpen",
+  description:
+    "🏔️ THE MOUNTAINCAMP - Das ultimative Trailrunning-Erlebnis in den österreichischen Alpen! 6.-10. August 2025 ⭐ 4 Nächte, epische Trails, unvergessliche Partys ⭐ Jetzt anmelden!",
   keywords: [
     "The Mountaincamp",
     "Mountaincamp",
@@ -185,7 +188,7 @@ export default function RootLayout({
     <html
       lang="de"
       suppressHydrationWarning
-      className={`${montserrat.variable} ${spaceMono.variable} ${bebasNeue.variable}`}
+      className={`${montserrat.variable} ${spaceMono.variable} ${bebasNeue.variable} ${inter.className}`}
     >
       <head>
         <link rel="canonical" href="https://themountaincamp.de" />
