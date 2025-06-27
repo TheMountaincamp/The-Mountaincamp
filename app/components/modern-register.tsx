@@ -1,103 +1,125 @@
 "use client"
-import Link from "next/link"
+
 import { motion } from "framer-motion"
-import { useInView } from "react-intersection-observer"
-import { Bus, Calendar, CheckCircle } from "lucide-react"
+import { ArrowRight } from "lucide-react"
+import { Button } from "@/components/ui/button"
 import { useLanguage } from "@/contexts/language-context"
-import SectionTitle from "./section-title"
 
 export default function ModernRegister() {
-  const { t } = useLanguage()
-  const [ref, inView] = useInView({
-    triggerOnce: true,
-    threshold: 0.1,
-  })
-
-  const containerVariants = {
-    hidden: { opacity: 0 },
-    visible: {
-      opacity: 1,
-      transition: {
-        staggerChildren: 0.2,
-      },
-    },
-  }
-
-  const itemVariants = {
-    hidden: { opacity: 0, y: 20 },
-    visible: {
-      opacity: 1,
-      y: 0,
-      transition: {
-        duration: 0.6,
-      },
-    },
-  }
+  const { t, language } = useLanguage()
 
   return (
-    <section id="register" className="py-20 md:py-28 relative overflow-hidden">
-      <div className="absolute inset-0 bg-gradient-to-b from-black/40 to-black/80 z-0"></div>
-      <div className="container mx-auto px-4 relative z-10">
-        <SectionTitle title={t("registerNow")} subtitle={t("registerSubtitle")} centered light />
+    <section id="register" className="py-24 bg-black relative overflow-hidden">
+      {/* Background decoration */}
+      <div className="absolute inset-0">
+        <div className="absolute top-0 left-0 w-full h-full bg-[radial-gradient(circle_at_bottom_left,_var(--tw-gradient-stops))] from-primary/10 via-transparent to-transparent"></div>
+      </div>
 
-        <motion.div
-          ref={ref}
-          variants={containerVariants}
-          initial="hidden"
-          animate={inView ? "visible" : "hidden"}
-          className="max-w-4xl mx-auto mt-12"
-        >
+      <div className="container mx-auto px-4 relative z-10">
+        <div className="grid gap-16 lg:grid-cols-2 items-center">
           <motion.div
-            variants={itemVariants}
-            className="bg-black/50 backdrop-blur-sm border border-white/10 rounded-xl p-6 md:p-8 mb-8"
+            initial={{ opacity: 0, x: -50 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.8 }}
           >
-            <div className="flex flex-col md:flex-row md:items-center justify-between">
-              <div className="mb-6 md:mb-0">
-                <h3 className="text-3xl font-display uppercase mb-2 text-gradient">{t("mountaincamp")} 2025</h3>
-                <p className="text-white/70 mb-4">{t("joinUs")}</p>
-                <div className="flex items-center text-white mb-2">
-                  <Calendar className="h-5 w-5 mr-2 text-primary" />
-                  <span>6. - 10. August 2025</span>
+            <h2 className="text-5xl md:text-6xl font-display uppercase mb-6 text-gradient">{t("joinTitle")}</h2>
+            <p className="text-xl mb-8 text-white/80">
+              {t("heroDate")}
+              <br />
+              {language === "de" ? "Österreichische Alpen" : "Austrian Alps"}
+            </p>
+            <ul className="space-y-4">
+              <li className="flex items-center gap-3 group">
+                <div className="flex-shrink-0 w-8 h-8 rounded-full bg-primary/20 flex items-center justify-center group-hover:bg-primary transition-colors duration-300">
+                  <ArrowRight className="h-4 w-4 text-primary group-hover:text-white transition-colors duration-300" />
                 </div>
-                <ul className="space-y-2 mt-4">
-                  <li className="flex items-start">
-                    <CheckCircle className="h-5 w-5 mr-2 text-accent mt-0.5" />
-                    <span className="text-white/80">{t("allMealsIncluded")}</span>
-                  </li>
-                  <li className="flex items-start">
-                    <CheckCircle className="h-5 w-5 mr-2 text-accent mt-0.5" />
-                    <span className="text-white/80">{t("professionalCoaches")}</span>
-                  </li>
-                  <li className="flex items-start">
-                    <CheckCircle className="h-5 w-5 mr-2 text-accent mt-0.5" />
-                    <span className="text-white/80">{t("accommodationIncluded")}</span>
-                  </li>
-                </ul>
+                <span className="text-white/80 group-hover:text-white transition-colors duration-300">
+                  {t("accommodation")}
+                </span>
+              </li>
+              <li className="flex items-center gap-3 group">
+                <div className="flex-shrink-0 w-8 h-8 rounded-full bg-secondary/20 flex items-center justify-center group-hover:bg-secondary transition-colors duration-300">
+                  <ArrowRight className="h-4 w-4 text-secondary group-hover:text-white transition-colors duration-300" />
+                </div>
+                <span className="text-white/80 group-hover:text-white transition-colors duration-300">
+                  {t("meals")}
+                </span>
+              </li>
+              <li className="flex items-center gap-3 group">
+                <div className="flex-shrink-0 w-8 h-8 rounded-full bg-accent/20 flex items-center justify-center group-hover:bg-accent transition-colors duration-300">
+                  <ArrowRight className="h-4 w-4 text-accent group-hover:text-black transition-colors duration-300" />
+                </div>
+                <span className="text-white/80 group-hover:text-white transition-colors duration-300">
+                  {t("allLevels")}
+                </span>
+              </li>
+              <li className="flex items-center gap-3 group">
+                <div className="flex-shrink-0 w-8 h-8 rounded-full bg-primary/20 flex items-center justify-center group-hover:bg-primary transition-colors duration-300">
+                  <ArrowRight className="h-4 w-4 text-primary group-hover:text-white transition-colors duration-300" />
+                </div>
+                <span className="text-white/80 group-hover:text-white transition-colors duration-300">
+                  {t("limitedSpots")}
+                </span>
+              </li>
+            </ul>
+
+            {/* Price tag */}
+            <div className="mt-12 inline-block">
+              <div className="bg-gradient-to-r from-primary to-secondary px-6 py-3 rounded-t-lg">
+                <span className="text-sm font-mono uppercase text-white">{t("packageTitle")}</span>
               </div>
-              <div className="text-center md:text-right">
-                <div className="text-4xl md:text-5xl font-display text-white mb-2">€420</div>
-                <p className="text-white/60 mb-6">{t("perPerson")}</p>
-                <a
-                  href="https://www.cadi.me/events/the-mountaincamp-2025"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="inline-flex items-center justify-center px-8 py-3 rounded-full bg-primary hover:bg-primary-light text-white font-medium transition-colors"
-                >
-                  {t("bookNow")}
-                </a>
-                <div className="mt-4">
-                  <Link
-                    href="/bus-schedule"
-                    className="inline-flex items-center text-primary hover:text-primary-light transition-colors"
+              <div className="bg-black/50 backdrop-blur-sm border border-white/10 px-6 py-4 rounded-b-lg">
+                <span className="text-4xl font-display text-white">€420</span>
+                <span className="text-white/70 ml-2">{t("perPerson")}</span>
+              </div>
+            </div>
+          </motion.div>
+
+          <motion.div
+            initial={{ opacity: 0, y: 50 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.8 }}
+          >
+            <div className="bg-black/50 backdrop-blur-sm border border-white/10 p-8 text-white rounded-xl relative overflow-hidden">
+              {/* Decorative elements */}
+              <div className="absolute -top-10 -right-10 w-40 h-40 bg-primary/20 rounded-full blur-xl"></div>
+              <div className="absolute -bottom-10 -left-10 w-40 h-40 bg-secondary/20 rounded-full blur-xl"></div>
+
+              <div className="relative">
+                <h3 className="text-2xl font-display uppercase mb-6">
+                  <a
+                    href="https://my.camps.digital/masken/buchungen/vuejs?&vendor=mountaincamp&destination_id=1475&termin_id=35113#/"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="text-gradient hover:underline transition-colors"
                   >
-                    <Bus className="mr-2 h-4 w-4" />
-                    {t("busSchedule")}
-                  </Link>
+                    {t("bookSpot")}
+                  </a>
+                </h3>
+                <p className="text-white/70 mb-6">{t("bookDesc")}</p>
+                <Button
+                  className="w-full bg-gradient-to-r from-primary to-secondary hover:from-primary-dark hover:to-secondary-dark transition-colors text-white py-3 text-lg rounded-full"
+                  asChild
+                >
+                  <a
+                    href="https://my.camps.digital/masken/buchungen/vuejs?&vendor=mountaincamp&destination_id=1475&termin_id=35113#/"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    {t("registerNow")}
+                  </a>
+                </Button>
+
+                {/* Decorative corner */}
+                <div className="absolute top-0 right-0 w-16 h-16 overflow-hidden">
+                  <div className="absolute top-0 right-0 w-16 h-16 bg-primary transform rotate-45 translate-x-8 -translate-y-8"></div>
                 </div>
               </div>
             </div>
           </motion.div>
-        </motion.div>
+        </div>
       </div>
     </section>
   )
