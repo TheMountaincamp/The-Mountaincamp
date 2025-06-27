@@ -1,7 +1,7 @@
 import type React from "react"
 import { Suspense } from "react"
 import type { Metadata } from "next"
-import { Montserrat, Space_Mono, Bebas_Neue, Inter } from "next/font/google"
+import { Montserrat, Space_Mono, Bebas_Neue } from "next/font/google"
 import "./globals.css"
 import { ThemeProvider } from "@/components/theme-provider"
 import { CookieConsentProvider } from "@/contexts/cookie-consent-context"
@@ -31,20 +31,18 @@ const bebasNeue = Bebas_Neue({
   variable: "--font-bebas-neue",
 })
 
-const inter = Inter({ subsets: ["latin"] })
-
-// Kritische Bilder zum Vorladen - Updated with new hero image
+// Kritische Bilder zum Vorladen
 const CRITICAL_IMAGES = [
-  "/images/hero-mountaincamp-runners.jpg",
+  "/images/hero-bg-new.jpg",
   "/images/MTC-Logo-2025-new.png",
   "/images/trail-runner-action.jpg",
   "/images/mountain-rave-new.jpg",
 ]
 
 export const metadata: Metadata = {
-  title: "The Mountaincamp - Das größte Trailrunning-Camp in den österreichischen Alpen",
+  title: "The Mountaincamp - Trailrunning, Community, Party",
   description:
-    "🏔️ THE MOUNTAINCAMP - Das ultimative Trailrunning-Erlebnis in den österreichischen Alpen! 6.-10. August 2025 ⭐ 4 Nächte, epische Trails, unvergessliche Partys ⭐ Jetzt anmelden!",
+    "Trailrunning, Community, Party - Join the ultimate alpine adventure at The Mountaincamp 2025. Limited spots available. Book now and transform your running experience!",
   keywords: [
     "The Mountaincamp",
     "Mountaincamp",
@@ -93,10 +91,30 @@ export const metadata: Metadata = {
   },
   openGraph: {
     title: "The Mountaincamp - Trailrunning, Community, Party",
-    description: "Das größte Trailrunning-Camp in den österreichischen Alpen. 6.-10. August 2025 in Hochkrimml.",
+    description:
+      "Experience the ultimate alpine adventure at The Mountaincamp. 4 nights, epic trails, unforgettable parties. Limited spots - secure yours today!",
     url: "https://themountaincamp.de",
     siteName: "The Mountaincamp",
-    images: ["/images/hero-mountaincamp-runners.jpg"],
+    images: [
+      {
+        url: "/images/hero-bg-new.jpg",
+        width: 1200,
+        height: 630,
+        alt: "The Mountaincamp - Epic trail running in the Austrian Alps",
+      },
+      {
+        url: "/images/mountain-rave-new.jpg",
+        width: 1200,
+        height: 630,
+        alt: "Sunset Rave at The Mountaincamp - Party in the mountains",
+      },
+      {
+        url: "/images/trail-runner-action.jpg",
+        width: 1200,
+        height: 630,
+        alt: "Trail running adventures at The Mountaincamp",
+      },
+    ],
     locale: "de_DE",
     type: "website",
   },
@@ -105,7 +123,7 @@ export const metadata: Metadata = {
     title: "The Mountaincamp - Trailrunning, Community, Party",
     description:
       "Experience the ultimate alpine adventure at The Mountaincamp. 4 nights, epic trails, unforgettable parties. Limited spots - secure yours today!",
-    images: ["/images/hero-mountaincamp-runners.jpg"],
+    images: ["/images/hero-bg-new.jpg"],
     creator: "@themountaincamp",
     site: "@themountaincamp",
   },
@@ -188,7 +206,7 @@ export default function RootLayout({
     <html
       lang="de"
       suppressHydrationWarning
-      className={`${montserrat.variable} ${spaceMono.variable} ${bebasNeue.variable} ${inter.className}`}
+      className={`${montserrat.variable} ${spaceMono.variable} ${bebasNeue.variable}`}
     >
       <head>
         <link rel="canonical" href="https://themountaincamp.de" />

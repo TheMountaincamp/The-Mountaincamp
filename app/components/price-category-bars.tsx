@@ -3,41 +3,52 @@
 import { useState } from "react"
 import { motion } from "framer-motion"
 import { Info } from "lucide-react"
+import { useLanguage } from "@/contexts/language-context"
+import CountdownTimer from "@/app/components/countdown-timer"
 
 export default function PriceCategoryBars() {
+  const { t } = useLanguage()
   const [activeTooltip, setActiveTooltip] = useState<number | null>(null)
 
-  // Price categories data - simplified without countdowns
+  // Countdown dates for each category
+  const earlyBirdDate = new Date("2024-12-31T23:59:59")
+  const regularDate = new Date("2025-03-31T23:59:59")
+  const lateDate = new Date("2025-07-15T23:59:59")
+
+  // Price categories data
   const categories = [
     {
       id: 1,
-      name: "Early Bird",
+      name: t("earlyBird"),
       price: "€380",
       discount: "10%",
-      status: "soldOut",
-      color: "from-gray-600 to-gray-700",
-      textColor: "text-white",
-      description: "Frühe Anmeldung mit Rabatt - bereits ausverkauft",
+      status: "active",
+      date: earlyBirdDate,
+      color: "from-accent to-accent-light",
+      textColor: "text-black",
+      description: t("earlyBirdDesc"),
     },
     {
       id: 2,
-      name: "Regular",
+      name: t("regular"),
       price: "€420",
       discount: "",
-      status: "active",
-      color: "from-gray-700 to-gray-800",
+      status: "soldOut",
+      date: regularDate,
+      color: "from-primary to-primary-light",
       textColor: "text-white",
-      description: "Regulärer Preis für das Mountaincamp 2025",
+      description: t("regularDesc"),
     },
     {
       id: 3,
-      name: "Late Bird",
+      name: t("late"),
       price: "€460",
-      discount: "20%",
+      discount: "20%", // Increased from 10% to 20%
       status: "upcoming",
-      color: "from-gray-800 to-gray-900",
+      date: lateDate,
+      color: "from-secondary to-secondary-light",
       textColor: "text-white",
-      description: "Späte Anmeldung mit Aufpreis",
+      description: t("lateDesc"),
     },
   ]
 
@@ -50,11 +61,9 @@ export default function PriceCategoryBars() {
   }
 
   return (
-    <div className="bg-gray-800 border border-gray-700 rounded-xl p-6 md:p-8">
-      <h3 className="text-3xl font-bold uppercase mb-6 text-white">Preiskategorien</h3>
-      <p className="text-gray-300 mb-8 max-w-2xl">
-        Verschiedene Preiskategorien je nach Anmeldezeitpunkt. Sichere dir jetzt deinen Platz!
-      </p>
+    <div className="bg-black/50 backdrop-blur-sm border border-white/10 rounded-xl p-6 md:p-8">
+      <h3 className="text-3xl font-display uppercase mb-6 text-gradient">{t("priceCategories")}</h3>
+      <p className="text-white/70 mb-8 max-w-2xl">{t("priceCategoriesDesc")}</p>
 
       <div className="space-y-6">
         {categories.map((category) => (
@@ -66,7 +75,7 @@ export default function PriceCategoryBars() {
                 <div className="flex flex-col md:flex-row md:items-center justify-between">
                   <div className="flex-1">
                     <div className="flex items-center">
-                      <h4 className={`text-xl md:text-2xl font-bold uppercase ${category.textColor}`}>
+                      <h4 className={`text-xl md:text-2xl font-display uppercase ${category.textColor}`}>
                         {category.name}
                       </h4>
                       {category.discount && (
@@ -76,7 +85,7 @@ export default function PriceCategoryBars() {
                       )}
                       <button
                         onClick={() => toggleTooltip(category.id)}
-                        className="ml-2 text-gray-400 hover:text-white transition-colors"
+                        className="ml-2 text-white/80 hover:text-white transition-colors"
                         aria-label="More information"
                       >
                         <Info className="h-4 w-4" />
@@ -84,15 +93,20 @@ export default function PriceCategoryBars() {
                     </div>
                     <p className={`text-sm ${category.textColor} opacity-80 mt-1`}>
                       {category.status === "soldOut"
-                        ? "Ausverkauft"
+                        ? t("soldOut")
                         : category.status === "active"
-                          ? "Verfügbar"
-                          : "Bald verfügbar"}
+                          ? t("availableUntil")
+                          : t("availableFrom")}
                     </p>
                   </div>
 
                   <div className="mt-4 md:mt-0 flex items-center">
-                    <span className={`text-2xl md:text-3xl font-bold ${category.textColor}`}>{category.price}</span>
+                    <span className={`text-2xl md:text-3xl font-display ${category.textColor}`}>{category.price}</span>
+                    {category.status !== "soldOut" && (
+                      <div className="ml-4">
+                        <CountdownTimer targetDate={category.date} compact={true} textColor={category.textColor} />
+                      </div>
+                    )}
                   </div>
                 </div>
               </div>
@@ -104,9 +118,9 @@ export default function PriceCategoryBars() {
                 initial={{ opacity: 0, y: 10 }}
                 animate={{ opacity: 1, y: 0 }}
                 exit={{ opacity: 0, y: 10 }}
-                className="absolute z-10 mt-2 p-4 bg-black/90 backdrop-blur-sm border border-gray-600 rounded-lg shadow-lg max-w-md"
+                className="absolute z-10 mt-2 p-4 bg-black/90 backdrop-blur-sm border border-white/20 rounded-lg shadow-lg max-w-md"
               >
-                <p className="text-gray-300 text-sm">{category.description}</p>
+                <p className="text-white/90 text-sm">{category.description}</p>
               </motion.div>
             )}
           </div>
