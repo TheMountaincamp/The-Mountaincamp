@@ -307,7 +307,7 @@ export default function Home() {
                 alt="The Mountaincamp Logo"
                 width={1000}
                 height={400}
-                className={`h-full w-auto object-contain transition-opacity duration-300 opacity-0`}
+                className="h-full w-auto object-contain transition-opacity duration-300 opacity-0"
                 priority
                 unoptimized={true}
                 fallbackSrc="/placeholder.svg?height=400&width=1000&text=MTC"
@@ -890,11 +890,6 @@ export default function Home() {
                     viewport={{ once: true }}
                     transition={{ duration: 0.5, delay: index * 0.05 }}
                     className="activity-card aspect-square group"
-                    onClick={() => {
-                      if (window.innerWidth < 768) {
-                        toggleActivity(index)
-                      }
-                    }}
                   >
                     <Image
                       src={activity.image || "/placeholder.svg"}
@@ -903,25 +898,12 @@ export default function Home() {
                       className="object-cover transition-transform duration-700 group-hover:scale-110"
                       unoptimized={true}
                     />
-                    <div
-                      className={`activity-card-overlay 
-                        ${expandedActivities[index] ? "opacity-90" : "opacity-80 group-hover:opacity-90"}`}
-                    />
+                    <div className="activity-card-overlay opacity-80 group-hover:opacity-90" />
                     <div className="activity-card-content">
                       <h3 className="text-xl font-bold text-white">{activity.title}</h3>
-                      <p
-                        className={`text-sm text-white/90 transition-all duration-300 
-                          ${
-                            expandedActivities[index]
-                              ? "max-h-32 mt-2 overflow-y-auto"
-                              : "max-h-0 overflow-hidden md:group-hover:max-h-20 md:group-hover:mt-2"
-                          }`}
-                      >
+                      <p className="text-sm text-white/90 transition-all duration-300 max-h-0 overflow-hidden md:group-hover:max-h-20 md:group-hover:mt-2">
                         {activity.description}
                       </p>
-                      <div className="md:hidden mt-2 text-xs text-white/70">
-                        {expandedActivities[index] ? t("tapToClose") : t("tapForDetails")}
-                      </div>
                     </div>
                   </motion.div>
                 ),
@@ -1012,7 +994,7 @@ export default function Home() {
                 <div className="flex justify-center">
                   <iframe
                     style={{ borderRadius: "12px" }}
-                    src={`https://open.spotify.com/embed/playlist/33kezN4oDEMyKsFBCicpu6?utm_source=generator&theme=0&cache=${Date.now()}`}
+                    src="https://open.spotify.com/embed/playlist/33kezN4oDEMyKsFBCicpu6?utm_source=generator&amp;theme=0"
                     width="100%"
                     height="380"
                     frameBorder="0"
@@ -1050,7 +1032,10 @@ export default function Home() {
               className="grid grid-cols-1 md:grid-cols-3 gap-12 items-center justify-items-center max-w-4xl mx-auto"
             >
               {/* Altra Logo */}
-              <motion.div
+              <motion.a
+                href="https://www.altrarunning.eu/de/"
+                target="_blank"
+                rel="noopener noreferrer"
                 initial={{ opacity: 0, scale: 0.9 }}
                 whileInView={{ opacity: 1, scale: 1 }}
                 viewport={{ once: true }}
@@ -1066,10 +1051,13 @@ export default function Home() {
                   className="h-16 w-auto object-contain"
                   unoptimized={true}
                 />
-              </motion.div>
+              </motion.a>
 
               {/* Reboots Logo */}
-              <motion.div
+              <motion.a
+                href="https://reboots.com"
+                target="_blank"
+                rel="noopener noreferrer"
                 initial={{ opacity: 0, scale: 0.9 }}
                 whileInView={{ opacity: 1, scale: 1 }}
                 viewport={{ once: true }}
@@ -1085,10 +1073,13 @@ export default function Home() {
                   className="h-16 w-auto object-contain"
                   unoptimized={true}
                 />
-              </motion.div>
+              </motion.a>
 
               {/* Lebepur Logo */}
-              <motion.div
+              <motion.a
+                href="https://www.lebepur.com"
+                target="_blank"
+                rel="noopener noreferrer"
                 initial={{ opacity: 0, scale: 0.9 }}
                 whileInView={{ opacity: 1, scale: 1 }}
                 viewport={{ once: true }}
@@ -1104,7 +1095,7 @@ export default function Home() {
                   className="h-16 w-auto object-contain"
                   unoptimized={true}
                 />
-              </motion.div>
+              </motion.a>
             </motion.div>
           </div>
         </section>
@@ -1292,4 +1283,32 @@ export default function Home() {
                     aria-label="TikTok"
                   >
                     <svg className="h-6 w-6" fill="currentColor" viewBox="0 0 24 24">
-                      <path d="M12.525.02c1.31-.02 2.61-.01 3.91-.02.08 1.53.63 3.09 1.75 4.17 1.12 1.11 2.7 1.62 4.24 1.79v4.03c-1.44-.05-2.89-.35-4.2-.97-.57-.26-1.1-.59-1.62-.93-.01 2.92.01 5.84-.02 8.75-.08 1.4-.54 2.79-1.35 3.94-1.31 1.92-3.58 3.17-5.91 3.21-1.43.08-2.86-.31-4.08-1.03-2.02-1.19-3.44-3.37-3.65-5.71-.02-.5-.03-1-.01-1.49.18-1.9 1.12-3.72 2.58-4.96 1.66-1.44 3.98-2.13 6.15-1.72.02 1.48-.04 2.96-.04 4.44-.99-.32-2.15-.23-3.02.37-.63.41-1.11 1.04-1.36 1.75-.21.51-.15 1.07-.14 1.61.24 1.64 1.82 3.02 3.5 2.87 1.12-.01 2.19-.66 2.77-1.61.19-.33.4-.67.41-1.06.1-1.79.06-3.57.07-5.36.01-4\
+                      <path d="M12.525.02c1.31-.02 2.61-.01 3.91-.02.08 1.53.63 3.09 1.75 4.17 1.12 1.11 2.7 1.62 4.24 1.79v4.03c-1.44-.05-2.89-.35-4.2-.97-.57-.26-1.1-.59-1.62-.93-.01 2.92.01 5.84-.02 8.75-.08 1.4-.54 2.79-1.35 3.94-1.31 1.92-3.58 3.17-5.91 3.21-1.43.08-2.86-.31-4.08-1.03-2.02-1.19-3.44-3.37-3.65-5.71-.02-.5-.03-1-.01-1.49.18-1.9 1.12-3.72 2.58-4.96 1.66-1.44 3.98-2.13 6.15-1.72.02 1.48-.04 2.96-.04 4.44-.99-.32-2.15-.23-3.02.37-.63.41-1.11 1.04-1.36 1.75-.21.51-.15 1.07-.14 1.61.24 1.64 1.82 3.02 3.5 2.87 1.12-.1 2.19-.64 2.87-1.43.75-.84 1.18-1.97 1.1-3.09-.02-1.69-.0-3.38-.02-5.07-.01-2.638.01-5.27-.02-7.91z" />
+                    </svg>
+                  </a>
+                </div>
+              </div>
+
+              <div className="flex flex-col gap-3">
+                <h4 className="footer-heading text-white">{t("legal")}</h4>
+                <Link href="/impressum" className="footer-link">
+                  {t("imprint")}
+                </Link>
+                <Link href="/datenschutz" className="footer-link">
+                  {t("privacyPolicy")}
+                </Link>
+                <Link href="/legal/conditions-of-raffle-participation" className="footer-link">
+                  {t("raffleConditions")}
+                </Link>
+              </div>
+            </div>
+          </div>
+
+          <div className="border-t border-white/10 pt-8 text-center">
+            <p className="text-white/60 text-sm">{`© 2025 The Mountaincamp. ${t("rights")}.`}</p>
+          </div>
+        </div>
+      </footer>
+    </div>
+  )
+}
