@@ -4,7 +4,7 @@ import { useState, useEffect } from "react"
 import Image from "next/image"
 import Link from "next/link"
 import { motion } from "framer-motion"
-import { ArrowLeft, Wifi, Utensils, Thermometer, Droplets, Dumbbell, Mountain } from "lucide-react"
+import { ArrowLeft, Wifi, Utensils, Thermometer, Droplets, Mountain } from "lucide-react"
 import { useLanguage } from "@/contexts/language-context"
 import ImagePreloader from "@/app/components/image-preloader"
 
@@ -55,14 +55,6 @@ export default function HousePage() {
       description: {
         en: "Always free water and icetea",
         de: "Kostensloses Wasser und Eistee",
-      },
-    },
-    {
-      icon: <Dumbbell className="h-6 w-6" />,
-      title: "GYM",
-      description: {
-        en: "Small gym for strength training",
-        de: "Kleiner Fitnessbereich für Krafttraining",
       },
     },
     {
@@ -124,7 +116,7 @@ export default function HousePage() {
         >
           <Link href="/" className="flex items-center gap-2 text-white hover:text-primary transition-colors">
             <ArrowLeft className="h-5 w-5" />
-            <span>Back</span>
+            <span>{t("language") === "de" ? "Zurück" : "Back"}</span>
           </Link>
         </motion.div>
       </div>
@@ -258,7 +250,7 @@ export default function HousePage() {
             </div>
             <div className="flex gap-8">
               <Link href="/" className="text-white/60 hover:text-primary transition-colors">
-                Home
+                {t("language") === "de" ? "Startseite" : "Home"}
               </Link>
               <Link href="/trails" className="text-white/60 hover:text-primary transition-colors">
                 {t("trails")}
