@@ -126,6 +126,8 @@ export const translations = {
     busTransport: "Bus Anreise",
     altraShoeTestingTitle: "Shoe Testing",
     altraShoeTestingDesc: "Teste die neuesten Altra Trailrunning-Schuhe am Donnerstag und Freitag während des Camps",
+    partnersTitle: "UNSERE PARTNER",
+    partnersSubtitle: "Wir arbeiten mit großartigen Marken zusammen, die unsere Vision teilen",
   },
   en: {
     // Navigation
@@ -253,6 +255,8 @@ export const translations = {
     busTransport: "Bus Transport",
     altraShoeTestingTitle: "Shoe Testing",
     altraShoeTestingDesc: "Test the latest Altra trail running shoes on Thursday and Friday during the camp",
+    partnersTitle: "OUR PARTNERS",
+    partnersSubtitle: "We work with amazing brands that share our vision",
   },
 }
 

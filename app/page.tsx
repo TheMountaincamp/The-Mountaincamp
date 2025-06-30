@@ -1051,6 +1051,78 @@ export default function Home() {
           </div>
         </section>
 
+        {/* Partners section */}
+        <section className="py-24 bg-gray-50">
+          <div className="container">
+            <SectionTitle title={t("partnersTitle")} subtitle={t("partnersSubtitle")} align="center" light={true} />
+
+            <motion.div
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.8 }}
+              className="grid grid-cols-1 md:grid-cols-3 gap-12 items-center justify-items-center max-w-4xl mx-auto"
+            >
+              {/* Altra Logo */}
+              <motion.div
+                initial={{ opacity: 0, scale: 0.9 }}
+                whileInView={{ opacity: 1, scale: 1 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.6, delay: 0.1 }}
+                className="flex items-center justify-center p-8 bg-white rounded-lg shadow-md hover:shadow-lg transition-all duration-300 w-full h-32"
+                whileHover={{ y: -5 }}
+              >
+                <Image
+                  src="/images/altra-logo.png"
+                  alt="Altra Running"
+                  width={200}
+                  height={80}
+                  className="h-16 w-auto object-contain"
+                  unoptimized={true}
+                />
+              </motion.div>
+
+              {/* Reboots Logo */}
+              <motion.div
+                initial={{ opacity: 0, scale: 0.9 }}
+                whileInView={{ opacity: 1, scale: 1 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.6, delay: 0.2 }}
+                className="flex items-center justify-center p-8 bg-gray-900 rounded-lg shadow-md hover:shadow-lg transition-all duration-300 w-full h-32"
+                whileHover={{ y: -5 }}
+              >
+                <Image
+                  src="/images/reboots-logo-white.png"
+                  alt="Reboots"
+                  width={200}
+                  height={80}
+                  className="h-16 w-auto object-contain"
+                  unoptimized={true}
+                />
+              </motion.div>
+
+              {/* Lebepur Logo */}
+              <motion.div
+                initial={{ opacity: 0, scale: 0.9 }}
+                whileInView={{ opacity: 1, scale: 1 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.6, delay: 0.3 }}
+                className="flex items-center justify-center p-8 bg-white rounded-lg shadow-md hover:shadow-lg transition-all duration-300 w-full h-32"
+                whileHover={{ y: -5 }}
+              >
+                <Image
+                  src="/images/lebepur-logo.jpg"
+                  alt="Lebepur"
+                  width={200}
+                  height={80}
+                  className="h-16 w-auto object-contain"
+                  unoptimized={true}
+                />
+              </motion.div>
+            </motion.div>
+          </div>
+        </section>
+
         {/* Registration section with improved form */}
         <section id="register" className="py-24 bg-black text-white">
           <div className="container">
