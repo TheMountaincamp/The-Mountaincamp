@@ -124,6 +124,8 @@ export const translations = {
     trailTipsTitle: "TRAIL-TIPPS",
     raffleConditions: "Teilnahmebedingungen Gewinnspiel",
     busTransport: "Bus Anreise",
+    altraShoeTestingTitle: "Shoe Testing",
+    altraShoeTestingDesc: "Teste die neuesten Altra Trailrunning-Schuhe am Donnerstag und Freitag während des Camps",
   },
   en: {
     // Navigation
@@ -249,6 +251,8 @@ export const translations = {
     trailTipsTitle: "TRAIL TIPS",
     raffleConditions: "Raffle Conditions",
     busTransport: "Bus Transport",
+    altraShoeTestingTitle: "Shoe Testing",
+    altraShoeTestingDesc: "Test the latest Altra trail running shoes on Thursday and Friday during the camp",
   },
 }
 

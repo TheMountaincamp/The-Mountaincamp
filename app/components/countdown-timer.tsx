@@ -40,7 +40,7 @@ export default function CountdownTimer({ targetDate }: CountdownTimerProps) {
   return (
     <div className="grid grid-cols-4 gap-4 text-center">
       <motion.div
-        className="border border-primary/30 bg-black/50 p-4"
+        className="border border-primary/30 bg-transparent p-4"
         whileHover={{ scale: 1.05 }}
         transition={{ type: "spring", stiffness: 400, damping: 17 }}
       >
@@ -51,16 +51,16 @@ export default function CountdownTimer({ targetDate }: CountdownTimerProps) {
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -10 }}
             transition={{ duration: 0.2 }}
-            className="text-4xl font-bold"
+            className="text-4xl font-bold text-gray-900"
           >
             {timeLeft.days}
           </motion.div>
         </AnimatePresence>
-        <div className="text-xs uppercase text-white/70">Days</div>
+        <div className="text-xs uppercase text-gray-600">Days</div>
       </motion.div>
 
       <motion.div
-        className="border border-primary/30 bg-black/50 p-4"
+        className="border border-primary/30 bg-transparent p-4"
         whileHover={{ scale: 1.05 }}
         transition={{ type: "spring", stiffness: 400, damping: 17 }}
       >
@@ -71,16 +71,16 @@ export default function CountdownTimer({ targetDate }: CountdownTimerProps) {
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -10 }}
             transition={{ duration: 0.2 }}
-            className="text-4xl font-bold"
+            className="text-4xl font-bold text-gray-900"
           >
             {timeLeft.hours}
           </motion.div>
         </AnimatePresence>
-        <div className="text-xs uppercase text-white/70">Hours</div>
+        <div className="text-xs uppercase text-gray-600">Hours</div>
       </motion.div>
 
       <motion.div
-        className="border border-primary/30 bg-black/50 p-4"
+        className="border border-primary/30 bg-transparent p-4"
         whileHover={{ scale: 1.05 }}
         transition={{ type: "spring", stiffness: 400, damping: 17 }}
       >
@@ -91,16 +91,16 @@ export default function CountdownTimer({ targetDate }: CountdownTimerProps) {
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -10 }}
             transition={{ duration: 0.2 }}
-            className="text-4xl font-bold"
+            className="text-4xl font-bold text-gray-900"
           >
             {timeLeft.minutes}
           </motion.div>
         </AnimatePresence>
-        <div className="text-xs uppercase text-white/70">Minutes</div>
+        <div className="text-xs uppercase text-gray-600">Minutes</div>
       </motion.div>
 
       <motion.div
-        className="border border-primary/30 bg-black/50 p-4"
+        className="border border-primary/30 bg-transparent p-4"
         whileHover={{ scale: 1.05 }}
         transition={{ type: "spring", stiffness: 400, damping: 17 }}
       >
@@ -111,12 +111,12 @@ export default function CountdownTimer({ targetDate }: CountdownTimerProps) {
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -10 }}
             transition={{ duration: 0.2 }}
-            className="text-4xl font-bold"
+            className="text-4xl font-bold text-gray-900"
           >
             {timeLeft.seconds}
           </motion.div>
         </AnimatePresence>
-        <div className="text-xs uppercase text-white/70">Seconds</div>
+        <div className="text-xs uppercase text-gray-600">Seconds</div>
       </motion.div>
     </div>
   )

@@ -4,27 +4,27 @@
 
 @layer base {
   :root {
-    --background: 0 0% 7%;
-    --foreground: 0 0% 98%;
-    --card: 0 0% 10%;
-    --card-foreground: 0 0% 98%;
-    --popover: 0 0% 10%;
-    --popover-foreground: 0 0% 98%;
+    --background: 0 0% 96%;
+    --foreground: 0 0% 9%;
+    --card: 0 0% 100%;
+    --card-foreground: 0 0% 9%;
+    --popover: 0 0% 100%;
+    --popover-foreground: 0 0% 9%;
     --primary: 248 24% 47%;
     --primary-foreground: 0 0% 100%;
-    --muted: 0 0% 15%;
-    --muted-foreground: 0 0% 63.9%;
-    --accent: 0 0% 14.9%;
-    --accent-foreground: 0 0% 98%;
+    --muted: 0 0% 96%;
+    --muted-foreground: 0 0% 45%;
+    --accent: 0 0% 96%;
+    --accent-foreground: 0 0% 9%;
     --destructive: 0 84.2% 60.2%;
     --destructive-foreground: 0 0% 98%;
-    --border: 0 0% 20%;
-    --input: 0 0% 20%;
+    --border: 0 0% 89%;
+    --input: 0 0% 89%;
     --ring: 248 24% 47%;
     --radius: 0rem;
   }
 
-  .light {
+  .dark {
     --background: 0 0% 7%;
     --foreground: 0 0% 98%;
     --card: 0 0% 10%;
@@ -89,11 +89,11 @@
 }
 
 .section-subtitle {
-  @apply text-lg text-white/70;
+  @apply text-lg text-gray-600;
 }
 
 .feature-card {
-  @apply bg-card border-primary/20 hover:border-primary transition-all duration-300;
+  @apply bg-card border-gray-200 hover:border-primary transition-all duration-300;
 }
 
 .activity-card {
@@ -109,11 +109,11 @@
 }
 
 .testimonial-card {
-  @apply bg-card border-primary/20 hover:border-primary transition-all duration-500 ease-in-out;
+  @apply bg-card border-gray-200 hover:border-primary transition-all duration-500 ease-in-out;
 }
 
 .footer {
-  @apply bg-black text-white py-16;
+  @apply bg-gray-900 text-white py-16;
 }
 
 .footer-link {
@@ -169,4 +169,22 @@
 
 .route-card:hover {
   transform: translateY(-5px);
+}
+
+/* Light section backgrounds */
+.section-light {
+  @apply bg-gray-50;
+}
+
+.section-light-alt {
+  @apply bg-white;
+}
+
+/* Light text colors */
+.text-light {
+  @apply text-gray-900;
+}
+
+.text-light-muted {
+  @apply text-gray-600;
 }

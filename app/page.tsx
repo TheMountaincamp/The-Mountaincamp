@@ -637,8 +637,39 @@ export default function Home() {
           </div>
         </section>
 
+        {/* Altra Shoe Testing Banner */}
+        <section className="relative py-16 bg-primary overflow-hidden">
+          <div className="absolute inset-0 transform -skew-y-2 bg-primary"></div>
+          <div className="container relative z-10">
+            <motion.div
+              initial={{ opacity: 0, x: -50 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.8 }}
+              className="flex flex-col md:flex-row items-center justify-center gap-6 text-white"
+            >
+              <div className="flex items-center gap-4">
+                <Image
+                  src="/images/altra-logo-white.png"
+                  alt="Altra Logo"
+                  width={120}
+                  height={40}
+                  className="h-8 md:h-10 w-auto"
+                  unoptimized={true}
+                />
+                <span className="text-2xl md:text-3xl font-bold uppercase tracking-wide">
+                  {t("altraShoeTestingTitle")}
+                </span>
+              </div>
+              <div className="text-center md:text-left">
+                <p className="text-white/90 text-sm md:text-base">{t("altraShoeTestingDesc")}</p>
+              </div>
+            </motion.div>
+          </div>
+        </section>
+
         {/* About section with diagonal design */}
-        <section id="about" className="py-24 relative overflow-hidden bg-card">
+        <section id="about" className="py-24 relative overflow-hidden bg-gray-50">
           <div
             className="absolute top-0 left-0 w-full h-24 bg-black"
             style={{ clipPath: "polygon(0 0, 100% 0, 100% 100%, 0 0)" }}
@@ -652,24 +683,26 @@ export default function Home() {
                 viewport={{ once: true }}
                 transition={{ duration: 0.8 }}
               >
-                <SectionTitle title={t("aboutTitle")} subtitle={t("aboutSubtitle")} />
-                <div className="space-y-4 text-white/80">
+                <SectionTitle title={t("aboutTitle")} subtitle={t("aboutSubtitle")} light={true} />
+                <div className="space-y-4 text-gray-600">
                   <p className="text-lg leading-relaxed whitespace-pre-line">{t("aboutText1")}</p>
                   <p className="text-lg leading-relaxed whitespace-pre-line">{t("aboutText2")}</p>
-                  <p className="text-lg leading-relaxed whitespace-pre-line font-bold">{t("aboutText3")}</p>
+                  <p className="text-lg leading-relaxed whitespace-pre-line font-bold text-gray-900">
+                    {t("aboutText3")}
+                  </p>
 
                   <div className="pt-4 flex flex-col sm:flex-row gap-4">
                     <div className="flex items-center gap-3">
                       <div className="rounded-full bg-primary/20 p-2">
                         <Calendar className="h-5 w-5 text-primary" />
                       </div>
-                      <span className="font-medium">{t("heroDate")}</span>
+                      <span className="font-medium text-gray-900">{t("heroDate")}</span>
                     </div>
                     <div className="flex items-center gap-3">
                       <div className="rounded-full bg-primary/20 p-2">
                         <MapPin className="h-5 w-5 text-primary" />
                       </div>
-                      <span className="font-medium">
+                      <span className="font-medium text-gray-900">
                         {language === "de" ? "Hochkrimml, Österreich" : "Hochkrimml, Austria"}
                       </span>
                     </div>
@@ -703,7 +736,7 @@ export default function Home() {
         </section>
 
         {/* Countdown section with animated background */}
-        <section className="py-24 bg-black text-white relative overflow-hidden">
+        <section className="py-24 bg-white text-gray-900 relative overflow-hidden">
           <div className="absolute inset-0 opacity-20">
             <div className="absolute top-0 left-0 w-full h-full bg-[radial-gradient(circle_at_center,_var(--tw-gradient-stops))] from-primary/30 via-transparent to-transparent"></div>
             <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[500px] h-[500px] rounded-full bg-primary/20 blur-3xl"></div>
@@ -717,10 +750,10 @@ export default function Home() {
               transition={{ duration: 0.8 }}
               className="mx-auto max-w-2xl text-center"
             >
-              <h2 className="section-title mb-8">{t("countdownTitle")}</h2>
+              <h2 className="section-title mb-8 text-gray-900">{t("countdownTitle")}</h2>
               <CountdownTimer targetDate={campStartDate} />
               <div className="mt-12">
-                <Button size="lg" className="btn-outline text-lg px-8 hover:bg-primary hover:border-primary" asChild>
+                <Button size="lg" className="bg-primary hover:bg-primary/80 text-white text-lg px-8" asChild>
                   <Link href="#register">{t("secureSpot")}</Link>
                 </Button>
               </div>
@@ -729,9 +762,9 @@ export default function Home() {
         </section>
 
         {/* Experience section with animated cards */}
-        <section id="experience" className="py-24 bg-card">
+        <section id="experience" className="py-24 bg-gray-50">
           <div className="container">
-            <SectionTitle title={t("experienceTitle")} subtitle={t("experienceSubtitle")} align="center" />
+            <SectionTitle title={t("experienceTitle")} subtitle={t("experienceSubtitle")} align="center" light={true} />
 
             <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-4">
               <motion.div
@@ -745,6 +778,7 @@ export default function Home() {
                   title={t("trailrunningTitle")}
                   description={t("trailrunningDesc")}
                   icon={<Mountain className="h-8 w-8" />}
+                  light={true}
                 />
               </motion.div>
 
@@ -759,6 +793,7 @@ export default function Home() {
                   title={t("recoveryTitle")}
                   description={t("recoveryDesc")}
                   icon={<Flame className="h-8 w-8" />}
+                  light={true}
                 />
               </motion.div>
 
@@ -773,6 +808,7 @@ export default function Home() {
                   title={t("creativityTitle")}
                   description={t("creativityDesc")}
                   icon={<Sparkles className="h-8 w-8" />}
+                  light={true}
                 />
               </motion.div>
 
@@ -783,7 +819,12 @@ export default function Home() {
                 transition={{ duration: 0.5, delay: 0.3 }}
                 className="transform hover:scale-105"
               >
-                <FeatureCard title={t("raveTitle")} description={t("raveDesc")} icon={<Music className="h-8 w-8" />} />
+                <FeatureCard
+                  title={t("raveTitle")}
+                  description={t("raveDesc")}
+                  icon={<Music className="h-8 w-8" />}
+                  light={true}
+                />
               </motion.div>
             </div>
 
@@ -830,9 +871,9 @@ export default function Home() {
         </section>
 
         {/* Activities showcase */}
-        <section className="py-24 bg-background">
+        <section className="py-24 bg-white">
           <div className="container">
-            <SectionTitle title={t("activitiesTitle")} subtitle={t("activitiesSubtitle")} align="center" />
+            <SectionTitle title={t("activitiesTitle")} subtitle={t("activitiesSubtitle")} align="center" light={true} />
 
             <div className="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
               {activities.map((activity, index) =>
@@ -892,9 +933,9 @@ export default function Home() {
         </section>
 
         {/* Gallery section with hover effects */}
-        <section className="py-24 bg-card">
+        <section className="py-24 bg-gray-50">
           <div className="container">
-            <SectionTitle title={t("galleryTitle")} align="center" />
+            <SectionTitle title={t("galleryTitle")} align="center" light={true} />
 
             <div className="grid grid-cols-2 md:grid-cols-3 gap-4">
               {galleryImages.map((image, index) => (
@@ -925,11 +966,11 @@ export default function Home() {
         </section>
 
         {/* Testimonials section with improved cards */}
-        <section id="testimonials" className="py-24 relative overflow-hidden bg-background">
+        <section id="testimonials" className="py-24 relative overflow-hidden bg-white">
           <div className="absolute top-0 left-0 w-full h-full bg-[radial-gradient(ellipse_at_top_right,_var(--tw-gradient-stops))] from-primary/10 via-transparent to-transparent"></div>
 
           <div className="container relative z-10">
-            <SectionTitle title={t("testimonialsTitle")} align="center" />
+            <SectionTitle title={t("testimonialsTitle")} align="center" light={true} />
 
             <div className="grid gap-8 md:grid-cols-2">
               {testimonials.map((testimonial, index) => (
@@ -939,7 +980,7 @@ export default function Home() {
                   whileInView={{ opacity: 1, y: 0 }}
                   transition={{ duration: 0.5, delay: index * 0.1 }}
                 >
-                  <TestimonialCard quote={testimonial.quote} />
+                  <TestimonialCard quote={testimonial.quote} light={true} />
                 </motion.div>
               ))}
             </div>
@@ -991,7 +1032,7 @@ export default function Home() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.8 }}
-              className="mt-16 bg-black text-white p-12 rounded-xl text-center"
+              className="mt-16 bg-gray-900 text-white p-12 rounded-xl text-center"
             >
               <h3 className="text-3xl font-bold mb-6">{t("communityTitle")}</h3>
               <p className="max-w-2xl mx-auto text-white/80 mb-8">{t("communityDesc")}</p>
@@ -1050,7 +1091,7 @@ export default function Home() {
                   <div className="bg-primary px-6 py-3 rounded-t-lg">
                     <span className="text-sm font-medium text-white uppercase">{t("packageTitle")}</span>
                   </div>
-                  <div className="bg-card px-6 py-4 rounded-b-lg">
+                  <div className="bg-gray-800 px-6 py-4 rounded-b-lg">
                     <span className="text-3xl font-bold text-white">€420</span>
                     <span className="text-white/70 ml-2">{t("perPerson")}</span>
                   </div>
@@ -1063,7 +1104,7 @@ export default function Home() {
                 viewport={{ once: true }}
                 transition={{ duration: 0.8 }}
               >
-                <div className="bg-card p-8 text-white rounded-xl border border-primary/20">
+                <div className="bg-gray-800 p-8 text-white rounded-xl border border-gray-700">
                   <h3 className="text-2xl font-bold uppercase mb-6">
                     <a
                       href="https://my.camps.digital/masken/buchungen/vuejs?&vendor=mountaincamp&destination_id=1475&termin_id=35113#/"
@@ -1089,7 +1130,7 @@ export default function Home() {
                   </Button>
                   {/* Add the bus transfer button here */}
                   <Button
-                    className="w-full mt-4 bg-card hover:bg-primary/20 text-white py-3 text-lg rounded-md border border-primary/20 transition-colors"
+                    className="w-full mt-4 bg-gray-700 hover:bg-primary/20 text-white py-3 text-lg rounded-md border border-gray-600 transition-colors"
                     asChild
                   >
                     <Link href="/bus-departures">
