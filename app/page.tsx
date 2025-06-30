@@ -26,11 +26,9 @@ import FeatureCard from "@/app/components/feature-card"
 import TestimonialCard from "@/app/components/testimonial-card"
 import SectionTitle from "@/app/components/section-title"
 import CountdownTimer from "@/app/components/countdown-timer"
-import CookieSettingsButton from "@/components/cookie-settings-button"
 import ActivityCardMobile from "@/app/components/activity-card-mobile"
 import LanguageSwitcher from "@/app/components/language-switcher"
 import PriceCategoryBars from "@/app/components/price-category-bars"
-// Import the ImageWithFallback component at the top of the file
 import ImageWithFallback from "@/app/components/image-with-fallback"
 import ImagePreloader from "@/app/components/image-preloader"
 import PreloadLink from "@/app/components/preload-link"
@@ -1026,18 +1024,6 @@ export default function Home() {
               </div>
             </motion.div>
 
-            {/* Community highlight */}
-            <motion.div
-              initial={{ opacity: 0, y: 50 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.8 }}
-              className="mt-16 bg-gray-900 text-white p-12 rounded-xl text-center"
-            >
-              <h3 className="text-3xl font-bold mb-6 text-white">{t("communityTitle")}</h3>
-              <p className="max-w-2xl mx-auto text-white/80 mb-8">{t("communityDesc")}</p>
-            </motion.div>
-
             {/* Price Category Bars */}
             <motion.div
               initial={{ opacity: 0, y: 50 }}
@@ -1064,7 +1050,10 @@ export default function Home() {
               className="grid grid-cols-1 md:grid-cols-3 gap-12 items-center justify-items-center max-w-4xl mx-auto"
             >
               {/* Altra Logo */}
-              <motion.div
+              <motion.a
+                href="https://www.altrarunning.eu/de/"
+                target="_blank"
+                rel="noopener noreferrer"
                 initial={{ opacity: 0, scale: 0.9 }}
                 whileInView={{ opacity: 1, scale: 1 }}
                 viewport={{ once: true }}
@@ -1080,10 +1069,13 @@ export default function Home() {
                   className="h-16 w-auto object-contain"
                   unoptimized={true}
                 />
-              </motion.div>
+              </motion.a>
 
               {/* Reboots Logo */}
-              <motion.div
+              <motion.a
+                href="https://reboots.com"
+                target="_blank"
+                rel="noopener noreferrer"
                 initial={{ opacity: 0, scale: 0.9 }}
                 whileInView={{ opacity: 1, scale: 1 }}
                 viewport={{ once: true }}
@@ -1099,10 +1091,13 @@ export default function Home() {
                   className="h-16 w-auto object-contain"
                   unoptimized={true}
                 />
-              </motion.div>
+              </motion.a>
 
               {/* Lebepur Logo */}
-              <motion.div
+              <motion.a
+                href="https://www.lebepur.com"
+                target="_blank"
+                rel="noopener noreferrer"
                 initial={{ opacity: 0, scale: 0.9 }}
                 whileInView={{ opacity: 1, scale: 1 }}
                 viewport={{ once: true }}
@@ -1118,7 +1113,7 @@ export default function Home() {
                   className="h-16 w-auto object-contain"
                   unoptimized={true}
                 />
-              </motion.div>
+              </motion.a>
             </motion.div>
           </div>
         </section>
@@ -1306,33 +1301,4 @@ export default function Home() {
                     aria-label="TikTok"
                   >
                     <svg className="h-6 w-6" fill="currentColor" viewBox="0 0 24 24">
-                      <path d="M12.525.02c1.31-.02 2.61-.01 3.91-.02.08 1.53.63 3.09 1.75 4.17 1.12 1.11 2.7 1.62 4.24 1.79v4.03c-1.44-.05-2.89-.35-4.2-.97-.57-.26-1.1-.59-1.62-.93-.01 2.92.01 5.84-.02 8.75-.08 1.4-.54 2.79-1.35 3.94-1.31 1.92-3.58 3.17-5.91 3.21-1.43.08-2.86-.31-4.08-1.03-2.02-1.19-3.44-3.37-3.65-5.71-.02-.5-.03-1-.01-1.49.18-1.9 1.12-3.72 2.58-4.96 1.66-1.44 3.98-2.13 6.15-1.72.02 1.48-.04 2.96-.04 4.44-.99-.32-2.15-.23-3.02.37-.63.41-1.11 1.04-1.36 1.75-.21.51-.15 1.07-.14 1.61.24 1.64 1.82 3.02 3.5 2.87 1.12-.01 2.19-.66 2.77-1.61.19-.33.4-.67.41-1.06.1-1.79.06-3.57.07-5.36.01-4.03-.01-8.05.02-12.07z" />
-                    </svg>
-                  </a>
-                </div>
-              </div>
-
-              <div className="flex flex-col gap-3">
-                <h4 className="footer-heading text-white">{t("legal")}</h4>
-                <Link href="/datenschutz" className="footer-link">
-                  {t("privacyPolicy")}
-                </Link>
-                <Link href="/impressum" className="footer-link">
-                  {t("imprint")}
-                </Link>
-                <Link href="/legal/conditions-of-raffle-participation" className="footer-link">
-                  {t("raffleConditions")}
-                </Link>
-                <CookieSettingsButton />
-              </div>
-            </div>
-          </div>
-
-          <div className="border-t border-white/10 pt-8 text-center text-sm text-white/40">
-            © {new Date().getFullYear()} The Mountaincamp. {t("rights")}
-          </div>
-        </div>
-      </footer>
-    </div>
-  )
-}
+                      <path d="M12.525.02c1.31-.02 2.61-.01 3.91-.02.08 1.53.63 3.09 1.75 4.17 1.12 1.11 2.7 1.62 4.24 1.79v4.03c-1.44-.05-2.89-.35-4.2-.97-.57-.26-1.1-.59-1.62-.93-.01 2.92.01 5.84-.02 8.75-.08 1.4-.54 2.79-1.35 3.94-1.31 1.92-3.58 3.17-5.91 3.21-1.43.08-2.86-.31-4.08-1.03-2.02-1.19-3.44-3.37-3.65-5.71-.02-.5-.03-1-.01-1.49.18-1.9 1.12-3.72 2.58-4.96 1.66-1.44 3.98-2.13 6.15-1.72.02 1.48-.04 2.96-.04 4.44-.99-.32-2.15-.23-3.02.37-.63.41-1.11 1.04-1.36 1.75-.21.51-.15 1.07-.14 1.61.24 \

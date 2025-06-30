@@ -72,10 +72,6 @@ export const translations = {
     playlistTitle: "DIE MOUNTAINCAMP PLAYLIST",
     playlistDesc:
       "Komm in Stimmung mit unserer offiziellen Trailrunning-Playlist. Der perfekte Soundtrack für deine Bergabenteuer.",
-    communityTitle: "WERDE TEIL UNSERER GEMEINSCHAFT",
-    communityDesc:
-      "The Mountaincamp ist mehr als nur ein Event - es ist eine Gemeinschaft leidenschaftlicher Läufer, die unvergessliche Erfahrungen teilen. Von Anfängern bis zu Profis, hier gehört jeder dazu.",
-
     // Registration section
     joinTitle: "Begleite uns in den Alpen",
     joinDate: "6.-10. August 2025",
@@ -203,10 +199,6 @@ export const translations = {
     playlistTitle: "THE MOUNTAINCAMP PLAYLIST",
     playlistDesc:
       "Get in the mood with our official trailrunning playlist. The perfect soundtrack for your mountain adventures.",
-    communityTitle: "JOIN OUR COMMUNITY",
-    communityDesc:
-      "The Mountaincamp is more than just an event - it's a community of passionate runners who share unforgettable experiences. From beginners to elite athletes, everyone belongs here.",
-
     // Registration section
     joinTitle: "Join Us in the Alps",
     joinDate: "August 6-10, 2025",
