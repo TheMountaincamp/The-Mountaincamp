@@ -602,7 +602,7 @@ export default function Home() {
                 <div className="mb-6 rounded-full bg-primary/20 p-4">
                   <Mountain className="h-10 w-10 text-primary" />
                 </div>
-                <h3 className="text-xl font-bold mb-3">{t("epicTrails")}</h3>
+                <h3 className="text-xl font-bold mb-3 text-white">{t("epicTrails")}</h3>
                 <p className="text-white/80">{t("epicTrailsDesc")}</p>
               </motion.div>
 
@@ -616,7 +616,7 @@ export default function Home() {
                 <div className="mb-6 rounded-full bg-primary/20 p-4">
                   <Music className="h-10 w-10 text-primary" />
                 </div>
-                <h3 className="text-xl font-bold mb-3">{t("sunsetRave")}</h3>
+                <h3 className="text-xl font-bold mb-3 text-white">{t("sunsetRave")}</h3>
                 <p className="text-white/80">{t("sunsetRaveDesc")}</p>
               </motion.div>
 
@@ -630,7 +630,7 @@ export default function Home() {
                 <div className="mb-6 rounded-full bg-primary/20 p-4">
                   <Users className="h-10 w-10 text-primary" />
                 </div>
-                <h3 className="text-xl font-bold mb-3">{t("community")}</h3>
+                <h3 className="text-xl font-bold mb-3 text-white">{t("community")}</h3>
                 <p className="text-white/80">{t("communityDesc")}</p>
               </motion.div>
             </div>
@@ -657,7 +657,7 @@ export default function Home() {
                   className="h-8 md:h-10 w-auto"
                   unoptimized={true}
                 />
-                <span className="text-2xl md:text-3xl font-bold uppercase tracking-wide">
+                <span className="text-2xl md:text-3xl font-bold uppercase tracking-wide text-white">
                   {t("altraShoeTestingTitle")}
                 </span>
               </div>
@@ -843,15 +843,15 @@ export default function Home() {
                   <ul className="space-y-4 text-white/80">
                     <li className="flex items-center gap-3">
                       <div className="h-2 w-2 rounded-full bg-primary"></div>
-                      <span>{t("raveBullet1")}</span>
+                      <span className="text-white/80">{t("raveBullet1")}</span>
                     </li>
                     <li className="flex items-center gap-3">
                       <div className="h-2 w-2 rounded-full bg-primary"></div>
-                      <span>{t("raveBullet2")}</span>
+                      <span className="text-white/80">{t("raveBullet2")}</span>
                     </li>
                     <li className="flex items-center gap-3">
                       <div className="h-2 w-2 rounded-full bg-primary"></div>
-                      <span>{t("raveBullet3")}</span>
+                      <span className="text-white/80">{t("raveBullet3")}</span>
                     </li>
                   </ul>
                 </div>
@@ -910,7 +910,7 @@ export default function Home() {
                         ${expandedActivities[index] ? "opacity-90" : "opacity-80 group-hover:opacity-90"}`}
                     />
                     <div className="activity-card-content">
-                      <h3 className="text-xl font-bold">{activity.title}</h3>
+                      <h3 className="text-xl font-bold text-white">{activity.title}</h3>
                       <p
                         className={`text-sm text-white/90 transition-all duration-300 
                           ${
@@ -957,7 +957,7 @@ export default function Home() {
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
                   <div className="absolute bottom-0 left-0 p-4 text-white opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                    <span className="font-bold">{image.caption}</span>
+                    <span className="font-bold text-white">{image.caption}</span>
                   </div>
                 </motion.div>
               ))}
@@ -1008,7 +1008,7 @@ export default function Home() {
               {/* Content */}
               <div className="relative z-10 p-12 text-white">
                 <div className="text-center mb-8">
-                  <h3 className="text-3xl font-bold mb-4">{t("playlistTitle")}</h3>
+                  <h3 className="text-3xl font-bold mb-4 text-white">{t("playlistTitle")}</h3>
                   <p className="max-w-2xl mx-auto text-white/80">{t("playlistDesc")}</p>
                 </div>
                 <div className="flex justify-center">
@@ -1034,7 +1034,7 @@ export default function Home() {
               transition={{ duration: 0.8 }}
               className="mt-16 bg-gray-900 text-white p-12 rounded-xl text-center"
             >
-              <h3 className="text-3xl font-bold mb-6">{t("communityTitle")}</h3>
+              <h3 className="text-3xl font-bold mb-6 text-white">{t("communityTitle")}</h3>
               <p className="max-w-2xl mx-auto text-white/80 mb-8">{t("communityDesc")}</p>
             </motion.div>
 
@@ -1061,8 +1061,8 @@ export default function Home() {
                 viewport={{ once: true }}
                 transition={{ duration: 0.8 }}
               >
-                <h2 className="text-4xl font-bold uppercase tracking-tight mb-6">{t("joinTitle")}</h2>
-                <p className="text-xl mb-8">
+                <h2 className="text-4xl font-bold uppercase tracking-tight mb-6 text-white">{t("joinTitle")}</h2>
+                <p className="text-xl mb-8 text-white">
                   {t("heroDate")}
                   <br />
                   {language === "de" ? "Österreichische Alpen" : "Austrian Alps"}
@@ -1070,19 +1070,19 @@ export default function Home() {
                 <ul className="space-y-4">
                   <li className="flex items-center gap-3">
                     <ArrowRight className="h-4 w-4 text-primary" />
-                    <span>{t("accommodation")}</span>
+                    <span className="text-white">{t("accommodation")}</span>
                   </li>
                   <li className="flex items-center gap-3">
                     <ArrowRight className="h-4 w-4 text-primary" />
-                    <span>{t("meals")}</span>
+                    <span className="text-white">{t("meals")}</span>
                   </li>
                   <li className="flex items-center gap-3">
                     <ArrowRight className="h-4 w-4 text-primary" />
-                    <span>{t("allLevels")}</span>
+                    <span className="text-white">{t("allLevels")}</span>
                   </li>
                   <li className="flex items-center gap-3">
                     <ArrowRight className="h-4 w-4 text-primary" />
-                    <span>{t("limitedSpots")}</span>
+                    <span className="text-white">{t("limitedSpots")}</span>
                   </li>
                 </ul>
 
@@ -1165,7 +1165,7 @@ export default function Home() {
             </div>
             <div className="grid grid-cols-2 gap-8 md:grid-cols-4 md:gap-16">
               <div className="flex flex-col gap-3">
-                <h4 className="footer-heading">{t("navigation")}</h4>
+                <h4 className="footer-heading text-white">{t("navigation")}</h4>
                 <Link href="#about" className="footer-link">
                   {t("about")}
                 </Link>
@@ -1184,14 +1184,14 @@ export default function Home() {
               </div>
 
               <div className="flex flex-col gap-3">
-                <h4 className="footer-heading">{t("contact")}</h4>
+                <h4 className="footer-heading text-white">{t("contact")}</h4>
                 <a href="mailto:themountaincampde@gmail.com" className="footer-link">
                   themountaincampde@gmail.com
                 </a>
               </div>
 
               <div className="flex flex-col gap-3">
-                <h4 className="footer-heading">{t("followUs")}</h4>
+                <h4 className="footer-heading text-white">{t("followUs")}</h4>
                 <div className="flex gap-4">
                   <a
                     href="https://www.instagram.com/the_mountaincamp/"
@@ -1241,7 +1241,7 @@ export default function Home() {
               </div>
 
               <div className="flex flex-col gap-3">
-                <h4 className="footer-heading">{t("legal")}</h4>
+                <h4 className="footer-heading text-white">{t("legal")}</h4>
                 <Link href="/datenschutz" className="footer-link">
                   {t("privacyPolicy")}
                 </Link>

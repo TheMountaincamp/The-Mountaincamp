@@ -162,14 +162,14 @@ export default function HousePage() {
               {facilities.map((facility, index) => (
                 <motion.div
                   key={index}
-                  className="bg-card p-6 border border-primary/20 hover:border-primary transition-all duration-300"
+                  className="bg-gray-800 p-6 border border-primary/20 hover:border-primary transition-all duration-300"
                   initial={{ opacity: 0, y: 20 }}
                   animate={{ opacity: isLoaded ? 1 : 0, y: isLoaded ? 0 : 20 }}
                   transition={{ duration: 0.5, delay: 0.3 + index * 0.1 }}
                   whileHover={{ y: -5, transition: { duration: 0.2 } }}
                 >
                   <div className="text-primary mb-4">{facility.icon}</div>
-                  <h3 className="text-xl font-bold mb-2">
+                  <h3 className="text-xl font-bold mb-2 text-white">
                     {typeof facility.title === "object" ? facility.title[t("language")] : facility.title}
                   </h3>
                   <p className="text-white/70 text-sm">{facility.description[t("language")]}</p>
