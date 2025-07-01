@@ -91,7 +91,7 @@ export default function BusDeparturesPage() {
       {/* Header with background image */}
       <div className="relative h-[50vh] min-h-[400px]">
         <Image
-          src="/images/alpine-landscape.jpeg"
+          src="/images/bus-transport-header.jpeg"
           alt="Bus transport to the mountains"
           fill
           className="object-cover"
@@ -107,7 +107,7 @@ export default function BusDeparturesPage() {
 
         <div className="absolute inset-0 flex flex-col items-center justify-center text-center p-6">
           <motion.h1
-            className="text-4xl md:text-6xl font-bold mb-4"
+            className="text-4xl md:text-6xl font-bold mb-4 text-white"
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: isLoaded ? 1 : 0, y: isLoaded ? 0 : 20 }}
             transition={{ duration: 0.8, delay: 0.2 }}
@@ -115,7 +115,7 @@ export default function BusDeparturesPage() {
             {language === "de" ? "BUS ANREISE" : "BUS TRANSPORT"}
           </motion.h1>
           <motion.p
-            className="text-xl md:text-2xl max-w-2xl text-white/80"
+            className="text-xl md:text-2xl max-w-2xl text-white/90"
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: isLoaded ? 1 : 0, y: isLoaded ? 0 : 20 }}
             transition={{ duration: 0.8, delay: 0.4 }}
@@ -149,7 +149,7 @@ export default function BusDeparturesPage() {
             transition={{ duration: 0.8 }}
             className="mb-16 text-center"
           >
-            <h2 className="text-3xl font-bold mb-6">
+            <h2 className="text-3xl font-bold mb-6 text-white">
               {language === "de" ? "Entspannt zum Mountaincamp" : "Relax on your way to The Mountaincamp"}
             </h2>
             <p className="text-white/80 mb-4 max-w-2xl mx-auto">
@@ -166,7 +166,7 @@ export default function BusDeparturesPage() {
             transition={{ duration: 0.8, delay: 0.2 }}
             className="mb-16"
           >
-            <h2 className="text-2xl font-bold mb-8 uppercase flex items-center gap-3">
+            <h2 className="text-2xl font-bold mb-8 uppercase flex items-center gap-3 text-white">
               <Bus className="h-6 w-6 text-primary" />
               {language === "de" ? "HINFAHRT - 6. AUGUST 2025" : "DEPARTURE - AUGUST 6, 2025"}
             </h2>
@@ -175,7 +175,7 @@ export default function BusDeparturesPage() {
               {busRoutes.map((route, index) => (
                 <motion.div
                   key={index}
-                  className="bg-card p-6 border border-primary/20 hover:border-primary transition-all duration-300 rounded-lg"
+                  className="bg-gray-800 p-6 border border-primary/20 hover:border-primary transition-all duration-300 rounded-lg"
                   initial={{ opacity: 0, y: 20 }}
                   animate={{ opacity: isLoaded ? 1 : 0, y: isLoaded ? 0 : 20 }}
                   transition={{ duration: 0.5, delay: 0.3 + index * 0.1 }}
@@ -185,7 +185,7 @@ export default function BusDeparturesPage() {
                     <div className="bg-primary/20 p-2 rounded-full">
                       <MapPin className="h-5 w-5 text-primary" />
                     </div>
-                    <h3 className="text-xl font-bold">{route.city}</h3>
+                    <h3 className="text-xl font-bold text-white">{route.city}</h3>
                   </div>
 
                   <div className="space-y-3">
@@ -193,8 +193,8 @@ export default function BusDeparturesPage() {
                       <Clock className="h-4 w-4" />
                       <span className="font-bold text-lg">{route.departure.time}</span>
                     </div>
-                    <p className="text-white/70 text-sm font-medium">{route.departure.location}</p>
-                    <p className="text-white/60 text-sm">{route.departure.description[language]}</p>
+                    <p className="text-white/80 text-sm font-medium">{route.departure.location}</p>
+                    <p className="text-white/70 text-sm">{route.departure.description[language]}</p>
                   </div>
                 </motion.div>
               ))}
@@ -208,23 +208,23 @@ export default function BusDeparturesPage() {
             transition={{ duration: 0.8, delay: 0.4 }}
             className="mb-16"
           >
-            <h2 className="text-2xl font-bold mb-8 uppercase flex items-center gap-3">
+            <h2 className="text-2xl font-bold mb-8 uppercase flex items-center gap-3 text-white">
               <Calendar className="h-6 w-6 text-primary" />
               {language === "de" ? "RÜCKFAHRT - 10. AUGUST 2025" : "RETURN - AUGUST 10, 2025"}
             </h2>
 
-            <div className="bg-card p-8 border border-primary/20 rounded-lg">
+            <div className="bg-gray-800 p-8 border border-primary/20 rounded-lg">
               <div className="space-y-6">
                 {returnSchedule.map((stop, index) => (
                   <motion.div
                     key={index}
-                    className="flex items-center gap-6 p-4 bg-black/30 rounded-lg"
+                    className="flex items-center gap-6 p-4 bg-gray-900/50 rounded-lg"
                     initial={{ opacity: 0, x: -20 }}
                     animate={{ opacity: isLoaded ? 1 : 0, x: isLoaded ? 0 : -20 }}
                     transition={{ duration: 0.5, delay: 0.5 + index * 0.1 }}
                   >
                     <div className="flex items-center justify-center w-16 h-16 bg-primary/20 rounded-full">
-                      <span className="text-primary font-bold">{stop.time}</span>
+                      <span className="text-primary font-bold text-sm">{stop.time}</span>
                     </div>
                     <div className="flex-1">
                       <h4 className="text-lg font-bold text-white">{stop.location}</h4>
@@ -246,12 +246,12 @@ export default function BusDeparturesPage() {
             transition={{ duration: 0.8, delay: 0.6 }}
             className="mb-16"
           >
-            <h2 className="text-2xl font-bold mb-8 uppercase">
+            <h2 className="text-2xl font-bold mb-8 uppercase text-white">
               {language === "de" ? "WICHTIGE INFORMATIONEN" : "IMPORTANT INFORMATION"}
             </h2>
 
             <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-              <div className="bg-card p-6 border border-primary/20 rounded-lg">
+              <div className="bg-gray-800 p-6 border border-primary/20 rounded-lg">
                 <h3 className="text-xl font-bold mb-4 text-primary">
                   {language === "de" ? "Buchung & Kosten" : "Booking & Costs"}
                 </h3>
@@ -270,12 +270,12 @@ export default function BusDeparturesPage() {
                   </li>
                   <li>• {language === "de" ? "Begrenzte Plätze verfügbar" : "Limited seats available"}</li>
                   <li>
-                    • {language === "de" ? "Buchung über unser Anmeldeformular" : "Booking über unser Anmeldeformular"}
+                    • {language === "de" ? "Buchung über unser Anmeldeformular" : "Booking via our registration form"}
                   </li>
                 </ul>
               </div>
 
-              <div className="bg-card p-6 border border-primary/20 rounded-lg">
+              <div className="bg-gray-800 p-6 border border-primary/20 rounded-lg">
                 <h3 className="text-xl font-bold mb-4 text-primary">
                   {language === "de" ? "Was mitbringen?" : "What to bring?"}
                 </h3>
@@ -298,7 +298,7 @@ export default function BusDeparturesPage() {
             transition={{ duration: 0.8, delay: 0.8 }}
             className="text-center bg-primary/10 p-8 rounded-lg border border-primary/20"
           >
-            <h3 className="text-2xl font-bold mb-4">
+            <h3 className="text-2xl font-bold mb-4 text-white">
               {language === "de" ? "Fragen zur Anreise?" : "Questions about transport?"}
             </h3>
             <p className="text-white/80 mb-6">
