@@ -23,12 +23,18 @@ const CRITICAL_IMAGES = [
 ]
 
 export const metadata: Metadata = {
-  title: "The Mountaincamp - Trailrunning, Community, Party",
+  title: "The Mountaincamp | #1 Trailrunning Camp in Österreichs Alpen",
   description:
-    "Trailrunning, Community, Party - Join the ultimate alpine adventure at The Mountaincamp 2025. Limited spots available. Book now and transform your running experience!",
+    "Erlebe das ultimative Trailrunning Camp in Österreich! The Mountaincamp 2025: Epische Trails, Community & Party in den Alpen. Für alle Levels. Jetzt Platz sichern!",
   keywords: [
+    "Trailrunning Camp",
+    "Trailrunning Camp Österreich",
+    "Lovetrails Festival",
+    "Laufcamp",
+    "Trailrunning Alpen",
+    "Berglauf Camp",
+    "Running Camp Austria",
     "The Mountaincamp",
-    "trailrunning",
     "trail running camp",
     "mountain running",
     "running community",
@@ -71,9 +77,9 @@ export const metadata: Metadata = {
     },
   },
   openGraph: {
-    title: "The Mountaincamp - Trailrunning, Community, Party",
+    title: "The Mountaincamp | Trailrunning Camp in Österreich",
     description:
-      "Experience the ultimate alpine adventure at The Mountaincamp. 4 nights, epic trails, unforgettable parties. Limited spots - secure yours today!",
+      "Das ultimative Trailrunning Camp in den österreichischen Alpen. 4 Nächte, epische Trails, Workshops & eine unvergessliche Community. Jetzt anmelden!",
     url: "https://themountaincamp.de",
     siteName: "The Mountaincamp",
     images: [
@@ -81,19 +87,13 @@ export const metadata: Metadata = {
         url: "/images/hero-trail-runners.jpeg",
         width: 1200,
         height: 630,
-        alt: "The Mountaincamp - Trail runners in the Austrian Alps",
+        alt: "Trailrunning Camp in den österreichischen Alpen - The Mountaincamp",
       },
       {
         url: "/images/mountain-rave.jpeg",
         width: 1200,
         height: 630,
-        alt: "Sunset Rave at The Mountaincamp - Party in the mountains",
-      },
-      {
-        url: "/images/trail-runner-1.jpeg",
-        width: 1200,
-        height: 630,
-        alt: "Trail running adventures at The Mountaincamp",
+        alt: "Sunset Rave Party beim Trailrunning Camp in den Bergen",
       },
     ],
     locale: "de_DE",
@@ -101,9 +101,9 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "The Mountaincamp - Trailrunning, Community, Party",
+    title: "The Mountaincamp | #1 Trailrunning Camp in Österreich",
     description:
-      "Experience the ultimate alpine adventure at The Mountaincamp. 4 nights, epic trails, unforgettable parties. Limited spots - secure yours today!",
+      "Bist du bereit für das Trailrunning Camp deines Lebens? Epische Trails, Community & Party in den Alpen. Für alle Levels. Sichere dir jetzt deinen Platz!",
     images: ["/images/hero-trail-runners.jpeg"],
     creator: "@themountaincamp",
     site: "@themountaincamp",
