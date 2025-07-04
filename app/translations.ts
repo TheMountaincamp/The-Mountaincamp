@@ -94,6 +94,7 @@ export const translations = {
     imprint: "Impressum",
     cookieSettings: "Cookie-Einstellungen",
     rights: "Alle Rechte vorbehalten",
+    agb: "AGB",
 
     // Mobile
     tapForDetails: "Tippen für Details",
@@ -221,6 +222,7 @@ export const translations = {
     imprint: "Imprint",
     cookieSettings: "Cookie Settings",
     rights: "All rights reserved",
+    agb: "Terms & Conditions",
 
     // Mobile
     tapForDetails: "Tap for details",

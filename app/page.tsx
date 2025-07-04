@@ -1310,6 +1310,9 @@ export default function Home() {
 
               <div className="flex flex-col gap-3">
                 <h4 className="footer-heading text-white">{t("legal")}</h4>
+                <Link href="/agb" className="footer-link">
+                  {t("agb")}
+                </Link>
                 <Link href="/datenschutz" className="footer-link">
                   {t("privacyPolicy")}
                 </Link>
