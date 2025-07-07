@@ -11,8 +11,11 @@ import ImagePreloader from "@/app/components/image-preloader"
 // Define critical images for the House page
 const CRITICAL_IMAGES = [
   "/images/mountain-lodge.jpeg",
-  "/images/alpine-landscape.jpeg",
-  "/images/trail-runner-1.jpeg",
+  "/images/house-room-view.jpeg",
+  "/images/house-dormitory.jpeg",
+  "/images/house-bathroom-sink.jpeg",
+  "/images/house-shower.jpeg",
+  "/images/house-toilet.jpeg",
   "/images/MTC-Logo_2025_weiß.png",
 ]
 
@@ -179,28 +182,79 @@ export default function HousePage() {
             <h2 className="text-2xl font-bold mb-8 uppercase">{t("roomsTitle")}</h2>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
               <div className="relative h-80 overflow-hidden rounded-lg">
-                <Image src="/images/alpine-landscape.jpeg" alt="Room" fill className="object-cover" />
+                <Image src="/images/house-room-view.jpeg" alt="Room with mountain view" fill className="object-cover" />
                 <div className="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent"></div>
                 <div className="absolute bottom-0 left-0 p-6">
-                  <h3 className="text-xl font-bold mb-2">{t("language") === "de" ? "Doppelzimmer" : "Double Room"}</h3>
+                  <h3 className="text-xl font-bold mb-2">
+                    {t("language") === "de" ? "Zimmer mit Bergblick" : "Room with Mountain View"}
+                  </h3>
                   <p className="text-white/80 text-sm">
                     {t("language") === "de"
-                      ? "Komfortable Zimmer mit zwei Einzelbetten oder einem Doppelbett"
-                      : "Comfortable rooms with twin beds or a double bed"}
+                      ? "Gemütliche Zimmer mit spektakulärem Blick auf die Alpen"
+                      : "Cozy rooms with spectacular views of the Alps"}
                   </p>
                 </div>
               </div>
               <div className="relative h-80 overflow-hidden rounded-lg">
-                <Image src="/images/trail-runner-1.jpeg" alt="Room" fill className="object-cover" />
+                <Image src="/images/house-dormitory.jpeg" alt="Shared dormitory room" fill className="object-cover" />
                 <div className="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent"></div>
                 <div className="absolute bottom-0 left-0 p-6">
                   <h3 className="text-xl font-bold mb-2">
-                    {t("language") === "de" ? "Mehrbettzimmer" : "Shared Room"}
+                    {t("language") === "de" ? "Mehrbettzimmer" : "Shared Dormitory"}
                   </h3>
                   <p className="text-white/80 text-sm">
                     {t("language") === "de"
-                      ? "Gemütliche Mehrbettzimmer für 4-6 Personen, perfekt für Gruppen"
-                      : "Cozy shared rooms for 6-8 people"}
+                      ? "Gemütliche Mehrbettzimmer für 6-8 Personen mit Bergblick"
+                      : "Cozy shared rooms for 6-8 people with mountain views"}
+                  </p>
+                </div>
+              </div>
+            </div>
+          </motion.div>
+
+          {/* Bathroom facilities section */}
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            animate={{ opacity: isLoaded ? 1 : 0, y: isLoaded ? 0 : 30 }}
+            transition={{ duration: 0.8, delay: 0.6 }}
+            className="mb-16"
+          >
+            <h2 className="text-2xl font-bold mb-8 uppercase">
+              {t("language") === "de" ? "BADEZIMMER & SANITÄRANLAGEN" : "BATHROOM & FACILITIES"}
+            </h2>
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+              <div className="relative h-64 overflow-hidden rounded-lg">
+                <Image
+                  src="/images/house-bathroom-sink.jpeg"
+                  alt="Modern bathroom with sink"
+                  fill
+                  className="object-cover"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent"></div>
+                <div className="absolute bottom-0 left-0 p-4">
+                  <h3 className="text-lg font-bold mb-1">{t("language") === "de" ? "Waschbereich" : "Wash Area"}</h3>
+                  <p className="text-white/80 text-sm">
+                    {t("language") === "de" ? "Moderne Waschbecken" : "Modern wash basins"}
+                  </p>
+                </div>
+              </div>
+              <div className="relative h-64 overflow-hidden rounded-lg">
+                <Image src="/images/house-shower.jpeg" alt="Clean shower facilities" fill className="object-cover" />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent"></div>
+                <div className="absolute bottom-0 left-0 p-4">
+                  <h3 className="text-lg font-bold mb-1">{t("language") === "de" ? "Duschen" : "Showers"}</h3>
+                  <p className="text-white/80 text-sm">
+                    {t("language") === "de" ? "Saubere Duschkabinen" : "Clean shower facilities"}
+                  </p>
+                </div>
+              </div>
+              <div className="relative h-64 overflow-hidden rounded-lg">
+                <Image src="/images/house-toilet.jpeg" alt="Modern toilet facilities" fill className="object-cover" />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent"></div>
+                <div className="absolute bottom-0 left-0 p-4">
+                  <h3 className="text-lg font-bold mb-1">{t("language") === "de" ? "WC" : "Toilets"}</h3>
+                  <p className="text-white/80 text-sm">
+                    {t("language") === "de" ? "Moderne Sanitäranlagen" : "Modern toilet facilities"}
                   </p>
                 </div>
               </div>
@@ -210,7 +264,7 @@ export default function HousePage() {
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: isLoaded ? 1 : 0, y: isLoaded ? 0 : 30 }}
-            transition={{ duration: 0.8, delay: 0.6 }}
+            transition={{ duration: 0.8, delay: 0.8 }}
             className="mb-16"
           >
             <h2 className="text-2xl font-bold mb-8 uppercase">{t("locationTitle")}</h2>
