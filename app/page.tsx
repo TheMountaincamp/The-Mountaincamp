@@ -1048,7 +1048,7 @@ export default function Home() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.8 }}
-              className="grid grid-cols-1 md:grid-cols-3 gap-12 items-center justify-items-center max-w-4xl mx-auto"
+              className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 items-center justify-items-center max-w-4xl mx-auto"
             >
               {/* Altra Logo */}
               <motion.a
@@ -1109,6 +1109,28 @@ export default function Home() {
                 <Image
                   src="/images/lebepur-logo.jpg"
                   alt="Lebepur"
+                  width={200}
+                  height={80}
+                  className="h-16 w-auto object-contain"
+                  unoptimized={true}
+                />
+              </motion.a>
+
+              {/* PowerBar Logo */}
+              <motion.a
+                href="https://www.powerbar.eu"
+                target="_blank"
+                rel="noopener noreferrer"
+                initial={{ opacity: 0, scale: 0.9 }}
+                whileInView={{ opacity: 1, scale: 1 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.6, delay: 0.4 }}
+                className="flex items-center justify-center p-8 bg-white rounded-lg shadow-md hover:shadow-lg transition-all duration-300 w-full h-32"
+                whileHover={{ y: -5 }}
+              >
+                <Image
+                  src="/images/powerbar-logo.png"
+                  alt="PowerBar"
                   width={200}
                   height={80}
                   className="h-16 w-auto object-contain"
