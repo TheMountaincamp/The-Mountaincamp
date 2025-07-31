@@ -92,8 +92,8 @@ export default function BusDeparturesPage() {
       {/* Header with background image */}
       <div className="relative h-[50vh] min-h-[400px]">
         <Image
-          src="/images/alpine-landscape.jpeg"
-          alt="Bus transport to the mountains"
+          src="/images/bus-mountain-landscape.jpeg"
+          alt="Bus transport through the mountains"
           fill
           className="object-cover"
           priority
