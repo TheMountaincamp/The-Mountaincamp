@@ -11,7 +11,7 @@ import ImagePreloader from "@/app/components/image-preloader"
 
 // Define critical images for the Trails page
 const CRITICAL_IMAGES = [
-  "/images/mountain-trail-runner.jpeg",
+  "/images/trails-header-group.jpeg", // New header image
   "/images/alpine-landscape.jpeg",
   "/images/trail-runner-1.jpeg",
   "/images/summit-view.jpeg",
@@ -170,8 +170,8 @@ export default function TrailsPage() {
       {/* Header with background image */}
       <div className="relative h-[50vh] min-h-[400px]">
         <Image
-          src="/images/mountain-trail-runner.jpeg"
-          alt="Trail running"
+          src="/images/trails-header-group.jpeg"
+          alt="Trail running group on mountain ridge at sunrise"
           fill
           className="object-cover"
           priority
