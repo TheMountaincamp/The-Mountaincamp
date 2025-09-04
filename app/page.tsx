@@ -4,19 +4,7 @@ import { useState, useEffect, useRef } from "react"
 import Image from "next/image"
 import Link from "next/link"
 import { motion, useScroll, useTransform, AnimatePresence } from "framer-motion"
-import {
-  Mountain,
-  Flame,
-  Sparkles,
-  Music,
-  ArrowRight,
-  ChevronDown,
-  Users,
-  Calendar,
-  MapPin,
-  Menu,
-  X,
-} from "lucide-react"
+import { Mountain, Flame, Sparkles, Music, ArrowRight, ChevronDown, Calendar, MapPin, Menu, X } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import { useMobile } from "@/hooks/use-mobile"
 import { useLanguage } from "@/contexts/language-context"
@@ -636,56 +624,9 @@ export default function Home() {
         </section>
 
         {/* Key features section */}
-        <section className="py-20 bg-black text-white">
-          <div className="container">
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-              <motion.div
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.6 }}
-                className="flex flex-col items-center text-center p-6"
-              >
-                <div className="mb-6 rounded-full bg-primary/20 p-4">
-                  <Mountain className="h-10 w-10 text-primary" />
-                </div>
-                <h3 className="text-xl font-bold mb-3 text-white">{t("epicTrails")}</h3>
-                <p className="text-white/80">{t("epicTrailsDesc")}</p>
-              </motion.div>
 
-              <motion.div
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.6, delay: 0.2 }}
-                className="flex flex-col items-center text-center p-6"
-              >
-                <div className="mb-6 rounded-full bg-primary/20 p-4">
-                  <Music className="h-10 w-10 text-primary" />
-                </div>
-                <h3 className="text-xl font-bold mb-3 text-white">{t("sunsetRave")}</h3>
-                <p className="text-white/80">{t("sunsetRaveDesc")}</p>
-              </motion.div>
-
-              <motion.div
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.6, delay: 0.4 }}
-                className="flex flex-col items-center text-center p-6"
-              >
-                <div className="mb-6 rounded-full bg-primary/20 p-4">
-                  <Users className="h-10 w-10 text-primary" />
-                </div>
-                <h3 className="text-xl font-bold mb-3 text-white">{t("community")}</h3>
-                <p className="text-white/80">{t("communityDesc")}</p>
-              </motion.div>
-            </div>
-          </div>
-        </section>
-
-        {/* About section with diagonal design */}
-        <section id="about" className="py-24 relative overflow-hidden bg-gray-50">
+        {/* About section */}
+        <section className="py-20 bg-white relative overflow-hidden">
           <div
             className="absolute top-0 left-0 w-full h-24 bg-black"
             style={{ clipPath: "polygon(0 0, 100% 0, 100% 100%, 0 0)" }}
