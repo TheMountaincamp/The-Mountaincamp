@@ -628,7 +628,7 @@ export default function Home() {
         {/* About section */}
         <section className="py-20 bg-white relative overflow-hidden">
           <div
-            className="absolute top-0 left-0 w-full h-24 bg-black"
+            className="absolute top-0 left-0 w-full h-24 bg-transparent"
             style={{ clipPath: "polygon(0 0, 100% 0, 100% 100%, 0 0)" }}
           ></div>
 
