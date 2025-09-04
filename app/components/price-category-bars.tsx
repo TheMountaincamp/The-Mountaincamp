@@ -99,9 +99,27 @@ export default function PriceCategoryBars() {
         </div>
 
         <div className="max-w-3xl mx-auto">
-          <PriceCategoryBar category="Price Category 1" filled={100} total={100} label="Sold out" status="sold-out" />
-          <PriceCategoryBar category="Price Category 2" filled={100} total={100} label="Sold out" status="sold-out" />
-          <PriceCategoryBar category="Price Category 3" filled={90} total={100} label="Available" status="available" />
+          <PriceCategoryBar
+            category="Price Category 1"
+            filled={0}
+            total={100}
+            label="Coming Soon"
+            status="coming-soon"
+          />
+          <PriceCategoryBar
+            category="Price Category 2"
+            filled={0}
+            total={100}
+            label="Coming Soon"
+            status="coming-soon"
+          />
+          <PriceCategoryBar
+            category="Price Category 3"
+            filled={0}
+            total={100}
+            label="Coming Soon"
+            status="coming-soon"
+          />
         </div>
       </div>
 

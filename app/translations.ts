@@ -32,10 +32,6 @@ export const translations = {
     aboutText2: "Alle Levels. Kein Leistungsdruck.\nEinfach raus, bewegen, abschalten.",
     aboutText3: "The Mountaincamp. Komm mit.",
 
-    // Countdown
-    countdownTitle: "Das nächste Camp beginnt in",
-    secureSpot: "Sichere dir deinen Platz",
-
     // Experience section
     experienceTitle: "Das Erlebnis",
     experienceSubtitle: "Alles inklusive in deinem unvergesslichen Abenteuer",
@@ -77,7 +73,7 @@ export const translations = {
     joinDate: "6.-10. August 2025",
     joinLocation: "Österreichische Alpen",
     accommodation: "4 Übernachtungen inklusive",
-    meals: "Alle Mahlzeiten inklusive",
+    meals: "Frühstück und Abendessen inklusive",
     allLevels: "Geeignet für alle Laufniveaus",
     limitedSpots: "Begrenzte Plätze verfügbar",
     packageTitle: "KOMPLETTPAKET",
@@ -159,10 +155,6 @@ export const translations = {
     aboutText2: "Built for every level.\nFor those chasing more than miles.",
     aboutText3: "Come run. Connect. Remember.\nThe Mountaincamp.",
 
-    // Countdown
-    countdownTitle: "The Next Camp Starts In",
-    secureSpot: "Secure Your Spot",
-
     // Experience section
     experienceTitle: "The Experience",
     experienceSubtitle: "Everything included in your unforgettable mountain adventure",
@@ -205,7 +197,7 @@ export const translations = {
     joinDate: "August 6-10, 2025",
     joinLocation: "Austrian Alps",
     accommodation: "4 nights accommodation included",
-    meals: "All meals included",
+    meals: "Breakfast and Dinner included",
     allLevels: "Suitable for all running levels",
     limitedSpots: "Limited spots available",
     packageTitle: "WHOLE PACKAGE",

@@ -13,14 +13,20 @@ const LanguageContext = createContext<LanguageContextType | undefined>(undefined
 
 export function LanguageProvider({ children }: { children: ReactNode }) {
   const [language, setLanguage] = useState<Language>("en")
+  const [mounted, setMounted] = useState(false)
 
-  // Funktion zum Übersetzen von Texten
   const t = (key: TranslationKey): string => {
     return translations[language][key] || translations.en[key] || key
   }
 
-  // Speichern der Spracheinstellung im localStorage
+  const contextValue: LanguageContextType = {
+    language,
+    setLanguage,
+    t,
+  }
+
   useEffect(() => {
+    setMounted(true)
     if (typeof window !== "undefined") {
       const savedLanguage = localStorage.getItem("language") as Language
       if (savedLanguage && (savedLanguage === "de" || savedLanguage === "en")) {
@@ -30,12 +36,12 @@ export function LanguageProvider({ children }: { children: ReactNode }) {
   }, [])
 
   useEffect(() => {
-    if (typeof window !== "undefined") {
+    if (mounted && typeof window !== "undefined") {
       localStorage.setItem("language", language)
     }
-  }, [language])
+  }, [language, mounted])
 
-  return <LanguageContext.Provider value={{ language, setLanguage, t }}>{children}</LanguageContext.Provider>
+  return <LanguageContext.Provider value={contextValue}>{children}</LanguageContext.Provider>
 }
 
 export function useLanguage() {

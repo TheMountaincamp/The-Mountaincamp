@@ -23,16 +23,15 @@ import { useLanguage } from "@/contexts/language-context"
 
 // Import components
 import FeatureCard from "@/app/components/feature-card"
-import TestimonialCard from "@/app/components/testimonial-card"
 import SectionTitle from "@/app/components/section-title"
-import CountdownTimer from "@/app/components/countdown-timer"
 import ActivityCardMobile from "@/app/components/activity-card-mobile"
 import LanguageSwitcher from "@/app/components/language-switcher"
 import PriceCategoryBars from "@/app/components/price-category-bars"
 import ImageWithFallback from "@/app/components/image-with-fallback"
 import ImagePreloader from "@/app/components/image-preloader"
 import PreloadLink from "@/app/components/preload-link"
-import CookieSettingsButton from "@/app/components/cookie-settings-button"
+import { useScrollVideo } from "@/hooks/use-scroll-video"
+import TestimonialSlider from "@/app/components/testimonial-slider"
 
 // Define critical images for sections that will be visible later
 const SECTION_IMAGES = [
@@ -55,6 +54,11 @@ const TRAILS_PAGE_IMAGES = ["/images/mountain-trail-runner.jpeg", "/images/trail
 
 export default function Home() {
   const { t, language } = useLanguage()
+  const isMobile = useMobile()
+  const [isMenuOpen, setIsMenuOpen] = useState(false)
+  const [expandedActivities, setExpandedActivities] = useState<{ [key: number]: boolean }>({})
+  const [scrollY, setScrollY] = useState(0)
+  const [currentActivityIndex, setCurrentActivityIndex] = useState(0)
   const [isPreloading, setIsPreloading] = useState(true)
 
   // Preload section images after the page has loaded
@@ -135,10 +139,7 @@ export default function Home() {
   }, [])
 
   // Detect if on mobile
-  const isMobile = useMobile()
-
-  // Camp start date: August 6, 2025
-  const campStartDate = new Date("2025-08-06T00:00:00")
+  // const isMobile = useMobile()
 
   // Mobile menu state
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
@@ -152,6 +153,7 @@ export default function Home() {
 
   const heroTextY = useTransform(scrollYProgress, [0, 1], [0, 120])
   const heroOpacity = useTransform(scrollYProgress, [0, 0.6], [1, 0])
+  const heroScale = useTransform(scrollYProgress, [0, 1], [1.1, 1.3])
 
   // Intersection observer for animations
   const [hasScrolled, setHasScrolled] = useState(false)
@@ -168,7 +170,7 @@ export default function Home() {
   }, [hasScrolled])
 
   // State to track if the activity card is expanded on mobile
-  const [expandedActivities, setExpandedActivities] = useState<Record<number, boolean>>({})
+  // const [expandedActivities, setExpandedActivities] = useState<Record<number, boolean>>({})
 
   const toggleActivity = (index: number) => {
     setExpandedActivities((prevState) => ({
@@ -177,47 +179,95 @@ export default function Home() {
     }))
   }
 
-  // Testimonial data
   const testimonials = [
     {
-      quote: "The overall organisation of the whole stay there, really good! All the friendly faces, the nature etc.",
-      name: "Sarah K.",
-      role: "Intermediate Runner",
+      quote:
+        "Overall, it was my first experience trail running and I loved it – the running, the people, the amazing scenery etc.",
+      name: "Trail Runner",
+    },
+    {
+      quote: "Bringing the people together and sharing the pain/fun during the run was a great experience.",
+      name: "Community Member",
+    },
+    {
+      quote: "Great atmosphere, amazing mountains, a lot of activities offered.",
+      name: "Mountain Lover",
+    },
+    {
+      quote: "Got me hooked on trail running hobby and made unique, lovely, crazy friends.",
+      name: "New Trail Runner",
     },
     {
       quote:
-        "I loved the experience as a whole, but what stood out was the variety in not only runs, but generally activities, there was always something exciting happening!",
-      name: "Michael T.",
-      role: "Advanced Runner",
-    },
-    {
-      quote: "The location was spectacular, the organisation was really detailed.",
-      name: "Emma L.",
-      role: "Beginner Runner",
+        "Being able to do great sport activities all day from early morning to late night with super nice friends! Thank you!",
+      name: "Active Participant",
     },
     {
       quote:
-        "The opportunities to do different routes, activities and always meeting different people. The area is awesome and the house is very nice. Loved the sauna / lounge area a lot and the flexibility we had.",
-      name: "David R.",
-      role: "Trailrunning Enthusiast",
+        "Thank you. Just thank you, Jonas. You are doing great. It will be the greatest Trailcamp in the World soon.",
+      name: "Grateful Runner",
+    },
+    {
+      quote:
+        "Just a big thank you – I had the best time! Overall an amazing experience, definitely one of the highlights of this year!",
+      name: "Happy Camper",
+    },
+    {
+      quote:
+        "Thanks Jonas for organising, the last few days have been truly amazing, I was able to combine community, trail running and hard training!",
+      name: "Dedicated Athlete",
+    },
+    {
+      quote: "Many thanks for the organisation and the great time! Was purely amazing ☺️",
+      name: "Satisfied Participant",
+    },
+    {
+      quote: "I loved the Mountaincamp 2025 really much and I am proud of everybody!!!",
+      name: "Proud Member",
     },
   ]
 
-  // Gallery images
   const galleryImages = [
-    { src: "/images/trail-runner-1.jpeg", alt: "Trailrunner in the Alps", caption: "Alpine Trails" },
-    { src: "/images/summit-view.jpeg", alt: "Summit view", caption: "Summit Views" },
-    { src: "/images/canoeing-activity.jpeg", alt: "Canoeing on alpine lake", caption: "Lake Activities" },
-    { src: "/images/table-tennis.png", alt: "Table tennis", caption: "Community Activities" },
-    { src: "/images/summit-trail.jpeg", alt: "Trail to summit", caption: "Mountain Peaks" },
-    { src: "/images/alpine-landscape.jpeg", alt: "Alpine landscape", caption: "Alpine Beauty" },
+    {
+      src: "/images/camp-social-gathering.jpg",
+      alt: "Camp participants socializing on lodge terrace",
+      caption: "Community Vibes",
+    },
+    {
+      src: "/images/lodge-group-start.jpg",
+      alt: "Group of runners gathered at mountain lodge",
+      caption: "Ready to Run",
+    },
+    {
+      src: "/images/terrace-community-time.jpg",
+      alt: "Large group gathering on lodge terrace at sunset",
+      caption: "Mountain Community",
+    },
+    {
+      src: "/images/trail-runners-mountain-path.jpg",
+      alt: "Two female trail runners on mountain path",
+      caption: "Trail Adventures",
+    },
+    { src: "/images/runner-golden-meadow.jpg", alt: "Runner in golden mountain meadow", caption: "Mountain Freedom" },
+    {
+      src: "/images/mountain-trail-aerial.jpg",
+      alt: "Aerial view of runners on mountain trail",
+      caption: "Epic Trails",
+    },
+    { src: "/images/forest-runner-celebration.jpg", alt: "Joyful runner celebrating in forest", caption: "Pure Joy" },
+    { src: "/images/lodge-terrace-relaxation.jpg", alt: "Campers relaxing on lodge terrace", caption: "Recovery Time" },
+    {
+      src: "/images/peaceful-terrace-moment.jpg",
+      alt: "Person relaxing under umbrella on mountain lodge terrace",
+      caption: "Peaceful Moments",
+    },
   ]
 
   // Activities data
   const activities = [
     {
       title: "Trailrunning Technique",
-      image: "/images/mountain-trail-runner.jpeg",
+      image: "/images/trailrunning-technique-class.jpg",
       description: "Learn proper trailrunning techniques from experienced coaches on beautiful alpine trails.",
     },
     {
@@ -234,11 +284,6 @@ export default function Home() {
       title: "Movie Night",
       image: "/images/movie-night.png",
       description: "Relax and enjoy inspiring outdoor and adventure films under the stars with fellow campers.",
-    },
-    {
-      title: "Backflip Lesson",
-      image: "/images/backflip-lesson.png",
-      description: "Challenge yourself with guided backflip lessons in a safe environment - for the adventurous!",
     },
     {
       title: "Canoeing",
@@ -292,6 +337,16 @@ export default function Home() {
     setMobileMenuOpen(!mobileMenuOpen)
   }
 
+  const { videoRef, isVideoLoaded } = useScrollVideo()
+
+  const nextActivity = () => {
+    setCurrentActivityIndex((prev) => (prev + 1) % activities.length)
+  }
+
+  const prevActivity = () => {
+    setCurrentActivityIndex((prev) => (prev - 1 + activities.length) % activities.length)
+  }
+
   return (
     <div className="flex min-h-screen flex-col bg-background text-foreground">
       {/* Preload section images in the background */}
@@ -304,24 +359,14 @@ export default function Home() {
           <div className="flex items-center">
             <div className={`relative ${isMobile ? "w-32 h-10" : "w-auto h-14"}`}>
               <ImageWithFallback
-                src="/images/MTC-Logo_2025.png"
+                src="/images/favicon_weiß.png"
                 alt="The Mountaincamp Logo"
-                width={1000}
-                height={400}
-                className={`h-full w-auto object-contain transition-opacity duration-300 opacity-0`}
+                width={200}
+                height={200}
+                className="h-full w-auto object-contain transition-opacity duration-300 opacity-100"
                 priority
                 unoptimized={true}
-                fallbackSrc="/placeholder.svg?height=400&width=1000&text=MTC"
-              />
-              <ImageWithFallback
-                src="/images/MTC-Logo_2025_weiß.png"
-                alt="The Mountaincamp Logo"
-                width={1000}
-                height={400}
-                className="absolute top-0 left-0 h-full w-auto object-contain transition-opacity duration-300 opacity-100"
-                priority
-                unoptimized={true}
-                fallbackSrc="/placeholder.svg?height=400&width=1000&text=MTC"
+                fallbackSrc="/placeholder.svg?height=200&width=200&text=MTC"
               />
             </div>
           </div>
@@ -471,18 +516,21 @@ export default function Home() {
       </AnimatePresence>
 
       <main className="flex-1">
-        {/* Hero section with parallax effect */}
+        {/* Hero section with scroll-driven video */}
         <section ref={heroRef} className="relative h-screen overflow-hidden">
           <div className="absolute inset-0">
-            <Image
-              src="/images/hero-trail-runners.jpeg"
-              alt="Trail runners in the Austrian Alps"
-              fill
-              className="object-cover"
-              priority
-              fetchPriority="high"
-              unoptimized={true}
-            />
+            <motion.div style={{ scale: heroScale }} className="h-full w-full">
+              <Image
+                src="/images/main-group-photo.jpg"
+                alt="Mountain Training Camp group photo with participants at the alpine facility"
+                fill
+                className="object-cover object-center"
+                priority
+                fetchPriority="high"
+                unoptimized={true}
+              />
+            </motion.div>
+
             <div className="absolute inset-0 bg-gradient-to-b from-black/50 via-black/30 to-black/60" />
           </div>
 
@@ -496,7 +544,7 @@ export default function Home() {
               transition={{ delay: 0.2, duration: 0.8 }}
               className="mb-6 inline-block border border-primary px-4 py-2"
             >
-              <span className="text-sm font-medium uppercase tracking-widest">{t("heroDate")}</span>
+              <span className="text-sm font-medium uppercase tracking-widest">Date coming soon</span>
             </motion.div>
 
             <motion.div
@@ -695,7 +743,7 @@ export default function Home() {
                       <div className="rounded-full bg-primary/20 p-2">
                         <Calendar className="h-5 w-5 text-primary" />
                       </div>
-                      <span className="font-medium text-gray-900">{t("heroDate")}</span>
+                      <span className="font-medium text-gray-900">Date coming soon</span>
                     </div>
                     <div className="flex items-center gap-3">
                       <div className="rounded-full bg-primary/20 p-2">
@@ -735,30 +783,6 @@ export default function Home() {
         </section>
 
         {/* Countdown section with animated background */}
-        <section className="py-24 bg-white text-gray-900 relative overflow-hidden">
-          <div className="absolute inset-0 opacity-20">
-            <div className="absolute top-0 left-0 w-full h-full bg-[radial-gradient(circle_at_center,_var(--tw-gradient-stops))] from-primary/30 via-transparent to-transparent"></div>
-            <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[500px] h-[500px] rounded-full bg-primary/20 blur-3xl"></div>
-          </div>
-
-          <div className="container relative z-10">
-            <motion.div
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.8 }}
-              className="mx-auto max-w-2xl text-center"
-            >
-              <h2 className="section-title mb-8 text-gray-900">{t("countdownTitle")}</h2>
-              <CountdownTimer targetDate={campStartDate} />
-              <div className="mt-12">
-                <Button size="lg" className="bg-primary hover:bg-primary/80 text-white text-lg px-8" asChild>
-                  <Link href="#register">{t("secureSpot")}</Link>
-                </Button>
-              </div>
-            </motion.div>
-          </div>
-        </section>
 
         {/* Experience section with animated cards */}
         <section id="experience" className="py-24 bg-gray-50">
@@ -874,59 +898,71 @@ export default function Home() {
           <div className="container">
             <SectionTitle title={t("activitiesTitle")} subtitle={t("activitiesSubtitle")} align="center" light={true} />
 
-            <div className="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
-              {activities.map((activity, index) =>
-                isMobile ? (
+            <div className="relative max-w-2xl mx-auto">
+              {/* Activity Card */}
+              <motion.div
+                key={currentActivityIndex}
+                initial={{ opacity: 0, x: 100 }}
+                animate={{ opacity: 1, x: 0 }}
+                exit={{ opacity: 0, x: -100 }}
+                transition={{ duration: 0.5 }}
+                className="relative"
+              >
+                {isMobile ? (
                   <ActivityCardMobile
-                    key={index}
-                    title={activity.title}
-                    description={activity.description}
-                    image={activity.image}
+                    title={activities[currentActivityIndex].title}
+                    description={activities[currentActivityIndex].description}
+                    image={activities[currentActivityIndex].image}
                   />
                 ) : (
-                  <motion.div
-                    key={index}
-                    initial={{ opacity: 0, scale: 0.9 }}
-                    whileInView={{ opacity: 1, scale: 1 }}
-                    viewport={{ once: true }}
-                    transition={{ duration: 0.5, delay: index * 0.05 }}
-                    className="activity-card aspect-square group"
-                    onClick={() => {
-                      if (window.innerWidth < 768) {
-                        toggleActivity(index)
-                      }
-                    }}
-                  >
+                  <div className="activity-card aspect-square group mx-auto max-w-md">
                     <Image
-                      src={activity.image || "/placeholder.svg"}
-                      alt={activity.title}
+                      src={activities[currentActivityIndex].image || "/placeholder.svg"}
+                      alt={activities[currentActivityIndex].title}
                       fill
                       className="object-cover transition-transform duration-700 group-hover:scale-110"
                       unoptimized={true}
                     />
-                    <div
-                      className={`activity-card-overlay 
-                        ${expandedActivities[index] ? "opacity-90" : "opacity-80 group-hover:opacity-90"}`}
-                    />
+                    <div className="activity-card-overlay opacity-80 group-hover:opacity-90" />
                     <div className="activity-card-content">
-                      <h3 className="text-xl font-bold text-white">{activity.title}</h3>
-                      <p
-                        className={`text-sm text-white/90 transition-all duration-300 
-                          ${
-                            expandedActivities[index]
-                              ? "max-h-32 mt-2 overflow-y-auto"
-                              : "max-h-0 overflow-hidden md:group-hover:max-h-20 md:group-hover:mt-2"
-                          }`}
-                      >
-                        {activity.description}
+                      <h3 className="text-2xl font-bold text-white">{activities[currentActivityIndex].title}</h3>
+                      <p className="text-base text-white/90 mt-4 max-h-32 overflow-y-auto">
+                        {activities[currentActivityIndex].description}
                       </p>
-                      <div className="md:hidden mt-2 text-xs text-white/70">
-                        {expandedActivities[index] ? t("tapToClose") : t("tapForDetails")}
-                      </div>
                     </div>
-                  </motion.div>
-                ),
-              )}
+                  </div>
+                )}
+              </motion.div>
+
+              <button
+                onClick={prevActivity}
+                className="absolute left-4 top-1/2 -translate-y-1/2 bg-black/60 backdrop-blur-sm hover:bg-black/80 text-white p-4 rounded-full transition-all duration-300 z-10 shadow-lg border border-white/20"
+                aria-label="Previous activity"
+              >
+                <ChevronDown className="w-8 h-8 rotate-90" />
+              </button>
+
+              <button
+                onClick={nextActivity}
+                className="absolute right-4 top-1/2 -translate-y-1/2 bg-black/60 backdrop-blur-sm hover:bg-black/80 text-white p-4 rounded-full transition-all duration-300 z-10 shadow-lg border border-white/20"
+                aria-label="Next activity"
+              >
+                <ChevronDown className="w-8 h-8 -rotate-90" />
+              </button>
+
+              {/* Dots Indicator */}
+              <div className="flex justify-center mt-8 gap-2">
+                {activities.map((_, index) => (
+                  <button
+                    key={index}
+                    onClick={() => setCurrentActivityIndex(index)}
+                    className={`w-3 h-3 rounded-full transition-all duration-300 ${
+                      index === currentActivityIndex ? "bg-primary scale-125" : "bg-gray-300 hover:bg-gray-400"
+                    }`}
+                    aria-label={`Go to activity ${index + 1}`}
+                  />
+                ))}
+              </div>
             </div>
           </div>
         </section>
@@ -964,24 +1000,14 @@ export default function Home() {
           </div>
         </section>
 
-        {/* Testimonials section with improved cards */}
         <section id="testimonials" className="py-24 relative overflow-hidden bg-white">
           <div className="absolute top-0 left-0 w-full h-full bg-[radial-gradient(ellipse_at_top_right,_var(--tw-gradient-stops))] from-primary/10 via-transparent to-transparent"></div>
 
           <div className="container relative z-10">
             <SectionTitle title={t("testimonialsTitle")} align="center" light={true} />
 
-            <div className="grid gap-8 md:grid-cols-2">
-              {testimonials.map((testimonial, index) => (
-                <motion.div
-                  key={index}
-                  initial={{ opacity: 0, y: 30 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.5, delay: index * 0.1 }}
-                >
-                  <TestimonialCard quote={testimonial.quote} light={true} />
-                </motion.div>
-              ))}
+            <div className="max-w-4xl mx-auto">
+              <TestimonialSlider testimonials={testimonials} autoPlay={true} interval={6000} />
             </div>
 
             {/* Spotify Playlist Section */}
@@ -1153,7 +1179,7 @@ export default function Home() {
               >
                 <h2 className="text-4xl font-bold uppercase tracking-tight mb-6 text-white">{t("joinTitle")}</h2>
                 <p className="text-xl mb-8 text-white">
-                  {t("heroDate")}
+                  Coming Soon
                   <br />
                   {language === "de" ? "Österreichische Alpen" : "Austrian Alps"}
                 </p>
@@ -1176,14 +1202,12 @@ export default function Home() {
                   </li>
                 </ul>
 
-                {/* Price tag */}
                 <div className="mt-12 inline-block">
                   <div className="bg-primary px-6 py-3 rounded-t-lg">
                     <span className="text-sm font-medium text-white uppercase">{t("packageTitle")}</span>
                   </div>
                   <div className="bg-gray-800 px-6 py-4 rounded-b-lg">
-                    <span className="text-3xl font-bold text-white">€420</span>
-                    <span className="text-white/70 ml-2">{t("perPerson")}</span>
+                    <span className="text-3xl font-bold text-white">Coming Soon</span>
                   </div>
                 </div>
               </motion.div>
@@ -1195,38 +1219,12 @@ export default function Home() {
                 transition={{ duration: 0.8 }}
               >
                 <div className="bg-gray-800 p-8 text-white rounded-xl border border-gray-700">
-                  <h3 className="text-2xl font-bold uppercase mb-6">
-                    <a
-                      href="https://my.camps.digital/masken/buchungen/vuejs?&vendor=mountaincamp&destination_id=1475&termin_id=35113#/"
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="text-primary hover:underline transition-colors"
-                    >
-                      {t("bookSpot")}
-                    </a>
-                  </h3>
-                  <p className="text-white/70 mb-6">{t("bookDesc")}</p>
-                  <Button
-                    className="w-full bg-primary hover:bg-primary-dark transition-colors text-white py-3 text-lg rounded-md"
-                    asChild
-                  >
-                    <a
-                      href="https://my.camps.digital/masken/buchungen/vuejs?&vendor=mountaincamp&destination_id=1475&termin_id=35113#/"
-                      target="_blank"
-                      rel="noopener noreferrer"
-                    >
-                      {t("registerNow")}
-                    </a>
-                  </Button>
-                  {/* Add the bus transfer button here */}
-                  <Button
-                    className="w-full mt-4 bg-gray-700 hover:bg-primary/20 text-white py-3 text-lg rounded-md border border-gray-600 transition-colors"
-                    asChild
-                  >
-                    <Link href="/bus-departures">
-                      {language === "de" ? "Bus Anreise Details" : "Bus Transfer Details"}
-                    </Link>
-                  </Button>
+                  <h3 className="text-2xl font-bold uppercase mb-6 text-center text-white">Coming Soon</h3>
+                  <p className="text-white/70 mb-6 text-center">
+                    {language === "de"
+                      ? "Die Buchung wird bald verfügbar sein. Bleiben Sie dran für weitere Updates!"
+                      : "Booking will be available soon. Stay tuned for updates!"}
+                  </p>
                 </div>
               </motion.div>
             </div>
@@ -1313,7 +1311,7 @@ export default function Home() {
                     aria-label="Spotify"
                   >
                     <svg className="h-6 w-6" fill="currentColor" viewBox="0 0 24 24">
-                      <path d="M12 0C5.4 0 0 5.4 0 12s5.4 12 12 12 12-5.4 12-12S18.66 0 12 0zm5.521 17.34c-.24.359-.66.48-1.021.24-2.82-1.74-6.36-2.101-10.561-1.141-.418.122-.779-.179-.899-.539-.12-.421.18-.78.54-.9 4.56-1.021 8.52-.6 11.64 1.32.42.18.479.659.301 1.02zm1.44-3.3c-.301.42-.841.6-1.262.3-3.239-1.98-8.159-2.58-11.939-1.38-.479.12-1.02-.12-1.14-.6-.12-.48.12-1.021.6-1.141C9.6 9.9 15 10.561 18.72 12.84c.361.181.54.78.241 1.2zm.12-3.36C15.24 8.4 8.82 8.16 5.16 9.301c-.6.179-1.2-.181-1.38-.721-.18-.601.18-1.2.72-1.381 4.26-1.26 11.28-1.02 15.721 1.621.539.3.719 1.02.42 1.56-.299.421-1.02.599-1.559.3z" />
+                      <path d="M12 0C5.4 0 0 5.4 0 12s5.4 12 12 12 12-5.4 12-12S18.66 0 12 0zm5.521 17.34c-.24.359-.66.48-1.021.24-2.82-1.74-6.36-2.101-10.561-1.141-.418.122-.779-.179-.899-.539-.12-.421.18-.78.54-.9 4.56-1.021 8.52-.6 11.64 1.32.42.18.479.659.301 1.02zm1.44-3.3c-.301.42-.841.6-1.262.3-3.239-1.98-8.159-2.58-11.939-1.38-.479.12-1.02-.12-1.14-.6-.12-.48.12-1.021.6-1.141C9.6 9.9 15 10.561 18.72 12.84c.361.181.54.78.241 1.2zm.12-3.36C15.24 8.4 8.82 8.16 5.16 9.301c-.6.179-1.2-.181-1.38-.721-.18-.601.18-1.2.72-.181 4.26-1.26 11.28-1.02 15.721 1.621.539.3.719 1.02.42 1.56-.299.421-1.02.599-1.559.3z" />
                     </svg>
                   </a>
                   <a
@@ -1324,7 +1322,7 @@ export default function Home() {
                     aria-label="TikTok"
                   >
                     <svg className="h-6 w-6" fill="currentColor" viewBox="0 0 24 24">
-                      <path d="M12.525.02c1.31-.02 2.61-.01 3.91-.02.08 1.53.63 3.09 1.75 4.17 1.12 1.11 2.7 1.62 4.24 1.79v4.03c-1.44-.05-2.89-.35-4.2-.97-.57-.26-1.1-.59-1.62-.93-.01 2.92.01 5.84-.02 8.75-.08 1.4-.54 2.79-1.35 3.94-1.31 1.92-3.58 3.17-5.91 3.21-1.43.08-2.86-.31-4.08-1.03-2.02-1.19-3.44-3.37-3.65-5.71-.02-.5-.03-1-.01-1.49.18-1.9 1.12-3.72 2.58-4.96 1.66-1.44 3.98-2.13 6.15-1.72.02 1.48-.04 2.96-.04 4.44-.99-.32-2.15-.23-3.02.37-.63.41-1.11 1.04-1.36 1.75-.21.51-.15 1.07-.14 1.61.24.67.62 1.32 1.24 1.76.84.6 1.91.75 2.91.46.01-1.49.01-2.99.01-4.48s.01-2.99.01-4.48c0-1.63-.8-3.2-2.1-4.25-1.07-.87-2.44-1.26-3.81-1.15-2.9.24-5.22 2.7-5.22 5.61 0 .33 0 .66-.02.99.02.33.02.66.04.99.04.6.18 1.19.42 1.74.49 1.11 1.44 2 2.66 2.46.6.22 1.23.34 1.86.36.02-1.48.04-2.96.04-4.44-.01-.46.24-.9.67-1.11.43-.21.93-.21 1.37 0 .43.21.67.65.67 1.11v8.94c-2.12-.2-4.22-1-5.8-2.5-1.58-1.5-2.55-3.6-2.55-5.8 0-4.54 3.7-8.24 8.24-8.24.2 0 .4 0 .6.02z" />
+                      <path d="M12.525.02c1.31-.02 2.61-.01 3.91-.02.08 1.53.63 3.09 1.75 4.17 1.12 1.11 2.7 1.62 4.24 1.79v4.03c-1.44-.05-2.89-.35-4.2-.97-.57-.26-1.1-.59-1.62-.93-.01 2.92.01 5.84-.02 8.75-.08 1.4-.54 2.79-1.35 3.94-1.31 1.92-3.58 3.17-5.91 3.21-1.43.08-2.86-.31-4.08-1.03-2.02-1.19-3.44-3.37-3.65-5.71-.02-.5-.03-1-.01-1.49.18-1.9 1.12-3.72 2.58-4.96 1.66-1.44 3.98-2.13 6.15-1.72.02 1.48-.04 2.96-.04 4.44-.99-.32-2.15-.23-3.02.37-.63.41-1.11 1.04-1.36 1.75-.21.51-.15 1.07-.14 1.61.24.67.62 1.32 1.24 1.76.84.6 1.91.75 2.91.46.01-1.49.01-2.99.01-4.48s.01-2.99.01-4.48c0-1.63-.8-3.2-2.1-4.25-1.07-.87-2.44-1.26-3.81-1.15-2.9.24-5.22 2.7-5.22 5.61 0 .33 0 .66-.02.99.02.33.02.66.04.99.04.6.18 1.19.42 1.74.49 1.11 1.44 2 2.66 2.46.6.22 1.23.34 1.86.36.02-1.48.04-2.96.04-4.44-.01-.46.24-.9.6-1.2.36-.3.84-.42 1.29-.32.41.1.74.42.86.83.19.61.42 1.19.66 1.77.34 1.04.83 2.06 1.51 2.86 1.3 1.54 3.33 2.46 5.41 2.54 1.24.01 2.48-.15 3.64-.51 0-.01 0 0 0 0z" />
                     </svg>
                   </a>
                 </div>
@@ -1332,24 +1330,17 @@ export default function Home() {
 
               <div className="flex flex-col gap-3">
                 <h4 className="footer-heading text-white">{t("legal")}</h4>
-                <Link href="/agb" className="footer-link">
-                  {t("agb")}
+                <Link href="/legal-notice" className="footer-link">
+                  {language === "de" ? "Impressum" : "Legal Notice"}
                 </Link>
-                <Link href="/datenschutz" className="footer-link">
-                  {t("privacyPolicy")}
+                <Link href="/privacy-policy" className="footer-link">
+                  {language === "de" ? "Datenschutz" : "Privacy Policy"}
                 </Link>
-                <Link href="/impressum" className="footer-link">
-                  {t("imprint")}
-                </Link>
-                <CookieSettingsButton />
               </div>
             </div>
           </div>
-
-          <div className="mt-12 border-t border-white/10 pt-8 text-center text-sm text-white/60">
-            <p>
-              &copy; {new Date().getFullYear()} The Mountaincamp. {t("rights")}.
-            </p>
+          <div className="text-center text-white/60">
+            &copy; {new Date().getFullYear()} The Mountaincamp. {t("allRightsReserved")}
           </div>
         </div>
       </footer>
