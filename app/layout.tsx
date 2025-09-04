@@ -19,7 +19,7 @@ const CRITICAL_IMAGES = [
   "/images/MTC-Logo_2025.png",
   "/images/MTC-Logo_2025_weiß.png",
   "/images/trail-runner-1.jpeg",
-  "/images/mountain-rave.jpeg",
+  "/images/mountain-top-sunset-rave.jpg",
 ]
 
 export const metadata: Metadata = {
@@ -90,7 +90,7 @@ export const metadata: Metadata = {
         alt: "Trailrunning Camp in den österreichischen Alpen - The Mountaincamp",
       },
       {
-        url: "/images/mountain-rave.jpeg",
+        url: "/images/mountain-top-sunset-rave.jpg",
         width: 1200,
         height: 630,
         alt: "Sunset Rave Party beim Trailrunning Camp in den Bergen",

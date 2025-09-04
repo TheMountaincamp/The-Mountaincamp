@@ -96,7 +96,7 @@ export default function Home() {
         },
         image: [
           "https://themountaincamp.de/images/hero-trail-runners.jpeg",
-          "https://themountaincamp.de/images/mountain-rave.jpeg",
+          "https://themountaincamp.de/images/mountain-top-sunset-rave.jpg",
           "https://themountaincamp.de/images/trail-runner-1.jpeg",
         ],
         offers: {
@@ -327,7 +327,7 @@ export default function Home() {
     },
     {
       title: "Sunset Rave",
-      image: "/images/mountain-rave.jpeg",
+      image: "/images/mountain-top-sunset-rave.jpg",
       description: "Dance to great music with spectacular mountain views at our legendary sunset party.",
     },
   ]
@@ -684,37 +684,6 @@ export default function Home() {
           </div>
         </section>
 
-        {/* Altra Shoe Testing Banner */}
-        <section className="relative py-16 bg-primary overflow-hidden">
-          <div className="absolute inset-0 transform -skew-y-2 bg-primary"></div>
-          <div className="container relative z-10">
-            <motion.div
-              initial={{ opacity: 0, x: -50 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.8 }}
-              className="flex flex-col md:flex-row items-center justify-center gap-6 text-white"
-            >
-              <div className="flex items-center gap-4">
-                <Image
-                  src="/images/altra-logo-white.png"
-                  alt="Altra Logo"
-                  width={120}
-                  height={40}
-                  className="h-8 md:h-10 w-auto"
-                  unoptimized={true}
-                />
-                <span className="text-2xl md:text-3xl font-bold uppercase tracking-wide text-white">
-                  {t("altraShoeTestingTitle")}
-                </span>
-              </div>
-              <div className="text-center md:text-left">
-                <p className="text-white/90 text-sm md:text-base">{t("altraShoeTestingDesc")}</p>
-              </div>
-            </motion.div>
-          </div>
-        </section>
-
         {/* About section with diagonal design */}
         <section id="about" className="py-24 relative overflow-hidden bg-gray-50">
           <div
@@ -880,7 +849,7 @@ export default function Home() {
                 </div>
                 <div className="relative h-[400px] md:h-auto">
                   <Image
-                    src="/images/mountain-rave.jpeg"
+                    src="/images/mountain-top-sunset-rave.jpg"
                     alt="Mountain sunset rave"
                     fill
                     className="object-cover"
@@ -1021,7 +990,7 @@ export default function Home() {
               {/* Background image */}
               <div className="absolute inset-0 z-0">
                 <Image
-                  src="/images/mountain-rave.jpeg"
+                  src="/images/mountain-top-sunset-rave.jpg"
                   alt="Mountain rave"
                   fill
                   className="object-cover"

@@ -10,7 +10,7 @@ const CRITICAL_IMAGES = [
   "/images/MTC-Logo_2025.png",
   "/images/MTC-Logo_2025_weiß.png",
   "/images/trail-runner-1.jpeg",
-  "/images/mountain-rave.jpeg",
+  "/images/mountain-top-sunset-rave.jpg", // Updated mountain rave image reference
   "/images/mountain-trail-runner.jpeg",
   "/images/campfire-evening.jpeg",
 ]
