@@ -509,8 +509,8 @@ export default function Home() {
           <div className="absolute inset-0">
             <motion.div style={{ scale: heroScale }} className="h-full w-full">
               <Image
-                src="/images/main-group-photo.jpg"
-                alt="Mountain Training Camp group photo with participants at the alpine facility"
+                src="/images/waterfall-group-photo.jpg"
+                alt="Mountain Training Camp group photo with participants celebrating at a spectacular waterfall"
                 fill
                 className="object-cover object-center"
                 priority
@@ -675,8 +675,8 @@ export default function Home() {
                 className="relative h-[500px] overflow-hidden rounded-xl"
               >
                 <Image
-                  src="/images/trail-runner-1.jpeg"
-                  alt="Trailrunner in the Alps"
+                  src="/images/alpine-village-group.jpg"
+                  alt="Mountain camp participants walking together in Alpine village"
                   fill
                   className="object-cover"
                   unoptimized={true}
