@@ -28,9 +28,9 @@ export const translations = {
     aboutTitle: "Über The Mountaincamp",
     aboutSubtitle:
       "Bei The Mountaincamp glauben wir, dass Laufen mehr ist als nur Kilometer schrubben – es geht darum, Grenzen zu überwinden, Gemeinschaft zu bilden und das Leben zu feiern.",
-    aboutText1: "Nicht einfach ein Camp. Mehr als nur Laufen.\nTrails am Morgen, Abkühlung im See, gutes Zusammensein.",
-    aboutText2: "Alle Levels. Kein Leistungsdruck.\nEinfach raus, bewegen, abschalten.",
-    aboutText3: "The Mountaincamp. Komm mit.",
+    aboutText1: "Nicht einfach ein Camp. Mehr als nur Laufen.\nTrails am Morgen, Abkühlung im See, echte Momente.",
+    aboutText2: "Für alle Levels. Kein Leistungsdruck.\nFür alle, die mehr als nur Kilometer suchen.",
+    aboutText3: "Laufen. Verbinden. Erleben.\nThe Mountaincamp.",
 
     // Experience section
     experienceTitle: "Das Erlebnis",
@@ -148,10 +148,10 @@ export const translations = {
     // About section
     aboutTitle: "About The Mountaincamp",
     aboutSubtitle:
-      "At the Mountaincamp we believe running is about more than just miles — it's about pushing boundaries, building community, and celebrating life.",
-    aboutText1: "This isn't just a camp – it's a vibe.\nTrail runs, cold dips, big laughs, real moments.",
-    aboutText2: "Built for every level.\nFor those chasing more than miles.",
-    aboutText3: "Come run. Connect. Remember.\nThe Mountaincamp.",
+      "At The Mountaincamp we believe running is about more than just miles — it's about pushing boundaries, building community, and celebrating life.",
+    aboutText1: "Not just a camp. More than just running.\nTrail runs in the morning, lake dips, real moments.",
+    aboutText2: "For every level. No pressure.\nFor those chasing more than just miles.",
+    aboutText3: "Run. Connect. Experience.\nThe Mountaincamp.",
 
     // Experience section
     experienceTitle: "The Experience",
