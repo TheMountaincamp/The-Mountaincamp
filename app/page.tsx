@@ -505,105 +505,109 @@ export default function Home() {
 
       <main className="flex-1">
         {/* Hero section with scroll-driven video */}
-        <section ref={heroRef} className="relative h-screen overflow-hidden">
+        <section ref={heroRef} className="relative min-h-[120vh] overflow-hidden">
           <div className="absolute inset-0">
             <motion.div style={{ scale: heroScale }} className="h-full w-full">
               <Image
                 src="/images/forest-group-photo.jpg"
                 alt="Mountain Training Camp group photo with participants in front of evergreen forest"
                 fill
-                className="object-cover object-center"
+                className="object-cover object-bottom"
                 priority
                 fetchPriority="high"
                 unoptimized={true}
               />
             </motion.div>
 
-            <div className="absolute inset-0 bg-gradient-to-b from-black/50 via-black/30 to-black/60" />
+            <div className="absolute inset-0 bg-gradient-to-b from-black/40 via-black/30 to-black/50" />
           </div>
 
           <motion.div
             style={{ y: heroTextY, opacity: heroOpacity }}
-            className="container relative z-20 flex h-full flex-col items-center justify-center text-center text-white"
+            className="container relative z-20 flex h-screen flex-col items-center justify-center text-center text-white"
           >
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.2, duration: 0.8 }}
-              className="mb-6 inline-block border border-primary px-4 py-2"
-            >
-              <span className="text-sm font-medium uppercase tracking-widest">Date coming soon</span>
-            </motion.div>
+            <div className="absolute inset-x-0 top-0 h-[120vh] bg-black/50 backdrop-blur-sm rounded-3xl" />
 
-            <motion.div
-              initial={{ opacity: 1, scale: 1 }}
-              animate={{ opacity: 1, scale: 1 }}
-              transition={{
-                delay: 0,
-                duration: 0,
-                type: "spring",
-                stiffness: 100,
-                damping: 15,
-              }}
-              className="mb-6"
-            >
-              {isMobile ? (
-                <Image
-                  src="/images/MTC-Logo_2025_weiß.png"
-                  alt="The Mountaincamp Logo"
-                  width={250}
-                  height={100}
-                  className="mx-auto"
-                  priority
-                  unoptimized={true}
-                />
-              ) : (
-                <h1 className="text-6xl font-bold uppercase tracking-tight">THE MOUNTAINCAMP</h1>
-              )}
-            </motion.div>
-
-            <motion.p
-              initial={{ opacity: 1, y: 0 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0, duration: 0 }}
-              className="mb-6 max-w-2xl text-lg sm:text-xl md:text-2xl font-light px-4 sm:px-0"
-            >
-              {t("heroSubtitle1")}
-              <br />
-              {t("heroSubtitle2")}
-              <br />
-              <span className="font-bold">{t("heroSubtitle3")}</span>
-            </motion.p>
-
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{
-                delay: 0.8,
-                duration: 0.6,
-                type: "spring",
-                stiffness: 100,
-                damping: 15,
-              }}
-              className="flex flex-col gap-4 sm:flex-row"
-            >
-              <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
-                <Button size="lg" className="btn-primary text-lg px-8" asChild>
-                  <Link href="#about">{t("learnMore")}</Link>
-                </Button>
+            <div className="relative z-10">
+              <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: 0.2, duration: 0.8 }}
+                className="mb-6 inline-block border border-primary px-4 py-2"
+              >
+                <span className="text-sm font-medium uppercase tracking-widest">Date coming soon</span>
               </motion.div>
-              <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
-                <Button size="lg" className="btn-outline text-lg px-8" asChild>
-                  <a
-                    href="https://my.camps.digital/masken/buchungen/vuejs?&vendor=mountaincamp&destination_id=1475&termin_id=35113#/"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                  >
-                    {t("registerNow")}
-                  </a>
-                </Button>
+
+              <motion.div
+                initial={{ opacity: 1, scale: 1 }}
+                animate={{ opacity: 1, scale: 1 }}
+                transition={{
+                  delay: 0,
+                  duration: 0,
+                  type: "spring",
+                  stiffness: 100,
+                  damping: 15,
+                }}
+                className="mb-6"
+              >
+                {isMobile ? (
+                  <Image
+                    src="/images/MTC-Logo_2025_weiß.png"
+                    alt="The Mountaincamp Logo"
+                    width={250}
+                    height={100}
+                    className="mx-auto"
+                    priority
+                    unoptimized={true}
+                  />
+                ) : (
+                  <h1 className="text-6xl font-bold uppercase tracking-tight">THE MOUNTAINCAMP</h1>
+                )}
               </motion.div>
-            </motion.div>
+
+              <motion.p
+                initial={{ opacity: 1, y: 0 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: 0, duration: 0 }}
+                className="mb-6 max-w-2xl text-lg sm:text-xl md:text-2xl font-light px-4 sm:px-0"
+              >
+                {t("heroSubtitle1")}
+                <br />
+                {t("heroSubtitle2")}
+                <br />
+                <span className="font-bold">{t("heroSubtitle3")}</span>
+              </motion.p>
+
+              <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{
+                  delay: 0.8,
+                  duration: 0.6,
+                  type: "spring",
+                  stiffness: 100,
+                  damping: 15,
+                }}
+                className="flex flex-col gap-4 sm:flex-row"
+              >
+                <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
+                  <Button size="lg" className="btn-primary text-lg px-8" asChild>
+                    <Link href="#about">{t("learnMore")}</Link>
+                  </Button>
+                </motion.div>
+                <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
+                  <Button size="lg" className="btn-outline text-lg px-8" asChild>
+                    <a
+                      href="https://my.camps.digital/masken/buchungen/vuejs?&vendor=mountaincamp&destination_id=1475&termin_id=35113#/"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                    >
+                      {t("registerNow")}
+                    </a>
+                  </Button>
+                </motion.div>
+              </motion.div>
+            </div>
           </motion.div>
 
           {/* Scroll indicator */}
