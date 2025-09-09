@@ -512,7 +512,7 @@ export default function Home() {
                 src="/images/forest-group-photo.jpg"
                 alt="Mountain Training Camp group photo with participants in front of evergreen forest"
                 fill
-                className="object-cover object-bottom"
+                className="object-cover object-center"
                 unoptimized={true}
               />
             </motion.div>
@@ -524,7 +524,7 @@ export default function Home() {
           {/* Hero content */}
           <motion.div
             style={{ y: heroTextY, opacity: heroOpacity }}
-            className="container relative z-20 flex h-screen flex-col items-center justify-center text-center text-white"
+            className="container relative z-20 flex min-h-[120vh] flex-col items-center justify-center text-center text-white"
           >
             <div className="absolute inset-0 bg-black/50 backdrop-blur-sm rounded-3xl" />
 
