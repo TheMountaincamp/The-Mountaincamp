@@ -513,20 +513,20 @@ export default function Home() {
                 alt="Mountain Training Camp group photo with participants in front of evergreen forest"
                 fill
                 className="object-cover object-bottom"
-                priority
-                fetchPriority="high"
                 unoptimized={true}
               />
             </motion.div>
-
-            <div className="absolute inset-0 bg-gradient-to-b from-black/40 via-black/30 to-black/50" />
           </div>
 
+          {/* Gradient overlay */}
+          <div className="absolute inset-0 bg-gradient-to-b from-black/40 via-black/30 to-black/50"></div>
+
+          {/* Hero content */}
           <motion.div
             style={{ y: heroTextY, opacity: heroOpacity }}
             className="container relative z-20 flex h-screen flex-col items-center justify-center text-center text-white"
           >
-            <div className="absolute inset-x-0 top-0 h-[120vh] bg-black/50 backdrop-blur-sm rounded-3xl" />
+            <div className="absolute inset-0 bg-black/50 backdrop-blur-sm rounded-3xl" />
 
             <div className="relative z-10">
               <motion.div
