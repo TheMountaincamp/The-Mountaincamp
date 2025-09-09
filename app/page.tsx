@@ -509,8 +509,8 @@ export default function Home() {
           <div className="absolute inset-0">
             <motion.div style={{ scale: heroScale }} className="h-full w-full">
               <Image
-                src="/images/waterfall-group-photo.jpg"
-                alt="Mountain Training Camp group photo with participants celebrating at a spectacular waterfall"
+                src="/images/forest-group-photo.jpg"
+                alt="Mountain Training Camp group photo with participants in front of evergreen forest"
                 fill
                 className="object-cover object-center"
                 priority
