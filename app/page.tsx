@@ -588,7 +588,7 @@ export default function Home() {
                   stiffness: 100,
                   damping: 15,
                 }}
-                className="flex flex-col gap-4 sm:flex-row"
+                className="flex flex-col gap-4 sm:flex-row justify-center"
               >
                 <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
                   <Button size="lg" className="btn-primary text-lg px-8" asChild>
