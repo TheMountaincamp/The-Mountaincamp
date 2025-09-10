@@ -525,7 +525,7 @@ export default function Home() {
             style={{ y: heroTextY, opacity: heroOpacity }}
             className="container relative z-20 flex h-screen flex-col items-center justify-center text-center text-white"
           >
-            <div className="absolute inset-0 bg-black/40 backdrop-blur-sm rounded-3xl" />
+            <div className="absolute inset-0 bg-black/40 backdrop-blur-sm rounded-3xl opacity-0" />
 
             <div className="relative z-10">
               <motion.div
@@ -632,7 +632,7 @@ export default function Home() {
         <section className="relative -mt-32 z-30">
           <div className="absolute top-0 left-0 right-0 h-64 bg-gradient-to-b from-transparent via-white/1 via-white/2 via-white/3 via-white/4 via-white/5 pointer-events-none"></div>
 
-          <div className="bg-gradient-to-b from-white/1 via-white/2 via-white/3 via-white/4 via-white/5 via-white/6 via-white/7 via-white/8 via-white/9 to-white/10 backdrop-blur-sm pt-40 pb-24">
+          <div className="bg-gradient-to-b from-white/1 via-white/2 via-white/3 via-white/4 via-white/5 via-white/6 via-white/7 via-white/8 via-white/9 to-white/10 backdrop-blur-sm pt-40 pb-24 opacity-0">
             <div className="container">
               <div className="grid gap-16 lg:grid-cols-2 items-center">
                 <motion.div
