@@ -630,9 +630,9 @@ export default function Home() {
 
         {/* About section */}
         <section className="relative -mt-32 z-30">
-          <div className="absolute top-0 left-0 right-0 h-64 bg-gradient-to-b from-transparent via-white/1 via-white/2 via-white/3 via-white/4 via-white/5 pointer-events-none"></div>
+          <div className="absolute top-0 left-0 right-0 h-64 bg-gradient-to-b from-transparent via-white/5 via-white/10 via-white/15 via-white/20 via-white/25 pointer-events-none"></div>
 
-          <div className="bg-gradient-to-b from-white/1 via-white/2 via-white/3 via-white/4 via-white/5 via-white/6 via-white/7 via-white/8 via-white/9 to-white/10 backdrop-blur-sm pt-40 pb-24 opacity-0">
+          <div className="bg-gradient-to-b from-white/10 via-white/20 via-white/30 via-white/40 via-white/50 via-white/60 via-white/70 via-white/80 via-white/85 to-white/90 backdrop-blur-sm pt-40 pb-24">
             <div className="container">
               <div className="grid gap-16 lg:grid-cols-2 items-center">
                 <motion.div
