@@ -403,9 +403,8 @@ export default function Home() {
           </nav>
 
           <div className="flex items-center gap-2 sm:gap-4">
-            {/* Smaller button on mobile */}
             <Button
-              className={`bg-primary hover:bg-primary-dark text-white transition-colors ${
+              className={`bg-black/80 backdrop-blur-sm hover:bg-black/90 text-white border border-white/20 transition-colors ${
                 isMobile ? "text-xs px-2 py-1 h-auto" : ""
               }`}
               asChild
@@ -505,7 +504,8 @@ export default function Home() {
 
       <main className="flex-1">
         {/* Hero section with scroll-driven video */}
-        <section ref={heroRef} className="relative min-h-[120vh] overflow-hidden">
+        {/* Hero section */}
+        <section ref={heroRef} className="relative min-h-[140vh] overflow-hidden">
           <div className="absolute inset-0">
             <motion.div style={{ scale: heroScale }} className="h-full w-full">
               <Image
@@ -518,15 +518,14 @@ export default function Home() {
             </motion.div>
           </div>
 
-          {/* Gradient overlay */}
-          <div className="absolute inset-0 bg-gradient-to-b from-black/40 via-black/30 to-black/50"></div>
+          <div className="absolute inset-0 bg-gradient-to-b from-black/20 via-transparent to-transparent"></div>
 
           {/* Hero content */}
           <motion.div
             style={{ y: heroTextY, opacity: heroOpacity }}
-            className="container relative z-20 flex min-h-[120vh] flex-col items-center justify-center text-center text-white"
+            className="container relative z-20 flex h-screen flex-col items-center justify-center text-center text-white"
           >
-            <div className="absolute inset-0 bg-black/50 backdrop-blur-sm rounded-3xl" />
+            <div className="absolute inset-0 bg-black/40 backdrop-blur-sm rounded-3xl" />
 
             <div className="relative z-10">
               <motion.div
@@ -630,61 +629,65 @@ export default function Home() {
         {/* Key features section */}
 
         {/* About section */}
-        <section className="py-24 bg-white">
-          <div className="container">
-            <div className="grid gap-16 lg:grid-cols-2 items-center">
-              <motion.div
-                initial={{ opacity: 0, x: -50 }}
-                whileInView={{ opacity: 1, x: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.8 }}
-              >
-                <h2 className="text-4xl font-bold mb-8 text-gray-900">{t("aboutTitle")}</h2>
-                <div className="space-y-4 text-gray-600">
-                  <p className="text-base leading-relaxed whitespace-pre-line">{t("aboutText1")}</p>
-                  <p className="text-base leading-relaxed whitespace-pre-line">{t("aboutText2")}</p>
-                  <p className="text-base leading-relaxed whitespace-pre-line">{t("aboutText3")}</p>
+        <section className="relative -mt-32 z-30">
+          <div className="absolute top-0 left-0 right-0 h-64 bg-gradient-to-b from-transparent via-white/1 via-white/2 via-white/3 via-white/4 via-white/5 pointer-events-none"></div>
 
-                  <div className="pt-4 flex flex-col sm:flex-row gap-4">
-                    <div className="flex items-center gap-3">
-                      <div className="rounded-full bg-primary/20 p-2">
-                        <Calendar className="h-5 w-5 text-primary" />
+          <div className="bg-gradient-to-b from-white/1 via-white/2 via-white/3 via-white/4 via-white/5 via-white/6 via-white/7 via-white/8 via-white/9 to-white/10 backdrop-blur-sm pt-40 pb-24">
+            <div className="container">
+              <div className="grid gap-16 lg:grid-cols-2 items-center">
+                <motion.div
+                  initial={{ opacity: 0, x: -50 }}
+                  whileInView={{ opacity: 1, x: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 0.8 }}
+                >
+                  <h2 className="text-4xl font-bold mb-8 text-gray-900">{t("aboutTitle")}</h2>
+                  <div className="space-y-4 text-gray-600">
+                    <p className="text-base leading-relaxed whitespace-pre-line">{t("aboutText1")}</p>
+                    <p className="text-base leading-relaxed whitespace-pre-line">{t("aboutText2")}</p>
+                    <p className="text-base leading-relaxed whitespace-pre-line">{t("aboutText3")}</p>
+
+                    <div className="pt-4 flex flex-col sm:flex-row gap-4">
+                      <div className="flex items-center gap-3">
+                        <div className="rounded-full bg-primary/20 p-2">
+                          <Calendar className="h-5 w-5 text-primary" />
+                        </div>
+                        <span className="text-base text-gray-900">Date coming soon</span>
                       </div>
-                      <span className="text-base text-gray-900">Date coming soon</span>
-                    </div>
-                    <div className="flex items-center gap-3">
-                      <div className="rounded-full bg-primary/20 p-2">
-                        <MapPin className="h-5 w-5 text-primary" />
+                      <div className="flex items-center gap-3">
+                        <div className="rounded-full bg-primary/20 p-2">
+                          <MapPin className="h-5 w-5 text-primary" />
+                        </div>
+                        <span className="text-base text-gray-900">
+                          {language === "de" ? "Hochkrimml, Österreich" : "Hochkrimml, Austria"}
+                        </span>
                       </div>
-                      <span className="text-base text-gray-900">
-                        {language === "de" ? "Hochkrimml, Österreich" : "Hochkrimml, Austria"}
-                      </span>
                     </div>
                   </div>
-                </div>
-              </motion.div>
+                </motion.div>
 
-              <motion.div
-                initial={{ opacity: 0, scale: 0.9 }}
-                whileInView={{ opacity: 1, scale: 1 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.8 }}
-                className="relative h-[500px] overflow-hidden rounded-xl"
-              >
-                <Image
-                  src="/images/alpine-village-group.jpg"
-                  alt="Mountain camp participants walking together in Alpine village"
-                  fill
-                  className="object-cover"
-                  unoptimized={true}
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent"></div>
-                <div className="absolute bottom-0 left-0 p-6">
-                  <span className="bg-primary text-white px-4 py-2 font-bold uppercase text-sm">
-                    {language === "de" ? "Entdecken" : "Explore"}
-                  </span>
-                </div>
-              </motion.div>
+                <motion.div
+                  initial={{ opacity: 0, scale: 0.9 }}
+                  whileInView={{ opacity: 1, scale: 1 }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 0.8 }}
+                  className="relative h-[500px] overflow-hidden rounded-xl"
+                >
+                  <Image
+                    src="/images/alpine-village-group.jpg"
+                    alt="Mountain camp participants walking together in Alpine village"
+                    fill
+                    className="object-cover"
+                    unoptimized={true}
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent"></div>
+                  <div className="absolute bottom-0 left-0 p-6">
+                    <span className="bg-primary text-white px-4 py-2 font-bold uppercase text-sm">
+                      {language === "de" ? "Entdecken" : "Explore"}
+                    </span>
+                  </div>
+                </motion.div>
+              </div>
             </div>
           </div>
         </section>
