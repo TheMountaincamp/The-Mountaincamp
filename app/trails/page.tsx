@@ -163,7 +163,7 @@ export default function TrailsPage() {
   ]
 
   return (
-    <div className="min-h-screen bg-black text-white">
+    <div className="min-h-screen bg-white text-gray-900">
       {/* Preload critical images */}
       <ImagePreloader imageSources={CRITICAL_IMAGES} />
 
@@ -186,7 +186,7 @@ export default function TrailsPage() {
 
         <div className="absolute inset-0 flex flex-col items-center justify-center text-center p-6">
           <motion.h1
-            className="text-4xl md:text-6xl font-bold mb-4"
+            className="text-4xl md:text-6xl font-bold mb-4 text-white"
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: isLoaded ? 1 : 0, y: isLoaded ? 0 : 20 }}
             transition={{ duration: 0.8, delay: 0.2 }}
@@ -226,12 +226,12 @@ export default function TrailsPage() {
             className="mb-10"
           >
             <h2 className="text-3xl font-bold mb-6">{t("trailsDescription")}</h2>
-            <p className="text-white/80 mb-4">
+            <p className="text-gray-600 mb-4">
               {t("language") === "de"
                 ? "Die österreichischen Alpen bieten einige der spektakulärsten Trailrunning-Strecken Europas. Von sanften Waldwegen bis hin zu anspruchsvollen alpinen Pfaden - hier findet jeder Läufer die perfekte Route."
                 : "The Austrian Alps offer some of the most spectacular trail running routes in Europe. From gentle forest paths to challenging alpine trails - every runner will find the perfect route here."}
             </p>
-            <p className="text-white/80">
+            <p className="text-gray-600">
               {t("language") === "de"
                 ? "Während des Mountaincamps bieten wir täglich geführte Läufe für verschiedene Niveaus an, sodass du die besten Trails der Region mit erfahrenen Guides erkunden kannst."
                 : "During the Mountaincamp, we offer daily guided runs for different levels, allowing you to explore the best trails in the region with experienced guides."}
@@ -263,7 +263,7 @@ export default function TrailsPage() {
               {trails.map((trail, index) => (
                 <motion.div
                   key={index}
-                  className="bg-card border border-primary/20 hover:border-primary transition-all duration-300 overflow-hidden rounded-lg"
+                  className="bg-gray-50 border border-gray-200 hover:border-primary hover:shadow-lg transition-all duration-300 overflow-hidden rounded-lg"
                   initial={{ opacity: 0, y: 20 }}
                   animate={{ opacity: isLoaded ? 1 : 0, y: isLoaded ? 0 : 20 }}
                   transition={{ duration: 0.5, delay: 0.3 + index * 0.1 }}
@@ -281,12 +281,12 @@ export default function TrailsPage() {
                     <h3 className="text-xl font-bold mb-2">
                       {typeof trail.title === "object" ? trail.title[t("language")] : trail.title}
                     </h3>
-                    <div className="flex items-center gap-2 text-white/70 text-sm mb-1">
+                    <div className="flex items-center gap-2 text-gray-500 text-sm mb-1">
                       <span className="bg-primary/20 px-2 py-1 rounded text-primary">
                         {typeof trail.difficulty === "object" ? trail.difficulty[t("language")] : trail.difficulty}
                       </span>
                     </div>
-                    <div className="flex flex-wrap gap-4 my-3 text-sm text-white/70">
+                    <div className="flex flex-wrap gap-4 my-3 text-sm text-gray-500">
                       <div className="flex items-center gap-1">
                         <Route className="h-4 w-4" />
                         <span>{trail.distance}</span>
@@ -300,7 +300,7 @@ export default function TrailsPage() {
                         <span>{trail.duration}</span>
                       </div>
                     </div>
-                    <p className="text-white/80 text-sm">
+                    <p className="text-gray-600 text-sm">
                       {typeof trail.description === "object" ? trail.description[t("language")] : trail.description}
                     </p>
                   </div>
@@ -316,11 +316,11 @@ export default function TrailsPage() {
             className="mb-10"
           >
             <h2 className="text-2xl font-bold mb-8 uppercase">{t("guidedRunsTitle")}</h2>
-            <div className="bg-card p-8 border border-primary/20 rounded-lg">
+            <div className="bg-gray-50 p-8 border border-gray-200 rounded-lg shadow-sm">
               <h3 className="text-xl font-bold mb-4">
                 {t("language") === "de" ? "Tägliche geführte Läufe" : "Daily Guided Runs"}
               </h3>
-              <p className="text-white/80 mb-6">
+              <p className="text-gray-600 mb-6">
                 {t("language") === "de"
                   ? "Während des Mountaincamps bieten wir täglich mehrere geführte Läufe an, die auf verschiedene Erfahrungsstufen und Vorlieben zugeschnitten sind:"
                   : "During the Mountaincamp, we offer multiple guided runs daily, tailored to different experience levels and preferences:"}
@@ -332,7 +332,7 @@ export default function TrailsPage() {
                   </div>
                   <div>
                     <span className="font-bold">{t("language") === "de" ? "Anfänger-Gruppe" : "Beginner Group"}</span>
-                    <p className="text-white/70 text-sm">
+                    <p className="text-gray-500 text-sm">
                       {t("language") === "de"
                         ? "Gemütliches Tempo, flachere Trails, perfekt für Trailrunning-Neulinge."
                         : "Easy pace, flatter trails, perfect for trail running beginners."}
@@ -347,7 +347,7 @@ export default function TrailsPage() {
                     <span className="font-bold">
                       {t("language") === "de" ? "Mittlere Gruppe" : "Intermediate Group"}
                     </span>
-                    <p className="text-white/70 text-sm">
+                    <p className="text-gray-500 text-sm">
                       {t("language") === "de"
                         ? "Moderates Tempo, abwechslungsreiche Trails mit mittleren Höhenunterschieden."
                         : "Moderate pace, varied trails with medium elevation gains."}
@@ -362,7 +362,7 @@ export default function TrailsPage() {
                     <span className="font-bold">
                       {t("language") === "de" ? "Fortgeschrittene Gruppe" : "Advanced Group"}
                     </span>
-                    <p className="text-white/70 text-sm">
+                    <p className="text-gray-500 text-sm">
                       {t("language") === "de"
                         ? "Schnelleres Tempo, technisch anspruchsvollere Trails mit größeren Höhenunterschieden."
                         : "Faster pace, more technically challenging trails with significant elevation gains."}
@@ -381,9 +381,9 @@ export default function TrailsPage() {
           >
             <h2 className="text-2xl font-bold mb-8 uppercase">{t("trailTipsTitle")}</h2>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-              <div className="bg-card p-6 border border-primary/20 rounded-lg">
+              <div className="bg-gray-50 p-6 border border-gray-200 rounded-lg shadow-sm">
                 <h3 className="text-xl font-bold mb-4">{t("language") === "de" ? "Ausrüstung" : "Equipment"}</h3>
-                <ul className="space-y-2 text-white/80">
+                <ul className="space-y-2 text-gray-600">
                   <li>
                     •{" "}
                     {t("language") === "de"
@@ -398,9 +398,9 @@ export default function TrailsPage() {
                   <li>• {t("language") === "de" ? "Kleine Erste-Hilfe-Ausrüstung" : "Small first aid kit"}</li>
                 </ul>
               </div>
-              <div className="bg-card p-6 border border-primary/20 rounded-lg">
+              <div className="bg-gray-50 p-6 border border-gray-200 rounded-lg shadow-sm">
                 <h3 className="text-xl font-bold mb-4">{t("language") === "de" ? "Sicherheit" : "Safety"}</h3>
-                <ul className="space-y-2 text-white/80">
+                <ul className="space-y-2 text-gray-600">
                   <li>
                     •{" "}
                     {t("language") === "de"
@@ -421,7 +421,7 @@ export default function TrailsPage() {
       </div>
 
       {/* Footer */}
-      <footer className="bg-black border-t border-white/10 py-8">
+      <footer className="bg-gray-100 border-t border-gray-200 py-8">
         <div className="container mx-auto px-4">
           <div className="flex flex-col md:flex-row justify-between items-center">
             <div className="mb-4 md:mb-0">
@@ -434,16 +434,16 @@ export default function TrailsPage() {
               />
             </div>
             <div className="flex gap-8">
-              <Link href="/" className="text-white/60 hover:text-primary transition-colors">
+              <Link href="/" className="text-gray-600 hover:text-primary transition-colors">
                 Home
               </Link>
-              <Link href="/house" className="text-white/60 hover:text-primary transition-colors">
+              <Link href="/house" className="text-gray-600 hover:text-primary transition-colors">
                 {t("house")}
               </Link>
-              <Link href="/impressum" className="text-white/60 hover:text-primary transition-colors">
+              <Link href="/impressum" className="text-gray-600 hover:text-primary transition-colors">
                 {t("imprint")}
               </Link>
-              <Link href="/datenschutz" className="text-white/60 hover:text-primary transition-colors">
+              <Link href="/datenschutz" className="text-gray-600 hover:text-primary transition-colors">
                 {t("privacyPolicy")}
               </Link>
             </div>

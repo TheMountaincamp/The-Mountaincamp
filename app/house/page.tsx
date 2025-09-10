@@ -11,12 +11,12 @@ import ImagePreloader from "@/app/components/image-preloader"
 // Define critical images for the House page
 const CRITICAL_IMAGES = [
   "/images/mountain-lodge.jpeg",
-  "/images/house-room-view.jpeg",
-  "/images/house-dormitory.jpeg",
+  "/images/cozy-bunk-accommodation.jpg",
+  "/images/wooden-dormitory-interior.jpg",
   "/images/house-bathroom-sink.jpeg",
   "/images/house-shower.jpeg",
   "/images/house-toilet.jpeg",
-  "/images/MTC-Logo_2025_weiß.png",
+  "/images/MTC-Logo_2025.png",
 ]
 
 export default function HousePage() {
@@ -71,7 +71,7 @@ export default function HousePage() {
   ]
 
   return (
-    <div className="min-h-screen bg-black text-white">
+    <div className="min-h-screen bg-white text-gray-900">
       {/* Preload critical images */}
       <ImagePreloader imageSources={CRITICAL_IMAGES} />
 
@@ -94,7 +94,7 @@ export default function HousePage() {
 
         <div className="absolute inset-0 flex flex-col items-center justify-center text-center p-6">
           <motion.h1
-            className="text-4xl md:text-6xl font-bold mb-4"
+            className="text-4xl md:text-6xl font-bold mb-4 text-white"
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: isLoaded ? 1 : 0, y: isLoaded ? 0 : 20 }}
             transition={{ duration: 0.8, delay: 0.2 }}
@@ -133,13 +133,13 @@ export default function HousePage() {
             transition={{ duration: 0.8 }}
             className="mb-16"
           >
-            <h2 className="text-3xl font-bold mb-6">{t("houseDescription")}</h2>
-            <p className="text-white/80 mb-4">
+            <h2 className="text-3xl font-bold mb-6 text-gray-900">{t("houseDescription")}</h2>
+            <p className="text-gray-700 mb-4">
               {t("language") === "de"
                 ? "Dieses gemütliche Gästehaus liegt auf 1.700 Metern Höhe und bietet einen atemberaubenden Blick auf die umliegenden Gipfel. Mit komfortablen Zimmern, einem großzügigen Gemeinschaftsbereich, einer Sauna und einer Turnhalle und vielem mehr ist es der perfekte Ort, um nach einem Tag auf den Trails zu entspannen."
                 : "This cozy mountain house is located at an altitude of 1,700 meters and offers breathtaking views of the surrounding peaks. With comfortable rooms, a spacious common area, a sauna, and a gym, a skatepark and a lot more! It's the perfect place to relax after a day on the trails."}
             </p>
-            <p className="text-white/80">
+            <p className="text-gray-700">
               {t("language") === "de"
                 ? "Morgens, Mittags und Abends werden wir vom Küchenteam mit reichhaltigen Mahlzeiten verpflegt."
                 : "In the morning, at noon and in the evening, we are getting served by the kitchen team with rich meals."}
@@ -152,22 +152,22 @@ export default function HousePage() {
             transition={{ duration: 0.8, delay: 0.2 }}
             className="mb-16"
           >
-            <h2 className="text-2xl font-bold mb-8 uppercase">{t("facilitiesTitle")}</h2>
+            <h2 className="text-2xl font-bold mb-8 uppercase text-gray-900">{t("facilitiesTitle")}</h2>
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
               {facilities.map((facility, index) => (
                 <motion.div
                   key={index}
-                  className="bg-gray-800 p-6 border border-primary/20 hover:border-primary transition-all duration-300"
+                  className="bg-gray-50 p-6 border border-gray-200 hover:border-primary hover:shadow-lg transition-all duration-300 rounded-lg"
                   initial={{ opacity: 0, y: 20 }}
                   animate={{ opacity: isLoaded ? 1 : 0, y: isLoaded ? 0 : 20 }}
                   transition={{ duration: 0.5, delay: 0.3 + index * 0.1 }}
                   whileHover={{ y: -5, transition: { duration: 0.2 } }}
                 >
                   <div className="text-primary mb-4">{facility.icon}</div>
-                  <h3 className="text-xl font-bold mb-2 text-white">
+                  <h3 className="text-xl font-bold mb-2 text-gray-900">
                     {typeof facility.title === "object" ? facility.title[t("language")] : facility.title}
                   </h3>
-                  <p className="text-white/70 text-sm">{facility.description[t("language")]}</p>
+                  <p className="text-gray-600 text-sm">{facility.description[t("language")]}</p>
                 </motion.div>
               ))}
             </div>
@@ -179,27 +179,37 @@ export default function HousePage() {
             transition={{ duration: 0.8, delay: 0.4 }}
             className="mb-16"
           >
-            <h2 className="text-2xl font-bold mb-8 uppercase">{t("roomsTitle")}</h2>
+            <h2 className="text-2xl font-bold mb-8 uppercase text-gray-900">{t("roomsTitle")}</h2>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
               <div className="relative h-80 overflow-hidden rounded-lg">
-                <Image src="/images/house-room-view.jpeg" alt="Room with mountain view" fill className="object-cover" />
+                <Image
+                  src="/images/cozy-bunk-accommodation.jpg"
+                  alt="Cozy bunk bed accommodation"
+                  fill
+                  className="object-cover"
+                />
                 <div className="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent"></div>
                 <div className="absolute bottom-0 left-0 p-6">
-                  <h3 className="text-xl font-bold mb-2">
-                    {t("language") === "de" ? "Zimmer mit Bergblick" : "Room with Mountain View"}
+                  <h3 className="text-xl font-bold mb-2 text-white">
+                    {t("language") === "de" ? "Gemütliche Schlafplätze" : "Cozy Sleeping Areas"}
                   </h3>
                   <p className="text-white/80 text-sm">
                     {t("language") === "de"
-                      ? "Gemütliche Zimmer mit spektakulärem Blick auf die Alpen"
-                      : "Cozy rooms with spectacular views of the Alps"}
+                      ? "Komfortable Schlafbereiche mit warmer Holzausstattung"
+                      : "Comfortable sleeping areas with warm wooden furnishing"}
                   </p>
                 </div>
               </div>
               <div className="relative h-80 overflow-hidden rounded-lg">
-                <Image src="/images/house-dormitory.jpeg" alt="Shared dormitory room" fill className="object-cover" />
+                <Image
+                  src="/images/wooden-dormitory-interior.jpg"
+                  alt="Wooden dormitory interior"
+                  fill
+                  className="object-cover"
+                />
                 <div className="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent"></div>
                 <div className="absolute bottom-0 left-0 p-6">
-                  <h3 className="text-xl font-bold mb-2">
+                  <h3 className="text-xl font-bold mb-2 text-white">
                     {t("language") === "de" ? "Mehrbettzimmer" : "Shared Dormitory"}
                   </h3>
                   <p className="text-white/80 text-sm">
@@ -219,7 +229,7 @@ export default function HousePage() {
             transition={{ duration: 0.8, delay: 0.6 }}
             className="mb-16"
           >
-            <h2 className="text-2xl font-bold mb-8 uppercase">
+            <h2 className="text-2xl font-bold mb-8 uppercase text-gray-900">
               {t("language") === "de" ? "BADEZIMMER & SANITÄRANLAGEN" : "BATHROOM & FACILITIES"}
             </h2>
             <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
@@ -232,7 +242,9 @@ export default function HousePage() {
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent"></div>
                 <div className="absolute bottom-0 left-0 p-4">
-                  <h3 className="text-lg font-bold mb-1">{t("language") === "de" ? "Waschbereich" : "Wash Area"}</h3>
+                  <h3 className="text-lg font-bold mb-1 text-white">
+                    {t("language") === "de" ? "Waschbereich" : "Wash Area"}
+                  </h3>
                   <p className="text-white/80 text-sm">
                     {t("language") === "de" ? "Moderne Waschbecken" : "Modern wash basins"}
                   </p>
@@ -242,7 +254,9 @@ export default function HousePage() {
                 <Image src="/images/house-shower.jpeg" alt="Clean shower facilities" fill className="object-cover" />
                 <div className="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent"></div>
                 <div className="absolute bottom-0 left-0 p-4">
-                  <h3 className="text-lg font-bold mb-1">{t("language") === "de" ? "Duschen" : "Showers"}</h3>
+                  <h3 className="text-lg font-bold mb-1 text-white">
+                    {t("language") === "de" ? "Duschen" : "Showers"}
+                  </h3>
                   <p className="text-white/80 text-sm">
                     {t("language") === "de" ? "Saubere Duschkabinen" : "Clean shower facilities"}
                   </p>
@@ -252,7 +266,7 @@ export default function HousePage() {
                 <Image src="/images/house-toilet.jpeg" alt="Modern toilet facilities" fill className="object-cover" />
                 <div className="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent"></div>
                 <div className="absolute bottom-0 left-0 p-4">
-                  <h3 className="text-lg font-bold mb-1">{t("language") === "de" ? "WC" : "Toilets"}</h3>
+                  <h3 className="text-lg font-bold mb-1 text-white">{t("language") === "de" ? "WC" : "Toilets"}</h3>
                   <p className="text-white/80 text-sm">
                     {t("language") === "de" ? "Moderne Sanitäranlagen" : "Modern toilet facilities"}
                   </p>
@@ -267,7 +281,7 @@ export default function HousePage() {
             transition={{ duration: 0.8, delay: 0.8 }}
             className="mb-16"
           >
-            <h2 className="text-2xl font-bold mb-8 uppercase">{t("locationTitle")}</h2>
+            <h2 className="text-2xl font-bold mb-8 uppercase text-gray-900">{t("locationTitle")}</h2>
             <div className="aspect-video relative rounded-lg overflow-hidden">
               <iframe
                 src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d21493.756807086395!2d12.13922555!3d47.23286205!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x4776f9b1a0c8f4e9%3A0x3f4e01b6b0a2b6e0!2s6372%20Hochkrimml%2C%20Austria!5e0!3m2!1sen!2sde!4v1712593066345!5m2!1sen!2sde"
@@ -280,7 +294,7 @@ export default function HousePage() {
                 className="absolute inset-0"
               ></iframe>
             </div>
-            <p className="mt-4 text-white/80">
+            <p className="mt-4 text-gray-700">
               {t("language") === "de"
                 ? "Unser Berghaus befindet sich in Hochkrimml, Österreich, umgeben von atemberaubenden Alpengipfeln und endlosen Trailrunning-Möglichkeiten."
                 : "Our mountain house is located in Hochkrimml, Austria, surrounded by breathtaking alpine peaks and endless trail running possibilities."}
@@ -290,12 +304,12 @@ export default function HousePage() {
       </div>
 
       {/* Footer */}
-      <footer className="bg-black border-t border-white/10 py-8">
+      <footer className="bg-gray-100 border-t border-gray-200 py-8">
         <div className="container mx-auto px-4">
           <div className="flex flex-col md:flex-row justify-between items-center">
             <div className="mb-4 md:mb-0">
               <Image
-                src="/images/MTC-Logo_2025_weiß.png"
+                src="/images/MTC-Logo_2025.png"
                 alt="The Mountaincamp Logo"
                 width={150}
                 height={40}
@@ -303,16 +317,16 @@ export default function HousePage() {
               />
             </div>
             <div className="flex gap-8">
-              <Link href="/" className="text-white/60 hover:text-primary transition-colors">
+              <Link href="/" className="text-gray-600 hover:text-primary transition-colors">
                 {t("language") === "de" ? "Startseite" : "Home"}
               </Link>
-              <Link href="/trails" className="text-white/60 hover:text-primary transition-colors">
+              <Link href="/trails" className="text-gray-600 hover:text-primary transition-colors">
                 {t("trails")}
               </Link>
-              <Link href="/impressum" className="text-white/60 hover:text-primary transition-colors">
+              <Link href="/impressum" className="text-gray-600 hover:text-primary transition-colors">
                 {t("imprint")}
               </Link>
-              <Link href="/datenschutz" className="text-white/60 hover:text-primary transition-colors">
+              <Link href="/datenschutz" className="text-gray-600 hover:text-primary transition-colors">
                 {t("privacyPolicy")}
               </Link>
             </div>
