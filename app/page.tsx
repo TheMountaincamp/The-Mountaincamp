@@ -4,7 +4,19 @@ import { useState, useEffect, useRef } from "react"
 import Image from "next/image"
 import Link from "next/link"
 import { motion, useScroll, useTransform, AnimatePresence } from "framer-motion"
-import { Mountain, Flame, Sparkles, Music, ArrowRight, ChevronDown, Calendar, MapPin, Menu, X } from "lucide-react"
+import {
+  Mountain,
+  Flame,
+  Sparkles,
+  Music,
+  ArrowRight,
+  ChevronDown,
+  Calendar,
+  MapPin,
+  Menu,
+  X,
+  Clock,
+} from "lucide-react"
 import { Button } from "@/components/ui/button"
 import { useMobile } from "@/hooks/use-mobile"
 import { useLanguage } from "@/contexts/language-context"
@@ -48,6 +60,46 @@ export default function Home() {
   const [scrollY, setScrollY] = useState(0)
   const [currentActivityIndex, setCurrentActivityIndex] = useState(0)
   const [isPreloading, setIsPreloading] = useState(true)
+
+  const [timeLeft, setTimeLeft] = useState({
+    days: 0,
+    hours: 0,
+    minutes: 0,
+    seconds: 0,
+    isActive: false,
+  })
+
+  useEffect(() => {
+    const targetDate = new Date("2025-09-12T19:00:00").getTime()
+
+    const updateCountdown = () => {
+      const now = new Date().getTime()
+      const difference = targetDate - now
+
+      if (difference > 0) {
+        setTimeLeft({
+          days: Math.floor(difference / (1000 * 60 * 60 * 24)),
+          hours: Math.floor((difference % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60)),
+          minutes: Math.floor((difference % (1000 * 60 * 60)) / (1000 * 60)),
+          seconds: Math.floor((difference % (1000 * 60)) / 1000),
+          isActive: false,
+        })
+      } else {
+        setTimeLeft({
+          days: 0,
+          hours: 0,
+          minutes: 0,
+          seconds: 0,
+          isActive: true,
+        })
+      }
+    }
+
+    updateCountdown()
+    const interval = setInterval(updateCountdown, 1000)
+
+    return () => clearInterval(interval)
+  }, [])
 
   // Preload section images after the page has loaded
   useEffect(() => {
@@ -126,9 +178,6 @@ export default function Home() {
     }
   }, [])
 
-  // Detect if on mobile
-  // const isMobile = useMobile()
-
   // Mobile menu state
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
 
@@ -156,9 +205,6 @@ export default function Home() {
     window.addEventListener("scroll", handleScroll)
     return () => window.removeEventListener("scroll", handleScroll)
   }, [hasScrolled])
-
-  // State to track if the activity card is expanded on mobile
-  // const [expandedActivities, setExpandedActivities] = useState<Record<number, boolean>>({})
 
   const toggleActivity = (index: number) => {
     setExpandedActivities((prevState) => ({
@@ -336,9 +382,9 @@ export default function Home() {
   }
 
   return (
-    <div className="flex min-h-screen flex-col bg-background text-foreground">
-      {/* Preload section images in the background */}
-      <ImagePreloader imageSources={SECTION_IMAGES} />
+    <div className="min-h-screen bg-white">
+      {/* Preloader */}
+      <ImagePreloader imageSources={SECTION_IMAGES} onComplete={() => setIsPreloading(false)} />
 
       {/* Dynamic header - transparent on top, dark when scrolled */}
       <header className="absolute top-0 z-50 w-full bg-transparent">
@@ -347,14 +393,13 @@ export default function Home() {
           <div className="flex items-center">
             <div className={`relative ${isMobile ? "w-32 h-10" : "w-auto h-14"}`}>
               <ImageWithFallback
-                src="/images/favicon_weiß.png"
+                src="/images/MTC-Logo_2025_weiß.png"
                 alt="The Mountaincamp Logo"
-                width={200}
-                height={200}
-                className="h-full w-auto object-contain transition-opacity duration-300 opacity-100"
+                width={isMobile ? 128 : 200}
+                height={isMobile ? 40 : 56}
+                className="h-full w-auto object-contain"
                 priority
                 unoptimized={true}
-                fallbackSrc="/placeholder.svg?height=200&width=200&text=MTC"
               />
             </div>
           </div>
@@ -406,16 +451,21 @@ export default function Home() {
             <Button
               className={`bg-black/80 backdrop-blur-sm hover:bg-black/90 text-white border border-white/20 transition-colors ${
                 isMobile ? "text-xs px-2 py-1 h-auto" : ""
-              }`}
-              asChild
+              } ${!timeLeft.isActive ? "opacity-50 cursor-not-allowed" : ""}`}
+              asChild={timeLeft.isActive}
+              disabled={!timeLeft.isActive}
             >
-              <a
-                href="https://my.camps.digital/masken/buchungen/vuejs?&vendor=mountaincamp&destination_id=1475&termin_id=35113#/"
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                {t("registerNow")}
-              </a>
+              {timeLeft.isActive ? (
+                <a
+                  href="https://my.camps.digital/masken/buchungen/vuejs?&vendor=mountaincamp&destination_id=2467&termin_id=36011&locale=de#/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  {t("registerNow")}
+                </a>
+              ) : (
+                <span>{t("registerNow")}</span>
+              )}
             </Button>
 
             {/* Mobile menu button with improved touch target */}
@@ -502,8 +552,7 @@ export default function Home() {
         )}
       </AnimatePresence>
 
-      <main className="flex-1">
-        {/* Hero section with scroll-driven video */}
+      <main>
         {/* Hero section */}
         <section ref={heroRef} className="relative min-h-[140vh] overflow-hidden">
           <div className="absolute inset-0">
@@ -534,7 +583,18 @@ export default function Home() {
                 transition={{ delay: 0.2, duration: 0.8 }}
                 className="mb-6 inline-block border border-primary px-4 py-2"
               >
-                <span className="text-sm font-medium uppercase tracking-widest">Date coming soon</span>
+                {timeLeft.isActive ? (
+                  <span className="text-sm font-medium uppercase tracking-widest text-green-400">
+                    {language === "de" ? "Anmeldung verfügbar!" : "Registration available!"}
+                  </span>
+                ) : (
+                  <div className="flex items-center gap-2">
+                    <Clock className="h-4 w-4" />
+                    <span className="text-sm font-medium uppercase tracking-widest">
+                      {timeLeft.days}d {timeLeft.hours}h {timeLeft.minutes}m {timeLeft.seconds}s
+                    </span>
+                  </div>
+                )}
               </motion.div>
 
               <motion.div
@@ -578,31 +638,34 @@ export default function Home() {
               </motion.p>
 
               <motion.div
-                initial={{ opacity: 0, y: 20 }}
+                initial={{ opacity: 0, y: 30 }}
                 animate={{ opacity: 1, y: 0 }}
-                transition={{
-                  delay: 0.8,
-                  duration: 0.6,
-                  type: "spring",
-                  stiffness: 100,
-                  damping: 15,
-                }}
-                className="flex flex-col gap-4 sm:flex-row justify-center"
+                transition={{ delay: 0.8, duration: 0.8 }}
+                className="flex flex-col sm:flex-row gap-4 justify-center"
               >
                 <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
                   <Button size="lg" className="btn-primary text-lg px-8" asChild>
-                    <Link href="#about">{t("learnMore")}</Link>
+                    <Link href="#experience">{t("learnMore")}</Link>
                   </Button>
                 </motion.div>
                 <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
-                  <Button size="lg" className="btn-outline text-lg px-8" asChild>
-                    <a
-                      href="https://my.camps.digital/masken/buchungen/vuejs?&vendor=mountaincamp&destination_id=1475&termin_id=35113#/"
-                      target="_blank"
-                      rel="noopener noreferrer"
-                    >
-                      {t("registerNow")}
-                    </a>
+                  <Button
+                    size="lg"
+                    className={`btn-outline text-lg px-8 ${!timeLeft.isActive ? "opacity-50 cursor-not-allowed" : ""}`}
+                    asChild={timeLeft.isActive}
+                    disabled={!timeLeft.isActive}
+                  >
+                    {timeLeft.isActive ? (
+                      <a
+                        href="https://my.camps.digital/masken/buchungen/vuejs?&vendor=mountaincamp&destination_id=2467&termin_id=36011&locale=de#/"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                      >
+                        {t("registerNow")}
+                      </a>
+                    ) : (
+                      <span>{t("registerNow")}</span>
+                    )}
                   </Button>
                 </motion.div>
               </motion.div>
@@ -626,10 +689,8 @@ export default function Home() {
           </motion.div>
         </section>
 
-        {/* Key features section */}
-
         {/* About section */}
-        <section className="relative -mt-32 z-30">
+        <section id="about" className="relative -mt-32 z-30">
           <div className="absolute top-0 left-0 right-0 h-64 bg-gradient-to-b from-transparent via-white/5 via-white/10 via-white/15 via-white/20 via-white/25 pointer-events-none"></div>
 
           <div className="bg-gradient-to-b from-white/10 via-white/20 via-white/30 via-white/40 via-white/50 via-white/60 via-white/70 via-white/80 via-white/85 to-white/90 backdrop-blur-sm pt-40 pb-24">
@@ -652,7 +713,15 @@ export default function Home() {
                         <div className="rounded-full bg-primary/20 p-2">
                           <Calendar className="h-5 w-5 text-primary" />
                         </div>
-                        <span className="text-base text-gray-900">Date coming soon</span>
+                        <span className="text-base text-gray-900">
+                          {timeLeft.isActive
+                            ? language === "de"
+                              ? "6.-10. August 2025"
+                              : "August 6-10, 2025"
+                            : language === "de"
+                              ? `Noch ${timeLeft.days} Tage`
+                              : `${timeLeft.days} days left`}
+                        </span>
                       </div>
                       <div className="flex items-center gap-3">
                         <div className="rounded-full bg-primary/20 p-2">
@@ -691,8 +760,6 @@ export default function Home() {
             </div>
           </div>
         </section>
-
-        {/* Countdown section with animated background */}
 
         {/* Experience section with animated cards */}
         <section id="experience" className="py-24 bg-gray-50">
@@ -1089,7 +1156,13 @@ export default function Home() {
               >
                 <h2 className="text-4xl font-bold uppercase tracking-tight mb-6 text-white">{t("joinTitle")}</h2>
                 <p className="text-xl mb-8 text-white">
-                  Coming Soon
+                  {timeLeft.isActive
+                    ? language === "de"
+                      ? "6.-10. August 2025"
+                      : "August 6-10, 2025"
+                    : language === "de"
+                      ? `Anmeldung in ${timeLeft.days} Tagen verfügbar`
+                      : `Registration available in ${timeLeft.days} days`}
                   <br />
                   {language === "de" ? "Österreichische Alpen" : "Austrian Alps"}
                 </p>
@@ -1117,7 +1190,9 @@ export default function Home() {
                     <span className="text-sm font-medium text-white uppercase">{t("packageTitle")}</span>
                   </div>
                   <div className="bg-gray-800 px-6 py-4 rounded-b-lg">
-                    <span className="text-3xl font-bold text-white">Coming Soon</span>
+                    <span className="text-3xl font-bold text-white">
+                      {timeLeft.isActive ? "€420" : language === "de" ? "Bald verfügbar" : "Coming Soon"}
+                    </span>
                   </div>
                 </div>
               </motion.div>
@@ -1129,12 +1204,128 @@ export default function Home() {
                 transition={{ duration: 0.8 }}
               >
                 <div className="bg-gray-800 p-8 text-white rounded-xl border border-gray-700">
-                  <h3 className="text-2xl font-bold uppercase mb-6 text-center text-white">Coming Soon</h3>
-                  <p className="text-white/70 mb-6 text-center">
-                    {language === "de"
-                      ? "Die Buchung wird bald verfügbar sein. Bleiben Sie dran für weitere Updates!"
-                      : "Booking will be available soon. Stay tuned for updates!"}
-                  </p>
+                  <h3 className="text-2xl font-bold uppercase mb-6 text-center text-white">
+                    {timeLeft.isActive
+                      ? language === "de"
+                        ? "Jetzt anmelden"
+                        : "Register Now"
+                      : language === "de"
+                        ? "Bald verfügbar"
+                        : "Coming Soon"}
+                  </h3>
+
+                  {timeLeft.isActive ? (
+                    <div className="text-center">
+                      <Button
+                        size="lg"
+                        className="bg-primary hover:bg-primary/90 text-white font-bold py-4 px-8 text-lg"
+                        asChild
+                      >
+                        <a
+                          href="https://my.camps.digital/masken/buchungen/vuejs?&vendor=mountaincamp&destination_id=2467&termin_id=36011&locale=de#/"
+                          target="_blank"
+                          rel="noopener noreferrer"
+                        >
+                          {t("registerNow")}
+                        </a>
+                      </Button>
+                      <p className="text-white/70 mt-4 text-sm">
+                        {language === "de"
+                          ? "Sichere dir jetzt deinen Platz im Mountaincamp!"
+                          : "Secure your spot at The Mountaincamp now!"}
+                      </p>
+                    </div>
+                  ) : (
+                    <div className="text-center">
+                      <div className="bg-gray-700 p-6 rounded-lg mb-4">
+                        <div className="flex justify-center items-center gap-2 mb-2">
+                          <Clock className="h-5 w-5 text-primary" />
+                          <span className="text-lg font-bold text-white">
+                            {timeLeft.days}d {timeLeft.hours}h {timeLeft.minutes}m {timeLeft.seconds}s
+                          </span>
+                        </div>
+                        <p className="text-white/70 text-sm">
+                          {language === "de" ? "bis zur Anmeldung" : "until registration opens"}
+                        </p>
+                      </div>
+                      <Button
+                        size="lg"
+                        className="bg-gray-600 text-white font-bold py-4 px-8 text-lg cursor-not-allowed opacity-50"
+                        disabled
+                      >
+                        {t("registerNow")}
+                      </Button>
+                      <p className="text-white/70 mt-4 text-sm">
+                        {language === "de"
+                          ? "Die Anmeldung öffnet am 12. September 2025 um 19:00 Uhr"
+                          : "Registration opens on September 12, 2025 at 7:00 PM"}
+                      </p>
+                    </div>
+                  )}
+                </div>
+              </motion.div>
+            </div>
+          </div>
+        </section>
+
+        {/* Join us in the alps section */}
+        <section className="relative py-24 bg-black text-white overflow-hidden">
+          <div className="absolute inset-0">
+            <Image
+              src="/images/mountain-summit.jpeg"
+              alt="Mountain summit view"
+              fill
+              className="object-cover opacity-30"
+              unoptimized={true}
+            />
+          </div>
+          <div className="container relative z-10">
+            <div className="max-w-4xl mx-auto text-center">
+              <motion.h2
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.8 }}
+                className="text-4xl md:text-5xl font-bold mb-8"
+              >
+                {t("joinUsTitle")}
+              </motion.h2>
+              <motion.p
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.8, delay: 0.2 }}
+                className="text-xl mb-12 text-gray-300"
+              >
+                {t("joinUsDescription")}
+              </motion.p>
+              <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.8, delay: 0.4 }}
+                className="flex flex-col sm:flex-row gap-6 justify-center items-center"
+              >
+                <Button
+                  size="lg"
+                  className={`btn-primary text-lg px-8 ${!timeLeft.isActive ? "opacity-50 cursor-not-allowed" : ""}`}
+                  asChild={timeLeft.isActive}
+                  disabled={!timeLeft.isActive}
+                >
+                  {timeLeft.isActive ? (
+                    <a
+                      href="https://my.camps.digital/masken/buchungen/vuejs?&vendor=mountaincamp&destination_id=2467&termin_id=36011&locale=de#/"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                    >
+                      {t("registerNow")}
+                    </a>
+                  ) : (
+                    <span>
+                      {timeLeft.days}d {timeLeft.hours}h {timeLeft.minutes}m {timeLeft.seconds}s
+                    </span>
+                  )}
+                </Button>
+                <div className="flex items-center gap-4 text-gray-300">
+                  <Calendar className="h-5 w-5" />
+                  <span>{t("dates")}</span>
                 </div>
               </motion.div>
             </div>
@@ -1232,7 +1423,7 @@ export default function Home() {
                     aria-label="TikTok"
                   >
                     <svg className="h-6 w-6" fill="currentColor" viewBox="0 0 24 24">
-                      <path d="M12.525.02c1.31-.02 2.61-.01 3.91-.02.08 1.53.63 3.09 1.75 4.17 1.12 1.11 2.7 1.62 4.24 1.79v4.03c-1.44-.05-2.89-.35-4.2-.97-.57-.26-1.1-.59-1.62-.93-.01 2.92.01 5.84-.02 8.75-.08 1.4-.54 2.79-1.35 3.94-1.31 1.92-3.58 3.17-5.91 3.21-1.43.08-2.86-.31-4.08-1.03-2.02-1.19-3.44-3.37-3.65-5.71-.02-.5-.03-1-.01-1.49.18-1.9 1.12-3.72 2.58-4.96 1.66-1.44 3.98-2.13 6.15-1.72.02 1.48-.04 2.96-.04 4.44-.99-.32-2.15-.23-3.02.37-.63.41-1.11 1.04-1.36 1.75-.21.51-.15 1.07-.14 1.61.24.67.62 1.32 1.24 1.76.84.6 1.91.75 2.91.46.01-1.49.01-2.99.01-4.48s.01-2.99.01-4.48c0-1.63-.8-3.2-2.1-4.25-1.07-.87-2.44-1.26-3.81-1.15-2.9.24-5.22 2.7-5.22 5.61 0 .33 0 .66-.02.99.02.33.02.66.04.99.04.6.18 1.19.42 1.74.49 1.11 1.44 2 2.66 2.46.6.22 1.23.34 1.86.36.02-1.48.04-2.96.04-4.44-.01-.46.24-.9.6-1.2.36-.3.84-.42 1.29-.32.41.1.74.42.86.83.19.61.42 1.19.66 1.77.34 1.04.83 2.06 1.51 2.86 1.3 1.54 3.33 2.46 5.41 2.54 1.24.01 2.48-.15 3.64-.51 0-.01 0 0 0 0z" />
+                      <path d="M12.525.02c1.31-.02 2.61-.01 3.91-.02.08 1.53.63 3.09 1.75 4.17 1.12 1.11 2.7 1.62 4.24 1.79v4.03c-1.44-.05-2.89-.35-4.2-.97-.57-.26-1.1-.59-1.62-.93-.01 2.92.01 5.84-.02 8.75-.08 1.4-.54 2.79-1.35 3.94-1.31 1.92-3.58 3.17-5.91 3.21-1.43.08-2.86-.31-4.08-1.03-2.02-1.19-3.44-3.37-3.65-5.71-.02-.5-.03-1-.01-1.49.18-1.9 1.12-3.72 2.58-4.96 1.66-1.44 3.98-2.13 6.15-1.72.02 1.48-.04 2.96-.04 4.44-.99-.32-2.15-.23-3.02.37-.63.41-1.11 1.04-1.36 1.75-.21.51-.15 1.07-.14 1.61.24.67.62 1.32 1.24 1.76.84.6 1.91.75 2.91.46.01-1.49.01-2.99.01-4.48z" />
                     </svg>
                   </a>
                 </div>
@@ -1240,17 +1431,24 @@ export default function Home() {
 
               <div className="flex flex-col gap-3">
                 <h4 className="footer-heading text-white">{t("legal")}</h4>
-                <Link href="/legal-notice" className="footer-link">
-                  {language === "de" ? "Impressum" : "Legal Notice"}
-                </Link>
                 <Link href="/privacy-policy" className="footer-link">
-                  {language === "de" ? "Datenschutz" : "Privacy Policy"}
+                  {t("privacyPolicy")}
+                </Link>
+                <Link href="/imprint" className="footer-link">
+                  {t("imprint")}
+                </Link>
+                <Link href="/raffle-conditions" className="footer-link">
+                  {t("raffleConditions")}
+                </Link>
+                <Link href="/agb" className="footer-link">
+                  {t("agb")}
                 </Link>
               </div>
             </div>
           </div>
-          <div className="text-center text-white/60">
-            &copy; {new Date().getFullYear()} The Mountaincamp. {t("allRightsReserved")}
+
+          <div className="border-t border-white/10 pt-8 text-center">
+            <p className="text-white/60">© 2025 The Mountaincamp. {t("rights")}</p>
           </div>
         </div>
       </footer>

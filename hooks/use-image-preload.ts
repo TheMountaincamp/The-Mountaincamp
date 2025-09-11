@@ -62,6 +62,6 @@ export function useImagePreload(imageSources: string[]) {
     imagesPreloaded,
     loadedCount,
     errorCount,
-    progress: imageSources.length > 0 ? (loadedCount / imageSources.length) * 100 : 100,
+    progress: imageSources && imageSources.length > 0 ? (loadedCount / imageSources.length) * 100 : 100,
   }
 }
