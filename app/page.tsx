@@ -1129,17 +1129,38 @@ export default function Home() {
                 transition={{ duration: 0.8 }}
               >
                 <div className="bg-gray-800 p-8 text-white rounded-xl border border-gray-700">
-                  <h3 className="text-2xl font-bold uppercase mb-6 text-center text-white">Coming Soon</h3>
-                  <p className="text-white/70 mb-6 text-center">
-                    {language === "de"
-                      ? "Die Buchung wird bald verfügbar sein. Bleiben Sie dran für weitere Updates!"
-                      : "Booking will be available soon. Stay tuned for updates!"}
-                  </p>
+                  <h3 className="text-2xl font-bold uppercase mb-6 text-center text-white">
+                    {t("bookingTitle") || "Book Your Adventure"}
+                  </h3>
+
+                  {/* CADI Booking mask START */}
+                  <div
+                    id="booking-mask-wrapper"
+                    data-api-base-url="https://my.camps.digital"
+                    data-subdomain="my"
+                    data-anbieter-id="39"
+                    data-pinned-countries="de,at,ch"
+                    data-footer-badge-img=""
+                    data-sidebar-badge-1-img=""
+                    data-sidebar-badge-2-img=""
+                    className="min-h-[400px]"
+                  >
+                    {/* booking mask gets inserted here */}
+                  </div>
                 </div>
               </motion.div>
             </div>
           </div>
         </section>
+
+        <script
+          src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"
+          integrity="sha512-894YE6QWD5I59HgZOGReFYm4dnWc1Qt5NtvYSaNcOP+u1T9qYdvdihz0PPSiiqn/+/3e7Jo4EaG7TubfWGUrMQ=="
+          crossOrigin="anonymous"
+          referrerPolicy="no-referrer"
+        />
+        <script src="https://cdn.jsdelivr.net/gh/Leon-1207/CADI-Loaders@latest/BookingMask.js" />
+        {/* Booking mask END */}
       </main>
 
       {/* Footer with improved design */}
