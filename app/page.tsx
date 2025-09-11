@@ -1287,7 +1287,7 @@ export default function Home() {
                 transition={{ duration: 0.8 }}
                 className="text-4xl md:text-5xl font-bold mb-8"
               >
-                {t("joinUsTitle")}
+                {t("Join us")}
               </motion.h2>
               <motion.p
                 initial={{ opacity: 0, y: 20 }}
@@ -1295,7 +1295,7 @@ export default function Home() {
                 transition={{ duration: 0.8, delay: 0.2 }}
                 className="text-xl mb-12 text-gray-300"
               >
-                {t("joinUsDescription")}
+                {t("")}
               </motion.p>
               <motion.div
                 initial={{ opacity: 0, y: 20 }}
