@@ -691,7 +691,7 @@ export default function Home() {
         <section id="about" className="relative -mt-32 z-30">
           <div className="absolute top-0 left-0 right-0 h-64 bg-gradient-to-b from-transparent via-white/5 via-white/10 via-white/15 via-white/20 via-white/25 pointer-events-none"></div>
 
-          <div className="bg-gradient-to-b from-white/10 via-white/20 via-white/30 via-white/40 via-white/50 via-white/60 via-white/70 via-white/80 via-white/85 to-white/90 backdrop-blur-sm pt-40 pb-24">
+          <div className="bg-white pt-40 pb-24">
             <div className="container">
               <div className="grid gap-16 lg:grid-cols-2 items-center">
                 <motion.div
@@ -714,8 +714,8 @@ export default function Home() {
                         <span className="text-base text-gray-900">
                           {timeLeft.isActive
                             ? language === "de"
-                              ? "6.-10. August 2025"
-                              : "August 6-10, 2025"
+                              ? "5.-9. August 2026"
+                              : "August 5-9, 2026"
                             : language === "de"
                               ? `Noch ${timeLeft.days} Tage`
                               : `${timeLeft.days} days left`}
@@ -1156,8 +1156,8 @@ export default function Home() {
                 <p className="text-xl mb-8 text-white">
                   {timeLeft.isActive
                     ? language === "de"
-                      ? "6.-10. August 2025"
-                      : "August 6-10, 2025"
+                      ? "5.-9. August 2026"
+                      : "August 5-9, 2026"
                     : language === "de"
                       ? `Anmeldung in ${timeLeft.days} Tagen verfügbar`
                       : `Registration available in ${timeLeft.days} days`}
