@@ -1189,7 +1189,7 @@ export default function Home() {
                   </div>
                   <div className="bg-gray-800 px-6 py-4 rounded-b-lg">
                     <span className="text-3xl font-bold text-white">
-                      {timeLeft.isActive ? "€420" : language === "de" ? "Bald verfügbar" : "Coming Soon"}
+                      {timeLeft.isActive ? "€480" : language === "de" ? "Bald verfügbar" : "Coming Soon"}
                     </span>
                   </div>
                 </div>
