@@ -70,11 +70,13 @@ export default function Home() {
   })
 
   useEffect(() => {
-    const targetDate = new Date("2025-09-12T19:00:00").getTime()
+    const targetDate = new Date("2025-09-19T19:00:00").getTime()
 
     const updateCountdown = () => {
       const now = new Date().getTime()
       const difference = targetDate - now
+
+      console.log("[v0] Timer check - Target:", new Date(targetDate), "Now:", new Date(now), "Difference:", difference)
 
       if (difference > 0) {
         setTimeLeft({
@@ -590,7 +592,11 @@ export default function Home() {
                 ) : (
                   <div className="flex items-center gap-2">
                     <Clock className="h-4 w-4" />
-                    <span className="text-sm font-medium uppercase tracking-widest">5-9 August 2026</span>
+                    <span className="text-sm font-medium uppercase tracking-widest">
+                      {language === "de"
+                        ? "Anmeldung öffnet Freitag 19.09.2025"
+                        : "Registration opens Friday 19.09.2025"}
+                    </span>
                   </div>
                 )}
               </motion.div>
@@ -1255,8 +1261,8 @@ export default function Home() {
                       </Button>
                       <p className="text-white/70 mt-4 text-sm">
                         {language === "de"
-                          ? "Die Anmeldung öffnet am 12. September 2025 um 19:00 Uhr"
-                          : "Registration opens on September 12, 2025 at 7:00 PM"}
+                          ? "Die Anmeldung öffnet am 19. September 2025 um 19:00 Uhr"
+                          : "Registration opens on September 19, 2025 at 7:00 PM"}
                       </p>
                     </div>
                   )}
