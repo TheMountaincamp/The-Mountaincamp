@@ -101,7 +101,7 @@ export default function PriceCategoryBars() {
         <div className="max-w-3xl mx-auto">
           <PriceCategoryBar
             category="Price Category 1 - Early Bird"
-            filled={0}
+            filled={64}
             total={100}
             label="Friday 19th at 7pm"
             status="coming-soon"
