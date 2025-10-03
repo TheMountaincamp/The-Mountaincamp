@@ -1,7 +1,6 @@
 "use client"
 
 import { useState, useEffect } from "react"
-import Image from "next/image"
 import { motion, AnimatePresence } from "framer-motion"
 import { ChevronLeft, ChevronRight, Quote } from "lucide-react"
 
@@ -72,22 +71,7 @@ export default function TestimonialSlider({ testimonials, autoPlay = true, inter
             transition={{ duration: 0.5 }}
             className="absolute inset-0 flex flex-col justify-center"
           >
-            <p className="mb-8 text-lg italic text-gray-600">{testimonials[currentIndex].quote}</p>
-            <div className="flex items-center gap-4">
-              <div className="h-16 w-16 overflow-hidden rounded-full bg-gray-200">
-                <Image
-                  src={testimonials[currentIndex].image || "/placeholder.svg?height=100&width=100"}
-                  alt={testimonials[currentIndex].name}
-                  width={64}
-                  height={64}
-                  className="h-full w-full object-cover"
-                />
-              </div>
-              <div>
-                <h3 className="text-xl font-bold text-primary">{testimonials[currentIndex].name}</h3>
-                <p className="text-secondary font-medium">{testimonials[currentIndex].program}</p>
-              </div>
-            </div>
+            <p className="text-lg italic text-gray-600">{testimonials[currentIndex].quote}</p>
           </motion.div>
         </AnimatePresence>
       </div>
