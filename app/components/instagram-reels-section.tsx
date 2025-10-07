@@ -13,7 +13,7 @@ interface InstagramReel {
     en: string
     de: string
   }
-  imageQuery: string
+  thumbnailUrl: string
 }
 
 const reels: InstagramReel[] = [
@@ -24,7 +24,7 @@ const reels: InstagramReel[] = [
       en: "Summit Views",
       de: "Gipfelblicke",
     },
-    imageQuery: "trail runners reaching mountain summit with panoramic alpine views",
+    thumbnailUrl: "https://www.instagram.com/p/DOY4eu9jNej/media/?size=l",
   },
   {
     id: "DNcmu4FMUiW",
@@ -33,7 +33,7 @@ const reels: InstagramReel[] = [
       en: "Trail Adventures",
       de: "Trail Abenteuer",
     },
-    imageQuery: "group of trail runners on scenic mountain path through alpine meadows",
+    thumbnailUrl: "https://www.instagram.com/p/DNcmu4FMUiW/media/?size=l",
   },
   {
     id: "DNFxZ4ns8Nr",
@@ -42,7 +42,7 @@ const reels: InstagramReel[] = [
       en: "Community Vibes",
       de: "Gemeinschaft",
     },
-    imageQuery: "mountain camp participants celebrating together at alpine lodge terrace",
+    thumbnailUrl: "https://www.instagram.com/p/DNFxZ4ns8Nr/media/?size=l",
   },
   {
     id: "DNIUf5jsUCL",
@@ -51,7 +51,7 @@ const reels: InstagramReel[] = [
       en: "Sunset Sessions",
       de: "Sonnenuntergang",
     },
-    imageQuery: "trail runners at golden hour sunset on mountain ridge",
+    thumbnailUrl: "https://www.instagram.com/p/DNIUf5jsUCL/media/?size=l",
   },
 ]
 
@@ -109,12 +109,13 @@ export default function InstagramReelsSection() {
                 >
                   {/* Reel cover image */}
                   <Image
-                    src={`/.jpg?height=640&width=360&query=${encodeURIComponent(reel.imageQuery)}`}
+                    src={reel.thumbnailUrl || "/placeholder.svg"}
                     alt={reel.caption[language]}
                     fill
                     className="object-cover"
                     loading="lazy"
                     sizes="(max-width: 768px) 280px, 320px"
+                    unoptimized
                   />
 
                   {/* Bottom gradient overlay for caption */}
