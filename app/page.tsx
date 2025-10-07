@@ -105,10 +105,12 @@ export default function Home() {
       const eventStructuredData = {
         "@context": "https://schema.org",
         "@type": "Event",
-        name: "The Mountaincamp 2025",
-        description: "Trailrunning, Community, Party - Join the ultimate alpine adventure at The Mountaincamp 2025.",
-        startDate: "2025-08-06T00:00:00",
-        endDate: "2025-08-10T00:00:00",
+        name: "Lovetrails Festival - The Mountaincamp 2026",
+        alternateName: ["The Mountaincamp", "Lovetrails", "Lovetrails Festival"],
+        description:
+          "Lovetrails Festival - Trailrunning, Community, Party - Join the ultimate alpine adventure at The Mountaincamp 2026. Experience epic trails, mountain running, and unforgettable moments in the Austrian Alps.",
+        startDate: "2026-08-05T00:00:00",
+        endDate: "2026-08-09T00:00:00",
         eventStatus: "https://schema.org/EventScheduled",
         eventAttendanceMode: "https://schema.org/OfflineEventAttendanceMode",
         location: {
@@ -133,16 +135,17 @@ export default function Home() {
         ],
         offers: {
           "@type": "Offer",
-          price: "420",
+          price: "480",
           priceCurrency: "EUR",
           availability: "https://schema.org/LimitedAvailability",
-          url: "https://my.camps.digital/masken/buchungen/vuejs?&vendor=mountaincamp&destination_id=1475&termin_id=35113#/",
-          validFrom: "2023-01-01T00:00:00",
-          priceValidUntil: "2025-08-01T00:00:00",
+          url: "https://my.camps.digital/masken/buchungen/vuejs?&vendor=mountaincamp&destination_id=2467&termin_id=36011#/",
+          validFrom: "2025-09-19T19:00:00",
+          priceValidUntil: "2026-08-01T00:00:00",
         },
         organizer: {
           "@type": "Organization",
           name: "The Mountaincamp",
+          alternateName: "Lovetrails Festival",
           url: "https://themountaincamp.de",
           logo: "https://themountaincamp.de/images/MTC-Logo_2025.png",
         },
@@ -150,18 +153,70 @@ export default function Home() {
           "@type": "PerformingGroup",
           name: "Trailrunning Coaches",
         },
+        keywords:
+          "Lovetrails, Lovetrails Festival, Trailrunning Camp, Mountain Running, Austrian Alps, Trail Running Event, Running Community, Mountain Adventure, Hochkrimml",
       }
 
-      // Add structured data to the page
-      const script = document.createElement("script")
-      script.type = "application/ld+json"
-      script.text = JSON.stringify(eventStructuredData)
-      document.head.appendChild(script)
+      const sportsEventData = {
+        "@context": "https://schema.org",
+        "@type": "SportsEvent",
+        name: "Lovetrails Festival 2026",
+        sport: "Trail Running",
+        description:
+          "Lovetrails Festival - The ultimate trailrunning camp in the Austrian Alps featuring epic trails, community building, and mountain adventures.",
+        startDate: "2026-08-05",
+        endDate: "2026-08-09",
+        location: {
+          "@type": "Place",
+          name: "Hochkrimml",
+          address: {
+            "@type": "PostalAddress",
+            addressLocality: "Hochkrimml",
+            addressRegion: "Salzburg",
+            addressCountry: "AT",
+          },
+        },
+        organizer: {
+          "@type": "Organization",
+          name: "The Mountaincamp - Lovetrails Festival",
+          url: "https://themountaincamp.de",
+        },
+      }
+
+      const organizationData = {
+        "@context": "https://schema.org",
+        "@type": "Organization",
+        name: "The Mountaincamp",
+        alternateName: "Lovetrails Festival",
+        url: "https://themountaincamp.de",
+        logo: "https://themountaincamp.de/images/MTC-Logo_2025.png",
+        description:
+          "Lovetrails Festival - The premier trailrunning camp in the Austrian Alps, offering epic mountain trails, community experiences, and unforgettable adventures.",
+        sameAs: [
+          "https://www.instagram.com/the_mountaincamp/",
+          "https://www.youtube.com/@the_mountaincamp",
+          "https://www.tiktok.com/@themountaincamp",
+        ],
+        contactPoint: {
+          "@type": "ContactPoint",
+          email: "themountaincampde@gmail.com",
+          contactType: "Customer Service",
+        },
+      }
+
+      // Add all structured data to the page
+      const scripts = [eventStructuredData, sportsEventData, organizationData]
+      scripts.forEach((data) => {
+        const script = document.createElement("script")
+        script.type = "application/ld+json"
+        script.text = JSON.stringify(data)
+        document.head.appendChild(script)
+      })
 
       return () => {
         // Clean up scripts when component unmounts
-        const scripts = document.querySelectorAll('script[type="application/ld+json"]')
-        scripts.forEach((scriptEl) => {
+        const scriptElements = document.querySelectorAll('script[type="application/ld+json"]')
+        scriptElements.forEach((scriptEl) => {
           if (document.head.contains(scriptEl)) {
             document.head.removeChild(scriptEl)
           }

@@ -27,9 +27,18 @@ export const metadata: Metadata = {
   description:
     "Erlebe das ultimative Trailrunning Camp in Österreich! The Mountaincamp 2025: Epische Trails, Community & Party in den Alpen. Für alle Levels. Jetzt Platz sichern!",
   keywords: [
+    "Lovetrails",
+    "Lovetrails Festival",
+    "Lovetrails Österreich",
+    "Lovetrails Austria",
+    "Lovetrails Trailrunning",
+    "Lovetrails Camp",
+    "Lovetrails Event",
+    "Lovetrails Mountain",
+    "Lovetrails Festival 2026",
+    "Lovetrails Hochkrimml",
     "Trailrunning Camp",
     "Trailrunning Camp Österreich",
-    "Lovetrails Festival",
     "Laufcamp",
     "Trailrunning Alpen",
     "Berglauf Camp",
@@ -77,23 +86,23 @@ export const metadata: Metadata = {
     },
   },
   openGraph: {
-    title: "The Mountaincamp | Trailrunning Camp in Österreich",
+    title: "Lovetrails Festival | The Mountaincamp Trailrunning Camp in Österreich",
     description:
-      "Das ultimative Trailrunning Camp in den österreichischen Alpen. 4 Nächte, epische Trails, Workshops & eine unvergessliche Community. Jetzt anmelden!",
+      "Lovetrails Festival - Das ultimative Trailrunning Camp in den österreichischen Alpen. 4 Nächte, epische Trails, Workshops & eine unvergessliche Community. Jetzt anmelden!",
     url: "https://themountaincamp.de",
-    siteName: "The Mountaincamp",
+    siteName: "The Mountaincamp - Lovetrails Festival",
     images: [
       {
         url: "/images/hero-trail-runners.jpeg",
         width: 1200,
         height: 630,
-        alt: "Trailrunning Camp in den österreichischen Alpen - The Mountaincamp",
+        alt: "Lovetrails Festival - Trailrunning Camp in den österreichischen Alpen - The Mountaincamp",
       },
       {
         url: "/images/mountain-top-sunset-rave.jpg",
         width: 1200,
         height: 630,
-        alt: "Sunset Rave Party beim Trailrunning Camp in den Bergen",
+        alt: "Lovetrails Festival Sunset Rave Party beim Trailrunning Camp in den Bergen",
       },
     ],
     locale: "de_DE",
@@ -101,9 +110,9 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "The Mountaincamp | #1 Trailrunning Camp in Österreich",
+    title: "Lovetrails Festival | The Mountaincamp #1 Trailrunning Camp",
     description:
-      "Bist du bereit für das Trailrunning Camp deines Lebens? Epische Trails, Community & Party in den Alpen. Für alle Levels. Sichere dir jetzt deinen Platz!",
+      "Lovetrails Festival - Bist du bereit für das Trailrunning Camp deines Lebens? Epische Trails, Community & Party in den Alpen. Für alle Levels. Sichere dir jetzt deinen Platz!",
     images: ["/images/hero-trail-runners.jpeg"],
     creator: "@themountaincamp",
     site: "@themountaincamp",
