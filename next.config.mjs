@@ -9,7 +9,7 @@ const nextConfig = {
   },
   images: {
     domains: [],
-    unoptimized: true,
+    formats: ['image/webp', 'image/avif'],
     remotePatterns: [
       {
         protocol: 'https',

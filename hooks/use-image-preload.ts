@@ -42,7 +42,6 @@ export function useImagePreload(imageSources: string[]) {
         if (!isMounted) return
         errors++
         setErrorCount(errors)
-        console.error(`Failed to preload image: ${src}`)
 
         if (loaded + errors === totalImages) {
           setImagesPreloaded(true)

@@ -34,17 +34,7 @@ import { useScrollVideo } from "@/hooks/use-scroll-video"
 import TestimonialSlider from "@/app/components/testimonial-slider"
 
 // Define critical images for sections that will be visible later
-const SECTION_IMAGES = [
-  "/images/summit-view.jpeg",
-  "/images/canoeing-activity.jpeg",
-  "/images/table-tennis.png",
-  "/images/summit-trail.jpeg",
-  "/images/archery.jpeg",
-  "/images/mtb-trip.png",
-  "/images/movie-night.png",
-  "/images/backflip-lesson.png",
-  "/images/canoeing-lake.jpeg",
-]
+const SECTION_IMAGES = ["/images/forest-group-photo.jpg", "/images/MTC-Logo_2025_weiß.png"]
 
 // Define images for the House page to preload when hovering over the link
 const HOUSE_PAGE_IMAGES = ["/images/mountain-lodge.jpeg"]
@@ -401,7 +391,7 @@ export default function Home() {
                 height={isMobile ? 40 : 56}
                 className="h-full w-auto object-contain"
                 priority
-                unoptimized={true}
+                sizes="(max-width: 768px) 128px, 200px"
               />
             </div>
           </div>
@@ -564,7 +554,9 @@ export default function Home() {
                 alt="Mountain Training Camp group photo with participants in front of evergreen forest"
                 fill
                 className="object-cover object-center"
-                unoptimized={true}
+                priority
+                sizes="100vw"
+                quality={85}
               />
             </motion.div>
           </div>
@@ -621,7 +613,7 @@ export default function Home() {
                     height={100}
                     className="mx-auto"
                     priority
-                    unoptimized={true}
+                    sizes="250px"
                   />
                 ) : (
                   <h1 className="text-6xl font-bold uppercase tracking-tight">THE MOUNTAINCAMP</h1>
@@ -751,7 +743,8 @@ export default function Home() {
                     alt="Mountain camp participants walking together in Alpine village"
                     fill
                     className="object-cover"
-                    unoptimized={true}
+                    loading="lazy"
+                    sizes="(max-width: 1024px) 100vw, 50vw"
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent"></div>
                   <div className="absolute bottom-0 left-0 p-6">
@@ -865,7 +858,8 @@ export default function Home() {
                     alt="Mountain sunset rave"
                     fill
                     className="object-cover"
-                    unoptimized={true}
+                    loading="lazy"
+                    sizes="(max-width: 768px) 100vw, 50vw"
                   />
                   <div className="absolute inset-0 bg-gradient-to-r from-black to-transparent md:bg-gradient-to-l"></div>
                 </div>
@@ -902,7 +896,8 @@ export default function Home() {
                       alt={activities[currentActivityIndex].title}
                       fill
                       className="object-cover transition-transform duration-700 group-hover:scale-110"
-                      unoptimized={true}
+                      loading="lazy"
+                      sizes="(max-width: 768px) 100vw, 448px"
                     />
                     <div className="activity-card-overlay opacity-80 group-hover:opacity-90" />
                     <div className="activity-card-content">
@@ -970,6 +965,8 @@ export default function Home() {
                     height={600}
                     className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-110"
                     fallbackSrc="/placeholder.svg?height=600&width=600"
+                    loading="lazy"
+                    sizes="(max-width: 768px) 50vw, 33vw"
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
                   <div className="absolute bottom-0 left-0 p-4 text-white opacity-0 group-hover:opacity-100 transition-opacity duration-300">
@@ -1006,7 +1003,8 @@ export default function Home() {
                   alt="Mountain rave"
                   fill
                   className="object-cover"
-                  unoptimized={true}
+                  loading="lazy"
+                  sizes="100vw"
                 />
                 <div className="absolute inset-0 bg-black/80 backdrop-blur-sm"></div>
               </div>
@@ -1075,7 +1073,8 @@ export default function Home() {
                   width={200}
                   height={80}
                   className="h-16 w-auto object-contain"
-                  unoptimized={true}
+                  loading="lazy"
+                  sizes="200px"
                 />
               </motion.a>
 
@@ -1097,7 +1096,8 @@ export default function Home() {
                   width={200}
                   height={80}
                   className="h-16 w-auto object-contain"
-                  unoptimized={true}
+                  loading="lazy"
+                  sizes="200px"
                 />
               </motion.a>
 
@@ -1119,7 +1119,8 @@ export default function Home() {
                   width={200}
                   height={80}
                   className="h-16 w-auto object-contain"
-                  unoptimized={true}
+                  loading="lazy"
+                  sizes="200px"
                 />
               </motion.a>
 
@@ -1141,7 +1142,8 @@ export default function Home() {
                   width={200}
                   height={80}
                   className="h-16 w-auto object-contain"
-                  unoptimized={true}
+                  loading="lazy"
+                  sizes="200px"
                 />
               </motion.a>
             </motion.div>
@@ -1280,7 +1282,8 @@ export default function Home() {
               alt="Mountain summit view"
               fill
               className="object-cover opacity-30"
-              unoptimized={true}
+              loading="lazy"
+              sizes="100vw"
             />
           </div>
           <div className="container relative z-10">
@@ -1348,7 +1351,8 @@ export default function Home() {
                 width={180}
                 height={40}
                 className="h-12 w-auto mb-4"
-                unoptimized={true}
+                loading="lazy"
+                sizes="180px"
               />
               <p className="text-white/60">
                 {language === "de"
