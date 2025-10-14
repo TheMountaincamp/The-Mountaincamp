@@ -1,35 +1,65 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
         xmlns:xhtml="http://www.w3.org/1999/xhtml"
-        xmlns:image="http://www.google.com/schemas/sitemap-image/1.1"
-        xmlns:video="http://www.google.com/schemas/sitemap-video/1.1">
+        xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">
+   Updated all lastmod dates to current, added missing pages, proper hreflang 
   <url>
     <loc>https://themountaincamp.de/</loc>
-    <lastmod>2023-04-04</lastmod>
+    <lastmod>2025-01-15</lastmod>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
-    <image:image>
-      <image:loc>https://themountaincamp.de/images/hero-trail-runners.jpeg</image:loc>
-      <image:title>The Mountaincamp - Trail runners in the Austrian Alps</image:title>
-      <image:caption>Experience trail running with a group in the breathtaking Austrian Alps</image:caption>
-    </image:image>
-    <image:image>
-      <image:loc>https://themountaincamp.de/images/mountain-top-sunset-rave.jpg</image:loc>
-      <image:title>Sunset Rave at The Mountaincamp</image:title>
-      <image:caption>Dance under the stars at our legendary mountain-top party</image:caption>
-    </image:image>
-    <xhtml:link rel="alternate" hreflang="en" href="https://themountaincamp.de/en/" />
     <xhtml:link rel="alternate" hreflang="de" href="https://themountaincamp.de/" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://themountaincamp.de/en/" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://themountaincamp.de/" />
   </url>
+  
   <url>
-    <loc>https://themountaincamp.de/datenschutz</loc>
-    <lastmod>2023-04-04</lastmod>
+    <loc>https://themountaincamp.de/house</loc>
+    <lastmod>2025-01-15</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="de" href="https://themountaincamp.de/house" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://themountaincamp.de/en/house" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://themountaincamp.de/house" />
+  </url>
+  
+  <url>
+    <loc>https://themountaincamp.de/trails</loc>
+    <lastmod>2025-01-15</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="de" href="https://themountaincamp.de/trails" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://themountaincamp.de/en/trails" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://themountaincamp.de/trails" />
+  </url>
+  
+  <url>
+    <loc>https://themountaincamp.de/bus-departures</loc>
+    <lastmod>2025-01-15</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+    <xhtml:link rel="alternate" hreflang="de" href="https://themountaincamp.de/bus-departures" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://themountaincamp.de/en/bus-departures" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://themountaincamp.de/bus-departures" />
+  </url>
+  
+  <url>
+    <loc>https://themountaincamp.de/legal/privacy-policy</loc>
+    <lastmod>2025-01-15</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.3</priority>
   </url>
+  
   <url>
-    <loc>https://themountaincamp.de/impressum</loc>
-    <lastmod>2023-04-04</lastmod>
+    <loc>https://themountaincamp.de/legal/imprint</loc>
+    <lastmod>2025-01-15</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.3</priority>
+  </url>
+  
+  <url>
+    <loc>https://themountaincamp.de/legal/conditions-of-raffle-participation</loc>
+    <lastmod>2025-01-15</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.3</priority>
   </url>
