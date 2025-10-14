@@ -33,6 +33,8 @@ import PreloadLink from "@/app/components/preload-link"
 import { useScrollVideo } from "@/hooks/use-scroll-video"
 import TestimonialSlider from "@/app/components/testimonial-slider"
 import InstagramReelsSection from "@/app/components/instagram-reels-section"
+import FAQSection from "@/app/components/faq-section"
+import RouteOverviewSection from "@/app/components/route-overview-section"
 
 // Define critical images for sections that will be visible later
 const SECTION_IMAGES = ["/images/MTC-Logo_2025_weiß.png"]
@@ -692,11 +694,21 @@ export default function Home() {
                 transition={{ delay: 0, duration: 0 }}
                 className="mb-6 max-w-2xl text-lg sm:text-xl md:text-2xl font-light px-4 sm:px-0"
               >
-                {t("heroSubtitle1")}
-                <br />
-                {t("heroSubtitle2")}
-                <br />
-                <span className="font-bold">{t("heroSubtitle3")}</span>
+                {language === "de" ? (
+                  <>
+                    Erlebe das ultimative <strong>Trailrunning Camp in Österreich</strong>
+                    <br />5 Tage epische Trails in den <strong>österreichischen Alpen</strong>
+                    <br />
+                    <span className="font-bold">Hochkrimml | 5.-9. August 2026</span>
+                  </>
+                ) : (
+                  <>
+                    Experience the ultimate <strong>trailrunning camp in Austria</strong>
+                    <br />5 days of epic trails in the <strong>Austrian Alps</strong>
+                    <br />
+                    <span className="font-bold">Hochkrimml | August 5-9, 2026</span>
+                  </>
+                )}
               </motion.p>
 
               <motion.div
@@ -707,7 +719,7 @@ export default function Home() {
               >
                 <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
                   <Button size="lg" className="btn-primary text-lg px-8" asChild>
-                    <Link href="#experience">{t("learnMore")}</Link>
+                    <Link href="#experience">{language === "de" ? "Entdecke das Camp" : "Discover the Camp"}</Link>
                   </Button>
                 </motion.div>
                 <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
@@ -723,10 +735,10 @@ export default function Home() {
                         target="_blank"
                         rel="noopener noreferrer"
                       >
-                        {t("registerNow")}
+                        {language === "de" ? "Jetzt dabei sein" : "Join Now"}
                       </a>
                     ) : (
-                      <span>{t("registerNow")}</span>
+                      <span>{language === "de" ? "Jetzt dabei sein" : "Join Now"}</span>
                     )}
                   </Button>
                 </motion.div>
@@ -970,6 +982,8 @@ export default function Home() {
           </div>
         </section>
 
+        <RouteOverviewSection />
+
         {/* Gallery section with hover effects */}
         <section className="py-24 bg-gray-50">
           <div className="container">
@@ -1072,6 +1086,8 @@ export default function Home() {
             </motion.div>
           </div>
         </section>
+
+        <FAQSection />
 
         {/* Partners section */}
         <section className="py-24 bg-gray-50">
