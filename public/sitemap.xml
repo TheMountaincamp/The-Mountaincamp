@@ -2,7 +2,7 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
         xmlns:xhtml="http://www.w3.org/1999/xhtml"
         xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">
-   Updated all lastmod dates to current, added missing pages, proper hreflang 
+   Updated all lastmod dates to current, added proper hreflang 
   <url>
     <loc>https://themountaincamp.de/</loc>
     <lastmod>2025-01-15</lastmod>

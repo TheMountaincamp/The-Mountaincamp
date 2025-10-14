@@ -1,4 +1,5 @@
-# The Mountaincamp - The biggest trailrunning camp in the alps
+# The Mountaincamp - Alpine Trailrunning Camp Austria
+# Premier trailrunning camp in the Austrian Alps
 # https://themountaincamp.de
 
 User-agent: *
@@ -19,3 +20,5 @@ Crawl-delay: 10
 
 User-agent: SemrushBot
 Crawl-delay: 10
+
+# Keywords: trailrunning camp Austria, alpine trailrunning camp, trailrunning camp alps, trail running Austria, mountain running camp

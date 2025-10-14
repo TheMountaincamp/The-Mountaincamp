@@ -99,19 +99,18 @@ export default function Home() {
     setIsPreloading(false)
   }, [])
 
-  // Add enhanced structured data for SEO
   useEffect(() => {
     if (typeof window !== "undefined") {
-      // Main event structured data
       const eventStructuredData = {
         "@context": "https://schema.org",
-        "@type": "Event",
-        name: "Lovetrails Festival - The Mountaincamp 2026",
-        alternateName: ["The Mountaincamp", "Lovetrails", "Lovetrails Festival"],
+        "@type": "SportsEvent",
+        name: "The Mountaincamp 2026 - Alpine Trailrunning Camp Austria",
+        alternateName: ["Lovetrails Festival", "The Mountaincamp", "Trailrunning Camp Austria Alps"],
         description:
-          "Lovetrails Festival - Trailrunning, Community, Party - Join the ultimate alpine adventure at The Mountaincamp 2026. Experience epic trails, mountain running, and unforgettable moments in the Austrian Alps.",
-        startDate: "2026-08-05T00:00:00",
-        endDate: "2026-08-09T00:00:00",
+          "Premier trailrunning camp in the Austrian Alps. 5-day alpine adventure featuring epic mountain trails, expert coaching, and vibrant community. Perfect for all levels of trail runners seeking an unforgettable experience in Hochkrimml, Austria.",
+        sport: "Trail Running",
+        startDate: "2026-08-05",
+        endDate: "2026-08-09",
         eventStatus: "https://schema.org/EventScheduled",
         eventAttendanceMode: "https://schema.org/OfflineEventAttendanceMode",
         location: {
@@ -119,9 +118,11 @@ export default function Home() {
           name: "Hochkrimml, Austrian Alps",
           address: {
             "@type": "PostalAddress",
+            streetAddress: "Hochkrimml",
             addressLocality: "Hochkrimml",
             addressRegion: "Salzburg",
-            addressCountry: "Austria",
+            postalCode: "5743",
+            addressCountry: "AT",
           },
           geo: {
             "@type": "GeoCoordinates",
@@ -131,8 +132,8 @@ export default function Home() {
         },
         image: [
           "https://themountaincamp.de/images/hero-trail-runners.jpeg",
-          "https://themountaincamp.de/images/mountain-top-sunset-rave.jpg",
           "https://themountaincamp.de/images/trail-runner-1.jpeg",
+          "https://themountaincamp.de/images/alpine-village-group.jpg",
         ],
         offers: {
           "@type": "Offer",
@@ -140,59 +141,49 @@ export default function Home() {
           priceCurrency: "EUR",
           availability: "https://schema.org/LimitedAvailability",
           url: "https://my.camps.digital/masken/buchungen/vuejs?&vendor=mountaincamp&destination_id=2467&termin_id=36011#/",
-          validFrom: "2025-09-19T19:00:00",
-          priceValidUntil: "2026-08-01T00:00:00",
+          validFrom: "2025-09-19T19:00:00+02:00",
+          priceValidUntil: "2026-08-01T00:00:00+02:00",
         },
         organizer: {
           "@type": "Organization",
           name: "The Mountaincamp",
-          alternateName: "Lovetrails Festival",
           url: "https://themountaincamp.de",
           logo: "https://themountaincamp.de/images/MTC-Logo_2025.png",
+          sameAs: [
+            "https://www.instagram.com/the_mountaincamp/",
+            "https://www.youtube.com/@the_mountaincamp",
+            "https://www.tiktok.com/@themountaincamp",
+          ],
         },
         performer: {
           "@type": "PerformingGroup",
-          name: "Trailrunning Coaches",
+          name: "The Mountaincamp Coaching Team",
         },
         keywords:
-          "Lovetrails, Lovetrails Festival, Trailrunning Camp, Mountain Running, Austrian Alps, Trail Running Event, Running Community, Mountain Adventure, Hochkrimml",
-      }
-
-      const sportsEventData = {
-        "@context": "https://schema.org",
-        "@type": "SportsEvent",
-        name: "Lovetrails Festival 2026",
-        sport: "Trail Running",
-        description:
-          "Lovetrails Festival - The ultimate trailrunning camp in the Austrian Alps featuring epic trails, community building, and mountain adventures.",
-        startDate: "2026-08-05",
-        endDate: "2026-08-09",
-        location: {
-          "@type": "Place",
-          name: "Hochkrimml",
-          address: {
-            "@type": "PostalAddress",
-            addressLocality: "Hochkrimml",
-            addressRegion: "Salzburg",
-            addressCountry: "AT",
-          },
-        },
-        organizer: {
-          "@type": "Organization",
-          name: "The Mountaincamp - Lovetrails Festival",
-          url: "https://themountaincamp.de",
-        },
+          "trailrunning camp Austria, alpine trailrunning camp, trailrunning camp alps, trail running Austria, mountain running camp, Austrian Alps trail running, Hochkrimml, trail running event, running camp Europe",
       }
 
       const organizationData = {
         "@context": "https://schema.org",
-        "@type": "Organization",
-        name: "The Mountaincamp",
+        "@type": "SportsActivityLocation",
+        name: "The Mountaincamp - Alpine Trailrunning Camp",
         alternateName: "Lovetrails Festival",
+        description:
+          "Austria's premier trailrunning camp in the Alps, offering epic mountain trails, expert coaching, and unforgettable community experiences in Hochkrimml.",
         url: "https://themountaincamp.de",
         logo: "https://themountaincamp.de/images/MTC-Logo_2025.png",
-        description:
-          "Lovetrails Festival - The premier trailrunning camp in the Austrian Alps, offering epic mountain trails, community experiences, and unforgettable adventures.",
+        image: "https://themountaincamp.de/images/hero-trail-runners.jpeg",
+        address: {
+          "@type": "PostalAddress",
+          addressLocality: "Hochkrimml",
+          addressRegion: "Salzburg",
+          addressCountry: "AT",
+        },
+        geo: {
+          "@type": "GeoCoordinates",
+          latitude: 47.2393,
+          longitude: 12.1735,
+        },
         sameAs: [
           "https://www.instagram.com/the_mountaincamp/",
           "https://www.youtube.com/@the_mountaincamp",
@@ -202,11 +193,30 @@ export default function Home() {
           "@type": "ContactPoint",
           email: "themountaincampde@gmail.com",
           contactType: "Customer Service",
+          availableLanguage: ["German", "English"],
         },
       }
 
-      // Add all structured data to the page
-      const scripts = [eventStructuredData, sportsEventData, organizationData]
+      const breadcrumbData = {
+        "@context": "https://schema.org",
+        "@type": "BreadcrumbList",
+        itemListElement: [
+          {
+            "@type": "ListItem",
+            position: 1,
+            name: "Home",
+            item: "https://themountaincamp.de",
+          },
+          {
+            "@type": "ListItem",
+            position: 2,
+            name: "Trailrunning Camp Austria",
+            item: "https://themountaincamp.de",
+          },
+        ],
+      }
+
+      const scripts = [eventStructuredData, organizationData, breadcrumbData]
       scripts.forEach((data) => {
         const script = document.createElement("script")
         script.type = "application/ld+json"

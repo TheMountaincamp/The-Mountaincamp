@@ -11,62 +11,44 @@ import Script from "next/script"
 import { Analytics } from "@vercel/analytics/react"
 import DebugImagePaths from "@/app/components/debug-image-paths"
 
-const inter = Inter({ subsets: ["latin"] })
+const inter = Inter({ subsets: ["latin"], display: "swap" })
 
-// Define critical images to preload
 const CRITICAL_IMAGES = [
-  "/images/hero-trail-runners.jpeg", // New hero image
+  "/images/hero-trail-runners.jpeg",
   "/images/MTC-Logo_2025.png",
   "/images/MTC-Logo_2025_weiß.png",
-  "/images/trail-runner-1.jpeg",
-  "/images/mountain-top-sunset-rave.jpg",
 ]
 
 export const metadata: Metadata = {
-  title: "The Mountaincamp | #1 Trailrunning Camp in Österreichs Alpen",
+  title: "Trailrunning Camp Austria Alps | The Mountaincamp 2026",
   description:
-    "Erlebe das ultimative Trailrunning Camp in Österreich! The Mountaincamp 2025: Epische Trails, Community & Party in den Alpen. Für alle Levels. Jetzt Platz sichern!",
+    "Join Austria's premier trailrunning camp in the Alps! 5-day alpine adventure with epic trails, expert coaching & community. August 5-9, 2026 Hochkrimml.",
   keywords: [
+    "trailrunning camp Austria",
+    "trailrunning camp alps",
+    "alpine trailrunning camp",
+    "trailrunning camp europe",
+    "Austria trailrunning camp",
+    "alps trailrunning camp",
+    "trail running camp Austria",
+    "mountain running camp alps",
+    "trailrunning Österreich",
     "Lovetrails",
     "Lovetrails Festival",
-    "Lovetrails Österreich",
-    "Lovetrails Austria",
-    "Lovetrails Trailrunning",
-    "Lovetrails Camp",
-    "Lovetrails Event",
-    "Lovetrails Mountain",
-    "Lovetrails Festival 2026",
-    "Lovetrails Hochkrimml",
-    "Trailrunning Camp",
-    "Trailrunning Camp Österreich",
-    "Laufcamp",
-    "Trailrunning Alpen",
-    "Berglauf Camp",
-    "Running Camp Austria",
     "The Mountaincamp",
-    "trail running camp",
-    "mountain running",
-    "running community",
-    "trail races",
-    "Austrian Alps",
-    "mountain training",
-    "trail community",
-    "outdoor adventure",
-    "running retreat",
-    "alpine running",
-    "trail running training",
-    "mountain party",
-    "running vacation",
-    "trail running holiday",
-    "mountain experience",
-    "trail running event",
-    "trail running festival",
-    "mountain fitness",
-    "trail running coaching",
-    "alpine trails",
-    "mountain adventure",
     "trail running Austria",
-    "Hochkrimml",
+    "alpine trail running",
+    "mountain running Austria",
+    "trail running holiday Austria",
+    "trail running vacation alps",
+    "Hochkrimml trailrunning",
+    "Austrian Alps running",
+    "trail running event Austria",
+    "trail running festival alps",
+    "mountain training camp",
+    "alpine running camp",
+    "trail running coaching Austria",
+    "running camp Austrian Alps",
   ],
   authors: [{ name: "The Mountaincamp Team" }],
   creator: "The Mountaincamp",
@@ -79,30 +61,25 @@ export const metadata: Metadata = {
   },
   metadataBase: new URL("https://themountaincamp.de"),
   alternates: {
-    canonical: "/",
+    canonical: "https://themountaincamp.de",
     languages: {
-      "en-US": "/en-US",
-      "de-DE": "/de-DE",
+      "de-DE": "https://themountaincamp.de",
+      "en-US": "https://themountaincamp.de/en",
+      "x-default": "https://themountaincamp.de",
     },
   },
   openGraph: {
-    title: "Lovetrails Festival | The Mountaincamp Trailrunning Camp in Österreich",
+    title: "Trailrunning Camp Austria Alps | The Mountaincamp 2026",
     description:
-      "Lovetrails Festival - Das ultimative Trailrunning Camp in den österreichischen Alpen. 4 Nächte, epische Trails, Workshops & eine unvergessliche Community. Jetzt anmelden!",
+      "Austria's premier trailrunning camp in the Alps. 5 days of epic alpine trails, expert coaching, and unforgettable community. August 5-9, 2026 in Hochkrimml.",
     url: "https://themountaincamp.de",
-    siteName: "The Mountaincamp - Lovetrails Festival",
+    siteName: "The Mountaincamp - Alpine Trailrunning Camp Austria",
     images: [
       {
-        url: "/images/hero-trail-runners.jpeg",
+        url: "https://themountaincamp.de/images/hero-trail-runners.jpeg",
         width: 1200,
         height: 630,
-        alt: "Lovetrails Festival - Trailrunning Camp in den österreichischen Alpen - The Mountaincamp",
-      },
-      {
-        url: "/images/mountain-top-sunset-rave.jpg",
-        width: 1200,
-        height: 630,
-        alt: "Lovetrails Festival Sunset Rave Party beim Trailrunning Camp in den Bergen",
+        alt: "Trailrunning Camp Austria Alps - The Mountaincamp group running in Austrian Alps",
       },
     ],
     locale: "de_DE",
@@ -110,10 +87,10 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "Lovetrails Festival | The Mountaincamp #1 Trailrunning Camp",
+    title: "Trailrunning Camp Austria Alps | The Mountaincamp",
     description:
-      "Lovetrails Festival - Bist du bereit für das Trailrunning Camp deines Lebens? Epische Trails, Community & Party in den Alpen. Für alle Levels. Sichere dir jetzt deinen Platz!",
-    images: ["/images/hero-trail-runners.jpeg"],
+      "Join Austria's premier alpine trailrunning camp! Epic trails, expert coaching & community in the Austrian Alps. August 5-9, 2026.",
+    images: ["https://themountaincamp.de/images/hero-trail-runners.jpeg"],
     creator: "@themountaincamp",
     site: "@themountaincamp",
   },
@@ -131,28 +108,7 @@ export const metadata: Metadata = {
   },
   verification: {
     google: "google-site-verification-code",
-    yandex: "yandex-verification-code",
-    yahoo: "yahoo-verification-code",
-    other: {
-      me: ["info@themountaincamp.de"],
-    },
   },
-  appLinks: {
-    ios: {
-      url: "https://themountaincamp.de/",
-      app_store_id: "app-store-id",
-    },
-    android: {
-      package: "de.themountaincamp.app",
-      app_name: "The Mountaincamp",
-    },
-    web: {
-      url: "https://themountaincamp.de/",
-      should_fallback: true,
-    },
-  },
-  archives: ["https://themountaincamp.de/archive"],
-  bookmarks: ["https://themountaincamp.de/archive"],
   icons: {
     icon: [
       { url: "/favicon.png" },
@@ -166,19 +122,12 @@ export const metadata: Metadata = {
       { url: "/apple-icon.png" },
       { url: "/apple-icon-180.png", sizes: "180x180", type: "image/png" },
     ],
-    other: [
-      {
-        rel: "mask-icon",
-        url: "/safari-pinned-tab.svg",
-      },
-    ],
   },
   manifest: "/manifest.json",
   viewport: {
     width: "device-width",
     initialScale: 1,
-    maximumScale: 1,
-    userScalable: false,
+    maximumScale: 5,
   },
   themeColor: [
     { media: "(prefers-color-scheme: light)", color: "#5f5c95" },
@@ -195,25 +144,21 @@ export default function RootLayout({
   return (
     <html lang="de" suppressHydrationWarning>
       <head>
-        <link rel="canonical" href="https://themountaincamp.de" />
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
+        <link rel="preconnect" href="https://www.instagram.com" />
         <link rel="dns-prefetch" href="https://my.camps.digital" />
+        <link rel="dns-prefetch" href="https://open.spotify.com" />
 
-        {/* Preload critical images */}
         {CRITICAL_IMAGES.map((src, index) => (
-          <link key={index} rel="preload" href={src} as="image" fetchPriority="high" crossOrigin="anonymous" />
+          <link key={index} rel="preload" href={src} as="image" fetchPriority="high" />
         ))}
 
-        {/* Favicon für Safari und andere Browser */}
         <link rel="icon" href="/favicon.png" />
-        {/* Favicon für moderne Browser */}
         <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
-        {/* Apple Touch Icon für iOS */}
         <link rel="apple-touch-icon" href="/favicon.png" />
         <link rel="apple-touch-icon" href="/apple-icon.png" />
         <link rel="apple-touch-icon" sizes="180x180" href="/apple-icon-180.png" />
-        {/* Safari Pinned Tab Icon */}
         <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#000000" />
       </head>
       <body className={inter.className}>
@@ -229,8 +174,7 @@ export default function RootLayout({
             </CookieConsentProvider>
           </LanguageProvider>
         </Suspense>
-        {/* Vercel Speed Insights Script */}
-        <Script strategy="afterInteractive" src="/_vercel/speed-insights/script.js" />
+        <Script strategy="afterInteractive" src="/_vercel/speed-insights/script.js" async />
       </body>
     </html>
   )
