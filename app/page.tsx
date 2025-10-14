@@ -881,47 +881,6 @@ export default function Home() {
                 />
               </motion.div>
             </div>
-
-            {/* Featured experience highlight */}
-            <motion.div
-              initial={{ opacity: 0, y: 50 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.8 }}
-              className="mt-20 relative overflow-hidden rounded-xl"
-            >
-              <div className="grid md:grid-cols-2 gap-0">
-                <div className="bg-black p-12 flex flex-col justify-center">
-                  <h3 className="text-3xl font-bold text-white mb-6">{t("raveHighlightTitle")}</h3>
-                  <p className="text-white/80 mb-8">{t("raveHighlightDesc")}</p>
-                  <ul className="space-y-4 text-white/80">
-                    <li className="flex items-center gap-3">
-                      <div className="h-2 w-2 rounded-full bg-primary"></div>
-                      <span className="text-white/80">{t("raveBullet1")}</span>
-                    </li>
-                    <li className="flex items-center gap-3">
-                      <div className="h-2 w-2 rounded-full bg-primary"></div>
-                      <span className="text-white/80">{t("raveBullet2")}</span>
-                    </li>
-                    <li className="flex items-center gap-3">
-                      <div className="h-2 w-2 rounded-full bg-primary"></div>
-                      <span className="text-white/80">{t("raveBullet3")}</span>
-                    </li>
-                  </ul>
-                </div>
-                <div className="relative h-[400px] md:h-auto">
-                  <Image
-                    src="/images/mountain-top-sunset-rave.jpg"
-                    alt="Mountain sunset rave"
-                    fill
-                    className="object-cover"
-                    loading="lazy"
-                    sizes="(max-width: 768px) 100vw, 50vw"
-                  />
-                  <div className="absolute inset-0 bg-gradient-to-r from-black to-transparent md:bg-gradient-to-l"></div>
-                </div>
-              </div>
-            </motion.div>
           </div>
         </section>
 
