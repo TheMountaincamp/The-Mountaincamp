@@ -66,12 +66,12 @@ export default function FAQSection() {
     {
       question: "Where exactly does the Alpine Trailrunning Camp take place?",
       answer:
-        "The camp takes place in Hochkrimml in the Austrian Alps, at 1,600m altitude. The region offers spectacular alpine trails with breathtaking mountain panoramas and is perfect for trailrunning in the Alps.",
+        "The camp takes place in Hochkrimml in the Austrian Alps, at 1,700m altitude. The region offers spectacular alpine trails with breathtaking mountain panoramas and is perfect for trailrunning in the Alps.",
     },
     {
       question: "What's included in the trailrunning camp price?",
       answer:
-        "The price of €480 includes 4 nights accommodation in our cozy mountain lodge, full board with three meals daily, guided trailrunning tours through the Alps, technique workshops, all leisure activities (yoga, climbing, archery, etc.) and the legendary Sunset Rave.",
+        "The price of €480 includes 4 nights accommodation in our cozy mountain house, board with two meals daily, guided trailrunning tours through the Alps, technique workshops, all leisure activities (yoga, climbing, archery, etc.) and the legendary Sunset Rave.",
     },
     {
       question: "How difficult are the trails in the Austria Trailrunning Camp?",

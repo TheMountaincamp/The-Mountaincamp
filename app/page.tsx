@@ -779,9 +779,13 @@ export default function Home() {
                   <h2 className="text-4xl font-bold mb-8 text-gray-900">{t("aboutTitle")}</h2>
                   <div className="space-y-4 text-gray-600">
                     {/* Increased text size for about section */}
-                    <p className="text-lg leading-relaxed whitespace-pre-line">{t("aboutText1")}</p>
-                    <p className="text-lg leading-relaxed whitespace-pre-line">{t("aboutText2")}</p>
-                    <p className="text-lg leading-relaxed whitespace-pre-line">{t("aboutText3")}</p>
+                    <p className="text-lg leading-relaxed whitespace-pre-line">
+                      Trailrunning meets community.
+                      <br />
+                      Five days in the Alps - running, connection, and creativity.
+                      <br />
+                      The Mountaincamp 2026.
+                    </p>
 
                     <div className="pt-4 flex flex-col sm:flex-row gap-4">
                       <div className="flex items-center gap-3">
