@@ -59,9 +59,6 @@ function PriceCategoryBar({ category, filled, total, label, status }: PriceCateg
           </div>
           <span className="text-base font-bold text-white">{category}</span>
         </div>
-        <span className="text-sm font-medium px-3 py-1 rounded-full bg-black/50 text-white/90">
-          {label || `${filled}/${total}%`}
-        </span>
       </div>
       <div className="w-full bg-gray-900 rounded-full h-3 overflow-hidden">
         <motion.div
