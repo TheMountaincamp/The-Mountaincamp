@@ -1494,6 +1494,9 @@ export default function Home() {
                 <Link href="/legal/imprint" className="footer-link">
                   {language === "de" ? "Impressum" : "Imprint"}
                 </Link>
+                <Link href="/agb" className="footer-link">
+                  {language === "de" ? "AGB" : "Terms & Conditions"}
+                </Link>
               </div>
             </div>
           </div>
