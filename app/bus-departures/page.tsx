@@ -18,7 +18,6 @@ export default function BusDeparturesPage() {
   const busRoutes = [
     {
       city: "Berlin",
-      status: "ausverkauft",
       departure: {
         time: "08:10",
         location: "Hauptbahnhof (HBF)",
@@ -174,35 +173,22 @@ export default function BusDeparturesPage() {
               {busRoutes.map((route, index) => (
                 <motion.div
                   key={index}
-                  className={`bg-gray-800 p-6 border-2 transition-all duration-300 rounded-lg shadow-lg ${
-                    route.status === "ausverkauft"
-                      ? "border-red-500 bg-red-900/50"
-                      : "border-gray-600 hover:border-primary hover:shadow-xl"
-                  }`}
+                  className={`bg-gray-800 p-6 border-2 transition-all duration-300 rounded-lg shadow-lg ${"border-gray-600 hover:border-primary hover:shadow-xl"}`}
                   initial={{ opacity: 0, y: 20 }}
                   animate={{ opacity: isLoaded ? 1 : 0, y: isLoaded ? 0 : 20 }}
                   transition={{ duration: 0.5, delay: 0.3 + index * 0.1 }}
-                  whileHover={{ y: route.status === "ausverkauft" ? 0 : -5, transition: { duration: 0.2 } }}
+                  whileHover={{ y: -5, transition: { duration: 0.2 } }}
                 >
                   <div className="flex items-center gap-3 mb-4">
-                    <div
-                      className={`p-2 rounded-full ${route.status === "ausverkauft" ? "bg-red-100" : "bg-primary/20"}`}
-                    >
-                      <MapPin
-                        className={`h-5 w-5 ${route.status === "ausverkauft" ? "text-red-600" : "text-primary"}`}
-                      />
+                    <div className={`p-2 rounded-full bg-primary/20`}>
+                      <MapPin className={`h-5 w-5 text-primary`} />
                     </div>
                     <div className="flex-1">
                       <h3 className="text-xl font-bold text-white">{route.city}</h3>
-                      {route.status === "ausverkauft" && (
-                        <span className="inline-block mt-1 px-2 py-1 bg-red-500 text-white text-xs font-bold rounded uppercase">
-                          Ausverkauft
-                        </span>
-                      )}
                     </div>
                   </div>
 
-                  <div className={`space-y-3 ${route.status === "ausverkauft" ? "opacity-60" : ""}`}>
+                  <div className="space-y-3">
                     <div className="flex items-center gap-2 text-primary">
                       <Clock className="h-4 w-4" />
                       <span className="font-bold text-lg text-white">{route.departure.time}</span>
