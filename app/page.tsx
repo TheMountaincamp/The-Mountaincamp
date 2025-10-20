@@ -63,13 +63,11 @@ export default function Home() {
   })
 
   useEffect(() => {
-    const targetDate = new Date("2025-09-19T19:00:00").getTime()
+    const targetDate = new Date("2026-04-01T19:00:00").getTime()
 
     const updateCountdown = () => {
       const now = new Date().getTime()
       const difference = targetDate - now
-
-      console.log("[v0] Timer check - Target:", new Date(targetDate), "Now:", new Date(now), "Difference:", difference)
 
       if (difference > 0) {
         setTimeLeft({
@@ -149,7 +147,7 @@ export default function Home() {
           priceCurrency: "EUR",
           availability: "https://schema.org/LimitedAvailability",
           url: "https://my.camps.digital/masken/buchungen/vuejs?&vendor=mountaincamp&destination_id=2467&termin_id=36011#/",
-          validFrom: "2025-09-19T19:00:00+02:00",
+          validFrom: "2026-04-01T19:00:00+02:00",
           priceValidUntil: "2026-08-01T00:00:00+02:00",
         },
         organizer: {
@@ -660,8 +658,8 @@ export default function Home() {
                     <Clock className="h-4 w-4" />
                     <span className="text-sm font-medium uppercase tracking-widest">
                       {language === "de"
-                        ? "Anmeldung öffnet Freitag 19.09.2025"
-                        : "Registration opens Friday 19.09.2025"}
+                        ? "Anmeldung öffnet Dienstag 01.04.2026"
+                        : "Registration opens Tuesday 01.04.2026"}
                     </span>
                   </div>
                 )}
@@ -705,14 +703,14 @@ export default function Home() {
                     Erlebe das ultimative <strong>Trailrunning Camp in Österreich</strong>
                     <br />5 Tage epische Trails in den <strong>österreichischen Alpen</strong>
                     <br />
-                    <span className="font-bold">Hochkrimml | 5.-9. August 2026</span>
+                    <span className="font-bold">Hochkrimml | 1.-9. August 2026</span>
                   </>
                 ) : (
                   <>
                     Experience the ultimate <strong>trailrunning camp in Austria</strong>
                     <br />5 days of epic trails in the <strong>Austrian Alps</strong>
                     <br />
-                    <span className="font-bold">Hochkrimml | August 5-9, 2026</span>
+                    <span className="font-bold">Hochkrimml | August 1-9, 2026</span>
                   </>
                 )}
               </motion.p>
@@ -741,10 +739,10 @@ export default function Home() {
                         target="_blank"
                         rel="noopener noreferrer"
                       >
-                        {language === "de" ? "Jetzt dabei sein" : "Join Now"}
+                        {language === "de" ? "Join Now" : "Join Now"}
                       </a>
                     ) : (
-                      <span>{language === "de" ? "Jetzt dabei sein" : "Join Now"}</span>
+                      <span>{language === "de" ? "Join Now" : "Join Now"}</span>
                     )}
                   </Button>
                 </motion.div>
@@ -1318,8 +1316,8 @@ export default function Home() {
                       </Button>
                       <p className="text-white/70 mt-4 text-sm">
                         {language === "de"
-                          ? "Die Anmeldung öffnet am 19. September 2025 um 19:00 Uhr"
-                          : "Registration opens on September 19, 2025 at 7:00 PM"}
+                          ? "Die Anmeldung öffnet am 1. April 2026 um 19:00 Uhr"
+                          : "Registration opens on April 1, 2026 at 7:00 PM"}
                       </p>
                     </div>
                   )}
@@ -1507,7 +1505,7 @@ export default function Home() {
             </div>
           </div>
           <div className="border-t border-white/10 py-6 text-center text-white/60">
-            © 2025 The Mountaincamp. {language === "de" ? "Alle Rechte vorbehalten." : "All rights reserved."}
+            © 2026 The Mountaincamp. {language === "de" ? "Alle Rechte vorbehalten." : "All rights reserved."}
           </div>
         </div>
       </footer>
