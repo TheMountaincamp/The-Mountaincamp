@@ -20,22 +20,36 @@ const CRITICAL_IMAGES = [
 ]
 
 export const metadata: Metadata = {
-  title: "Trailrunning Camp Österreich | The Mountaincamp 2026 – 5.–9. August in den Alpen",
+  title: "Trailrunning Camp Österreich 2026 | Alpine Training & Festival in den Alpen",
   description:
-    "Trailrunning Camp in Österreich – The Mountaincamp 2026 vom 5.–9. August: Lauf, erlebe & verbinde dich mit anderen auf den Trails der Alpen. Für jedes Level.",
+    "Trailrunning Camp & Festival in Österreich: 5 Tage epische Trails, Training & Community in den Alpen. Hochkrimml, 5.-9. August 2026. Für alle Level.",
   keywords: [
-    "trailrunning camp Austria",
+    // Primary German keywords
     "trailrunning camp Österreich",
+    "trailrunning camp Austria",
+    "trailrunning camp Alpen",
     "trailrunning camp alps",
+    "trailrunning trainings camp",
+    "trailrunning festival Alpen",
+    "trailrunning festival Österreich",
+    "trailrunning trip Österreich",
+    "trailrunning trip Austria",
+    "trailrunning trip Alpen",
+    "trailrunning trip alps",
+    // Supporting keywords
     "alpine trailrunning camp",
     "trailrunning camp europe",
-    "Austria trailrunning camp",
-    "alps trailrunning camp",
     "trail running camp Austria",
     "mountain running camp alps",
+    "trail running festival Austria",
+    "trail running training camp",
+    "alpine trail running festival",
+    "mountain trail running camp",
+    // Brand and location keywords
     "Lovetrails",
     "Lovetrails Festival",
     "The Mountaincamp",
+    "Mountaincamp Austria",
     "trail running Austria",
     "alpine trail running",
     "mountain running Austria",
@@ -44,11 +58,13 @@ export const metadata: Metadata = {
     "Hochkrimml trailrunning",
     "Austrian Alps running",
     "trail running event Austria",
-    "trail running festival alps",
     "mountain training camp",
     "alpine running camp",
     "trail running coaching Austria",
     "running camp Austrian Alps",
+    "trailrunning Österreich",
+    "berglauf camp",
+    "trail running reise",
   ],
   authors: [{ name: "The Mountaincamp Team" }],
   creator: "The Mountaincamp",
@@ -69,17 +85,17 @@ export const metadata: Metadata = {
     },
   },
   openGraph: {
-    title: "Trailrunning Camp Österreich | The Mountaincamp 2026 – 5.–9. August in den Alpen",
+    title: "Trailrunning Camp & Festival Österreich 2026 | The Mountaincamp in den Alpen",
     description:
-      "Trailrunning Camp in Österreich – The Mountaincamp 2026 vom 5.–9. August: Lauf, erlebe & verbinde dich mit anderen auf den Trails der Alpen. Für jedes Level.",
+      "Erlebe das ultimative Trailrunning Camp & Festival in Österreich: 5 Tage Training, epische Trails & Community in den Alpen. Hochkrimml, 5.-9. August 2026.",
     url: "https://themountaincamp.de",
-    siteName: "The Mountaincamp - Alpine Trailrunning Camp Austria",
+    siteName: "The Mountaincamp - Alpine Trailrunning Camp & Festival Austria",
     images: [
       {
         url: "https://themountaincamp.de/images/hero-trail-runners.jpeg",
         width: 1200,
         height: 630,
-        alt: "Trailrunning Camp Austria Alps - The Mountaincamp group running in Austrian Alps",
+        alt: "Trailrunning Camp Austria Alps - The Mountaincamp Festival group running in Austrian Alps mountains",
       },
     ],
     locale: "de_DE",
@@ -88,9 +104,9 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "Trailrunning Camp Österreich | The Mountaincamp 2026 – 5.–9. August",
+    title: "Trailrunning Camp & Festival Österreich 2026 | The Mountaincamp",
     description:
-      "Trailrunning Camp in Österreich vom 5.–9. August 2026: Lauf, erlebe & verbinde dich mit anderen auf den Trails der Alpen.",
+      "Trailrunning Camp & Festival in Österreich: 5 Tage Training & Trails in den Alpen. Hochkrimml, 5.-9. August 2026.",
     images: ["https://themountaincamp.de/images/hero-trail-runners.jpeg"],
     creator: "@themountaincamp",
     site: "@themountaincamp",
@@ -145,10 +161,10 @@ export default function RootLayout({
   return (
     <html lang="de" suppressHydrationWarning>
       <head>
-        <meta name="title" content="Trailrunning Camp Österreich | The Mountaincamp 2026 – 5.–9. August in den Alpen" />
+        <meta name="title" content="Trailrunning Camp Österreich 2026 | Alpine Training & Festival in den Alpen" />
         <meta
           name="description"
-          content="Trailrunning Camp in Österreich – The Mountaincamp 2026 vom 5.–9. August: Lauf, erlebe & verbinde dich mit anderen auf den Trails der Alpen. Für jedes Level."
+          content="Trailrunning Camp & Festival in Österreich: 5 Tage epische Trails, Training & Community in den Alpen. Hochkrimml, 5.-9. August 2026. Für alle Level."
         />
 
         <link rel="alternate" hrefLang="de" href="https://themountaincamp.de" />

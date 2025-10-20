@@ -106,10 +106,16 @@ export default function Home() {
       const eventStructuredData = {
         "@context": "https://schema.org",
         "@type": "SportsEvent",
-        name: "The Mountaincamp 2026 - Alpine Trailrunning Camp Austria",
-        alternateName: ["Lovetrails Festival", "The Mountaincamp", "Trailrunning Camp Austria Alps"],
+        name: "The Mountaincamp 2026 - Alpine Trailrunning Camp & Festival Austria",
+        alternateName: [
+          "Lovetrails Festival",
+          "The Mountaincamp",
+          "Trailrunning Camp Austria Alps",
+          "Alpine Trailrunning Festival",
+          "Trailrunning Training Camp Austria",
+        ],
         description:
-          "Premier trailrunning camp in the Austrian Alps. 5-day alpine adventure featuring epic mountain trails, expert coaching, and vibrant community. Perfect for all levels of trail runners seeking an unforgettable experience in Hochkrimml, Austria.",
+          "Premier trailrunning camp and festival in the Austrian Alps. 5-day alpine adventure featuring epic mountain trails, expert coaching, training sessions, and vibrant community. Perfect for all levels of trail runners seeking an unforgettable trailrunning trip and training experience in Hochkrimml, Austria.",
         sport: "Trail Running",
         startDate: "2026-08-05",
         endDate: "2026-08-09",
@@ -162,16 +168,16 @@ export default function Home() {
           name: "The Mountaincamp Coaching Team",
         },
         keywords:
-          "trailrunning camp Austria, alpine trailrunning camp, trailrunning camp alps, trail running Austria, mountain running camp, Austrian Alps trail running, Hochkrimml, trail running event, running camp Europe",
+          "trailrunning camp Austria, trailrunning camp Österreich, trailrunning camp alps, trailrunning camp Alpen, trailrunning trainings camp, trailrunning festival Alpen, trailrunning festival Österreich, trailrunning trip Austria, trailrunning trip Österreich, trailrunning trip alps, alpine trailrunning camp, trail running Austria, mountain running camp, Austrian Alps trail running, Hochkrimml, trail running event, running camp Europe, trail running festival, alpine training camp",
       }
 
       const organizationData = {
         "@context": "https://schema.org",
         "@type": "SportsActivityLocation",
-        name: "The Mountaincamp - Alpine Trailrunning Camp",
+        name: "The Mountaincamp - Alpine Trailrunning Camp & Festival",
         alternateName: "Lovetrails Festival",
         description:
-          "Austria's premier trailrunning camp in the Alps, offering epic mountain trails, expert coaching, and unforgettable community experiences in Hochkrimml.",
+          "Austria's premier trailrunning camp and festival in the Alps, offering epic mountain trails, expert training, coaching, and unforgettable community experiences. The ultimate trailrunning trip in Hochkrimml, Austrian Alps.",
         url: "https://themountaincamp.de",
         logo: "https://themountaincamp.de/images/MTC-Logo_2025.png",
         image: "https://themountaincamp.de/images/hero-trail-runners.jpeg",
@@ -619,7 +625,7 @@ export default function Home() {
             <motion.div style={{ scale: heroScale }} className="h-full w-full">
               <Image
                 src="/images/forest-group-photo.jpg"
-                alt="Mountain Training Camp group photo with participants in front of evergreen forest"
+                alt="Trailrunning Camp Austria - The Mountaincamp Festival group photo with participants in front of evergreen forest in Austrian Alps"
                 fill
                 className="object-cover object-center"
                 priority
@@ -676,7 +682,7 @@ export default function Home() {
                 {isMobile ? (
                   <Image
                     src="/images/MTC-Logo_2025_weiß.png"
-                    alt="The Mountaincamp Logo"
+                    alt="The Mountaincamp Logo - Alpine Trailrunning Camp & Festival Austria"
                     width={250}
                     height={100}
                     className="mx-auto"
@@ -823,7 +829,7 @@ export default function Home() {
                 >
                   <Image
                     src="/images/alpine-village-group.jpg"
-                    alt="Mountain camp participants walking together in Alpine village"
+                    alt="Trailrunning trip Austria - Mountain camp participants walking together in Alpine village during The Mountaincamp festival"
                     fill
                     className="object-cover"
                     loading="lazy"
