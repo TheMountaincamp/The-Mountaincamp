@@ -63,7 +63,7 @@ export default function Home() {
   })
 
   useEffect(() => {
-    const targetDate = new Date("2026-04-01T19:00:00").getTime()
+    const targetDate = new Date("2025-09-19T19:00:00").getTime()
 
     const updateCountdown = () => {
       const now = new Date().getTime()
@@ -104,16 +104,15 @@ export default function Home() {
       const eventStructuredData = {
         "@context": "https://schema.org",
         "@type": "SportsEvent",
-        name: "The Mountaincamp 2026 - Alpine Trailrunning Camp & Festival Austria",
+        name: "The Mountaincamp 2026 - Alpine Trailrunning Camp Austria",
         alternateName: [
           "Lovetrails Festival",
           "The Mountaincamp",
           "Trailrunning Camp Austria Alps",
-          "Alpine Trailrunning Festival",
-          "Trailrunning Training Camp Austria",
+          "Trailrunning Festival Alpen",
         ],
         description:
-          "Premier trailrunning camp and festival in the Austrian Alps. 5-day alpine adventure featuring epic mountain trails, expert coaching, training sessions, and vibrant community. Perfect for all levels of trail runners seeking an unforgettable trailrunning trip and training experience in Hochkrimml, Austria.",
+          "Premier trailrunning camp and festival in the Austrian Alps. 5-day alpine trailrunning adventure featuring epic mountain trails, expert coaching, training sessions, and vibrant community. Perfect for all levels of trail runners seeking an unforgettable trailrunning trip in Hochkrimml, Austria.",
         sport: "Trail Running",
         startDate: "2026-08-05",
         endDate: "2026-08-09",
@@ -147,7 +146,7 @@ export default function Home() {
           priceCurrency: "EUR",
           availability: "https://schema.org/LimitedAvailability",
           url: "https://my.camps.digital/masken/buchungen/vuejs?&vendor=mountaincamp&destination_id=2467&termin_id=36011#/",
-          validFrom: "2026-04-01T19:00:00+02:00",
+          validFrom: "2025-09-19T19:00:00+02:00",
           priceValidUntil: "2026-08-01T00:00:00+02:00",
         },
         organizer: {
@@ -166,16 +165,16 @@ export default function Home() {
           name: "The Mountaincamp Coaching Team",
         },
         keywords:
-          "trailrunning camp Austria, trailrunning camp Österreich, trailrunning camp alps, trailrunning camp Alpen, trailrunning trainings camp, trailrunning festival Alpen, trailrunning festival Österreich, trailrunning trip Austria, trailrunning trip Österreich, trailrunning trip alps, alpine trailrunning camp, trail running Austria, mountain running camp, Austrian Alps trail running, Hochkrimml, trail running event, running camp Europe, trail running festival, alpine training camp",
+          "trailrunning camp Austria, trailrunning camp Österreich, trailrunning camp alps, trailrunning camp Alpen, trailrunning trainings camp, trailrunning festival Alpen, trailrunning festival Österreich, trailrunning trip Austria, trailrunning trip Österreich, alpine trailrunning camp, trail running Austria, mountain running camp, Austrian Alps trail running, Hochkrimml, trail running event, trail running festival, running camp Europe, mountain training camp alps",
       }
 
       const organizationData = {
         "@context": "https://schema.org",
         "@type": "SportsActivityLocation",
-        name: "The Mountaincamp - Alpine Trailrunning Camp & Festival",
-        alternateName: "Lovetrails Festival",
+        name: "The Mountaincamp - Alpine Trailrunning Camp",
+        alternateName: ["Lovetrails Festival", "Trailrunning Camp Austria", "Trailrunning Festival Alpen"],
         description:
-          "Austria's premier trailrunning camp and festival in the Alps, offering epic mountain trails, expert training, coaching, and unforgettable community experiences. The ultimate trailrunning trip in Hochkrimml, Austrian Alps.",
+          "Austria's premier trailrunning camp and festival in the Alps, offering epic mountain trails, expert coaching, training sessions, and unforgettable community experiences in Hochkrimml. The ultimate trailrunning trip for all levels.",
         url: "https://themountaincamp.de",
         logo: "https://themountaincamp.de/images/MTC-Logo_2025.png",
         image: "https://themountaincamp.de/images/hero-trail-runners.jpeg",
@@ -222,7 +221,23 @@ export default function Home() {
         ],
       }
 
-      const scripts = [eventStructuredData, organizationData, breadcrumbData]
+      const websiteData = {
+        "@context": "https://schema.org",
+        "@type": "WebSite",
+        name: "The Mountaincamp - Trailrunning Camp Austria",
+        alternateName: ["Trailrunning Camp Österreich", "Trailrunning Festival Alpen", "Alpine Trailrunning Camp"],
+        url: "https://themountaincamp.de",
+        description:
+          "Premier trailrunning camp, training camp, and festival in the Austrian Alps. Epic trails, expert coaching, and unforgettable community experiences.",
+        inLanguage: ["de-DE", "en-US"],
+        potentialAction: {
+          "@type": "SearchAction",
+          target: "https://themountaincamp.de/?s={search_term_string}",
+          "query-input": "required name=search_term_string",
+        },
+      }
+
+      const scripts = [eventStructuredData, organizationData, breadcrumbData, websiteData]
       scripts.forEach((data) => {
         const script = document.createElement("script")
         script.type = "application/ld+json"
@@ -623,7 +638,7 @@ export default function Home() {
             <motion.div style={{ scale: heroScale }} className="h-full w-full">
               <Image
                 src="/images/forest-group-photo.jpg"
-                alt="Trailrunning Camp Austria - The Mountaincamp Festival group photo with participants in front of evergreen forest in Austrian Alps"
+                alt="Trailrunning camp Austria - Mountain training camp group photo with participants in Austrian Alps forest"
                 fill
                 className="object-cover object-center"
                 priority
@@ -658,8 +673,8 @@ export default function Home() {
                     <Clock className="h-4 w-4" />
                     <span className="text-sm font-medium uppercase tracking-widest">
                       {language === "de"
-                        ? "Anmeldung öffnet Dienstag 01.04.2026"
-                        : "Registration opens Tuesday 01.04.2026"}
+                        ? "Anmeldung öffnet Freitag 19.09.2025"
+                        : "Registration opens Friday 19.09.2025"}
                     </span>
                   </div>
                 )}
@@ -680,7 +695,7 @@ export default function Home() {
                 {isMobile ? (
                   <Image
                     src="/images/MTC-Logo_2025_weiß.png"
-                    alt="The Mountaincamp Logo - Alpine Trailrunning Camp & Festival Austria"
+                    alt="The Mountaincamp Logo"
                     width={250}
                     height={100}
                     className="mx-auto"
@@ -703,14 +718,14 @@ export default function Home() {
                     Erlebe das ultimative <strong>Trailrunning Camp in Österreich</strong>
                     <br />5 Tage epische Trails in den <strong>österreichischen Alpen</strong>
                     <br />
-                    <span className="font-bold">Hochkrimml | 1.-9. August 2026</span>
+                    <span className="font-bold">Hochkrimml | 5.-9. August 2026</span>
                   </>
                 ) : (
                   <>
                     Experience the ultimate <strong>trailrunning camp in Austria</strong>
                     <br />5 days of epic trails in the <strong>Austrian Alps</strong>
                     <br />
-                    <span className="font-bold">Hochkrimml | August 1-9, 2026</span>
+                    <span className="font-bold">Hochkrimml | August 5-9, 2026</span>
                   </>
                 )}
               </motion.p>
@@ -739,10 +754,10 @@ export default function Home() {
                         target="_blank"
                         rel="noopener noreferrer"
                       >
-                        {language === "de" ? "Join Now" : "Join Now"}
+                        {language === "de" ? "Jetzt dabei sein" : "Join Now"}
                       </a>
                     ) : (
-                      <span>{language === "de" ? "Join Now" : "Join Now"}</span>
+                      <span>{language === "de" ? "Jetzt dabei sein" : "Join Now"}</span>
                     )}
                   </Button>
                 </motion.div>
@@ -827,7 +842,7 @@ export default function Home() {
                 >
                   <Image
                     src="/images/alpine-village-group.jpg"
-                    alt="Trailrunning trip Austria - Mountain camp participants walking together in Alpine village during The Mountaincamp festival"
+                    alt="Trailrunning camp Austria - Mountain camp participants walking together in Alpine village Hochkrimml"
                     fill
                     className="object-cover"
                     loading="lazy"
@@ -1316,8 +1331,8 @@ export default function Home() {
                       </Button>
                       <p className="text-white/70 mt-4 text-sm">
                         {language === "de"
-                          ? "Die Anmeldung öffnet am 1. April 2026 um 19:00 Uhr"
-                          : "Registration opens on April 1, 2026 at 7:00 PM"}
+                          ? "Die Anmeldung öffnet am 19. September 2025 um 19:00 Uhr"
+                          : "Registration opens on September 19, 2025 at 7:00 PM"}
                       </p>
                     </div>
                   )}
@@ -1505,7 +1520,7 @@ export default function Home() {
             </div>
           </div>
           <div className="border-t border-white/10 py-6 text-center text-white/60">
-            © 2026 The Mountaincamp. {language === "de" ? "Alle Rechte vorbehalten." : "All rights reserved."}
+            © 2025 The Mountaincamp. {language === "de" ? "Alle Rechte vorbehalten." : "All rights reserved."}
           </div>
         </div>
       </footer>
