@@ -1,6 +1,6 @@
 import type React from "react"
 import { Suspense } from "react"
-import type { Metadata } from "next"
+import type { Metadata, Viewport } from "next"
 import { Inter } from "next/font/google"
 import "./globals.css"
 import { ThemeProvider } from "@/components/theme-provider"
@@ -18,6 +18,16 @@ const CRITICAL_IMAGES = [
   "/images/MTC-Logo_2025.png",
   "/images/MTC-Logo_2025_weiß.png",
 ]
+
+export const viewport: Viewport = {
+  width: "device-width",
+  initialScale: 1,
+  maximumScale: 5,
+  themeColor: [
+    { media: "(prefers-color-scheme: light)", color: "#5f5c95" },
+    { media: "(prefers-color-scheme: dark)", color: "#000000" },
+  ],
+}
 
 export const metadata: Metadata = {
   title: "Trailrunning Camp Österreich 2026 | Alpine Training & Festival in den Alpen",
@@ -141,15 +151,6 @@ export const metadata: Metadata = {
     ],
   },
   manifest: "/manifest.json",
-  viewport: {
-    width: "device-width",
-    initialScale: 1,
-    maximumScale: 5,
-  },
-  themeColor: [
-    { media: "(prefers-color-scheme: light)", color: "#5f5c95" },
-    { media: "(prefers-color-scheme: dark)", color: "#000000" },
-  ],
     generator: 'v0.app'
 }
 
