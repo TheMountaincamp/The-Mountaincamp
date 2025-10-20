@@ -11,9 +11,8 @@ Disallow: /admin/
 Disallow: /private/
 Disallow: /api/
 
-# Sitemap locations
+# Sitemap location
 Sitemap: https://themountaincamp.de/sitemap.xml
-Sitemap: https://themountaincamp.de/sitemap-images.xml
 
 # Crawl delay for specific bots
 User-agent: AhrefsBot
