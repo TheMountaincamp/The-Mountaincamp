@@ -4,19 +4,7 @@ import { useState, useEffect, useRef } from "react"
 import Image from "next/image"
 import Link from "next/link"
 import { motion, useScroll, useTransform, AnimatePresence } from "framer-motion"
-import {
-  Mountain,
-  Flame,
-  Sparkles,
-  Music,
-  ArrowRight,
-  ChevronDown,
-  Calendar,
-  MapPin,
-  Menu,
-  X,
-  Clock,
-} from "lucide-react"
+import { Mountain, Flame, Sparkles, Music, ArrowRight, ChevronDown, Calendar, MapPin, Menu, X } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import { useMobile } from "@/hooks/use-mobile"
 import { useLanguage } from "@/contexts/language-context"
@@ -53,46 +41,6 @@ export default function Home() {
   const [scrollY, setScrollY] = useState(0)
   const [currentActivityIndex, setCurrentActivityIndex] = useState(0)
   const [isPreloading, setIsPreloading] = useState(true)
-
-  const [timeLeft, setTimeLeft] = useState({
-    days: 0,
-    hours: 0,
-    minutes: 0,
-    seconds: 0,
-    isActive: false,
-  })
-
-  useEffect(() => {
-    const targetDate = new Date("2026-04-01T19:00:00").getTime()
-
-    const updateCountdown = () => {
-      const now = new Date().getTime()
-      const difference = targetDate - now
-
-      if (difference > 0) {
-        setTimeLeft({
-          days: Math.floor(difference / (1000 * 60 * 60 * 24)),
-          hours: Math.floor((difference % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60)),
-          minutes: Math.floor((difference % (1000 * 60 * 60)) / (1000 * 60)),
-          seconds: Math.floor((difference % (1000 * 60)) / 1000),
-          isActive: false,
-        })
-      } else {
-        setTimeLeft({
-          days: 0,
-          hours: 0,
-          minutes: 0,
-          seconds: 0,
-          isActive: true,
-        })
-      }
-    }
-
-    updateCountdown()
-    const interval = setInterval(updateCountdown, 1000)
-
-    return () => clearInterval(interval)
-  }, [])
 
   // Preload section images after the page has loaded
   useEffect(() => {
@@ -530,21 +478,16 @@ export default function Home() {
             <Button
               className={`bg-black/80 backdrop-blur-sm hover:bg-black/90 text-white border border-white/20 transition-colors ${
                 isMobile ? "text-xs px-2 py-1 h-auto" : ""
-              } ${!timeLeft.isActive ? "opacity-50 cursor-not-allowed" : ""}`}
-              asChild={timeLeft.isActive}
-              disabled={!timeLeft.isActive}
+              }`}
+              asChild
             >
-              {timeLeft.isActive ? (
-                <a
-                  href="https://my.camps.digital/masken/buchungen/vuejs?&vendor=mountaincamp&destination_id=2467&termin_id=36011&locale=de#/"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
-                  {t("registerNow")}
-                </a>
-              ) : (
-                <span>{t("registerNow")}</span>
-              )}
+              <a
+                href="https://my.camps.digital/masken/buchungen/vuejs?&vendor=mountaincamp&destination_id=2467&termin_id=36011&locale=de#/"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                {t("registerNow")}
+              </a>
             </Button>
 
             {/* Mobile menu button with improved touch target */}
@@ -664,20 +607,9 @@ export default function Home() {
                 transition={{ delay: 0.2, duration: 0.8 }}
                 className="mb-6 inline-block border border-primary px-4 py-2"
               >
-                {timeLeft.isActive ? (
-                  <span className="text-sm font-medium uppercase tracking-widest text-green-400">
-                    {language === "de" ? "Anmeldung verfügbar!" : "Registration available!"}
-                  </span>
-                ) : (
-                  <div className="flex items-center gap-2">
-                    <Clock className="h-4 w-4" />
-                    <span className="text-sm font-medium uppercase tracking-widest">
-                      {language === "de"
-                        ? "Anmeldung öffnet Dienstag 01.04.2026"
-                        : "Registration opens Tuesday 01.04.2026"}
-                    </span>
-                  </div>
-                )}
+                <span className="text-sm font-medium uppercase tracking-widest text-green-400">
+                  {language === "de" ? "Anmeldung verfügbar!" : "Registration available!"}
+                </span>
               </motion.div>
 
               <motion.div
@@ -742,23 +674,14 @@ export default function Home() {
                   </Button>
                 </motion.div>
                 <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
-                  <Button
-                    size="lg"
-                    className={`btn-outline text-lg px-8 ${!timeLeft.isActive ? "opacity-50 cursor-not-allowed" : ""}`}
-                    asChild={timeLeft.isActive}
-                    disabled={!timeLeft.isActive}
-                  >
-                    {timeLeft.isActive ? (
-                      <a
-                        href="https://my.camps.digital/masken/buchungen/vuejs?&vendor=mountaincamp&destination_id=2467&termin_id=36011&locale=de#/"
-                        target="_blank"
-                        rel="noopener noreferrer"
-                      >
-                        {language === "de" ? "Jetzt dabei sein" : "Join Now"}
-                      </a>
-                    ) : (
-                      <span>{language === "de" ? "Jetzt dabei sein" : "Join Now"}</span>
-                    )}
+                  <Button size="lg" className="btn-outline text-lg px-8" asChild>
+                    <a
+                      href="https://my.camps.digital/masken/buchungen/vuejs?&vendor=mountaincamp&destination_id=2467&termin_id=36011&locale=de#/"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                    >
+                      {language === "de" ? "Jetzt dabei sein" : "Join Now"}
+                    </a>
                   </Button>
                 </motion.div>
               </motion.div>
@@ -812,13 +735,7 @@ export default function Home() {
                           <Calendar className="h-5 w-5 text-primary" />
                         </div>
                         <span className="text-lg text-gray-900">
-                          {timeLeft.isActive
-                            ? language === "de"
-                              ? "5.-9. August 2026"
-                              : "August 5-9, 2026"
-                            : language === "de"
-                              ? `Noch ${timeLeft.days} Tage`
-                              : `${timeLeft.days} days left`}
+                          {language === "de" ? "5.-9. August 2026" : "August 5-9, 2026"}
                         </span>
                       </div>
                       <div className="flex items-center gap-3">
@@ -1230,13 +1147,7 @@ export default function Home() {
               >
                 <h2 className="text-4xl font-bold uppercase tracking-tight mb-6 text-white">{t("joinTitle")}</h2>
                 <p className="text-xl mb-8 text-white">
-                  {timeLeft.isActive
-                    ? language === "de"
-                      ? "5.-9. August 2026"
-                      : "August 5-9, 2026"
-                    : language === "de"
-                      ? "Anmeldung in ${timeLeft.days} Tagen verfügbar"
-                      : `Registration available in ${timeLeft.days} days`}
+                  {language === "de" ? "5.-9. August 2026" : "August 5-9, 2026"}
                   <br />
                   {language === "de" ? "Österreichische Alpen" : "Austrian Alps"}
                 </p>
@@ -1264,9 +1175,7 @@ export default function Home() {
                     <span className="text-sm font-medium text-white uppercase">{t("packageTitle")}</span>
                   </div>
                   <div className="bg-gray-800 px-6 py-4 rounded-b-lg">
-                    <span className="text-3xl font-bold text-white">
-                      {timeLeft.isActive ? "€480" : language === "de" ? "Bald verfügbar" : "Coming Soon"}
-                    </span>
+                    <span className="text-3xl font-bold text-white">€480</span>
                   </div>
                 </div>
               </motion.div>
@@ -1279,63 +1188,29 @@ export default function Home() {
               >
                 <div className="bg-gray-800 p-8 text-white rounded-xl border border-gray-700">
                   <h3 className="text-2xl font-bold uppercase mb-6 text-center text-white">
-                    {timeLeft.isActive
-                      ? language === "de"
-                        ? "Jetzt anmelden"
-                        : "Register Now"
-                      : language === "de"
-                        ? "Bald verfügbar"
-                        : "Coming Soon"}
+                    {language === "de" ? "Jetzt anmelden" : "Register Now"}
                   </h3>
 
-                  {timeLeft.isActive ? (
-                    <div className="text-center">
-                      <Button
-                        size="lg"
-                        className="bg-primary hover:bg-primary/90 text-white font-bold py-4 px-8 text-lg"
-                        asChild
-                      >
-                        <a
-                          href="https://my.camps.digital/masken/buchungen/vuejs?&vendor=mountaincamp&destination_id=2467&termin_id=36011&locale=de#/"
-                          target="_blank"
-                          rel="noopener noreferrer"
-                        >
-                          {t("registerNow")}
-                        </a>
-                      </Button>
-                      <p className="text-white/70 mt-4 text-sm">
-                        {language === "de"
-                          ? "Sichere dir jetzt deinen Platz im Mountaincamp!"
-                          : "Secure your spot at The Mountaincamp now!"}
-                      </p>
-                    </div>
-                  ) : (
-                    <div className="text-center">
-                      <div className="bg-gray-700 p-6 rounded-lg mb-4">
-                        <div className="flex justify-center items-center gap-2 mb-2">
-                          <Clock className="h-5 w-5 text-primary" />
-                          <span className="text-lg font-bold text-white">
-                            {timeLeft.days}d {timeLeft.hours}h {timeLeft.minutes}m {timeLeft.seconds}s
-                          </span>
-                        </div>
-                        <p className="text-white/70 text-sm">
-                          {language === "de" ? "bis zur Anmeldung" : "until registration opens"}
-                        </p>
-                      </div>
-                      <Button
-                        size="lg"
-                        className="bg-gray-600 text-white font-bold py-4 px-8 text-lg cursor-not-allowed opacity-50"
-                        disabled
+                  <div className="text-center">
+                    <Button
+                      size="lg"
+                      className="bg-primary hover:bg-primary/90 text-white font-bold py-4 px-8 text-lg"
+                      asChild
+                    >
+                      <a
+                        href="https://my.camps.digital/masken/buchungen/vuejs?&vendor=mountaincamp&destination_id=2467&termin_id=36011&locale=de#/"
+                        target="_blank"
+                        rel="noopener noreferrer"
                       >
                         {t("registerNow")}
-                      </Button>
-                      <p className="text-white/70 mt-4 text-sm">
-                        {language === "de"
-                          ? "Die Anmeldung öffnet am 1. April 2026 um 19:00 Uhr"
-                          : "Registration opens on April 1, 2026 at 7:00 PM"}
-                      </p>
-                    </div>
-                  )}
+                      </a>
+                    </Button>
+                    <p className="text-white/70 mt-4 text-sm">
+                      {language === "de"
+                        ? "Sichere dir jetzt deinen Platz im Mountaincamp!"
+                        : "Secure your spot at The Mountaincamp now!"}
+                    </p>
+                  </div>
                 </div>
               </motion.div>
             </div>
@@ -1378,25 +1253,14 @@ export default function Home() {
                 transition={{ duration: 0.8, delay: 0.4 }}
                 className="flex flex-col sm:flex-row gap-6 justify-center items-center"
               >
-                <Button
-                  size="lg"
-                  className={`btn-primary text-lg px-8 ${!timeLeft.isActive ? "opacity-50 cursor-not-allowed" : ""}`}
-                  asChild={timeLeft.isActive}
-                  disabled={!timeLeft.isActive}
-                >
-                  {timeLeft.isActive ? (
-                    <a
-                      href="https://my.camps.digital/masken/buchungen/vuejs?&vendor=mountaincamp&destination_id=2467&termin_id=36011&locale=de#/"
-                      target="_blank"
-                      rel="noopener noreferrer"
-                    >
-                      {t("registerNow")}
-                    </a>
-                  ) : (
-                    <span>
-                      {timeLeft.days}d {timeLeft.hours}h {timeLeft.minutes}m {timeLeft.seconds}s
-                    </span>
-                  )}
+                <Button size="lg" className="btn-primary text-lg px-8" asChild>
+                  <a
+                    href="https://my.camps.digital/masken/buchungen/vuejs?&vendor=mountaincamp&destination_id=2467&termin_id=36011&locale=de#/"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    {t("registerNow")}
+                  </a>
                 </Button>
                 <div className="flex items-center gap-4 text-gray-300">
                   <Calendar className="h-5 w-5" />
