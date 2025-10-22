@@ -63,7 +63,7 @@ export default function Home() {
   })
 
   useEffect(() => {
-    const targetDate = new Date("2025-09-19T19:00:00").getTime()
+    const targetDate = new Date("2026-04-01T19:00:00").getTime()
 
     const updateCountdown = () => {
       const now = new Date().getTime()
@@ -146,7 +146,7 @@ export default function Home() {
           priceCurrency: "EUR",
           availability: "https://schema.org/LimitedAvailability",
           url: "https://my.camps.digital/masken/buchungen/vuejs?&vendor=mountaincamp&destination_id=2467&termin_id=36011#/",
-          validFrom: "2025-09-19T19:00:00+02:00",
+          validFrom: "2026-04-01T19:00:00+02:00",
           priceValidUntil: "2026-08-01T00:00:00+02:00",
         },
         organizer: {
@@ -673,8 +673,8 @@ export default function Home() {
                     <Clock className="h-4 w-4" />
                     <span className="text-sm font-medium uppercase tracking-widest">
                       {language === "de"
-                        ? "Anmeldung öffnet Freitag 19.09.2025"
-                        : "Registration opens Friday 19.09.2025"}
+                        ? "Anmeldung öffnet Dienstag 01.04.2026"
+                        : "Registration opens Tuesday 01.04.2026"}
                     </span>
                   </div>
                 )}
@@ -1235,7 +1235,7 @@ export default function Home() {
                       ? "5.-9. August 2026"
                       : "August 5-9, 2026"
                     : language === "de"
-                      ? `Anmeldung in ${timeLeft.days} Tagen verfügbar`
+                      ? "Anmeldung in ${timeLeft.days} Tagen verfügbar"
                       : `Registration available in ${timeLeft.days} days`}
                   <br />
                   {language === "de" ? "Österreichische Alpen" : "Austrian Alps"}
@@ -1331,8 +1331,8 @@ export default function Home() {
                       </Button>
                       <p className="text-white/70 mt-4 text-sm">
                         {language === "de"
-                          ? "Die Anmeldung öffnet am 19. September 2025 um 19:00 Uhr"
-                          : "Registration opens on September 19, 2025 at 7:00 PM"}
+                          ? "Die Anmeldung öffnet am 1. April 2026 um 19:00 Uhr"
+                          : "Registration opens on April 1, 2026 at 7:00 PM"}
                       </p>
                     </div>
                   )}
