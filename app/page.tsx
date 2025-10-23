@@ -52,15 +52,19 @@ export default function Home() {
       const eventStructuredData = {
         "@context": "https://schema.org",
         "@type": "SportsEvent",
-        name: "The Mountaincamp 2026 - Alpine Trailrunning Camp Austria",
+        name: "The Mountaincamp 2026 - Trailrunning Camp Austria & Österreich für Anfänger",
         alternateName: [
+          "Trailrunning Camp Austria",
+          "Trailrunning Camp Österreich",
+          "Trailrunning Camp Alpen",
+          "Trailrunning Camp für Anfänger",
+          "Trailrunning Camp for Beginners",
           "Lovetrails Festival",
           "The Mountaincamp",
-          "Trailrunning Camp Austria Alps",
-          "Trailrunning Festival Alpen",
+          "Alpine Trailrunning Camp",
         ],
         description:
-          "Premier trailrunning camp and festival in the Austrian Alps. 5-day alpine trailrunning adventure featuring epic mountain trails, expert coaching, training sessions, and vibrant community. Perfect for all levels of trail runners seeking an unforgettable trailrunning trip in Hochkrimml, Austria.",
+          "Premier trailrunning camp for beginners in Austria and the Austrian Alps. The ultimate 5-day trailrunning camp featuring epic mountain trails, expert coaching, professional training sessions, and vibrant community. Perfect trailrunning camp for beginners and all levels of trail runners seeking an unforgettable trailrunning trip in Hochkrimml, Austria. Experience the best trailrunning camp for beginners in the Alps.",
         sport: "Trail Running",
         startDate: "2026-08-05",
         endDate: "2026-08-09",
@@ -113,16 +117,24 @@ export default function Home() {
           name: "The Mountaincamp Coaching Team",
         },
         keywords:
-          "trailrunning camp Austria, trailrunning camp Österreich, trailrunning camp alps, trailrunning camp Alpen, trailrunning trainings camp, trailrunning festival Alpen, trailrunning festival Österreich, trailrunning trip Austria, trailrunning trip Österreich, alpine trailrunning camp, trail running Austria, mountain running camp, Austrian Alps trail running, Hochkrimml, trail running event, trail running festival, running camp Europe, mountain training camp alps",
+          "trailrunning camp für anfänger, trailrunning camp for beginners, trailrunning camp anfänger Österreich, trailrunning camp beginners Austria, trailrunning camp, trailrunning camp Austria, trailrunning camp Österreich, trailrunning camp alps, trailrunning camp Alpen, trailrunning trainings camp, trailrunning training camp, trailrunning festival, trailrunning festival Alpen, trailrunning festival Österreich, trailrunning trip, trailrunning trip Austria, trailrunning trip Österreich, alpine trailrunning camp, trail running camp Austria, mountain running camp, Austrian Alps trail running, Hochkrimml, trail running event, trail running festival, running camp Europe, mountain training camp alps, trailrunning camp europe, anfänger trailrunning, beginner trail running",
       }
 
       const organizationData = {
         "@context": "https://schema.org",
         "@type": "SportsActivityLocation",
-        name: "The Mountaincamp - Alpine Trailrunning Camp",
-        alternateName: ["Lovetrails Festival", "Trailrunning Camp Austria", "Trailrunning Festival Alpen"],
+        name: "The Mountaincamp - Trailrunning Camp Austria & Österreich für Anfänger",
+        alternateName: [
+          "Trailrunning Camp Austria",
+          "Trailrunning Camp Österreich",
+          "Trailrunning Camp Alpen",
+          "Trailrunning Camp für Anfänger",
+          "Trailrunning Camp for Beginners",
+          "Lovetrails Festival",
+          "Alpine Trailrunning Camp",
+        ],
         description:
-          "Austria's premier trailrunning camp and festival in the Alps, offering epic mountain trails, expert coaching, training sessions, and unforgettable community experiences in Hochkrimml. The ultimate trailrunning trip for all levels.",
+          "Austria's premier trailrunning camp for beginners in the Alps. The ultimate trailrunning camp offering epic mountain trails, expert coaching, professional training sessions, and unforgettable community experiences in Hochkrimml. The best trailrunning camp for beginners and all levels seeking an authentic trailrunning trip in the Austrian Alps.",
         url: "https://themountaincamp.de",
         logo: "https://themountaincamp.de/images/MTC-Logo_2025.png",
         image: "https://themountaincamp.de/images/hero-trail-runners.jpeg",
@@ -172,11 +184,18 @@ export default function Home() {
       const websiteData = {
         "@context": "https://schema.org",
         "@type": "WebSite",
-        name: "The Mountaincamp - Trailrunning Camp Austria",
-        alternateName: ["Trailrunning Camp Österreich", "Trailrunning Festival Alpen", "Alpine Trailrunning Camp"],
+        name: "The Mountaincamp - Trailrunning Camp Austria & Österreich für Anfänger",
+        alternateName: [
+          "Trailrunning Camp Österreich",
+          "Trailrunning Camp Austria",
+          "Trailrunning Camp für Anfänger",
+          "Trailrunning Camp for Beginners",
+          "Trailrunning Festival Alpen",
+          "Alpine Trailrunning Camp",
+        ],
         url: "https://themountaincamp.de",
         description:
-          "Premier trailrunning camp, training camp, and festival in the Austrian Alps. Epic trails, expert coaching, and unforgettable community experiences.",
+          "Premier trailrunning camp for beginners in Austria and the Austrian Alps. The ultimate trailrunning camp, training camp, and festival featuring epic trails, expert coaching, and unforgettable community experiences for all levels.",
         inLanguage: ["de-DE", "en-US"],
         potentialAction: {
           "@type": "SearchAction",

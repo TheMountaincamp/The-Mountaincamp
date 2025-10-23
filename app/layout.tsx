@@ -30,44 +30,67 @@ export const viewport: Viewport = {
 }
 
 export const metadata: Metadata = {
-  title: "Trailrunning Camp Österreich | The Mountaincamp 2026 – 5.–9. August in den Alpen",
+  title: "Trailrunning Camp Österreich & Austria für Anfänger | The Mountaincamp 2026 in den Alpen",
   description:
-    "Trailrunning Camp in Österreich – The Mountaincamp 2026 vom 5.–9. August: Lauf, erlebe & verbinde dich mit anderen auf den Trails der Alpen. Für jedes Level.",
+    "Trailrunning Camp für Anfänger in Österreich: Das ultimative Trailrunning Camp in den Alpen für alle Levels. 5 Tage epische Trails, Training & Community. Trailrunning Camp Austria for beginners. Hochkrimml, 5.-9. August 2026.",
   keywords: [
-    // Primary keywords - German
+    // Beginner focus - German and English
+    "trailrunning camp für anfänger",
+    "trailrunning camp for beginners",
+    "trailrunning camp anfänger Österreich",
+    "trailrunning camp beginners Austria",
+    "trailrunning camp anfänger Alpen",
+    "trailrunning camp beginners alps",
+    "trailrunning für anfänger",
+    "trailrunning for beginners",
+    "anfänger trailrunning camp",
+    "beginner trailrunning camp",
+    "trail running camp für anfänger",
+    "trail running camp for beginners",
+    // Primary focus - "Trailrunning camp" variations
+    "trailrunning camp",
     "trailrunning camp Österreich",
     "trailrunning camp Austria",
     "trailrunning camp Alpen",
     "trailrunning camp alps",
+    "trailrunning camp europe",
+    "trailrunning camp Austrian alps",
     // Training camp variations
     "trailrunning trainings camp",
     "trailrunning trainings camp Österreich",
     "trailrunning trainings camp Austria",
     "trailrunning trainings camp alps",
+    "trailrunning training camp",
     "trailrunning training camp Alpen",
+    "trailrunning training camp Austria",
     // Festival variations
+    "trailrunning festival",
     "trailrunning festival Alpen",
     "trailrunning festival Österreich",
     "trailrunning festival Austria",
     "trailrunning festival alps",
     // Trip variations
+    "trailrunning trip",
     "trailrunning trip Österreich",
     "trailrunning trip Austria",
     "trailrunning trip Alpen",
     "trailrunning trip alps",
-    // Additional variations
+    // Additional camp variations
     "alpine trailrunning camp",
-    "trailrunning camp europe",
+    "mountain trailrunning camp",
+    "trail running camp",
     "trail running camp Austria",
     "trail running camp alps",
+    "trail running camp Österreich",
+    "mountain running camp",
     "mountain running camp alps",
     "trail running trainings camp",
     "trail running festival Austria",
     "trail running trip alps",
     // Brand and location
+    "The Mountaincamp",
     "Lovetrails",
     "Lovetrails Festival",
-    "The Mountaincamp",
     "trail running Austria",
     "alpine trail running",
     "mountain running Austria",
@@ -100,17 +123,17 @@ export const metadata: Metadata = {
     },
   },
   openGraph: {
-    title: "Trailrunning Camp Österreich | The Mountaincamp 2026 – 5.–9. August in den Alpen",
+    title: "Trailrunning Camp Österreich & Austria für Anfänger | The Mountaincamp 2026 in den Alpen",
     description:
-      "Erlebe das ultimative Trailrunning Camp in Österreich! 5 Tage epische Trails, Training & Community in den Alpen. Trailrunning Festival für alle Levels. Hochkrimml, 5.-9. August 2026.",
+      "Das ultimative Trailrunning Camp für Anfänger in Österreich! Erlebe 5 Tage epische Trails, professionelles Training & eine einzigartige Community in den Alpen. Trailrunning Camp Austria for beginners - perfekt für alle Levels. Hochkrimml, 5.-9. August 2026.",
     url: "https://themountaincamp.de",
-    siteName: "The Mountaincamp - Alpine Trailrunning Camp Austria",
+    siteName: "The Mountaincamp - Trailrunning Camp Austria & Österreich für Anfänger",
     images: [
       {
         url: "https://themountaincamp.de/images/hero-trail-runners.jpeg",
         width: 1200,
         height: 630,
-        alt: "Trailrunning Camp Austria Alps - The Mountaincamp group running in Austrian Alps mountains",
+        alt: "Trailrunning Camp Austria für Anfänger - The Mountaincamp group running in Austrian Alps mountains, trailrunning camp Österreich for beginners",
       },
     ],
     locale: "de_DE",
@@ -119,9 +142,9 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "Trailrunning Camp Österreich | The Mountaincamp 2026 – 5.–9. August",
+    title: "Trailrunning Camp Österreich & Austria für Anfänger | The Mountaincamp 2026",
     description:
-      "Ultimatives Trailrunning Camp in Österreich: 5 Tage epische Trails, Training & Community in den Alpen. Für alle Levels. Hochkrimml, August 2026.",
+      "Ultimatives Trailrunning Camp für Anfänger in Österreich: 5 Tage epische Trails, Training & Community in den Alpen. Trailrunning Camp Austria for beginners - perfekt für alle Levels. Hochkrimml, August 2026.",
     images: ["https://themountaincamp.de/images/hero-trail-runners.jpeg"],
     creator: "@themountaincamp",
     site: "@themountaincamp",
@@ -167,10 +190,13 @@ export default function RootLayout({
   return (
     <html lang="de" suppressHydrationWarning>
       <head>
-        <meta name="title" content="Trailrunning Camp Österreich | The Mountaincamp 2026 – 5.–9. August in den Alpen" />
+        <meta
+          name="title"
+          content="Trailrunning Camp Österreich & Austria für Anfänger | The Mountaincamp 2026 in den Alpen"
+        />
         <meta
           name="description"
-          content="Trailrunning Camp in Österreich – The Mountaincamp 2026 vom 5.–9. August: Lauf, erlebe & verbinde dich mit anderen auf den Trails der Alpen. Für jedes Level."
+          content="Trailrunning Camp für Anfänger in Österreich: Das ultimative Trailrunning Camp in den Alpen für alle Levels. 5 Tage epische Trails, Training & Community. Trailrunning Camp Austria for beginners. Hochkrimml, 5.-9. August 2026."
         />
 
         <link rel="alternate" hrefLang="de" href="https://themountaincamp.de" />
