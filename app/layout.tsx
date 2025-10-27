@@ -34,6 +34,27 @@ export const metadata: Metadata = {
   description:
     "Trailrunning Camp für Anfänger in Österreich: Das ultimative Trailrunning Camp in den Alpen für alle Levels. 5 Tage epische Trails, Training & Community. Trailrunning Camp Austria for beginners. Hochkrimml, 5.-9. August 2026.",
   keywords: [
+    // Question-based keywords - German
+    "trailrunning wo",
+    "wo kann man trailrunning machen",
+    "trailrunning wie schnell",
+    "trailrunning wie anfangen",
+    "was bedeutet trailrunning",
+    "trailrunning was beachten",
+    "trailrunning was ist das",
+    "warum trailrunning",
+    "die schönsten trailrunning events",
+    "die schönsten trailrunning strecken",
+    "wo trailrunning",
+    "wie trailrunning anfangen",
+    "was ist trailrunning",
+    "trailrunning wo anfangen",
+    "beste trailrunning strecken",
+    "beste trailrunning events",
+    "trailrunning strecken Österreich",
+    "trailrunning strecken Alpen",
+    "trailrunning events Österreich",
+    "trailrunning events Alpen",
     // Beginner focus - German and English
     "trailrunning camp für anfänger",
     "trailrunning camp for beginners",

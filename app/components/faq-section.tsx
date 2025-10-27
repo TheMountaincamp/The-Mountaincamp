@@ -4,6 +4,7 @@ import { useState, useEffect } from "react"
 import { motion, AnimatePresence } from "framer-motion"
 import { ChevronDown } from "lucide-react"
 import { useLanguage } from "@/contexts/language-context"
+import { Button } from "@/components/ui/button"
 
 interface FAQItem {
   question: string
@@ -13,8 +14,49 @@ interface FAQItem {
 export default function FAQSection() {
   const { language } = useLanguage()
   const [openIndex, setOpenIndex] = useState<number | null>(null)
+  const [showAllFaqs, setShowAllFaqs] = useState(false)
 
   const faqsDE: FAQItem[] = [
+    {
+      question: "Was ist Trailrunning?",
+      answer:
+        "Trailrunning ist Laufen abseits befestigter Straßen auf natürlichen Wegen in den Bergen, Wäldern oder Hügeln. Im Gegensatz zum Straßenlauf läufst du auf unbefestigten Pfaden mit Wurzeln, Steinen und wechselndem Untergrund. Trailrunning verbindet Laufsport mit Naturerlebnis und Abenteuer in den Bergen.",
+    },
+    {
+      question: "Wo kann man Trailrunning machen?",
+      answer:
+        "Trailrunning kannst du überall machen, wo es natürliche Wege gibt: in den Alpen, im Mittelgebirge, in Wäldern oder sogar in Parks. Die österreichischen Alpen bieten mit ihren spektakulären Bergpfaden ideale Bedingungen. Unser Camp in Hochkrimml auf 1.600m Höhe liegt inmitten eines der schönsten Trailrunning-Gebiete Österreichs mit hunderten Kilometern alpiner Trails.",
+    },
+    {
+      question: "Wie fange ich mit Trailrunning an?",
+      answer:
+        "Starte mit kurzen, einfachen Trails in deiner Umgebung. Du brauchst gute Trailrunning-Schuhe mit Profil und solltest langsam beginnen, um dich an den unebenen Untergrund zu gewöhnen. Unser Trailrunning Camp für Anfänger ist perfekt zum Einstieg: Du lernst die richtige Technik, läufst in Anfängergruppen und wirst von erfahrenen Coaches begleitet.",
+    },
+    {
+      question: "Was muss ich beim Trailrunning beachten?",
+      answer:
+        "Wichtig sind: gute Trailrunning-Schuhe mit Grip, ausreichend Wasser, Wetterschutz für die Berge, ein Handy für Notfälle und eine realistische Einschätzung deiner Fitness. In den Alpen solltest du auch Höhenmeter und Wetter beachten. In unserem Camp lernst du alle wichtigen Sicherheitsaspekte und die richtige Ausrüstung kennen.",
+    },
+    {
+      question: "Wie schnell läuft man beim Trailrunning?",
+      answer:
+        "Trailrunning ist deutlich langsamer als Straßenlauf - das ist völlig normal! Bergauf gehst du oft, bergab läufst du kontrolliert. Das Tempo hängt stark vom Gelände und den Höhenmetern ab. In unserem Camp bieten wir verschiedene Gruppen für unterschiedliche Geschwindigkeiten, sodass jeder sein passendes Tempo findet.",
+    },
+    {
+      question: "Warum Trailrunning?",
+      answer:
+        "Trailrunning bietet mehr als nur Sport: Du erlebst atemberaubende Natur, trainierst den ganzen Körper durch das abwechslungsreiche Gelände, schonst deine Gelenke durch den weichen Untergrund und findest mentale Erholung in den Bergen. Es ist Abenteuer, Fitness und Naturerlebnis in einem - perfekt für alle, die mehr wollen als nur auf Asphalt zu laufen.",
+    },
+    {
+      question: "Was sind die schönsten Trailrunning-Strecken?",
+      answer:
+        "Die österreichischen Alpen gehören zu den spektakulärsten Trailrunning-Regionen Europas. Hochkrimml bietet Trails mit Panoramablicken auf 3.000er-Gipfel, kristallklare Bergseen und alpine Hochwege. In unserem Camp läufst du täglich auf verschiedenen Routen - von flowigen Waldpfaden bis zu anspruchsvollen Gipfeltouren mit atemberaubenden Ausblicken.",
+    },
+    {
+      question: "Was sind die schönsten Trailrunning-Events?",
+      answer:
+        "The Mountaincamp ist mehr als ein Event - es ist ein 5-tägiges Trailrunning-Festival in den Alpen! Neben täglichen geführten Läufen erlebst du eine einzigartige Community, Workshops, Yoga, Klettern und die legendäre Sunset Rave auf dem Berg. Es verbindet die Schönheit alpiner Trails mit unvergesslichen Gemeinschaftserlebnissen.",
+    },
     {
       question: "Für wen ist das Trailrunning Camp in Österreich geeignet?",
       answer:
@@ -59,6 +101,46 @@ export default function FAQSection() {
 
   const faqsEN: FAQItem[] = [
     {
+      question: "What is trailrunning?",
+      answer:
+        "Trailrunning is running off paved roads on natural paths in mountains, forests, or hills. Unlike road running, you run on unpaved trails with roots, rocks, and changing terrain. Trailrunning combines running with nature experiences and mountain adventures.",
+    },
+    {
+      question: "Where can you do trailrunning?",
+      answer:
+        "You can do trailrunning anywhere with natural paths: in the Alps, low mountain ranges, forests, or even parks. The Austrian Alps offer ideal conditions with spectacular mountain trails. Our camp in Hochkrimml at 1,600m altitude is in one of Austria's most beautiful trailrunning areas with hundreds of kilometers of alpine trails.",
+    },
+    {
+      question: "How do I start trailrunning?",
+      answer:
+        "Start with short, easy trails in your area. You need good trail running shoes with grip and should start slowly to get used to uneven terrain. Our trailrunning camp for beginners is perfect for starting: you learn proper technique, run in beginner groups, and are accompanied by experienced coaches.",
+    },
+    {
+      question: "What should I consider when trailrunning?",
+      answer:
+        "Important: good trail running shoes with grip, sufficient water, weather protection for mountains, a phone for emergencies, and realistic fitness assessment. In the Alps, also consider elevation gain and weather. In our camp, you learn all important safety aspects and proper equipment.",
+    },
+    {
+      question: "How fast do you run when trailrunning?",
+      answer:
+        "Trailrunning is significantly slower than road running - that's completely normal! Uphill you often walk, downhill you run controlled. Pace depends heavily on terrain and elevation. In our camp, we offer different groups for different speeds, so everyone finds their suitable pace.",
+    },
+    {
+      question: "Why trailrunning?",
+      answer:
+        "Trailrunning offers more than just sport: you experience breathtaking nature, train your whole body through varied terrain, protect your joints with soft ground, and find mental recovery in the mountains. It's adventure, fitness, and nature experience in one - perfect for those who want more than just running on asphalt.",
+    },
+    {
+      question: "What are the most beautiful trailrunning routes?",
+      answer:
+        "The Austrian Alps are among Europe's most spectacular trailrunning regions. Hochkrimml offers trails with panoramic views of 3,000m peaks, crystal-clear mountain lakes, and alpine high paths. In our camp, you run daily on different routes - from flowy forest paths to challenging summit tours with breathtaking views.",
+    },
+    {
+      question: "What are the most beautiful trailrunning events?",
+      answer:
+        "The Mountaincamp is more than an event - it's a 5-day trailrunning festival in the Alps! Besides daily guided runs, you experience a unique community, workshops, yoga, climbing, and the legendary Sunset Rave on the mountain. It combines the beauty of alpine trails with unforgettable community experiences.",
+    },
+    {
       question: "Who is the trailrunning camp in Austria suitable for?",
       answer:
         "Our alpine trailrunning camp in the Austrian Alps is suitable for all levels – from beginners to experienced trail runners. We offer different groups based on pace and experience, so everyone finds the perfect challenge.",
@@ -66,12 +148,12 @@ export default function FAQSection() {
     {
       question: "Where exactly does the Alpine Trailrunning Camp take place?",
       answer:
-        "The camp takes place in Hochkrimml in the Austrian Alps, at 1,700m altitude. The region offers spectacular alpine trails with breathtaking mountain panoramas and is perfect for trailrunning in the Alps.",
+        "The camp takes place in Hochkrimml in the Austrian Alps, at 1,600m altitude. The region offers spectacular alpine trails with breathtaking mountain panoramas and is perfect for trailrunning in the Alps.",
     },
     {
       question: "What's included in the trailrunning camp price?",
       answer:
-        "The price of €480 includes 4 nights accommodation in our cozy mountain house, board with two meals daily, guided trailrunning tours through the Alps, technique workshops, all leisure activities (yoga, climbing, archery, etc.) and the legendary Sunset Rave.",
+        "The price of €480 includes 4 nights accommodation in our cozy mountain house, full board with three meals daily, guided trailrunning tours through the Alps, technique workshops, all leisure activities (yoga, climbing, archery, etc.) and the legendary Sunset Rave.",
     },
     {
       question: "How difficult are the trails in the Austria Trailrunning Camp?",
@@ -101,8 +183,9 @@ export default function FAQSection() {
   ]
 
   const faqs = language === "de" ? faqsDE : faqsEN
+  const visibleFaqs = showAllFaqs ? faqs : faqs.slice(0, 5)
+  const hasMoreFaqs = faqs.length > 5
 
-  // Add FAQ structured data
   useEffect(() => {
     if (typeof window !== "undefined") {
       const faqStructuredData = {
@@ -154,7 +237,7 @@ export default function FAQSection() {
         </motion.div>
 
         <div className="space-y-4">
-          {faqs.map((faq, index) => (
+          {visibleFaqs.map((faq, index) => (
             <motion.div
               key={index}
               initial={{ opacity: 0, y: 20 }}
@@ -192,6 +275,27 @@ export default function FAQSection() {
             </motion.div>
           ))}
         </div>
+
+        {hasMoreFaqs && (
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.4 }}
+            className="mt-8 text-center"
+          >
+            <Button onClick={() => setShowAllFaqs(!showAllFaqs)} variant="outline" size="lg" className="gap-2">
+              {showAllFaqs
+                ? language === "de"
+                  ? "Weniger anzeigen"
+                  : "Show less"
+                : language === "de"
+                  ? `Weitere ${faqs.length - 5} Fragen anzeigen`
+                  : `Show ${faqs.length - 5} more questions`}
+              <ChevronDown className={`h-4 w-4 transition-transform duration-300 ${showAllFaqs ? "rotate-180" : ""}`} />
+            </Button>
+          </motion.div>
+        )}
 
         <motion.div
           initial={{ opacity: 0, y: 20 }}
