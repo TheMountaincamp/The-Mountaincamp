@@ -32,7 +32,7 @@ export const viewport: Viewport = {
 export const metadata: Metadata = {
   title: "Trailrunning Camp Österreich & Austria für Anfänger | The Mountaincamp 2026 in den Alpen",
   description:
-    "Trailrunning Camp für Anfänger in Österreich: Das ultimative Trailrunning Camp in den Alpen für alle Levels. 5 Tage epische Trails, Training & Community. Trailrunning Camp Austria for beginners. Hochkrimml, 5.-9. August 2026.",
+    "Trailrunning Camp für Anfänger, Fortgeschrittene und Profis: Das größte Trailrunning Camp in den Alpen für alle Levels. 5 Tage atemberaubende Trails, Training & Community. Trailrunning Camp Austria for beginners. Hochkrimml, 5.-9. August 2026.",
   keywords: [
     // Question-based keywords - German
     "trailrunning wo",
@@ -146,7 +146,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: "Trailrunning Camp Österreich & Austria für Anfänger | The Mountaincamp 2026 in den Alpen",
     description:
-      "Das ultimative Trailrunning Camp für Anfänger in Österreich! Erlebe 5 Tage epische Trails, professionelles Training & eine einzigartige Community in den Alpen. Trailrunning Camp Austria for beginners - perfekt für alle Levels. Hochkrimml, 5.-9. August 2026.",
+      "Das größte Trailrunning Camp für Anfänger, Fortgeschrittene und Profis in Österreich! Erlebe 5 Tage atemberaubende Trails, professionelles Training & eine einzigartige Community in den Alpen. Trailrunning Camp Austria for all levels. Hochkrimml, 5.-9. August 2026.",
     url: "https://themountaincamp.de",
     siteName: "The Mountaincamp - Trailrunning Camp Austria & Österreich für Anfänger",
     images: [
@@ -165,7 +165,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "Trailrunning Camp Österreich & Austria für Anfänger | The Mountaincamp 2026",
     description:
-      "Ultimatives Trailrunning Camp für Anfänger in Österreich: 5 Tage epische Trails, Training & Community in den Alpen. Trailrunning Camp Austria for beginners - perfekt für alle Levels. Hochkrimml, August 2026.",
+      "Das größte Trailrunning Camp für Anfänger, Fortgeschrittene und Profis in Österreich: 5 Tage atemberaubende Trails, Training & Community in den Alpen. Trailrunning Camp Austria for all levels. Hochkrimml, August 2026.",
     images: ["https://themountaincamp.de/images/hero-trail-runners.jpeg"],
     creator: "@themountaincamp",
     site: "@themountaincamp",
@@ -217,7 +217,7 @@ export default function RootLayout({
         />
         <meta
           name="description"
-          content="Trailrunning Camp für Anfänger in Österreich: Das ultimative Trailrunning Camp in den Alpen für alle Levels. 5 Tage epische Trails, Training & Community. Trailrunning Camp Austria for beginners. Hochkrimml, 5.-9. August 2026."
+          content="Trailrunning Camp für Anfänger, Fortgeschrittene und Profis: Das größte Trailrunning Camp in den Alpen für alle Levels. 5 Tage atemberaubende Trails, Training & Community. Trailrunning Camp Austria for beginners. Hochkrimml, 5.-9. August 2026."
         />
 
         <link rel="alternate" hrefLang="de" href="https://themountaincamp.de" />
