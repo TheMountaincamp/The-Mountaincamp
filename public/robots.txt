@@ -1,15 +1,21 @@
 # The Mountaincamp - Alpine Trailrunning Camp Austria
 # Premier trailrunning camp, training camp, and festival in the Austrian Alps
-# Trailrunning Camp Österreich | Trailrunning Festival Alpen
+# Trailrunning Camp Österreich | Trailrunning Festival Alpen | Trailrunning Camp für Anfänger
 # https://themountaincamp.de
 
 User-agent: *
 Allow: /
+Allow: /house
+Allow: /trails
+Allow: /bus-departures
+Allow: /agb
 
 # Disallow admin and private areas
 Disallow: /admin/
 Disallow: /private/
 Disallow: /api/
+Disallow: /_next/
+Disallow: /static/
 
 # Sitemap location
 Sitemap: https://themountaincamp.de/sitemap.xml
@@ -21,8 +27,16 @@ Crawl-delay: 10
 User-agent: SemrushBot
 Crawl-delay: 10
 
+User-agent: Googlebot
+Allow: /
+
+User-agent: Googlebot-Image
+Allow: /images/
+
 # Target Keywords:
 # trailrunning camp Austria, trailrunning camp Österreich, trailrunning camp alps, trailrunning camp Alpen
+# trailrunning camp für anfänger, trailrunning camp for beginners
 # trailrunning trainings camp, trailrunning festival Alpen, trailrunning festival Österreich
 # trailrunning trip Austria, trailrunning trip Österreich, trailrunning trip alps, trailrunning trip Alpen
 # alpine trailrunning camp, mountain training camp, trail running festival Austria
+# Hochkrimml trailrunning, Austrian Alps trail running, Salzburg trail running

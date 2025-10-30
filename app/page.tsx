@@ -122,7 +122,7 @@ export default function Home() {
 
       const organizationData = {
         "@context": "https://schema.org",
-        "@type": "SportsActivityLocation",
+        "@type": ["SportsActivityLocation", "LocalBusiness"],
         name: "The Mountaincamp - Trailrunning Camp Austria & Österreich für Anfänger",
         alternateName: [
           "Trailrunning Camp Austria",
@@ -160,6 +160,8 @@ export default function Home() {
           contactType: "Customer Service",
           availableLanguage: ["German", "English"],
         },
+        priceRange: "€€",
+        openingHours: "Mo-Su",
       }
 
       const breadcrumbData = {
