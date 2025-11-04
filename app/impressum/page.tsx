@@ -14,7 +14,7 @@ export default function ImpressumPage() {
               <br />
               Im Schulgarten 28
               <br />
-              49685 Hötinghausen
+              49685 Höltinghausen
             </p>
 
             <h2 className="text-xl font-bold mt-8 mb-4">Steuerliche Angaben</h2>
