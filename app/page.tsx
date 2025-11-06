@@ -675,7 +675,7 @@ export default function Home() {
                   </>
                 ) : (
                   <>
-                    Experience the ultimate <strong>trailrunning camp in Austria</strong>
+                    Experience the biggest <strong>trailrunning camp in Austria</strong>
                     <br />5 days of epic trails in the <strong>Austrian Alps</strong>
                     <br />
                     <span className="font-bold">Hochkrimml | August 5-9, 2026</span>

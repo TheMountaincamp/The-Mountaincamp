@@ -59,6 +59,7 @@ function PriceCategoryBar({ category, filled, total, label, status }: PriceCateg
           </div>
           <span className="text-base font-bold text-white">{category}</span>
         </div>
+        {label && <span className="text-base font-bold text-white">{label}</span>}
       </div>
       <div className="w-full bg-gray-900 rounded-full h-3 overflow-hidden">
         <motion.div
@@ -98,12 +99,12 @@ export default function PriceCategoryBars() {
         <div className="max-w-3xl mx-auto">
           <PriceCategoryBar
             category="Price Category 1 - Early Bird"
-            filled={96}
+            filled={100}
             total={100}
-            label="Friday 19th at 7pm"
-            status="coming-soon"
+            label="Sold out"
+            status="sold-out"
           />
-          <PriceCategoryBar category="Price Category 2" filled={0} total={100} label="🔒" status="sold-out" />
+          <PriceCategoryBar category="Price Category 2" filled={3} total={100} label="Available" status="available" />
           <PriceCategoryBar category="Price Category 3" filled={0} total={100} label="🔒" status="sold-out" />
         </div>
       </div>
