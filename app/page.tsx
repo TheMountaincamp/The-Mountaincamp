@@ -228,6 +228,7 @@ export default function Home() {
 
   // Mobile menu state
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
+  const videoRef = useRef<HTMLVideoElement>(null)
 
   // Parallax effect for hero section
   const heroRef = useRef(null)
@@ -239,6 +240,14 @@ export default function Home() {
   const heroTextY = useTransform(scrollYProgress, [0, 1], [0, 120])
   const heroOpacity = useTransform(scrollYProgress, [0, 0.6], [1, 0])
   const heroScale = useTransform(scrollYProgress, [0, 1], [1.1, 1.3])
+
+  useEffect(() => {
+    if (videoRef.current) {
+      videoRef.current.play().catch((e) => {
+        console.log("[v0] Video autoplay prevented:", e)
+      })
+    }
+  }, [])
 
   // Intersection observer for animations
   const [hasScrolled, setHasScrolled] = useState(false)
@@ -419,7 +428,7 @@ export default function Home() {
     setMobileMenuOpen(!mobileMenuOpen)
   }
 
-  const { videoRef, isVideoLoaded } = useScrollVideo()
+  const { videoRef: scrollVideoRef, isVideoLoaded } = useScrollVideo() // Renamed to avoid conflict
 
   const nextActivity = () => {
     setCurrentActivityIndex((prev) => (prev + 1) % activities.length)
@@ -601,15 +610,16 @@ export default function Home() {
           <div className="absolute inset-0">
             <motion.div style={{ scale: heroScale }} className="h-full w-full">
               <video
+                ref={videoRef}
                 autoPlay
                 loop
                 muted
                 playsInline
+                preload="auto"
                 className="h-full w-full object-cover object-center"
                 poster="/images/forest-group-photo.jpg"
-              >
-                <source src="/videos/header-video.mp4" type="video/mp4" />
-              </video>
+                src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/1127%20%281%29-FEgWVPpCJfcsT3ni35EZXLPrKTpGVQ.mp4"
+              />
             </motion.div>
           </div>
 
