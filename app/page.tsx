@@ -600,15 +600,16 @@ export default function Home() {
         <section ref={heroRef} className="relative min-h-[140vh] overflow-hidden">
           <div className="absolute inset-0">
             <motion.div style={{ scale: heroScale }} className="h-full w-full">
-              <Image
-                src="/images/forest-group-photo.jpg"
-                alt="Trailrunning camp Austria - Mountain training camp group photo with participants in Austrian Alps forest"
-                fill
-                className="object-cover object-center"
-                priority
-                sizes="100vw"
-                quality={90}
-              />
+              <video
+                autoPlay
+                loop
+                muted
+                playsInline
+                className="h-full w-full object-cover object-center"
+                poster="/images/forest-group-photo.jpg"
+              >
+                <source src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Header%20Video-7xYdEnbVgIbbL9adqjYrlfe7aTOPiT.mp4" type="video/mp4" />
+              </video>
             </motion.div>
           </div>
 
