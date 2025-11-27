@@ -608,7 +608,7 @@ export default function Home() {
                 className="h-full w-full object-cover object-center"
                 poster="/images/forest-group-photo.jpg"
               >
-                <source src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Header%20Video-7xYdEnbVgIbbL9adqjYrlfe7aTOPiT.mp4" type="video/mp4" />
+                <source src="/videos/header-video.mp4" type="video/mp4" />
               </video>
             </motion.div>
           </div>
