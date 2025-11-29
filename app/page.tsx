@@ -1062,107 +1062,47 @@ export default function Home() {
         <FAQSection />
 
         {/* Partners section */}
-        <section className="py-24 bg-gray-50">
-          <div className="container">
-            <SectionTitle title={t("partnersTitle")} subtitle={t("partnersSubtitle")} align="center" light={true} />
+        <section className="py-24 bg-gray-900 overflow-hidden">
+          <div className="container mb-12">
+            <SectionTitle title={t("partnersTitle")} subtitle={t("partnersSubtitle")} align="center" light={false} />
+          </div>
 
+          <div className="relative">
+            {/* Gradient overlays for fade effect */}
+            <div className="absolute left-0 top-0 bottom-0 w-32 bg-gradient-to-r from-gray-900 to-transparent z-10" />
+            <div className="absolute right-0 top-0 bottom-0 w-32 bg-gradient-to-l from-gray-900 to-transparent z-10" />
+
+            {/* Scrolling carousel - infinite loop */}
             <motion.div
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.8 }}
-              className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 items-center justify-items-center max-w-4xl mx-auto"
+              className="flex gap-20 items-center"
+              animate={{ x: ["0%", "-50%"] }}
+              transition={{
+                x: {
+                  repeat: Number.POSITIVE_INFINITY,
+                  repeatType: "loop",
+                  duration: 30,
+                  ease: "linear",
+                },
+              }}
             >
-              <motion.a
-                href="https://www.altrarunning.eu/de/"
-                target="_blank"
-                rel="noopener noreferrer"
-                initial={{ opacity: 0, scale: 0.9 }}
-                whileInView={{ opacity: 1, scale: 1 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.6, delay: 0.1 }}
-                className="flex items-center justify-center p-8 bg-white rounded-lg shadow-md hover:shadow-lg transition-all duration-300 w-full h-32"
-                whileHover={{ y: -5 }}
-              >
-                <Image
-                  src="/images/altra-logo.png"
-                  alt="Altra Running"
-                  width={200}
-                  height={80}
-                  className="h-16 w-auto object-contain"
-                  loading="lazy"
-                  sizes="200px"
-                />
-              </motion.a>
-
-              {/* Reboots Logo */}
-              <motion.a
-                href="https://reboots.com"
-                target="_blank"
-                rel="noopener noreferrer"
-                initial={{ opacity: 0, scale: 0.9 }}
-                whileInView={{ opacity: 1, scale: 1 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.6, delay: 0.2 }}
-                className="flex items-center justify-center p-8 bg-gray-900 rounded-lg shadow-md hover:shadow-lg transition-all duration-300 w-full h-32"
-                whileHover={{ y: -5 }}
-              >
-                <Image
-                  src="/images/reboots-logo-white.png"
-                  alt="Reboots"
-                  width={200}
-                  height={80}
-                  className="h-16 w-auto object-contain"
-                  loading="lazy"
-                  sizes="200px"
-                />
-              </motion.a>
-
-              {/* Lebepur Logo */}
-              <motion.a
-                href="https://www.lebepur.com"
-                target="_blank"
-                rel="noopener noreferrer"
-                initial={{ opacity: 0, scale: 0.9 }}
-                whileInView={{ opacity: 1, scale: 1 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.6, delay: 0.3 }}
-                className="flex items-center justify-center p-8 bg-white rounded-lg shadow-md hover:shadow-lg transition-all duration-300 w-full h-32"
-                whileHover={{ y: -5 }}
-              >
-                <Image
-                  src="/images/lebepur-logo.jpg"
-                  alt="Lebepur"
-                  width={200}
-                  height={80}
-                  className="h-16 w-auto object-contain"
-                  loading="lazy"
-                  sizes="200px"
-                />
-              </motion.a>
-
-              {/* PowerBar Logo */}
-              <motion.a
-                href="https://www.powerbar.eu"
-                target="_blank"
-                rel="noopener noreferrer"
-                initial={{ opacity: 0, scale: 0.9 }}
-                whileInView={{ opacity: 1, scale: 1 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.6, delay: 0.4 }}
-                className="flex items-center justify-center p-8 bg-white rounded-lg shadow-md hover:shadow-lg transition-all duration-300 w-full h-32"
-                whileHover={{ y: -5 }}
-              >
-                <Image
-                  src="/images/powerbar-logo.png"
-                  alt="PowerBar"
-                  width={200}
-                  height={80}
-                  className="h-16 w-auto object-contain"
-                  loading="lazy"
-                  sizes="200px"
-                />
-              </motion.a>
+              {/* Duplicate logos for seamless loop */}
+              {[...Array(2)].map((_, setIndex) => (
+                <div key={setIndex} className="flex gap-20 items-center shrink-0">
+                  {[1, 2, 3, 4, 5, 6, 7].map((num) => (
+                    <div key={`${setIndex}-${num}`} className="flex items-center justify-center h-36 shrink-0">
+                      <Image
+                        src={`/images/partner-${num}.png`}
+                        alt={`Partner ${num}`}
+                        width={600}
+                        height={150}
+                        className="h-36 w-auto object-contain opacity-70 hover:opacity-100 transition-opacity duration-300"
+                        loading="lazy"
+                        sizes="600px"
+                      />
+                    </div>
+                  ))}
+                </div>
+              ))}
             </motion.div>
           </div>
         </section>

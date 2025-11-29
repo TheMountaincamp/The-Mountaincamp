@@ -117,7 +117,7 @@ export const translations = {
     trailTipsTitle: "TRAIL-TIPPS",
     raffleConditions: "Teilnahmebedingungen Gewinnspiel",
     busTransport: "Bus Anreise",
-    partnersTitle: "UNSERE PARTNER",
+    partnersTitle: "MARKEN, MIT DENEN WIR ZUSAMMENARBEITEN",
     partnersSubtitle: "Wir arbeiten mit großartigen Marken zusammen, die unsere Vision teilen",
   },
   en: {
@@ -237,7 +237,7 @@ export const translations = {
     trailTipsTitle: "TRAIL TIPS",
     raffleConditions: "Raffle Conditions",
     busTransport: "Bus Transport",
-    partnersTitle: "OUR PARTNERS",
+    partnersTitle: "BRANDS WE'VE PARTNERED UP WITH",
     partnersSubtitle: "We work with amazing brands that share our vision",
   },
 }
