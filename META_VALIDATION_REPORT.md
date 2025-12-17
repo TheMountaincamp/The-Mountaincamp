@@ -14,17 +14,17 @@
 #### 🇩🇪 German Version (Primary - lang="de")
 
 **Meta Title:**
-\`\`\`
+```
 Trailrunning Camp Österreich | The Mountaincamp 2026 – 5.–9. August in den Alpen
-\`\`\`
+```
 - **Length:** 79 characters (within optimal range)
 - **Pixel Width:** ~520px (optimal for Google SERP)
 - **Keywords:** ✅ Trailrunning Camp Österreich, The Mountaincamp 2026, Alpen
 
 **Meta Description:**
-\`\`\`
+```
 Trailrunning Camp in Österreich – The Mountaincamp 2026 vom 5.–9. August: Lauf, erlebe & verbinde dich mit anderen auf den Trails der Alpen. Für jedes Level.
-\`\`\`
+```
 - **Length:** 157 characters (optimal)
 - **Pixel Width:** ~920px (within Google's 920-960px limit)
 - **Keywords:** ✅ Trailrunning Camp Österreich, 5.–9. August, Alpen, jedes Level
@@ -34,17 +34,17 @@ Trailrunning Camp in Österreich – The Mountaincamp 2026 vom 5.–9. August: L
 #### 🇬🇧 English Version (Alternate - hreflang="en")
 
 **Meta Title:**
-\`\`\`
+```
 Trailrunning Camp Austria | The Mountaincamp 2026 – August 5–9 in the Alps
-\`\`\`
+```
 - **Length:** 74 characters (optimal)
 - **Pixel Width:** ~490px (optimal for Google SERP)
 - **Keywords:** ✅ Trailrunning Camp Austria, The Mountaincamp 2026, Alps
 
 **Meta Description:**
-\`\`\`
+```
 The Mountaincamp 2026 – Trailrunning Camp in the Austrian Alps, August 5–9. Run together, explore the mountains & connect with a real trailrunning community.
-\`\`\`
+```
 - **Length:** 157 characters (optimal)
 - **Pixel Width:** ~910px (within Google's limit)
 - **Keywords:** ✅ Trailrunning Camp, Austrian Alps, August 5–9, community
@@ -54,22 +54,22 @@ The Mountaincamp 2026 – Trailrunning Camp in the Austrian Alps, August 5–9. 
 ### 🔧 Technical Implementation
 
 #### Meta Tags in `<head>`
-\`\`\`html
+```html
 <meta name="title" content="Trailrunning Camp Österreich | The Mountaincamp 2026 – 5.–9. August in den Alpen" />
 <meta name="description" content="Trailrunning Camp in Österreich – The Mountaincamp 2026 vom 5.–9. August: Lauf, erlebe & verbinde dich mit anderen auf den Trails der Alpen. Für jedes Level." />
-\`\`\`
+```
 
 #### Hreflang Tags
-\`\`\`html
+```html
 <link rel="alternate" hrefLang="de" href="https://themountaincamp.de" />
 <link rel="alternate" hrefLang="en" href="https://themountaincamp.de/en" />
 <link rel="alternate" hrefLang="x-default" href="https://themountaincamp.de" />
-\`\`\`
+```
 
 #### HTML Lang Attribute
-\`\`\`html
+```html
 <html lang="de" suppressHydrationWarning>
-\`\`\`
+```
 
 #### Open Graph Tags
 - ✅ og:title - Updated with German version + event dates
@@ -127,18 +127,18 @@ The Mountaincamp 2026 – Trailrunning Camp in the Austrian Alps, August 5–9. 
 ### 🔍 Google Search Preview
 
 #### German SERP Preview:
-\`\`\`
+```
 Trailrunning Camp Österreich | The Mountaincamp 2026 – 5.–9. August in den Alpen
 https://themountaincamp.de
 Trailrunning Camp in Österreich – The Mountaincamp 2026 vom 5.–9. August: Lauf, erlebe & verbinde dich mit anderen auf den Trails der Alpen. Für jedes Level.
-\`\`\`
+```
 
 #### English SERP Preview:
-\`\`\`
+```
 Trailrunning Camp Austria | The Mountaincamp 2026 – August 5–9 in the Alps
 https://themountaincamp.de/en
 The Mountaincamp 2026 – Trailrunning Camp in the Austrian Alps, August 5–9. Run together, explore the mountains & connect with a real trailrunning community.
-\`\`\`
+```
 
 ---
 

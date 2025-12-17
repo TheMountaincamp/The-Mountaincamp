@@ -318,108 +318,172 @@ export default function Home() {
     },
   ]
 
+  // Translate gallery images captions and alt texts
   const galleryImages = [
     {
       src: "/images/camp-social-gathering.jpg",
-      alt: "Camp participants socializing on lodge terrace",
-      caption: "Community Vibes",
+      alt:
+        language === "de"
+          ? "Camp-Teilnehmer beim Socializen auf der Terrasse der Lodge"
+          : "Camp participants socializing on lodge terrace",
+      caption: language === "de" ? "Community Vibes" : "Community Vibes",
     },
     {
       src: "/images/lodge-group-start.jpg",
-      alt: "Group of runners gathered at mountain lodge",
-      caption: "Ready to Run",
+      alt:
+        language === "de"
+          ? "Gruppe von Läufern versammelt an der Berghütte"
+          : "Group of runners gathered at mountain lodge",
+      caption: language === "de" ? "Bereit zum Laufen" : "Ready to Run",
     },
     {
       src: "/images/terrace-community-time.jpg",
-      alt: "Large group gathering on lodge terrace at sunset",
-      caption: "Mountain Community",
+      alt:
+        language === "de"
+          ? "Große Gruppe auf der Terrasse der Lodge bei Sonnenuntergang"
+          : "Large group gathering on lodge terrace at sunset",
+      caption: language === "de" ? "Berg Community" : "Mountain Community",
     },
     {
       src: "/images/trail-runners-mountain-path.jpg",
-      alt: "Two female trail runners on mountain path",
-      caption: "Trail Adventures",
+      alt: language === "de" ? "Zwei Trailrunnerinnen auf einem Bergpfad" : "Two female trail runners on mountain path",
+      caption: language === "de" ? "Trail Abenteuer" : "Trail Adventures",
     },
-    { src: "/images/runner-golden-meadow.jpg", alt: "Runner in golden mountain meadow", caption: "Mountain Freedom" },
+    {
+      src: "/images/runner-golden-meadow.jpg",
+      alt: language === "de" ? "Läufer auf goldener Bergwiese" : "Runner in golden mountain meadow",
+      caption: language === "de" ? "Bergfreiheit" : "Mountain Freedom",
+    },
     {
       src: "/images/mountain-trail-aerial.jpg",
-      alt: "Aerial view of runners on mountain trail",
-      caption: "Epic Trails",
+      alt: language === "de" ? "Luftaufnahme von Läufern auf Bergpfad" : "Aerial view of runners on mountain trail",
+      caption: language === "de" ? "Epische Trails" : "Epic Trails",
     },
-    { src: "/images/forest-runner-celebration.jpg", alt: "Joyful runner celebrating in forest", caption: "Pure Joy" },
-    { src: "/images/lodge-terrace-relaxation.jpg", alt: "Campers relaxing on lodge terrace", caption: "Recovery Time" },
+    {
+      src: "/images/forest-runner-celebration.jpg",
+      alt: language === "de" ? "Fröhlicher Läufer feiert im Wald" : "Joyful runner celebrating in forest",
+      caption: language === "de" ? "Pure Freude" : "Pure Joy",
+    },
+    {
+      src: "/images/lodge-terrace-relaxation.jpg",
+      alt: language === "de" ? "Camper entspannen auf der Lodge-Terrasse" : "Campers relaxing on lodge terrace",
+      caption: language === "de" ? "Erholungszeit" : "Recovery Time",
+    },
     {
       src: "/images/peaceful-terrace-moment.jpg",
-      alt: "Person relaxing under umbrella on mountain lodge terrace",
-      caption: "Peaceful Moments",
+      alt:
+        language === "de"
+          ? "Person entspannt unter Sonnenschirm auf der Terrasse der Berghütte"
+          : "Person relaxing under umbrella on mountain lodge terrace",
+      caption: language === "de" ? "Ruhige Momente" : "Peaceful Moments",
     },
   ]
 
-  // Activities data
+  // Activities data - Added German translations for activities
   const activities = [
     {
-      title: "Trailrunning Technique",
+      title: language === "de" ? "Trailrunning Technik" : "Trailrunning Technique",
       image: "/images/trailrunning-technique-class.jpg",
-      description: "Learn proper trailrunning techniques from experienced coaches on beautiful alpine trails.",
+      description:
+        language === "de"
+          ? "Lerne die richtige Trailrunning-Technik von erfahrenen Coaches auf wunderschönen Alpenpfaden."
+          : "Learn proper trailrunning techniques from experienced coaches on beautiful alpine trails.",
     },
     {
-      title: "Archery",
+      title: language === "de" ? "Bogenschießen" : "Archery",
       image: "/images/archery.jpeg",
-      description: "Test your precision and focus with archery sessions in a stunning mountain backdrop.",
+      description:
+        language === "de"
+          ? "Teste deine Präzision und Konzentration beim Bogenschießen vor atemberaubender Bergkulisse."
+          : "Test your precision and focus with archery sessions in a stunning mountain backdrop.",
     },
     {
-      title: "MTB Trip",
+      title: language === "de" ? "MTB Tour" : "MTB Trip",
       image: "/images/mtb-trip.png",
-      description: "Explore scenic mountain trails on two wheels with our guided mountain biking excursions.",
+      description:
+        language === "de"
+          ? "Erkunde malerische Bergpfade auf zwei Rädern bei unseren geführten Mountainbike-Touren."
+          : "Explore scenic mountain trails on two wheels with our guided mountain biking excursions.",
     },
     {
-      title: "Movie Night",
+      title: language === "de" ? "Filmabend" : "Movie Night",
       image: "/images/movie-night.png",
-      description: "Relax and enjoy inspiring outdoor and adventure films under the stars with fellow campers.",
+      description:
+        language === "de"
+          ? "Entspanne und genieße inspirierende Outdoor- und Abenteuerfilme unter dem Sternenhimmel mit anderen Campern."
+          : "Relax and enjoy inspiring outdoor and adventure films under the stars with fellow campers.",
     },
     {
-      title: "Canoeing",
+      title: language === "de" ? "Kanufahren" : "Canoeing",
       image: "/images/canoeing-lake.jpeg",
-      description: "Paddle across crystal-clear alpine lakes while taking in breathtaking mountain views.",
+      description:
+        language === "de"
+          ? "Paddle über kristallklare Alpenseen und genieße dabei atemberaubende Bergblicke."
+          : "Paddle across crystal-clear alpine lakes while taking in breathtaking mountain views.",
     },
     {
-      title: "Aquarell Painting",
+      title: language === "de" ? "Aquarellmalerei" : "Aquarell Painting",
       image: "/images/aquarell-painting.png",
-      description: "Express your creativity by painting the stunning alpine landscapes with watercolors.",
+      description:
+        language === "de"
+          ? "Drücke deine Kreativität aus, indem du die atemberaubenden Alpenlandschaften mit Wasserfarben malst."
+          : "Express your creativity by painting the stunning alpine landscapes with watercolors.",
     },
     {
-      title: "Clay Class",
+      title: language === "de" ? "Töpferkurs" : "Clay Class",
       image: "/images/clay-class.png",
-      description: "Get your hands dirty and create beautiful pottery inspired by the natural surroundings.",
+      description:
+        language === "de"
+          ? "Mach dir die Hände schmutzig und erschaffe wunderschöne Keramik, inspiriert von der natürlichen Umgebung."
+          : "Get your hands dirty and create beautiful pottery inspired by the natural surroundings.",
     },
     {
       title: "Yoga",
       image: "/images/yoga.png",
-      description: "Restore balance and recover with yoga sessions designed specifically for runners.",
+      description:
+        language === "de"
+          ? "Finde Balance und erhole dich mit Yoga-Sessions, die speziell für Läufer konzipiert sind."
+          : "Restore balance and recover with yoga sessions designed specifically for runners.",
     },
     {
-      title: "Knitting",
+      title: language === "de" ? "Stricken" : "Knitting",
       image: "/images/knitting.png",
-      description: "Learn to knit in a relaxed setting - a perfect mindful activity after a day of running.",
+      description:
+        language === "de"
+          ? "Lerne Stricken in entspannter Atmosphäre – eine perfekte achtsame Aktivität nach einem Lauftag."
+          : "Learn to knit in a relaxed setting - a perfect mindful activity after a day of running.",
     },
     {
-      title: "Climbing Class",
+      title: language === "de" ? "Kletterkurs" : "Climbing Class",
       image: "/images/climbing-class-real.jpeg",
-      description: "Build strength and confidence with indoor climbing sessions led by experienced instructors.",
+      description:
+        language === "de"
+          ? "Baue Kraft und Selbstvertrauen auf mit Indoor-Klettersessions unter Anleitung erfahrener Instruktoren."
+          : "Build strength and confidence with indoor climbing sessions led by experienced instructors.",
     },
     {
-      title: "Upcycling Class",
+      title: language === "de" ? "Upcycling Kurs" : "Upcycling Class",
       image: "/images/upcycling-class.png",
-      description: "Transform old materials into new treasures in our creative and eco-friendly upcycling workshop.",
+      description:
+        language === "de"
+          ? "Verwandle alte Materialien in neue Schätze in unserem kreativen und umweltfreundlichen Upcycling-Workshop."
+          : "Transform old materials into new treasures in our creative and eco-friendly upcycling workshop.",
     },
     {
-      title: "Campfire Evening",
+      title: language === "de" ? "Lagerfeuer Abend" : "Campfire Evening",
       image: "/images/campfire-evening.jpeg",
-      description: "Share stories and connect with fellow runners around a cozy campfire under the stars.",
+      description:
+        language === "de"
+          ? "Teile Geschichten und verbinde dich mit anderen Läufern am gemütlichen Lagerfeuer unter dem Sternenhimmel."
+          : "Share stories and connect with fellow runners around a cozy campfire under the stars.",
     },
     {
       title: "Sunset Rave",
       image: "/images/mountain-top-sunset-rave.jpg",
-      description: "Dance to great music with spectacular mountain views at our legendary sunset party.",
+      description:
+        language === "de"
+          ? "Tanze zu großartiger Musik mit spektakulärem Bergblick bei unserer legendären Sunset Party."
+          : "Dance to great music with spectacular mountain views at our legendary sunset party.",
     },
   ]
 
@@ -672,15 +736,15 @@ export default function Home() {
               </motion.div>
 
               <motion.p
-                initial={{ opacity: 1, y: 0 }}
+                initial={{ opacity: 0, y: 30 }}
                 animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: 0, duration: 0 }}
-                className="mb-6 max-w-2xl text-lg sm:text-xl md:text-2xl font-light px-4 sm:px-0"
+                transition={{ delay: 0.6, duration: 0.8 }}
+                className="text-xl md:text-2xl max-w-3xl mx-auto text-white/90 leading-relaxed"
               >
                 {language === "de" ? (
                   <>
-                    Erlebe das ultimative <strong>Trailrunning Camp in Österreich</strong>
-                    <br />5 Tage epische Trails in den <strong>österreichischen Alpen</strong>
+                    Erlebe das größte <strong>Trailrunning Camp in Österreich</strong>
+                    <br />5 Tage traumhafte Trails in den <strong>österreichischen Alpen</strong>
                     <br />
                     <span className="font-bold">Hochkrimml | 5.-9. August 2026</span>
                   </>
@@ -1072,7 +1136,6 @@ export default function Home() {
             <div className="absolute left-0 top-0 bottom-0 w-32 bg-gradient-to-r from-gray-900 to-transparent z-10" />
             <div className="absolute right-0 top-0 bottom-0 w-32 bg-gradient-to-l from-gray-900 to-transparent z-10" />
 
-            {/* Scrolling carousel - infinite loop */}
             <motion.div
               className="flex gap-20 items-center"
               animate={{ x: ["0%", "-50%"] }}
@@ -1080,7 +1143,7 @@ export default function Home() {
                 x: {
                   repeat: Number.POSITIVE_INFINITY,
                   repeatType: "loop",
-                  duration: 30,
+                  duration: typeof window !== "undefined" && window.innerWidth < 768 ? 15 : 30,
                   ease: "linear",
                 },
               }}
