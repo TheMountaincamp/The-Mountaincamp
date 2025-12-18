@@ -112,13 +112,7 @@ export default function PriceCategoryBars() {
             status="almost-gone"
           />
           <PriceCategoryBar category="Price Category 3" filled={0} total={100} label="🔒" status="sold-out" />
-          <PriceCategoryBar
-            category="Price Category 4"
-            filled={0}
-            total={100}
-            label="Coming Soon"
-            status="coming-soon"
-          />
+          <PriceCategoryBar category="Price Category 4" filled={0} total={100} label="🔒" status="sold-out" />
         </div>
       </div>
 
