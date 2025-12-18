@@ -4,7 +4,7 @@ import type React from "react"
 
 import { useState, useRef } from "react"
 import Image from "next/image"
-import { motion } from "framer-motion"
+import { motion, AnimatePresence } from "framer-motion"
 import { ChevronLeft, ChevronRight, ArrowUp, Clock, RouteIcon, ExternalLink } from "lucide-react"
 
 interface RouteData {
@@ -24,9 +24,6 @@ interface RouteCarouselProps {
 export default function RouteCarousel({ routes }: RouteCarouselProps) {
   const [currentIndex, setCurrentIndex] = useState(0)
   const [direction, setDirection] = useState(0)
-  const [isDragging, setIsDragging] = useState(false)
-  const [startX, setStartX] = useState(0)
-  const [currentX, setCurrentX] = useState(0)
   const carouselRef = useRef<HTMLDivElement>(null)
 
   const goToNext = () => {
@@ -44,135 +41,109 @@ export default function RouteCarousel({ routes }: RouteCarouselProps) {
     setCurrentIndex(index)
   }
 
-  const handleMouseDown = (e: React.MouseEvent) => {
-    setIsDragging(true)
-    setStartX(e.clientX)
-    setCurrentX(e.clientX)
-  }
-
-  const handleMouseMove = (e: React.MouseEvent) => {
-    if (isDragging) {
-      setCurrentX(e.clientX)
-    }
-  }
-
-  const handleMouseUp = () => {
-    if (isDragging) {
-      const diff = currentX - startX
-      if (diff > 50) {
-        goToPrevious()
-      } else if (diff < -50) {
-        goToNext()
-      }
-      setIsDragging(false)
-    }
-  }
-
-  const handleMouseLeave = () => {
-    setIsDragging(false)
-  }
+  // Swipe handlers for mobile
+  const [touchStart, setTouchStart] = useState(0)
+  const [touchEnd, setTouchEnd] = useState(0)
 
   const handleTouchStart = (e: React.TouchEvent) => {
-    setIsDragging(true)
-    setStartX(e.touches[0].clientX)
-    setCurrentX(e.touches[0].clientX)
+    setTouchStart(e.targetTouches[0].clientX)
   }
 
   const handleTouchMove = (e: React.TouchEvent) => {
-    if (isDragging) {
-      setCurrentX(e.touches[0].clientX)
-    }
+    setTouchEnd(e.targetTouches[0].clientX)
   }
 
   const handleTouchEnd = () => {
-    if (isDragging) {
-      const diff = currentX - startX
-      if (diff > 50) {
-        goToPrevious()
-      } else if (diff < -50) {
-        goToNext()
-      }
-      setIsDragging(false)
+    if (touchStart - touchEnd > 75) {
+      goToNext()
+    }
+    if (touchStart - touchEnd < -75) {
+      goToPrevious()
     }
   }
 
-  // Calculate indices for visible routes
-  const prevIndex = (currentIndex - 1 + routes.length) % routes.length
-  const nextIndex = (currentIndex + 1) % routes.length
-  const prev2Index = (currentIndex - 2 + routes.length) % routes.length
-  const next2Index = (currentIndex + 2) % routes.length
+  const currentRoute = routes[currentIndex]
+
+  // Animation variants
+  const slideVariants = {
+    enter: (direction: number) => ({
+      x: direction > 0 ? 300 : -300,
+      opacity: 0,
+      scale: 0.8,
+    }),
+    center: {
+      zIndex: 1,
+      x: 0,
+      opacity: 1,
+      scale: 1,
+    },
+    exit: (direction: number) => ({
+      zIndex: 0,
+      x: direction < 0 ? 300 : -300,
+      opacity: 0,
+      scale: 0.8,
+    }),
+  }
 
   return (
-    <div className="relative py-8 overflow-hidden">
+    <div className="relative py-8">
+      {/* Main carousel container */}
       <div
         ref={carouselRef}
-        className="relative h-[500px] mx-auto"
-        onMouseDown={handleMouseDown}
-        onMouseMove={handleMouseMove}
-        onMouseUp={handleMouseUp}
-        onMouseLeave={handleMouseLeave}
+        className="relative h-[450px] md:h-[500px] mx-auto flex items-center justify-center overflow-hidden"
         onTouchStart={handleTouchStart}
         onTouchMove={handleTouchMove}
         onTouchEnd={handleTouchEnd}
       >
-        <div className="absolute inset-0 flex items-center justify-center">
-          {/* Previous 2 Route */}
-          <div
-            className="absolute transform -translate-x-[500px] scale-50 opacity-30 z-10 transition-all duration-500"
-            style={{ filter: "blur(2px)" }}
+        <AnimatePresence initial={false} custom={direction} mode="wait">
+          <motion.div
+            key={currentIndex}
+            custom={direction}
+            variants={slideVariants}
+            initial="enter"
+            animate="center"
+            exit="exit"
+            transition={{
+              x: { type: "spring", stiffness: 300, damping: 30 },
+              opacity: { duration: 0.2 },
+              scale: { duration: 0.2 },
+            }}
+            className="absolute"
           >
-            <RouteCard route={routes[prev2Index]} />
-          </div>
-
-          {/* Previous Route */}
-          <div className="absolute transform -translate-x-[250px] scale-75 opacity-60 z-20 transition-all duration-500">
-            <RouteCard route={routes[prevIndex]} />
-          </div>
-
-          {/* Current Route */}
-          <div className="absolute z-30 transition-all duration-500">
-            <RouteCard route={routes[currentIndex]} isActive={true} />
-          </div>
-
-          {/* Next Route */}
-          <div className="absolute transform translate-x-[250px] scale-75 opacity-60 z-20 transition-all duration-500">
-            <RouteCard route={routes[nextIndex]} />
-          </div>
-
-          {/* Next 2 Route */}
-          <div
-            className="absolute transform translate-x-[500px] scale-50 opacity-30 z-10 transition-all duration-500"
-            style={{ filter: "blur(2px)" }}
-          >
-            <RouteCard route={routes[next2Index]} />
-          </div>
-        </div>
+            <RouteCard route={currentRoute} isActive={true} />
+          </motion.div>
+        </AnimatePresence>
       </div>
 
       {/* Navigation Arrows */}
       <button
         onClick={goToPrevious}
-        className="absolute left-4 top-1/2 z-40 -translate-y-1/2 rounded-full bg-primary/80 p-3 text-white backdrop-blur-sm transition-all hover:bg-primary"
+        className="absolute left-2 md:left-4 top-1/2 z-40 -translate-y-1/2 rounded-full bg-primary/80 p-2 md:p-3 text-white backdrop-blur-sm transition-all hover:bg-primary"
         aria-label="Previous route"
       >
-        <ChevronLeft className="h-6 w-6" />
+        <ChevronLeft className="h-5 w-5 md:h-6 md:w-6" />
       </button>
       <button
         onClick={goToNext}
-        className="absolute right-4 top-1/2 z-40 -translate-y-1/2 rounded-full bg-primary/80 p-3 text-white backdrop-blur-sm transition-all hover:bg-primary"
+        className="absolute right-2 md:right-4 top-1/2 z-40 -translate-y-1/2 rounded-full bg-primary/80 p-2 md:p-3 text-white backdrop-blur-sm transition-all hover:bg-primary"
         aria-label="Next route"
       >
-        <ChevronRight className="h-6 w-6" />
+        <ChevronRight className="h-5 w-5 md:h-6 md:w-6" />
       </button>
 
+      {/* Route counter */}
+      <div className="text-center mt-4 text-gray-600 font-medium">
+        {currentIndex + 1} / {routes.length}
+      </div>
+
       {/* Indicators */}
-      <div className="absolute bottom-0 left-1/2 z-40 flex -translate-x-1/2 gap-2">
+      <div className="flex justify-center gap-2 mt-4">
         {routes.map((_, index) => (
           <button
             key={index}
             onClick={() => goToSlide(index)}
-            className={`h-2 w-2 rounded-full transition-all ${
-              index === currentIndex ? "w-6 bg-primary" : "bg-white/50"
+            className={`h-2 rounded-full transition-all ${
+              index === currentIndex ? "w-6 bg-primary" : "w-2 bg-gray-300 hover:bg-gray-400"
             }`}
             aria-label={`Go to route ${index + 1}`}
           />
@@ -189,11 +160,7 @@ interface RouteCardProps {
 
 function RouteCard({ route, isActive = false }: RouteCardProps) {
   return (
-    <motion.div
-      className="relative w-[320px] h-[400px] rounded-xl overflow-hidden shadow-xl"
-      whileHover={{ scale: isActive ? 1.05 : 1 }}
-      transition={{ duration: 0.3 }}
-    >
+    <div className="relative w-[280px] sm:w-[320px] md:w-[380px] h-[380px] md:h-[420px] rounded-xl overflow-hidden shadow-xl">
       <div className="absolute inset-0 z-10">
         <Image
           src={route.image || "/placeholder.svg"}
@@ -205,13 +172,13 @@ function RouteCard({ route, isActive = false }: RouteCardProps) {
 
       <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/50 to-transparent z-20"></div>
 
-      <div className="absolute bottom-0 left-0 p-6 z-30 w-full">
+      <div className="absolute bottom-0 left-0 p-4 md:p-6 z-30 w-full">
         <div className="flex justify-between items-start">
           <div>
             <span className="bg-primary/80 px-2 py-1 rounded text-white text-xs font-medium mb-2 inline-block">
               {route.difficulty}
             </span>
-            <h3 className="text-xl font-bold text-white mt-2">{route.title}</h3>
+            <h3 className="text-lg md:text-xl font-bold text-white mt-2">{route.title}</h3>
           </div>
           {isActive && (
             <a
@@ -225,7 +192,7 @@ function RouteCard({ route, isActive = false }: RouteCardProps) {
           )}
         </div>
 
-        <div className="flex flex-wrap gap-4 my-3 text-sm text-white/90">
+        <div className="flex flex-wrap gap-3 md:gap-4 my-3 text-sm text-white/90">
           <div className="flex items-center gap-1">
             <RouteIcon className="h-4 w-4" />
             <span>{route.distance}</span>
@@ -240,6 +207,6 @@ function RouteCard({ route, isActive = false }: RouteCardProps) {
           </div>
         </div>
       </div>
-    </motion.div>
+    </div>
   )
 }

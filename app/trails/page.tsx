@@ -38,7 +38,7 @@ export default function TrailsPage() {
       distance: "18,0 km",
       elevation: "1.530 hm",
       link: "https://www.komoot.com/de-de/tour/1739287990",
-      image: "/images/summit-trail.jpeg",
+      image: "/images/trail-route-1.jpg",
     },
     {
       title: "Laufrunde nach Zittauerhütte",
@@ -47,7 +47,7 @@ export default function TrailsPage() {
       distance: "32,5 km",
       elevation: "1.390 hm",
       link: "https://www.komoot.com/de-de/tour/1736740939",
-      image: "/images/alpine-landscape.jpeg",
+      image: "/images/trail-route-2.jpg",
     },
     {
       title: "Hausberg",
@@ -56,7 +56,7 @@ export default function TrailsPage() {
       distance: "15,4 km",
       elevation: "710 m",
       link: "https://www.komoot.com/de-de/tour/1730869942",
-      image: "/images/trail-runner-1.jpeg",
+      image: "/images/trail-route-3.jpg",
     },
     {
       title: "Krimmler Wasserfälle",
@@ -65,7 +65,7 @@ export default function TrailsPage() {
       distance: "14,5 km",
       elevation: "970 hm",
       link: "https://www.komoot.com/de-de/tour/1736310471",
-      image: "/images/mountain-trail-runner.jpeg",
+      image: "/images/trail-route-4.jpg",
     },
     {
       title: "Zittauerhütte Option 2",
@@ -74,7 +74,7 @@ export default function TrailsPage() {
       distance: "25,4 km",
       elevation: "1.590 m",
       link: "https://www.komoot.com/de-de/tour/1736297300",
-      image: "/images/summit-view.jpeg",
+      image: "/images/trail-route-5.jpg",
     },
     {
       title: "Mountaincamp Pro Tour",
@@ -83,7 +83,7 @@ export default function TrailsPage() {
       distance: "36,3 km",
       elevation: "2.260 m",
       link: "https://www.komoot.com/de-de/tour/1211980592",
-      image: "/images/trail-runners-group.jpeg",
+      image: "/images/trail-route-6.jpg",
     },
     {
       title: "Königsleiten Gipfelliner",
@@ -92,7 +92,7 @@ export default function TrailsPage() {
       distance: "17,7 km",
       elevation: "1.030 m",
       link: "https://www.komoot.com/de-de/tour/1193607677",
-      image: "/images/mountain-lake.png",
+      image: "/images/trail-route-7.jpg",
     },
     {
       title: "Laufrunde nach Geislhochalm",
@@ -101,7 +101,7 @@ export default function TrailsPage() {
       distance: "25,3 km",
       elevation: "1.670 m",
       link: "https://www.komoot.com/de-de/tour/1191154659",
-      image: "/images/canoeing-lake.jpeg",
+      image: "/images/trail-route-1.jpg",
     },
   ]
 
