@@ -342,7 +342,7 @@ export default function Home() {
         language === "de"
           ? "Große Gruppe auf der Terrasse der Lodge bei Sonnenuntergang"
           : "Large group gathering on lodge terrace at sunset",
-      caption: language === "de" ? "Berg Community" : "Mountain Community",
+      caption: language === "de" ? "Community Vibes" : "Community Vibes",
     },
     {
       src: "/images/trail-runners-mountain-path.jpg",
@@ -815,15 +815,35 @@ export default function Home() {
                   transition={{ duration: 0.8 }}
                 >
                   <h2 className="text-4xl font-bold mb-8 text-gray-900">{t("aboutTitle")}</h2>
-                  <div className="space-y-4 text-gray-600">
-                    {/* Increased text size for about section */}
-                    <p className="text-lg leading-relaxed whitespace-pre-line">
-                      Trailrunning meets community.
-                      <br />
-                      Five days in the Alps - running, connection, and creativity.
-                      <br />
-                      The Mountaincamp 2026.
-                    </p>
+                  <div className="space-y-3 text-gray-600">
+                    <div className="flex items-start gap-3">
+                      <div className="mt-1.5 h-1.5 w-1.5 rounded-full bg-primary flex-shrink-0" />
+                      <p className="text-lg leading-relaxed">{t("aboutFeature1")}</p>
+                    </div>
+                    <div className="flex items-start gap-3">
+                      <div className="mt-1.5 h-1.5 w-1.5 rounded-full bg-primary flex-shrink-0" />
+                      <p className="text-lg leading-relaxed">{t("aboutFeature2")}</p>
+                    </div>
+                    <div className="flex items-start gap-3">
+                      <div className="mt-1.5 h-1.5 w-1.5 rounded-full bg-primary flex-shrink-0" />
+                      <p className="text-lg leading-relaxed">{t("aboutFeature3")}</p>
+                    </div>
+                    <div className="flex items-start gap-3">
+                      <div className="mt-1.5 h-1.5 w-1.5 rounded-full bg-primary flex-shrink-0" />
+                      <p className="text-lg leading-relaxed">{t("aboutFeature4")}</p>
+                    </div>
+                    <div className="flex items-start gap-3">
+                      <div className="mt-1.5 h-1.5 w-1.5 rounded-full bg-primary flex-shrink-0" />
+                      <p className="text-lg leading-relaxed">{t("aboutFeature5")}</p>
+                    </div>
+                    <div className="flex items-start gap-3">
+                      <div className="mt-1.5 h-1.5 w-1.5 rounded-full bg-primary flex-shrink-0" />
+                      <p className="text-lg leading-relaxed">{t("aboutFeature6")}</p>
+                    </div>
+                    <div className="flex items-start gap-3">
+                      <div className="mt-1.5 h-1.5 w-1.5 rounded-full bg-primary flex-shrink-0" />
+                      <p className="text-lg leading-relaxed">{t("aboutFeature7")}</p>
+                    </div>
 
                     <div className="pt-4 flex flex-col sm:flex-row gap-4">
                       <div className="flex items-center gap-3">

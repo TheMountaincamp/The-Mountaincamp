@@ -25,12 +25,20 @@ export const translations = {
     communityDesc: "Connecte dich mit Laufenden aus ganz Europa",
 
     // About section
-    aboutTitle: "Über The Mountaincamp",
+    aboutTitle: "Das erwartet dich",
     aboutSubtitle:
       "Bei The Mountaincamp glauben wir, dass Laufen mehr ist als nur Kilometer schrubben – es geht darum, Grenzen zu überwinden, Gemeinschaft zu bilden und das Leben zu feiern.",
     aboutText1: "Nicht einfach ein Camp. Mehr als nur Laufen.\nTrails am Morgen, Abkühlung im See, echte Momente.",
     aboutText2: "Für alle Levels. Kein Leistungsdruck.\nFür alle, die mehr als nur Kilometer suchen.",
     aboutText3: "Laufen. Verbinden. Erleben.\nThe Mountaincamp.",
+    // New bullet points for what's included
+    aboutFeature1: "4 Nächte auf 1700m Höhe",
+    aboutFeature2: "Frühstück & Abendessen",
+    aboutFeature3: "Geführte Trailruns durch atemberaubende Natur",
+    aboutFeature4: "Sauna & Recovery Lounge",
+    aboutFeature5: "Aktivitäten | Workshops | Vorträge",
+    aboutFeature6: "Snacks & Gels für deine Läufe",
+    aboutFeature7: "Foto-Paket zum Download für dein Social Media",
 
     // Experience section
     experienceTitle: "Das Erlebnis",
@@ -146,12 +154,20 @@ export const translations = {
     communityDesc: "Connect with like-minded runners in an unforgettable shared experience",
 
     // About section
-    aboutTitle: "About The Mountaincamp",
+    aboutTitle: "What awaits you",
     aboutSubtitle:
       "At The Mountaincamp we believe running is about more than just miles — it's about pushing boundaries, building community, and celebrating life.",
     aboutText1: "Not just a camp. More than just running.\nTrail runs in the morning, lake dips, real moments.",
     aboutText2: "For every level. No pressure.\nFor those chasing more than just miles.",
     aboutText3: "Run. Connect. Experience.\nThe Mountaincamp.",
+    // New bullet points for what's included
+    aboutFeature1: "4 nights at 1700m altitude",
+    aboutFeature2: "Breakfast & dinner",
+    aboutFeature3: "Daily guided trail runs",
+    aboutFeature4: "Sauna & recovery lounge",
+    aboutFeature5: "Activities | workshops | talks",
+    aboutFeature6: "Snacks & gels",
+    aboutFeature7: "Photo package for your social media",
 
     // Experience section
     experienceTitle: "The Experience",
