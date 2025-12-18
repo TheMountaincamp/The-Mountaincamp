@@ -527,41 +527,38 @@ export default function Home() {
 
           {/* Desktop navigation */}
           <nav className="hidden md:flex gap-8">
-            <Link
-              href="#about"
-              className="text-sm font-medium uppercase hover:text-primary transition-colors text-white"
-            >
+            <Link href="#about" className="text-sm font-bold uppercase hover:text-primary transition-colors text-white">
               {t("about")}
             </Link>
             <Link
               href="#experience"
-              className="text-sm font-medium uppercase hover:text-primary transition-colors text-white"
+              className="text-sm font-bold uppercase hover:text-primary transition-colors text-white"
             >
               {t("experience")}
             </Link>
             <PreloadLink
               href="/house"
               imagesToPreload={HOUSE_PAGE_IMAGES}
-              className="text-sm font-medium uppercase hover:text-primary transition-colors text-white"
+              className="text-sm font-bold uppercase hover:text-primary transition-colors text-white"
             >
               {t("house")}
             </PreloadLink>
             <PreloadLink
               href="/trails"
               imagesToPreload={TRAILS_PAGE_IMAGES}
-              className="text-sm font-medium uppercase hover:text-primary transition-colors text-white"
+              className="text-sm font-bold uppercase hover:text-primary transition-colors text-white"
             >
               {t("trails")}
             </PreloadLink>
             <Link
               href="#testimonials"
-              className="text-sm font-medium uppercase hover:text-primary transition-colors text-white"
+              className="text-sm font-bold uppercase hover:text-primary transition-colors text-white"
             >
               {t("testimonials")}
             </Link>
             <Link
               href="#register"
-              className="text-sm font-medium uppercase hover:text-primary transition-colors text-white"
+              className="text-sm font-bold uppercase hover:text-primary transition-colors text-white"
             >
               {t("register")}
             </Link>
@@ -703,7 +700,7 @@ export default function Home() {
                 transition={{ delay: 0.2, duration: 0.8 }}
                 className="mb-6 inline-block border border-primary px-4 py-2"
               >
-                <span className="text-sm font-medium uppercase tracking-widest text-green-400">
+                <span className="text-sm font-bold uppercase tracking-widest text-green-400">
                   {language === "de" ? "Anmeldung verfügbar!" : "Registration available!"}
                 </span>
               </motion.div>

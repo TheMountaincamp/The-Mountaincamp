@@ -4,9 +4,10 @@ import { useState, useEffect } from "react"
 import Image from "next/image"
 import Link from "next/link"
 import { motion } from "framer-motion"
-import { ArrowLeft, Wifi, Utensils, Thermometer, Droplets, Mountain } from "lucide-react"
+import { Wifi, Utensils, Thermometer, Droplets, Mountain } from "lucide-react"
 import { useLanguage } from "@/contexts/language-context"
 import ImagePreloader from "@/app/components/image-preloader"
+import SiteHeader from "@/app/components/site-header"
 
 // Define critical images for the House page
 const CRITICAL_IMAGES = [
@@ -75,6 +76,8 @@ export default function HousePage() {
       {/* Preload critical images */}
       <ImagePreloader imageSources={CRITICAL_IMAGES} />
 
+      <SiteHeader />
+
       {/* Header with background image */}
       <div className="relative h-[50vh] min-h-[400px]">
         <Image
@@ -110,18 +113,6 @@ export default function HousePage() {
             {t("houseSubtitle")}
           </motion.p>
         </div>
-
-        <motion.div
-          className="absolute top-6 left-6"
-          initial={{ opacity: 0, x: -20 }}
-          animate={{ opacity: isLoaded ? 1 : 0, x: isLoaded ? 0 : -20 }}
-          transition={{ duration: 0.5 }}
-        >
-          <Link href="/" className="flex items-center gap-2 text-white hover:text-primary transition-colors">
-            <ArrowLeft className="h-5 w-5" />
-            <span>{t("language") === "de" ? "Zurück" : "Back"}</span>
-          </Link>
-        </motion.div>
       </div>
 
       {/* Main content */}

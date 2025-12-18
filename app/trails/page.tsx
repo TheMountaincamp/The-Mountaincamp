@@ -4,10 +4,11 @@ import { useState, useEffect } from "react"
 import Image from "next/image"
 import Link from "next/link"
 import { motion } from "framer-motion"
-import { ArrowLeft, Mountain, ArrowUp, Clock, Route } from "lucide-react"
+import { Mountain, ArrowUp, Clock, Route } from "lucide-react"
 import { useLanguage } from "@/contexts/language-context"
 import RouteCarousel from "@/app/components/route-carousel"
 import ImagePreloader from "@/app/components/image-preloader"
+import SiteHeader from "@/app/components/site-header"
 
 // Define critical images for the Trails page
 const CRITICAL_IMAGES = [
@@ -167,6 +168,8 @@ export default function TrailsPage() {
       {/* Preload critical images */}
       <ImagePreloader imageSources={CRITICAL_IMAGES} />
 
+      <SiteHeader />
+
       {/* Header with background image */}
       <div className="relative h-[50vh] min-h-[400px]">
         <Image
@@ -202,18 +205,6 @@ export default function TrailsPage() {
             {t("trailsSubtitle")}
           </motion.p>
         </div>
-
-        <motion.div
-          className="absolute top-6 left-6"
-          initial={{ opacity: 0, x: -20 }}
-          animate={{ opacity: isLoaded ? 1 : 0, x: isLoaded ? 0 : -20 }}
-          transition={{ duration: 0.5 }}
-        >
-          <Link href="/" className="flex items-center gap-2 text-white hover:text-primary transition-colors">
-            <ArrowLeft className="h-5 w-5" />
-            <span>Back</span>
-          </Link>
-        </motion.div>
       </div>
 
       {/* Main content */}
