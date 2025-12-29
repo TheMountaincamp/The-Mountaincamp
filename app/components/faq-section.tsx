@@ -30,7 +30,7 @@ export default function FAQSection() {
     {
       question: "Wie fange ich mit Trailrunning an?",
       answer:
-        "Starte mit kurzen, einfachen Trails in deiner Umgebung. Du brauchst gute Trailrunning-Schuhe mit Profil und solltest langsam beginnen, um dich an den unebenen Untergrund zu gewöhnen. Unser Trailrunning Camp für Anfänger ist perfekt zum Einstieg: Du lernst die richtige Technik, läufst in Anfängergruppen und wirst von erfahrenen Coaches begleitet.",
+        "Starte mit kurzen, einfachen Trails in deiner Umgebung. Du brauchst gute Trailrunning-Schuhe mit Profil und solltest langsam beginnen, um dich an den unebenen Untergrund zu gewöhnen. Unser Trailrunning Camp für Anfänger ist perfekt zum Einstieg: Du lernst die richtige Technik, läufst in Anfängergruppen und wirst von erfahrenen Guides begleitet.",
     },
     {
       question: "Was muss ich beim Trailrunning beachten?",
@@ -70,7 +70,7 @@ export default function FAQSection() {
     {
       question: "Was ist im Preis des Trailrunning Camps enthalten?",
       answer:
-        "Der Preis von €480 inkludiert 4 Nächte Unterkunft in unserem gemütlichen Berghaus, Vollpension mit drei Mahlzeiten täglich, geführte Trailrunning-Touren durch die Alpen, Technik-Workshops, alle Freizeitaktivitäten (Yoga, Klettern, Bogenschießen, etc.) und die legendäre Sunset Rave.",
+        "Der Preis von €480 inkludiert 4 Nächte Unterkunft in unserem gemütlichen Berghaus, Halbpension mit zwei Mahlzeiten täglich (Frühstück und Abendessen) und geführte Trailrunning-Touren durch die Alpen.",
     },
     {
       question: "Wie schwierig sind die Trails im Austria Trailrunning Camp?",
@@ -95,7 +95,7 @@ export default function FAQSection() {
     {
       question: "Kann ich als Anfänger am Alpine Trailrunning Camp teilnehmen?",
       answer:
-        "Ja! Wir haben spezielle Anfängergruppen mit kürzeren Distanzen und Technik-Coaching. Du solltest eine Grundfitness haben und Freude am Laufen in den Bergen. Unsere Coaches helfen dir, die richtige Trailrunning-Technik zu lernen.",
+        "Ja! Wir haben spezielle Anfängergruppen mit kürzeren Distanzen und Technik-Coaching. Du solltest eine Grundfitness haben und Freude am Laufen in den Bergen. Unsere Guides helfen dir, die richtige Trailrunning-Technik zu lernen.",
     },
   ]
 
@@ -113,7 +113,7 @@ export default function FAQSection() {
     {
       question: "How do I start trailrunning?",
       answer:
-        "Start with short, easy trails in your area. You need good trail running shoes with grip and should start slowly to get used to uneven terrain. Our trailrunning camp for beginners is perfect for starting: you learn proper technique, run in beginner groups, and are accompanied by experienced coaches.",
+        "Start with short, easy trails in your area. You need good trail running shoes with grip and should start slowly to get used to uneven terrain. Our trailrunning camp for beginners is perfect for starting: you learn proper technique, run in beginner groups, and are accompanied by experienced guides.",
     },
     {
       question: "What should I consider when trailrunning?",
@@ -153,7 +153,7 @@ export default function FAQSection() {
     {
       question: "What's included in the trailrunning camp price?",
       answer:
-        "The price of €480 includes 4 nights accommodation in our cozy mountain house, full board with three meals daily, guided trailrunning tours through the Alps, technique workshops, all leisure activities (yoga, climbing, archery, etc.) and the legendary Sunset Rave.",
+        "The price of €480 includes 4 nights accommodation in our cozy mountain house, half board with two meals daily (breakfast and dinner) and guided trailrunning tours through the Alps.",
     },
     {
       question: "How difficult are the trails in the Austria Trailrunning Camp?",
@@ -178,7 +178,7 @@ export default function FAQSection() {
     {
       question: "Can I participate as a beginner in the Alpine Trailrunning Camp?",
       answer:
-        "Yes! We have special beginner groups with shorter distances and technique coaching. You should have basic fitness and enjoy running in the mountains. Our coaches will help you learn proper trailrunning technique.",
+        "Yes! We have special beginner groups with shorter distances and technique coaching. You should have basic fitness and enjoy running in the mountains. Our guides will help you learn proper trailrunning technique.",
     },
   ]
 
