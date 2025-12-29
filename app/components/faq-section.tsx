@@ -30,7 +30,7 @@ export default function FAQSection() {
     {
       question: "Wie fange ich mit Trailrunning an?",
       answer:
-        "Starte mit kurzen, einfachen Trails in deiner Umgebung. Du brauchst gute Trailrunning-Schuhe mit Profil und solltest langsam beginnen, um dich an den unebenen Untergrund zu gewöhnen. Unser Trailrunning Camp für Anfänger ist perfekt zum Einstieg: Du lernst die richtige Technik, läufst in Anfängergruppen und wirst von erfahrenen Guides begleitet.",
+        "Starte mit kurzen, einfachen Trails in deiner Umgebung. Du brauchst gute Trailrunning-Schuhe mit Profil und solltest langsam beginnen, um dich an den unebenen Untergrund zu gewöhnen. Unser Trailrunning Camp ist perfekt für Anfänger, Fortgeschrittene und Profis.",
     },
     {
       question: "Was muss ich beim Trailrunning beachten?",
@@ -113,7 +113,7 @@ export default function FAQSection() {
     {
       question: "How do I start trailrunning?",
       answer:
-        "Start with short, easy trails in your area. You need good trail running shoes with grip and should start slowly to get used to uneven terrain. Our trailrunning camp for beginners is perfect for starting: you learn proper technique, run in beginner groups, and are accompanied by experienced guides.",
+        "Start with short, easy trails in your area. You need good trail running shoes with grip and should start slowly to get used to uneven terrain. Our trailrunning camp is perfect for beginners, intermediates and pros.",
     },
     {
       question: "What should I consider when trailrunning?",
