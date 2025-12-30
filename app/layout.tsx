@@ -9,7 +9,6 @@ import { LanguageProvider } from "@/contexts/language-context"
 import CookieBanner from "@/components/cookie-banner"
 import Script from "next/script"
 import { Analytics } from "@vercel/analytics/react"
-import DebugImagePaths from "@/app/components/debug-image-paths"
 
 const inter = Inter({ subsets: ["latin"], display: "swap" })
 
@@ -288,7 +287,6 @@ export default function RootLayout({
                 {children}
                 <CookieBanner />
                 <Analytics />
-                <DebugImagePaths />
               </ThemeProvider>
             </CookieConsentProvider>
           </LanguageProvider>
