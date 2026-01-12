@@ -38,7 +38,6 @@ export const translations = {
     aboutFeature4: "Sauna & Recovery Lounge",
     aboutFeature5: "Aktivitäten | Workshops | Vorträge",
     aboutFeature6: "Snacks & Gels für deine Läufe",
-    aboutFeature7: "Foto-Paket zum Download für dein Social Media",
 
     // Experience section
     experienceTitle: "Das Erlebnis",
@@ -167,7 +166,6 @@ export const translations = {
     aboutFeature4: "Sauna & recovery lounge",
     aboutFeature5: "Activities | workshops | talks",
     aboutFeature6: "Snacks & gels",
-    aboutFeature7: "Photo package for your social media",
 
     // Experience section
     experienceTitle: "The Experience",

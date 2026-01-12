@@ -106,7 +106,7 @@ export default function PriceCategoryBars() {
           />
           <PriceCategoryBar
             category="Price Category 2"
-            filled={93}
+            filled={98}
             total={100}
             label="Available"
             status="almost-gone"
