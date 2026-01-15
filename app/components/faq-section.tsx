@@ -70,7 +70,7 @@ export default function FAQSection() {
     {
       question: "Was ist im Preis von The Mountaincamp enthalten?",
       answer:
-        "Der Preis von €480 inkludiert 4 Nächte Unterkunft in unserem gemütlichen Berghaus, Halbpension mit zwei Mahlzeiten täglich (Frühstück und Abendessen) und geführte Trailrunning-Touren durch die Alpen.",
+        "Der Preis von €510 inkludiert 4 Nächte Unterkunft in unserem gemütlichen Berghaus, Halbpension mit zwei Mahlzeiten täglich (Frühstück und Abendessen) und geführte Trailrunning-Touren durch die Alpen.",
     },
     {
       question: "Wie schwierig sind die Trails bei The Mountaincamp?",
@@ -153,7 +153,7 @@ export default function FAQSection() {
     {
       question: "What's included in The Mountaincamp price?",
       answer:
-        "The price of €480 includes 4 nights accommodation in our cozy mountain house, half board with two meals daily (breakfast and dinner) and guided trailrunning tours through the Alps.",
+        "The price of €510 includes 4 nights accommodation in our cozy mountain house, half board with two meals daily (breakfast and dinner) and guided trailrunning tours through the Alps.",
     },
     {
       question: "How difficult are the trails at The Mountaincamp?",

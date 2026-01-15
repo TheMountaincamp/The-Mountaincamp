@@ -94,7 +94,7 @@ export default function Home() {
         ],
         offers: {
           "@type": "Offer",
-          price: "480",
+          price: "510",
           priceCurrency: "EUR",
           availability: "https://schema.org/LimitedAvailability",
           url: "https://my.camps.digital/masken/buchungen/vuejs?&vendor=mountaincamp&destination_id=2467&termin_id=36011#/",
@@ -773,7 +773,7 @@ export default function Home() {
                       target="_blank"
                       rel="noopener noreferrer"
                     >
-                      {language === "de" ? "Jetzt dabei sein" : "Join Now"}
+                      {language === "de" ? "Join Now" : "Join Now"}
                     </a>
                   </Button>
                 </motion.div>
@@ -1227,7 +1227,7 @@ export default function Home() {
                     <span className="text-sm font-medium text-white uppercase">{t("packageTitle")}</span>
                   </div>
                   <div className="bg-gray-800 px-6 py-4 rounded-b-lg">
-                    <span className="text-3xl font-bold text-white">€480</span>
+                    <span className="text-3xl font-bold text-white">€510</span>
                   </div>
                 </div>
               </motion.div>
