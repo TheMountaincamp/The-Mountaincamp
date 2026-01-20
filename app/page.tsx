@@ -241,11 +241,31 @@ export default function Home() {
   const heroOpacity = useTransform(scrollYProgress, [0, 0.6], [1, 0])
   const heroScale = useTransform(scrollYProgress, [0, 1], [1.1, 1.3])
 
-  useEffect(() => {
-    if (videoRef.current) {
-      videoRef.current.play().catch((e) => {
-        console.log("[v0] Video autoplay prevented:", e)
-      })
+useEffect(() => {
+    const playVideo = () => {
+      if (videoRef.current) {
+        videoRef.current.play().catch(() => {
+          // Silently catch autoplay prevention
+        })
+      }
+    }
+    
+    // Try to play immediately
+    playVideo()
+    
+    // Also try on user interaction (for mobile browsers that block autoplay)
+    const handleInteraction = () => {
+      playVideo()
+      document.removeEventListener("touchstart", handleInteraction)
+      document.removeEventListener("click", handleInteraction)
+    }
+    
+    document.addEventListener("touchstart", handleInteraction, { once: true })
+    document.addEventListener("click", handleInteraction, { once: true })
+    
+    return () => {
+      document.removeEventListener("touchstart", handleInteraction)
+      document.removeEventListener("click", handleInteraction)
     }
   }, [])
 
@@ -837,10 +857,6 @@ export default function Home() {
                       <div className="mt-1.5 h-1.5 w-1.5 rounded-full bg-primary flex-shrink-0" />
                       <p className="text-lg leading-relaxed">{t("aboutFeature6")}</p>
                     </div>
-                    <div className="flex items-start gap-3">
-                      <div className="mt-1.5 h-1.5 w-1.5 rounded-full bg-primary flex-shrink-0" />
-                      <p className="text-lg leading-relaxed">{t("aboutFeature7")}</p>
-                    </div>
 
                     <div className="pt-4 flex flex-col sm:flex-row gap-4">
                       <div className="flex items-center gap-3">
@@ -1168,19 +1184,19 @@ export default function Home() {
               {/* Duplicate logos for seamless loop */}
               {[...Array(2)].map((_, setIndex) => (
                 <div key={setIndex} className="flex gap-20 items-center shrink-0">
-                  {[1, 2, 3, 4, 5, 6, 7].map((num) => (
-                    <div key={`${setIndex}-${num}`} className="flex items-center justify-center h-36 shrink-0">
-                      <Image
-                        src={`/images/partner-${num}.png`}
-                        alt={`Partner ${num}`}
-                        width={600}
-                        height={150}
-                        className="h-36 w-auto object-contain opacity-70 hover:opacity-100 transition-opacity duration-300"
-                        loading="lazy"
-                        sizes="600px"
-                      />
-                    </div>
-                  ))}
+{[1, 2, 3, 4, 5, 6, 7, 8].map((num) => (
+                                    <div key={`${setIndex}-${num}`} className="flex items-center justify-center h-36 shrink-0">
+                                      <Image
+                                        src={`/images/partner-${num}.png`}
+                                        alt={`Partner ${num}`}
+                                        width={600}
+                                        height={150}
+                                        className={`w-auto object-contain opacity-70 hover:opacity-100 transition-opacity duration-300 ${num === 8 ? "h-24" : "h-36"}`}
+                                        loading="lazy"
+                                        sizes="600px"
+                                      />
+                                    </div>
+                                  ))}
                 </div>
               ))}
             </motion.div>
