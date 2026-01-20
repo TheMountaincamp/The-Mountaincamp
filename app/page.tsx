@@ -1332,7 +1332,7 @@ useEffect(() => {
                 </Button>
                 <div className="flex items-center gap-4 text-gray-300">
                   <Calendar className="h-5 w-5" />
-                  <span>{t("dates")}</span>
+                  <span>{t("5-9 August")}</span>
                 </div>
               </motion.div>
             </div>
