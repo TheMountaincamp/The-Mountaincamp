@@ -52,7 +52,7 @@ export default function Home() {
       const eventStructuredData = {
         "@context": "https://schema.org",
         "@type": "SportsEvent",
-        name: "The Mountaincamp 2026 - Trailrunning Camp Austria & Österreich für Anfänger",
+        name: "The Mountaincamp 2026 - Trailrunning Camp Austria",
         alternateName: [
           "Trailrunning Camp Austria",
           "Trailrunning Camp Österreich",
@@ -123,7 +123,7 @@ export default function Home() {
       const organizationData = {
         "@context": "https://schema.org",
         "@type": ["SportsActivityLocation", "LocalBusiness"],
-        name: "The Mountaincamp - Trailrunning Camp Austria & Österreich für Anfänger",
+        name: "The Mountaincamp - Trailrunning Camp Austria",
         alternateName: [
           "Trailrunning Camp Austria",
           "Trailrunning Camp Österreich",
@@ -186,7 +186,7 @@ export default function Home() {
       const websiteData = {
         "@context": "https://schema.org",
         "@type": "WebSite",
-        name: "The Mountaincamp - Trailrunning Camp Austria & Österreich für Anfänger",
+        name: "The Mountaincamp - Trailrunning Camp Austria",
         alternateName: [
           "Trailrunning Camp Österreich",
           "Trailrunning Camp Austria",
