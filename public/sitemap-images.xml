@@ -4,35 +4,68 @@
   <url>
     <loc>https://themountaincamp.de/</loc>
     <image:image>
-      <image:loc>https://themountaincamp.de/images/alpine-landscape.jpeg</image:loc>
-      <image:title>The Mountaincamp - Trail running in the Austrian Alps</image:title>
-      <image:caption>Experience breathtaking alpine trails at The Mountaincamp</image:caption>
-      <image:geo_location>Austrian Alps, Hochkrimml</image:geo_location>
+      <image:loc>https://themountaincamp.de/images/hero-trail-runners.jpeg</image:loc>
+      <image:title>Trailrunning Camp Austria - The Mountaincamp Group Running in Austrian Alps</image:title>
+      <image:caption>Trail runners at the best trailrunning camp for beginners in Austria</image:caption>
+      <image:geo_location>Hochkrimml, Salzburg, Austria</image:geo_location>
     </image:image>
     <image:image>
-      <!-- Updated mountain rave image reference -->
+      <image:loc>https://themountaincamp.de/images/alpine-landscape.jpeg</image:loc>
+      <image:title>Alpine Landscape at Trailrunning Camp Austria</image:title>
+      <image:caption>Breathtaking alpine trails at The Mountaincamp trailrunning camp</image:caption>
+      <image:geo_location>Hochkrimml, Salzburg, Austria</image:geo_location>
+    </image:image>
+    <image:image>
       <image:loc>https://themountaincamp.de/images/mountain-top-sunset-rave.jpg</image:loc>
-      <image:title>Sunset Rave at The Mountaincamp</image:title>
-      <image:caption>Dance under the stars at our legendary mountain-top party</image:caption>
-      <image:geo_location>Austrian Alps, Hochkrimml</image:geo_location>
+      <image:title>Sunset Rave at Trailrunning Camp Austria</image:title>
+      <image:caption>Legendary mountain-top party at The Mountaincamp</image:caption>
+      <image:geo_location>Hochkrimml, Salzburg, Austria</image:geo_location>
     </image:image>
     <image:image>
       <image:loc>https://themountaincamp.de/images/trail-runner-1.jpeg</image:loc>
-      <image:title>Trail running at The Mountaincamp</image:title>
-      <image:caption>Explore beautiful mountain trails with experienced guides</image:caption>
-      <image:geo_location>Austrian Alps, Hochkrimml</image:geo_location>
+      <image:title>Trail Running at Trailrunning Camp Austria</image:title>
+      <image:caption>Guided trail running tours for beginners and all levels</image:caption>
+      <image:geo_location>Hochkrimml, Salzburg, Austria</image:geo_location>
     </image:image>
     <image:image>
       <image:loc>https://themountaincamp.de/images/campfire-evening.jpeg</image:loc>
-      <image:title>Campfire evening at The Mountaincamp</image:title>
-      <image:caption>Connect with fellow runners around a cozy campfire</image:caption>
-      <image:geo_location>Austrian Alps, Hochkrimml</image:geo_location>
+      <image:title>Campfire Evening at Trailrunning Camp</image:title>
+      <image:caption>Community gathering at The Mountaincamp trailrunning camp Austria</image:caption>
+      <image:geo_location>Hochkrimml, Salzburg, Austria</image:geo_location>
     </image:image>
     <image:image>
-      <image:loc>https://themountaincamp.de/images/hero-trail-runners.jpeg</image:loc>
-      <image:title>The Mountaincamp - Trail runners in the Austrian Alps</image:title>
-      <image:caption>Experience trail running with a group in the breathtaking Austrian Alps</image:caption>
-      <image:geo_location>Austrian Alps, Hochkrimml</image:geo_location>
+      <image:loc>https://themountaincamp.de/images/MTC-Logo_2025.png</image:loc>
+      <image:title>The Mountaincamp Logo - Trailrunning Camp Austria</image:title>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://themountaincamp.de/house</loc>
+    <image:image>
+      <image:loc>https://themountaincamp.de/images/mountain-lodge.jpeg</image:loc>
+      <image:title>Mountain Lodge Accommodation - Trailrunning Camp Austria</image:title>
+      <image:caption>Cozy mountain house at The Mountaincamp in Hochkrimml</image:caption>
+      <image:geo_location>Hochkrimml, Salzburg, Austria</image:geo_location>
+    </image:image>
+    <image:image>
+      <image:loc>https://themountaincamp.de/images/cozy-bunk-accommodation.jpg</image:loc>
+      <image:title>Bunk Accommodation at Trailrunning Camp</image:title>
+      <image:caption>Comfortable dormitory rooms at The Mountaincamp</image:caption>
+      <image:geo_location>Hochkrimml, Salzburg, Austria</image:geo_location>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://themountaincamp.de/trails</loc>
+    <image:image>
+      <image:loc>https://themountaincamp.de/images/trails-header-group.jpeg</image:loc>
+      <image:title>Trail Running Routes - Trailrunning Camp Austria</image:title>
+      <image:caption>Group trail running at The Mountaincamp in the Austrian Alps</image:caption>
+      <image:geo_location>Hochkrimml, Salzburg, Austria</image:geo_location>
+    </image:image>
+    <image:image>
+      <image:loc>https://themountaincamp.de/images/trail-runners-group.jpeg</image:loc>
+      <image:title>Trail Runners Group at Trailrunning Camp</image:title>
+      <image:caption>Trail running community at The Mountaincamp Austria</image:caption>
+      <image:geo_location>Hochkrimml, Salzburg, Austria</image:geo_location>
     </image:image>
   </url>
 </urlset>

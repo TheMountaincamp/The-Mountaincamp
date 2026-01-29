@@ -4,34 +4,53 @@
         xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">
   <url>
     <loc>https://themountaincamp.de/</loc>
-    <lastmod>2025-10-30</lastmod>
+    <lastmod>2026-01-29</lastmod>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
     <xhtml:link rel="alternate" hreflang="de" href="https://themountaincamp.de/" />
     <xhtml:link rel="alternate" hreflang="en" href="https://themountaincamp.de/en/" />
     <xhtml:link rel="alternate" hreflang="x-default" href="https://themountaincamp.de/" />
+    <image:image>
+      <image:loc>https://themountaincamp.de/images/hero-trail-runners.jpeg</image:loc>
+      <image:title>Trailrunning Camp Austria - The Mountaincamp Group Running</image:title>
+      <image:caption>Trail runners at The Mountaincamp in the Austrian Alps</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://themountaincamp.de/images/MTC-Logo_2025.png</image:loc>
+      <image:title>The Mountaincamp Logo</image:title>
+    </image:image>
   </url>
   <url>
     <loc>https://themountaincamp.de/house</loc>
-    <lastmod>2025-10-30</lastmod>
+    <lastmod>2026-01-29</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
     <xhtml:link rel="alternate" hreflang="de" href="https://themountaincamp.de/house" />
     <xhtml:link rel="alternate" hreflang="en" href="https://themountaincamp.de/en/house" />
     <xhtml:link rel="alternate" hreflang="x-default" href="https://themountaincamp.de/house" />
+    <image:image>
+      <image:loc>https://themountaincamp.de/images/mountain-lodge.jpeg</image:loc>
+      <image:title>Mountain Lodge Accommodation at The Mountaincamp</image:title>
+      <image:caption>Cozy mountain house accommodation in Hochkrimml, Austria</image:caption>
+    </image:image>
   </url>
   <url>
     <loc>https://themountaincamp.de/trails</loc>
-    <lastmod>2025-10-30</lastmod>
+    <lastmod>2026-01-29</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
     <xhtml:link rel="alternate" hreflang="de" href="https://themountaincamp.de/trails" />
     <xhtml:link rel="alternate" hreflang="en" href="https://themountaincamp.de/en/trails" />
     <xhtml:link rel="alternate" hreflang="x-default" href="https://themountaincamp.de/trails" />
+    <image:image>
+      <image:loc>https://themountaincamp.de/images/trails-header-group.jpeg</image:loc>
+      <image:title>Trail Running Routes in Austrian Alps</image:title>
+      <image:caption>Group trail running on mountain paths at The Mountaincamp</image:caption>
+    </image:image>
   </url>
   <url>
     <loc>https://themountaincamp.de/bus-departures</loc>
-    <lastmod>2025-10-30</lastmod>
+    <lastmod>2026-01-29</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
     <xhtml:link rel="alternate" hreflang="de" href="https://themountaincamp.de/bus-departures" />
@@ -40,7 +59,7 @@
   </url>
   <url>
     <loc>https://themountaincamp.de/agb</loc>
-    <lastmod>2025-10-30</lastmod>
+    <lastmod>2026-01-29</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.4</priority>
     <xhtml:link rel="alternate" hreflang="de" href="https://themountaincamp.de/agb" />
@@ -49,31 +68,31 @@
   </url>
   <url>
     <loc>https://themountaincamp.de/datenschutz</loc>
-    <lastmod>2025-10-30</lastmod>
+    <lastmod>2026-01-29</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.3</priority>
   </url>
   <url>
     <loc>https://themountaincamp.de/impressum</loc>
-    <lastmod>2025-10-30</lastmod>
+    <lastmod>2026-01-29</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.3</priority>
   </url>
   <url>
     <loc>https://themountaincamp.de/legal/privacy-policy</loc>
-    <lastmod>2025-10-30</lastmod>
+    <lastmod>2026-01-29</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.3</priority>
   </url>
   <url>
     <loc>https://themountaincamp.de/legal/imprint</loc>
-    <lastmod>2025-10-30</lastmod>
+    <lastmod>2026-01-29</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.3</priority>
   </url>
   <url>
     <loc>https://themountaincamp.de/legal/conditions-of-raffle-participation</loc>
-    <lastmod>2025-10-30</lastmod>
+    <lastmod>2026-01-29</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.3</priority>
   </url>
