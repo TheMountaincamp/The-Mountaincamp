@@ -152,8 +152,8 @@ export default function BusDeparturesPage() {
             </h2>
             <p className="text-white/80 mb-4 max-w-2xl mx-auto">
               {language === "de"
-                ? "Wir bieten bequeme Busverbindungen von verschiedenen deutschen Städten direkt zum Mountaincamp. Lehne dich zurück und genieße die Fahrt durch die wunderschöne Alpenlandschaft."
-                : "We offer convenient bus connections from various German cities directly to The Mountaincamp. Sit back and enjoy the ride through the beautiful Alpine landscape."}
+                ? "Wir bieten bequeme Bus- und Zugverbindungen von Berlin, München und Jenbach."
+                : "We offer convenient bus and train transportations from Berlin, Munich and Jenbach."}
             </p>
           </motion.div>
 
