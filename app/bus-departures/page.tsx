@@ -19,11 +19,11 @@ export default function BusDeparturesPage() {
     {
       city: "Berlin",
       departure: {
-        time: "08:10",
+        time: "5:30am",
         location: "Hauptbahnhof (HBF)",
         description: {
-          en: "Departure at 8:10am from Central Station",
-          de: "Abfahrt um 8:10 Uhr vom Hauptbahnhof",
+          en: "Departure at 5:30am from Central Station",
+          de: "Abfahrt um 5:30 Uhr vom Hauptbahnhof",
         },
       },
     },
