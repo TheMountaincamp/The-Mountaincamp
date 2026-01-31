@@ -267,6 +267,8 @@ export default function RootLayout({
         <link rel="preconnect" href="https://www.instagram.com" />
         <link rel="dns-prefetch" href="https://my.camps.digital" />
         <link rel="dns-prefetch" href="https://open.spotify.com" />
+        <link rel="dns-prefetch" href="https://www.komoot.com" />
+        <link rel="dns-prefetch" href="https://www.google-analytics.com" />
 
         {CRITICAL_IMAGES.map((src, index) => (
           <link key={index} rel="preload" href={src} as="image" fetchPriority="high" />
