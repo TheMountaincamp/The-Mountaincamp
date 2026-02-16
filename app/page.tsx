@@ -715,17 +715,6 @@ useEffect(() => {
 
             <div className="relative z-10">
               <motion.div
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: 0.2, duration: 0.8 }}
-                className="mb-6 inline-block border border-primary px-4 py-2"
-              >
-                <span className="text-sm font-bold uppercase tracking-widest text-green-400">
-                  {language === "de" ? "Anmeldung verfügbar!" : "Registration available!"}
-                </span>
-              </motion.div>
-
-              <motion.div
                 initial={{ opacity: 1, scale: 1 }}
                 animate={{ opacity: 1, scale: 1 }}
                 transition={{
