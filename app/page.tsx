@@ -745,7 +745,7 @@ useEffect(() => {
                 initial={{ opacity: 0, y: 30 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: 0.6, duration: 0.8 }}
-                className="text-xl md:text-2xl max-w-3xl mx-auto text-white/90 leading-relaxed"
+                className="text-base md:text-2xl max-w-3xl mx-auto text-white/90 leading-relaxed"
               >
                 {language === "de" ? (
                   <>
