@@ -757,7 +757,7 @@ useEffect(() => {
                 ) : (
                   <>
                     Experience the biggest <strong>trailrunning camp in Austria</strong>
-                    <br />5 days of epic trails in the <strong>Austrian Alps</strong>
+                    <br />5 days of epic trails in the <strong>Alps</strong>
                     <br />
                     <span className="font-bold">Hochkrimml | August 5-9, 2026</span>
                   </>
