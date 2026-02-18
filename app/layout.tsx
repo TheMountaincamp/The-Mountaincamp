@@ -29,6 +29,10 @@ export const viewport: Viewport = {
 }
 
 export const metadata: Metadata = {
+  title: "Trailrunning Camp Österreich für Anfänger | The Mountaincamp 2026 in den Alpen",
+  description:
+    "Das größte Trailrunning Camp für Anfänger, Fortgeschrittene und Profis in Österreich! Erlebe 5 Tage atemberaubende Trails, professionelles Training & eine einzigartige Community in den Alpen. Hochkrimml, 5.-9. August 2026.",
+  openGraph: {
     title: "Trailrunning Camp Österreich für Anfänger | The Mountaincamp 2026 in den Alpen",
     description:
       "Das größte Trailrunning Camp für Anfänger, Fortgeschrittene und Profis in Österreich! Erlebe 5 Tage atemberaubende Trails, professionelles Training & eine einzigartige Community in den Alpen. Hochkrimml, 5.-9. August 2026.",
@@ -57,8 +61,7 @@ export const metadata: Metadata = {
     locale: "de_DE",
     alternateLocale: ["en_US"],
     type: "website",
-    generator: 'v0.app'
-},
+  },
   twitter: {
     card: "summary_large_image",
     title: "Trailrunning Camp Österreich für Anfänger | The Mountaincamp 2026",
