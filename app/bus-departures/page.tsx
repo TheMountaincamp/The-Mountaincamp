@@ -19,33 +19,33 @@ export default function BusDeparturesPage() {
     {
       city: "Berlin",
       departure: {
-        time: "5:30am",
+        time: "6:36",
         location: "Hauptbahnhof (HBF)",
         description: {
-          en: "Departure at 5:30am from Central Station",
-          de: "Abfahrt um 5:30 Uhr vom Hauptbahnhof",
+          en: "Departure at 6:36am from Central Station",
+          de: "Abfahrt um 6:36 Uhr vom Hauptbahnhof",
         },
       },
     },
     {
       city: "Munich",
       departure: {
-        time: "13:00",
+        time: "12:30",
         location: "Zentraler Omnibusbahnhof (ZOB)",
         description: {
-          en: "Departure approximately 1pm from Central Bus Station",
-          de: "Abfahrt ca. 13 Uhr vom Zentralen Omnibusbahnhof",
+          en: "Departure at 12:30pm from Central Bus Station",
+          de: "Abfahrt um 12:30 Uhr vom Zentralen Omnibusbahnhof",
         },
       },
     },
     {
       city: "Jenbach",
       departure: {
-        time: "15:00",
+        time: "14:30",
         location: "Hauptbahnhof (HBF)",
         description: {
-          en: "Departure approximately 3pm from Central Station",
-          de: "Abfahrt ca. 15 Uhr vom Hauptbahnhof",
+          en: "Departure at 2:30pm from Central Station",
+          de: "Abfahrt um 14:30 Uhr vom Hauptbahnhof",
         },
       },
     },
@@ -64,24 +64,32 @@ export default function BusDeparturesPage() {
       time: "10:30",
       location: "Jenbach",
       description: {
-        en: "Arrival at Jenbach Central Station",
-        de: "Ankunft Jenbach Hauptbahnhof",
+        en: "Arrival at Jenbach Station",
+        de: "Ankunft Jenbach Bahnhof",
       },
     },
     {
       time: "12:30",
       location: "Munich",
       description: {
-        en: "Arrival at Munich Central Bus Station",
-        de: "Ankunft München ZOB",
+        en: "Arrival at Munich Station",
+        de: "Ankunft München Bahnhof",
       },
     },
     {
-      time: "Evening",
+      time: "14:21",
+      location: "Munich",
+      description: {
+        en: "Train departure Munich to Berlin",
+        de: "Zugabfahrt München nach Berlin",
+      },
+    },
+    {
+      time: "18:22",
       location: "Berlin",
       description: {
-        en: "Arrival in Berlin in the evening",
-        de: "Ankunft in Berlin am Abend",
+        en: "Arrival in Berlin",
+        de: "Ankunft in Berlin",
       },
     },
   ]
