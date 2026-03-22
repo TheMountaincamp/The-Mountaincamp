@@ -2,7 +2,7 @@
 
 import { useState, useEffect } from "react"
 
-export function useMobile() {
+export function useIsMobile() {
   // Initialize with null to avoid hydration mismatch
   const [isMobile, setIsMobile] = useState<boolean | null>(null)
 
@@ -26,3 +26,6 @@ export function useMobile() {
   // Return false during SSR, then the actual value once mounted
   return isMobile === null ? false : isMobile
 }
+
+// Alias for backwards compatibility
+export const useMobile = useIsMobile
