@@ -174,7 +174,7 @@ export default function BusDeparturesPage() {
           >
             <h2 className="text-2xl font-bold mb-8 uppercase flex items-center gap-3 text-white">
               <Bus className="h-6 w-6 text-primary" />
-              {language === "de" ? "HINFAHRT - COMING SOON" : "DEPARTURE - COMING SOON"}
+              {language === "de" ? "HINFAHRT" : "DEPARTURE"}
             </h2>
 
             <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
@@ -218,7 +218,7 @@ export default function BusDeparturesPage() {
           >
             <h2 className="text-2xl font-bold mb-8 uppercase flex items-center gap-3 text-white">
               <Calendar className="h-6 w-6 text-primary" />
-              {language === "de" ? "RÜCKFAHRT - COMING SOON" : "RETURN - COMING SOON"}
+              {language === "de" ? "RÜCKFAHRT" : "RETURN"}
             </h2>
 
             <div className="bg-gray-800 p-8 border border-gray-600 rounded-lg shadow-lg">
@@ -270,7 +270,7 @@ export default function BusDeparturesPage() {
                       ? "Bustickets können separat gebucht werden"
                       : "Bus tickets can be booked separately"}
                   </li>
-                  <li>• {language === "de" ? "Preis: Coming Soon" : "Price: Coming Soon"}</li>
+                  <li>• {language === "de" ? "Preis: Siehe Buchungsseite" : "Price: See booking page"}</li>
                   <li>• {language === "de" ? "Begrenzte Plätze verfügbar" : "Limited seats available"}</li>
                   <li>
                     • {language === "de" ? "Buchung über unser Anmeldeformular" : "Booking über unser Anmeldeformular"}
