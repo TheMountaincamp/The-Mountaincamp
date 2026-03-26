@@ -270,7 +270,7 @@ export default function BusDeparturesPage() {
                       ? "Bustickets können separat gebucht werden"
                       : "Bus tickets can be booked separately"}
                   </li>
-                  <li>• {language === "de" ? "Preis: Siehe Busseite" : "Price: See bus page"}</li>
+                  <li>• {language === "de" ? "Preis: Siehe Buchungsseite" : "Price: See booking page"}</li>
                   <li>• {language === "de" ? "Begrenzte Plätze verfügbar" : "Limited seats available"}</li>
                   <li>
                     • {language === "de" ? "Buchung über unser Anmeldeformular" : "Booking über unser Anmeldeformular"}
