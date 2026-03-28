@@ -26,6 +26,7 @@ export default function BusDeparturesPage() {
           de: "Abfahrt um 6:36 Uhr vom Hauptbahnhof",
         },
       },
+      capacity: { sold: 22, total: 30 },
     },
     {
       city: "Munich",
@@ -37,6 +38,7 @@ export default function BusDeparturesPage() {
           de: "Abfahrt um 12:30 Uhr vom Zentralen Omnibusbahnhof",
         },
       },
+      capacity: { sold: 5, total: 20 },
     },
     {
       city: "Jenbach",
@@ -48,6 +50,7 @@ export default function BusDeparturesPage() {
           de: "Abfahrt um 14:30 Uhr vom Hauptbahnhof",
         },
       },
+      capacity: { sold: 11, total: 19 },
     },
   ]
 
@@ -163,6 +166,14 @@ export default function BusDeparturesPage() {
                 ? "Wir bieten bequeme Bus- und Zugverbindungen von Berlin, München und Jenbach."
                 : "We offer convenient bus and train transportations from Berlin, Munich and Jenbach."}
             </p>
+            <div className="inline-flex items-center gap-2 bg-primary/20 border border-primary/40 px-4 py-2 rounded-full mt-4">
+              <Bus className="h-4 w-4 text-primary" />
+              <span className="text-primary font-medium text-sm">
+                {language === "de"
+                  ? "Die Buchung beinhaltet Hin- und Rückfahrt"
+                  : "Booking includes transport to the camp and back"}
+              </span>
+            </div>
           </motion.div>
 
           {/* Departure Schedule */}
@@ -203,6 +214,33 @@ export default function BusDeparturesPage() {
                     </div>
                     <p className="text-white/80 text-sm font-medium">{route.departure.location}</p>
                     <p className="text-white/70 text-sm">{route.departure.description[language]}</p>
+                    
+                    {/* Capacity indicator */}
+                    <div className="pt-3 border-t border-gray-600">
+                      <div className="flex items-center justify-between text-sm mb-2">
+                        <span className="text-white/70">
+                          {language === "de" ? "Kapazität" : "Capacity"}
+                        </span>
+                        <span className="text-white font-medium">
+                          {route.capacity.sold} / {route.capacity.total} {language === "de" ? "gebucht" : "sold"}
+                        </span>
+                      </div>
+                      <div className="w-full bg-gray-700 rounded-full h-2">
+                        <div
+                          className={`h-2 rounded-full transition-all ${
+                            route.capacity.sold / route.capacity.total > 0.8
+                              ? "bg-red-500"
+                              : route.capacity.sold / route.capacity.total > 0.5
+                              ? "bg-yellow-500"
+                              : "bg-primary"
+                          }`}
+                          style={{ width: `${(route.capacity.sold / route.capacity.total) * 100}%` }}
+                        ></div>
+                      </div>
+                      <p className="text-xs text-white/50 mt-1">
+                        {route.capacity.total - route.capacity.sold} {language === "de" ? "Plätze verfügbar" : "seats available"}
+                      </p>
+                    </div>
                   </div>
                 </motion.div>
               ))}
