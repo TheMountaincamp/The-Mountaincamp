@@ -1089,49 +1089,6 @@ useEffect(() => {
               <TestimonialSlider testimonials={testimonials} autoPlay={true} interval={6000} />
             </div>
 
-            {/* Spotify Playlist Section */}
-            <motion.div
-              initial={{ opacity: 0, y: 50 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.8 }}
-              className="mt-16 mb-16 relative overflow-hidden rounded-xl"
-            >
-              {/* Background image */}
-              <div className="absolute inset-0 z-0">
-                <Image
-                  src="/images/mountain-top-sunset-rave.jpg"
-                  alt="Mountain rave"
-                  fill
-                  className="object-cover"
-                  loading="lazy"
-                  sizes="100vw"
-                />
-                <div className="absolute inset-0 bg-black/80 backdrop-blur-sm"></div>
-              </div>
-
-              {/* Content */}
-              <div className="relative z-10 p-12 text-white">
-                <div className="text-center mb-8">
-                  <h3 className="text-3xl font-bold mb-4 text-white">{t("playlistTitle")}</h3>
-                  <p className="max-w-2xl mx-auto text-white/80">{t("playlistDesc")}</p>
-                </div>
-                <div className="flex justify-center">
-                  <iframe
-                    style={{ borderRadius: "12px" }}
-                    src={`https://open.spotify.com/embed/playlist/33kezN4oDEMyKsFBCicpu6?utm_source=generator&theme=0&cache=${Date.now()}`}
-                    width="100%"
-                    height="380"
-                    frameBorder="0"
-                    allowFullScreen
-                    allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
-                    className="max-w-3xl shadow-2xl"
-                    loading="lazy"
-                  ></iframe>
-                </div>
-              </div>
-            </motion.div>
-
             {/* Price Category Bars */}
             <motion.div
               initial={{ opacity: 0, y: 50 }}
