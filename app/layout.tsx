@@ -101,7 +101,7 @@ export const metadata: Metadata = {
     ],
   },
   manifest: "/manifest.json",
-    generator: 'v0.app'
+    generator: 'v0.app - updated'
 }
 
 export default function RootLayout({
