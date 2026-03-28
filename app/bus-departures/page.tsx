@@ -166,6 +166,14 @@ export default function BusDeparturesPage() {
                 ? "Wir bieten bequeme Bus- und Zugverbindungen von Berlin, München und Jenbach."
                 : "We offer convenient bus and train transportations from Berlin, Munich and Jenbach."}
             </p>
+            <div className="inline-flex items-center gap-2 bg-primary/20 border border-primary/40 px-4 py-2 rounded-full mt-4">
+              <Bus className="h-4 w-4 text-primary" />
+              <span className="text-primary font-medium text-sm">
+                {language === "de"
+                  ? "Die Buchung beinhaltet Hin- und Rückfahrt"
+                  : "Booking includes transport to the camp and back"}
+              </span>
+            </div>
           </motion.div>
 
           {/* Departure Schedule */}
