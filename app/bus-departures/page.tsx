@@ -19,7 +19,7 @@ export default function BusDeparturesPage() {
     {
       city: "Berlin",
       departure: {
-        time: "6:36",
+        time: "6:35",
         location: "Hauptbahnhof (HBF)",
         description: {
           en: "Departure at 6:36am from Central Station",
@@ -214,7 +214,7 @@ export default function BusDeparturesPage() {
                     </div>
                     <p className="text-white/80 text-sm font-medium">{route.departure.location}</p>
                     <p className="text-white/70 text-sm">{route.departure.description[language]}</p>
-                    
+
                     {/* Capacity indicator */}
                     <div className="pt-3 border-t border-gray-600">
                       <div className="flex items-center justify-between text-sm mb-2">
@@ -227,13 +227,12 @@ export default function BusDeparturesPage() {
                       </div>
                       <div className="w-full bg-gray-700 rounded-full h-2">
                         <div
-                          className={`h-2 rounded-full transition-all ${
-                            route.capacity.sold / route.capacity.total > 0.8
+                          className={`h-2 rounded-full transition-all ${route.capacity.sold / route.capacity.total > 0.8
                               ? "bg-red-500"
                               : route.capacity.sold / route.capacity.total > 0.5
-                              ? "bg-yellow-500"
-                              : "bg-primary"
-                          }`}
+                                ? "bg-yellow-500"
+                                : "bg-primary"
+                            }`}
                           style={{ width: `${(route.capacity.sold / route.capacity.total) * 100}%` }}
                         ></div>
                       </div>
