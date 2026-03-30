@@ -27,7 +27,7 @@ export default function SiteHeader({ transparent = true }: SiteHeaderProps) {
     { key: "house", href: "/house", label: t("house") },
     { key: "trails", href: "/trails", label: t("trails") },
     { key: "testimonials", href: "/#testimonials", label: t("testimonials") },
-    { key: "busTransport", href: "/bus-departures", label: t("busTransport") },
+    { key: "busTransport", href: "/bus-departures", label: "Bus Transport" },
   ]
 
   return (
