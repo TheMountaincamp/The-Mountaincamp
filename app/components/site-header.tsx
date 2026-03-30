@@ -7,7 +7,6 @@ import { motion, AnimatePresence } from "framer-motion"
 import { Menu, X } from "lucide-react"
 import { useLanguage } from "@/contexts/language-context"
 import LanguageSwitcher from "@/app/components/language-switcher"
-import { Button } from "@/components/ui/button"
 
 interface SiteHeaderProps {
   transparent?: boolean
@@ -27,13 +26,14 @@ export default function SiteHeader({ transparent = true }: SiteHeaderProps) {
     { key: "house", href: "/house", label: t("house") },
     { key: "trails", href: "/trails", label: t("trails") },
     { key: "testimonials", href: "/#testimonials", label: t("testimonials") },
-    { key: "busTransport", href: "/bus-departures", label: "Bus Transport" },
+    { key: "transport", href: "/bus-departures", label: "Transport" },
   ]
 
   return (
     <>
       <header
-        className={`absolute top-0 z-50 w-full ${transparent ? "bg-transparent" : "bg-black/80 backdrop-blur-sm"}`}
+        className={`absolute top-0 z-50 w-full ${transparent ? "bg-transparent" : "bg-black/80 backdrop-blur-sm"
+          }`}
       >
         <div className="container flex h-20 items-center justify-between">
           {/* Logo */}
@@ -51,12 +51,12 @@ export default function SiteHeader({ transparent = true }: SiteHeaderProps) {
           </Link>
 
           {/* Desktop navigation */}
-          <nav className="hidden md:flex gap-8">
+          <nav className="hidden md:flex items-center gap-4 lg:gap-6">
             {navItems.map((item) => (
               <Link
                 key={item.key}
                 href={item.href}
-                className="text-sm font-medium uppercase hover:text-primary transition-colors text-white"
+                className="text-sm font-medium uppercase hover:text-primary transition-colors text-white whitespace-nowrap"
               >
                 {item.label}
               </Link>
@@ -64,21 +64,8 @@ export default function SiteHeader({ transparent = true }: SiteHeaderProps) {
             <LanguageSwitcher />
           </nav>
 
-          <div className="flex items-center gap-2 sm:gap-4">
-            <Button
-              className="bg-black/80 backdrop-blur-sm hover:bg-black/90 text-white border border-white/20 transition-colors text-xs px-2 py-1 h-auto md:text-sm md:px-4 md:py-2 md:h-10"
-              asChild
-            >
-              <a
-                href="https://my.camps.digital/masken/buchungen/vuejs?&vendor=mountaincamp&destination_id=2467&termin_id=36011&locale=de#/"
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                {t("registerNow")}
-              </a>
-            </Button>
-
-            {/* Mobile menu button */}
+          {/* Mobile menu button */}
+          <div className="flex items-center">
             <button
               className="md:hidden flex items-center justify-center w-12 h-12"
               onClick={handleMenuToggle}
@@ -126,6 +113,7 @@ export default function SiteHeader({ transparent = true }: SiteHeaderProps) {
                 <X className="h-7 w-7 text-white" />
               </motion.button>
             </div>
+
             <div className="flex flex-col items-center justify-center flex-1 gap-12 py-8">
               {navItems.map((item, index) => (
                 <motion.div
@@ -143,6 +131,7 @@ export default function SiteHeader({ transparent = true }: SiteHeaderProps) {
                   </Link>
                 </motion.div>
               ))}
+
               <motion.div
                 initial={{ opacity: 0, x: 50 }}
                 animate={{ opacity: 1, x: 0 }}
