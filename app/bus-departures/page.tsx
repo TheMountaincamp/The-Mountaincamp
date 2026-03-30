@@ -8,7 +8,7 @@ import { ArrowLeft, Bus, Clock, MapPin, Calendar } from "lucide-react"
 import { useLanguage } from "@/contexts/language-context"
 
 export default function BusDeparturesPage() {
-  const { t, language } = useLanguage()
+  const { language } = useLanguage()
   const [isLoaded, setIsLoaded] = useState(false)
 
   useEffect(() => {
@@ -19,11 +19,11 @@ export default function BusDeparturesPage() {
     {
       city: "Berlin",
       departure: {
-        time: "6:35",
+        time: "06:35",
         location: "Hauptbahnhof (HBF)",
         description: {
-          en: "Departure at 6:36am from Central Station",
-          de: "Abfahrt um 6:36 Uhr vom Hauptbahnhof",
+          en: "Departure at 6:35am from Central Station",
+          de: "Abfahrt um 6:35 Uhr vom Hauptbahnhof",
         },
       },
       capacity: { sold: 22, total: 30 },
@@ -68,7 +68,7 @@ export default function BusDeparturesPage() {
       location: "Jenbach",
       description: {
         en: "Arrival at Jenbach Station",
-        de: "Ankunft Jenbach Bahnhof",
+        de: "Ankunft am Bahnhof Jenbach",
       },
     },
     {
@@ -76,15 +76,15 @@ export default function BusDeparturesPage() {
       location: "Munich",
       description: {
         en: "Arrival at Munich Station",
-        de: "Ankunft München Bahnhof",
+        de: "Ankunft am Bahnhof München",
       },
     },
     {
       time: "14:21",
       location: "Munich",
       description: {
-        en: "Train departure Munich to Berlin",
-        de: "Zugabfahrt München nach Berlin",
+        en: "Train departure from Munich to Berlin",
+        de: "Zugabfahrt von München nach Berlin",
       },
     },
     {
@@ -99,7 +99,6 @@ export default function BusDeparturesPage() {
 
   return (
     <div className="min-h-screen bg-black text-white">
-      {/* Header with background image */}
       <div className="relative h-[50vh] min-h-[400px]">
         <Image
           src="/images/bus-mountain-landscape.jpeg"
@@ -107,100 +106,99 @@ export default function BusDeparturesPage() {
           fill
           className="object-cover"
           priority
-          fetchPriority="high"
-          unoptimized={true}
-          onError={(e) => {
-            console.error("Failed to load image:", e)
-            e.currentTarget.src = "/placeholder.svg?height=800&width=1200"
-          }}
+          unoptimized
         />
-        <div className="absolute inset-0 bg-gradient-to-b from-black/70 via-black/50 to-black"></div>
+        <div className="absolute inset-0 bg-gradient-to-b from-black/70 via-black/50 to-black" />
 
-        <div className="absolute inset-0 flex flex-col items-center justify-center text-center p-6">
+        <div className="absolute inset-0 flex flex-col items-center justify-center p-6 text-center">
           <motion.h1
-            className="text-4xl md:text-6xl font-bold mb-4"
+            className="mb-4 text-4xl font-bold md:text-6xl"
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: isLoaded ? 1 : 0, y: isLoaded ? 0 : 20 }}
             transition={{ duration: 0.8, delay: 0.2 }}
           >
-            {language === "de" ? "TRANSPORT" : "TRANSPORT"}
+            TRANSPORT
           </motion.h1>
+
           <motion.p
-            className="text-xl md:text-2xl max-w-2xl text-white/80"
+            className="max-w-2xl text-xl text-white/80 md:text-2xl"
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: isLoaded ? 1 : 0, y: isLoaded ? 0 : 20 }}
             transition={{ duration: 0.8, delay: 0.4 }}
           >
-            {language === "de" ? "Bequeme Anreise zum Mountaincamp" : "Convenient transport to The Mountaincamp"}
+            {language === "de"
+              ? "Bequeme Anreise zum Mountaincamp"
+              : "Convenient transport to The Mountaincamp"}
           </motion.p>
         </div>
 
         <motion.div
-          className="absolute top-6 left-6"
+          className="absolute left-6 top-6"
           initial={{ opacity: 0, x: -20 }}
           animate={{ opacity: isLoaded ? 1 : 0, x: isLoaded ? 0 : -20 }}
           transition={{ duration: 0.5 }}
         >
-          <Link href="/" className="flex items-center gap-2 text-white hover:text-primary transition-colors">
+          <Link href="/" className="flex items-center gap-2 text-white transition-colors hover:text-primary">
             <ArrowLeft className="h-5 w-5" />
             <span>{language === "de" ? "Zurück" : "Back"}</span>
           </Link>
         </motion.div>
       </div>
 
-      {/* Main content */}
-      <div className="container mx-auto py-16 px-4">
-        <div className="max-w-4xl mx-auto">
-          {/* Introduction */}
+      <div className="container mx-auto px-4 py-16">
+        <div className="mx-auto max-w-4xl">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: isLoaded ? 1 : 0, y: isLoaded ? 0 : 30 }}
             transition={{ duration: 0.8 }}
             className="mb-16 text-center"
           >
-            <h2 className="text-3xl font-bold mb-6 text-white">
-              {language === "de" ? "Entspannt zum Mountaincamp" : "Relax on your way to The Mountaincamp"}
+            <h2 className="mb-6 text-3xl font-bold text-white">
+              {language === "de"
+                ? "Entspannt zum Mountaincamp"
+                : "Relax on your way to The Mountaincamp"}
             </h2>
-            <p className="text-white/80 mb-4 max-w-2xl mx-auto">
+
+            <p className="mx-auto mb-4 max-w-2xl text-white/80">
               {language === "de"
                 ? "Wir bieten bequeme Bus- und Zugverbindungen von Berlin, München und Jenbach."
-                : "We offer convenient bus and train transportations from Berlin, Munich and Jenbach."}
+                : "We offer convenient bus and train transport from Berlin, Munich and Jenbach."}
             </p>
-            <div className="inline-flex items-center gap-2 bg-primary/20 border border-primary/40 px-4 py-2 rounded-full mt-4">
+
+            <div className="mt-4 inline-flex items-center gap-2 rounded-full border border-primary/40 bg-primary/20 px-4 py-2">
               <Bus className="h-4 w-4 text-primary" />
-              <span className="text-primary font-medium text-sm">
+              <span className="text-sm font-medium text-primary">
                 {language === "de"
-                  ? "Die Buchung beinhaltet Hin- und Ruckfahrt"
+                  ? "Die Buchung beinhaltet Hin- und Rückfahrt"
                   : "Booking includes transport to the camp and back"}
               </span>
             </div>
           </motion.div>
 
-          {/* Departure Schedule */}
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: isLoaded ? 1 : 0, y: isLoaded ? 0 : 30 }}
             transition={{ duration: 0.8, delay: 0.2 }}
             className="mb-16"
           >
-            <h2 className="text-2xl font-bold mb-8 uppercase flex items-center gap-3 text-white">
+            <h2 className="mb-8 flex items-center gap-3 text-2xl font-bold uppercase text-white">
               <Bus className="h-6 w-6 text-primary" />
-              {language === "de" ? "HINFAHRT" : "DEPARTURE"}
+              {language === "de" ? "Hinfahrt" : "Departure"}
             </h2>
 
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+            <div className="grid grid-cols-1 gap-6 md:grid-cols-3">
               {busRoutes.map((route, index) => (
                 <motion.div
-                  key={index}
-                  className={`bg-gray-800 p-6 border-2 transition-all duration-300 rounded-lg shadow-lg ${"border-gray-600 hover:border-primary hover:shadow-xl"}`}
+                  key={route.city}
+                  className="rounded-lg border-2 border-gray-600 bg-gray-800 p-6 shadow-lg transition-all duration-300 hover:border-primary hover:shadow-xl"
                   initial={{ opacity: 0, y: 20 }}
                   animate={{ opacity: isLoaded ? 1 : 0, y: isLoaded ? 0 : 20 }}
                   transition={{ duration: 0.5, delay: 0.3 + index * 0.1 }}
                   whileHover={{ y: -5, transition: { duration: 0.2 } }}
                 >
-                  <div className="flex items-center gap-3 mb-4">
-                    <div className={`p-2 rounded-full bg-primary/20`}>
-                      <MapPin className={`h-5 w-5 text-primary`} />
+                  <div className="mb-4 flex items-center gap-3">
+                    <div className="rounded-full bg-primary/20 p-2">
+                      <MapPin className="h-5 w-5 text-primary" />
                     </div>
                     <div className="flex-1">
                       <h3 className="text-xl font-bold text-white">{route.city}</h3>
@@ -210,99 +208,78 @@ export default function BusDeparturesPage() {
                   <div className="space-y-3">
                     <div className="flex items-center gap-2 text-primary">
                       <Clock className="h-4 w-4" />
-                      <span className="font-bold text-lg text-white">{route.departure.time}</span>
+                      <span className="text-lg font-bold text-white">{route.departure.time}</span>
                     </div>
-                    <p className="text-white/80 text-sm font-medium">{route.departure.location}</p>
-                    <p className="text-white/70 text-sm">{route.departure.description[language]}</p>
 
-                    {/* Capacity indicator */}
-                    <div className="pt-3 border-t border-gray-600">
-                      <div className="flex items-center justify-between text-sm mb-2">
+                    <p className="text-sm font-medium text-white/80">{route.departure.location}</p>
+                    <p className="text-sm text-white/70">{route.departure.description[language]}</p>
+
+                    <div className="border-t border-gray-600 pt-3">
+                      <div className="mb-2 flex items-center justify-between text-sm">
                         <span className="text-white/70">
                           {language === "de" ? "Kapazität" : "Capacity"}
                         </span>
-                        <span className="text-white font-medium">
-                          {route.capacity.sold} / {route.capacity.total} {language === "de" ? "gebucht" : "sold"}
+                        <span className="font-medium text-white">
+                          {route.capacity.sold} / {route.capacity.total}{" "}
+                          {language === "de" ? "gebucht" : "sold"}
                         </span>
                       </div>
-                      <div className="w-full bg-gray-700 rounded-full h-2">
+
+                      <div className="h-2 w-full rounded-full bg-gray-700">
                         <div
                           className={`h-2 rounded-full transition-all ${route.capacity.sold / route.capacity.total > 0.8
-                            ? "bg-red-500"
-                            : route.capacity.sold / route.capacity.total > 0.5
-                              ? "bg-yellow-500"
-                              : "bg-primary"
+                              ? "bg-red-500"
+                              : route.capacity.sold / route.capacity.total > 0.5
+                                ? "bg-yellow-500"
+                                : "bg-primary"
                             }`}
                           style={{ width: `${(route.capacity.sold / route.capacity.total) * 100}%` }}
-                        ></div>
+                        />
                       </div>
-                      <p className="text-xs text-white/50 mt-1">
-                        {route.capacity.total - route.capacity.sold} {language === "de" ? "Plätze verfügbar" : "seats available"}
+
+                      <p className="mt-1 text-xs text-white/50">
+                        {route.capacity.total - route.capacity.sold}{" "}
+                        {language === "de" ? "Plätze verfügbar" : "seats available"}
                       </p>
                     </div>
-                  </div>
-
-                  {/* Capacity indicator */}
-                  <div className="pt-3 border-t border-gray-600 mt-4">
-                    <div className="flex items-center justify-between text-sm mb-2">
-                      <span className="text-white/70">
-                        {language === "de" ? "Kapazitat" : "Capacity"}
-                      </span>
-                      <span className="text-white font-medium">
-                        {route.capacity.sold} / {route.capacity.total} {language === "de" ? "gebucht" : "sold"}
-                      </span>
-                    </div>
-                    <div className="w-full bg-gray-700 rounded-full h-2">
-                      <div
-                        className={`h-2 rounded-full transition-all ${route.capacity.sold / route.capacity.total > 0.8
-                            ? "bg-red-500"
-                            : route.capacity.sold / route.capacity.total > 0.5
-                              ? "bg-yellow-500"
-                              : "bg-primary"
-                          }`}
-                        style={{ width: `${(route.capacity.sold / route.capacity.total) * 100}%` }}
-                      ></div>
-                    </div>
-                    <p className="text-xs text-white/50 mt-1">
-                      {route.capacity.total - route.capacity.sold} {language === "de" ? "Platze verfugbar" : "seats available"}
-                    </p>
                   </div>
                 </motion.div>
               ))}
             </div>
           </motion.div>
 
-          {/* Return Schedule */}
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: isLoaded ? 1 : 0, y: isLoaded ? 0 : 30 }}
             transition={{ duration: 0.8, delay: 0.4 }}
             className="mb-16"
           >
-            <h2 className="text-2xl font-bold mb-8 uppercase flex items-center gap-3 text-white">
+            <h2 className="mb-8 flex items-center gap-3 text-2xl font-bold uppercase text-white">
               <Calendar className="h-6 w-6 text-primary" />
-              {language === "de" ? "RÜCKFAHRT" : "RETURN"}
+              {language === "de" ? "Rückfahrt" : "Return"}
             </h2>
 
-            <div className="bg-gray-800 p-8 border border-gray-600 rounded-lg shadow-lg">
+            <div className="rounded-lg border border-gray-600 bg-gray-800 p-8 shadow-lg">
               <div className="space-y-6">
                 {returnSchedule.map((stop, index) => (
                   <motion.div
-                    key={index}
-                    className="flex items-center gap-6 p-4 bg-black/30 rounded-lg"
+                    key={`${stop.location}-${stop.time}`}
+                    className="flex items-center gap-6 rounded-lg bg-black/30 p-4"
                     initial={{ opacity: 0, x: -20 }}
                     animate={{ opacity: isLoaded ? 1 : 0, x: isLoaded ? 0 : -20 }}
                     transition={{ duration: 0.5, delay: 0.5 + index * 0.1 }}
                   >
-                    <div className="flex items-center justify-center w-16 h-16 bg-primary/20 rounded-full">
-                      <span className="text-primary font-bold">{stop.time}</span>
+                    <div className="flex h-16 w-16 items-center justify-center rounded-full bg-primary/20">
+                      <span className="font-bold text-primary">{stop.time}</span>
                     </div>
+
                     <div className="flex-1">
                       <h4 className="text-lg font-bold text-white">{stop.location}</h4>
-                      <p className="text-white/80 text-sm">{stop.description[language]}</p>
+                      <p className="text-sm text-white/80">{stop.description[language]}</p>
                     </div>
+
                     {index < returnSchedule.length - 1 && (
-                      <div className="hidden md:block w-8 h-0.5 bg-primary/30"></div>
+                      <div className="hidden h-0.5 w-8 bg-primary/30 md:block" />
                     )}
                   </motion.div>
                 ))}
@@ -310,22 +287,22 @@ export default function BusDeparturesPage() {
             </div>
           </motion.div>
 
-          {/* Important Information */}
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: isLoaded ? 1 : 0, y: isLoaded ? 0 : 30 }}
             transition={{ duration: 0.8, delay: 0.6 }}
             className="mb-16"
           >
-            <h2 className="text-2xl font-bold mb-8 uppercase text-white">
-              {language === "de" ? "WICHTIGE INFORMATIONEN" : "IMPORTANT INFORMATION"}
+            <h2 className="mb-8 text-2xl font-bold uppercase text-white">
+              {language === "de" ? "Wichtige Informationen" : "Important Information"}
             </h2>
 
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-              <div className="bg-gray-800 p-6 border border-gray-600 rounded-lg shadow-md">
-                <h3 className="text-xl font-bold mb-4 text-primary">
+            <div className="grid grid-cols-1 gap-8 md:grid-cols-2">
+              <div className="rounded-lg border border-gray-600 bg-gray-800 p-6 shadow-md">
+                <h3 className="mb-4 text-xl font-bold text-primary">
                   {language === "de" ? "Buchung & Kosten" : "Booking & Costs"}
                 </h3>
+
                 <ul className="space-y-2 text-white/80">
                   <li>
                     •{" "}
@@ -336,19 +313,26 @@ export default function BusDeparturesPage() {
                   <li>• {language === "de" ? "Preis: Siehe Buchungsseite" : "Price: See booking page"}</li>
                   <li>• {language === "de" ? "Begrenzte Plätze verfügbar" : "Limited seats available"}</li>
                   <li>
-                    • {language === "de" ? "Buchung über unser Anmeldeformular" : "Booking über unser Anmeldeformular"}
+                    •{" "}
+                    {language === "de"
+                      ? "Buchung über unser Anmeldeformular"
+                      : "Booking via our registration form"}
                   </li>
                 </ul>
               </div>
 
-              <div className="bg-gray-800 p-6 border border-gray-600 rounded-lg shadow-md">
-                <h3 className="text-xl font-bold mb-4 text-primary">
+              <div className="rounded-lg border border-gray-600 bg-gray-800 p-6 shadow-md">
+                <h3 className="mb-4 text-xl font-bold text-primary">
                   {language === "de" ? "Was mitbringen?" : "What to bring?"}
                 </h3>
+
                 <ul className="space-y-2 text-white/80">
                   <li>• {language === "de" ? "Gültiger Personalausweis/Reisepass" : "Valid ID/passport"}</li>
                   <li>
-                    • {language === "de" ? "Bequeme Kleidung für die Fahrt" : "Comfortable clothing for the journey"}
+                    •{" "}
+                    {language === "de"
+                      ? "Bequeme Kleidung für die Fahrt"
+                      : "Comfortable clothing for the journey"}
                   </li>
                   <li>• {language === "de" ? "Snacks und Getränke (optional)" : "Snacks and drinks (optional)"}</li>
                   <li>• {language === "de" ? "Unterhaltung für die Fahrt" : "Entertainment for the journey"}</li>
@@ -357,25 +341,26 @@ export default function BusDeparturesPage() {
             </div>
           </motion.div>
 
-          {/* Contact Information */}
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: isLoaded ? 1 : 0, y: isLoaded ? 0 : 30 }}
             transition={{ duration: 0.8, delay: 0.8 }}
-            className="text-center bg-primary/20 p-8 rounded-lg border border-primary/40"
+            className="rounded-lg border border-primary/40 bg-primary/20 p-8 text-center"
           >
-            <h3 className="text-2xl font-bold mb-4 text-white">
+            <h3 className="mb-4 text-2xl font-bold text-white">
               {language === "de" ? "Fragen zur Anreise?" : "Questions about transport?"}
             </h3>
-            <p className="text-white/80 mb-6">
+
+            <p className="mb-6 text-white/80">
               {language === "de"
                 ? "Kontaktiere uns für weitere Informationen zur Busanreise oder bei speziellen Anfragen."
                 : "Contact us for more information about bus transport or for special requests."}
             </p>
-            <div className="flex flex-col sm:flex-row gap-4 justify-center">
+
+            <div className="flex flex-col justify-center gap-4 sm:flex-row">
               <a
                 href="mailto:themountaincampde@gmail.com"
-                className="bg-primary hover:bg-primary-dark text-white px-6 py-3 rounded-lg transition-colors"
+                className="rounded-lg bg-primary px-6 py-3 text-white transition-colors hover:bg-primary-dark"
               >
                 themountaincampde@gmail.com
               </a>
@@ -384,10 +369,9 @@ export default function BusDeparturesPage() {
         </div>
       </div>
 
-      {/* Footer */}
-      <footer className="bg-black border-t border-white/10 py-8">
+      <footer className="border-t border-white/10 bg-black py-8">
         <div className="container mx-auto px-4">
-          <div className="flex flex-col md:flex-row justify-between items-center">
+          <div className="flex flex-col items-center justify-between md:flex-row">
             <div className="mb-4 md:mb-0">
               <Image
                 src="/images/MTC-Logo_2025_weiß.png"
@@ -395,23 +379,24 @@ export default function BusDeparturesPage() {
                 width={150}
                 height={40}
                 className="h-10 w-auto"
-                unoptimized={true}
+                unoptimized
               />
             </div>
+
             <div className="flex gap-8">
-              <Link href="/" className="text-white/60 hover:text-primary transition-colors">
+              <Link href="/" className="text-white/60 transition-colors hover:text-primary">
                 Home
               </Link>
-              <Link href="/house" className="text-white/60 hover:text-primary transition-colors">
+              <Link href="/house" className="text-white/60 transition-colors hover:text-primary">
                 {language === "de" ? "Haus" : "House"}
               </Link>
-              <Link href="/trails" className="text-white/60 hover:text-primary transition-colors">
-                {language === "de" ? "Trails" : "Trails"}
+              <Link href="/trails" className="text-white/60 transition-colors hover:text-primary">
+                Trails
               </Link>
-              <Link href="/impressum" className="text-white/60 hover:text-primary transition-colors">
+              <Link href="/impressum" className="text-white/60 transition-colors hover:text-primary">
                 {language === "de" ? "Impressum" : "Imprint"}
               </Link>
-              <Link href="/datenschutz" className="text-white/60 hover:text-primary transition-colors">
+              <Link href="/datenschutz" className="text-white/60 transition-colors hover:text-primary">
                 {language === "de" ? "Datenschutz" : "Privacy"}
               </Link>
             </div>
