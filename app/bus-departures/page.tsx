@@ -170,6 +170,7 @@ export default function BusDeparturesPage() {
               <Bus className="h-4 w-4 text-primary" />
               <span className="text-primary font-medium text-sm">
                 {language === "de"
+                  ? "Die Buchung beinhaltet Hin- und Ruckfahrt"
                   ? "Die Buchung beinhaltet Hin- und Rückfahrt"
                   : "Booking includes transport to the camp and back"}
               </span>
@@ -241,6 +242,33 @@ export default function BusDeparturesPage() {
                         {route.capacity.total - route.capacity.sold} {language === "de" ? "Plätze verfügbar" : "seats available"}
                       </p>
                     </div>
+                  </div>
+
+                  {/* Capacity indicator */}
+                  <div className="pt-3 border-t border-gray-600 mt-4">
+                    <div className="flex items-center justify-between text-sm mb-2">
+                      <span className="text-white/70">
+                        {language === "de" ? "Kapazitat" : "Capacity"}
+                      </span>
+                      <span className="text-white font-medium">
+                        {route.capacity.sold} / {route.capacity.total} {language === "de" ? "gebucht" : "sold"}
+                      </span>
+                    </div>
+                    <div className="w-full bg-gray-700 rounded-full h-2">
+                      <div
+                        className={`h-2 rounded-full transition-all ${
+                          route.capacity.sold / route.capacity.total > 0.8
+                            ? "bg-red-500"
+                            : route.capacity.sold / route.capacity.total > 0.5
+                            ? "bg-yellow-500"
+                            : "bg-primary"
+                        }`}
+                        style={{ width: `${(route.capacity.sold / route.capacity.total) * 100}%` }}
+                      ></div>
+                    </div>
+                    <p className="text-xs text-white/50 mt-1">
+                      {route.capacity.total - route.capacity.sold} {language === "de" ? "Platze verfugbar" : "seats available"}
+                    </p>
                   </div>
                 </motion.div>
               ))}
