@@ -171,7 +171,6 @@ export default function BusDeparturesPage() {
               <span className="text-primary font-medium text-sm">
                 {language === "de"
                   ? "Die Buchung beinhaltet Hin- und Ruckfahrt"
-                  ? "Die Buchung beinhaltet Hin- und Rückfahrt"
                   : "Booking includes transport to the camp and back"}
               </span>
             </div>
@@ -229,10 +228,10 @@ export default function BusDeparturesPage() {
                       <div className="w-full bg-gray-700 rounded-full h-2">
                         <div
                           className={`h-2 rounded-full transition-all ${route.capacity.sold / route.capacity.total > 0.8
-                              ? "bg-red-500"
-                              : route.capacity.sold / route.capacity.total > 0.5
-                                ? "bg-yellow-500"
-                                : "bg-primary"
+                            ? "bg-red-500"
+                            : route.capacity.sold / route.capacity.total > 0.5
+                              ? "bg-yellow-500"
+                              : "bg-primary"
                             }`}
                           style={{ width: `${(route.capacity.sold / route.capacity.total) * 100}%` }}
                         ></div>
@@ -255,13 +254,12 @@ export default function BusDeparturesPage() {
                     </div>
                     <div className="w-full bg-gray-700 rounded-full h-2">
                       <div
-                        className={`h-2 rounded-full transition-all ${
-                          route.capacity.sold / route.capacity.total > 0.8
+                        className={`h-2 rounded-full transition-all ${route.capacity.sold / route.capacity.total > 0.8
                             ? "bg-red-500"
                             : route.capacity.sold / route.capacity.total > 0.5
-                            ? "bg-yellow-500"
-                            : "bg-primary"
-                        }`}
+                              ? "bg-yellow-500"
+                              : "bg-primary"
+                          }`}
                         style={{ width: `${(route.capacity.sold / route.capacity.total) * 100}%` }}
                       ></div>
                     </div>
