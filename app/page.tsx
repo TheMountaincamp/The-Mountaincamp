@@ -4,12 +4,22 @@ import { useState, useEffect, useRef } from "react"
 import Image from "next/image"
 import Link from "next/link"
 import { motion, useScroll, useTransform, AnimatePresence } from "framer-motion"
-import { Mountain, Flame, Sparkles, Music, ArrowRight, ChevronDown, Calendar, MapPin, Menu, X } from "lucide-react"
+import {
+  Mountain,
+  Flame,
+  Sparkles,
+  Music,
+  ArrowRight,
+  ChevronDown,
+  Calendar,
+  MapPin,
+  Menu,
+  X,
+} from "lucide-react"
 import { Button } from "@/components/ui/button"
 import { useMobile } from "@/hooks/use-mobile"
 import { useLanguage } from "@/contexts/language-context"
 
-// Import components
 import FeatureCard from "@/app/components/feature-card"
 import SectionTitle from "@/app/components/section-title"
 import ActivityCardMobile from "@/app/components/activity-card-mobile"
@@ -24,25 +34,23 @@ import InstagramReelsSection from "@/app/components/instagram-reels-section"
 import FAQSection from "@/app/components/faq-section"
 import RouteOverviewSection from "@/app/components/route-overview-section"
 
-// Define critical images for sections that will be visible later
 const SECTION_IMAGES = ["/images/MTC-Logo_2025_weiß.png"]
-
-// Define images for the House page to preload when hovering over the link
 const HOUSE_PAGE_IMAGES = ["/images/mountain-lodge.jpeg"]
-
-// Define images for the Trails page to preload when hovering over the link
 const TRAILS_PAGE_IMAGES = ["/images/mountain-trail-runner.jpeg", "/images/trail-runners-group.jpeg"]
 
 export default function Home() {
   const { t, language } = useLanguage()
   const isMobile = useMobile()
-  const [isMenuOpen, setIsMenuOpen] = useState(false)
+
   const [expandedActivities, setExpandedActivities] = useState<{ [key: number]: boolean }>({})
-  const [scrollY, setScrollY] = useState(0)
   const [currentActivityIndex, setCurrentActivityIndex] = useState(0)
   const [isPreloading, setIsPreloading] = useState(true)
+  const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
+  const [hasScrolled, setHasScrolled] = useState(false)
 
-  // Preload section images after the page has loaded
+  const videoRef = useRef<HTMLVideoElement>(null)
+  const heroRef = useRef(null)
+
   useEffect(() => {
     setIsPreloading(false)
   }, [])
@@ -207,6 +215,7 @@ export default function Home() {
       }
 
       const scripts = [eventStructuredData, organizationData, breadcrumbData, websiteData]
+
       scripts.forEach((data) => {
         const script = document.createElement("script")
         script.type = "application/ld+json"
@@ -215,7 +224,6 @@ export default function Home() {
       })
 
       return () => {
-        // Clean up scripts when component unmounts
         const scriptElements = document.querySelectorAll('script[type="application/ld+json"]')
         scriptElements.forEach((scriptEl) => {
           if (document.head.contains(scriptEl)) {
@@ -226,12 +234,6 @@ export default function Home() {
     }
   }, [])
 
-  // Mobile menu state
-  const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
-  const videoRef = useRef<HTMLVideoElement>(null)
-
-  // Parallax effect for hero section
-  const heroRef = useRef(null)
   const { scrollYProgress } = useScroll({
     target: heroRef,
     offset: ["start start", "end start"],
@@ -241,36 +243,29 @@ export default function Home() {
   const heroOpacity = useTransform(scrollYProgress, [0, 0.6], [1, 0])
   const heroScale = useTransform(scrollYProgress, [0, 1], [1.1, 1.3])
 
-useEffect(() => {
+  useEffect(() => {
     const playVideo = () => {
       if (videoRef.current) {
-        videoRef.current.play().catch(() => {
-          // Silently catch autoplay prevention
-        })
+        videoRef.current.play().catch(() => { })
       }
     }
-    
-    // Try to play immediately
+
     playVideo()
-    
-    // Also try on user interaction (for mobile browsers that block autoplay)
+
     const handleInteraction = () => {
       playVideo()
       document.removeEventListener("touchstart", handleInteraction)
       document.removeEventListener("click", handleInteraction)
     }
-    
+
     document.addEventListener("touchstart", handleInteraction, { once: true })
     document.addEventListener("click", handleInteraction, { once: true })
-    
+
     return () => {
       document.removeEventListener("touchstart", handleInteraction)
       document.removeEventListener("click", handleInteraction)
     }
   }, [])
-
-  // Intersection observer for animations
-  const [hasScrolled, setHasScrolled] = useState(false)
 
   useEffect(() => {
     const handleScroll = () => {
@@ -338,7 +333,6 @@ useEffect(() => {
     },
   ]
 
-  // Translate gallery images captions and alt texts
   const galleryImages = [
     {
       src: "/images/camp-social-gathering.jpg",
@@ -399,7 +393,6 @@ useEffect(() => {
     },
   ]
 
-  // Activities data - Added German translations for activities
   const activities = [
     {
       title: language === "de" ? "Trailrunning Technik" : "Trailrunning Technique",
@@ -507,12 +500,11 @@ useEffect(() => {
     },
   ]
 
-  // Handle menu button click
   const handleMenuToggle = () => {
     setMobileMenuOpen(!mobileMenuOpen)
   }
 
-  const { videoRef: scrollVideoRef, isVideoLoaded } = useScrollVideo() // Renamed to avoid conflict
+  const { videoRef: scrollVideoRef, isVideoLoaded } = useScrollVideo()
 
   const nextActivity = () => {
     setCurrentActivityIndex((prev) => (prev + 1) % activities.length)
@@ -524,15 +516,12 @@ useEffect(() => {
 
   return (
     <div className="min-h-screen bg-white">
-      {/* Preloader */}
       <ImagePreloader imageSources={SECTION_IMAGES} onComplete={() => setIsPreloading(false)} />
 
-      {/* Dynamic header - transparent on top, dark when scrolled */}
       <header className="absolute top-0 z-50 w-full bg-transparent">
         <div className="container flex h-20 items-center justify-between">
-          {/* Logo container with fixed width on mobile */}
           <div className="flex items-center">
-            <div className={`relative ${isMobile ? "w-32 h-10" : "w-auto h-14"}`}>
+            <div className={`relative ${isMobile ? "h-10 w-32" : "h-14 w-auto"}`}>
               <ImageWithFallback
                 src="/images/MTC-Logo_2025_weiß.png"
                 alt="The Mountaincamp Logo"
@@ -545,65 +534,48 @@ useEffect(() => {
             </div>
           </div>
 
-          {/* Desktop navigation */}
-          <nav className="hidden md:flex gap-8">
-            <Link href="#about" className="text-sm font-bold uppercase hover:text-primary transition-colors text-white">
+          <nav className="hidden md:flex items-center gap-4 lg:gap-6">
+            <Link href="#about" className="whitespace-nowrap text-sm font-bold uppercase text-white transition-colors hover:text-primary">
               {t("about")}
             </Link>
             <Link
               href="#experience"
-              className="text-sm font-bold uppercase hover:text-primary transition-colors text-white"
+              className="whitespace-nowrap text-sm font-bold uppercase text-white transition-colors hover:text-primary"
             >
               {t("experience")}
             </Link>
             <PreloadLink
               href="/house"
               imagesToPreload={HOUSE_PAGE_IMAGES}
-              className="text-sm font-bold uppercase hover:text-primary transition-colors text-white"
+              className="whitespace-nowrap text-sm font-bold uppercase text-white transition-colors hover:text-primary"
             >
               {t("house")}
             </PreloadLink>
             <PreloadLink
               href="/trails"
               imagesToPreload={TRAILS_PAGE_IMAGES}
-              className="text-sm font-bold uppercase hover:text-primary transition-colors text-white"
+              className="whitespace-nowrap text-sm font-bold uppercase text-white transition-colors hover:text-primary"
             >
               {t("trails")}
             </PreloadLink>
             <Link
               href="#testimonials"
-              className="text-sm font-bold uppercase hover:text-primary transition-colors text-white"
+              className="whitespace-nowrap text-sm font-bold uppercase text-white transition-colors hover:text-primary"
             >
               {t("testimonials")}
             </Link>
             <Link
-              href="#register"
-              className="text-sm font-bold uppercase hover:text-primary transition-colors text-white"
+              href="/bus-departures"
+              className="whitespace-nowrap text-sm font-bold uppercase text-white transition-colors hover:text-primary"
             >
-              {t("register")}
+              Transport
             </Link>
             <LanguageSwitcher />
           </nav>
 
-          <div className="flex items-center gap-2 sm:gap-4">
-            <Button
-              className={`bg-black/80 backdrop-blur-sm hover:bg-black/90 text-white border border-white/20 transition-colors ${
-                isMobile ? "text-xs px-2 py-1 h-auto" : ""
-              }`}
-              asChild
-            >
-              <a
-                href="https://my.camps.digital/masken/buchungen/vuejs?&vendor=mountaincamp&destination_id=2467&termin_id=36011&locale=de#/"
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                {t("registerNow")}
-              </a>
-            </Button>
-
-            {/* Mobile menu button with improved touch target */}
+          <div className="flex items-center">
             <button
-              className="md:hidden flex items-center justify-center w-12 h-12"
+              className="flex h-12 w-12 items-center justify-center md:hidden"
               onClick={handleMenuToggle}
               aria-label="Open menu"
               type="button"
@@ -614,11 +586,10 @@ useEffect(() => {
         </div>
       </header>
 
-      {/* Mobile menu overlay */}
       <AnimatePresence>
         {mobileMenuOpen && (
           <motion.div
-            className="fixed inset-0 bg-black z-50 flex flex-col"
+            className="fixed inset-0 z-50 flex flex-col bg-black"
             initial={{ opacity: 0, x: "100%" }}
             animate={{ opacity: 1, x: 0 }}
             exit={{ opacity: 0, x: "100%" }}
@@ -629,7 +600,7 @@ useEffect(() => {
               mass: 0.8,
             }}
           >
-            <div className="container flex justify-between items-center h-20">
+            <div className="container flex h-20 items-center justify-between">
               <Image
                 src="/images/MTC-Logo_2025_weiß.png"
                 alt="The Mountaincamp Logo"
@@ -641,7 +612,7 @@ useEffect(() => {
               <motion.button
                 onClick={handleMenuToggle}
                 aria-label="Close menu"
-                className="w-12 h-12 flex items-center justify-center"
+                className="flex h-12 w-12 items-center justify-center"
                 type="button"
                 whileTap={{ scale: 0.9 }}
                 whileHover={{ scale: 1.1 }}
@@ -649,14 +620,15 @@ useEffect(() => {
                 <X className="h-7 w-7 text-white" />
               </motion.button>
             </div>
-            <div className="flex flex-col items-center justify-center flex-1 gap-12 py-8">
+
+            <div className="flex flex-1 flex-col items-center justify-center gap-12 py-8">
               {[
-                { key: "about", href: "#about" },
-                { key: "experience", href: "#experience" },
-                { key: "house", href: "/house" },
-                { key: "trails", href: "/trails" },
-                { key: "testimonials", href: "#testimonials" },
-                { key: "register", href: "#register" },
+                { key: "about", href: "#about", label: t("about") },
+                { key: "experience", href: "#experience", label: t("experience") },
+                { key: "house", href: "/house", label: t("house") },
+                { key: "trails", href: "/trails", label: t("trails") },
+                { key: "testimonials", href: "#testimonials", label: t("testimonials") },
+                { key: "transport", href: "/bus-departures", label: "Transport" },
               ].map((item, index) => (
                 <motion.div
                   key={item.key}
@@ -666,17 +638,18 @@ useEffect(() => {
                 >
                   <Link
                     href={item.href}
-                    className="text-2xl font-bold text-white hover:text-primary transition-colors py-4 px-8"
+                    className="px-8 py-4 text-2xl font-bold text-white transition-colors hover:text-primary"
                     onClick={handleMenuToggle}
                   >
-                    {t(item.key)}
+                    {item.label}
                   </Link>
                 </motion.div>
               ))}
+
               <motion.div
                 initial={{ opacity: 0, x: 50 }}
                 animate={{ opacity: 1, x: 0 }}
-                transition={{ delay: 0.5, duration: 0.5 }}
+                transition={{ delay: 0.6, duration: 0.5 }}
               >
                 <LanguageSwitcher />
               </motion.div>
@@ -686,7 +659,6 @@ useEffect(() => {
       </AnimatePresence>
 
       <main>
-        {/* Hero section */}
         <section ref={heroRef} className="relative min-h-[140vh] overflow-hidden">
           <div className="absolute inset-0">
             <motion.div style={{ scale: heroScale }} className="h-full w-full">
@@ -704,14 +676,13 @@ useEffect(() => {
             </motion.div>
           </div>
 
-          <div className="absolute inset-0 bg-gradient-to-b from-black/20 via-transparent to-transparent"></div>
+          <div className="absolute inset-0 bg-gradient-to-b from-black/20 via-transparent to-transparent" />
 
-          {/* Hero content */}
           <motion.div
             style={{ y: heroTextY, opacity: heroOpacity }}
             className="container relative z-20 flex h-screen flex-col items-center justify-center text-center text-white"
           >
-            <div className="absolute inset-0 bg-black/40 backdrop-blur-sm rounded-3xl opacity-0" />
+            <div className="absolute inset-0 rounded-3xl bg-black/40 opacity-0 backdrop-blur-sm" />
 
             <div className="relative z-10">
               <motion.div
@@ -745,19 +716,21 @@ useEffect(() => {
                 initial={{ opacity: 0, y: 30 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: 0.6, duration: 0.8 }}
-                className="text-base md:text-2xl max-w-3xl mx-auto text-white/90 leading-relaxed"
+                className="mx-auto max-w-3xl text-base leading-relaxed text-white/90 md:text-2xl"
               >
                 {language === "de" ? (
                   <>
                     Erlebe das größte <strong>Trailrunning Camp in Österreich</strong>
-                    <br />5 Tage traumhafte Trails in den <strong>österreichischen Alpen</strong>
+                    <br />
+                    5 Tage traumhafte Trails in den <strong>österreichischen Alpen</strong>
                     <br />
                     <span className="font-bold">Hochkrimml | 5.-9. August 2026</span>
                   </>
                 ) : (
                   <>
                     Experience the biggest <strong>trailrunning camp in Austria</strong>
-                    <br />5 days of epic trails in the <strong>Alps</strong>
+                    <br />
+                    5 days of epic trails in the <strong>Alps</strong>
                     <br />
                     <span className="font-bold">Hochkrimml | August 5-9, 2026</span>
                   </>
@@ -768,15 +741,15 @@ useEffect(() => {
                 initial={{ opacity: 0, y: 30 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: 0.8, duration: 0.8 }}
-                className="flex flex-col sm:flex-row gap-4 justify-center"
+                className="flex flex-col justify-center gap-4 sm:flex-row"
               >
                 <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
-                  <Button size="lg" className="btn-primary text-lg px-8" asChild>
+                  <Button size="lg" className="btn-primary px-8 text-lg" asChild>
                     <Link href="#experience">{language === "de" ? "Entdecke das Camp" : "Discover the Camp"}</Link>
                   </Button>
                 </motion.div>
                 <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
-                  <Button size="lg" className="btn-outline text-lg px-8" asChild>
+                  <Button size="lg" className="btn-outline px-8 text-lg" asChild>
                     <a
                       href="https://my.camps.digital/masken/buchungen/vuejs?&vendor=mountaincamp&destination_id=2467&termin_id=36011&locale=de#/"
                       target="_blank"
@@ -790,9 +763,8 @@ useEffect(() => {
             </div>
           </motion.div>
 
-          {/* Scroll indicator */}
           <motion.div
-            className="absolute bottom-10 left-1/2 -translate-x-1/2 z-20"
+            className="absolute bottom-10 left-1/2 z-20 -translate-x-1/2"
             animate={{
               y: [0, 10, 0],
               opacity: [0.5, 1, 0.5],
@@ -807,47 +779,28 @@ useEffect(() => {
           </motion.div>
         </section>
 
-        {/* About section */}
-        <section id="about" className="relative -mt-32 z-30">
-          <div className="absolute top-0 left-0 right-0 h-64 bg-gradient-to-b from-transparent via-white/5 via-white/10 via-white/15 via-white/20 via-white/25 pointer-events-none"></div>
+        <section id="about" className="relative z-30 -mt-32">
+          <div className="pointer-events-none absolute left-0 right-0 top-0 h-64 bg-gradient-to-b from-transparent via-white/5 via-white/10 via-white/15 via-white/20 via-white/25" />
 
-          <div className="bg-white pt-40 pb-24">
+          <div className="bg-white pb-24 pt-40">
             <div className="container">
-              <div className="grid gap-16 lg:grid-cols-2 items-center">
+              <div className="grid items-center gap-16 lg:grid-cols-2">
                 <motion.div
                   initial={{ opacity: 0, x: -50 }}
                   whileInView={{ opacity: 1, x: 0 }}
                   viewport={{ once: true }}
                   transition={{ duration: 0.8 }}
                 >
-                  <h2 className="text-4xl font-bold mb-8 text-gray-900">{t("aboutTitle")}</h2>
+                  <h2 className="mb-8 text-4xl font-bold text-gray-900">{t("aboutTitle")}</h2>
                   <div className="space-y-3 text-gray-600">
-                    <div className="flex items-start gap-3">
-                      <div className="mt-1.5 h-1.5 w-1.5 rounded-full bg-primary flex-shrink-0" />
-                      <p className="text-lg leading-relaxed">{t("aboutFeature1")}</p>
-                    </div>
-                    <div className="flex items-start gap-3">
-                      <div className="mt-1.5 h-1.5 w-1.5 rounded-full bg-primary flex-shrink-0" />
-                      <p className="text-lg leading-relaxed">{t("aboutFeature2")}</p>
-                    </div>
-                    <div className="flex items-start gap-3">
-                      <div className="mt-1.5 h-1.5 w-1.5 rounded-full bg-primary flex-shrink-0" />
-                      <p className="text-lg leading-relaxed">{t("aboutFeature3")}</p>
-                    </div>
-                    <div className="flex items-start gap-3">
-                      <div className="mt-1.5 h-1.5 w-1.5 rounded-full bg-primary flex-shrink-0" />
-                      <p className="text-lg leading-relaxed">{t("aboutFeature4")}</p>
-                    </div>
-                    <div className="flex items-start gap-3">
-                      <div className="mt-1.5 h-1.5 w-1.5 rounded-full bg-primary flex-shrink-0" />
-                      <p className="text-lg leading-relaxed">{t("aboutFeature5")}</p>
-                    </div>
-                    <div className="flex items-start gap-3">
-                      <div className="mt-1.5 h-1.5 w-1.5 rounded-full bg-primary flex-shrink-0" />
-                      <p className="text-lg leading-relaxed">{t("aboutFeature6")}</p>
-                    </div>
+                    {[1, 2, 3, 4, 5, 6].map((n) => (
+                      <div className="flex items-start gap-3" key={n}>
+                        <div className="mt-1.5 h-1.5 w-1.5 flex-shrink-0 rounded-full bg-primary" />
+                        <p className="text-lg leading-relaxed">{t(`aboutFeature${n}`)}</p>
+                      </div>
+                    ))}
 
-                    <div className="pt-4 flex flex-col sm:flex-row gap-4">
+                    <div className="flex flex-col gap-4 pt-4 sm:flex-row">
                       <div className="flex items-center gap-3">
                         <div className="rounded-full bg-primary/20 p-2">
                           <Calendar className="h-5 w-5 text-primary" />
@@ -883,9 +836,9 @@ useEffect(() => {
                     loading="lazy"
                     sizes="(max-width: 1024px) 100vw, 50vw"
                   />
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent"></div>
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent" />
                   <div className="absolute bottom-0 left-0 p-6">
-                    <span className="bg-primary text-white px-4 py-2 font-bold uppercase text-sm">
+                    <span className="bg-primary px-4 py-2 text-sm font-bold uppercase text-white">
                       {language === "de" ? "Entdecken" : "Explore"}
                     </span>
                   </div>
@@ -895,8 +848,7 @@ useEffect(() => {
           </div>
         </section>
 
-        {/* Experience section with animated cards */}
-        <section id="experience" className="py-24 bg-gray-50">
+        <section id="experience" className="bg-gray-50 py-24">
           <div className="container">
             <SectionTitle title={t("experienceTitle")} subtitle={t("experienceSubtitle")} align="center" light={true} />
 
@@ -964,13 +916,11 @@ useEffect(() => {
           </div>
         </section>
 
-        {/* Activities showcase */}
-        <section className="py-24 bg-white">
+        <section className="bg-white py-24">
           <div className="container">
             <SectionTitle title={t("activitiesTitle")} subtitle={t("activitiesSubtitle")} align="center" light={true} />
 
-            <div className="relative max-w-2xl mx-auto">
-              {/* Activity Card */}
+            <div className="relative mx-auto max-w-2xl">
               <motion.div
                 key={currentActivityIndex}
                 initial={{ opacity: 0, x: 100 }}
@@ -986,7 +936,7 @@ useEffect(() => {
                     image={activities[currentActivityIndex].image}
                   />
                 ) : (
-                  <div className="activity-card aspect-square group mx-auto max-w-md">
+                  <div className="activity-card group mx-auto aspect-square max-w-md">
                     <Image
                       src={activities[currentActivityIndex].image || "/placeholder.svg"}
                       alt={activities[currentActivityIndex].title}
@@ -998,8 +948,7 @@ useEffect(() => {
                     <div className="activity-card-overlay opacity-80 group-hover:opacity-90" />
                     <div className="activity-card-content">
                       <h3 className="text-2xl font-bold text-white">{activities[currentActivityIndex].title}</h3>
-                      {/* Increased text size for activity descriptions */}
-                      <p className="text-lg text-white/90 mt-4 max-h-32 overflow-y-auto">
+                      <p className="mt-4 max-h-32 overflow-y-auto text-lg text-white/90">
                         {activities[currentActivityIndex].description}
                       </p>
                     </div>
@@ -1009,29 +958,27 @@ useEffect(() => {
 
               <button
                 onClick={prevActivity}
-                className="absolute left-4 top-1/2 -translate-y-1/2 bg-black/60 backdrop-blur-sm hover:bg-black/80 text-white p-4 rounded-full transition-all duration-300 z-10 shadow-lg border border-white/20"
+                className="absolute left-4 top-1/2 z-10 -translate-y-1/2 rounded-full border border-white/20 bg-black/60 p-4 text-white shadow-lg backdrop-blur-sm transition-all duration-300 hover:bg-black/80"
                 aria-label="Previous activity"
               >
-                <ChevronDown className="w-8 h-8 rotate-90" />
+                <ChevronDown className="h-8 w-8 rotate-90" />
               </button>
 
               <button
                 onClick={nextActivity}
-                className="absolute right-4 top-1/2 -translate-y-1/2 bg-black/60 backdrop-blur-sm hover:bg-black/80 text-white p-4 rounded-full transition-all duration-300 z-10 shadow-lg border border-white/20"
+                className="absolute right-4 top-1/2 z-10 -translate-y-1/2 rounded-full border border-white/20 bg-black/60 p-4 text-white shadow-lg backdrop-blur-sm transition-all duration-300 hover:bg-black/80"
                 aria-label="Next activity"
               >
-                <ChevronDown className="w-8 h-8 -rotate-90" />
+                <ChevronDown className="h-8 w-8 -rotate-90" />
               </button>
 
-              {/* Dots Indicator */}
-              <div className="flex justify-center mt-8 gap-2">
+              <div className="mt-8 flex justify-center gap-2">
                 {activities.map((_, index) => (
                   <button
                     key={index}
                     onClick={() => setCurrentActivityIndex(index)}
-                    className={`w-3 h-3 rounded-full transition-all duration-300 ${
-                      index === currentActivityIndex ? "bg-primary scale-125" : "bg-gray-300 hover:bg-gray-400"
-                    }`}
+                    className={`h-3 w-3 rounded-full transition-all duration-300 ${index === currentActivityIndex ? "scale-125 bg-primary" : "bg-gray-300 hover:bg-gray-400"
+                      }`}
                     aria-label={`Go to activity ${index + 1}`}
                   />
                 ))}
@@ -1042,12 +989,11 @@ useEffect(() => {
 
         <RouteOverviewSection />
 
-        {/* Gallery section with hover effects */}
-        <section className="py-24 bg-gray-50">
+        <section className="bg-gray-50 py-24">
           <div className="container">
             <SectionTitle title={t("galleryTitle")} align="center" light={true} />
 
-            <div className="grid grid-cols-2 md:grid-cols-3 gap-4">
+            <div className="grid grid-cols-2 gap-4 md:grid-cols-3">
               {galleryImages.map((image, index) => (
                 <motion.div
                   key={index}
@@ -1055,7 +1001,7 @@ useEffect(() => {
                   whileInView={{ opacity: 1, scale: 1 }}
                   viewport={{ once: true }}
                   transition={{ duration: 0.5, delay: index * 0.1 }}
-                  className="aspect-square overflow-hidden group relative"
+                  className="group relative aspect-square overflow-hidden"
                 >
                   <ImageWithFallback
                     src={image.src || "/placeholder.svg"}
@@ -1067,8 +1013,8 @@ useEffect(() => {
                     loading="lazy"
                     sizes="(max-width: 768px) 50vw, 33vw"
                   />
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
-                  <div className="absolute bottom-0 left-0 p-4 text-white opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent opacity-0 transition-opacity duration-300 group-hover:opacity-100" />
+                  <div className="absolute bottom-0 left-0 p-4 text-white opacity-0 transition-opacity duration-300 group-hover:opacity-100">
                     <span className="font-bold text-white">{image.caption}</span>
                   </div>
                 </motion.div>
@@ -1079,17 +1025,16 @@ useEffect(() => {
 
         <InstagramReelsSection />
 
-        <section id="testimonials" className="py-24 relative overflow-hidden bg-white">
-          <div className="absolute top-0 left-0 w-full h-full bg-[radial-gradient(ellipse_at_top_right,_var(--tw-gradient-stops))] from-primary/10 via-transparent to-transparent"></div>
+        <section id="testimonials" className="relative overflow-hidden bg-white py-24">
+          <div className="absolute left-0 top-0 h-full w-full bg-[radial-gradient(ellipse_at_top_right,_var(--tw-gradient-stops))] from-primary/10 via-transparent to-transparent" />
 
           <div className="container relative z-10">
             <SectionTitle title={t("testimonialsTitle")} align="center" light={true} />
 
-            <div className="max-w-4xl mx-auto">
+            <div className="mx-auto max-w-4xl">
               <TestimonialSlider testimonials={testimonials} autoPlay={true} interval={6000} />
             </div>
 
-            {/* Price Category Bars */}
             <motion.div
               initial={{ opacity: 0, y: 50 }}
               whileInView={{ opacity: 1, y: 0 }}
@@ -1104,19 +1049,17 @@ useEffect(() => {
 
         <FAQSection />
 
-        {/* Partners section */}
-        <section className="py-24 bg-gray-900 overflow-hidden">
+        <section className="overflow-hidden bg-gray-900 py-24">
           <div className="container mb-12">
             <SectionTitle title={t("partnersTitle")} subtitle={t("partnersSubtitle")} align="center" light={false} />
           </div>
 
           <div className="relative">
-            {/* Gradient overlays for fade effect */}
-            <div className="absolute left-0 top-0 bottom-0 w-32 bg-gradient-to-r from-gray-900 to-transparent z-10" />
-            <div className="absolute right-0 top-0 bottom-0 w-32 bg-gradient-to-l from-gray-900 to-transparent z-10" />
+            <div className="absolute left-0 top-0 bottom-0 z-10 w-32 bg-gradient-to-r from-gray-900 to-transparent" />
+            <div className="absolute right-0 top-0 bottom-0 z-10 w-32 bg-gradient-to-l from-gray-900 to-transparent" />
 
             <motion.div
-              className="flex gap-20 items-center"
+              className="flex items-center gap-20"
               animate={{ x: ["0%", "-50%"] }}
               transition={{
                 x: {
@@ -1127,40 +1070,39 @@ useEffect(() => {
                 },
               }}
             >
-              {/* Duplicate logos for seamless loop */}
               {[...Array(2)].map((_, setIndex) => (
-                <div key={setIndex} className="flex gap-20 items-center shrink-0">
-{[1, 2, 3, 4, 5, 6, 7, 8].map((num) => (
-                                    <div key={`${setIndex}-${num}`} className="flex items-center justify-center h-36 shrink-0">
-                                      <Image
-                                        src={`/images/partner-${num}.png`}
-                                        alt={`Partner ${num}`}
-                                        width={600}
-                                        height={150}
-                                        className={`w-auto object-contain opacity-70 hover:opacity-100 transition-opacity duration-300 ${num === 8 ? "h-24" : "h-36"}`}
-                                        loading="lazy"
-                                        sizes="600px"
-                                      />
-                                    </div>
-                                  ))}
+                <div key={setIndex} className="flex shrink-0 items-center gap-20">
+                  {[1, 2, 3, 4, 5, 6, 7, 8].map((num) => (
+                    <div key={`${setIndex}-${num}`} className="flex h-36 shrink-0 items-center justify-center">
+                      <Image
+                        src={`/images/partner-${num}.png`}
+                        alt={`Partner ${num}`}
+                        width={600}
+                        height={150}
+                        className={`w-auto object-contain opacity-70 transition-opacity duration-300 hover:opacity-100 ${num === 8 ? "h-24" : "h-36"
+                          }`}
+                        loading="lazy"
+                        sizes="600px"
+                      />
+                    </div>
+                  ))}
                 </div>
               ))}
             </motion.div>
           </div>
         </section>
 
-        {/* Registration section with improved form */}
-        <section id="register" className="py-24 bg-black text-white">
+        <section id="register" className="bg-black py-24 text-white">
           <div className="container">
-            <div className="grid gap-16 lg:grid-cols-2 items-center">
+            <div className="grid items-center gap-16 lg:grid-cols-2">
               <motion.div
                 initial={{ opacity: 0, x: -50 }}
                 whileInView={{ opacity: 1, x: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.8 }}
               >
-                <h2 className="text-4xl font-bold uppercase tracking-tight mb-6 text-white">{t("joinTitle")}</h2>
-                <p className="text-xl mb-8 text-white">
+                <h2 className="mb-6 text-4xl font-bold uppercase tracking-tight text-white">{t("joinTitle")}</h2>
+                <p className="mb-8 text-xl text-white">
                   {language === "de" ? "5.-9. August 2026" : "August 5-9, 2026"}
                   <br />
                   {language === "de" ? "Österreichische Alpen" : "Austrian Alps"}
@@ -1185,10 +1127,10 @@ useEffect(() => {
                 </ul>
 
                 <div className="mt-12 inline-block">
-                  <div className="bg-primary px-6 py-3 rounded-t-lg">
-                    <span className="text-sm font-medium text-white uppercase">{t("packageTitle")}</span>
+                  <div className="rounded-t-lg bg-primary px-6 py-3">
+                    <span className="text-sm font-medium uppercase text-white">{t("packageTitle")}</span>
                   </div>
-                  <div className="bg-gray-800 px-6 py-4 rounded-b-lg">
+                  <div className="rounded-b-lg bg-gray-800 px-6 py-4">
                     <span className="text-3xl font-bold text-white">€510</span>
                   </div>
                 </div>
@@ -1200,15 +1142,15 @@ useEffect(() => {
                 viewport={{ once: true }}
                 transition={{ duration: 0.8 }}
               >
-                <div className="bg-gray-800 p-8 text-white rounded-xl border border-gray-700">
-                  <h3 className="text-2xl font-bold uppercase mb-6 text-center text-white">
+                <div className="rounded-xl border border-gray-700 bg-gray-800 p-8 text-white">
+                  <h3 className="mb-6 text-center text-2xl font-bold uppercase text-white">
                     {language === "de" ? "Jetzt anmelden" : "Register Now"}
                   </h3>
 
                   <div className="text-center">
                     <Button
                       size="lg"
-                      className="bg-primary hover:bg-primary/90 text-white font-bold py-4 px-8 text-lg"
+                      className="bg-primary px-8 py-4 text-lg font-bold text-white hover:bg-primary/90"
                       asChild
                     >
                       <a
@@ -1219,7 +1161,7 @@ useEffect(() => {
                         {t("registerNow")}
                       </a>
                     </Button>
-                    <p className="text-white/70 mt-4 text-sm">
+                    <p className="mt-4 text-sm text-white/70">
                       {language === "de"
                         ? "Sichere dir jetzt deinen Platz im Mountaincamp!"
                         : "Secure your spot at The Mountaincamp now!"}
@@ -1231,8 +1173,7 @@ useEffect(() => {
           </div>
         </section>
 
-        {/* Join us in the alps section */}
-        <section className="relative py-24 bg-black text-white overflow-hidden">
+        <section className="relative overflow-hidden bg-black py-24 text-white">
           <div className="absolute inset-0">
             <Image
               src="/images/mountain-summit.jpeg"
@@ -1244,12 +1185,12 @@ useEffect(() => {
             />
           </div>
           <div className="container relative z-10">
-            <div className="max-w-4xl mx-auto text-center">
+            <div className="mx-auto max-w-4xl text-center">
               <motion.h2
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.8 }}
-                className="text-4xl md:text-5xl font-bold mb-8"
+                className="mb-8 text-4xl font-bold md:text-5xl"
               >
                 {t("Join us")}
               </motion.h2>
@@ -1257,7 +1198,7 @@ useEffect(() => {
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.8, delay: 0.2 }}
-                className="text-xl mb-12 text-gray-300"
+                className="mb-12 text-xl text-gray-300"
               >
                 {t("")}
               </motion.p>
@@ -1265,9 +1206,9 @@ useEffect(() => {
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.8, delay: 0.4 }}
-                className="flex flex-col sm:flex-row gap-6 justify-center items-center"
+                className="flex flex-col items-center justify-center gap-6 sm:flex-row"
               >
-                <Button size="lg" className="btn-primary text-lg px-8" asChild>
+                <Button size="lg" className="btn-primary px-8 text-lg" asChild>
                   <a
                     href="https://my.camps.digital/masken/buchungen/vuejs?&vendor=mountaincamp&destination_id=2467&termin_id=36011&locale=de#/"
                     target="_blank"
@@ -1286,17 +1227,16 @@ useEffect(() => {
         </section>
       </main>
 
-      {/* Footer with improved design */}
       <footer className="footer">
         <div className="container">
-          <div className="flex flex-col md:flex-row justify-between items-center mb-12">
+          <div className="mb-12 flex flex-col items-center justify-between md:flex-row">
             <div className="mb-8 md:mb-0">
               <Image
                 src="/images/MTC-Logo_2025_weiß.png"
                 alt="The Mountaincamp Logo"
                 width={180}
                 height={40}
-                className="h-12 w-auto mb-4"
+                className="mb-4 h-12 w-auto"
                 loading="lazy"
                 sizes="180px"
               />
@@ -1306,6 +1246,7 @@ useEffect(() => {
                   : "Trailrunning camp in the Austrian Alps"}
               </p>
             </div>
+
             <div className="grid grid-cols-2 gap-8 md:grid-cols-4 md:gap-16">
               <div className="flex flex-col gap-3">
                 <h4 className="footer-heading text-white">{t("navigation")}</h4>
@@ -1322,7 +1263,7 @@ useEffect(() => {
                   {t("register")}
                 </Link>
                 <Link href="/bus-departures" className="footer-link">
-                  {language === "de" ? "Bus Anreise" : "Bus Transport"}
+                  {language === "de" ? "Transport" : "Transport"}
                 </Link>
               </div>
 
@@ -1340,7 +1281,7 @@ useEffect(() => {
                     href="https://www.instagram.com/the_mountaincamp/"
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="text-white/60 hover:text-primary transition-colors"
+                    className="text-white/60 transition-colors hover:text-primary"
                     aria-label="Instagram"
                   >
                     <svg className="h-6 w-6" fill="currentColor" viewBox="0 0 24 24">
@@ -1351,7 +1292,7 @@ useEffect(() => {
                     href="https://www.youtube.com/@the_mountaincamp"
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="text-white/60 hover:text-primary transition-colors"
+                    className="text-white/60 transition-colors hover:text-primary"
                     aria-label="YouTube"
                   >
                     <svg className="h-6 w-6" fill="currentColor" viewBox="0 0 24 24">
@@ -1362,7 +1303,7 @@ useEffect(() => {
                     href="https://open.spotify.com/playlist/33kezN4oDEMyKsFBCicpu6?go=1&sp_cid=6cbbc4d6562c94dccb0ca417c102a028&utm_source=embed_player_p&utm_medium=desktop"
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="text-white/60 hover:text-primary transition-colors"
+                    className="text-white/60 transition-colors hover:text-primary"
                     aria-label="Spotify"
                   >
                     <svg className="h-6 w-6" fill="currentColor" viewBox="0 0 24 24">
@@ -1373,7 +1314,7 @@ useEffect(() => {
                     href="https://www.tiktok.com/@themountaincamp?_t=ZN-8xYSIlpRmkw&_r=1"
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="text-white/60 hover:text-primary transition-colors"
+                    className="text-white/60 transition-colors hover:text-primary"
                     aria-label="TikTok"
                   >
                     <svg className="h-6 w-6" fill="currentColor" viewBox="0 0 24 24">
