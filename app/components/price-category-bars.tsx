@@ -2,6 +2,7 @@
 
 import { motion } from "framer-motion"
 import { Check, AlertTriangle, Clock, Lock } from "lucide-react"
+import { useLanguage } from "@/contexts/language-context"
 
 interface PriceCategoryBarProps {
   category: string
@@ -84,29 +85,38 @@ function PriceCategoryBar({ category, filled, total, label, status }: PriceCateg
 }
 
 export default function PriceCategoryBars() {
+  const { language } = useLanguage()
+  
+  const soldOutLabel = language === "de" ? "Ausverkauft" : "Sold out"
+  const availableLabel = language === "de" ? "Verfügbar" : "Available"
+  const titleText = language === "de" ? "Verfügbarkeitsstatus" : "Availability Status"
+  const descText = language === "de" 
+    ? "Sieh dir die aktuelle Verfügbarkeit unserer verschiedenen Preiskategorien an. Buche bald, um deinen Platz zu sichern!"
+    : "Check the current availability of our different price categories. Book soon to secure your spot!"
+  
   return (
     <div className="relative overflow-hidden rounded-xl bg-black/30 backdrop-blur-sm border border-primary/20 p-8">
       <div className="absolute top-0 left-0 w-full h-full bg-gradient-to-br from-primary/10 via-transparent to-transparent opacity-50"></div>
 
       <div className="relative z-10">
         <div className="text-center mb-8">
-          <h3 className="text-2xl md:text-3xl font-bold mb-2 text-white">Availability Status</h3>
+          <h3 className="text-2xl md:text-3xl font-bold mb-2 text-white">{titleText}</h3>
           <p className="text-white/70 max-w-2xl mx-auto">
-            Check the current availability of our different price categories. Book soon to secure your spot!
+            {descText}
           </p>
         </div>
 
         <div className="max-w-3xl mx-auto">
           <PriceCategoryBar
-            category="Price Category 1 - Early Bird"
+            category={language === "de" ? "Preiskategorie 1 - Early Bird" : "Price Category 1 - Early Bird"}
             filled={100}
             total={100}
-            label="Sold out"
+            label={soldOutLabel}
             status="sold-out"
           />
-          <PriceCategoryBar category="Price Category 2" filled={100} total={100} label="Sold out" status="sold-out" />
-          <PriceCategoryBar category="Price Category 3" filled={100} total={100} label="Ausverkauft" status="sold-out" />
-          <PriceCategoryBar category="Price Category 4" filled={3} total={100} label="Available" status="available" />
+          <PriceCategoryBar category={language === "de" ? "Preiskategorie 2" : "Price Category 2"} filled={100} total={100} label={soldOutLabel} status="sold-out" />
+          <PriceCategoryBar category={language === "de" ? "Preiskategorie 3" : "Price Category 3"} filled={100} total={100} label={soldOutLabel} status="sold-out" />
+          <PriceCategoryBar category={language === "de" ? "Preiskategorie 4" : "Price Category 4"} filled={3} total={100} label={availableLabel} status="available" />
         </div>
       </div>
 
