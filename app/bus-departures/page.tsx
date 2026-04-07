@@ -50,7 +50,7 @@ export default function BusDeparturesPage() {
           de: "Abfahrt um 14:30 Uhr vom Hauptbahnhof",
         },
       },
-      capacity: { sold: 11, total: 19 },
+      capacity: { sold: 11, total: 15 },
     },
   ]
 
