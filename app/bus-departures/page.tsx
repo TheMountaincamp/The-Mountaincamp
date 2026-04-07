@@ -26,7 +26,7 @@ export default function BusDeparturesPage() {
           de: "Abfahrt um 6:35 Uhr vom Hauptbahnhof",
         },
       },
-      capacity: { sold: 22, total: 30 },
+      capacity: { sold: 23, total: 30 },
     },
     {
       city: "Munich",
@@ -38,7 +38,7 @@ export default function BusDeparturesPage() {
           de: "Abfahrt um 12:30 Uhr vom Zentralen Omnibusbahnhof",
         },
       },
-      capacity: { sold: 5, total: 20 },
+      capacity: { sold: 7, total: 20 },
     },
     {
       city: "Jenbach",
