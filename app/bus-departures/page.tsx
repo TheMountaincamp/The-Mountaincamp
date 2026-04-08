@@ -26,7 +26,7 @@ export default function BusDeparturesPage() {
           de: "Abfahrt um 6:35 Uhr vom Hauptbahnhof",
         },
       },
-      capacity: { sold: 23, total: 30 },
+      capacity: { sold: 25, total: 30 },
     },
     {
       city: "Munich",
