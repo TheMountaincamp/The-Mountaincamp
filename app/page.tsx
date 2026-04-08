@@ -517,6 +517,39 @@ export default function Home() {
   return (
     <div className="min-h-screen bg-white">
       <ImagePreloader imageSources={SECTION_IMAGES} onComplete={() => setIsPreloading(false)} />
+      
+      {/* Sticky Mobile CTA */}
+      {isMobile && hasScrolled && (
+        <motion.div
+          initial={{ y: 100, opacity: 0 }}
+          animate={{ y: 0, opacity: 1 }}
+          className="fixed bottom-0 left-0 right-0 z-40 bg-black/95 backdrop-blur-md border-t border-white/10 px-4 py-3 safe-area-pb"
+        >
+          <div className="flex items-center justify-between gap-3">
+            <div className="flex-1">
+              <p className="text-white text-sm font-bold">
+                {language === "de" ? "Sichere dir deinen Platz!" : "Secure your spot!"}
+              </p>
+              <p className="text-white/60 text-xs">
+                {language === "de" ? "Ab €530 - Begrenzte Plätze" : "From €530 - Limited spots"}
+              </p>
+            </div>
+            <Button
+              size="sm"
+              className="bg-primary hover:bg-primary/90 text-white font-bold px-4 py-2 whitespace-nowrap"
+              asChild
+            >
+              <a
+                href="https://my.camps.digital/masken/buchungen/vuejs?&vendor=mountaincamp&destination_id=2467&termin_id=36011&locale=de#/"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                {language === "de" ? "Jetzt buchen" : "Book now"}
+              </a>
+            </Button>
+          </div>
+        </motion.div>
+      )}
 
       <header className="absolute top-0 z-50 w-full bg-transparent">
         <div className="container flex h-20 items-center justify-between">
@@ -621,7 +654,7 @@ export default function Home() {
               </motion.button>
             </div>
 
-            <div className="flex flex-1 flex-col items-center justify-center gap-12 py-8">
+            <div className="flex flex-1 flex-col items-center justify-center gap-8 py-8 overflow-y-auto">
               {[
                 { key: "about", href: "#about", label: t("about") },
                 { key: "experience", href: "#experience", label: t("experience") },
@@ -716,7 +749,7 @@ export default function Home() {
                 initial={{ opacity: 0, y: 30 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: 0.6, duration: 0.8 }}
-                className="mx-auto max-w-3xl text-base leading-relaxed text-white/90 md:text-2xl"
+                className="mx-auto max-w-3xl text-sm leading-relaxed text-white/90 px-4 md:px-0 md:text-2xl"
               >
                 {language === "de" ? (
                   <>
@@ -741,21 +774,21 @@ export default function Home() {
                 initial={{ opacity: 0, y: 30 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: 0.8, duration: 0.8 }}
-                className="flex flex-col justify-center gap-4 sm:flex-row"
+                className="flex flex-col justify-center gap-3 px-4 md:px-0 sm:flex-row sm:gap-4 mt-6"
               >
-                <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
-                  <Button size="lg" className="btn-primary px-8 text-lg" asChild>
+                <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }} className="w-full sm:w-auto">
+                  <Button size="lg" className="btn-primary w-full sm:w-auto px-6 md:px-8 text-base md:text-lg py-3" asChild>
                     <Link href="#experience">{language === "de" ? "Entdecke das Camp" : "Discover the Camp"}</Link>
                   </Button>
                 </motion.div>
-                <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
-                  <Button size="lg" className="btn-outline px-8 text-lg" asChild>
+                <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }} className="w-full sm:w-auto">
+                  <Button size="lg" className="btn-outline w-full sm:w-auto px-6 md:px-8 text-base md:text-lg py-3" asChild>
                     <a
                       href="https://my.camps.digital/masken/buchungen/vuejs?&vendor=mountaincamp&destination_id=2467&termin_id=36011&locale=de#/"
                       target="_blank"
                       rel="noopener noreferrer"
                     >
-                      {language === "de" ? "Join Now" : "Join Now"}
+                      {language === "de" ? "Jetzt buchen" : "Book Now"}
                     </a>
                   </Button>
                 </motion.div>
@@ -782,16 +815,16 @@ export default function Home() {
         <section id="about" className="relative z-30 -mt-32">
           <div className="pointer-events-none absolute left-0 right-0 top-0 h-64 bg-gradient-to-b from-transparent via-white/5 via-white/10 via-white/15 via-white/20 via-white/25" />
 
-          <div className="bg-white pb-24 pt-40">
+          <div className="bg-white pb-16 md:pb-24 pt-24 md:pt-40">
             <div className="container">
-              <div className="grid items-center gap-16 lg:grid-cols-2">
+              <div className="grid items-center gap-8 md:gap-16 lg:grid-cols-2">
                 <motion.div
                   initial={{ opacity: 0, x: -50 }}
                   whileInView={{ opacity: 1, x: 0 }}
                   viewport={{ once: true }}
                   transition={{ duration: 0.8 }}
                 >
-                  <h2 className="mb-8 text-4xl font-bold text-gray-900">{t("aboutTitle")}</h2>
+                  <h2 className="mb-6 md:mb-8 text-2xl md:text-4xl font-bold text-gray-900">{t("aboutTitle")}</h2>
                   <div className="space-y-3 text-gray-600">
                     {[1, 2, 3, 4, 5, 6].map((n) => (
                       <div className="flex items-start gap-3" key={n}>
@@ -826,7 +859,7 @@ export default function Home() {
                   whileInView={{ opacity: 1, scale: 1 }}
                   viewport={{ once: true }}
                   transition={{ duration: 0.8 }}
-                  className="relative h-[500px] overflow-hidden rounded-xl"
+                  className="relative h-[300px] md:h-[500px] overflow-hidden rounded-xl"
                 >
                   <Image
                     src="/images/alpine-village-group.jpg"
@@ -848,11 +881,44 @@ export default function Home() {
           </div>
         </section>
 
-        <section id="experience" className="bg-gray-50 py-24">
+        {/* Mid-page CTA Banner */}
+        <section className="bg-primary py-8 md:py-12">
+          <div className="container">
+            <div className="flex flex-col md:flex-row items-center justify-between gap-6">
+              <div className="text-center md:text-left">
+                <h3 className="text-xl md:text-2xl font-bold text-white mb-2">
+                  {language === "de" ? "Bereit für dein Abenteuer?" : "Ready for your adventure?"}
+                </h3>
+                <p className="text-white/80 text-sm md:text-base">
+                  {language === "de" 
+                    ? "Nur noch wenige Plätze verfügbar - Sichere dir jetzt deinen Spot!" 
+                    : "Only a few spots left - Secure yours now!"}
+                </p>
+              </div>
+              <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
+                <Button
+                  size="lg"
+                  className="bg-white text-primary hover:bg-white/90 font-bold px-8 py-3 text-base md:text-lg"
+                  asChild
+                >
+                  <a
+                    href="https://my.camps.digital/masken/buchungen/vuejs?&vendor=mountaincamp&destination_id=2467&termin_id=36011&locale=de#/"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    {language === "de" ? "Jetzt Ticket sichern" : "Get Your Ticket"}
+                  </a>
+                </Button>
+              </motion.div>
+            </div>
+          </div>
+        </section>
+
+        <section id="experience" className="bg-gray-50 py-16 md:py-24">
           <div className="container">
             <SectionTitle title={t("experienceTitle")} subtitle={t("experienceSubtitle")} align="center" light={true} />
 
-            <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-4">
+            <div className="grid gap-4 md:gap-8 grid-cols-2 lg:grid-cols-4">
               <motion.div
                 initial={{ opacity: 0, y: 30 }}
                 whileInView={{ opacity: 1, y: 0 }}
@@ -1049,7 +1115,7 @@ export default function Home() {
 
         <FAQSection />
 
-        <section className="overflow-hidden bg-gray-900 py-24">
+        <section className="overflow-hidden bg-gray-900 py-12 md:py-24">
           <div className="container mb-12">
             <SectionTitle title={t("partnersTitle")} subtitle={t("partnersSubtitle")} align="center" light={false} />
           </div>
@@ -1092,16 +1158,16 @@ export default function Home() {
           </div>
         </section>
 
-        <section id="register" className="bg-black py-24 text-white">
+        <section id="register" className="bg-black py-16 md:py-24 text-white">
           <div className="container">
-            <div className="grid items-center gap-16 lg:grid-cols-2">
+            <div className="grid items-center gap-8 md:gap-16 lg:grid-cols-2">
               <motion.div
                 initial={{ opacity: 0, x: -50 }}
                 whileInView={{ opacity: 1, x: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.8 }}
               >
-                <h2 className="mb-6 text-4xl font-bold uppercase tracking-tight text-white">{t("joinTitle")}</h2>
+                <h2 className="mb-4 md:mb-6 text-2xl md:text-4xl font-bold uppercase tracking-tight text-white">{t("joinTitle")}</h2>
                 <p className="mb-8 text-xl text-white">
                   {language === "de" ? "5.-9. August 2026" : "August 5-9, 2026"}
                   <br />
@@ -1173,7 +1239,7 @@ export default function Home() {
           </div>
         </section>
 
-        <section className="relative overflow-hidden bg-black py-24 text-white">
+        <section className="relative overflow-hidden bg-black py-16 md:py-24 text-white">
           <div className="absolute inset-0">
             <Image
               src="/images/mountain-summit.jpeg"
@@ -1190,7 +1256,7 @@ export default function Home() {
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.8 }}
-                className="mb-8 text-4xl font-bold md:text-5xl"
+                className="mb-6 md:mb-8 text-2xl md:text-4xl lg:text-5xl font-bold"
               >
                 {t("Join us")}
               </motion.h2>
@@ -1227,10 +1293,10 @@ export default function Home() {
         </section>
       </main>
 
-      <footer className="footer">
+      <footer className="footer pb-24 md:pb-16">
         <div className="container">
-          <div className="mb-12 flex flex-col items-center justify-between md:flex-row">
-            <div className="mb-8 md:mb-0">
+          <div className="mb-12 flex flex-col items-center justify-between gap-8 md:flex-row">
+            <div className="text-center md:text-left">
               <Image
                 src="/images/MTC-Logo_2025_weiß.png"
                 alt="The Mountaincamp Logo"
