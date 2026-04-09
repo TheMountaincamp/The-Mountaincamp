@@ -262,60 +262,72 @@ export default function Home() {
       src: "/images/camp-social-gathering.jpg",
       alt:
         language === "de"
-          ? "Camp-Teilnehmer beim Socializen auf der Terrasse der Lodge"
-          : "Camp participants socializing on lodge terrace",
+          ? "Trailrunning Camp Österreich Teilnehmer auf der Terrasse der Lodge"
+          : "Trail running camp Austria participants socializing on lodge terrace",
       caption: "Community Vibes",
     },
     {
       src: "/images/lodge-group-start.jpg",
       alt:
         language === "de"
-          ? "Gruppe von Läufern versammelt an der Berghütte"
-          : "Group of runners gathered at mountain lodge",
+          ? "Trailrunning Camp Gruppe an der Berghütte in Hochkrimml"
+          : "Trail running camp group gathered at mountain lodge in Hochkrimml",
       caption: language === "de" ? "Bereit zum Laufen" : "Ready to Run",
     },
     {
       src: "/images/terrace-community-time.jpg",
       alt:
         language === "de"
-          ? "Große Gruppe auf der Terrasse der Lodge bei Sonnenuntergang"
-          : "Large group gathering on lodge terrace at sunset",
+          ? "Trailrunning Camp Community auf der Terrasse bei Sonnenuntergang"
+          : "Trail running camp community gathering on terrace at sunset",
       caption: "Community Vibes",
     },
     {
       src: "/images/trail-runners-mountain-path.jpg",
       alt:
         language === "de"
-          ? "Zwei Trailrunnerinnen auf einem Bergpfad"
-          : "Two female trail runners on mountain path",
+          ? "Trailrunnerinnen auf einem Bergpfad in Österreich"
+          : "Two female trail runners on mountain path in Austria",
       caption: language === "de" ? "Trail Abenteuer" : "Trail Adventures",
     },
     {
       src: "/images/runner-golden-meadow.jpg",
-      alt: language === "de" ? "Läufer auf goldener Bergwiese" : "Runner in golden mountain meadow",
+      alt:
+        language === "de"
+          ? "Trailrunner auf Bergwiese in den österreichischen Alpen"
+          : "Trail runner in alpine meadow in Austria",
       caption: language === "de" ? "Bergfreiheit" : "Mountain Freedom",
     },
     {
       src: "/images/mountain-trail-aerial.jpg",
-      alt: language === "de" ? "Luftaufnahme von Läufern auf Bergpfad" : "Aerial view of runners on mountain trail",
+      alt:
+        language === "de"
+          ? "Luftaufnahme von Trailrunnern auf alpinem Bergpfad"
+          : "Aerial view of trail runners on alpine mountain trail",
       caption: language === "de" ? "Epische Trails" : "Epic Trails",
     },
     {
       src: "/images/forest-runner-celebration.jpg",
-      alt: language === "de" ? "Fröhlicher Läufer feiert im Wald" : "Joyful runner celebrating in forest",
+      alt:
+        language === "de"
+          ? "Trailrunner feiert im Wald beim Mountaincamp"
+          : "Trail runner celebrating in forest during camp",
       caption: language === "de" ? "Pure Freude" : "Pure Joy",
     },
     {
       src: "/images/lodge-terrace-relaxation.jpg",
-      alt: language === "de" ? "Camper entspannen auf der Lodge-Terrasse" : "Campers relaxing on lodge terrace",
+      alt:
+        language === "de"
+          ? "Teilnehmer entspannen nach dem Trailrunning auf der Lodge Terrasse"
+          : "Camp participants relaxing on lodge terrace after trail running",
       caption: language === "de" ? "Erholungszeit" : "Recovery Time",
     },
     {
       src: "/images/peaceful-terrace-moment.jpg",
       alt:
         language === "de"
-          ? "Person entspannt unter Sonnenschirm auf der Terrasse der Berghütte"
-          : "Person relaxing under umbrella on mountain lodge terrace",
+          ? "Ruhiger Moment auf der Terrasse der Berghütte in Hochkrimml"
+          : "Peaceful moment on mountain lodge terrace in Hochkrimml",
       caption: language === "de" ? "Ruhige Momente" : "Peaceful Moments",
     },
   ]
@@ -682,11 +694,13 @@ export default function Home() {
                 ) : null}
 
                 <h1
-                  className={`${isMobile ? "sr-only" : "block text-center font-bold uppercase leading-[0.9] tracking-tight text-5xl lg:text-6xl xl:text-7xl"
+                  className={`${isMobile
+                      ? "sr-only"
+                      : "block text-center font-bold uppercase leading-[0.9] tracking-tight"
                     }`}
                 >
-                  <span className="block">Trailrunning Camp</span>
-                  <span className="block">The Mountaincamp 2026</span>
+                  <span className="block text-3xl lg:text-4xl xl:text-5xl">Trailrunning Camp Österreich</span>
+                  <span className="mt-2 block text-5xl lg:text-6xl xl:text-7xl">The Mountaincamp 2026</span>
                 </h1>
               </motion.div>
 
@@ -714,21 +728,13 @@ export default function Home() {
                 className="mt-5 flex w-full flex-col items-center gap-2"
               >
                 <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }} className="flex w-full justify-center">
-                  <Button
-                    size="lg"
-                    className="btn-primary w-full max-w-[280px] px-6 py-3 text-base"
-                    asChild
-                  >
+                  <Button size="lg" className="btn-primary w-full max-w-[280px] px-6 py-3 text-base" asChild>
                     <Link href="#experience">{language === "de" ? "Entdecke das Camp" : "Discover the Camp"}</Link>
                   </Button>
                 </motion.div>
 
                 <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }} className="flex w-full justify-center">
-                  <Button
-                    size="lg"
-                    className="btn-outline w-full max-w-[280px] px-6 py-3 text-base"
-                    asChild
-                  >
+                  <Button size="lg" className="btn-outline w-full max-w-[280px] px-6 py-3 text-base" asChild>
                     <a href={bookingUrl} target="_blank" rel="noopener noreferrer">
                       {language === "de" ? "Jetzt buchen" : "Book Now"}
                     </a>
@@ -753,12 +759,11 @@ export default function Home() {
             <ChevronDown className="h-10 w-10 text-white" />
           </motion.div>
         </section>
+
         <section className="bg-white py-10 md:py-14">
           <div className="container max-w-4xl">
             <h2 className="text-2xl font-bold text-gray-900 md:text-4xl">
-              {language === "de"
-                ? "Trailrunning Camp in den Österreichischen Alpen"
-                : "Trail Running Camp in the Austrian Alps"}
+              {language === "de" ? "Trailrunning Camp in den österreichischen Alpen" : "Trail Running Camp in the Austrian Alps"}
             </h2>
 
             <p className="mt-4 text-lg leading-relaxed text-gray-700">
@@ -781,7 +786,9 @@ export default function Home() {
                   viewport={{ once: true }}
                   transition={{ duration: 0.8 }}
                 >
-                  <h2 className="mb-6 text-2xl font-bold text-gray-900 md:mb-8 md:text-4xl">{t("aboutTitle")}</h2>
+                  <h2 className="mb-6 text-2xl font-bold text-gray-900 md:mb-8 md:text-4xl">
+                    {language === "de" ? "Dein Trailrunning Camp in Österreich" : "Your Trail Running Camp in Austria"}
+                  </h2>
                   <div className="space-y-3 text-gray-600">
                     {[1, 2, 3, 4, 5, 6].map((n) => (
                       <div className="flex items-start gap-3" key={n}>
@@ -820,7 +827,7 @@ export default function Home() {
                 >
                   <Image
                     src="/images/alpine-village-group.jpg"
-                    alt="Trailrunning camp Austria - Mountain camp participants walking together in Alpine village Hochkrimml"
+                    alt="Trailrunning Camp Österreich Teilnehmer in Hochkrimml"
                     fill
                     className="object-cover"
                     loading="lazy"
@@ -843,7 +850,7 @@ export default function Home() {
             <div className="flex flex-col items-center justify-between gap-6 md:flex-row">
               <div className="text-center md:text-left">
                 <h3 className="mb-2 text-xl font-bold text-white md:text-2xl">
-                  {language === "de" ? "Bereit für dein Abenteuer?" : "Ready for your adventure?"}
+                  {language === "de" ? "Bereit für dein Trailrunning Abenteuer?" : "Ready for your trail running adventure?"}
                 </h3>
                 <p className="text-sm text-white/80 md:text-base">
                   {language === "de"
@@ -868,7 +875,16 @@ export default function Home() {
 
         <section id="experience" className="bg-gray-50 py-16 md:py-24">
           <div className="container">
-            <SectionTitle title={t("experienceTitle")} subtitle={t("experienceSubtitle")} align="center" light={true} />
+            <SectionTitle
+              title={language === "de" ? "Das erwartet dich im Trailrunning Camp" : "What to expect at the trail running camp"}
+              subtitle={
+                language === "de"
+                  ? "Trailrunning, Recovery, kreative Workshops und Community in den österreichischen Alpen."
+                  : "Trail running, recovery, creative workshops and community in the Austrian Alps."
+              }
+              align="center"
+              light={true}
+            />
 
             <div className="grid grid-cols-2 gap-4 lg:grid-cols-4 md:gap-8">
               <motion.div
@@ -936,7 +952,16 @@ export default function Home() {
 
         <section className="bg-white py-24">
           <div className="container">
-            <SectionTitle title={t("activitiesTitle")} subtitle={t("activitiesSubtitle")} align="center" light={true} />
+            <SectionTitle
+              title={language === "de" ? "Aktivitäten im Trailrunning Camp" : "Activities at the trail running camp"}
+              subtitle={
+                language === "de"
+                  ? "Neben den täglichen Runs erwarten dich Workshops, kreative Sessions und gemeinsame Erlebnisse."
+                  : "Beyond the daily runs, expect workshops, creative sessions and shared experiences."
+              }
+              align="center"
+              light={true}
+            />
 
             <div className="relative mx-auto max-w-2xl">
               <motion.div
@@ -1009,7 +1034,11 @@ export default function Home() {
 
         <section className="bg-gray-50 py-24">
           <div className="container">
-            <SectionTitle title={t("galleryTitle")} align="center" light={true} />
+            <SectionTitle
+              title={language === "de" ? "Eindrücke aus dem Trailrunning Camp" : "Impressions from the trail running camp"}
+              align="center"
+              light={true}
+            />
 
             <div className="grid grid-cols-2 gap-4 md:grid-cols-3">
               {galleryImages.map((image, index) => (
@@ -1047,7 +1076,11 @@ export default function Home() {
           <div className="absolute left-0 top-0 h-full w-full bg-[radial-gradient(ellipse_at_top_right,_var(--tw-gradient-stops))] from-primary/10 via-transparent to-transparent" />
 
           <div className="container relative z-10">
-            <SectionTitle title={t("testimonialsTitle")} align="center" light={true} />
+            <SectionTitle
+              title={language === "de" ? "Erfahrungen aus dem Trailrunning Camp" : "What runners say about the trail running camp"}
+              align="center"
+              light={true}
+            />
 
             <div className="mx-auto max-w-4xl">
               <TestimonialSlider testimonials={testimonials} autoPlay={true} interval={6000} />
@@ -1069,7 +1102,16 @@ export default function Home() {
 
         <section className="overflow-hidden bg-gray-900 py-12 md:py-24">
           <div className="container mb-12">
-            <SectionTitle title={t("partnersTitle")} subtitle={t("partnersSubtitle")} align="center" light={false} />
+            <SectionTitle
+              title={language === "de" ? "Partner des Trailrunning Camps" : "Partners of the trail running camp"}
+              subtitle={
+                language === "de"
+                  ? "Marken und Partner, die das Mountaincamp begleiten."
+                  : "Brands and partners supporting The Mountaincamp."
+              }
+              align="center"
+              light={false}
+            />
           </div>
 
           <div className="relative">
@@ -1094,7 +1136,7 @@ export default function Home() {
                     <div key={`${setIndex}-${num}`} className="flex h-36 shrink-0 items-center justify-center">
                       <Image
                         src={`/images/partner-${num}.png`}
-                        alt={`Partner ${num}`}
+                        alt={language === "de" ? `Partnerlogo Mountaincamp ${num}` : `The Mountaincamp partner logo ${num}`}
                         width={600}
                         height={150}
                         className={`w-auto object-contain opacity-70 transition-opacity duration-300 hover:opacity-100 ${num === 8 ? "h-24" : "h-36"
@@ -1120,7 +1162,7 @@ export default function Home() {
                 transition={{ duration: 0.8 }}
               >
                 <h2 className="mb-4 text-2xl font-bold uppercase tracking-tight text-white md:mb-6 md:text-4xl">
-                  {t("joinTitle")}
+                  {language === "de" ? "Jetzt deinen Platz im Trailrunning Camp sichern" : "Secure your place at the trail running camp"}
                 </h2>
                 <p className="mb-8 text-xl text-white">
                   {language === "de" ? "5.–9. August 2026" : "August 5–9, 2026"}
@@ -1193,7 +1235,7 @@ export default function Home() {
           <div className="absolute inset-0">
             <Image
               src="/images/mountain-summit.jpeg"
-              alt="Mountain summit view"
+              alt={language === "de" ? "Trailrunning in den österreichischen Alpen" : "Trail running in the Austrian Alps"}
               fill
               className="object-cover opacity-30"
               loading="lazy"
@@ -1208,7 +1250,7 @@ export default function Home() {
                 transition={{ duration: 0.8 }}
                 className="mb-6 text-2xl font-bold md:mb-8 md:text-4xl lg:text-5xl"
               >
-                {language === "de" ? "Sei dabei" : "Join us"}
+                {language === "de" ? "Trailrunning Camp Österreich 2026" : "Trail Running Camp Austria 2026"}
               </motion.h2>
               <motion.p
                 initial={{ opacity: 0, y: 20 }}
