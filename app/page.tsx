@@ -685,8 +685,8 @@ export default function Home() {
                   className={`${isMobile ? "sr-only" : "block text-center font-bold uppercase leading-[0.9] tracking-tight text-5xl lg:text-6xl xl:text-7xl"
                     }`}
                 >
-                  <span className="block">The Mountaincamp</span>
-                  <span className="mt-2 block">2026</span>
+                  <span className="block">Trailrunning Camp Österreich</span>
+                  <span className="block">The Mountaincamp 2026</span>
                 </h1>
               </motion.div>
 
