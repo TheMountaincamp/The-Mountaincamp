@@ -31,17 +31,32 @@ export const viewport: Viewport = {
 export const metadata: Metadata = {
   metadataBase: new URL("https://themountaincamp.de"),
 
-  title: "Trailrunning Camp Österreich 2026 | The Mountaincamp",
+  title: "Trailrunning Camp Österreich 2026 | The Mountaincamp in den Alpen",
 
   description:
-    "5 Tage Trailrunning Camp in Österreich. Trails, Techniktraining, Community und Workshops in den Alpen. Für Anfänger und Fortgeschrittene. Hochkrimml, 5.–9. August 2026.",
+    "Trailrunning Camp in Österreich: 5 Tage in den Alpen für Anfänger, Fortgeschrittene und Profis. Join 130 runners for a trail running camp in the Austrian Alps with coaching, trails and community. Hochkrimml, 5.–9. August 2026.",
+
+  keywords: [
+    "trailrunning camp",
+    "trailrunning camp österreich",
+    "trail running camp austria",
+    "trailrunning alpen",
+    "trailrunning camp alps",
+    "running camp österreich",
+    "running camp alps",
+    "trailrunning retreat",
+    "trail running retreat",
+    "trailrunning hochkrimml",
+    "trailrunning camp 2026",
+    "the mountaincamp",
+  ],
 
   alternates: {
-    canonical: "https://themountaincamp.de",
+    canonical: "/",
   },
 
   openGraph: {
-    title: "Trailrunning Camp Österreich 2026 | The Mountaincamp",
+    title: "Trailrunning Camp Österreich 2026 | The Mountaincamp in den Alpen",
     description:
       "Trailrunning Camp in Österreich: 5 Tage in den Alpen für alle Levels. Join 130 runners for a trail running camp in the Austrian Alps with coaching, trails and community. Hochkrimml, 5.–9. August 2026.",
     url: "https://themountaincamp.de",
