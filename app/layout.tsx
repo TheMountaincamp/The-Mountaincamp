@@ -58,7 +58,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: "Trailrunning Camp Österreich 2026 | The Mountaincamp in den Alpen",
     description:
-      "Trailrunning Camp in Österreich: 5 Tage in den Alpen für alle Level. Join 130 runners for a trail running camp in the Austrian Alps with coaching, trails and community. Hochkrimml, 5.–9. August 2026.",
+      "Trailrunning Camp in Österreich: 5 Tage in den Alpen für alle Levels. Join 130 runners for a trail running camp in the Austrian Alps with coaching, trails and community. Hochkrimml, 5.–9. August 2026.",
     url: "https://themountaincamp.de",
     siteName: "The Mountaincamp",
     images: [
