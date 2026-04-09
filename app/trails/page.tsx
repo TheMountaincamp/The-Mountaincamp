@@ -163,7 +163,7 @@ export default function TrailsPage() {
       },
       image: "/images/summit-view.jpeg",
     },
-  ]
+  ];
 
   return (
     <div className="min-h-screen bg-white text-gray-900">
