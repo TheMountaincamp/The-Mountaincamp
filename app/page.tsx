@@ -685,7 +685,7 @@ export default function Home() {
                   className={`${isMobile ? "sr-only" : "block text-center font-bold uppercase leading-[0.9] tracking-tight text-5xl lg:text-6xl xl:text-7xl"
                     }`}
                 >
-                  <span className="block">Trailrunning Camp Österreich</span>
+                  <span className="block">Trailrunning Camp</span>
                   <span className="block">The Mountaincamp 2026</span>
                 </h1>
               </motion.div>
@@ -757,8 +757,8 @@ export default function Home() {
           <div className="container max-w-4xl">
             <h2 className="text-2xl font-bold text-gray-900 md:text-4xl">
               {language === "de"
-                ? "Trailrunning Camp in den österreichischen Alpen"
-                : "Trail Running Camp in the austrian Alps"}
+                ? "Trailrunning Camp in den Österreichischen Alpen"
+                : "Trail Running Camp in the Austrian Alps"}
             </h2>
 
             <p className="mt-4 text-lg leading-relaxed text-gray-700">
