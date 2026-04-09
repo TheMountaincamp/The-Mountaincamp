@@ -785,7 +785,7 @@ export default function Home() {
           </div>
         </section>
 
-        <section id="about" className="relative z-30 -mt-32">
+        <section id="about" className="relative z-30">
           <div className="pointer-events-none absolute left-0 right-0 top-0 h-64 bg-gradient-to-b from-transparent via-white/5 via-white/10 via-white/15 via-white/20 via-white/25" />
 
           <div className="bg-white pb-16 pt-24 md:pb-24 md:pt-40">
