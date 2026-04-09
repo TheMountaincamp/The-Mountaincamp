@@ -686,7 +686,6 @@ export default function Home() {
                 >
                   The
                   Mountaincamp
-                  2026
                 </h1>
               </motion.div>
 
