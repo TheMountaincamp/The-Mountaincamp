@@ -3,6 +3,7 @@
 import { useState, useEffect, useRef } from "react"
 import Image from "next/image"
 import Link from "next/link"
+import Script from "next/script"
 import { motion, useScroll, useTransform, AnimatePresence } from "framer-motion"
 import {
   Mountain,
@@ -28,7 +29,6 @@ import PriceCategoryBars from "@/app/components/price-category-bars"
 import ImageWithFallback from "@/app/components/image-with-fallback"
 import ImagePreloader from "@/app/components/image-preloader"
 import PreloadLink from "@/app/components/preload-link"
-import { useScrollVideo } from "@/hooks/use-scroll-video"
 import TestimonialSlider from "@/app/components/testimonial-slider"
 import InstagramReelsSection from "@/app/components/instagram-reels-section"
 import FAQSection from "@/app/components/faq-section"
@@ -42,197 +42,125 @@ export default function Home() {
   const { t, language } = useLanguage()
   const isMobile = useMobile()
 
-  const [expandedActivities, setExpandedActivities] = useState<{ [key: number]: boolean }>({})
   const [currentActivityIndex, setCurrentActivityIndex] = useState(0)
-  const [isPreloading, setIsPreloading] = useState(true)
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
   const [hasScrolled, setHasScrolled] = useState(false)
 
   const videoRef = useRef<HTMLVideoElement>(null)
   const heroRef = useRef(null)
 
-  useEffect(() => {
-    setIsPreloading(false)
-  }, [])
+  const bookingUrl = `https://my.camps.digital/masken/buchungen/vuejs?&vendor=mountaincamp&destination_id=2467&termin_id=36011&locale=${language === "de" ? "de" : "en"
+    }#/`
 
-  useEffect(() => {
-    if (typeof window !== "undefined") {
-      const eventStructuredData = {
-        "@context": "https://schema.org",
-        "@type": "SportsEvent",
-        name: "The Mountaincamp 2026 - Trailrunning Camp Austria",
-        alternateName: [
-          "Trailrunning Camp Austria",
-          "Trailrunning Camp Österreich",
-          "Trailrunning Camp Alpen",
-          "Trailrunning Camp für Anfänger",
-          "Trailrunning Camp for Beginners",
-          "Lovetrails Festival",
-          "The Mountaincamp",
-          "Alpine Trailrunning Camp",
-        ],
-        description:
-          "Premier trailrunning camp for beginners in Austria and the Austrian Alps. The ultimate 5-day trailrunning camp featuring epic mountain trails, expert coaching, professional training sessions, and vibrant community. Perfect trailrunning camp for beginners and all levels of trail runners seeking an unforgettable trailrunning trip in Hochkrimml, Austria. Experience the best trailrunning camp for beginners in the Alps.",
-        sport: "Trail Running",
-        startDate: "2026-08-05",
-        endDate: "2026-08-09",
-        eventStatus: "https://schema.org/EventScheduled",
-        eventAttendanceMode: "https://schema.org/OfflineEventAttendanceMode",
-        location: {
-          "@type": "Place",
-          name: "Hochkrimml, Austrian Alps",
-          address: {
-            "@type": "PostalAddress",
-            streetAddress: "Hochkrimml",
-            addressLocality: "Hochkrimml",
-            addressRegion: "Salzburg",
-            postalCode: "5743",
-            addressCountry: "AT",
-          },
-          geo: {
-            "@type": "GeoCoordinates",
-            latitude: 47.2393,
-            longitude: 12.1735,
-          },
-        },
-        image: [
-          "https://themountaincamp.de/images/hero-trail-runners.jpeg",
-          "https://themountaincamp.de/images/trail-runner-1.jpeg",
-          "https://themountaincamp.de/images/alpine-village-group.jpg",
-        ],
-        offers: {
-          "@type": "Offer",
-          price: "530",
-          priceCurrency: "EUR",
-          availability: "https://schema.org/LimitedAvailability",
-          url: "https://my.camps.digital/masken/buchungen/vuejs?&vendor=mountaincamp&destination_id=2467&termin_id=36011#/",
-          validFrom: "2026-04-01T19:00:00+02:00",
-          priceValidUntil: "2026-08-01T00:00:00+02:00",
-        },
-        organizer: {
-          "@type": "Organization",
-          name: "The Mountaincamp",
-          url: "https://themountaincamp.de",
-          logo: "https://themountaincamp.de/images/MTC-Logo_2025.png",
-          sameAs: [
-            "https://www.instagram.com/the_mountaincamp/",
-            "https://www.youtube.com/@the_mountaincamp",
-            "https://www.tiktok.com/@themountaincamp",
-          ],
-        },
-        performer: {
-          "@type": "PerformingGroup",
-          name: "The Mountaincamp Coaching Team",
-        },
-        keywords:
-          "trailrunning camp für anfänger, trailrunning camp for beginners, trailrunning camp anfänger Österreich, trailrunning camp beginners Austria, trailrunning camp, trailrunning camp Austria, trailrunning camp Österreich, trailrunning camp alps, trailrunning camp Alpen, trailrunning trainings camp, trailrunning training camp, trailrunning festival, trailrunning festival Alpen, trailrunning festival Österreich, trailrunning trip, trailrunning trip Austria, trailrunning trip Österreich, alpine trailrunning camp, trail running camp Austria, mountain running camp, Austrian Alps trail running, Hochkrimml, trail running event, trail running festival, running camp Europe, mountain training camp alps, trailrunning camp europe, anfänger trailrunning, beginner trail running",
-      }
+  const eventStructuredData = {
+    "@context": "https://schema.org",
+    "@type": "SportsEvent",
+    name: "The Mountaincamp 2026",
+    alternateName: [
+      "The Mountaincamp",
+      "Trailrunning Camp Austria",
+      "Trailrunning Camp Österreich",
+      "Trail Running Camp Austria",
+    ],
+    description:
+      "A 5-day trail running camp in Hochkrimml, Austria, for beginners, intermediate runners and experienced athletes. Trails, coaching, community and workshops in the Austrian Alps.",
+    sport: "Trail Running",
+    startDate: "2026-08-05",
+    endDate: "2026-08-09",
+    eventStatus: "https://schema.org/EventScheduled",
+    eventAttendanceMode: "https://schema.org/OfflineEventAttendanceMode",
+    location: {
+      "@type": "Place",
+      name: "Hochkrimml, Austrian Alps",
+      address: {
+        "@type": "PostalAddress",
+        streetAddress: "Hochkrimml",
+        addressLocality: "Hochkrimml",
+        addressRegion: "Salzburg",
+        postalCode: "5743",
+        addressCountry: "AT",
+      },
+      geo: {
+        "@type": "GeoCoordinates",
+        latitude: 47.2393,
+        longitude: 12.1735,
+      },
+    },
+    image: [
+      "https://themountaincamp.de/images/hero-trail-runners.jpeg",
+      "https://themountaincamp.de/images/alpine-village-group.jpg",
+      "https://themountaincamp.de/images/mountain-summit.jpeg",
+    ],
+    offers: {
+      "@type": "Offer",
+      price: "530",
+      priceCurrency: "EUR",
+      availability: "https://schema.org/LimitedAvailability",
+      url: bookingUrl,
+      validFrom: "2026-04-01T19:00:00+02:00",
+      priceValidUntil: "2026-08-01T00:00:00+02:00",
+    },
+    organizer: {
+      "@type": "Organization",
+      name: "The Mountaincamp",
+      url: "https://themountaincamp.de",
+      logo: "https://themountaincamp.de/images/MTC-Logo_2025.png",
+      sameAs: [
+        "https://www.instagram.com/the_mountaincamp/",
+        "https://www.youtube.com/@the_mountaincamp",
+        "https://www.tiktok.com/@themountaincamp",
+      ],
+    },
+    performer: {
+      "@type": "Organization",
+      name: "The Mountaincamp Coaching Team",
+    },
+  }
 
-      const organizationData = {
-        "@context": "https://schema.org",
-        "@type": ["SportsActivityLocation", "LocalBusiness"],
-        name: "The Mountaincamp - Trailrunning Camp Austria",
-        alternateName: [
-          "Trailrunning Camp Austria",
-          "Trailrunning Camp Österreich",
-          "Trailrunning Camp Alpen",
-          "Trailrunning Camp für Anfänger",
-          "Trailrunning Camp for Beginners",
-          "Lovetrails Festival",
-          "Alpine Trailrunning Camp",
-        ],
-        description:
-          "Austria's premier trailrunning camp for beginners in the Alps. The ultimate trailrunning camp offering epic mountain trails, expert coaching, professional training sessions, and unforgettable community experiences in Hochkrimml. The best trailrunning camp for beginners and all levels seeking an authentic trailrunning trip in the Austrian Alps.",
-        url: "https://themountaincamp.de",
-        logo: "https://themountaincamp.de/images/MTC-Logo_2025.png",
-        image: "https://themountaincamp.de/images/hero-trail-runners.jpeg",
-        address: {
-          "@type": "PostalAddress",
-          addressLocality: "Hochkrimml",
-          addressRegion: "Salzburg",
-          addressCountry: "AT",
-        },
-        geo: {
-          "@type": "GeoCoordinates",
-          latitude: 47.2393,
-          longitude: 12.1735,
-        },
-        sameAs: [
-          "https://www.instagram.com/the_mountaincamp/",
-          "https://www.youtube.com/@the_mountaincamp",
-          "https://www.tiktok.com/@themountaincamp",
-        ],
-        contactPoint: {
-          "@type": "ContactPoint",
-          email: "themountaincampde@gmail.com",
-          contactType: "Customer Service",
-          availableLanguage: ["German", "English"],
-        },
-        priceRange: "€€",
-        openingHours: "Mo-Su",
-      }
+  const organizationStructuredData = {
+    "@context": "https://schema.org",
+    "@type": "Organization",
+    name: "The Mountaincamp",
+    url: "https://themountaincamp.de",
+    logo: "https://themountaincamp.de/images/MTC-Logo_2025.png",
+    image: "https://themountaincamp.de/images/hero-trail-runners.jpeg",
+    address: {
+      "@type": "PostalAddress",
+      addressLocality: "Hochkrimml",
+      addressRegion: "Salzburg",
+      addressCountry: "AT",
+    },
+    sameAs: [
+      "https://www.instagram.com/the_mountaincamp/",
+      "https://www.youtube.com/@the_mountaincamp",
+      "https://www.tiktok.com/@themountaincamp",
+    ],
+    contactPoint: {
+      "@type": "ContactPoint",
+      email: "themountaincampde@gmail.com",
+      contactType: "Customer Service",
+      availableLanguage: ["German", "English"],
+    },
+  }
 
-      const breadcrumbData = {
-        "@context": "https://schema.org",
-        "@type": "BreadcrumbList",
-        itemListElement: [
-          {
-            "@type": "ListItem",
-            position: 1,
-            name: "Home",
-            item: "https://themountaincamp.de",
-          },
-          {
-            "@type": "ListItem",
-            position: 2,
-            name: "Trailrunning Camp Austria",
-            item: "https://themountaincamp.de",
-          },
-        ],
-      }
-
-      const websiteData = {
-        "@context": "https://schema.org",
-        "@type": "WebSite",
-        name: "The Mountaincamp - Trailrunning Camp Austria",
-        alternateName: [
-          "Trailrunning Camp Österreich",
-          "Trailrunning Camp Austria",
-          "Trailrunning Camp für Anfänger",
-          "Trailrunning Camp for Beginners",
-          "Trailrunning Festival Alpen",
-          "Alpine Trailrunning Camp",
-        ],
-        url: "https://themountaincamp.de",
-        description:
-          "Premier trailrunning camp for beginners in Austria and the Austrian Alps. The ultimate trailrunning camp, training camp, and festival featuring epic trails, expert coaching, and unforgettable community experiences for all levels.",
-        inLanguage: ["de-DE", "en-US"],
-        potentialAction: {
-          "@type": "SearchAction",
-          target: "https://themountaincamp.de/?s={search_term_string}",
-          "query-input": "required name=search_term_string",
-        },
-      }
-
-      const scripts = [eventStructuredData, organizationData, breadcrumbData, websiteData]
-
-      scripts.forEach((data) => {
-        const script = document.createElement("script")
-        script.type = "application/ld+json"
-        script.text = JSON.stringify(data)
-        document.head.appendChild(script)
-      })
-
-      return () => {
-        const scriptElements = document.querySelectorAll('script[type="application/ld+json"]')
-        scriptElements.forEach((scriptEl) => {
-          if (document.head.contains(scriptEl)) {
-            document.head.removeChild(scriptEl)
-          }
-        })
-      }
-    }
-  }, [])
+  const breadcrumbStructuredData = {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    itemListElement: [
+      {
+        "@type": "ListItem",
+        position: 1,
+        name: "Home",
+        item: "https://themountaincamp.de",
+      },
+      {
+        "@type": "ListItem",
+        position: 2,
+        name: "The Mountaincamp",
+        item: "https://themountaincamp.de",
+      },
+    ],
+  }
 
   const { scrollYProgress } = useScroll({
     target: heroRef,
@@ -272,18 +200,14 @@ export default function Home() {
       if (window.scrollY > 100 && !hasScrolled) {
         setHasScrolled(true)
       }
+      if (window.scrollY <= 100 && hasScrolled) {
+        setHasScrolled(false)
+      }
     }
 
     window.addEventListener("scroll", handleScroll)
     return () => window.removeEventListener("scroll", handleScroll)
   }, [hasScrolled])
-
-  const toggleActivity = (index: number) => {
-    setExpandedActivities((prevState) => ({
-      ...prevState,
-      [index]: !prevState[index],
-    }))
-  }
 
   const testimonials = [
     {
@@ -360,7 +284,10 @@ export default function Home() {
     },
     {
       src: "/images/trail-runners-mountain-path.jpg",
-      alt: language === "de" ? "Zwei Trailrunnerinnen auf einem Bergpfad" : "Two female trail runners on mountain path",
+      alt:
+        language === "de"
+          ? "Zwei Trailrunnerinnen auf einem Bergpfad"
+          : "Two female trail runners on mountain path",
       caption: language === "de" ? "Trail Abenteuer" : "Trail Adventures",
     },
     {
@@ -504,8 +431,6 @@ export default function Home() {
     setMobileMenuOpen(!mobileMenuOpen)
   }
 
-  const { videoRef: scrollVideoRef, isVideoLoaded } = useScrollVideo()
-
   const nextActivity = () => {
     setCurrentActivityIndex((prev) => (prev + 1) % activities.length)
   }
@@ -516,34 +441,45 @@ export default function Home() {
 
   return (
     <div className="min-h-screen bg-white">
-      <ImagePreloader imageSources={SECTION_IMAGES} onComplete={() => setIsPreloading(false)} />
-      
-      {/* Sticky Mobile CTA */}
+      <Script
+        id="structured-data-event"
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(eventStructuredData) }}
+      />
+      <Script
+        id="structured-data-organization"
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(organizationStructuredData) }}
+      />
+      <Script
+        id="structured-data-breadcrumb"
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbStructuredData) }}
+      />
+
+      <ImagePreloader imageSources={SECTION_IMAGES} onComplete={() => { }} />
+
       {isMobile && hasScrolled && (
         <motion.div
           initial={{ y: 100, opacity: 0 }}
           animate={{ y: 0, opacity: 1 }}
-          className="fixed bottom-0 left-0 right-0 z-40 bg-black/95 backdrop-blur-md border-t border-white/10 px-4 py-3 safe-area-pb"
+          className="fixed bottom-0 left-0 right-0 z-40 border-t border-white/10 bg-black/95 px-4 py-3 backdrop-blur-md safe-area-pb"
         >
           <div className="flex items-center justify-between gap-3">
             <div className="flex-1">
-              <p className="text-white text-sm font-bold">
+              <p className="text-sm font-bold text-white">
                 {language === "de" ? "Sichere dir deinen Platz!" : "Secure your spot!"}
               </p>
-              <p className="text-white/60 text-xs">
+              <p className="text-xs text-white/60">
                 {language === "de" ? "Ab €530 - Begrenzte Plätze" : "From €530 - Limited spots"}
               </p>
             </div>
             <Button
               size="sm"
-              className="bg-primary hover:bg-primary/90 text-white font-bold px-4 py-2 whitespace-nowrap"
+              className="whitespace-nowrap bg-primary px-4 py-2 font-bold text-white hover:bg-primary/90"
               asChild
             >
-              <a
-                href="https://my.camps.digital/masken/buchungen/vuejs?&vendor=mountaincamp&destination_id=2467&termin_id=36011&locale=de#/"
-                target="_blank"
-                rel="noopener noreferrer"
-              >
+              <a href={bookingUrl} target="_blank" rel="noopener noreferrer">
                 {language === "de" ? "Jetzt buchen" : "Book now"}
               </a>
             </Button>
@@ -567,7 +503,7 @@ export default function Home() {
             </div>
           </div>
 
-          <nav className="hidden md:flex items-center gap-4 lg:gap-6">
+          <nav className="hidden items-center gap-4 md:flex lg:gap-6">
             <Link href="#about" className="whitespace-nowrap text-sm font-bold uppercase text-white transition-colors hover:text-primary">
               {t("about")}
             </Link>
@@ -654,7 +590,7 @@ export default function Home() {
               </motion.button>
             </div>
 
-            <div className="flex flex-1 flex-col items-center justify-center gap-8 py-8 overflow-y-auto">
+            <div className="flex flex-1 flex-col items-center justify-center gap-8 overflow-y-auto py-8">
               {[
                 { key: "about", href: "#about", label: t("about") },
                 { key: "experience", href: "#experience", label: t("experience") },
@@ -740,32 +676,39 @@ export default function Home() {
                     priority
                     sizes="250px"
                   />
-                ) : (
-                  <h1 className="text-6xl font-bold uppercase tracking-tight">THE MOUNTAINCAMP</h1>
-                )}
+                ) : null}
+
+                <h1 className={`${isMobile ? "sr-only" : "text-6xl"} font-bold uppercase tracking-tight`}>
+                  {language === "de"
+                    ? "Trailrunning Camp Österreich 2026 | The Mountaincamp"
+                    : "Trail Running Camp Austria 2026 | The Mountaincamp"}
+                </h1>
               </motion.div>
 
               <motion.p
                 initial={{ opacity: 0, y: 30 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: 0.6, duration: 0.8 }}
-                className="mx-auto max-w-3xl text-sm leading-relaxed text-white/90 px-4 md:px-0 md:text-2xl"
+                className="mx-auto max-w-3xl px-4 text-sm leading-relaxed text-white/90 md:px-0 md:text-2xl"
               >
                 {language === "de" ? (
                   <>
-                    Erlebe das größte <strong>Trailrunning Camp in Österreich</strong>
+                    5 Tage <strong>Trailrunning Camp in Österreich</strong> für Anfänger, Fortgeschrittene und Profis.
                     <br />
-                    5 Tage traumhafte Trails in den <strong>österreichischen Alpen</strong>
+                    Laufe traumhafte Trails in den <strong>österreichischen Alpen</strong>, trainiere mit der Community
+                    und erlebe Hochkrimml von seiner besten Seite.
                     <br />
-                    <span className="font-bold">Hochkrimml | 5.-9. August 2026</span>
+                    <span className="font-bold">Hochkrimml | 5.–9. August 2026</span>
                   </>
                 ) : (
                   <>
-                    Experience the biggest <strong>trailrunning camp in Austria</strong>
+                    A 5-day <strong>trail running camp in Austria</strong> for beginners, intermediate runners and
+                    experienced athletes.
                     <br />
-                    5 days of epic trails in the <strong>Alps</strong>
+                    Run epic trails in the <strong>Austrian Alps</strong>, train with the community and experience
+                    Hochkrimml at its best.
                     <br />
-                    <span className="font-bold">Hochkrimml | August 5-9, 2026</span>
+                    <span className="font-bold">Hochkrimml | August 5–9, 2026</span>
                   </>
                 )}
               </motion.p>
@@ -774,20 +717,16 @@ export default function Home() {
                 initial={{ opacity: 0, y: 30 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: 0.8, duration: 0.8 }}
-                className="flex flex-col justify-center gap-3 px-4 md:px-0 sm:flex-row sm:gap-4 mt-6"
+                className="mt-6 flex flex-col justify-center gap-3 px-4 sm:flex-row sm:gap-4 md:px-0"
               >
                 <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }} className="w-full sm:w-auto">
-                  <Button size="lg" className="btn-primary w-full sm:w-auto px-6 md:px-8 text-base md:text-lg py-3" asChild>
+                  <Button size="lg" className="btn-primary w-full px-6 py-3 text-base md:px-8 md:text-lg sm:w-auto" asChild>
                     <Link href="#experience">{language === "de" ? "Entdecke das Camp" : "Discover the Camp"}</Link>
                   </Button>
                 </motion.div>
                 <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }} className="w-full sm:w-auto">
-                  <Button size="lg" className="btn-outline w-full sm:w-auto px-6 md:px-8 text-base md:text-lg py-3" asChild>
-                    <a
-                      href="https://my.camps.digital/masken/buchungen/vuejs?&vendor=mountaincamp&destination_id=2467&termin_id=36011&locale=de#/"
-                      target="_blank"
-                      rel="noopener noreferrer"
-                    >
+                  <Button size="lg" className="btn-outline w-full px-6 py-3 text-base md:px-8 md:text-lg sm:w-auto" asChild>
+                    <a href={bookingUrl} target="_blank" rel="noopener noreferrer">
                       {language === "de" ? "Jetzt buchen" : "Book Now"}
                     </a>
                   </Button>
@@ -815,16 +754,16 @@ export default function Home() {
         <section id="about" className="relative z-30 -mt-32">
           <div className="pointer-events-none absolute left-0 right-0 top-0 h-64 bg-gradient-to-b from-transparent via-white/5 via-white/10 via-white/15 via-white/20 via-white/25" />
 
-          <div className="bg-white pb-16 md:pb-24 pt-24 md:pt-40">
+          <div className="bg-white pb-16 pt-24 md:pb-24 md:pt-40">
             <div className="container">
-              <div className="grid items-center gap-8 md:gap-16 lg:grid-cols-2">
+              <div className="grid items-center gap-8 lg:grid-cols-2 md:gap-16">
                 <motion.div
                   initial={{ opacity: 0, x: -50 }}
                   whileInView={{ opacity: 1, x: 0 }}
                   viewport={{ once: true }}
                   transition={{ duration: 0.8 }}
                 >
-                  <h2 className="mb-6 md:mb-8 text-2xl md:text-4xl font-bold text-gray-900">{t("aboutTitle")}</h2>
+                  <h2 className="mb-6 text-2xl font-bold text-gray-900 md:mb-8 md:text-4xl">{t("aboutTitle")}</h2>
                   <div className="space-y-3 text-gray-600">
                     {[1, 2, 3, 4, 5, 6].map((n) => (
                       <div className="flex items-start gap-3" key={n}>
@@ -839,7 +778,7 @@ export default function Home() {
                           <Calendar className="h-5 w-5 text-primary" />
                         </div>
                         <span className="text-lg text-gray-900">
-                          {language === "de" ? "5.-9. August 2026" : "August 5-9, 2026"}
+                          {language === "de" ? "5.–9. August 2026" : "August 5–9, 2026"}
                         </span>
                       </div>
                       <div className="flex items-center gap-3">
@@ -859,7 +798,7 @@ export default function Home() {
                   whileInView={{ opacity: 1, scale: 1 }}
                   viewport={{ once: true }}
                   transition={{ duration: 0.8 }}
-                  className="relative h-[300px] md:h-[500px] overflow-hidden rounded-xl"
+                  className="relative h-[300px] overflow-hidden rounded-xl md:h-[500px]"
                 >
                   <Image
                     src="/images/alpine-village-group.jpg"
@@ -881,31 +820,26 @@ export default function Home() {
           </div>
         </section>
 
-        {/* Mid-page CTA Banner */}
         <section className="bg-primary py-8 md:py-12">
           <div className="container">
-            <div className="flex flex-col md:flex-row items-center justify-between gap-6">
+            <div className="flex flex-col items-center justify-between gap-6 md:flex-row">
               <div className="text-center md:text-left">
-                <h3 className="text-xl md:text-2xl font-bold text-white mb-2">
+                <h3 className="mb-2 text-xl font-bold text-white md:text-2xl">
                   {language === "de" ? "Bereit für dein Abenteuer?" : "Ready for your adventure?"}
                 </h3>
-                <p className="text-white/80 text-sm md:text-base">
-                  {language === "de" 
-                    ? "Nur noch wenige Plätze verfügbar - Sichere dir jetzt deinen Spot!" 
+                <p className="text-sm text-white/80 md:text-base">
+                  {language === "de"
+                    ? "Nur noch wenige Plätze verfügbar - Sichere dir jetzt deinen Spot!"
                     : "Only a few spots left - Secure yours now!"}
                 </p>
               </div>
               <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
                 <Button
                   size="lg"
-                  className="bg-white text-primary hover:bg-white/90 font-bold px-8 py-3 text-base md:text-lg"
+                  className="bg-white px-8 py-3 text-base font-bold text-primary hover:bg-white/90 md:text-lg"
                   asChild
                 >
-                  <a
-                    href="https://my.camps.digital/masken/buchungen/vuejs?&vendor=mountaincamp&destination_id=2467&termin_id=36011&locale=de#/"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                  >
+                  <a href={bookingUrl} target="_blank" rel="noopener noreferrer">
                     {language === "de" ? "Jetzt Ticket sichern" : "Get Your Ticket"}
                   </a>
                 </Button>
@@ -918,7 +852,7 @@ export default function Home() {
           <div className="container">
             <SectionTitle title={t("experienceTitle")} subtitle={t("experienceSubtitle")} align="center" light={true} />
 
-            <div className="grid gap-4 md:gap-8 grid-cols-2 lg:grid-cols-4">
+            <div className="grid grid-cols-2 gap-4 lg:grid-cols-4 md:gap-8">
               <motion.div
                 initial={{ opacity: 0, y: 30 }}
                 whileInView={{ opacity: 1, y: 0 }}
@@ -1081,7 +1015,7 @@ export default function Home() {
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent opacity-0 transition-opacity duration-300 group-hover:opacity-100" />
                   <div className="absolute bottom-0 left-0 p-4 text-white opacity-0 transition-opacity duration-300 group-hover:opacity-100">
-                    <span className="font-bold text-white">{image.caption}</span>
+                    <span className="text-white font-bold">{image.caption}</span>
                   </div>
                 </motion.div>
               ))}
@@ -1121,8 +1055,8 @@ export default function Home() {
           </div>
 
           <div className="relative">
-            <div className="absolute left-0 top-0 bottom-0 z-10 w-32 bg-gradient-to-r from-gray-900 to-transparent" />
-            <div className="absolute right-0 top-0 bottom-0 z-10 w-32 bg-gradient-to-l from-gray-900 to-transparent" />
+            <div className="absolute bottom-0 left-0 top-0 z-10 w-32 bg-gradient-to-r from-gray-900 to-transparent" />
+            <div className="absolute bottom-0 right-0 top-0 z-10 w-32 bg-gradient-to-l from-gray-900 to-transparent" />
 
             <motion.div
               className="flex items-center gap-20"
@@ -1158,18 +1092,20 @@ export default function Home() {
           </div>
         </section>
 
-        <section id="register" className="bg-black py-16 md:py-24 text-white">
+        <section id="register" className="bg-black py-16 text-white md:py-24">
           <div className="container">
-            <div className="grid items-center gap-8 md:gap-16 lg:grid-cols-2">
+            <div className="grid items-center gap-8 lg:grid-cols-2 md:gap-16">
               <motion.div
                 initial={{ opacity: 0, x: -50 }}
                 whileInView={{ opacity: 1, x: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.8 }}
               >
-                <h2 className="mb-4 md:mb-6 text-2xl md:text-4xl font-bold uppercase tracking-tight text-white">{t("joinTitle")}</h2>
+                <h2 className="mb-4 text-2xl font-bold uppercase tracking-tight text-white md:mb-6 md:text-4xl">
+                  {t("joinTitle")}
+                </h2>
                 <p className="mb-8 text-xl text-white">
-                  {language === "de" ? "5.-9. August 2026" : "August 5-9, 2026"}
+                  {language === "de" ? "5.–9. August 2026" : "August 5–9, 2026"}
                   <br />
                   {language === "de" ? "Österreichische Alpen" : "Austrian Alps"}
                 </p>
@@ -1219,11 +1155,7 @@ export default function Home() {
                       className="bg-primary px-8 py-4 text-lg font-bold text-white hover:bg-primary/90"
                       asChild
                     >
-                      <a
-                        href="https://my.camps.digital/masken/buchungen/vuejs?&vendor=mountaincamp&destination_id=2467&termin_id=36011&locale=de#/"
-                        target="_blank"
-                        rel="noopener noreferrer"
-                      >
+                      <a href={bookingUrl} target="_blank" rel="noopener noreferrer">
                         {t("registerNow")}
                       </a>
                     </Button>
@@ -1239,7 +1171,7 @@ export default function Home() {
           </div>
         </section>
 
-        <section className="relative overflow-hidden bg-black py-16 md:py-24 text-white">
+        <section className="relative overflow-hidden bg-black py-16 text-white md:py-24">
           <div className="absolute inset-0">
             <Image
               src="/images/mountain-summit.jpeg"
@@ -1256,9 +1188,9 @@ export default function Home() {
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.8 }}
-                className="mb-6 md:mb-8 text-2xl md:text-4xl lg:text-5xl font-bold"
+                className="mb-6 text-2xl font-bold md:mb-8 md:text-4xl lg:text-5xl"
               >
-                {t("Join us")}
+                {language === "de" ? "Sei dabei" : "Join us"}
               </motion.h2>
               <motion.p
                 initial={{ opacity: 0, y: 20 }}
@@ -1266,7 +1198,9 @@ export default function Home() {
                 transition={{ duration: 0.8, delay: 0.2 }}
                 className="mb-12 text-xl text-gray-300"
               >
-                {t("")}
+                {language === "de"
+                  ? "Fünf Tage Trailrunning, Community und unvergessliche Momente in den österreichischen Alpen."
+                  : "Five days of trail running, community and unforgettable moments in the Austrian Alps."}
               </motion.p>
               <motion.div
                 initial={{ opacity: 0, y: 20 }}
@@ -1275,17 +1209,13 @@ export default function Home() {
                 className="flex flex-col items-center justify-center gap-6 sm:flex-row"
               >
                 <Button size="lg" className="btn-primary px-8 text-lg" asChild>
-                  <a
-                    href="https://my.camps.digital/masken/buchungen/vuejs?&vendor=mountaincamp&destination_id=2467&termin_id=36011&locale=de#/"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                  >
+                  <a href={bookingUrl} target="_blank" rel="noopener noreferrer">
                     {t("registerNow")}
                   </a>
                 </Button>
                 <div className="flex items-center gap-4 text-gray-300">
                   <Calendar className="h-5 w-5" />
-                  <span>{t("5-9 August")}</span>
+                  <span>{language === "de" ? "5.–9. August 2026" : "August 5–9, 2026"}</span>
                 </div>
               </motion.div>
             </div>
