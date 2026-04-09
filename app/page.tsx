@@ -264,7 +264,7 @@ export default function Home() {
         language === "de"
           ? "Camp-Teilnehmer beim Socializen auf der Terrasse der Lodge"
           : "Camp participants socializing on lodge terrace",
-      caption: language === "de" ? "Community Vibes" : "Community Vibes",
+      caption: "Community Vibes",
     },
     {
       src: "/images/lodge-group-start.jpg",
@@ -280,7 +280,7 @@ export default function Home() {
         language === "de"
           ? "Große Gruppe auf der Terrasse der Lodge bei Sonnenuntergang"
           : "Large group gathering on lodge terrace at sunset",
-      caption: language === "de" ? "Community Vibes" : "Community Vibes",
+      caption: "Community Vibes",
     },
     {
       src: "/images/trail-runners-mountain-path.jpg",
@@ -504,7 +504,10 @@ export default function Home() {
           </div>
 
           <nav className="hidden items-center gap-4 md:flex lg:gap-6">
-            <Link href="#about" className="whitespace-nowrap text-sm font-bold uppercase text-white transition-colors hover:text-primary">
+            <Link
+              href="#about"
+              className="whitespace-nowrap text-sm font-bold uppercase text-white transition-colors hover:text-primary"
+            >
               {t("about")}
             </Link>
             <Link
@@ -678,40 +681,29 @@ export default function Home() {
                   />
                 ) : null}
 
-                <h1 className={`${isMobile ? "sr-only" : "text-6xl"} font-bold uppercase tracking-tight`}>
-                  {language === "de"
-                    ? "Trailrunning Camp Österreich 2026 | The Mountaincamp"
-                    : "Trail Running Camp Austria 2026 | The Mountaincamp"}
+                <h1
+                  className={`${isMobile ? "sr-only" : "text-5xl lg:text-6xl"} font-bold uppercase tracking-tight`}
+                >
+                  The Mountaincamp 2026
                 </h1>
               </motion.div>
 
-              <motion.p
+              <motion.div
                 initial={{ opacity: 0, y: 30 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: 0.6, duration: 0.8 }}
-                className="mx-auto max-w-3xl px-4 text-sm leading-relaxed text-white/90 md:px-0 md:text-2xl"
+                className="mx-auto max-w-3xl px-4 md:px-0"
               >
-                {language === "de" ? (
-                  <>
-                    5 Tage <strong>Trailrunning Camp in Österreich</strong> für Anfänger, Fortgeschrittene und Profis.
-                    <br />
-                    Laufe traumhafte Trails in den <strong>österreichischen Alpen</strong>, trainiere mit der Community
-                    und erlebe Hochkrimml von seiner besten Seite.
-                    <br />
-                    <span className="font-bold">Hochkrimml | 5.–9. August 2026</span>
-                  </>
-                ) : (
-                  <>
-                    A 5-day <strong>trail running camp in Austria</strong> for beginners, intermediate runners and
-                    experienced athletes.
-                    <br />
-                    Run epic trails in the <strong>Austrian Alps</strong>, train with the community and experience
-                    Hochkrimml at its best.
-                    <br />
-                    <span className="font-bold">Hochkrimml | August 5–9, 2026</span>
-                  </>
-                )}
-              </motion.p>
+                <p className="text-base leading-relaxed text-white/90 md:text-2xl">
+                  {language === "de"
+                    ? "5 Tage Trailrunning, Community und Abenteuer in den österreichischen Alpen."
+                    : "5 days of trail running, community and adventure in the Austrian Alps."}
+                </p>
+
+                <p className="mt-4 text-base font-bold text-white md:text-xl">
+                  {language === "de" ? "Hochkrimml | 5.–9. August 2026" : "Hochkrimml | August 5–9, 2026"}
+                </p>
+              </motion.div>
 
               <motion.div
                 initial={{ opacity: 0, y: 30 }}
@@ -720,12 +712,20 @@ export default function Home() {
                 className="mt-6 flex flex-col justify-center gap-3 px-4 sm:flex-row sm:gap-4 md:px-0"
               >
                 <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }} className="w-full sm:w-auto">
-                  <Button size="lg" className="btn-primary w-full px-6 py-3 text-base md:px-8 md:text-lg sm:w-auto" asChild>
+                  <Button
+                    size="lg"
+                    className="btn-primary w-full px-6 py-3 text-base md:px-8 md:text-lg sm:w-auto"
+                    asChild
+                  >
                     <Link href="#experience">{language === "de" ? "Entdecke das Camp" : "Discover the Camp"}</Link>
                   </Button>
                 </motion.div>
                 <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }} className="w-full sm:w-auto">
-                  <Button size="lg" className="btn-outline w-full px-6 py-3 text-base md:px-8 md:text-lg sm:w-auto" asChild>
+                  <Button
+                    size="lg"
+                    className="btn-outline w-full px-6 py-3 text-base md:px-8 md:text-lg sm:w-auto"
+                    asChild
+                  >
                     <a href={bookingUrl} target="_blank" rel="noopener noreferrer">
                       {language === "de" ? "Jetzt buchen" : "Book Now"}
                     </a>
@@ -1015,7 +1015,7 @@ export default function Home() {
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent opacity-0 transition-opacity duration-300 group-hover:opacity-100" />
                   <div className="absolute bottom-0 left-0 p-4 text-white opacity-0 transition-opacity duration-300 group-hover:opacity-100">
-                    <span className="text-white font-bold">{image.caption}</span>
+                    <span className="font-bold text-white">{image.caption}</span>
                   </div>
                 </motion.div>
               ))}
@@ -1259,7 +1259,7 @@ export default function Home() {
                   {t("register")}
                 </Link>
                 <Link href="/bus-departures" className="footer-link">
-                  {language === "de" ? "Transport" : "Transport"}
+                  Transport
                 </Link>
               </div>
 
