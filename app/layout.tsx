@@ -29,48 +29,61 @@ export const viewport: Viewport = {
 }
 
 export const metadata: Metadata = {
-  title: "Trailrunning Camp Österreich für Anfänger | The Mountaincamp 2026 in den Alpen",
+  metadataBase: new URL("https://themountaincamp.de"),
+
+  title: "Trailrunning Camp Österreich 2026 | The Mountaincamp in den Alpen",
+
   description:
-    "Das größte Trailrunning Camp für Anfänger, Fortgeschrittene und Profis in Österreich! Erlebe 5 Tage atemberaubende Trails, professionelles Training & eine einzigartige Community in den Alpen. Hochkrimml, 5.-9. August 2026.",
+    "Trailrunning Camp in Österreich: 5 Tage in den Alpen für Anfänger, Fortgeschrittene und Profis. Join 130 runners for a trail running camp in the Austrian Alps with coaching, trails and community. Hochkrimml, 5.–9. August 2026.",
+
+  keywords: [
+    "trailrunning camp",
+    "trailrunning camp österreich",
+    "trail running camp austria",
+    "trailrunning alpen",
+    "trailrunning camp alps",
+    "running camp österreich",
+    "running camp alps",
+    "trailrunning retreat",
+    "trail running retreat",
+    "trailrunning hochkrimml",
+    "trailrunning camp 2026",
+    "the mountaincamp",
+  ],
+
+  alternates: {
+    canonical: "/",
+  },
+
   openGraph: {
-    title: "Trailrunning Camp Österreich für Anfänger | The Mountaincamp 2026 in den Alpen",
+    title: "Trailrunning Camp Österreich 2026 | The Mountaincamp in den Alpen",
     description:
-      "Das größte Trailrunning Camp für Anfänger, Fortgeschrittene und Profis in Österreich! Erlebe 5 Tage atemberaubende Trails, professionelles Training & eine einzigartige Community in den Alpen. Hochkrimml, 5.-9. August 2026.",
+      "Trailrunning Camp in Österreich: 5 Tage in den Alpen für alle Levels. Join 130 runners for a trail running camp in the Austrian Alps with coaching, trails and community. Hochkrimml, 5.–9. August 2026.",
     url: "https://themountaincamp.de",
-    siteName: "The Mountaincamp - Trailrunning Camp Österreich für Anfänger",
+    siteName: "The Mountaincamp",
     images: [
       {
-        url: "https://themountaincamp.de/images/hero-trail-runners.jpeg",
+        url: "/images/hero-trail-runners.jpeg",
         width: 1200,
         height: 630,
-        alt: "Trailrunning Camp Österreich für Anfänger - The Mountaincamp group running in the Alps",
-      },
-      {
-        url: "https://themountaincamp.de/images/alpine-village-group.jpg",
-        width: 1200,
-        height: 630,
-        alt: "Trailrunning camp participants in Hochkrimml alpine village, Austria",
-      },
-      {
-        url: "https://themountaincamp.de/images/mountain-summit.jpeg",
-        width: 1200,
-        height: 630,
-        alt: "Mountain summit view at trailrunning camp in Austrian Alps",
+        alt: "The Mountaincamp Trailrunning Camp in den österreichischen Alpen",
       },
     ],
     locale: "de_DE",
     alternateLocale: ["en_US"],
     type: "website",
   },
+
   twitter: {
     card: "summary_large_image",
-    title: "Trailrunning Camp Österreich für Anfänger | The Mountaincamp 2026",
+    title: "Trailrunning Camp Österreich 2026 | The Mountaincamp",
     description:
-      "Das größte Trailrunning Camp für Anfänger, Fortgeschrittene und Profis in Österreich: 5 Tage atemberaubende Trails, Training & Community in den Alpen. Hochkrimml, August 2026.",
-    images: ["https://themountaincamp.de/images/hero-trail-runners.jpeg"],
+      "5 Tage Trailrunning in den österreichischen Alpen. Join 130 runners for coaching, trails and community in Hochkrimml, 5.–9. August 2026.",
+    images: ["/images/hero-trail-runners.jpeg"],
     creator: "@themountaincamp",
     site: "@themountaincamp",
   },
+
   robots: {
     index: true,
     follow: true,
@@ -83,9 +96,7 @@ export const metadata: Metadata = {
       "max-snippet": -1,
     },
   },
-  verification: {
-    google: "google-site-verification-code",
-  },
+
   icons: {
     icon: [
       { url: "/favicon.png" },
@@ -100,8 +111,8 @@ export const metadata: Metadata = {
       { url: "/apple-icon-180.png", sizes: "180x180", type: "image/png" },
     ],
   },
+
   manifest: "/manifest.json",
-    generator: 'v0.app'
 }
 
 export default function RootLayout({
@@ -112,22 +123,10 @@ export default function RootLayout({
   return (
     <html lang="de" suppressHydrationWarning>
       <head>
-        <meta
-          name="title"
-          content="Trailrunning Camp Österreich für Anfänger | The Mountaincamp 2026 in den Alpen"
-        />
-        <meta
-          name="description"
-          content="Trailrunning Camp für Anfänger, Fortgeschrittene und Profis: Das größte Trailrunning Camp in den Alpen für alle Levels. 5 Tage atemberaubende Trails, Training & Community. Trailrunning Camp Austria for beginners. Hochkrimml, 5.-9. August 2026."
-        />
-
-        <link rel="alternate" hrefLang="de" href="https://themountaincamp.de" />
-        <link rel="alternate" hrefLang="en" href="https://themountaincamp.de/en" />
-        <link rel="alternate" hrefLang="x-default" href="https://themountaincamp.de" />
-
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
         <link rel="preconnect" href="https://www.instagram.com" />
+
         <link rel="dns-prefetch" href="https://my.camps.digital" />
         <link rel="dns-prefetch" href="https://open.spotify.com" />
         <link rel="dns-prefetch" href="https://www.komoot.com" />
@@ -144,11 +143,17 @@ export default function RootLayout({
         <link rel="apple-touch-icon" sizes="180x180" href="/apple-icon-180.png" />
         <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#000000" />
       </head>
+
       <body className={inter.className}>
         <Suspense fallback={<div className="min-h-screen bg-black"></div>}>
           <LanguageProvider>
             <CookieConsentProvider>
-              <ThemeProvider attribute="class" defaultTheme="light" enableSystem disableTransitionOnChange>
+              <ThemeProvider
+                attribute="class"
+                defaultTheme="light"
+                enableSystem
+                disableTransitionOnChange
+              >
                 {children}
                 <CookieBanner />
                 <Analytics />
@@ -156,7 +161,12 @@ export default function RootLayout({
             </CookieConsentProvider>
           </LanguageProvider>
         </Suspense>
-        <Script strategy="afterInteractive" src="/_vercel/speed-insights/script.js" async />
+
+        <Script
+          strategy="afterInteractive"
+          src="/_vercel/speed-insights/script.js"
+          async
+        />
       </body>
     </html>
   )
