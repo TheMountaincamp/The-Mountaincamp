@@ -218,14 +218,10 @@ export default function TrailsPage() {
           >
             <h2 className="text-3xl font-bold mb-6">{t("trailsDescription")}</h2>
             <p className="text-gray-600 mb-4">
-              {t("language") === "de"
-                ? "Die österreichischen Alpen bieten einige der spektakulärsten Trailrunning-Strecken Europas. Von sanften Waldwegen bis hin zu anspruchsvollen alpinen Pfaden - hier findet jeder Läufer die perfekte Route."
-                : "The Austrian Alps offer some of the most spectacular trail running routes in Europe. From gentle forest paths to challenging alpine trails - every runner will find the perfect route here."}
+              {t("trailsMainDescription")}
             </p>
             <p className="text-gray-600">
-              {t("language") === "de"
-                ? "Während des Mountaincamps bieten wir täglich geführte Läufe für verschiedene Niveaus an, sodass du die besten Trails der Region mit erfahrenen Guides erkunden kannst."
-                : "During the Mountaincamp, we offer daily guided runs for different levels, allowing you to explore the best trails in the region with experienced guides."}
+              {t("trailsGuideDescription")}
             </p>
           </motion.div>
 
@@ -239,7 +235,7 @@ export default function TrailsPage() {
 
             {/* Komoot Trail Cards */}
             <h3 className="text-xl font-bold mb-6">
-              {t("language") === "de" ? "Unsere Trailrouten" : "Our Trail Routes"}
+              {t("ourTrailRoutes")}
             </h3>
 
             <div className="mb-12">
@@ -248,7 +244,7 @@ export default function TrailsPage() {
 
             {/* Trail Cards */}
             <h3 className="text-xl font-bold mb-6">
-              {t("language") === "de" ? "Beispielrouten nach Schwierigkeit" : "Sample Routes by Difficulty"}
+              {t("sampleRoutes")}
             </h3>
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
               {trails.map((trail, index) => (
@@ -309,12 +305,10 @@ export default function TrailsPage() {
             <h2 className="text-2xl font-bold mb-8 uppercase">{t("guidedRunsTitle")}</h2>
             <div className="bg-gray-50 p-8 border border-gray-200 rounded-lg shadow-sm">
               <h3 className="text-xl font-bold mb-4">
-                {t("language") === "de" ? "Tägliche geführte Läufe" : "Daily Guided Runs"}
+                {t("dailyGuidedRuns")}
               </h3>
               <p className="text-gray-600 mb-6">
-                {t("language") === "de"
-                  ? "Während des Mountaincamps bieten wir täglich mehrere geführte Läufe an, die auf verschiedene Erfahrungsstufen und Vorlieben zugeschnitten sind:"
-                  : "During the Mountaincamp, we offer multiple guided runs daily, tailored to different experience levels and preferences:"}
+                {t("guidedRunsDescription")}
               </p>
               <ul className="space-y-4">
                 <li className="flex items-start gap-3">
@@ -322,11 +316,9 @@ export default function TrailsPage() {
                     <Mountain className="h-3 w-3 text-primary" />
                   </div>
                   <div>
-                    <span className="font-bold">{t("language") === "de" ? "Anfänger-Gruppe" : "Beginner Group"}</span>
+                    <span className="font-bold">{t("beginnerGroup")}</span>
                     <p className="text-gray-500 text-sm">
-                      {t("language") === "de"
-                        ? "Gemütliches Tempo, flachere Trails, perfekt für Trailrunning-Neulinge."
-                        : "Easy pace, flatter trails, perfect for trail running beginners."}
+                      {t("beginnerGroupDesc")}
                     </p>
                   </div>
                 </li>
@@ -336,12 +328,10 @@ export default function TrailsPage() {
                   </div>
                   <div>
                     <span className="font-bold">
-                      {t("language") === "de" ? "Mittlere Gruppe" : "Intermediate Group"}
+                      {t("intermediateGroup")}
                     </span>
                     <p className="text-gray-500 text-sm">
-                      {t("language") === "de"
-                        ? "Moderates Tempo, abwechslungsreiche Trails mit mittleren Höhenunterschieden."
-                        : "Moderate pace, varied trails with medium elevation gains."}
+                      {t("intermediateGroupDesc")}
                     </p>
                   </div>
                 </li>
@@ -351,12 +341,10 @@ export default function TrailsPage() {
                   </div>
                   <div>
                     <span className="font-bold">
-                      {t("language") === "de" ? "Fortgeschrittene Gruppe" : "Advanced Group"}
+                      {t("advancedGroup")}
                     </span>
                     <p className="text-gray-500 text-sm">
-                      {t("language") === "de"
-                        ? "Schnelleres Tempo, technisch anspruchsvollere Trails mit größeren Höhenunterschieden."
-                        : "Faster pace, more technically challenging trails with significant elevation gains."}
+                      {t("advancedGroupDesc")}
                     </p>
                   </div>
                 </li>
@@ -373,22 +361,26 @@ export default function TrailsPage() {
             <h2 className="text-2xl font-bold mb-8 uppercase">{t("trailTipsTitle")}</h2>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
               <div className="bg-gray-50 p-6 border border-gray-200 rounded-lg shadow-sm">
-                <h3 className="text-xl font-bold mb-4">{t("language") === "de" ? "Ausrüstung" : "Equipment"}</h3>
+                <h3 className="text-xl font-bold mb-4">{t("equipment")}</h3>
                 <ul className="space-y-2 text-gray-600">
-                  <li>
-                    •{" "}
-                    {t("language") === "de"
-                      ? "Trailrunning-Schuhe mit gutem Profil"
-                      : "Trail running shoes with good traction"}
-                  </li>
-                  <li>
-                    • {t("language") === "de" ? "Wasserflasche oder Hydration Pack" : "Water bottle or hydration pack"}
-                  </li>
-                  <li>• {t("language") === "de" ? "Wetterfeste Jacke" : "Weather-appropriate jacket"}</li>
-                  <li>• {t("language") === "de" ? "Sonnenschutz" : "Sun protection"}</li>
-                  <li>• {t("language") === "de" ? "Kleine Erste-Hilfe-Ausrüstung" : "Small first aid kit"}</li>
+                  <li>• {t("trailShoes")}</li>
+                  <li>• {t("hydrationPack")}</li>
+                  <li>• {t("weatherJacket")}</li>
+                  <li>• {t("sunProtection")}</li>
+                  <li>• {t("firstAidKit")}</li>
                 </ul>
               </div>
+              <div className="bg-gray-50 p-6 border border-gray-200 rounded-lg shadow-sm">
+                <h3 className="text-xl font-bold mb-4">{t("safety")}</h3>
+                <ul className="space-y-2 text-gray-600">
+                  <li>• {t("informSomeone")}</li>
+                  <li>• {t("checkWeather")}</li>
+                  <li>• {t("stayOnTrails")}</li>
+                  <li>• {t("respectNature")}</li>
+                  <li>• {t("packOutTrash")}</li>
+                </ul>
+              </div>
+            </div>
               <div className="bg-gray-50 p-6 border border-gray-200 rounded-lg shadow-sm">
                 <h3 className="text-xl font-bold mb-4">{t("language") === "de" ? "Sicherheit" : "Safety"}</h3>
                 <ul className="space-y-2 text-gray-600">
