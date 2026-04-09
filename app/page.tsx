@@ -757,6 +757,22 @@ export default function Home() {
           <div className="container max-w-4xl">
             <h2 className="text-2xl font-bold text-gray-900 md:text-4xl">
               {language === "de"
+                ? "Trailrunning Camp in den österreichischen Alpen"
+                : "Trail Running Camp in the austrian Alps"}
+            </h2>
+
+            <p className="mt-4 text-lg leading-relaxed text-gray-700">
+              {language === "de"
+                ? "The Mountaincamp ist ein 5-tägiges Trailrunning Camp in Österreich in Hochkrimml. Dich erwarten geführte Trailruns, Techniktraining, Community, Workshops und Erholung in den Alpen – für Anfänger, Fortgeschrittene und ambitionierte Läufer."
+                : "The Mountaincamp is a 5-day trail running camp in Austria in Hochkrimml. Expect guided trail runs, technique coaching, community, workshops and recovery in the Alps for beginners, intermediate runners and ambitious athletes."}
+            </p>
+          </div>
+        </section>
+
+        <section className="bg-white py-10 md:py-14">
+          <div className="container max-w-4xl">
+            <h2 className="text-2xl font-bold text-gray-900 md:text-4xl">
+              {language === "de"
                 ? "Trailrunning Camp Österreich in den Alpen"
                 : "Trail Running Camp Austria in the Alps"}
             </h2>
@@ -768,6 +784,7 @@ export default function Home() {
             </p>
           </div>
         </section>
+
         <section id="about" className="relative z-30 -mt-32">
           <div className="pointer-events-none absolute left-0 right-0 top-0 h-64 bg-gradient-to-b from-transparent via-white/5 via-white/10 via-white/15 via-white/20 via-white/25" />
 
