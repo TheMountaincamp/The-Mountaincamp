@@ -440,7 +440,7 @@ export default function Home() {
   }
 
   return (
-    <div className="min-h-screen bg-white">
+    <div className="min-h-screen w-full overflow-x-hidden bg-white">
       <Script
         id="structured-data-event"
         type="application/ld+json"
@@ -630,7 +630,7 @@ export default function Home() {
         )}
       </AnimatePresence>
 
-      <main>
+      <main className="w-full overflow-x-hidden">
         <section ref={heroRef} className="relative min-h-[140vh] overflow-hidden">
           <div className="absolute inset-0">
             <motion.div style={{ scale: heroScale }} className="h-full w-full">
@@ -656,7 +656,7 @@ export default function Home() {
           >
             <div className="absolute inset-0 rounded-3xl bg-black/40 opacity-0 backdrop-blur-sm" />
 
-            <div className="relative z-10 mx-auto w-full max-w-md px-5">
+            <div className="relative z-10 mx-auto w-full max-w-md px-5 md:max-w-4xl">
               <motion.div
                 initial={{ opacity: 1, scale: 1 }}
                 animate={{ opacity: 1, scale: 1 }}
@@ -682,11 +682,11 @@ export default function Home() {
                 ) : null}
 
                 <h1
-                  className={`${isMobile ? "sr-only" : "text-5xl lg:text-6xl"} font-bold uppercase tracking-tight`}
+                  className={`${isMobile ? "sr-only" : "block text-center font-bold uppercase leading-[0.9] tracking-tight text-5xl lg:text-6xl xl:text-7xl"
+                    }`}
                 >
-                  The
-                  Mountaincamp
-                  2026
+                  <span className="block">The Mountaincamp</span>
+                  <span className="mt-2 block">2026</span>
                 </h1>
               </motion.div>
 
