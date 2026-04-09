@@ -12,11 +12,11 @@ type LanguageContextType = {
 const LanguageContext = createContext<LanguageContextType | undefined>(undefined)
 
 export function LanguageProvider({ children }: { children: ReactNode }) {
-  const [language, setLanguage] = useState<Language>("en")
+  const [language, setLanguage] = useState<Language>("de")
   const [mounted, setMounted] = useState(false)
 
   const t = (key: TranslationKey): string => {
-    return translations[language][key] || translations.en[key] || key
+    return translations[language][key] || translations.de[key] || key
   }
 
   const contextValue: LanguageContextType = {
@@ -31,6 +31,9 @@ export function LanguageProvider({ children }: { children: ReactNode }) {
       const savedLanguage = localStorage.getItem("language") as Language
       if (savedLanguage && (savedLanguage === "de" || savedLanguage === "en")) {
         setLanguage(savedLanguage)
+      } else {
+        // Default to German on first visit
+        setLanguage("de")
       }
     }
   }, [])
