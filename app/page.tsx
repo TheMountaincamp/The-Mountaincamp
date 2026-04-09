@@ -684,7 +684,9 @@ export default function Home() {
                 <h1
                   className={`${isMobile ? "sr-only" : "text-5xl lg:text-6xl"} font-bold uppercase tracking-tight`}
                 >
-                  The Mountaincamp 2026
+                  The
+                  Mountaincamp
+                  2026
                 </h1>
               </motion.div>
 
