@@ -432,7 +432,7 @@ export default function TrailsPage() {
           </div>
         </div>
       </div>
-      </footer >
-    </div >
-  )
+    </footer >
+  </div >
+)
 }
