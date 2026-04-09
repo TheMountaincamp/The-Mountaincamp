@@ -656,7 +656,7 @@ export default function Home() {
           >
             <div className="absolute inset-0 rounded-3xl bg-black/40 opacity-0 backdrop-blur-sm" />
 
-            <div className="relative z-10">
+            <div className="relative z-10 mx-auto w-full max-w-md px-5">
               <motion.div
                 initial={{ opacity: 1, scale: 1 }}
                 animate={{ opacity: 1, scale: 1 }}
@@ -700,7 +700,7 @@ export default function Home() {
                     : "5 days of trail running, community and adventure in the Austrian Alps."}
                 </p>
 
-                <p className="mt-4 text-base font-bold text-white md:text-xl">
+                <p className="mt-3 text-sm font-semibold text-white/90 md:text-xl">
                   {language === "de" ? "Hochkrimml | 5.–9. August 2026" : "Hochkrimml | August 5–9, 2026"}
                 </p>
               </motion.div>
@@ -709,21 +709,22 @@ export default function Home() {
                 initial={{ opacity: 0, y: 30 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: 0.8, duration: 0.8 }}
-                className="mt-6 flex flex-col justify-center gap-3 px-4 sm:flex-row sm:gap-4 md:px-0"
+                className="mt-5 flex w-full flex-col items-center gap-2"
               >
-                <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }} className="w-full sm:w-auto">
+                <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }} className="flex w-full justify-center">
                   <Button
                     size="lg"
-                    className="btn-primary w-full px-6 py-3 text-base md:px-8 md:text-lg sm:w-auto"
+                    className="btn-primary w-full max-w-[280px] px-6 py-3 text-base"
                     asChild
                   >
                     <Link href="#experience">{language === "de" ? "Entdecke das Camp" : "Discover the Camp"}</Link>
                   </Button>
                 </motion.div>
-                <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }} className="w-full sm:w-auto">
+
+                <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }} className="flex w-full justify-center">
                   <Button
                     size="lg"
-                    className="btn-outline w-full px-6 py-3 text-base md:px-8 md:text-lg sm:w-auto"
+                    className="btn-outline w-full max-w-[280px] px-6 py-3 text-base"
                     asChild
                   >
                     <a href={bookingUrl} target="_blank" rel="noopener noreferrer">
