@@ -116,9 +116,9 @@ export default function TrailsPage() {
         en: "Challenging",
         de: "Anspruchsvoll",
       },
-      distance: "8-12 km",
-      elevation: "600 m",
-      duration: "2-3h",
+      distance: "8–12 km",
+      elevation: "600 hm",
+      duration: "2–3h",
       description: {
         en: "A beautiful loop with moderate elevation gain.",
         de: "Eine schöne Schleife mit moderatem Höhengewinn.",
@@ -134,9 +134,9 @@ export default function TrailsPage() {
         en: "Moderate",
         de: "Mittel",
       },
-      distance: "12-18 km",
-      elevation: "1000 m",
-      duration: "2-4h",
+      distance: "12–18 km",
+      elevation: "1000 hm",
+      duration: "2–4h",
       description: {
         en: "A challenging trail that takes you to the summit with breathtaking panoramic views.",
         de: "Ein anspruchsvoller Trail, der dich zum Gipfel mit atemberaubenden Panoramablicken führt.",
@@ -153,15 +153,15 @@ export default function TrailsPage() {
         de: "Leicht",
       },
       distance: "18+ km",
-      elevation: "1500+ m",
-      duration: "3-5h",
+      elevation: "1500+ hm",
+      duration: "3–5h",
       description: {
         en: "Prolong your route as much as you want.",
         de: "Verlängere die Route so viel du willst.",
       },
       image: "/images/summit-view.jpeg",
     },
-  ]
+  ];
 
   return (
     <div className="min-h-screen bg-white text-gray-900">
@@ -381,58 +381,58 @@ export default function TrailsPage() {
                 </ul>
               </div>
             </div>
-              <div className="bg-gray-50 p-6 border border-gray-200 rounded-lg shadow-sm">
-                <h3 className="text-xl font-bold mb-4">{t("language") === "de" ? "Sicherheit" : "Safety"}</h3>
-                <ul className="space-y-2 text-gray-600">
-                  <li>
-                    •{" "}
-                    {t("language") === "de"
-                      ? "Informiere immer jemanden über deine Route"
-                      : "Always inform someone about your route"}
-                  </li>
-                  <li>• {t("language") === "de" ? "Überprüfe die Wettervorhersage" : "Check the weather forecast"}</li>
-                  <li>• {t("language") === "de" ? "Bleibe auf den markierten Wegen" : "Stay on marked trails"}</li>
-                  <li>
-                    • {t("language") === "de" ? "Respektiere die Natur und Wildtiere" : "Respect nature and wildlife"}
-                  </li>
-                  <li>• {t("language") === "de" ? "Nimm deinen Müll wieder mit" : "Pack out what you pack in"}</li>
-                </ul>
-              </div>
+            <div className="bg-gray-50 p-6 border border-gray-200 rounded-lg shadow-sm">
+              <h3 className="text-xl font-bold mb-4">{t("language") === "de" ? "Sicherheit" : "Safety"}</h3>
+              <ul className="space-y-2 text-gray-600">
+                <li>
+                  •{" "}
+                  {t("language") === "de"
+                    ? "Informiere immer jemanden über deine Route"
+                    : "Always inform someone about your route"}
+                </li>
+                <li>• {t("language") === "de" ? "Überprüfe die Wettervorhersage" : "Check the weather forecast"}</li>
+                <li>• {t("language") === "de" ? "Bleibe auf den markierten Wegen" : "Stay on marked trails"}</li>
+                <li>
+                  • {t("language") === "de" ? "Respektiere die Natur und Wildtiere" : "Respect nature and wildlife"}
+                </li>
+                <li>• {t("language") === "de" ? "Nimm deinen Müll wieder mit" : "Pack out what you pack in"}</li>
+              </ul>
             </div>
-          </motion.div>
         </div>
-      </div>
+      </motion.div>
+    </div>
+      </div >
 
-      {/* Footer */}
-      <footer className="bg-gray-100 border-t border-gray-200 py-8">
-        <div className="container mx-auto px-4">
-          <div className="flex flex-col md:flex-row justify-between items-center">
-            <div className="mb-4 md:mb-0">
-              <Image
-                src="/images/MTC-Logo_2025_weiß.png"
-                alt="The Mountaincamp Logo"
-                width={150}
-                height={40}
-                className="h-10 w-auto"
-              />
-            </div>
-            <div className="flex gap-8">
-              <Link href="/" className="text-gray-600 hover:text-primary transition-colors">
-                Home
-              </Link>
-              <Link href="/house" className="text-gray-600 hover:text-primary transition-colors">
-                {t("house")}
-              </Link>
-              <Link href="/impressum" className="text-gray-600 hover:text-primary transition-colors">
-                {t("imprint")}
-              </Link>
-              <Link href="/datenschutz" className="text-gray-600 hover:text-primary transition-colors">
-                {t("privacyPolicy")}
-              </Link>
-            </div>
+    {/* Footer */ }
+    < footer className = "bg-gray-100 border-t border-gray-200 py-8" >
+      <div className="container mx-auto px-4">
+        <div className="flex flex-col md:flex-row justify-between items-center">
+          <div className="mb-4 md:mb-0">
+            <Image
+              src="/images/MTC-Logo_2025_weiß.png"
+              alt="The Mountaincamp Logo"
+              width={150}
+              height={40}
+              className="h-10 w-auto"
+            />
+          </div>
+          <div className="flex gap-8">
+            <Link href="/" className="text-gray-600 hover:text-primary transition-colors">
+              Home
+            </Link>
+            <Link href="/house" className="text-gray-600 hover:text-primary transition-colors">
+              {t("house")}
+            </Link>
+            <Link href="/impressum" className="text-gray-600 hover:text-primary transition-colors">
+              {t("imprint")}
+            </Link>
+            <Link href="/datenschutz" className="text-gray-600 hover:text-primary transition-colors">
+              {t("privacyPolicy")}
+            </Link>
           </div>
         </div>
-      </footer>
-    </div>
+      </div>
+      </footer >
+    </div >
   )
 }
