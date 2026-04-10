@@ -21,13 +21,30 @@ const CRITICAL_IMAGES = [
   "/images/MTC-Logo_2025_weiß.png",
 ]
 
+type LocalizedText = {
+  en: string
+  de: string
+}
+
+type Trail = {
+  title: LocalizedText
+  difficulty: LocalizedText
+  distance: string
+  elevation: string
+  duration: string
+  description: LocalizedText
+  image: string
+}
+
 export default function TrailsPage() {
-  const { t } = useLanguage()
+  const { t, language } = useLanguage()
   const [isLoaded, setIsLoaded] = useState(false)
 
   useEffect(() => {
     setIsLoaded(true)
   }, [])
+
+  const lang: keyof LocalizedText = language === "de" ? "de" : "en"
 
   const komootTrails = [
     {
@@ -53,7 +70,7 @@ export default function TrailsPage() {
       difficulty: "Medium",
       duration: "02:12",
       distance: "15,4 km",
-      elevation: "710 m",
+      elevation: "710 hm",
       link: "https://www.komoot.com/de-de/tour/1730869942",
       image: "/images/trail-route-3.jpg",
     },
@@ -71,7 +88,7 @@ export default function TrailsPage() {
       difficulty: "Hard",
       duration: "04:18",
       distance: "25,4 km",
-      elevation: "1.590 m",
+      elevation: "1.590 hm",
       link: "https://www.komoot.com/de-de/tour/1736297300",
       image: "/images/trail-route-5.jpg",
     },
@@ -80,7 +97,7 @@ export default function TrailsPage() {
       difficulty: "Hard",
       duration: "08:17",
       distance: "36,3 km",
-      elevation: "2.260 m",
+      elevation: "2.260 hm",
       link: "https://www.komoot.com/de-de/tour/1211980592",
       image: "/images/trail-route-6.jpg",
     },
@@ -89,7 +106,7 @@ export default function TrailsPage() {
       difficulty: "Hard",
       duration: "06:26",
       distance: "17,7 km",
-      elevation: "1.030 m",
+      elevation: "1.030 hm",
       link: "https://www.komoot.com/de-de/tour/1193607677",
       image: "/images/trail-route-7.jpg",
     },
@@ -98,13 +115,13 @@ export default function TrailsPage() {
       difficulty: "Hard",
       duration: "03:52",
       distance: "25,3 km",
-      elevation: "1.670 m",
+      elevation: "1.670 hm",
       link: "https://www.komoot.com/de-de/tour/1191154659",
       image: "/images/trail-route-1.jpg",
     },
   ]
 
-  const trails = [
+  const trails: Trail[] = [
     {
       title: {
         en: "Summit Trail",
@@ -114,9 +131,9 @@ export default function TrailsPage() {
         en: "Challenging",
         de: "Anspruchsvoll",
       },
-      distance: "8–12 km",
+      distance: "8-12 km",
       elevation: "600 hm",
-      duration: "2–3h",
+      duration: "2-3 h",
       description: {
         en: "A beautiful loop with moderate elevation gain.",
         de: "Eine schöne Schleife mit moderatem Höhengewinn.",
@@ -132,9 +149,9 @@ export default function TrailsPage() {
         en: "Moderate",
         de: "Mittel",
       },
-      distance: "12–18 km",
+      distance: "12-18 km",
       elevation: "1000 hm",
-      duration: "2–4h",
+      duration: "2-4 h",
       description: {
         en: "A challenging trail that takes you to the summit with breathtaking panoramic views.",
         de: "Ein anspruchsvoller Trail, der dich zum Gipfel mit atemberaubenden Panoramablicken führt.",
@@ -152,7 +169,7 @@ export default function TrailsPage() {
       },
       distance: "18+ km",
       elevation: "1500+ hm",
-      duration: "3–5h",
+      duration: "3-5 h",
       description: {
         en: "Prolong your route as much as you want.",
         de: "Verlängere die Route so viel du willst.",
@@ -175,10 +192,6 @@ export default function TrailsPage() {
           className="object-cover"
           priority
           fetchPriority="high"
-          unoptimized
-          onError={(e) => {
-            console.error("Failed to load image:", e)
-          }}
         />
         <div className="absolute inset-0 bg-gradient-to-b from-black/70 via-black/50 to-black" />
 
@@ -243,18 +256,16 @@ export default function TrailsPage() {
                   <div className="relative h-48">
                     <Image
                       src={trail.image || "/placeholder.svg"}
-                      alt={typeof trail.title === "object" ? trail.title[t("language")] : trail.title}
+                      alt={trail.title[lang]}
                       fill
                       className="object-cover"
                     />
                   </div>
                   <div className="p-6">
-                    <h3 className="mb-2 text-xl font-bold">
-                      {typeof trail.title === "object" ? trail.title[t("language")] : trail.title}
-                    </h3>
+                    <h3 className="mb-2 text-xl font-bold">{trail.title[lang]}</h3>
                     <div className="mb-1 flex items-center gap-2 text-sm text-gray-500">
                       <span className="rounded bg-primary/20 px-2 py-1 text-primary">
-                        {typeof trail.difficulty === "object" ? trail.difficulty[t("language")] : trail.difficulty}
+                        {trail.difficulty[lang]}
                       </span>
                     </div>
                     <div className="my-3 flex flex-wrap gap-4 text-sm text-gray-500">
@@ -271,9 +282,7 @@ export default function TrailsPage() {
                         <span>{trail.duration}</span>
                       </div>
                     </div>
-                    <p className="text-sm text-gray-600">
-                      {typeof trail.description === "object" ? trail.description[t("language")] : trail.description}
-                    </p>
+                    <p className="text-sm text-gray-600">{trail.description[lang]}</p>
                   </div>
                 </motion.div>
               ))}
@@ -355,24 +364,19 @@ export default function TrailsPage() {
             </div>
 
             <div className="mt-8 rounded-lg border border-gray-200 bg-gray-50 p-6 shadow-sm">
-              <h3 className="mb-4 text-xl font-bold">{t("language") === "de" ? "Sicherheit" : "Safety"}</h3>
+              <h3 className="mb-4 text-xl font-bold">{lang === "de" ? "Sicherheit" : "Safety"}</h3>
               <ul className="space-y-2 text-gray-600">
-                <li>
-                  • {t("language") === "de"
-                    ? "Informiere immer jemanden über deine Route"
-                    : "Always inform someone about your route"}
-                </li>
-                <li>• {t("language") === "de" ? "Überprüfe die Wettervorhersage" : "Check the weather forecast"}</li>
-                <li>• {t("language") === "de" ? "Bleibe auf den markierten Wegen" : "Stay on marked trails"}</li>
-                <li>• {t("language") === "de" ? "Respektiere die Natur und Wildtiere" : "Respect nature and wildlife"}</li>
-                <li>• {t("language") === "de" ? "Nimm deinen Müll wieder mit" : "Pack out what you pack in"}</li>
+                <li>• {lang === "de" ? "Informiere immer jemanden über deine Route" : "Always inform someone about your route"}</li>
+                <li>• {lang === "de" ? "Überprüfe die Wettervorhersage" : "Check the weather forecast"}</li>
+                <li>• {lang === "de" ? "Bleibe auf den markierten Wegen" : "Stay on marked trails"}</li>
+                <li>• {lang === "de" ? "Respektiere die Natur und Wildtiere" : "Respect nature and wildlife"}</li>
+                <li>• {lang === "de" ? "Nimm deinen Müll wieder mit" : "Pack out what you pack in"}</li>
               </ul>
             </div>
           </motion.div>
         </div>
       </div>
 
-      {/* Footer */}
       <footer className="bg-gray-100 border-t border-gray-200 py-8">
         <div className="container mx-auto px-4">
           <div className="flex flex-col items-center justify-between md:flex-row">
