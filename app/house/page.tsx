@@ -21,7 +21,7 @@ const CRITICAL_IMAGES = [
 ]
 
 export default function HousePage() {
-  const { t } = useLanguage()
+  const { t, language } = useLanguage()
   const [isLoaded, setIsLoaded] = useState(false)
 
   useEffect(() => {
