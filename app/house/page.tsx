@@ -126,14 +126,10 @@ export default function HousePage() {
           >
             <h2 className="text-3xl font-bold mb-6 text-gray-900">{t("houseDescription")}</h2>
             <p className="text-gray-700 mb-4">
-              {t("language") === "de"
-                ? "Dieses gemütliche Gästehaus liegt auf 1.700 Metern Höhe und bietet einen atemberaubenden Blick auf die umliegenden Gipfel. Mit komfortablen Zimmern, einem großzügigen Gemeinschaftsbereich, einer Sauna und einer Turnhalle und vielem mehr ist es der perfekte Ort, um nach einem Tag auf den Trails zu entspannen."
-                : "This cozy mountain house is located at an altitude of 1,700 meters and offers breathtaking views of the surrounding peaks. With comfortable rooms, a spacious common area, a sauna, and a gym, a skatepark and a lot more! It's the perfect place to relax after a day on the trails."}
+              {t("houseMainDescription")}
             </p>
             <p className="text-gray-700">
-              {t("language") === "de"
-                ? "Morgens, Mittags und Abends werden wir vom Küchenteam mit reichhaltigen Mahlzeiten verpflegt."
-                : "In the morning, at noon and in the evening, we are getting served by the kitchen team with rich meals."}
+              {t("houseMeals")}
             </p>
           </motion.div>
 
@@ -156,9 +152,9 @@ export default function HousePage() {
                 >
                   <div className="text-primary mb-4">{facility.icon}</div>
                   <h3 className="text-xl font-bold mb-2 text-gray-900">
-                    {typeof facility.title === "object" ? facility.title[t("language")] : facility.title}
+                    {facility.title}
                   </h3>
-                  <p className="text-gray-600 text-sm">{facility.description[t("language")]}</p>
+                  <p className="text-gray-600 text-sm">{facility.description[language]}</p>
                 </motion.div>
               ))}
             </div>
@@ -182,12 +178,10 @@ export default function HousePage() {
                 <div className="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent"></div>
                 <div className="absolute bottom-0 left-0 p-6">
                   <h3 className="text-xl font-bold mb-2 text-white">
-                    {t("language") === "de" ? "Gemütliche Schlafplätze" : "Cozy Sleeping Areas"}
+                    {t("cozySleepingAreas")}
                   </h3>
                   <p className="text-white/80 text-sm">
-                    {t("language") === "de"
-                      ? "Komfortable Schlafbereiche mit warmer Holzausstattung"
-                      : "Comfortable sleeping areas with warm wooden furnishing"}
+                    {t("cozySleepingDesc")}
                   </p>
                 </div>
               </div>
@@ -201,12 +195,10 @@ export default function HousePage() {
                 <div className="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent"></div>
                 <div className="absolute bottom-0 left-0 p-6">
                   <h3 className="text-xl font-bold mb-2 text-white">
-                    {t("language") === "de" ? "Mehrbettzimmer" : "Shared Dormitory"}
+                    {t("sharedDormitory")}
                   </h3>
                   <p className="text-white/80 text-sm">
-                    {t("language") === "de"
-                      ? "Gemütliche Mehrbettzimmer für 6-8 Personen mit Bergblick"
-                      : "Cozy shared rooms for 6-8 people with mountain views"}
+                    {t("sharedDormitoryDesc")}
                   </p>
                 </div>
               </div>
@@ -221,7 +213,7 @@ export default function HousePage() {
             className="mb-16"
           >
             <h2 className="text-2xl font-bold mb-8 uppercase text-gray-900">
-              {t("language") === "de" ? "BADEZIMMER & SANITÄRANLAGEN" : "BATHROOM & FACILITIES"}
+              {t("bathroomFacilities")}
             </h2>
             <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
               <div className="relative h-64 overflow-hidden rounded-lg">
@@ -234,10 +226,10 @@ export default function HousePage() {
                 <div className="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent"></div>
                 <div className="absolute bottom-0 left-0 p-4">
                   <h3 className="text-lg font-bold mb-1 text-white">
-                    {t("language") === "de" ? "Waschbereich" : "Wash Area"}
+                    {t("washArea")}
                   </h3>
                   <p className="text-white/80 text-sm">
-                    {t("language") === "de" ? "Moderne Waschbecken" : "Modern wash basins"}
+                    {t("washAreaDesc")}
                   </p>
                 </div>
               </div>
@@ -246,10 +238,10 @@ export default function HousePage() {
                 <div className="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent"></div>
                 <div className="absolute bottom-0 left-0 p-4">
                   <h3 className="text-lg font-bold mb-1 text-white">
-                    {t("language") === "de" ? "Duschen" : "Showers"}
+                    {t("showers")}
                   </h3>
                   <p className="text-white/80 text-sm">
-                    {t("language") === "de" ? "Saubere Duschkabinen" : "Clean shower facilities"}
+                    {t("showersDesc")}
                   </p>
                 </div>
               </div>
@@ -257,9 +249,9 @@ export default function HousePage() {
                 <Image src="/images/house-toilet.jpeg" alt="Modern toilet facilities" fill className="object-cover" />
                 <div className="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent"></div>
                 <div className="absolute bottom-0 left-0 p-4">
-                  <h3 className="text-lg font-bold mb-1 text-white">{t("language") === "de" ? "WC" : "Toilets"}</h3>
+                  <h3 className="text-lg font-bold mb-1 text-white">{t("toilets")}</h3>
                   <p className="text-white/80 text-sm">
-                    {t("language") === "de" ? "Moderne Sanitäranlagen" : "Modern toilet facilities"}
+                    {t("toiletsDesc")}
                   </p>
                 </div>
               </div>
@@ -286,9 +278,7 @@ export default function HousePage() {
               ></iframe>
             </div>
             <p className="mt-4 text-gray-700">
-              {t("language") === "de"
-                ? "Unser Berghaus befindet sich in Hochkrimml, Österreich, umgeben von atemberaubenden Alpengipfeln und endlosen Trailrunning-Möglichkeiten."
-                : "Our mountain house is located in Hochkrimml, Austria, surrounded by breathtaking alpine peaks and endless trail running possibilities."}
+              {t("houseLocation")}
             </p>
           </motion.div>
         </div>
