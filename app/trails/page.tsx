@@ -255,7 +255,7 @@ export default function TrailsPage() {
                 >
                   <div className="relative h-48">
                     <Image
-                      src={trail.image || "/placeholder.svg"}
+                      src={trail.image}
                       alt={trail.title[lang]}
                       fill
                       className="object-cover"
