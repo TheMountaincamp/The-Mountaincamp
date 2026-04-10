@@ -236,8 +236,6 @@ export default function TrailsPage() {
           >
             <h2 className="mb-8 text-2xl font-bold uppercase">{t("routesTitle")}</h2>
 
-            <h3 className="mb-6 text-xl font-bold">{t("ourTrailRoutes")}</h3>
-
             <div className="mb-12">
               <RouteCarousel routes={komootTrails} />
             </div>
