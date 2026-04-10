@@ -696,8 +696,8 @@ export default function Home() {
 
                 <h1
                   className={`${isMobile
-                      ? "sr-only"
-                      : "block text-center font-bold uppercase leading-[0.9] tracking-tight"
+                    ? "sr-only"
+                    : "block text-center font-bold uppercase leading-[0.9] tracking-tight"
                     }`}
                 >
                   <span className="block text-3xl lg:text-4xl xl:text-5xl">Trailrunning Camp Österreich</span>
@@ -1163,7 +1163,7 @@ export default function Home() {
                 transition={{ duration: 0.8 }}
               >
                 <h2 className="mb-4 text-2xl font-bold uppercase tracking-tight text-white md:mb-6 md:text-4xl">
-                  {language === "de" ? "Jetzt deinen Platz im Trailrunning Camp sichern" : "Secure your place at the trail running camp"}
+                  {language === "de" ? "Jetzt deinen Platz im Trailrunning Camp sichern" : "Secure your spot at the trail running camp"}
                 </h2>
                 <p className="mb-8 text-xl text-white">
                   {language === "de" ? "5.–9. August 2026" : "August 5–9, 2026"}
