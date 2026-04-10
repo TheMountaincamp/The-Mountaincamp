@@ -10,9 +10,8 @@ import RouteCarousel from "@/app/components/route-carousel"
 import ImagePreloader from "@/app/components/image-preloader"
 import SiteHeader from "@/app/components/site-header"
 
-// Define critical images for the Trails page
 const CRITICAL_IMAGES = [
-  "/images/trails-header-group.jpeg", // New header image
+  "/images/trails-header-group.jpeg",
   "/images/alpine-landscape.jpeg",
   "/images/trail-runner-1.jpeg",
   "/images/summit-view.jpeg",
@@ -30,7 +29,6 @@ export default function TrailsPage() {
     setIsLoaded(true)
   }, [])
 
-  // Neue Trailrouten
   const komootTrails = [
     {
       title: "Bergtour nach Seekarsee",
@@ -161,16 +159,14 @@ export default function TrailsPage() {
       },
       image: "/images/summit-view.jpeg",
     },
-  ];
+  ]
 
   return (
     <div className="min-h-screen bg-white text-gray-900">
-      {/* Preload critical images */}
       <ImagePreloader imageSources={CRITICAL_IMAGES} />
 
       <SiteHeader />
 
-      {/* Header with background image */}
       <div className="relative h-[50vh] min-h-[400px]">
         <Image
           src="/images/trails-header-group.jpeg"
@@ -179,17 +175,16 @@ export default function TrailsPage() {
           className="object-cover"
           priority
           fetchPriority="high"
-          unoptimized={true}
+          unoptimized
           onError={(e) => {
             console.error("Failed to load image:", e)
-            e.currentTarget.src = "/placeholder.svg?height=800&width=1200"
           }}
         />
-        <div className="absolute inset-0 bg-gradient-to-b from-black/70 via-black/50 to-black"></div>
+        <div className="absolute inset-0 bg-gradient-to-b from-black/70 via-black/50 to-black" />
 
-        <div className="absolute inset-0 flex flex-col items-center justify-center text-center p-6">
+        <div className="absolute inset-0 flex flex-col items-center justify-center p-6 text-center">
           <motion.h1
-            className="text-4xl md:text-6xl font-bold mb-4 text-white"
+            className="mb-4 text-4xl font-bold text-white md:text-6xl"
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: isLoaded ? 1 : 0, y: isLoaded ? 0 : 20 }}
             transition={{ duration: 0.8, delay: 0.2 }}
@@ -197,7 +192,7 @@ export default function TrailsPage() {
             {t("trailsTitle")}
           </motion.h1>
           <motion.p
-            className="text-xl md:text-2xl max-w-2xl text-white/80"
+            className="max-w-2xl text-xl text-white/80 md:text-2xl"
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: isLoaded ? 1 : 0, y: isLoaded ? 0 : 20 }}
             transition={{ duration: 0.8, delay: 0.4 }}
@@ -207,22 +202,17 @@ export default function TrailsPage() {
         </div>
       </div>
 
-      {/* Main content */}
-      <div className="container mx-auto py-12 px-4">
-        <div className="max-w-6xl mx-auto">
+      <div className="container mx-auto px-4 py-12">
+        <div className="mx-auto max-w-6xl">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: isLoaded ? 1 : 0, y: isLoaded ? 0 : 30 }}
             transition={{ duration: 0.8 }}
             className="mb-10"
           >
-            <h2 className="text-3xl font-bold mb-6">{t("trailsDescription")}</h2>
-            <p className="text-gray-600 mb-4">
-              {t("trailsMainDescription")}
-            </p>
-            <p className="text-gray-600">
-              {t("trailsGuideDescription")}
-            </p>
+            <h2 className="mb-6 text-3xl font-bold">{t("trailsDescription")}</h2>
+            <p className="mb-4 text-gray-600">{t("trailsMainDescription")}</p>
+            <p className="text-gray-600">{t("trailsGuideDescription")}</p>
           </motion.div>
 
           <motion.div
@@ -231,26 +221,20 @@ export default function TrailsPage() {
             transition={{ duration: 0.8, delay: 0.2 }}
             className="mb-10"
           >
-            <h2 className="text-2xl font-bold mb-8 uppercase">{t("routesTitle")}</h2>
+            <h2 className="mb-8 text-2xl font-bold uppercase">{t("routesTitle")}</h2>
 
-            {/* Komoot Trail Cards */}
-            <h3 className="text-xl font-bold mb-6">
-              {t("ourTrailRoutes")}
-            </h3>
+            <h3 className="mb-6 text-xl font-bold">{t("ourTrailRoutes")}</h3>
 
             <div className="mb-12">
               <RouteCarousel routes={komootTrails} />
             </div>
 
-            {/* Trail Cards */}
-            <h3 className="text-xl font-bold mb-6">
-              {t("sampleRoutes")}
-            </h3>
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            <h3 className="mb-6 text-xl font-bold">{t("sampleRoutes")}</h3>
+            <div className="grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-3">
               {trails.map((trail, index) => (
                 <motion.div
                   key={index}
-                  className="bg-gray-50 border border-gray-200 hover:border-primary hover:shadow-lg transition-all duration-300 overflow-hidden rounded-lg"
+                  className="overflow-hidden rounded-lg border border-gray-200 bg-gray-50 transition-all duration-300 hover:border-primary hover:shadow-lg"
                   initial={{ opacity: 0, y: 20 }}
                   animate={{ opacity: isLoaded ? 1 : 0, y: isLoaded ? 0 : 20 }}
                   transition={{ duration: 0.5, delay: 0.3 + index * 0.1 }}
@@ -265,15 +249,15 @@ export default function TrailsPage() {
                     />
                   </div>
                   <div className="p-6">
-                    <h3 className="text-xl font-bold mb-2">
+                    <h3 className="mb-2 text-xl font-bold">
                       {typeof trail.title === "object" ? trail.title[t("language")] : trail.title}
                     </h3>
-                    <div className="flex items-center gap-2 text-gray-500 text-sm mb-1">
-                      <span className="bg-primary/20 px-2 py-1 rounded text-primary">
+                    <div className="mb-1 flex items-center gap-2 text-sm text-gray-500">
+                      <span className="rounded bg-primary/20 px-2 py-1 text-primary">
                         {typeof trail.difficulty === "object" ? trail.difficulty[t("language")] : trail.difficulty}
                       </span>
                     </div>
-                    <div className="flex flex-wrap gap-4 my-3 text-sm text-gray-500">
+                    <div className="my-3 flex flex-wrap gap-4 text-sm text-gray-500">
                       <div className="flex items-center gap-1">
                         <Route className="h-4 w-4" />
                         <span>{trail.distance}</span>
@@ -287,7 +271,7 @@ export default function TrailsPage() {
                         <span>{trail.duration}</span>
                       </div>
                     </div>
-                    <p className="text-gray-600 text-sm">
+                    <p className="text-sm text-gray-600">
                       {typeof trail.description === "object" ? trail.description[t("language")] : trail.description}
                     </p>
                   </div>
@@ -302,50 +286,36 @@ export default function TrailsPage() {
             transition={{ duration: 0.8, delay: 0.4 }}
             className="mb-10"
           >
-            <h2 className="text-2xl font-bold mb-8 uppercase">{t("guidedRunsTitle")}</h2>
-            <div className="bg-gray-50 p-8 border border-gray-200 rounded-lg shadow-sm">
-              <h3 className="text-xl font-bold mb-4">
-                {t("dailyGuidedRuns")}
-              </h3>
-              <p className="text-gray-600 mb-6">
-                {t("guidedRunsDescription")}
-              </p>
+            <h2 className="mb-8 text-2xl font-bold uppercase">{t("guidedRunsTitle")}</h2>
+            <div className="rounded-lg border border-gray-200 bg-gray-50 p-8 shadow-sm">
+              <h3 className="mb-4 text-xl font-bold">{t("dailyGuidedRuns")}</h3>
+              <p className="mb-6 text-gray-600">{t("guidedRunsDescription")}</p>
               <ul className="space-y-4">
                 <li className="flex items-start gap-3">
-                  <div className="mt-1 h-5 w-5 rounded-full bg-primary/20 flex items-center justify-center">
+                  <div className="mt-1 flex h-5 w-5 items-center justify-center rounded-full bg-primary/20">
                     <Mountain className="h-3 w-3 text-primary" />
                   </div>
                   <div>
                     <span className="font-bold">{t("beginnerGroup")}</span>
-                    <p className="text-gray-500 text-sm">
-                      {t("beginnerGroupDesc")}
-                    </p>
+                    <p className="text-sm text-gray-500">{t("beginnerGroupDesc")}</p>
                   </div>
                 </li>
                 <li className="flex items-start gap-3">
-                  <div className="mt-1 h-5 w-5 rounded-full bg-primary/20 flex items-center justify-center">
+                  <div className="mt-1 flex h-5 w-5 items-center justify-center rounded-full bg-primary/20">
                     <Mountain className="h-3 w-3 text-primary" />
                   </div>
                   <div>
-                    <span className="font-bold">
-                      {t("intermediateGroup")}
-                    </span>
-                    <p className="text-gray-500 text-sm">
-                      {t("intermediateGroupDesc")}
-                    </p>
+                    <span className="font-bold">{t("intermediateGroup")}</span>
+                    <p className="text-sm text-gray-500">{t("intermediateGroupDesc")}</p>
                   </div>
                 </li>
                 <li className="flex items-start gap-3">
-                  <div className="mt-1 h-5 w-5 rounded-full bg-primary/20 flex items-center justify-center">
+                  <div className="mt-1 flex h-5 w-5 items-center justify-center rounded-full bg-primary/20">
                     <Mountain className="h-3 w-3 text-primary" />
                   </div>
                   <div>
-                    <span className="font-bold">
-                      {t("advancedGroup")}
-                    </span>
-                    <p className="text-gray-500 text-sm">
-                      {t("advancedGroupDesc")}
-                    </p>
+                    <span className="font-bold">{t("advancedGroup")}</span>
+                    <p className="text-sm text-gray-500">{t("advancedGroupDesc")}</p>
                   </div>
                 </li>
               </ul>
@@ -358,10 +328,11 @@ export default function TrailsPage() {
             transition={{ duration: 0.8, delay: 0.6 }}
             className="mb-10"
           >
-            <h2 className="text-2xl font-bold mb-8 uppercase">{t("trailTipsTitle")}</h2>
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-              <div className="bg-gray-50 p-6 border border-gray-200 rounded-lg shadow-sm">
-                <h3 className="text-xl font-bold mb-4">{t("equipment")}</h3>
+            <h2 className="mb-8 text-2xl font-bold uppercase">{t("trailTipsTitle")}</h2>
+
+            <div className="grid grid-cols-1 gap-8 md:grid-cols-2">
+              <div className="rounded-lg border border-gray-200 bg-gray-50 p-6 shadow-sm">
+                <h3 className="mb-4 text-xl font-bold">{t("equipment")}</h3>
                 <ul className="space-y-2 text-gray-600">
                   <li>• {t("trailShoes")}</li>
                   <li>• {t("hydrationPack")}</li>
@@ -370,8 +341,9 @@ export default function TrailsPage() {
                   <li>• {t("firstAidKit")}</li>
                 </ul>
               </div>
-              <div className="bg-gray-50 p-6 border border-gray-200 rounded-lg shadow-sm">
-                <h3 className="text-xl font-bold mb-4">{t("safety")}</h3>
+
+              <div className="rounded-lg border border-gray-200 bg-gray-50 p-6 shadow-sm">
+                <h3 className="mb-4 text-xl font-bold">{t("safety")}</h3>
                 <ul className="space-y-2 text-gray-600">
                   <li>• {t("informSomeone")}</li>
                   <li>• {t("checkWeather")}</li>
@@ -381,58 +353,55 @@ export default function TrailsPage() {
                 </ul>
               </div>
             </div>
-            <div className="bg-gray-50 p-6 border border-gray-200 rounded-lg shadow-sm">
-              <h3 className="text-xl font-bold mb-4">{t("language") === "de" ? "Sicherheit" : "Safety"}</h3>
+
+            <div className="mt-8 rounded-lg border border-gray-200 bg-gray-50 p-6 shadow-sm">
+              <h3 className="mb-4 text-xl font-bold">{t("language") === "de" ? "Sicherheit" : "Safety"}</h3>
               <ul className="space-y-2 text-gray-600">
                 <li>
-                  •{" "}
-                  {t("language") === "de"
+                  • {t("language") === "de"
                     ? "Informiere immer jemanden über deine Route"
                     : "Always inform someone about your route"}
                 </li>
                 <li>• {t("language") === "de" ? "Überprüfe die Wettervorhersage" : "Check the weather forecast"}</li>
                 <li>• {t("language") === "de" ? "Bleibe auf den markierten Wegen" : "Stay on marked trails"}</li>
-                <li>
-                  • {t("language") === "de" ? "Respektiere die Natur und Wildtiere" : "Respect nature and wildlife"}
-                </li>
+                <li>• {t("language") === "de" ? "Respektiere die Natur und Wildtiere" : "Respect nature and wildlife"}</li>
                 <li>• {t("language") === "de" ? "Nimm deinen Müll wieder mit" : "Pack out what you pack in"}</li>
               </ul>
             </div>
-        </div>
-      </motion.div>
-    </div>
-      </div >
-
-    {/* Footer */ }
-    < footer className = "bg-gray-100 border-t border-gray-200 py-8" >
-      <div className="container mx-auto px-4">
-        <div className="flex flex-col md:flex-row justify-between items-center">
-          <div className="mb-4 md:mb-0">
-            <Image
-              src="/images/MTC-Logo_2025_weiß.png"
-              alt="The Mountaincamp Logo"
-              width={150}
-              height={40}
-              className="h-10 w-auto"
-            />
-          </div>
-          <div className="flex gap-8">
-            <Link href="/" className="text-gray-600 hover:text-primary transition-colors">
-              Home
-            </Link>
-            <Link href="/house" className="text-gray-600 hover:text-primary transition-colors">
-              {t("house")}
-            </Link>
-            <Link href="/impressum" className="text-gray-600 hover:text-primary transition-colors">
-              {t("imprint")}
-            </Link>
-            <Link href="/datenschutz" className="text-gray-600 hover:text-primary transition-colors">
-              {t("privacyPolicy")}
-            </Link>
-          </div>
+          </motion.div>
         </div>
       </div>
-    </footer >
-  </div >
-)
+
+      {/* Footer */}
+      <footer className="bg-gray-100 border-t border-gray-200 py-8">
+        <div className="container mx-auto px-4">
+          <div className="flex flex-col items-center justify-between md:flex-row">
+            <div className="mb-4 md:mb-0">
+              <Image
+                src="/images/MTC-Logo_2025_weiß.png"
+                alt="The Mountaincamp Logo"
+                width={150}
+                height={40}
+                className="h-10 w-auto"
+              />
+            </div>
+            <div className="flex gap-8">
+              <Link href="/" className="text-gray-600 transition-colors hover:text-primary">
+                Home
+              </Link>
+              <Link href="/house" className="text-gray-600 transition-colors hover:text-primary">
+                {t("house")}
+              </Link>
+              <Link href="/impressum" className="text-gray-600 transition-colors hover:text-primary">
+                {t("imprint")}
+              </Link>
+              <Link href="/datenschutz" className="text-gray-600 transition-colors hover:text-primary">
+                {t("privacyPolicy")}
+              </Link>
+            </div>
+          </div>
+        </div>
+      </footer>
+    </div>
+  )
 }
