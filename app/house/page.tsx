@@ -9,7 +9,6 @@ import { useLanguage } from "@/contexts/language-context"
 import ImagePreloader from "@/app/components/image-preloader"
 import SiteHeader from "@/app/components/site-header"
 
-// Define critical images for the House page
 const CRITICAL_IMAGES = [
   "/images/mountain-lodge.jpeg",
   "/images/cozy-bunk-accommodation.jpg",
@@ -20,13 +19,20 @@ const CRITICAL_IMAGES = [
   "/images/MTC-Logo_2025.png",
 ]
 
+type FacilityDescription = {
+  en: string
+  de: string
+}
+
 export default function HousePage() {
-  const { t } = useLanguage()
+  const { t, language } = useLanguage()
   const [isLoaded, setIsLoaded] = useState(false)
 
   useEffect(() => {
     setIsLoaded(true)
   }, [])
+
+  const lang: keyof FacilityDescription = language === "de" ? "de" : "en"
 
   const facilities = [
     {
@@ -39,7 +45,7 @@ export default function HousePage() {
     },
     {
       icon: <Utensils className="h-6 w-6" />,
-      title: "Breakfast,Lunch & Dinner",
+      title: "Breakfast, Lunch & Dinner",
       description: {
         en: "Three meals per day included",
         de: "Drei Mahlzeiten pro Tag inklusive",
@@ -57,13 +63,13 @@ export default function HousePage() {
       icon: <Droplets className="h-6 w-6" />,
       title: "Drink station",
       description: {
-        en: "Always free water and icetea",
-        de: "Kostensloses Wasser und Eistee",
+        en: "Always free water and iced tea",
+        de: "Kostenloses Wasser und Eistee jederzeit verfügbar",
       },
     },
     {
       icon: <Mountain className="h-6 w-6" />,
-      title: "Mountainview",
+      title: "Mountain view",
       description: {
         en: "Stunning panoramic views from most rooms",
         de: "Atemberaubende Panoramablicke aus den meisten Zimmern",
@@ -73,12 +79,10 @@ export default function HousePage() {
 
   return (
     <div className="min-h-screen bg-white text-gray-900">
-      {/* Preload critical images */}
       <ImagePreloader imageSources={CRITICAL_IMAGES} />
 
       <SiteHeader />
 
-      {/* Header with background image */}
       <div className="relative h-[50vh] min-h-[400px]">
         <Image
           src="/images/mountain-lodge.jpeg"
@@ -87,17 +91,12 @@ export default function HousePage() {
           className="object-cover"
           priority
           fetchPriority="high"
-          unoptimized={true}
-          onError={(e) => {
-            console.error("Failed to load image:", e)
-            e.currentTarget.src = "/placeholder.svg?height=800&width=1200"
-          }}
         />
-        <div className="absolute inset-0 bg-gradient-to-b from-black/70 via-black/50 to-black"></div>
+        <div className="absolute inset-0 bg-gradient-to-b from-black/70 via-black/50 to-black" />
 
-        <div className="absolute inset-0 flex flex-col items-center justify-center text-center p-6">
+        <div className="absolute inset-0 flex flex-col items-center justify-center p-6 text-center">
           <motion.h1
-            className="text-4xl md:text-6xl font-bold mb-4 text-white"
+            className="mb-4 text-4xl font-bold text-white md:text-6xl"
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: isLoaded ? 1 : 0, y: isLoaded ? 0 : 20 }}
             transition={{ duration: 0.8, delay: 0.2 }}
@@ -105,7 +104,7 @@ export default function HousePage() {
             {t("houseTitle")}
           </motion.h1>
           <motion.p
-            className="text-xl md:text-2xl max-w-2xl text-white/80"
+            className="max-w-2xl text-xl text-white/80 md:text-2xl"
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: isLoaded ? 1 : 0, y: isLoaded ? 0 : 20 }}
             transition={{ duration: 0.8, delay: 0.4 }}
@@ -115,22 +114,17 @@ export default function HousePage() {
         </div>
       </div>
 
-      {/* Main content */}
-      <div className="container mx-auto py-16 px-4">
-        <div className="max-w-4xl mx-auto">
+      <div className="container mx-auto px-4 py-16">
+        <div className="mx-auto max-w-4xl">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: isLoaded ? 1 : 0, y: isLoaded ? 0 : 30 }}
             transition={{ duration: 0.8 }}
             className="mb-16"
           >
-            <h2 className="text-3xl font-bold mb-6 text-gray-900">{t("houseDescription")}</h2>
-            <p className="text-gray-700 mb-4">
-              {t("houseMainDescription")}
-            </p>
-            <p className="text-gray-700">
-              {t("houseMeals")}
-            </p>
+            <h2 className="mb-6 text-3xl font-bold text-gray-900">{t("houseDescription")}</h2>
+            <p className="mb-4 text-gray-700">{t("houseMainDescription")}</p>
+            <p className="text-gray-700">{t("houseMeals")}</p>
           </motion.div>
 
           <motion.div
@@ -139,22 +133,20 @@ export default function HousePage() {
             transition={{ duration: 0.8, delay: 0.2 }}
             className="mb-16"
           >
-            <h2 className="text-2xl font-bold mb-8 uppercase text-gray-900">{t("facilitiesTitle")}</h2>
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            <h2 className="mb-8 text-2xl font-bold uppercase text-gray-900">{t("facilitiesTitle")}</h2>
+            <div className="grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-3">
               {facilities.map((facility, index) => (
                 <motion.div
                   key={index}
-                  className="bg-gray-50 p-6 border border-gray-200 hover:border-primary hover:shadow-lg transition-all duration-300 rounded-lg"
+                  className="rounded-lg border border-gray-200 bg-gray-50 p-6 transition-all duration-300 hover:border-primary hover:shadow-lg"
                   initial={{ opacity: 0, y: 20 }}
                   animate={{ opacity: isLoaded ? 1 : 0, y: isLoaded ? 0 : 20 }}
                   transition={{ duration: 0.5, delay: 0.3 + index * 0.1 }}
                   whileHover={{ y: -5, transition: { duration: 0.2 } }}
                 >
-                  <div className="text-primary mb-4">{facility.icon}</div>
-                  <h3 className="text-xl font-bold mb-2 text-gray-900">
-                    {facility.title}
-                  </h3>
-                  <p className="text-gray-600 text-sm">{facility.description[language]}</p>
+                  <div className="mb-4 text-primary">{facility.icon}</div>
+                  <h3 className="mb-2 text-xl font-bold text-gray-900">{facility.title}</h3>
+                  <p className="text-sm text-gray-600">{facility.description[lang]}</p>
                 </motion.div>
               ))}
             </div>
@@ -166,8 +158,8 @@ export default function HousePage() {
             transition={{ duration: 0.8, delay: 0.4 }}
             className="mb-16"
           >
-            <h2 className="text-2xl font-bold mb-8 uppercase text-gray-900">{t("roomsTitle")}</h2>
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+            <h2 className="mb-8 text-2xl font-bold uppercase text-gray-900">{t("roomsTitle")}</h2>
+            <div className="grid grid-cols-1 gap-8 md:grid-cols-2">
               <div className="relative h-80 overflow-hidden rounded-lg">
                 <Image
                   src="/images/cozy-bunk-accommodation.jpg"
@@ -175,16 +167,13 @@ export default function HousePage() {
                   fill
                   className="object-cover"
                 />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent"></div>
+                <div className="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent" />
                 <div className="absolute bottom-0 left-0 p-6">
-                  <h3 className="text-xl font-bold mb-2 text-white">
-                    {t("cozySleepingAreas")}
-                  </h3>
-                  <p className="text-white/80 text-sm">
-                    {t("cozySleepingDesc")}
-                  </p>
+                  <h3 className="mb-2 text-xl font-bold text-white">{t("cozySleepingAreas")}</h3>
+                  <p className="text-sm text-white/80">{t("cozySleepingDesc")}</p>
                 </div>
               </div>
+
               <div className="relative h-80 overflow-hidden rounded-lg">
                 <Image
                   src="/images/wooden-dormitory-interior.jpg"
@@ -192,30 +181,23 @@ export default function HousePage() {
                   fill
                   className="object-cover"
                 />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent"></div>
+                <div className="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent" />
                 <div className="absolute bottom-0 left-0 p-6">
-                  <h3 className="text-xl font-bold mb-2 text-white">
-                    {t("sharedDormitory")}
-                  </h3>
-                  <p className="text-white/80 text-sm">
-                    {t("sharedDormitoryDesc")}
-                  </p>
+                  <h3 className="mb-2 text-xl font-bold text-white">{t("sharedDormitory")}</h3>
+                  <p className="text-sm text-white/80">{t("sharedDormitoryDesc")}</p>
                 </div>
               </div>
             </div>
           </motion.div>
 
-          {/* Bathroom facilities section */}
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: isLoaded ? 1 : 0, y: isLoaded ? 0 : 30 }}
             transition={{ duration: 0.8, delay: 0.6 }}
             className="mb-16"
           >
-            <h2 className="text-2xl font-bold mb-8 uppercase text-gray-900">
-              {t("bathroomFacilities")}
-            </h2>
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+            <h2 className="mb-8 text-2xl font-bold uppercase text-gray-900">{t("bathroomFacilities")}</h2>
+            <div className="grid grid-cols-1 gap-6 md:grid-cols-3">
               <div className="relative h-64 overflow-hidden rounded-lg">
                 <Image
                   src="/images/house-bathroom-sink.jpeg"
@@ -223,36 +205,38 @@ export default function HousePage() {
                   fill
                   className="object-cover"
                 />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent"></div>
+                <div className="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent" />
                 <div className="absolute bottom-0 left-0 p-4">
-                  <h3 className="text-lg font-bold mb-1 text-white">
-                    {t("washArea")}
-                  </h3>
-                  <p className="text-white/80 text-sm">
-                    {t("washAreaDesc")}
-                  </p>
+                  <h3 className="mb-1 text-lg font-bold text-white">{t("washArea")}</h3>
+                  <p className="text-sm text-white/80">{t("washAreaDesc")}</p>
                 </div>
               </div>
+
               <div className="relative h-64 overflow-hidden rounded-lg">
-                <Image src="/images/house-shower.jpeg" alt="Clean shower facilities" fill className="object-cover" />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent"></div>
+                <Image
+                  src="/images/house-shower.jpeg"
+                  alt="Clean shower facilities"
+                  fill
+                  className="object-cover"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent" />
                 <div className="absolute bottom-0 left-0 p-4">
-                  <h3 className="text-lg font-bold mb-1 text-white">
-                    {t("showers")}
-                  </h3>
-                  <p className="text-white/80 text-sm">
-                    {t("showersDesc")}
-                  </p>
+                  <h3 className="mb-1 text-lg font-bold text-white">{t("showers")}</h3>
+                  <p className="text-sm text-white/80">{t("showersDesc")}</p>
                 </div>
               </div>
+
               <div className="relative h-64 overflow-hidden rounded-lg">
-                <Image src="/images/house-toilet.jpeg" alt="Modern toilet facilities" fill className="object-cover" />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent"></div>
+                <Image
+                  src="/images/house-toilet.jpeg"
+                  alt="Modern toilet facilities"
+                  fill
+                  className="object-cover"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent" />
                 <div className="absolute bottom-0 left-0 p-4">
-                  <h3 className="text-lg font-bold mb-1 text-white">{t("toilets")}</h3>
-                  <p className="text-white/80 text-sm">
-                    {t("toiletsDesc")}
-                  </p>
+                  <h3 className="mb-1 text-lg font-bold text-white">{t("toilets")}</h3>
+                  <p className="text-sm text-white/80">{t("toiletsDesc")}</p>
                 </div>
               </div>
             </div>
@@ -264,30 +248,27 @@ export default function HousePage() {
             transition={{ duration: 0.8, delay: 0.8 }}
             className="mb-16"
           >
-            <h2 className="text-2xl font-bold mb-8 uppercase text-gray-900">{t("locationTitle")}</h2>
-            <div className="aspect-video relative rounded-lg overflow-hidden">
+            <h2 className="mb-8 text-2xl font-bold uppercase text-gray-900">{t("locationTitle")}</h2>
+            <div className="relative aspect-video overflow-hidden rounded-lg">
               <iframe
                 src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d21493.756807086395!2d12.13922555!3d47.23286205!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x4776f9b1a0c8f4e9%3A0x3f4e01b6b0a2b6e0!2s6372%20Hochkrimml%2C%20Austria!5e0!3m2!1sen!2sde!4v1712593066345!5m2!1sen!2sde"
                 width="100%"
                 height="100%"
                 style={{ border: 0 }}
-                allowFullScreen=""
+                allowFullScreen
                 loading="lazy"
                 referrerPolicy="no-referrer-when-downgrade"
                 className="absolute inset-0"
-              ></iframe>
+              />
             </div>
-            <p className="mt-4 text-gray-700">
-              {t("houseLocation")}
-            </p>
+            <p className="mt-4 text-gray-700">{t("houseLocation")}</p>
           </motion.div>
         </div>
       </div>
 
-      {/* Footer */}
-      <footer className="bg-gray-100 border-t border-gray-200 py-8">
+      <footer className="border-t border-gray-200 bg-gray-100 py-8">
         <div className="container mx-auto px-4">
-          <div className="flex flex-col md:flex-row justify-between items-center">
+          <div className="flex flex-col items-center justify-between md:flex-row">
             <div className="mb-4 md:mb-0">
               <Image
                 src="/images/MTC-Logo_2025.png"
@@ -298,16 +279,16 @@ export default function HousePage() {
               />
             </div>
             <div className="flex gap-8">
-              <Link href="/" className="text-gray-600 hover:text-primary transition-colors">
-                {t("language") === "de" ? "Startseite" : "Home"}
+              <Link href="/" className="text-gray-600 transition-colors hover:text-primary">
+                {language === "de" ? "Startseite" : "Home"}
               </Link>
-              <Link href="/trails" className="text-gray-600 hover:text-primary transition-colors">
+              <Link href="/trails" className="text-gray-600 transition-colors hover:text-primary">
                 {t("trails")}
               </Link>
-              <Link href="/impressum" className="text-gray-600 hover:text-primary transition-colors">
+              <Link href="/impressum" className="text-gray-600 transition-colors hover:text-primary">
                 {t("imprint")}
               </Link>
-              <Link href="/datenschutz" className="text-gray-600 hover:text-primary transition-colors">
+              <Link href="/datenschutz" className="text-gray-600 transition-colors hover:text-primary">
                 {t("privacyPolicy")}
               </Link>
             </div>
