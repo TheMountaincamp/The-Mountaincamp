@@ -38,7 +38,7 @@ export default function BusDeparturesPage() {
           de: "Abfahrt um 12:30 Uhr vom Zentralen Omnibusbahnhof",
         },
       },
-      capacity: { sold: 7, total: 20 },
+      capacity: { sold: 8, total: 20 },
     },
     {
       city: "Jenbach",
