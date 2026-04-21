@@ -10,7 +10,7 @@ export default function ImpressumPage() {
           <div className="prose max-w-none">
             <h2 className="text-xl font-bold mt-8 mb-4">Angaben gemäß § 5 TMG</h2>
             <p>
-              Jonas Westbrock e.U.
+              Jonas Westbrock
               <br />
               Im Schulgarten 28
               <br />
