@@ -1,6 +1,6 @@
 "use client"
 
-import { useState, useEffect } from "react"
+import { useState } from "react"
 import { motion, AnimatePresence } from "framer-motion"
 import { ChevronDown } from "lucide-react"
 import { useLanguage } from "@/contexts/language-context"
@@ -186,35 +186,7 @@ export default function FAQSection() {
   const visibleFaqs = showAllFaqs ? faqs : faqs.slice(0, 5)
   const hasMoreFaqs = faqs.length > 5
 
-  useEffect(() => {
-    if (typeof window !== "undefined") {
-      const faqStructuredData = {
-        "@context": "https://schema.org",
-        "@type": "FAQPage",
-        mainEntity: faqs.map((faq) => ({
-          "@type": "Question",
-          name: faq.question,
-          acceptedAnswer: {
-            "@type": "Answer",
-            text: faq.answer,
-          },
-        })),
-      }
-
-      const script = document.createElement("script")
-      script.type = "application/ld+json"
-      script.text = JSON.stringify(faqStructuredData)
-      script.id = "faq-structured-data"
-      document.head.appendChild(script)
-
-      return () => {
-        const existingScript = document.getElementById("faq-structured-data")
-        if (existingScript && document.head.contains(existingScript)) {
-          document.head.removeChild(existingScript)
-        }
-      }
-    }
-  }, [faqs])
+  // FAQ Schema is now rendered server-side in page.tsx for better SEO
 
   return (
     <section className="py-24 bg-white">
