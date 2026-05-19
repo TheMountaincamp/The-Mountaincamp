@@ -1027,24 +1027,24 @@ export default function HomePageClient() {
             />
           </div>
 
-          <div className="relative">
-            <div className="absolute bottom-0 left-0 top-0 z-10 w-32 bg-gradient-to-r from-gray-900 to-transparent" />
-            <div className="absolute bottom-0 right-0 top-0 z-10 w-32 bg-gradient-to-l from-gray-900 to-transparent" />
+          <div className="relative overflow-hidden">
+            <div className="absolute bottom-0 left-0 top-0 z-10 w-16 md:w-32 bg-gradient-to-r from-gray-900 to-transparent" />
+            <div className="absolute bottom-0 right-0 top-0 z-10 w-16 md:w-32 bg-gradient-to-l from-gray-900 to-transparent" />
 
-            <motion.div
-              className="flex items-center gap-12 md:gap-20"
-              animate={{ x: ["0%", "-50%"] }}
-              transition={{
-                x: {
-                  repeat: Number.POSITIVE_INFINITY,
-                  repeatType: "loop",
-                  duration: 25,
-                  ease: "linear",
-                },
-              }}
-            >
+            <style>{`
+              @keyframes marquee {
+                0% { transform: translateX(0); }
+                100% { transform: translateX(-50%); }
+              }
+              .partner-marquee {
+                animation: marquee 30s linear infinite;
+                will-change: transform;
+              }
+            `}</style>
+
+            <div className="partner-marquee flex items-center gap-10 md:gap-20" style={{ width: "max-content" }}>
               {[...Array(2)].map((_, setIndex) => (
-                <div key={setIndex} className="flex shrink-0 items-center gap-12 md:gap-20">
+                <div key={setIndex} className="flex shrink-0 items-center gap-10 md:gap-20">
                   {[
                     { src: "/images/partner-1.png", alt: "KRAFT. - Partner des Mountaincamp Trailrunning Camps" },
                     { src: "/images/partner-2.png", alt: "Powerbar - Sponsor des Mountaincamp Trailrunning Camps" },
@@ -1059,21 +1059,21 @@ export default function HomePageClient() {
                     { src: "/images/partner-7.png", alt: "Early Birds - Partner des Mountaincamp Trailrunning Camps" },
                     { src: "/images/partner-8.png", alt: "Incylence - Partner des Mountaincamp Trailrunning Camps" },
                   ].map((partner, idx) => (
-                    <div key={`${setIndex}-${idx}`} className="flex h-20 md:h-28 shrink-0 items-center justify-center">
+                    <div key={`${setIndex}-${idx}`} className="flex h-24 md:h-32 shrink-0 items-center justify-center">
                       <Image
                         src={partner.src}
                         alt={partner.alt}
-                        width={200}
-                        height={80}
-                        className="w-auto object-contain opacity-70 transition-opacity duration-300 hover:opacity-100 h-14 md:h-24"
+                        width={220}
+                        height={90}
+                        className="w-auto object-contain opacity-70 transition-opacity duration-300 hover:opacity-100 h-16 md:h-28"
                         loading="lazy"
-                        sizes="(max-width: 768px) 120px, 200px"
+                        sizes="(max-width: 768px) 140px, 220px"
                       />
                     </div>
                   ))}
                 </div>
               ))}
-            </motion.div>
+            </div>
           </div>
         </section>
 
