@@ -37,6 +37,103 @@ const SECTION_IMAGES = ["/images/MTC-Logo_2025_weiß.png"]
 const HOUSE_PAGE_IMAGES = ["/images/mountain-lodge.jpeg"]
 const TRAILS_PAGE_IMAGES = ["/images/mountain-trail-runner.jpeg", "/images/trail-runners-group.jpeg"]
 
+const PARTNERS = [
+  { src: "/images/partner-1.png", alt: "KRAFT. - Partner des Mountaincamp Trailrunning Camps" },
+  { src: "/images/partner-2.png", alt: "Powerbar - Sponsor des Mountaincamp Trailrunning Camps" },
+  { src: "/images/partner-3.png", alt: "Altra Running - Partner des Mountaincamp Trailrunning Camps" },
+  { src: "/images/partner-4.png", alt: "Midnight Runners - Partner des Mountaincamp Trailrunning Camps" },
+  { src: "/images/partner-5.png", alt: "Lebe Pur - Partner des Mountaincamp Trailrunning Camps" },
+  { src: "/images/partner-therabody.png", alt: "Therabody - Sponsor des Mountaincamp Trailrunning Camps" },
+  { src: "/images/partner-leki.png", alt: "Leki - Sponsor des Mountaincamp Trailrunning Camps" },
+  { src: "/images/partner-koro.png", alt: "KoRo - Sponsor des Mountaincamp Trailrunning Camps" },
+  { src: "/images/partner-sebamed.png", alt: "Sebamed - Sponsor des Mountaincamp Trailrunning Camps" },
+  { src: "/images/partner-suunto.png", alt: "Suunto - Sponsor des Mountaincamp Trailrunning Camps" },
+  { src: "/images/partner-7.png", alt: "Early Birds - Partner des Mountaincamp Trailrunning Camps" },
+  { src: "/images/partner-8.png", alt: "Incylence - Partner des Mountaincamp Trailrunning Camps" },
+]
+
+function PartnerCarousel() {
+  const trackRef = useRef<HTMLDivElement>(null)
+  const containerRef = useRef<HTMLDivElement>(null)
+  const posRef = useRef(0)
+  const rafRef = useRef<number>(0)
+  const [scales, setScales] = useState<number[]>(PARTNERS.map(() => 1))
+  const itemRefs = useRef<(HTMLDivElement | null)[]>([])
+
+  useEffect(() => {
+    const track = trackRef.current
+    const container = containerRef.current
+    if (!track || !container) return
+
+    const speed = 0.6 // px per frame — slower on all devices
+
+    function animate() {
+      posRef.current += speed
+      const half = track!.scrollWidth / 2
+      if (posRef.current >= half) posRef.current = 0
+      track!.style.transform = `translateX(-${posRef.current}px)`
+
+      // Compute scale for each item based on distance from center
+      const containerRect = container!.getBoundingClientRect()
+      const centerX = containerRect.left + containerRect.width / 2
+      const newScales = itemRefs.current.slice(0, PARTNERS.length).map((el) => {
+        if (!el) return 1
+        const rect = el.getBoundingClientRect()
+        const itemCenterX = rect.left + rect.width / 2
+        const dist = Math.abs(centerX - itemCenterX)
+        const maxDist = containerRect.width / 2
+        const ratio = Math.max(0, 1 - dist / maxDist)
+        return 1 + ratio * 0.45 // max scale 1.45
+      })
+      setScales(newScales)
+
+      rafRef.current = requestAnimationFrame(animate)
+    }
+
+    rafRef.current = requestAnimationFrame(animate)
+    return () => cancelAnimationFrame(rafRef.current)
+  }, [])
+
+  // Duplicate list for seamless loop
+  const allPartners = [...PARTNERS, ...PARTNERS]
+
+  return (
+    <div ref={containerRef} className="overflow-hidden">
+      <div
+        ref={trackRef}
+        className="flex items-center gap-10 md:gap-20"
+        style={{ width: "max-content", willChange: "transform" }}
+      >
+        {allPartners.map((partner, idx) => {
+          const originalIdx = idx % PARTNERS.length
+          const scale = scales[originalIdx] ?? 1
+          return (
+            <div
+              key={idx}
+              ref={(el) => { if (idx < PARTNERS.length) itemRefs.current[idx] = el }}
+              className="flex h-24 md:h-32 shrink-0 items-center justify-center"
+              style={{
+                transform: `scale(${scale})`,
+                transition: "transform 0.15s ease-out",
+              }}
+            >
+              <Image
+                src={partner.src}
+                alt={partner.alt}
+                width={220}
+                height={90}
+                className="w-auto object-contain opacity-70 hover:opacity-100 h-16 md:h-24"
+                loading="lazy"
+                sizes="(max-width: 768px) 160px, 220px"
+              />
+            </div>
+          )
+        })}
+      </div>
+    </div>
+  )
+}
+
 export default function HomePageClient() {
   const { t, language } = useLanguage()
   const isMobile = useMobile()
@@ -1028,52 +1125,10 @@ export default function HomePageClient() {
           </div>
 
           <div className="relative overflow-hidden">
-            <div className="absolute bottom-0 left-0 top-0 z-10 w-16 md:w-32 bg-gradient-to-r from-gray-900 to-transparent" />
-            <div className="absolute bottom-0 right-0 top-0 z-10 w-16 md:w-32 bg-gradient-to-l from-gray-900 to-transparent" />
+            <div className="absolute bottom-0 left-0 top-0 z-10 w-16 md:w-32 bg-gradient-to-r from-gray-900 to-transparent pointer-events-none" />
+            <div className="absolute bottom-0 right-0 top-0 z-10 w-16 md:w-32 bg-gradient-to-l from-gray-900 to-transparent pointer-events-none" />
 
-            <style>{`
-              @keyframes marquee {
-                0% { transform: translateX(0); }
-                100% { transform: translateX(-50%); }
-              }
-              .partner-marquee {
-                animation: marquee 30s linear infinite;
-                will-change: transform;
-              }
-            `}</style>
-
-            <div className="partner-marquee flex items-center gap-10 md:gap-20" style={{ width: "max-content" }}>
-              {[...Array(2)].map((_, setIndex) => (
-                <div key={setIndex} className="flex shrink-0 items-center gap-10 md:gap-20">
-                  {[
-                    { src: "/images/partner-1.png", alt: "KRAFT. - Partner des Mountaincamp Trailrunning Camps" },
-                    { src: "/images/partner-2.png", alt: "Powerbar - Sponsor des Mountaincamp Trailrunning Camps" },
-                    { src: "/images/partner-3.png", alt: "Altra Running - Partner des Mountaincamp Trailrunning Camps" },
-                    { src: "/images/partner-4.png", alt: "Midnight Runners - Partner des Mountaincamp Trailrunning Camps" },
-                    { src: "/images/partner-5.png", alt: "Lebe Pur - Partner des Mountaincamp Trailrunning Camps" },
-                    { src: "/images/partner-therabody.png", alt: "Therabody - Sponsor des Mountaincamp Trailrunning Camps" },
-                    { src: "/images/partner-leki.png", alt: "Leki - Sponsor des Mountaincamp Trailrunning Camps" },
-                    { src: "/images/partner-koro.png", alt: "KoRo - Sponsor des Mountaincamp Trailrunning Camps" },
-                    { src: "/images/partner-sebamed.png", alt: "Sebamed - Sponsor des Mountaincamp Trailrunning Camps" },
-                    { src: "/images/partner-suunto.png", alt: "Suunto - Sponsor des Mountaincamp Trailrunning Camps" },
-                    { src: "/images/partner-7.png", alt: "Early Birds - Partner des Mountaincamp Trailrunning Camps" },
-                    { src: "/images/partner-8.png", alt: "Incylence - Partner des Mountaincamp Trailrunning Camps" },
-                  ].map((partner, idx) => (
-                    <div key={`${setIndex}-${idx}`} className="flex h-24 md:h-32 shrink-0 items-center justify-center">
-                      <Image
-                        src={partner.src}
-                        alt={partner.alt}
-                        width={220}
-                        height={90}
-                        className="w-auto object-contain opacity-70 transition-opacity duration-300 hover:opacity-100 h-16 md:h-28"
-                        loading="lazy"
-                        sizes="(max-width: 768px) 140px, 220px"
-                      />
-                    </div>
-                  ))}
-                </div>
-              ))}
-            </div>
+            <PartnerCarousel />
           </div>
         </section>
 
