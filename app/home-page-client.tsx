@@ -772,7 +772,7 @@ export default function HomePageClient() {
               light={true}
             />
 
-            <div className="grid grid-cols-2 gap-4 lg:grid-cols-4 md:gap-8">
+            <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-4 md:gap-8">
               <motion.div
                 initial={{ opacity: 0, y: 30 }}
                 whileInView={{ opacity: 1, y: 0 }}
@@ -1032,19 +1032,19 @@ export default function HomePageClient() {
             <div className="absolute bottom-0 right-0 top-0 z-10 w-32 bg-gradient-to-l from-gray-900 to-transparent" />
 
             <motion.div
-              className="flex items-center gap-20"
+              className="flex items-center gap-8 md:gap-20"
               animate={{ x: ["0%", "-50%"] }}
               transition={{
                 x: {
                   repeat: Number.POSITIVE_INFINITY,
                   repeatType: "loop",
-                  duration: typeof window !== "undefined" && window.innerWidth < 768 ? 20 : 40,
+                  duration: typeof window !== "undefined" && window.innerWidth < 768 ? 12 : 40,
                   ease: "linear",
                 },
               }}
             >
               {[...Array(2)].map((_, setIndex) => (
-                <div key={setIndex} className="flex shrink-0 items-center gap-20">
+                <div key={setIndex} className="flex shrink-0 items-center gap-8 md:gap-20">
                   {[
                     { src: "/images/partner-1.png", alt: "KRAFT. - Partner des Mountaincamp Trailrunning Camps", h: "h-36" },
                     { src: "/images/partner-2.png", alt: "Powerbar - Sponsor des Mountaincamp Trailrunning Camps", h: "h-36" },
@@ -1059,15 +1059,15 @@ export default function HomePageClient() {
                     { src: "/images/partner-7.png", alt: "Early Birds - Partner des Mountaincamp Trailrunning Camps", h: "h-36" },
                     { src: "/images/partner-8.png", alt: "Incylence - Partner des Mountaincamp Trailrunning Camps", h: "h-24" },
                   ].map((partner, idx) => (
-                    <div key={`${setIndex}-${idx}`} className="flex h-36 shrink-0 items-center justify-center">
+                    <div key={`${setIndex}-${idx}`} className="flex h-20 md:h-36 shrink-0 items-center justify-center">
                       <Image
                         src={partner.src}
                         alt={partner.alt}
-                        width={600}
-                        height={150}
-                        className={`w-auto object-contain opacity-70 transition-opacity duration-300 hover:opacity-100 ${partner.h}`}
+                        width={300}
+                        height={80}
+                        className={`w-auto object-contain opacity-70 transition-opacity duration-300 hover:opacity-100 max-h-16 md:max-h-none ${partner.h}`}
                         loading="lazy"
-                        sizes="600px"
+                        sizes="(max-width: 768px) 150px, 300px"
                       />
                     </div>
                   ))}
