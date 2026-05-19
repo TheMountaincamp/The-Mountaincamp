@@ -1032,42 +1032,42 @@ export default function HomePageClient() {
             <div className="absolute bottom-0 right-0 top-0 z-10 w-32 bg-gradient-to-l from-gray-900 to-transparent" />
 
             <motion.div
-              className="flex items-center gap-8 md:gap-20"
+              className="flex items-center gap-12 md:gap-20"
               animate={{ x: ["0%", "-50%"] }}
               transition={{
                 x: {
                   repeat: Number.POSITIVE_INFINITY,
                   repeatType: "loop",
-                  duration: typeof window !== "undefined" && window.innerWidth < 768 ? 12 : 40,
+                  duration: 25,
                   ease: "linear",
                 },
               }}
             >
               {[...Array(2)].map((_, setIndex) => (
-                <div key={setIndex} className="flex shrink-0 items-center gap-8 md:gap-20">
+                <div key={setIndex} className="flex shrink-0 items-center gap-12 md:gap-20">
                   {[
-                    { src: "/images/partner-1.png", alt: "KRAFT. - Partner des Mountaincamp Trailrunning Camps", h: "h-36" },
-                    { src: "/images/partner-2.png", alt: "Powerbar - Sponsor des Mountaincamp Trailrunning Camps", h: "h-36" },
-                    { src: "/images/partner-3.png", alt: "Altra Running - Partner des Mountaincamp Trailrunning Camps", h: "h-36" },
-                    { src: "/images/partner-4.png", alt: "Midnight Runners - Partner des Mountaincamp Trailrunning Camps", h: "h-36" },
-                    { src: "/images/partner-5.png", alt: "Lebe Pur - Partner des Mountaincamp Trailrunning Camps", h: "h-36" },
-                    { src: "/images/partner-therabody.png", alt: "Therabody - Sponsor des Mountaincamp Trailrunning Camps", h: "h-28" },
-                    { src: "/images/partner-leki.png", alt: "Leki - Sponsor des Mountaincamp Trailrunning Camps", h: "h-24" },
-                    { src: "/images/partner-koro.png", alt: "KoRo - Sponsor des Mountaincamp Trailrunning Camps", h: "h-28" },
-                    { src: "/images/partner-sebamed.png", alt: "Sebamed - Sponsor des Mountaincamp Trailrunning Camps", h: "h-24" },
-                    { src: "/images/partner-suunto.png", alt: "Suunto - Sponsor des Mountaincamp Trailrunning Camps", h: "h-20" },
-                    { src: "/images/partner-7.png", alt: "Early Birds - Partner des Mountaincamp Trailrunning Camps", h: "h-36" },
-                    { src: "/images/partner-8.png", alt: "Incylence - Partner des Mountaincamp Trailrunning Camps", h: "h-24" },
+                    { src: "/images/partner-1.png", alt: "KRAFT. - Partner des Mountaincamp Trailrunning Camps" },
+                    { src: "/images/partner-2.png", alt: "Powerbar - Sponsor des Mountaincamp Trailrunning Camps" },
+                    { src: "/images/partner-3.png", alt: "Altra Running - Partner des Mountaincamp Trailrunning Camps" },
+                    { src: "/images/partner-4.png", alt: "Midnight Runners - Partner des Mountaincamp Trailrunning Camps" },
+                    { src: "/images/partner-5.png", alt: "Lebe Pur - Partner des Mountaincamp Trailrunning Camps" },
+                    { src: "/images/partner-therabody.png", alt: "Therabody - Sponsor des Mountaincamp Trailrunning Camps" },
+                    { src: "/images/partner-leki.png", alt: "Leki - Sponsor des Mountaincamp Trailrunning Camps" },
+                    { src: "/images/partner-koro.png", alt: "KoRo - Sponsor des Mountaincamp Trailrunning Camps" },
+                    { src: "/images/partner-sebamed.png", alt: "Sebamed - Sponsor des Mountaincamp Trailrunning Camps" },
+                    { src: "/images/partner-suunto.png", alt: "Suunto - Sponsor des Mountaincamp Trailrunning Camps" },
+                    { src: "/images/partner-7.png", alt: "Early Birds - Partner des Mountaincamp Trailrunning Camps" },
+                    { src: "/images/partner-8.png", alt: "Incylence - Partner des Mountaincamp Trailrunning Camps" },
                   ].map((partner, idx) => (
-                    <div key={`${setIndex}-${idx}`} className="flex h-20 md:h-36 shrink-0 items-center justify-center">
+                    <div key={`${setIndex}-${idx}`} className="flex h-20 md:h-28 shrink-0 items-center justify-center">
                       <Image
                         src={partner.src}
                         alt={partner.alt}
-                        width={300}
+                        width={200}
                         height={80}
-                        className={`w-auto object-contain opacity-70 transition-opacity duration-300 hover:opacity-100 max-h-16 md:max-h-none ${partner.h}`}
+                        className="w-auto object-contain opacity-70 transition-opacity duration-300 hover:opacity-100 h-14 md:h-24"
                         loading="lazy"
-                        sizes="(max-width: 768px) 150px, 300px"
+                        sizes="(max-width: 768px) 120px, 200px"
                       />
                     </div>
                   ))}
