@@ -84,7 +84,11 @@ function PriceCategoryBar({ category, filled, total, label, status }: PriceCateg
   )
 }
 
-export default function PriceCategoryBars() {
+interface PriceCategoryBarsProps {
+  cat4Filled?: number
+}
+
+export default function PriceCategoryBars({ cat4Filled = 40 }: PriceCategoryBarsProps) {
   const { language } = useLanguage()
   
   const soldOutLabel = language === "de" ? "Ausverkauft" : "Sold out"
@@ -116,7 +120,7 @@ export default function PriceCategoryBars() {
           />
           <PriceCategoryBar category={language === "de" ? "Preiskategorie 2" : "Price Category 2"} filled={100} total={100} label={soldOutLabel} status="sold-out" />
           <PriceCategoryBar category={language === "de" ? "Preiskategorie 3" : "Price Category 3"} filled={100} total={100} label={soldOutLabel} status="sold-out" />
-          <PriceCategoryBar category={language === "de" ? "Preiskategorie 4" : "Price Category 4"} filled={40} total={100} label={availableLabel} status="available" />
+          <PriceCategoryBar category={language === "de" ? "Preiskategorie 4" : "Price Category 4"} filled={cat4Filled} total={100} label={availableLabel} status={cat4Filled >= 100 ? "sold-out" : "available"} />
         </div>
       </div>
 

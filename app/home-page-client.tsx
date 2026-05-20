@@ -37,6 +37,22 @@ const SECTION_IMAGES = ["/images/MTC-Logo_2025_weiß.png"]
 const HOUSE_PAGE_IMAGES = ["/images/mountain-lodge.jpeg"]
 const TRAILS_PAGE_IMAGES = ["/images/mountain-trail-runner.jpeg", "/images/trail-runners-group.jpeg"]
 
+// Start date: May 20, 2026 — 23 tickets, cat4 at 40%
+// Every 2 days: -1 ticket, +2% cat4
+const COUNTDOWN_START_DATE = new Date("2026-05-20T00:00:00Z")
+const COUNTDOWN_START_TICKETS = 23
+const COUNTDOWN_START_CAT4 = 40
+
+function getDynamicValues() {
+  const now = new Date()
+  const msPerDay = 1000 * 60 * 60 * 24
+  const daysSinceStart = Math.floor((now.getTime() - COUNTDOWN_START_DATE.getTime()) / msPerDay)
+  const periods = Math.max(0, Math.floor(daysSinceStart / 2))
+  const tickets = Math.max(0, COUNTDOWN_START_TICKETS - periods)
+  const cat4 = Math.min(100, COUNTDOWN_START_CAT4 + periods * 2)
+  return { tickets, cat4 }
+}
+
 const PARTNERS = [
   { src: "/images/partner-1.png", alt: "KRAFT. - Partner des Mountaincamp Trailrunning Camps" },
   { src: "/images/partner-2.png", alt: "Powerbar - Sponsor des Mountaincamp Trailrunning Camps" },
@@ -137,6 +153,7 @@ function PartnerCarousel() {
 export default function HomePageClient() {
   const { t, language } = useLanguage()
   const isMobile = useMobile()
+  const [dynamicValues] = useState(() => getDynamicValues())
 
   const [currentActivityIndex, setCurrentActivityIndex] = useState(0)
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
@@ -440,6 +457,31 @@ export default function HomePageClient() {
   return (
     <div className="min-h-screen w-full overflow-x-hidden bg-white">
       <ImagePreloader imageSources={SECTION_IMAGES} onComplete={() => { }} />
+
+      {/* Urgency Banner */}
+      {dynamicValues.tickets > 0 && (
+        <motion.div
+          initial={{ y: -48, opacity: 0 }}
+          animate={{ y: 0, opacity: 1 }}
+          transition={{ duration: 0.5, delay: 0.3 }}
+          className="relative z-30 w-full bg-primary px-4 py-2.5 text-center"
+        >
+          <p className="text-sm font-bold text-white md:text-base">
+            {language === "de"
+              ? `Nur noch ${dynamicValues.tickets} Tickets verfügbar! Jetzt sichern.`
+              : `Only ${dynamicValues.tickets} tickets left! Secure yours now.`}
+            {" "}
+            <a
+              href="https://my.camps.digital/masken/buchungen/vuejs?&vendor=mountaincamp&destination_id=2467&termin_id=36011&locale=de#/"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="ml-2 inline-flex items-center gap-1 underline underline-offset-2 hover:no-underline font-extrabold"
+            >
+              {language === "de" ? "Jetzt buchen" : "Book now"} →
+            </a>
+          </p>
+        </motion.div>
+      )}
 
       {isMobile && hasScrolled && (
         <motion.div
@@ -1076,7 +1118,7 @@ export default function HomePageClient() {
               transition={{ duration: 0.8 }}
               className="mt-16"
             >
-              <PriceCategoryBars />
+                <PriceCategoryBars cat4Filled={dynamicValues.cat4} />
             </motion.div>
           </div>
         </section>
