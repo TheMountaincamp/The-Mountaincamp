@@ -1,290 +1,447 @@
 "use client"
 
-import { useRef } from "react"
 import Link from "next/link"
-import { ArrowLeft, Calendar, Clock, MapPin, Users } from "lucide-react"
+import { ArrowLeft, Calendar, MapPin, Clock } from "lucide-react"
 import { useLanguage } from "@/contexts/language-context"
 import SiteHeader from "@/app/components/site-header"
 
-// ─── Schedule data ───────────────────────────────────────────────────────────
+// ─── Constants ──────────────────────────────────────────────────────────────
 
-interface ScheduleEvent {
-  time: string
-  title: string
-  titleEn?: string
-  description?: string
-  descriptionEn?: string
-  type: "meal" | "activity" | "run" | "workshop" | "travel" | "free" | "evening" | "yoga"
-  groups?: string[]
-}
+const PX_PER_MIN = 1.4
+const START_H = 5
+const END_H = 22
+const TOTAL_MIN = (END_H - START_H) * 60
+const TIME_W = 52
+const COL_W = 108
 
-interface DaySchedule {
-  day: string
-  dayEn: string
-  date: string
-  events: ScheduleEvent[]
-}
+function hToPx(h: number) { return (h - START_H) * 60 * PX_PER_MIN }
+function durPx(from: number, to: number) { return (to - from) * 60 * PX_PER_MIN }
 
-const SCHEDULE: DaySchedule[] = [
-  {
-    day: "Mittwoch",
-    dayEn: "Wednesday",
-    date: "5. August",
-    events: [
-      { time: "06:36", title: "Zug Berlin → München", titleEn: "Train Berlin → Munich", description: "Ankunft 10:45", descriptionEn: "Arrival 10:45", type: "travel" },
-      { time: "12:30", title: "Bus München → Hochkrimml", titleEn: "Bus Munich → Hochkrimml", description: "Ankunft ca. 16:30", descriptionEn: "Arrival approx. 16:30", type: "travel" },
-      { time: "16:30", title: "Check-in & Zimmerverteilung", titleEn: "Check-in & Room Assignment", type: "activity" },
-      { time: "18:00", title: "Welcome & Ablauf", titleEn: "Welcome & Briefing", description: "Kennenlernen und Programmvorstellung", descriptionEn: "Meet & greet and program overview", type: "activity" },
-      { time: "18:30", title: "Abendessen", titleEn: "Dinner", type: "meal" },
-      { time: "19:30", title: "Abendessen Filzsteinalm", titleEn: "Dinner Filzsteinalm", description: "Gemeinsamer Hüttenabend", descriptionEn: "Group hut evening", type: "evening" },
-    ],
-  },
-  {
-    day: "Donnerstag",
-    dayEn: "Thursday",
-    date: "6. August",
-    events: [
-      { time: "06:30", title: "Morning Yoga", titleEn: "Morning Yoga", description: "Optional", type: "yoga" },
-      { time: "07:30", title: "Frühstück", titleEn: "Breakfast", type: "meal" },
-      { time: "08:15", title: "Treffpunkt & Briefing", titleEn: "Meeting Point & Briefing", type: "activity" },
-      { time: "08:30", title: "Vormittagsprogramm", titleEn: "Morning Program", description: "Gruppen A1/A2: Technik & Kraft · Gruppen B/C: Trail Run", descriptionEn: "Groups A1/A2: Technique & Strength · Groups B/C: Trail Run", type: "run", groups: ["A1", "A2", "B", "C"] },
-      { time: "12:30", title: "Freie Zeit / Duschen", titleEn: "Free Time / Showers", type: "free" },
-      { time: "13:00", title: "Mittagessen", titleEn: "Lunch", type: "meal" },
-      { time: "13:30", title: "Nachmittagsprogramm", titleEn: "Afternoon Program", description: "Kanufahren · Linoleum-Druck · Ernährungsworkshop", descriptionEn: "Canoeing · Linocut Printing · Nutrition Workshop", type: "workshop" },
-      { time: "18:00", title: "Freie Zeit / Duschen", titleEn: "Free Time / Showers", type: "free" },
-      { time: "18:30", title: "Abendessen", titleEn: "Dinner", type: "meal" },
-      { time: "19:30", title: "Outdoor Movie Night", titleEn: "Outdoor Movie Night", description: "Speakers Event", type: "evening" },
-    ],
-  },
-  {
-    day: "Freitag",
-    dayEn: "Friday",
-    date: "7. August",
-    events: [
-      { time: "05:00", title: "Sunrise Hike", titleEn: "Sunrise Hike", description: "Optional · Start 5:00", type: "yoga" },
-      { time: "06:30", title: "Morning Yoga", titleEn: "Morning Yoga", description: "Optional", type: "yoga" },
-      { time: "07:30", title: "Frühstück", titleEn: "Breakfast", type: "meal" },
-      { time: "08:15", title: "Treffpunkt & Briefing", titleEn: "Meeting Point & Briefing", type: "activity" },
-      { time: "08:30", title: "Trail Run", titleEn: "Trail Run", description: "Gruppe A: 8–13 km · Gruppe B: 11–17 km · Gruppe C: 17+ km", descriptionEn: "Group A: 8–13 km · Group B: 11–17 km · Group C: 17+ km", type: "run", groups: ["A", "B", "C"] },
-      { time: "12:30", title: "Freie Zeit / Duschen", titleEn: "Free Time / Showers", type: "free" },
-      { time: "13:00", title: "Mittagessen", titleEn: "Lunch", type: "meal" },
-      { time: "13:30", title: "Nachmittagsprogramm", titleEn: "Afternoon Program", description: "Kletterkurs · Bogenschießen · Stricken · Krafttraining · Upcycling", descriptionEn: "Climbing Course · Archery · Knitting · Strength Training · Upcycling", type: "workshop" },
-      { time: "18:00", title: "Freie Zeit / Duschen", titleEn: "Free Time / Showers", type: "free" },
-      { time: "18:30", title: "Abendessen", titleEn: "Dinner", type: "meal" },
-      { time: "19:30", title: "Lagerfeuerabend", titleEn: "Campfire Evening", type: "evening" },
-    ],
-  },
-  {
-    day: "Samstag",
-    dayEn: "Saturday",
-    date: "8. August",
-    events: [
-      { time: "06:30", title: "Morning Yoga", titleEn: "Morning Yoga", description: "Optional", type: "yoga" },
-      { time: "07:30", title: "Frühstück", titleEn: "Breakfast", type: "meal" },
-      { time: "08:15", title: "Treffpunkt & Briefing", titleEn: "Meeting Point & Briefing", type: "activity" },
-      { time: "08:30", title: "Trail Run", titleEn: "Trail Run", description: "Gruppe A: 8–13 km · Gruppe B: 11–17 km · Gruppe C: 17+ km", descriptionEn: "Group A: 8–13 km · Group B: 11–17 km · Group C: 17+ km", type: "run", groups: ["A", "B", "C"] },
-      { time: "12:30", title: "Freie Zeit / Duschen", titleEn: "Free Time / Showers", type: "free" },
-      { time: "13:00", title: "Mittagessen", titleEn: "Lunch", type: "meal" },
-      { time: "13:30", title: "Nachmittagsprogramm", titleEn: "Afternoon Program", description: "MTB-Tour · Töpfern · Freie Zeit", descriptionEn: "MTB Tour · Pottery · Free Time", type: "workshop" },
-      { time: "18:00", title: "Freie Zeit / Duschen", titleEn: "Free Time / Showers", type: "free" },
-      { time: "18:30", title: "Abendessen", titleEn: "Dinner", type: "meal" },
-      { time: "19:30", title: "Letzter Abend", titleEn: "Final Evening", description: "Gemeinsamer Abschluss", descriptionEn: "Group farewell", type: "evening" },
-    ],
-  },
-  {
-    day: "Sonntag",
-    dayEn: "Sunday",
-    date: "9. August",
-    events: [
-      { time: "05:00", title: "Sunrise Hike", titleEn: "Sunrise Hike", description: "Optional · Letzter Sonnenaufgang", descriptionEn: "Optional · Last sunrise", type: "yoga" },
-      { time: "06:30", title: "Morning Yoga", titleEn: "Morning Yoga", description: "Optional", type: "yoga" },
-      { time: "07:30", title: "Frühstück", titleEn: "Breakfast", type: "meal" },
-      { time: "08:30", title: "Check-out & Abreise", titleEn: "Check-out & Departure", description: "Bus zurück nach München", descriptionEn: "Bus back to Munich", type: "travel" },
-    ],
-  },
+// ─── Day & Group headers ────────────────────────────────────────────────────
+
+const DAY_SPANS = [
+  { label: "Mi · Anreise", labelEn: "Wed · Arrival",    start: 0,  end: 1  },
+  { label: "Do",            labelEn: "Thu",              start: 1,  end: 5  },
+  { label: "Fr",            labelEn: "Fri",              start: 5,  end: 8  },
+  { label: "Sa",            labelEn: "Sat",              start: 8,  end: 11 },
+  { label: "So · Abreise", labelEn: "Sun · Departure",  start: 11, end: 12 },
 ]
 
-const TYPE_STYLES: Record<string, { bg: string; text: string; border: string }> = {
-  meal: { bg: "bg-amber-50", text: "text-amber-900", border: "border-amber-200" },
-  activity: { bg: "bg-gray-100", text: "text-gray-800", border: "border-gray-200" },
-  run: { bg: "bg-primary/10", text: "text-primary", border: "border-primary/30" },
-  workshop: { bg: "bg-emerald-50", text: "text-emerald-900", border: "border-emerald-200" },
-  travel: { bg: "bg-slate-100", text: "text-slate-700", border: "border-slate-200" },
-  free: { bg: "bg-gray-50", text: "text-gray-500", border: "border-gray-100" },
-  evening: { bg: "bg-primary", text: "text-white", border: "border-primary" },
-  yoga: { bg: "bg-teal-50", text: "text-teal-800", border: "border-teal-200" },
+const GRP_HEADERS = [
+  { label: "",              col: 0,  cls: "" },
+  { label: "Gr. A1 · Kurz",col: 1,  cls: "grp-a1" },
+  { label: "Gr. A2 · Kurz",col: 2,  cls: "grp-a2" },
+  { label: "Gr. B · Mittel",col: 3, cls: "grp-b"  },
+  { label: "Gr. C · Lang", col: 4,  cls: "grp-c"  },
+  { label: "Gr. A · Kurz", col: 5,  cls: "grp-a1" },
+  { label: "Gr. B · Mittel",col: 6, cls: "grp-b"  },
+  { label: "Gr. C · Lang", col: 7,  cls: "grp-c"  },
+  { label: "Gr. A · Kurz", col: 8,  cls: "grp-a1" },
+  { label: "Gr. B · Mittel",col: 9, cls: "grp-b"  },
+  { label: "Gr. C · Lang", col: 10, cls: "grp-c"  },
+  { label: "",              col: 11, cls: "" },
+]
+
+// ─── Block data ─────────────────────────────────────────────────────────────
+
+interface Block {
+  from: number
+  to: number
+  col: number
+  colSpan?: number
+  cls: string
+  name: string
+  sub?: string
 }
 
-function EventCard({ event, language }: { event: ScheduleEvent; language: string }) {
-  const styles = TYPE_STYLES[event.type] || TYPE_STYLES.activity
-  const title = language === "de" ? event.title : (event.titleEn || event.title)
-  const description = language === "de" ? event.description : (event.descriptionEn || event.description)
+const BLOCKS: Block[] = [
+  // YOGA / SUNRISE
+  { from: 6.5,  to: 7.5,  col: 1,  colSpan: 4, cls: "blk-yoga",    name: "Morning Yoga",              sub: "6:30 – 7:30 · Optional" },
+  { from: 5,    to: 6.5,  col: 5,  colSpan: 3, cls: "blk-yoga",    name: "Sunrise Hike",              sub: "Start 5:00 · Optional"  },
+  { from: 6.5,  to: 7.5,  col: 5,  colSpan: 3, cls: "blk-yoga",    name: "Morning Yoga",              sub: "6:30 – 7:30 · Optional" },
+  { from: 6.5,  to: 7.5,  col: 8,  colSpan: 3, cls: "blk-yoga",    name: "Morning Yoga",              sub: "6:30 – 7:30 · Optional" },
+  { from: 5,    to: 6.5,  col: 11,             cls: "blk-yoga",    name: "Sunrise Hike",              sub: "Start 5:00 · Optional"  },
+  { from: 6.5,  to: 7.5,  col: 11,             cls: "blk-yoga",    name: "Morning Yoga",              sub: "6:30 – 7:30 · Optional" },
 
-  return (
-    <div className={`flex gap-4 rounded-xl border p-4 transition-all hover:shadow-md ${styles.bg} ${styles.border}`}>
-      <div className="flex w-16 shrink-0 flex-col items-center justify-center">
-        <span className={`text-lg font-bold ${styles.text}`}>{event.time}</span>
-      </div>
-      <div className="flex-1">
-        <h4 className={`font-semibold ${styles.text}`}>{title}</h4>
-        {description && (
-          <p className={`mt-1 text-sm opacity-80 ${styles.text}`}>{description}</p>
-        )}
-        {event.groups && event.groups.length > 0 && (
-          <div className="mt-2 flex flex-wrap gap-1.5">
-            {event.groups.map((group) => (
-              <span
-                key={group}
-                className="inline-flex items-center gap-1 rounded-full bg-white/60 px-2 py-0.5 text-xs font-medium"
-              >
-                <Users className="h-3 w-3" />
-                {language === "de" ? `Gruppe ${group}` : `Group ${group}`}
-              </span>
-            ))}
-          </div>
-        )}
-      </div>
-    </div>
-  )
-}
+  // FRÜHSTÜCK
+  { from: 7.5,  to: 8.25, col: 1,  colSpan: 4, cls: "blk-shared",  name: "Frühstück",                sub: "7:30 – 8:15" },
+  { from: 7.5,  to: 8.25, col: 5,  colSpan: 3, cls: "blk-shared",  name: "Frühstück",                sub: "7:30 – 8:15" },
+  { from: 7.5,  to: 8.25, col: 8,  colSpan: 3, cls: "blk-shared",  name: "Frühstück",                sub: "7:30 – 8:15" },
+  { from: 7.5,  to: 8.25, col: 11,             cls: "blk-shared",  name: "Frühstück",                sub: "7:30 – 8:15" },
 
-function DayCard({ day, language }: { day: DaySchedule; language: string }) {
-  const dayName = language === "de" ? day.day : day.dayEn
+  // BRIEFING
+  { from: 8.25, to: 8.5,  col: 1,  colSpan: 4, cls: "blk-shared",  name: "Treffpunkt & Briefing",    sub: "8:15 – 8:30" },
+  { from: 8.25, to: 8.5,  col: 5,  colSpan: 3, cls: "blk-shared",  name: "Treffpunkt & Briefing",    sub: "8:15 – 8:30" },
+  { from: 8.25, to: 8.5,  col: 8,  colSpan: 3, cls: "blk-shared",  name: "Treffpunkt & Briefing",    sub: "8:15 – 8:30" },
 
-  return (
-    <div className="rounded-2xl border border-gray-200 bg-white shadow-sm overflow-hidden">
-      {/* Day Header */}
-      <div className="bg-gray-900 px-6 py-4">
-        <div className="flex items-center justify-between">
-          <div>
-            <h3 className="text-xl font-bold text-white">{dayName}</h3>
-            <p className="text-sm text-white/60">{day.date} 2026</p>
-          </div>
-          <Calendar className="h-6 w-6 text-white/40" />
-        </div>
-      </div>
+  // ANREISE MI (col 0)
+  { from: 6,    to: 12.5, col: 0,              cls: "blk-travel",  name: "Zug Berlin → München",     sub: "ab 6:36 · Ankunft 10:45" },
+  { from: 12.5, to: 16.5, col: 0,              cls: "blk-travel",  name: "Bus München → Hochkrimml", sub: "ab 12:30 · Ankunft 16:30" },
+  { from: 16.5, to: 18,   col: 0,              cls: "blk-travel",  name: "Check-in",                 sub: "" },
 
-      {/* Events */}
-      <div className="flex flex-col gap-3 p-4">
-        {day.events.map((event, idx) => (
-          <EventCard key={idx} event={event} language={language} />
-        ))}
-      </div>
-    </div>
-  )
-}
+  // DO VORMITTAG
+  { from: 8.5,  to: 10.5, col: 1,              cls: "blk-a1",      name: "Trailrunning Technik Kurs",        sub: "8:30 – 10:30" },
+  { from: 8.5,  to: 10.5, col: 2,              cls: "blk-a2",      name: "Krafttraining für Läufer*innen",   sub: "8:30 – 10:30" },
+  { from: 8.5,  to: 12.5, col: 3,              cls: "blk-b",       name: "Trail Run B",                      sub: "11–17 km · 500–1500 hm" },
+  { from: 8.5,  to: 12.5, col: 4,              cls: "blk-c",       name: "Trail Run C",                      sub: "17+ km · 800+ hm" },
+  { from: 10.5, to: 12.5, col: 1,              cls: "blk-a1",      name: "Krafttraining für Läufer*innen",   sub: "10:30 – 12:30" },
+  { from: 10.5, to: 12.5, col: 2,              cls: "blk-a2",      name: "Trailrunning Technik Kurs",        sub: "10:30 – 12:30" },
+
+  // FR VORMITTAG
+  { from: 8.5,  to: 12.5, col: 5,              cls: "blk-a1",      name: "Trail Run A",               sub: "8–13 km · 300–800 hm" },
+  { from: 8.5,  to: 12.5, col: 6,              cls: "blk-b",       name: "Trail Run B",               sub: "11–17 km · 500–1500 hm" },
+  { from: 8.5,  to: 12.5, col: 7,              cls: "blk-c",       name: "Trail Run C",               sub: "17+ km · 800+ hm" },
+
+  // SA VORMITTAG
+  { from: 8.5,  to: 12.5, col: 8,              cls: "blk-a1",      name: "Trail Run A",               sub: "8–13 km · 300–800 hm" },
+  { from: 8.5,  to: 12.5, col: 9,              cls: "blk-b",       name: "Trail Run B",               sub: "11–17 km · 500–1500 hm" },
+  { from: 8.5,  to: 12.5, col: 10,             cls: "blk-c",       name: "Trail Run C",               sub: "17+ km · 800+ hm" },
+
+  // SO ABREISE
+  { from: 8.25, to: 22,   col: 11,             cls: "blk-travel",  name: "Abreise",                   sub: "nach dem Frühstück" },
+
+  // MITTAGSPAUSE
+  { from: 12.5, to: 13,   col: 1,  colSpan: 4, cls: "blk-shared",  name: "Freie Zeit / Duschen",     sub: "" },
+  { from: 12.5, to: 13,   col: 5,  colSpan: 3, cls: "blk-shared",  name: "Freie Zeit / Duschen",     sub: "" },
+  { from: 12.5, to: 13,   col: 8,  colSpan: 3, cls: "blk-shared",  name: "Freie Zeit / Duschen",     sub: "" },
+  { from: 13,   to: 13.5, col: 1,  colSpan: 4, cls: "blk-meal",    name: "Mittagessen",              sub: "13:00 – 13:30" },
+  { from: 13,   to: 13.5, col: 5,  colSpan: 3, cls: "blk-meal",    name: "Mittagessen",              sub: "13:00 – 13:30" },
+  { from: 13,   to: 13.5, col: 8,  colSpan: 3, cls: "blk-meal",    name: "Mittagessen",              sub: "13:00 – 13:30" },
+
+  // DO NACHMITTAG: KANU
+  { from: 13.5, to: 14,   col: 1,              cls: "blk-kanu-weg", name: "Anfahrt See",              sub: "30 Min" },
+  { from: 14,   to: 15.5, col: 1,              cls: "blk-kanu1",    name: "Kanu fahren Gr. 1",        sub: "14:00 – 15:30" },
+  { from: 15.5, to: 16.25,col: 1,              cls: "blk-kanu-weg", name: "Rückweg",                  sub: "45 Min" },
+  { from: 16.25,to: 18,   col: 1,              cls: "blk-workshop", name: "Freie Zeit",               sub: "ab 16:15" },
+  { from: 13.5, to: 15,   col: 2,              cls: "blk-workshop", name: "Freie Zeit",               sub: "" },
+  { from: 15,   to: 15.5, col: 2,              cls: "blk-kanu-weg", name: "Anfahrt See",              sub: "30 Min" },
+  { from: 15.5, to: 17,   col: 2,              cls: "blk-kanu2",    name: "Kanu fahren Gr. 2",        sub: "15:30 – 17:00" },
+  { from: 17,   to: 17.75,col: 2,              cls: "blk-kanu-weg", name: "Rückweg",                  sub: "45 Min" },
+  { from: 17.75,to: 18,   col: 2,              cls: "blk-workshop", name: "Freie Zeit",               sub: "ab 17:45" },
+  // DO Workshops (col 3 & 4)
+  { from: 13.5, to: 15,   col: 3,              cls: "blk-workshop", name: "Linoleum-Druck",           sub: "13:30 – 15:00" },
+  { from: 13.5, to: 15,   col: 4,              cls: "blk-workshop", name: "Ernährungsworkshop",       sub: "13:30 – 15:00" },
+  { from: 15,   to: 15.25,col: 3,              cls: "blk-shared",   name: "Pause",                    sub: "" },
+  { from: 15,   to: 15.25,col: 4,              cls: "blk-shared",   name: "Pause",                    sub: "" },
+  { from: 15.25,to: 16.75,col: 3,              cls: "blk-workshop", name: "Freie Zeit",               sub: "15:15 – 16:45" },
+  { from: 15.25,to: 16.75,col: 4,              cls: "blk-workshop", name: "Linoleum-Druck",           sub: "15:15 – 16:45" },
+  { from: 16.75,to: 18,   col: 3,              cls: "blk-workshop", name: "Freie Zeit",               sub: "" },
+  { from: 16.75,to: 18,   col: 4,              cls: "blk-workshop", name: "Freie Zeit",               sub: "" },
+
+  // FR NACHMITTAG
+  { from: 13.5, to: 15,   col: 5,              cls: "blk-workshop", name: "Kletterkurs 1",            sub: "13:30 – 15:00" },
+  { from: 13.5, to: 15,   col: 6,              cls: "blk-workshop", name: "Bogenschießen",            sub: "13:30 – 15:00" },
+  { from: 13.5, to: 15,   col: 7,              cls: "blk-workshop", name: "Stricken lernen",          sub: "13:30 – 15:00" },
+  { from: 15,   to: 15.25,col: 5,  colSpan: 3, cls: "blk-shared",   name: "Pause",                   sub: "" },
+  { from: 15.25,to: 16.75,col: 5,              cls: "blk-workshop", name: "Kletterkurs 2",            sub: "15:15 – 16:45" },
+  { from: 15.25,to: 16.75,col: 6,              cls: "blk-workshop", name: "Krafttraining Workshop",   sub: "15:15 – 16:45" },
+  { from: 15.25,to: 16.75,col: 7,              cls: "blk-workshop", name: "Upcycling",               sub: "15:15 – 16:45" },
+  { from: 16.75,to: 18,   col: 5,  colSpan: 3, cls: "blk-shared",   name: "Freie Zeit",              sub: "ab 16:45" },
+
+  // SA NACHMITTAG
+  { from: 13.5, to: 16.75,col: 8,              cls: "blk-workshop", name: "MTB-Tour",                 sub: "13:30 – 16:45" },
+  { from: 13.5, to: 15,   col: 9,              cls: "blk-shared",   name: "Freie Zeit",              sub: "" },
+  { from: 13.5, to: 15,   col: 10,             cls: "blk-workshop", name: "Töpfern",                  sub: "13:30 – 15:00" },
+  { from: 15,   to: 15.25,col: 9,              cls: "blk-shared",   name: "Pause",                   sub: "" },
+  { from: 15,   to: 15.25,col: 10,             cls: "blk-shared",   name: "Pause",                   sub: "" },
+  { from: 15.25,to: 16.75,col: 9,              cls: "blk-shared",   name: "Freie Zeit",              sub: "" },
+  { from: 15.25,to: 16.75,col: 10,             cls: "blk-workshop", name: "Töpfern",                  sub: "15:15 – 16:45" },
+  { from: 16.75,to: 18,   col: 8,  colSpan: 3, cls: "blk-shared",   name: "Freie Zeit",              sub: "ab 16:45" },
+
+  // ABEND — col 0 Mi
+  { from: 18,   to: 18.5, col: 0,              cls: "blk-shared",   name: "Welcome & Ablauf",         sub: "18:00 – 18:30" },
+  // ABEND — Duschen Do/Fr/Sa
+  { from: 18,   to: 18.5, col: 1,  colSpan: 4, cls: "blk-shared",   name: "Freie Zeit / Duschen",    sub: "" },
+  { from: 18,   to: 18.5, col: 5,  colSpan: 3, cls: "blk-shared",   name: "Freie Zeit / Duschen",    sub: "" },
+  { from: 18,   to: 18.5, col: 8,  colSpan: 3, cls: "blk-shared",   name: "Freie Zeit / Duschen",    sub: "" },
+  // DINNER alle
+  { from: 18.5, to: 19.25,col: 0,  colSpan: 12,cls: "blk-dinner",   name: "Dinner",                  sub: "18:30 – 19:15" },
+  // ABENDPROGRAMM
+  { from: 19.5, to: 21.5, col: 0,              cls: "blk-dinner",   name: "Dinner Filzsteinalm / Duxer Alm", sub: "" },
+  { from: 19.5, to: 21.5, col: 1,  colSpan: 4, cls: "blk-evening",  name: "Outdoormovie Night + Speakers Event", sub: "" },
+  { from: 19.5, to: 21.5, col: 5,  colSpan: 3, cls: "blk-evening",  name: "Lagerfeuerabend",          sub: "" },
+  { from: 19.5, to: 21.5, col: 8,  colSpan: 3, cls: "blk-evening",  name: "Letzter Abend",            sub: "" },
+]
+
+// ─── Legend ─────────────────────────────────────────────────────────────────
+
+const LEGEND = [
+  { cls: "blk-a1",       label: "Gr. A1 — Kurz (Trail Run / Technik)" },
+  { cls: "blk-a2",       label: "Gr. A2 — Kurz (Technik / Kraft)" },
+  { cls: "blk-b",        label: "Gr. B — Mittel" },
+  { cls: "blk-c",        label: "Gr. C — Lang" },
+  { cls: "blk-workshop", label: "Workshop / Aktivität" },
+  { cls: "blk-kanu1",    label: "Kanu Gr. 1" },
+  { cls: "blk-kanu2",    label: "Kanu Gr. 2" },
+  { cls: "blk-kanu-weg", label: "An- / Rückweg Kanu" },
+  { cls: "blk-meal",     label: "Mahlzeit" },
+  { cls: "blk-yoga",     label: "Yoga / Sunrise Hike" },
+  { cls: "blk-dinner",   label: "Dinner" },
+  { cls: "blk-evening",  label: "Abendprogramm" },
+  { cls: "blk-travel",   label: "Reise / Check-in" },
+  { cls: "blk-shared",   label: "Gemeinsam / Freie Zeit" },
+]
+
+// ─── Component ──────────────────────────────────────────────────────────────
 
 export default function ZeitplanPage() {
   const { language } = useLanguage()
-  const containerRef = useRef<HTMLDivElement>(null)
+
+  const CONTENT_TOP = 56 // px — space for day + group headers
+  const totalHeight = TOTAL_MIN * PX_PER_MIN + CONTENT_TOP + 24
+  const totalWidth  = TIME_W + 12 * COL_W
 
   return (
-    <div className="min-h-screen bg-gray-50">
-      <SiteHeader />
+    <>
+      <style>{`
+        /* ── Block colour tokens ── */
+        .blk-a1       { background: #d1f5eb; color: #064e3b; }
+        .blk-a2       { background: #a7f3d0; color: #022c22; }
+        .blk-b        { background: #fef3c7; color: #78350f; }
+        .blk-c        { background: #ede9fe; color: #3730a3; }
+        .blk-workshop { background: #f0fdf4; color: #14532d; border: 1px solid #bbf7d0; }
+        .blk-kanu1    { background: #2563eb; color: #eff6ff; }
+        .blk-kanu2    { background: #60a5fa; color: #1e3a5f; }
+        .blk-kanu-weg { background: #bfdbfe; color: #1e40af; }
+        .blk-meal     { background: #fde68a; color: #78350f; border: 1px solid #fcd34d; }
+        .blk-yoga     { background: #ccfbf1; color: #134e4a; }
+        .blk-dinner   { background: hsl(248 24% 47%); color: #e9e7fb; }
+        .blk-evening  { background: hsl(248 24% 32%); color: #c4c0f8; }
+        .blk-travel   { background: #e2e8f0; color: #334155; border: 1px solid #cbd5e1; }
+        .blk-shared   { background: #f8fafc; color: #475569; border: 1px solid #e2e8f0; }
 
-      {/* Page header */}
-      <div className="bg-gray-950 pt-24 pb-16">
-        <div className="container mx-auto px-4">
-          <Link
-            href="/"
-            className="mb-6 inline-flex items-center gap-2 text-sm text-white/60 transition-colors hover:text-white"
-          >
-            <ArrowLeft className="h-4 w-4" />
-            {language === "de" ? "Zurück zur Startseite" : "Back to home"}
-          </Link>
-          <h1 className="text-4xl font-bold text-white md:text-5xl">
-            {language === "de" ? "Zeitplan" : "Schedule"}
-          </h1>
-          <p className="mt-3 text-lg text-white/70">
-            The Mountaincamp 2026
+        /* ── Group header tokens ── */
+        .grp-a1 { background: #d1f5eb; color: #064e3b; }
+        .grp-a2 { background: #a7f3d0; color: #022c22; }
+        .grp-b  { background: #fef3c7; color: #78350f; }
+        .grp-c  { background: #ede9fe; color: #3730a3; }
+
+        /* ── Block base ── */
+        .sched-block {
+          position: absolute;
+          border-radius: 4px;
+          padding: 4px 6px;
+          font-size: 11px;
+          line-height: 1.3;
+          overflow: hidden;
+          box-shadow: 0 1px 2px rgba(0,0,0,.06);
+        }
+        .sched-block .blk-title { font-weight: 600; }
+        .sched-block .blk-sub   { font-size: 10px; opacity: .78; margin-top: 1px; }
+      `}</style>
+
+      <div className="min-h-screen bg-gray-950 text-white">
+        <SiteHeader />
+
+        {/* ── Page header ── */}
+        <div className="bg-gray-950 pt-24 pb-10 border-b border-white/10">
+          <div className="container mx-auto px-4">
+            <Link
+              href="/"
+              className="mb-6 inline-flex items-center gap-2 text-sm text-white/50 transition-colors hover:text-white"
+            >
+              <ArrowLeft className="h-4 w-4" />
+              {language === "de" ? "Zurück" : "Back"}
+            </Link>
+            <h1 className="text-4xl font-bold uppercase tracking-tight text-white md:text-5xl">
+              {language === "de" ? "Zeitplan 2026" : "Schedule 2026"}
+            </h1>
+            <p className="mt-2 text-lg text-white/60">The Mountaincamp · 5 – 9 August 2026</p>
+            <div className="mt-6 flex flex-wrap gap-6 text-sm text-white/50">
+              <span className="flex items-center gap-2"><Calendar className="h-4 w-4" /> 5.–9. August 2026</span>
+              <span className="flex items-center gap-2"><MapPin className="h-4 w-4" /> Hochkrimml, Österreich</span>
+              <span className="flex items-center gap-2"><Clock className="h-4 w-4" /> 5 {language === "de" ? "Tage" : "Days"}</span>
+            </div>
+          </div>
+        </div>
+
+        {/* ── Legend ── */}
+        <div className="border-b border-white/10 bg-gray-900">
+          <div className="container mx-auto px-4 py-4">
+            <p className="mb-3 text-xs font-semibold uppercase tracking-widest text-white/40">
+              {language === "de" ? "Legende" : "Legend"}
+            </p>
+            <div className="flex flex-wrap gap-x-4 gap-y-2">
+              {LEGEND.map(({ cls, label }) => (
+                <div key={cls} className="flex items-center gap-1.5">
+                  <div className={`h-3 w-3 shrink-0 rounded-sm ${cls}`} />
+                  <span className="text-xs text-white/60">{label}</span>
+                </div>
+              ))}
+            </div>
+          </div>
+        </div>
+
+        {/* ── Scroll hint ── */}
+        <div className="container mx-auto px-4 pt-4 pb-1">
+          <p className="text-xs text-white/30">
+            {language === "de"
+              ? "Seitlich scrollen für alle Tage und Gruppen · 1 px ≈ 1 Minute"
+              : "Scroll horizontally for all days and groups · 1 px ≈ 1 minute"}
           </p>
+        </div>
 
-          {/* Meta Info */}
-          <div className="mt-8 flex flex-wrap gap-6">
-            <div className="flex items-center gap-2 text-white/60">
-              <Calendar className="h-5 w-5" />
-              <span>5. – 9. August 2026</span>
-            </div>
-            <div className="flex items-center gap-2 text-white/60">
-              <MapPin className="h-5 w-5" />
-              <span>Hochkrimml, Österreich</span>
-            </div>
-            <div className="flex items-center gap-2 text-white/60">
-              <Clock className="h-5 w-5" />
-              <span>5 {language === "de" ? "Tage" : "Days"}</span>
+        {/* ── Schedule grid ── */}
+        <div className="container mx-auto px-4 pb-16">
+          <div className="overflow-x-auto rounded-lg border border-white/10 bg-gray-900">
+            <div
+              style={{
+                position: "relative",
+                width: totalWidth,
+                height: totalHeight,
+              }}
+            >
+              {/* Day header row */}
+              {DAY_SPANS.map((d) => (
+                <div
+                  key={d.label}
+                  style={{
+                    position: "absolute",
+                    top: 0,
+                    left: TIME_W + d.start * COL_W,
+                    width: (d.end - d.start) * COL_W,
+                    height: 28,
+                    display: "flex",
+                    alignItems: "center",
+                    justifyContent: "center",
+                    fontSize: 12,
+                    fontWeight: 600,
+                    color: "#fff",
+                    background: "hsl(248 24% 47%)",
+                    borderRight: "1px solid rgba(255,255,255,.1)",
+                    borderBottom: "1px solid rgba(255,255,255,.1)",
+                  }}
+                >
+                  {language === "de" ? d.label : d.labelEn}
+                </div>
+              ))}
+
+              {/* Group header row */}
+              {GRP_HEADERS.map((g) => (
+                <div
+                  key={g.col}
+                  style={{
+                    position: "absolute",
+                    top: 28,
+                    left: TIME_W + g.col * COL_W,
+                    width: COL_W,
+                    height: 28,
+                    display: "flex",
+                    alignItems: "center",
+                    justifyContent: "center",
+                    fontSize: 10,
+                    fontWeight: 600,
+                    borderRight: "1px solid rgba(255,255,255,.06)",
+                    borderBottom: "1px solid rgba(255,255,255,.1)",
+                    overflow: "hidden",
+                    whiteSpace: "nowrap",
+                  }}
+                  className={g.cls}
+                >
+                  {g.label}
+                </div>
+              ))}
+
+              {/* Day separator verticals */}
+              {DAY_SPANS.map((d) => (
+                <div
+                  key={`sep-${d.label}`}
+                  style={{
+                    position: "absolute",
+                    top: CONTENT_TOP,
+                    left: TIME_W + d.start * COL_W,
+                    width: 1,
+                    height: totalHeight - CONTENT_TOP,
+                    background: "rgba(255,255,255,.12)",
+                  }}
+                />
+              ))}
+
+              {/* Time gridlines + labels */}
+              {Array.from({ length: Math.floor(TOTAL_MIN / 30) + 1 }, (_, i) => {
+                const m = i * 30
+                const h = START_H + m / 60
+                const hrs = Math.floor(h)
+                const mins = Math.round((h - hrs) * 60)
+                const y = CONTENT_TOP + m * PX_PER_MIN
+                const label = `${hrs}:${mins === 0 ? "00" : "30"}`
+                return (
+                  <div key={label}>
+                    <div
+                      style={{
+                        position: "absolute",
+                        top: y - 7,
+                        left: 0,
+                        width: TIME_W - 4,
+                        textAlign: "right",
+                        fontSize: 10,
+                        color: "rgba(255,255,255,.3)",
+                        lineHeight: 1,
+                        userSelect: "none",
+                      }}
+                    >
+                      {label}
+                    </div>
+                    <div
+                      style={{
+                        position: "absolute",
+                        top: y,
+                        left: TIME_W,
+                        right: 0,
+                        height: 1,
+                        background: i % 2 === 0
+                          ? "rgba(255,255,255,.1)"
+                          : "rgba(255,255,255,.04)",
+                      }}
+                    />
+                  </div>
+                )
+              })}
+
+              {/* Blocks */}
+              {BLOCKS.map((b, i) => {
+                const top    = CONTENT_TOP + hToPx(b.from)
+                const height = durPx(b.from, b.to)
+                const left   = TIME_W + b.col * COL_W + 1
+                const width  = (b.colSpan || 1) * COL_W - 3
+                return (
+                  <div
+                    key={i}
+                    className={`sched-block ${b.cls}`}
+                    style={{
+                      top,
+                      left,
+                      width,
+                      height: height - 2,
+                    }}
+                    title={b.sub ? `${b.name} · ${b.sub}` : b.name}
+                  >
+                    <div className="blk-title">{b.name}</div>
+                    {b.sub && height > 22 && (
+                      <div className="blk-sub">{b.sub}</div>
+                    )}
+                  </div>
+                )
+              })}
             </div>
           </div>
         </div>
-      </div>
 
-      {/* Legend */}
-      <div className="border-b border-gray-200 bg-white">
-        <div className="container mx-auto px-4 py-4">
-          <div className="flex flex-wrap items-center gap-4 text-sm">
-            <span className="font-medium text-gray-500">
-              {language === "de" ? "Legende:" : "Legend:"}
-            </span>
-            <div className="flex items-center gap-2">
-              <div className="h-3 w-3 rounded-full bg-primary/20 border border-primary/30" />
-              <span className="text-gray-600">{language === "de" ? "Laufen" : "Running"}</span>
-            </div>
-            <div className="flex items-center gap-2">
-              <div className="h-3 w-3 rounded-full bg-emerald-100 border border-emerald-200" />
-              <span className="text-gray-600">{language === "de" ? "Workshop" : "Workshop"}</span>
-            </div>
-            <div className="flex items-center gap-2">
-              <div className="h-3 w-3 rounded-full bg-amber-100 border border-amber-200" />
-              <span className="text-gray-600">{language === "de" ? "Mahlzeit" : "Meal"}</span>
-            </div>
-            <div className="flex items-center gap-2">
-              <div className="h-3 w-3 rounded-full bg-teal-100 border border-teal-200" />
-              <span className="text-gray-600">Yoga</span>
-            </div>
-            <div className="flex items-center gap-2">
-              <div className="h-3 w-3 rounded-full bg-primary" />
-              <span className="text-gray-600">{language === "de" ? "Abendprogramm" : "Evening"}</span>
-            </div>
+        {/* ── Notes ── */}
+        <div className="container mx-auto px-4 pb-20">
+          <div className="rounded-lg border border-white/10 bg-gray-900 p-6">
+            <h3 className="font-semibold text-white">
+              {language === "de" ? "Hinweise" : "Notes"}
+            </h3>
+            <ul className="mt-3 space-y-2 text-sm text-white/60">
+              <li>{language === "de" ? "• Alle Zeiten sind vorläufig." : "• All times are provisional."}</li>
+              <li>{language === "de" ? "• Morning Yoga und Sunrise Hike sind optional." : "• Morning Yoga and Sunrise Hike are optional."}</li>
+              <li>{language === "de" ? "• Gruppeneinteilung A/B/C nach Erfahrungslevel." : "• Group assignment A/B/C based on experience level."}</li>
+              <li>{language === "de" ? "• Bei den Nachmittagsworkshops freie Wahl." : "• Free choice among afternoon workshops."}</li>
+            </ul>
           </div>
         </div>
       </div>
-
-      {/* Schedule section */}
-      <section ref={containerRef} className="container mx-auto px-4 py-10">
-        <div className="grid gap-8 lg:grid-cols-2 xl:grid-cols-3">
-          {SCHEDULE.map((day) => (
-            <DayCard key={day.day} day={day} language={language} />
-          ))}
-        </div>
-
-        {/* Info note */}
-        <div className="mt-10 rounded-xl border border-gray-200 bg-white p-6">
-          <h3 className="font-semibold text-gray-900">
-            {language === "de" ? "Hinweise zum Zeitplan" : "Schedule Notes"}
-          </h3>
-          <ul className="mt-3 space-y-2 text-sm text-gray-600">
-            <li>
-              {language === "de"
-                ? "• Alle Zeiten sind vorläufig und können sich noch ändern."
-                : "• All times are provisional and subject to change."}
-            </li>
-            <li>
-              {language === "de"
-                ? "• Morning Yoga und Sunrise Hikes sind optional."
-                : "• Morning Yoga and Sunrise Hikes are optional."}
-            </li>
-            <li>
-              {language === "de"
-                ? "• Die Gruppeneinteilung (A/B/C) erfolgt nach Erfahrungslevel und Distanzwunsch."
-                : "• Group assignment (A/B/C) is based on experience level and preferred distance."}
-            </li>
-            <li>
-              {language === "de"
-                ? "• Bei den Nachmittagsworkshops kannst du frei wählen."
-                : "• You can freely choose among the afternoon workshops."}
-            </li>
-          </ul>
-        </div>
-      </section>
-    </div>
+    </>
   )
 }
