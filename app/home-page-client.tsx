@@ -37,6 +37,22 @@ const SECTION_IMAGES = ["/images/MTC-Logo_2025_weiß.png"]
 const HOUSE_PAGE_IMAGES = ["/images/mountain-lodge.jpeg"]
 const TRAILS_PAGE_IMAGES = ["/images/mountain-trail-runner.jpeg", "/images/trail-runners-group.jpeg"]
 
+// Start date: May 20, 2026 — 23 tickets, cat4 at 40%
+// Every 2 days: -1 ticket, +2% cat4
+const COUNTDOWN_START_DATE = new Date("2026-05-20T00:00:00Z")
+const COUNTDOWN_START_TICKETS = 23
+const COUNTDOWN_START_CAT4 = 40
+
+function getDynamicValues() {
+  const now = new Date()
+  const msPerDay = 1000 * 60 * 60 * 24
+  const daysSinceStart = Math.floor((now.getTime() - COUNTDOWN_START_DATE.getTime()) / msPerDay)
+  const periods = Math.max(0, Math.floor(daysSinceStart / 2))
+  const tickets = Math.max(0, COUNTDOWN_START_TICKETS - periods)
+  const cat4 = Math.min(100, COUNTDOWN_START_CAT4 + periods * 2)
+  return { tickets, cat4 }
+}
+
 const PARTNERS = [
   { src: "/images/partner-1.png", alt: "KRAFT. - Partner des Mountaincamp Trailrunning Camps" },
   { src: "/images/partner-2.png", alt: "Powerbar - Sponsor des Mountaincamp Trailrunning Camps" },
@@ -137,6 +153,7 @@ function PartnerCarousel() {
 export default function HomePageClient() {
   const { t, language } = useLanguage()
   const isMobile = useMobile()
+  const [dynamicValues] = useState(() => getDynamicValues())
 
   const [currentActivityIndex, setCurrentActivityIndex] = useState(0)
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
@@ -441,6 +458,7 @@ export default function HomePageClient() {
     <div className="min-h-screen w-full overflow-x-hidden bg-white">
       <ImagePreloader imageSources={SECTION_IMAGES} onComplete={() => { }} />
 
+
       {isMobile && hasScrolled && (
         <motion.div
           initial={{ y: 100, opacity: 0 }}
@@ -711,8 +729,46 @@ export default function HomePageClient() {
             </div>
           </motion.div>
 
+          {/* Urgency Banner — sits at the bottom of the hero */}
+          {dynamicValues.tickets > 0 && (
+            <motion.div
+              initial={{ y: 20, opacity: 0 }}
+              animate={{ y: 0, opacity: 1 }}
+              transition={{ duration: 0.6, delay: 1 }}
+              className="absolute bottom-0 left-0 right-0 z-20"
+            >
+              <div className="bg-black/60 backdrop-blur-sm border-t border-white/10 px-4 py-3 md:py-4">
+                <div className="container flex flex-col items-center justify-between gap-2 sm:flex-row">
+                  <div className="flex items-center gap-3">
+                    <div className="flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-primary text-white">
+                      <svg className="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 5v2m0 4v2m0 4v2M5 5a2 2 0 00-2 2v3a2 2 0 110 4v3a2 2 0 002 2h14a2 2 0 002-2v-3a2 2 0 110-4V7a2 2 0 00-2-2H5z" />
+                      </svg>
+                    </div>
+                    <p className="text-sm font-bold text-white md:text-base">
+                      {language === "de"
+                        ? `Nur noch ${dynamicValues.tickets} Tickets verfügbar!`
+                        : `Only ${dynamicValues.tickets} tickets left!`}
+                      <span className="ml-2 font-normal text-white/70 text-xs md:text-sm">
+                        {language === "de" ? "Sichere dir deinen Platz." : "Secure your spot."}
+                      </span>
+                    </p>
+                  </div>
+                  <a
+                    href="https://my.camps.digital/masken/buchungen/vuejs?&vendor=mountaincamp&destination_id=2467&termin_id=36011&locale=de#/"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="shrink-0 rounded-full bg-primary px-5 py-2 text-sm font-bold text-white transition-colors hover:bg-primary/90"
+                  >
+                    {language === "de" ? "Jetzt buchen" : "Book now"}
+                  </a>
+                </div>
+              </div>
+            </motion.div>
+          )}
+
           <motion.div
-            className="absolute bottom-10 left-1/2 z-20 -translate-x-1/2"
+            className="absolute bottom-14 left-1/2 z-20 -translate-x-1/2"
             animate={{
               y: [0, 10, 0],
               opacity: [0.5, 1, 0.5],
@@ -1076,7 +1132,7 @@ export default function HomePageClient() {
               transition={{ duration: 0.8 }}
               className="mt-16"
             >
-              <PriceCategoryBars />
+                <PriceCategoryBars cat4Filled={dynamicValues.cat4} />
             </motion.div>
           </div>
         </section>
