@@ -201,39 +201,38 @@ function EventCard({ event }: EventCardProps) {
   const style = CATEGORY_STYLES[event.category]
   const price = getPrice(event.name)
   const { language } = useLanguage()
+  const isFree = price === "Free" || price === null
 
   return (
     <div className={`rounded-lg border ${style.border} ${style.bg} p-3 md:p-4`}>
-      <div className="flex items-start gap-2">
-        <div className={`mt-1 h-2 w-2 shrink-0 rounded-full ${style.dot}`} />
-        <div className="min-w-0 flex-1">
-          <div className="flex flex-wrap items-center gap-2">
-            <h4 className={`font-semibold leading-tight ${style.text}`}>{event.name}</h4>
-            {event.groups && (
-              <div className="flex gap-1">
-                {event.groups.map((g) => (
-                  <span key={g} className="rounded bg-white/10 px-1 py-0.5 text-[9px] font-bold text-white/60">
-                    {g}
-                  </span>
-                ))}
-              </div>
-            )}
-          </div>
-          {event.sub && <p className="mt-1 text-xs text-white/50">{event.sub}</p>}
-          {price !== null && (
-            <div className="mt-2">
-              <span className={`inline-flex items-center gap-1 rounded-full px-2 py-1 text-xs font-semibold ${
-                price === "Free"
-                  ? "bg-green-500/20 text-green-300"
-                  : "bg-amber-500/20 text-amber-300"
-              }`}>
-                {price === "Free" ? (language === "de" ? "Kostenlos" : "Free") : (
-                  <><Euro className="h-3 w-3" />{price}</> 
-                )}
-              </span>
+      <div className="flex items-start justify-between gap-2">
+        <div className="flex items-start gap-2 min-w-0 flex-1">
+          <div className={`mt-1.5 h-2 w-2 shrink-0 rounded-full ${style.dot}`} />
+          <div className="min-w-0 flex-1">
+            <div className="flex flex-wrap items-center gap-2">
+              <h4 className={`font-semibold leading-tight ${style.text}`}>{event.name}</h4>
+              {event.groups && (
+                <div className="flex gap-1">
+                  {event.groups.map((g) => (
+                    <span key={g} className="rounded bg-white/10 px-1.5 py-0.5 text-[10px] font-bold text-white/70">
+                      {g}
+                    </span>
+                  ))}
+                </div>
+              )}
             </div>
-          )}
+            {event.sub && <p className="mt-1 text-xs text-white/50">{event.sub}</p>}
+          </div>
         </div>
+        <span className={`shrink-0 inline-flex items-center gap-1 rounded-full px-2 py-1 text-xs font-semibold ${
+          isFree
+            ? "bg-green-500/20 text-green-300"
+            : "bg-amber-500/20 text-amber-300"
+        }`}>
+          {isFree ? (language === "de" ? "Gratis" : "Free") : (
+            <><Euro className="h-3 w-3" />{price}</> 
+          )}
+        </span>
       </div>
     </div>
   )
