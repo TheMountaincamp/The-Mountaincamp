@@ -33,31 +33,20 @@ const PRICES: Record<string, number | "Free"> = {
   "Kletterkurs 2": 35,
 }
 
-// Images for hover preview - placeholder paths, need actual images
 const ACTIVITY_IMAGES: Record<string, string> = {
-  "Morning Yoga": "/images/activities/yoga.jpg",
+  "Morning Yoga": "/images/activities/sunrise-hike.jpg",
   "Sunrise Hike": "/images/activities/sunrise-hike.jpg",
   "Trail Run Anfänger": "/images/activities/trail-run.jpg",
   "Trail Run Fortgeschritten": "/images/activities/trail-run.jpg",
   "Trail Run Profi": "/images/activities/trail-run.jpg",
-  "Trailrunning Technik Kurs": "/images/activities/technik-kurs.jpg",
+  "Trailrunning Technik Kurs": "/images/activities/krafttraining.jpg",
   "Krafttraining für Läufer*innen": "/images/activities/krafttraining.jpg",
   "Krafttraining Workshop": "/images/activities/krafttraining.jpg",
   "Kanu fahren Gr. 1": "/images/activities/kanu.jpg",
   "Kanu fahren Gr. 2": "/images/activities/kanu.jpg",
-  "Linoleum-Druck": "/images/activities/linoleum.jpg",
-  "Ernährungsworkshop": "/images/activities/ernaehrung.jpg",
   "Kletterkurs 1": "/images/activities/klettern.jpg",
   "Kletterkurs 2": "/images/activities/klettern.jpg",
-  "Bogenschießen": "/images/activities/bogenschiessen.jpg",
-  "Upcycling 1": "/images/activities/upcycling.jpg",
-  "Upcycling 2": "/images/activities/upcycling.jpg",
   "MTB-Tour": "/images/activities/mtb.jpg",
-  "Töpfern 1": "/images/activities/toepfern.jpg",
-  "Töpfern 2": "/images/activities/toepfern.jpg",
-  "Outdoormovie Night + Speakers Event": "/images/activities/movie-night.jpg",
-  "Lagerfeuerabend": "/images/activities/lagerfeuer.jpg",
-  "Letzter Abend": "/images/activities/lagerfeuer.jpg",
 }
 
 function getPrice(name: string): number | "Free" | null {
@@ -196,64 +185,68 @@ const CATEGORY_STYLES = {
 
 function EventRow({ event, language }: { event: Event; language: string }) {
   const [showImage, setShowImage] = useState(false)
-  const price = event.showPrice ? getPrice(event.name) : null
+  const rawPrice = event.showPrice ? getPrice(event.name) : null
+  // Only show "Free" badge for activities that explicitly have showPrice=true AND price is "Free"
+  // Show euro amount for paid workshops with showPrice=true
+  // Show nothing for meals, travel, shared
+  const showBadge = rawPrice !== null
   const colors = CATEGORY_STYLES[event.category]
   const imageSrc = ACTIVITY_IMAGES[event.name]
-  
+
   const displayName = language === "en" && event.nameEn ? event.nameEn : event.name
   const displaySub = language === "en" && event.subEn ? event.subEn : event.sub
 
   return (
-    <div 
-      className={`relative border-l-4 ${colors.border} ${colors.bg} py-3 px-4 md:px-6 flex items-start justify-between gap-4 hover:bg-white/10 transition-colors cursor-default`}
+    <div
+      className={`relative border-l-4 ${colors.border} ${colors.bg} py-3.5 px-4 md:px-6 flex items-start justify-between gap-4 hover:brightness-125 transition-all cursor-default`}
       onMouseEnter={() => imageSrc && setShowImage(true)}
       onMouseLeave={() => setShowImage(false)}
     >
       {/* Hover Image Preview */}
       {showImage && imageSrc && (
-        <div className="absolute left-full top-0 z-50 ml-4 w-64 rounded-lg overflow-hidden shadow-2xl border border-white/20 pointer-events-none">
+        <div className="absolute left-full top-0 z-50 ml-4 w-64 rounded-xl overflow-hidden shadow-2xl border border-white/20 pointer-events-none hidden md:block">
           <Image
             src={imageSrc}
             alt={displayName}
             width={256}
             height={160}
-            className="w-full h-40 object-cover"
+            className="w-full h-44 object-cover"
           />
-          <div className="bg-gray-900 px-3 py-2">
-            <p className="text-sm font-medium text-white">{displayName}</p>
+          <div className="bg-gray-900 px-3 py-2 border-t border-white/10">
+            <p className="text-sm font-semibold text-white">{displayName}</p>
           </div>
         </div>
       )}
 
       <div className="flex-1 min-w-0">
         <div className="flex items-center gap-3 flex-wrap">
-          <span className={`text-sm font-mono font-bold ${colors.text}`}>{event.time}</span>
-          <h3 className="font-semibold text-white text-base">{displayName}</h3>
+          <span className={`text-sm font-mono font-bold tabular-nums ${colors.text}`}>{event.time}</span>
+          <h3 className="font-semibold text-white text-base leading-snug">{displayName}</h3>
           {event.groups && (
             <div className="flex gap-1">
               {event.groups.map((g) => (
-                <span key={g} className="text-xs px-2 py-0.5 rounded-full bg-white/20 text-white font-medium">
-                  Gr. {g}
+                <span key={g} className="text-xs px-2 py-0.5 rounded-full bg-white/20 text-white/90 font-medium">
+                  Gr.&nbsp;{g}
                 </span>
               ))}
             </div>
           )}
         </div>
         {(displaySub || event.duration) && (
-          <p className="text-sm text-white/60 mt-1">
+          <p className="text-sm text-white/55 mt-1">
             {displaySub}{displaySub && event.duration ? " · " : ""}{event.duration}
           </p>
         )}
       </div>
-      
-      {price !== null && (
+
+      {showBadge && (
         <span className={`shrink-0 inline-flex items-center gap-1 rounded-full px-3 py-1.5 text-xs font-bold whitespace-nowrap ${
-          price === "Free"
-            ? "bg-green-500/30 text-green-200 border border-green-500/40"
-            : "bg-amber-500/30 text-amber-200 border border-amber-500/40"
+          rawPrice === "Free"
+            ? "bg-green-500/25 text-green-200 border border-green-500/40"
+            : "bg-amber-500/25 text-amber-200 border border-amber-500/40"
         }`}>
-          {price === "Free" ? "Free" : (
-            <><Euro className="h-3 w-3" />{price}</> 
+          {rawPrice === "Free" ? "Free" : (
+            <><Euro className="h-3 w-3" />{rawPrice}</>
           )}
         </span>
       )}
