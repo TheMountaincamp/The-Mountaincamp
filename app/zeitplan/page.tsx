@@ -55,131 +55,109 @@ interface Block {
 }
 
 const BLOCKS: Block[] = [
-  // YOGA / SUNRISE
-  { from: 6.5,  to: 7.5,  col: 1,  colSpan: 4, cls: "blk-yoga",    name: "Morning Yoga",              sub: "6:30 – 7:30 · Optional" },
-  { from: 5,    to: 6.5,  col: 5,  colSpan: 3, cls: "blk-yoga",    name: "Sunrise Hike",              sub: "Start 5:00 · Optional"  },
-  { from: 6.5,  to: 7.5,  col: 5,  colSpan: 3, cls: "blk-yoga",    name: "Morning Yoga",              sub: "6:30 – 7:30 · Optional" },
-  { from: 6.5,  to: 7.5,  col: 8,  colSpan: 3, cls: "blk-yoga",    name: "Morning Yoga",              sub: "6:30 – 7:30 · Optional" },
-  { from: 5,    to: 6.5,  col: 11,             cls: "blk-yoga",    name: "Sunrise Hike",              sub: "Start 5:00 · Optional"  },
-  { from: 6.5,  to: 7.5,  col: 11,             cls: "blk-yoga",    name: "Morning Yoga",              sub: "6:30 – 7:30 · Optional" },
+  // ── DO: Yoga ──
+  { from: 6.5, to: 7.5, col: 1, colSpan: 4, cls: "blk-yoga", name: "Morning Yoga", sub: "6:30 – 7:30" },
 
-  // FRÜHSTÜCK
-  { from: 7.5,  to: 8.25, col: 1,  colSpan: 4, cls: "blk-shared",  name: "Frühstück",                sub: "7:30 – 8:15" },
-  { from: 7.5,  to: 8.25, col: 5,  colSpan: 3, cls: "blk-shared",  name: "Frühstück",                sub: "7:30 – 8:15" },
-  { from: 7.5,  to: 8.25, col: 8,  colSpan: 3, cls: "blk-shared",  name: "Frühstück",                sub: "7:30 – 8:15" },
-  { from: 7.5,  to: 8.25, col: 11,             cls: "blk-shared",  name: "Frühstück",                sub: "7:30 – 8:15" },
+  // ── FR: Sunrise Hike + Yoga ──
+  { from: 5, to: 6.5, col: 5, colSpan: 3, cls: "blk-yoga", name: "Sunrise Hike", sub: "5:00 – 6:30" },
+  { from: 6.5, to: 7.5, col: 5, colSpan: 3, cls: "blk-yoga", name: "Morning Yoga", sub: "6:30 – 7:30" },
 
-  // BRIEFING
-  { from: 8.25, to: 8.5,  col: 1,  colSpan: 4, cls: "blk-shared",  name: "Treffpunkt & Briefing",    sub: "8:15 – 8:30" },
-  { from: 8.25, to: 8.5,  col: 5,  colSpan: 3, cls: "blk-shared",  name: "Treffpunkt & Briefing",    sub: "8:15 – 8:30" },
-  { from: 8.25, to: 8.5,  col: 8,  colSpan: 3, cls: "blk-shared",  name: "Treffpunkt & Briefing",    sub: "8:15 – 8:30" },
+  // ── SA: Yoga ──
+  { from: 6.5, to: 7.5, col: 8, colSpan: 3, cls: "blk-yoga", name: "Morning Yoga", sub: "6:30 – 7:30" },
 
-  // ANREISE MI (col 0)
-  { from: 6,    to: 12.5, col: 0,              cls: "blk-travel",  name: "Zug Berlin → München",     sub: "ab 6:36 · Ankunft 10:45" },
-  { from: 12.5, to: 16.5, col: 0,              cls: "blk-travel",  name: "Bus München → Hochkrimml", sub: "ab 12:30 · Ankunft 16:30" },
-  { from: 16.5, to: 18,   col: 0,              cls: "blk-travel",  name: "Check-in",                 sub: "" },
+  // ── SO: Sunrise Hike + Yoga + Frühstück + Abreise ──
+  { from: 5, to: 6.5, col: 11, cls: "blk-yoga", name: "Sunrise Hike", sub: "5:00 – 6:30" },
+  { from: 6.5, to: 7.5, col: 11, cls: "blk-yoga", name: "Morning Yoga", sub: "6:30 – 7:30" },
+  { from: 7.5, to: 8.25, col: 11, cls: "blk-shared", name: "Frühstück", sub: "7:30 – 8:15" },
+  { from: 8.25, to: 22, col: 11, cls: "blk-travel", name: "Abreise", sub: "ab 8:30" },
 
-  // DO VORMITTAG
-  { from: 8.5,  to: 10.5, col: 1,              cls: "blk-a1",      name: "Trailrunning Technik Kurs",        sub: "8:30 – 10:30" },
-  { from: 8.5,  to: 10.5, col: 2,              cls: "blk-a2",      name: "Krafttraining für Läufer*innen",   sub: "8:30 – 10:30" },
-  { from: 8.5,  to: 12.5, col: 3,              cls: "blk-b",       name: "Trail Run B",                      sub: "11–17 km · 500–1500 hm" },
-  { from: 8.5,  to: 12.5, col: 4,              cls: "blk-c",       name: "Trail Run C",                      sub: "17+ km · 800+ hm" },
-  { from: 10.5, to: 12.5, col: 1,              cls: "blk-a1",      name: "Krafttraining für Läufer*innen",   sub: "10:30 – 12:30" },
-  { from: 10.5, to: 12.5, col: 2,              cls: "blk-a2",      name: "Trailrunning Technik Kurs",        sub: "10:30 – 12:30" },
+  // ── FRÜHSTÜCK ──
+  { from: 7.5, to: 8.25, col: 1, colSpan: 4, cls: "blk-shared", name: "Frühstück", sub: "7:30 – 8:15" },
+  { from: 7.5, to: 8.25, col: 5, colSpan: 3, cls: "blk-shared", name: "Frühstück", sub: "7:30 – 8:15" },
+  { from: 7.5, to: 8.25, col: 8, colSpan: 3, cls: "blk-shared", name: "Frühstück", sub: "7:30 – 8:15" },
 
-  // FR VORMITTAG
-  { from: 8.5,  to: 12.5, col: 5,              cls: "blk-a1",      name: "Trail Run A",               sub: "8–13 km · 300–800 hm" },
-  { from: 8.5,  to: 12.5, col: 6,              cls: "blk-b",       name: "Trail Run B",               sub: "11–17 km · 500–1500 hm" },
-  { from: 8.5,  to: 12.5, col: 7,              cls: "blk-c",       name: "Trail Run C",               sub: "17+ km · 800+ hm" },
+  // ── BRIEFING ──
+  { from: 8.25, to: 8.5, col: 1, colSpan: 4, cls: "blk-shared", name: "Treffpunkt & Briefing", sub: "8:15 – 8:30" },
+  { from: 8.25, to: 8.5, col: 5, colSpan: 3, cls: "blk-shared", name: "Treffpunkt & Briefing", sub: "8:15 – 8:30" },
+  { from: 8.25, to: 8.5, col: 8, colSpan: 3, cls: "blk-shared", name: "Treffpunkt & Briefing", sub: "8:15 – 8:30" },
 
-  // SA VORMITTAG
-  { from: 8.5,  to: 12.5, col: 8,              cls: "blk-a1",      name: "Trail Run A",               sub: "8–13 km · 300–800 hm" },
-  { from: 8.5,  to: 12.5, col: 9,              cls: "blk-b",       name: "Trail Run B",               sub: "11–17 km · 500–1500 hm" },
-  { from: 8.5,  to: 12.5, col: 10,             cls: "blk-c",       name: "Trail Run C",               sub: "17+ km · 800+ hm" },
+  // ── ANREISE Mi ──
+  { from: 6, to: 12.5, col: 0, cls: "blk-travel", name: "Zug Berlin → München", sub: "ab 6:36 · Ankunft 10:45" },
+  { from: 12.5, to: 16.5, col: 0, cls: "blk-travel", name: "Bus München → Hochkrimml", sub: "ab 12:30 · Ankunft 16:30" },
+  { from: 16.5, to: 18, col: 0, cls: "blk-travel", name: "Check-in", sub: "" },
 
-  // SO ABREISE
-  { from: 8.25, to: 22,   col: 11,             cls: "blk-travel",  name: "Abreise",                   sub: "nach dem Frühstück" },
+  // ── DO VORMITTAG ──
+  { from: 8.5, to: 10.5, col: 1, cls: "blk-a1", name: "Trailrunning Technik Kurs", sub: "8:30 – 10:30" },
+  { from: 8.5, to: 10.5, col: 2, cls: "blk-a2", name: "Krafttraining für Läufer*innen", sub: "8:30 – 10:30" },
+  { from: 8.5, to: 12.5, col: 3, cls: "blk-b", name: "Trail Run Fortgeschritten", sub: "11–17 km · 500–1500 hm" },
+  { from: 8.5, to: 14, col: 4, cls: "blk-c", name: "Trail Run Profi", sub: "17+ km · 800+ hm" },
+  { from: 10.5, to: 12.5, col: 1, cls: "blk-a1", name: "Krafttraining für Läufer*innen", sub: "10:30 – 12:30" },
+  { from: 10.5, to: 12.5, col: 2, cls: "blk-a2", name: "Trailrunning Technik Kurs", sub: "10:30 – 12:30" },
 
-  // MITTAGSPAUSE
-  { from: 12.5, to: 13,   col: 1,  colSpan: 4, cls: "blk-shared",  name: "Freie Zeit / Duschen",     sub: "" },
-  { from: 12.5, to: 13,   col: 5,  colSpan: 3, cls: "blk-shared",  name: "Freie Zeit / Duschen",     sub: "" },
-  { from: 12.5, to: 13,   col: 8,  colSpan: 3, cls: "blk-shared",  name: "Freie Zeit / Duschen",     sub: "" },
-  { from: 13,   to: 13.5, col: 1,  colSpan: 4, cls: "blk-meal",    name: "Mittagessen",              sub: "13:00 – 13:30" },
-  { from: 13,   to: 13.5, col: 5,  colSpan: 3, cls: "blk-meal",    name: "Mittagessen",              sub: "13:00 – 13:30" },
-  { from: 13,   to: 13.5, col: 8,  colSpan: 3, cls: "blk-meal",    name: "Mittagessen",              sub: "13:00 – 13:30" },
+  // ── FR VORMITTAG ──
+  { from: 8.5, to: 12.5, col: 5, cls: "blk-a1", name: "Trail Run Anfänger", sub: "8–13 km · 300–800 hm" },
+  { from: 8.5, to: 12.5, col: 6, cls: "blk-b", name: "Trail Run Fortgeschritten", sub: "11–17 km · 500–1500 hm" },
+  { from: 8.5, to: 14, col: 7, cls: "blk-c", name: "Trail Run Profi", sub: "17+ km · 800+ hm" },
 
-  // DO NACHMITTAG: KANU
-  { from: 13.5, to: 14,   col: 1,              cls: "blk-kanu-weg", name: "Anfahrt See",              sub: "30 Min" },
-  { from: 14,   to: 15.5, col: 1,              cls: "blk-kanu1",    name: "Kanu fahren Gr. 1",        sub: "14:00 – 15:30" },
-  { from: 15.5, to: 16.25,col: 1,              cls: "blk-kanu-weg", name: "Rückweg",                  sub: "45 Min" },
-  { from: 16.25,to: 18,   col: 1,              cls: "blk-workshop", name: "Freie Zeit",               sub: "ab 16:15" },
-  { from: 13.5, to: 15,   col: 2,              cls: "blk-workshop", name: "Freie Zeit",               sub: "" },
-  { from: 15,   to: 15.5, col: 2,              cls: "blk-kanu-weg", name: "Anfahrt See",              sub: "30 Min" },
-  { from: 15.5, to: 17,   col: 2,              cls: "blk-kanu2",    name: "Kanu fahren Gr. 2",        sub: "15:30 – 17:00" },
-  { from: 17,   to: 17.75,col: 2,              cls: "blk-kanu-weg", name: "Rückweg",                  sub: "45 Min" },
-  { from: 17.75,to: 18,   col: 2,              cls: "blk-workshop", name: "Freie Zeit",               sub: "ab 17:45" },
-  // DO Workshops (col 3 & 4)
-  { from: 13.5, to: 15,   col: 3,              cls: "blk-workshop", name: "Linoleum-Druck",           sub: "13:30 – 15:00" },
-  { from: 13.5, to: 15,   col: 4,              cls: "blk-workshop", name: "Ernährungsworkshop",       sub: "13:30 – 15:00" },
-  { from: 15,   to: 15.25,col: 3,              cls: "blk-shared",   name: "Pause",                    sub: "" },
-  { from: 15,   to: 15.25,col: 4,              cls: "blk-shared",   name: "Pause",                    sub: "" },
-  { from: 15.25,to: 16.75,col: 3,              cls: "blk-workshop", name: "Freie Zeit",               sub: "15:15 – 16:45" },
-  { from: 15.25,to: 16.75,col: 4,              cls: "blk-workshop", name: "Linoleum-Druck",           sub: "15:15 – 16:45" },
-  { from: 16.75,to: 18,   col: 3,              cls: "blk-workshop", name: "Freie Zeit",               sub: "" },
-  { from: 16.75,to: 18,   col: 4,              cls: "blk-workshop", name: "Freie Zeit",               sub: "" },
+  // ── SA VORMITTAG ──
+  { from: 8.5, to: 12.5, col: 8, cls: "blk-a1", name: "Trail Run Anfänger", sub: "8–13 km · 300–800 hm" },
+  { from: 8.5, to: 12.5, col: 9, cls: "blk-b", name: "Trail Run Fortgeschritten", sub: "11–17 km · 500–1500 hm" },
+  { from: 8.5, to: 14, col: 10, cls: "blk-c", name: "Trail Run Profi", sub: "17+ km · 800+ hm" },
 
-  // FR NACHMITTAG
-  { from: 13.5, to: 15,   col: 5,              cls: "blk-workshop", name: "Kletterkurs 1",            sub: "13:30 – 15:00" },
-  { from: 13.5, to: 15,   col: 6,              cls: "blk-workshop", name: "Bogenschießen",            sub: "13:30 – 15:00" },
-  { from: 13.5, to: 15,   col: 7,              cls: "blk-workshop", name: "Stricken lernen",          sub: "13:30 – 15:00" },
-  { from: 15,   to: 15.25,col: 5,  colSpan: 3, cls: "blk-shared",   name: "Pause",                   sub: "" },
-  { from: 15.25,to: 16.75,col: 5,              cls: "blk-workshop", name: "Kletterkurs 2",            sub: "15:15 – 16:45" },
-  { from: 15.25,to: 16.75,col: 6,              cls: "blk-workshop", name: "Krafttraining Workshop",   sub: "15:15 – 16:45" },
-  { from: 15.25,to: 16.75,col: 7,              cls: "blk-workshop", name: "Upcycling",               sub: "15:15 – 16:45" },
-  { from: 16.75,to: 18,   col: 5,  colSpan: 3, cls: "blk-shared",   name: "Freie Zeit",              sub: "ab 16:45" },
+  // ── MITTAGESSEN ──
+  { from: 12.5, to: 13.25, col: 1, colSpan: 4, cls: "blk-shared", name: "Mittagessen", sub: "12:30 – 13:15" },
+  { from: 12.5, to: 13.25, col: 5, colSpan: 3, cls: "blk-shared", name: "Mittagessen", sub: "12:30 – 13:15" },
+  { from: 12.5, to: 13.25, col: 8, colSpan: 3, cls: "blk-shared", name: "Mittagessen", sub: "12:30 – 13:15" },
 
-  // SA NACHMITTAG
-  { from: 13.5, to: 16.75,col: 8,              cls: "blk-workshop", name: "MTB-Tour",                 sub: "13:30 – 16:45" },
-  { from: 13.5, to: 15,   col: 9,              cls: "blk-shared",   name: "Freie Zeit",              sub: "" },
-  { from: 13.5, to: 15,   col: 10,             cls: "blk-workshop", name: "Töpfern",                  sub: "13:30 – 15:00" },
-  { from: 15,   to: 15.25,col: 9,              cls: "blk-shared",   name: "Pause",                   sub: "" },
-  { from: 15,   to: 15.25,col: 10,             cls: "blk-shared",   name: "Pause",                   sub: "" },
-  { from: 15.25,to: 16.75,col: 9,              cls: "blk-shared",   name: "Freie Zeit",              sub: "" },
-  { from: 15.25,to: 16.75,col: 10,             cls: "blk-workshop", name: "Töpfern",                  sub: "15:15 – 16:45" },
-  { from: 16.75,to: 18,   col: 8,  colSpan: 3, cls: "blk-shared",   name: "Freie Zeit",              sub: "ab 16:45" },
+  // ── DO NACHMITTAG: KANU + Workshops ──
+  { from: 13.5, to: 14, col: 1, cls: "blk-kanu-weg", name: "Anfahrt See", sub: "30 Min" },
+  { from: 14, to: 15.5, col: 1, cls: "blk-kanu1", name: "Kanu fahren Gr. 1", sub: "14:00 – 15:30" },
+  { from: 15.5, to: 16.25, col: 1, cls: "blk-kanu-weg", name: "Rückweg", sub: "45 Min" },
+  { from: 15, to: 15.5, col: 2, cls: "blk-kanu-weg", name: "Anfahrt See", sub: "30 Min" },
+  { from: 15.5, to: 17, col: 2, cls: "blk-kanu2", name: "Kanu fahren Gr. 2", sub: "15:30 – 17:00" },
+  { from: 17, to: 17.75, col: 2, cls: "blk-kanu-weg", name: "Rückweg", sub: "45 Min" },
+  { from: 13.5, to: 17, col: 3, cls: "blk-workshop", name: "Linoleum-Druck", sub: "13:30 – 17:00" },
+  { from: 16.5, to: 18.5, col: 4, cls: "blk-workshop", name: "Ernährungsworkshop", sub: "16:30 – 18:30" },
 
-  // ABEND — col 0 Mi
-  { from: 18,   to: 18.5, col: 0,              cls: "blk-shared",   name: "Welcome & Ablauf",         sub: "18:00 – 18:30" },
-  // ABEND — Duschen Do/Fr/Sa
-  { from: 18,   to: 18.5, col: 1,  colSpan: 4, cls: "blk-shared",   name: "Freie Zeit / Duschen",    sub: "" },
-  { from: 18,   to: 18.5, col: 5,  colSpan: 3, cls: "blk-shared",   name: "Freie Zeit / Duschen",    sub: "" },
-  { from: 18,   to: 18.5, col: 8,  colSpan: 3, cls: "blk-shared",   name: "Freie Zeit / Duschen",    sub: "" },
-  // DINNER alle
-  { from: 18.5, to: 19.25,col: 0,  colSpan: 12,cls: "blk-dinner",   name: "Dinner",                  sub: "18:30 – 19:15" },
-  // ABENDPROGRAMM
-  { from: 19.5, to: 21.5, col: 0,              cls: "blk-dinner",   name: "Dinner Filzsteinalm / Duxer Alm", sub: "" },
-  { from: 19.5, to: 21.5, col: 1,  colSpan: 4, cls: "blk-evening",  name: "Outdoormovie Night + Speakers Event", sub: "" },
-  { from: 19.5, to: 21.5, col: 5,  colSpan: 3, cls: "blk-evening",  name: "Lagerfeuerabend",          sub: "" },
-  { from: 19.5, to: 21.5, col: 8,  colSpan: 3, cls: "blk-evening",  name: "Letzter Abend",            sub: "" },
+  // ── FR NACHMITTAG ──
+  { from: 13.5, to: 15.5, col: 5, cls: "blk-workshop", name: "Kletterkurs 1", sub: "13:30 – 15:30" },
+  { from: 15.75, to: 17.75, col: 5, cls: "blk-workshop", name: "Kletterkurs 2", sub: "15:45 – 17:45" },
+  { from: 13.5, to: 15.5, col: 6, cls: "blk-workshop", name: "Bogenschießen", sub: "13:30 – 15:30" },
+  { from: 17, to: 18.5, col: 6, cls: "blk-workshop", name: "Krafttraining Workshop", sub: "17:00 – 18:30" },
+  { from: 13.5, to: 15.5, col: 7, cls: "blk-workshop", name: "Upcycling 1", sub: "13:30 – 15:30" },
+  { from: 15.5, to: 17.5, col: 7, cls: "blk-workshop", name: "Upcycling 2", sub: "15:30 – 17:30" },
+
+  // ── SA NACHMITTAG: MTB ──
+  { from: 13.5, to: 14, col: 8, cls: "blk-kanu-weg", name: "Anfahrt", sub: "30 Min" },
+  { from: 14, to: 16.25, col: 8, cls: "blk-workshop", name: "MTB-Tour", sub: "14:00 – 16:15" },
+  { from: 16.25, to: 16.75, col: 8, cls: "blk-kanu-weg", name: "Rückfahrt", sub: "30 Min" },
+  { from: 13.5, to: 15, col: 10, cls: "blk-workshop", name: "Töpfern", sub: "13:30 – 15:00" },
+  { from: 15.25, to: 16.75, col: 10, cls: "blk-workshop", name: "Töpfern", sub: "15:15 – 16:45" },
+
+  // ── ABEND ──
+  { from: 18, to: 18.5, col: 0, cls: "blk-shared", name: "Welcome & Ablauf", sub: "18:00 – 18:30" },
+  { from: 18.5, to: 19.25, col: 0, colSpan: 12, cls: "blk-dinner", name: "Dinner", sub: "18:30 – 19:15" },
+  { from: 19.5, to: 21.5, col: 1, colSpan: 4, cls: "blk-evening", name: "Outdoormovie Night + Speakers Event", sub: "" },
+  { from: 19.5, to: 21.5, col: 5, colSpan: 3, cls: "blk-evening", name: "Lagerfeuerabend", sub: "" },
+  { from: 19.5, to: 21.5, col: 8, colSpan: 3, cls: "blk-evening", name: "Letzter Abend", sub: "" },
 ]
 
 // ─── Legend ─────────────────────────────────────────────────────────────────
 
 const LEGEND = [
-  { cls: "blk-a1",       label: "Gr. A1 — Kurz (Trail Run / Technik)" },
-  { cls: "blk-a2",       label: "Gr. A2 — Kurz (Technik / Kraft)" },
-  { cls: "blk-b",        label: "Gr. B — Mittel" },
-  { cls: "blk-c",        label: "Gr. C — Lang" },
+  { cls: "blk-a1", label: "Anfänger" },
+  { cls: "blk-a2", label: "Anfänger (2. Gruppe)" },
+  { cls: "blk-b", label: "Fortgeschritten" },
+  { cls: "blk-c", label: "Profi" },
   { cls: "blk-workshop", label: "Workshop / Aktivität" },
-  { cls: "blk-kanu1",    label: "Kanu Gr. 1" },
-  { cls: "blk-kanu2",    label: "Kanu Gr. 2" },
-  { cls: "blk-kanu-weg", label: "An- / Rückweg Kanu" },
-  { cls: "blk-meal",     label: "Mahlzeit" },
-  { cls: "blk-yoga",     label: "Yoga / Sunrise Hike" },
-  { cls: "blk-dinner",   label: "Dinner" },
-  { cls: "blk-evening",  label: "Abendprogramm" },
-  { cls: "blk-travel",   label: "Reise / Check-in" },
-  { cls: "blk-shared",   label: "Gemeinsam / Freie Zeit" },
+  { cls: "blk-kanu1", label: "Kanu Gr. 1" },
+  { cls: "blk-kanu2", label: "Kanu Gr. 2" },
+  { cls: "blk-kanu-weg", label: "An- / Rückweg" },
+  { cls: "blk-yoga", label: "Sunrise Hike / Yoga" },
+  { cls: "blk-dinner", label: "Dinner" },
+  { cls: "blk-evening", label: "Abendprogramm" },
+  { cls: "blk-travel", label: "Reise / Check-in" },
+  { cls: "blk-shared", label: "Gemeinsam / Frühstück" },
 ]
 
 // ─── Component ──────────────────────────────────────────────────────────────
