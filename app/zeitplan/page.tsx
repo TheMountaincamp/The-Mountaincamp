@@ -65,7 +65,7 @@ export default function ZeitplanPage() {
       cols: null,
       blocks: [
         { from: 6, to: 12.5, col: 0, cls: 'travel-bl', span: 1, de: { n: 'Zug Berlin → München', s: 'ab 6:36 · Ankunft 10:45', p: '' }, en: { n: 'Train Berlin → Munich', s: 'dep. 6:36 · arr. 10:45', p: '' } },
-        { from: 12.5, to: 16.5, col: 0, cls: 'travel-bl', span: 1, de: { n: 'Bus München → Hochkrimml', s: 'ab 12:30 · Ankunft 16:30', p: '' }, en: { n: 'Bus Munich → Hochkrimml', s: 'dep. 12:30 · arr. 16:30', p: '' } },
+        { from: 12.5, to: 16.5, col: 0, cls: 'travel-bl', span: 1, de: { n: 'Bus München → Hochkrimml (Zwischenstopp Jenbach 14:30 Uhr)', s: 'ab 12:30 · Ankunft 16:30', p: '' }, en: { n: 'Bus Munich → Hochkrimml (stopover Jenbach 14:30)', s: 'dep. 12:30 · arr. 16:30', p: '' } },
         { from: 16.5, to: 18, col: 0, cls: 'travel-bl', span: 1, de: { n: 'Check-in', s: '', p: '' }, en: { n: 'Check-in', s: '', p: '' } },
         { from: 18, to: 18.5, col: 0, cls: 'shared-bl', span: 1, de: { n: 'Welcome & Ablauf', s: '18:00–18:30', p: '' }, en: { n: 'Welcome & Overview', s: '6:00–6:30 pm', p: '' } },
         { from: 18.5, to: 19.5, col: 0, cls: 'dinner-bl', span: 1, de: { n: 'Dinner', s: '18:30–19:15', p: '' }, en: { n: 'Dinner', s: '6:30–7:15 pm', p: '' } },
