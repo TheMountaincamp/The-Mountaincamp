@@ -37,10 +37,10 @@ const SECTION_IMAGES = ["/images/MTC-Logo_2025_weiß.png"]
 const HOUSE_PAGE_IMAGES = ["/images/mountain-lodge.jpeg"]
 const TRAILS_PAGE_IMAGES = ["/images/mountain-trail-runner.jpeg", "/images/trail-runners-group.jpeg"]
 
-// Start date: May 20, 2026 — 23 tickets, cat4 at 40%
+// Start date: May 20, 2026 — 2 tickets (28/30 Berlin Anreise), cat4 at 40%
 // Every 2 days: -1 ticket, +2% cat4
 const COUNTDOWN_START_DATE = new Date("2026-05-20T00:00:00Z")
-const COUNTDOWN_START_TICKETS = 23
+const COUNTDOWN_START_TICKETS = 2
 const COUNTDOWN_START_CAT4 = 40
 
 function getDynamicValues() {
