@@ -28,7 +28,7 @@ export default function AGBPage() {
 
             <p className="mb-6">
               Die nachfolgenden Bestimmungen regeln das Rechtsverhältnis innerhalb eines zustande kommenden
-              Reisevertrages zwischen dem Kunden und Mountaincamp Jonas Westbrock e.U. (im Folgenden „Reiseveranstalter"
+              Reisevertrages zwischen dem Kunden und Mountaincamp Jonas Westbrock (im Folgenden „Reiseveranstalter"
               oder „Mountaincamp" genannt), der als Reiseveranstalter tätig ist. Zusätzlich gilt das Reisevertragsrecht
               gemäß §§ 651a ff. BGB. Diese AGB gelten für alle von Mountaincamp durchgeführten Reisen und
               Veranstaltungen.
