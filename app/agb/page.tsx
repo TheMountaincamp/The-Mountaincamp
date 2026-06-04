@@ -18,7 +18,7 @@ export default function AGBPage() {
           <div className="prose prose-invert max-w-none">
             <div className="mb-6">
               <p className="font-bold">
-                Mountaincamp Jonas Westbrock e.U.
+                Mountaincamp Jonas Westbrock
                 <br />
                 Im Schulgarten 28
                 <br />
