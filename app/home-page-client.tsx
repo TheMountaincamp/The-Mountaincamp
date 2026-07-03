@@ -831,8 +831,8 @@ export default function HomePageClient() {
                 </h3>
                 <p className="text-white/90 text-lg leading-relaxed">
                   {language === "de"
-                    ? "Schaue jetzt rein und such dir aus, was du neben den täglichen Trailruns noch machen möchtest. Die Buchung der Workshops öffnet in 4 Wochen."
-                    : "Check it out now and choose what you want to do alongside the daily trail runs. Workshop bookings open in 4 weeks."}
+                    ? "Schaue jetzt rein und such dir aus, was du neben den täglichen Trailruns noch machen möchtest. Die Buchung der Workshops öffnet in einer Woche."
+                    : "Check it out now and choose what you want to do alongside the daily trail runs. Workshop bookings open in 1 week."}
                 </p>
               </div>
               <Link
