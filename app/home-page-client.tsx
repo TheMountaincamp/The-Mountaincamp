@@ -40,7 +40,7 @@ const TRAILS_PAGE_IMAGES = ["/images/mountain-trail-runner.jpeg", "/images/trail
 // Start date: May 20, 2026 — 23 tickets, cat4 at 40%
 // Every 2 days: -1 ticket, +2% cat4
 const COUNTDOWN_START_DATE = new Date("2026-05-20T00:00:00Z")
-const COUNTDOWN_START_TICKETS = 23
+const COUNTDOWN_START_TICKETS = 36
 const COUNTDOWN_START_CAT4 = 40
 
 function getDynamicValues() {
