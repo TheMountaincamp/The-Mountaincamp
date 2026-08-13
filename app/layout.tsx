@@ -31,10 +31,10 @@ export const viewport: Viewport = {
 export const metadata: Metadata = {
   metadataBase: new URL("https://themountaincamp.de"),
 
-  title: "Trailrunning Camp Österreich 2027 | The Mountaincamp in den Alpen",
+  title: "Trailrunning Camp Österreich 2026 | The Mountaincamp in den Alpen",
 
   description:
-    "Trailrunning Camp in Österreich: 5 Tage in den Alpen für Anfänger, Fortgeschrittene und Profis. Join 130 runners for a trail running camp in the Austrian Alps with coaching, trails and community. Hochkrimml, 18.–22. August 2027.",
+    "Trailrunning Camp in Österreich: 5 Tage in den Alpen für Anfänger, Fortgeschrittene und Profis. Join 130 runners for a trail running camp in the Austrian Alps with coaching, trails and community. Hochkrimml, 5.–9. August 2026.",
 
   keywords: [
     "trailrunning camp",
@@ -47,7 +47,7 @@ export const metadata: Metadata = {
     "trailrunning retreat",
     "trail running retreat",
     "trailrunning hochkrimml",
-    "trailrunning camp 2027",
+    "trailrunning camp 2026",
     "the mountaincamp",
   ],
 
@@ -56,9 +56,9 @@ export const metadata: Metadata = {
   },
 
   openGraph: {
-    title: "Trailrunning Camp Österreich 2027 | The Mountaincamp in den Alpen",
+    title: "Trailrunning Camp Österreich 2026 | The Mountaincamp in den Alpen",
     description:
-      "Trailrunning Camp in Österreich: 5 Tage in den Alpen für alle Levels. Join 130 runners for a trail running camp in the Austrian Alps with coaching, trails and community. Hochkrimml, 18.–22. August 2027.",
+      "Trailrunning Camp in Österreich: 5 Tage in den Alpen für alle Levels. Join 130 runners for a trail running camp in the Austrian Alps with coaching, trails and community. Hochkrimml, 5.–9. August 2026.",
     url: "https://themountaincamp.de",
     siteName: "The Mountaincamp",
     images: [
@@ -76,9 +76,9 @@ export const metadata: Metadata = {
 
   twitter: {
     card: "summary_large_image",
-    title: "Trailrunning Camp Österreich 2027 | The Mountaincamp",
+    title: "Trailrunning Camp Österreich 2026 | The Mountaincamp",
     description:
-      "5 Tage Trailrunning in den österreichischen Alpen. Join 130 runners for coaching, trails and community in Hochkrimml, 18.–22. August 2027.",
+      "5 Tage Trailrunning in den österreichischen Alpen. Join 130 runners for coaching, trails and community in Hochkrimml, 5.–9. August 2026.",
     images: ["/images/hero-trail-runners.jpeg"],
     creator: "@themountaincamp",
     site: "@themountaincamp",
