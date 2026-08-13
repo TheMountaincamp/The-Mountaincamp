@@ -216,7 +216,7 @@ export default function FAQSection() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.4, delay: index * 0.05 }}
-              className="border border-gray-200 rounded-lg overflow-hidden bg-white hover:shadow-md transition-shadow"
+              className="border border-gray-200 overflow-hidden bg-white hover:transition-shadow"
             >
               <button
                 onClick={() => setOpenIndex(openIndex === index ? null : index)}

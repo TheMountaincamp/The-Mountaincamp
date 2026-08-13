@@ -632,7 +632,7 @@ export default function HomePageClient() {
             style={{ y: heroTextY, opacity: heroOpacity }}
             className="container relative z-20 flex h-screen flex-col items-center justify-center text-center text-white"
           >
-            <div className="absolute inset-0 rounded-3xl bg-black/40 opacity-0 backdrop-blur-sm" />
+            <div className="absolute inset-0 bg-black/40 opacity-0 backdrop-blur-sm" />
 
             <div className="relative z-10 mx-auto w-full max-w-md px-5 md:max-w-4xl">
               <motion.div
@@ -772,7 +772,7 @@ export default function HomePageClient() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6 }}
-          className="relative z-30 bg-gradient-to-r from-primary/95 to-primary/85 py-12 md:py-16"
+          className="relative z-30 bg-primary py-12 md:py-16"
         >
           <div className="container">
             <div className="flex flex-col items-start justify-between gap-6 lg:flex-row lg:items-center">
@@ -836,7 +836,7 @@ export default function HomePageClient() {
                   whileInView={{ opacity: 1, scale: 1 }}
                   viewport={{ once: true }}
                   transition={{ duration: 0.8 }}
-                  className="relative h-[300px] overflow-hidden rounded-xl md:h-[500px]"
+                  className="relative h-[300px] overflow-hidden md:h-[500px]"
                 >
                   <Image
                     src="/images/alpine-village-group.jpg"
@@ -1000,7 +1000,7 @@ export default function HomePageClient() {
 
               <button
                 onClick={prevActivity}
-                className="absolute left-4 top-1/2 z-10 -translate-y-1/2 rounded-full border border-white/20 bg-black/60 p-4 text-white shadow-lg backdrop-blur-sm transition-all duration-300 hover:bg-black/80"
+                className="absolute left-4 top-1/2 z-10 -translate-y-1/2 rounded-full border border-white/20 bg-black/60 p-4 text-white backdrop-blur-sm transition-all duration-300 hover:bg-black/80"
                 aria-label="Previous activity"
               >
                 <ChevronDown className="h-8 w-8 rotate-90" />
@@ -1008,7 +1008,7 @@ export default function HomePageClient() {
 
               <button
                 onClick={nextActivity}
-                className="absolute right-4 top-1/2 z-10 -translate-y-1/2 rounded-full border border-white/20 bg-black/60 p-4 text-white shadow-lg backdrop-blur-sm transition-all duration-300 hover:bg-black/80"
+                className="absolute right-4 top-1/2 z-10 -translate-y-1/2 rounded-full border border-white/20 bg-black/60 p-4 text-white backdrop-blur-sm transition-all duration-300 hover:bg-black/80"
                 aria-label="Next activity"
               >
                 <ChevronDown className="h-8 w-8 -rotate-90" />
@@ -1191,7 +1191,7 @@ export default function HomePageClient() {
                 viewport={{ once: true }}
                 transition={{ duration: 0.8 }}
               >
-                <div className="rounded-xl border border-gray-700 bg-gray-800 p-8 text-white">
+                <div className="border border-gray-700 bg-gray-800 p-8 text-white">
                   <h3 className="mb-3 text-center text-2xl font-bold uppercase text-white">{t("notifyTitle")}</h3>
                   <p className="mb-6 text-center text-sm text-white/70">{t("notifyDesc")}</p>
                   <NotifySignupForm className="[&_input]:bg-gray-900 [&_input]:text-white [&_input]:border-gray-700" />

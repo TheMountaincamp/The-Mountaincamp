@@ -35,7 +35,7 @@ export default function CookieBanner() {
         initial={{ y: 100, opacity: 0 }}
         animate={{ y: 0, opacity: 1 }}
         exit={{ y: 100, opacity: 0 }}
-        className="fixed bottom-0 left-0 right-0 z-50 bg-white shadow-lg border-t border-gray-200"
+        className="fixed bottom-0 left-0 right-0 z-50 bg-white border-t border-gray-200"
       >
         <div className="container mx-auto p-4 md:p-6">
           <div className="flex justify-between items-start mb-4">
@@ -81,7 +81,7 @@ export default function CookieBanner() {
                 className="overflow-hidden mb-4"
               >
                 <div className="space-y-4 mb-4">
-                  <div className="border p-3 rounded-md">
+                  <div className="border p-3">
                     <div className="flex justify-between items-center">
                       <div>
                         <h3 className="font-medium">Notwendige Cookies</h3>
@@ -94,7 +94,7 @@ export default function CookieBanner() {
                     </div>
                   </div>
 
-                  <div className="border p-3 rounded-md">
+                  <div className="border p-3">
                     <div className="flex justify-between items-center">
                       <div>
                         <h3 className="font-medium">Analyse-Cookies</h3>
@@ -114,7 +114,7 @@ export default function CookieBanner() {
                     </div>
                   </div>
 
-                  <div className="border p-3 rounded-md">
+                  <div className="border p-3">
                     <div className="flex justify-between items-center">
                       <div>
                         <h3 className="font-medium">Marketing-Cookies</h3>

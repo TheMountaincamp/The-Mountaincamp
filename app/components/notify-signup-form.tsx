@@ -52,7 +52,7 @@ export default function NotifySignupForm({ className }: { className?: string }) 
     return (
       <div
         className={cn(
-          "flex items-center gap-3 rounded-lg border border-primary/20 bg-primary/5 px-4 py-3 text-sm font-medium text-foreground",
+          "flex items-center gap-3 border border-primary/20 bg-primary/5 px-4 py-3 text-sm font-medium text-foreground",
           className,
         )}
       >
