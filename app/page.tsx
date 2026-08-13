@@ -1,260 +1,1686 @@
-import type { Metadata } from "next"
-import Script from "next/script"
-import HomePageClient from "./home-page-client"
+"use client"
 
-export const metadata: Metadata = {
-  title: "The Mountaincamp 2026 | Trailrunning Camp Österreich in Hochkrimml",
-  description:
-    "5-tägiges Trailrunning Camp in den österreichischen Alpen. Geführte Trailruns, Techniktraining, Community, Workshops und Erholung in Hochkrimml – für Anfänger bis Fortgeschrittene. 5.-9. August 2026.",
-  keywords: [
-    "Trailrunning Camp",
-    "Trailrunning Camp Österreich",
-    "Trail Running Camp Austria",
-    "Mountaincamp",
-    "The Mountaincamp",
-    "Hochkrimml",
-    "Trailrunning Anfänger",
-    "Trailrunning Alpen",
-    "Laufcamp Österreich",
-    "Trail Running Workshop",
-    "Trailrunning Community",
-  ],
-  authors: [{ name: "The Mountaincamp" }],
-  creator: "The Mountaincamp",
-  publisher: "The Mountaincamp",
-  openGraph: {
-    title: "The Mountaincamp 2026 | Trailrunning Camp Österreich",
-    description:
-      "5 Tage Trailrunning, Community und Abenteuer in den österreichischen Alpen. Hochkrimml, 5.-9. August 2026.",
-    url: "https://themountaincamp.de",
-    siteName: "The Mountaincamp",
-    images: [
-      {
-        url: "https://themountaincamp.de/images/hero-trail-runners.jpeg",
-        width: 1200,
-        height: 630,
-        alt: "Trailrunning Camp Österreich - The Mountaincamp 2026",
-      },
-    ],
-    locale: "de_DE",
-    type: "website",
-  },
-  twitter: {
-    card: "summary_large_image",
-    title: "The Mountaincamp 2026 | Trailrunning Camp Österreich",
-    description:
-      "5 Tage Trailrunning, Community und Abenteuer in den österreichischen Alpen. Hochkrimml, 5.-9. August 2026.",
-    images: ["https://themountaincamp.de/images/hero-trail-runners.jpeg"],
-  },
-  alternates: {
-    canonical: "https://themountaincamp.de",
-    languages: {
-      "de-DE": "https://themountaincamp.de",
-      "en-US": "https://themountaincamp.de",
-    },
-  },
-  robots: {
-    index: true,
-    follow: true,
-    googleBot: {
-      index: true,
-      follow: true,
-      "max-video-preview": -1,
-      "max-image-preview": "large",
-      "max-snippet": -1,
-    },
-  },
+import { useState, useEffect, useRef } from "react"
+import Image from "next/image"
+import Link from "next/link"
+import { motion, useScroll, useTransform, AnimatePresence } from "framer-motion"
+import {
+  Mountain,
+  Flame,
+  Sparkles,
+  Music,
+  ArrowRight,
+  ChevronDown,
+  Calendar,
+  MapPin,
+  Menu,
+  X,
+} from "lucide-react"
+import { Button } from "@/components/ui/button"
+import { useMobile } from "@/hooks/use-mobile"
+import { useLanguage } from "@/contexts/language-context"
+
+import FeatureCard from "@/app/components/feature-card"
+import SectionTitle from "@/app/components/section-title"
+import ActivityCardMobile from "@/app/components/activity-card-mobile"
+import LanguageSwitcher from "@/app/components/language-switcher"
+import PriceCategoryBars from "@/app/components/price-category-bars"
+import ImageWithFallback from "@/app/components/image-with-fallback"
+import ImagePreloader from "@/app/components/image-preloader"
+import PreloadLink from "@/app/components/preload-link"
+import TestimonialSlider from "@/app/components/testimonial-slider"
+import InstagramReelsSection from "@/app/components/instagram-reels-section"
+import FAQSection from "@/app/components/faq-section"
+import RouteOverviewSection from "@/app/components/route-overview-section"
+
+const SECTION_IMAGES = ["/images/MTC-Logo_2025_weiß.png"]
+const HOUSE_PAGE_IMAGES = ["/images/mountain-lodge.jpeg"]
+const TRAILS_PAGE_IMAGES = ["/images/mountain-trail-runner.jpeg", "/images/trail-runners-group.jpeg"]
+
+// Start date: May 20, 2026 — 23 tickets, cat4 at 40%
+// Every 2 days: -1 ticket, +2% cat4
+const COUNTDOWN_START_DATE = new Date("2026-05-20T00:00:00Z")
+const COUNTDOWN_START_TICKETS = 40
+const COUNTDOWN_START_CAT4 = 40
+
+function getDynamicValues() {
+  const now = new Date()
+  const msPerDay = 1000 * 60 * 60 * 24
+  const daysSinceStart = Math.floor((now.getTime() - COUNTDOWN_START_DATE.getTime()) / msPerDay)
+  const periods = Math.max(0, Math.floor(daysSinceStart / 2))
+  const tickets = Math.max(0, COUNTDOWN_START_TICKETS - periods)
+  const cat4 = Math.min(100, COUNTDOWN_START_CAT4 + periods * 2)
+  return { tickets, cat4 }
 }
 
-const eventStructuredData = {
-  "@context": "https://schema.org",
-  "@type": "SportsEvent",
-  name: "The Mountaincamp 2026",
-  alternateName: [
-    "The Mountaincamp",
-    "Trailrunning Camp Austria",
-    "Trailrunning Camp Österreich",
-    "Trail Running Camp Austria",
-  ],
-  description:
-    "A 5-day trail running camp in Hochkrimml, Austria, for beginners, intermediate runners and experienced athletes. Trails, coaching, community and workshops in the Austrian Alps.",
-  sport: "Trail Running",
-  startDate: "2026-08-05",
-  endDate: "2026-08-09",
-  eventStatus: "https://schema.org/EventScheduled",
-  eventAttendanceMode: "https://schema.org/OfflineEventAttendanceMode",
-  location: {
-    "@type": "Place",
-    name: "Hochkrimml, Austrian Alps",
-    address: {
-      "@type": "PostalAddress",
-      streetAddress: "Hochkrimml",
-      addressLocality: "Hochkrimml",
-      addressRegion: "Salzburg",
-      postalCode: "5743",
-      addressCountry: "AT",
-    },
-    geo: {
-      "@type": "GeoCoordinates",
-      latitude: 47.2393,
-      longitude: 12.1735,
-    },
-  },
-  image: [
-    "https://themountaincamp.de/images/hero-trail-runners.jpeg",
-    "https://themountaincamp.de/images/alpine-village-group.jpg",
-    "https://themountaincamp.de/images/mountain-summit.jpeg",
-  ],
-  offers: {
-    "@type": "Offer",
-    price: "530",
-    priceCurrency: "EUR",
-    availability: "https://schema.org/LimitedAvailability",
-    url: "https://my.camps.digital/masken/buchungen/vuejs?&vendor=mountaincamp&destination_id=2467&termin_id=36011&locale=de#/",
-    validFrom: "2026-04-01T19:00:00+02:00",
-    priceValidUntil: "2026-08-01T00:00:00+02:00",
-  },
-  organizer: {
-    "@type": "Organization",
-    name: "The Mountaincamp",
-    url: "https://themountaincamp.de",
-    logo: "https://themountaincamp.de/images/MTC-Logo_2025.png",
-    sameAs: [
-      "https://www.instagram.com/the_mountaincamp/",
-      "https://www.youtube.com/@the_mountaincamp",
-      "https://www.tiktok.com/@themountaincamp",
-    ],
-  },
-  performer: {
-    "@type": "Organization",
-    name: "The Mountaincamp Coaching Team",
-  },
-}
+const PARTNERS = [
+  { src: "/images/partner-1.png", alt: "KRAFT. - Partner des Mountaincamp Trailrunning Camps" },
+  { src: "/images/partner-2.png", alt: "Powerbar - Sponsor des Mountaincamp Trailrunning Camps" },
+  { src: "/images/partner-3.png", alt: "Altra Running - Partner des Mountaincamp Trailrunning Camps" },
+  { src: "/images/partner-4.png", alt: "Midnight Runners - Partner des Mountaincamp Trailrunning Camps" },
+  { src: "/images/partner-5.png", alt: "Lebe Pur - Partner des Mountaincamp Trailrunning Camps" },
+  { src: "/images/partner-therabody.png", alt: "Therabody - Sponsor des Mountaincamp Trailrunning Camps" },
+  { src: "/images/partner-leki.png", alt: "Leki - Sponsor des Mountaincamp Trailrunning Camps" },
+  { src: "/images/partner-koro.png", alt: "KoRo - Sponsor des Mountaincamp Trailrunning Camps" },
+  { src: "/images/partner-sebamed.png", alt: "Sebamed - Sponsor des Mountaincamp Trailrunning Camps" },
+  { src: "/images/partner-suunto.png", alt: "Suunto - Sponsor des Mountaincamp Trailrunning Camps" },
+  { src: "/images/partner-7.png", alt: "Early Birds - Partner des Mountaincamp Trailrunning Camps" },
+  { src: "/images/partner-8.png", alt: "Incylence - Partner des Mountaincamp Trailrunning Camps" },
+]
 
-const organizationStructuredData = {
-  "@context": "https://schema.org",
-  "@type": "Organization",
-  name: "The Mountaincamp",
-  url: "https://themountaincamp.de",
-  logo: "https://themountaincamp.de/images/MTC-Logo_2025.png",
-  image: "https://themountaincamp.de/images/hero-trail-runners.jpeg",
-  address: {
-    "@type": "PostalAddress",
-    addressLocality: "Hochkrimml",
-    addressRegion: "Salzburg",
-    addressCountry: "AT",
-  },
-  sameAs: [
-    "https://www.instagram.com/the_mountaincamp/",
-    "https://www.youtube.com/@the_mountaincamp",
-    "https://www.tiktok.com/@themountaincamp",
-  ],
-  contactPoint: {
-    "@type": "ContactPoint",
-    email: "themountaincampde@gmail.com",
-    contactType: "Customer Service",
-    availableLanguage: ["German", "English"],
-  },
-}
+function PartnerCarousel() {
+  const trackRef = useRef<HTMLDivElement>(null)
+  const containerRef = useRef<HTMLDivElement>(null)
+  const posRef = useRef(0)
+  const rafRef = useRef<number>(0)
+  const [scales, setScales] = useState<number[]>(PARTNERS.map(() => 1))
+  const itemRefs = useRef<(HTMLDivElement | null)[]>([])
 
-const breadcrumbStructuredData = {
-  "@context": "https://schema.org",
-  "@type": "BreadcrumbList",
-  itemListElement: [
-    {
-      "@type": "ListItem",
-      position: 1,
-      name: "Home",
-      item: "https://themountaincamp.de",
-    },
-    {
-      "@type": "ListItem",
-      position: 2,
-      name: "The Mountaincamp",
-      item: "https://themountaincamp.de",
-    },
-  ],
-}
+  useEffect(() => {
+    const track = trackRef.current
+    const container = containerRef.current
+    if (!track || !container) return
 
-const faqStructuredData = {
-  "@context": "https://schema.org",
-  "@type": "FAQPage",
-  mainEntity: [
-    {
-      "@type": "Question",
-      name: "Was ist The Mountaincamp?",
-      acceptedAnswer: {
-        "@type": "Answer",
-        text: "The Mountaincamp ist ein 5-tägiges Trailrunning Camp in Hochkrimml, Österreich, für Anfänger, Fortgeschrittene und ambitionierte Läufer. Es kombiniert geführte Trailruns, Techniktraining, Workshops und Community-Events in den österreichischen Alpen.",
-      },
-    },
-    {
-      "@type": "Question",
-      name: "Wann und wo findet das Camp statt?",
-      acceptedAnswer: {
-        "@type": "Answer",
-        text: "Das Mountaincamp 2026 findet vom 5. bis 9. August in Hochkrimml in den österreichischen Alpen (Salzburg) statt.",
-      },
-    },
-    {
-      "@type": "Question",
-      name: "Ist das Camp für Anfänger geeignet?",
-      acceptedAnswer: {
-        "@type": "Answer",
-        text: "Ja, das Camp ist für alle Level geeignet – von Trailrunning-Anfängern bis zu erfahrenen Athleten. Es gibt verschiedene Laufgruppen und Routen für jedes Fitnesslevel.",
-      },
-    },
-    {
-      "@type": "Question",
-      name: "Was kostet die Teilnahme am Mountaincamp?",
-      acceptedAnswer: {
-        "@type": "Answer",
-        text: "Die Teilnahme kostet ab €530. Im Preis enthalten sind Unterkunft, Verpflegung, alle Aktivitäten, Workshops und das komplette Camp-Programm.",
-      },
-    },
-    {
-      "@type": "Question",
-      name: "Welche Aktivitäten gibt es neben dem Trailrunning?",
-      acceptedAnswer: {
-        "@type": "Answer",
-        text: "Neben den täglichen Trailruns gibt es Yoga, Workshops (Töpfern, Aquarellmalerei, Stricken), MTB-Touren, Kanufahren, Bogenschießen, Klettern, Filmabende, Lagerfeuer und die legendäre Sunset Rave Party.",
-      },
-    },
-    {
-      "@type": "Question",
-      name: "Wie komme ich zum Camp?",
-      acceptedAnswer: {
-        "@type": "Answer",
-        text: "Es gibt organisierte Busshuttles von verschiedenen deutschen Städten (München, Stuttgart, Hamburg, Frankfurt, Köln) nach Hochkrimml. Alternativ ist eine Anreise mit dem eigenen Auto möglich.",
-      },
-    },
-  ],
+    const speed = 0.6 // px per frame — slower on all devices
+
+    function animate() {
+      posRef.current += speed
+      const half = track!.scrollWidth / 2
+      if (posRef.current >= half) posRef.current = 0
+      track!.style.transform = `translateX(-${posRef.current}px)`
+
+      // Compute scale for each item based on distance from center
+      const containerRect = container!.getBoundingClientRect()
+      const centerX = containerRect.left + containerRect.width / 2
+      const newScales = itemRefs.current.slice(0, PARTNERS.length).map((el) => {
+        if (!el) return 1
+        const rect = el.getBoundingClientRect()
+        const itemCenterX = rect.left + rect.width / 2
+        const dist = Math.abs(centerX - itemCenterX)
+        const maxDist = containerRect.width / 2
+        const ratio = Math.max(0, 1 - dist / maxDist)
+        return 1 + ratio * 0.45 // max scale 1.45
+      })
+      setScales(newScales)
+
+      rafRef.current = requestAnimationFrame(animate)
+    }
+
+    rafRef.current = requestAnimationFrame(animate)
+    return () => cancelAnimationFrame(rafRef.current)
+  }, [])
+
+  // Duplicate list for seamless loop
+  const allPartners = [...PARTNERS, ...PARTNERS]
+
+  return (
+    <div ref={containerRef} className="overflow-hidden">
+      <div
+        ref={trackRef}
+        className="flex items-center gap-10 md:gap-20"
+        style={{ width: "max-content", willChange: "transform" }}
+      >
+        {allPartners.map((partner, idx) => {
+          const originalIdx = idx % PARTNERS.length
+          const scale = scales[originalIdx] ?? 1
+          return (
+            <div
+              key={idx}
+              ref={(el) => { if (idx < PARTNERS.length) itemRefs.current[idx] = el }}
+              className="flex h-24 md:h-32 shrink-0 items-center justify-center"
+              style={{
+                transform: `scale(${scale})`,
+                transition: "transform 0.15s ease-out",
+              }}
+            >
+              <Image
+                src={partner.src}
+                alt={partner.alt}
+                width={220}
+                height={90}
+                className="w-auto object-contain opacity-70 hover:opacity-100 h-16 md:h-24"
+                loading="lazy"
+                sizes="(max-width: 768px) 160px, 220px"
+              />
+            </div>
+          )
+        })}
+      </div>
+    </div>
+  )
 }
 
 export default function Home() {
+  const { t, language } = useLanguage()
+  const isMobile = useMobile()
+  const [dynamicValues] = useState(() => getDynamicValues())
+
+  const [currentActivityIndex, setCurrentActivityIndex] = useState(0)
+  const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
+  const [hasScrolled, setHasScrolled] = useState(false)
+
+  const videoRef = useRef<HTMLVideoElement>(null)
+  const heroRef = useRef(null)
+
+  const bookingUrl = `https://my.camps.digital/masken/buchungen/vuejs?&vendor=mountaincamp&destination_id=2467&termin_id=36011&locale=${language === "de" ? "de" : "en"
+    }#/`
+
+  const { scrollYProgress } = useScroll({
+    target: heroRef,
+    offset: ["start start", "end start"],
+  })
+
+  const heroTextY = useTransform(scrollYProgress, [0, 1], [0, 120])
+  const heroOpacity = useTransform(scrollYProgress, [0, 0.6], [1, 0])
+  const heroScale = useTransform(scrollYProgress, [0, 1], [1.1, 1.3])
+
+  useEffect(() => {
+    if (typeof window === "undefined") return
+
+    const eventStructuredData = {
+      "@context": "https://schema.org",
+      "@type": "SportsEvent",
+      name: "The Mountaincamp 2027 - Trailrunning Camp Austria",
+      alternateName: [
+        "Trailrunning Camp Austria",
+        "Trailrunning Camp Österreich",
+        "Trailrunning Camp Alpen",
+        "Trailrunning Camp für Anfänger",
+        "Trailrunning Camp for Beginners",
+        "Lovetrails Festival",
+        "The Mountaincamp",
+        "Alpine Trailrunning Camp",
+      ],
+      description:
+        "Premier trailrunning camp for beginners in Austria and the Austrian Alps. The ultimate 5-day trailrunning camp featuring epic mountain trails, expert coaching, professional training sessions, and vibrant community. Perfect trailrunning camp for beginners and all levels of trail runners seeking an unforgettable trailrunning trip in Hochkrimml, Austria. Experience the best trailrunning camp for beginners in the Alps.",
+      sport: "Trail Running",
+      startDate: "2027-08-18",
+      endDate: "2027-08-22",
+      eventStatus: "https://schema.org/EventScheduled",
+      eventAttendanceMode: "https://schema.org/OfflineEventAttendanceMode",
+      location: {
+        "@type": "Place",
+        name: "Hochkrimml, Austrian Alps",
+        address: {
+          "@type": "PostalAddress",
+          streetAddress: "Hochkrimml",
+          addressLocality: "Hochkrimml",
+          addressRegion: "Salzburg",
+          postalCode: "5743",
+          addressCountry: "AT",
+        },
+        geo: {
+          "@type": "GeoCoordinates",
+          latitude: 47.2393,
+          longitude: 12.1735,
+        },
+      },
+      image: [
+        "https://themountaincamp.de/images/hero-trail-runners.jpeg",
+        "https://themountaincamp.de/images/trail-runner-1.jpeg",
+        "https://themountaincamp.de/images/alpine-village-group.jpg",
+      ],
+      offers: {
+        "@type": "Offer",
+        price: "530",
+        priceCurrency: "EUR",
+        availability: "https://schema.org/LimitedAvailability",
+        url: "https://my.camps.digital/masken/buchungen/vuejs?&vendor=mountaincamp&destination_id=2467&termin_id=36011#/",
+        validFrom: "2027-04-01T19:00:00+02:00",
+        priceValidUntil: "2027-08-14T00:00:00+02:00",
+      },
+      organizer: {
+        "@type": "Organization",
+        name: "The Mountaincamp",
+        url: "https://themountaincamp.de",
+        logo: "https://themountaincamp.de/images/MTC-Logo_2025.png",
+        sameAs: [
+          "https://www.instagram.com/the_mountaincamp/",
+          "https://www.youtube.com/@the_mountaincamp",
+          "https://www.tiktok.com/@themountaincamp",
+        ],
+      },
+      performer: {
+        "@type": "PerformingGroup",
+        name: "The Mountaincamp Coaching Team",
+      },
+      keywords:
+        "trailrunning camp für anfänger, trailrunning camp for beginners, trailrunning camp anfänger Österreich, trailrunning camp beginners Austria, trailrunning camp, trailrunning camp Austria, trailrunning camp Österreich, trailrunning camp alps, trailrunning camp Alpen, trailrunning trainings camp, trailrunning training camp, trailrunning festival, trailrunning festival Alpen, trailrunning festival Österreich, trailrunning trip, trailrunning trip Austria, trailrunning trip Österreich, alpine trailrunning camp, trail running camp Austria, mountain running camp, Austrian Alps trail running, Hochkrimml, trail running event, trail running festival, running camp Europe, mountain training camp alps, trailrunning camp europe, anfänger trailrunning, beginner trail running",
+    }
+
+    const organizationData = {
+      "@context": "https://schema.org",
+      "@type": ["SportsActivityLocation", "LocalBusiness"],
+      name: "The Mountaincamp - Trailrunning Camp Austria",
+      alternateName: [
+        "Trailrunning Camp Austria",
+        "Trailrunning Camp Österreich",
+        "Trailrunning Camp Alpen",
+        "Trailrunning Camp für Anfänger",
+        "Trailrunning Camp for Beginners",
+        "Lovetrails Festival",
+        "Alpine Trailrunning Camp",
+      ],
+      description:
+        "Austria's premier trailrunning camp for beginners in the Alps. The ultimate trailrunning camp offering epic mountain trails, expert coaching, professional training sessions, and unforgettable community experiences in Hochkrimml. The best trailrunning camp for beginners and all levels seeking an authentic trailrunning trip in the Austrian Alps.",
+      url: "https://themountaincamp.de",
+      logo: "https://themountaincamp.de/images/MTC-Logo_2025.png",
+      image: "https://themountaincamp.de/images/hero-trail-runners.jpeg",
+      address: {
+        "@type": "PostalAddress",
+        addressLocality: "Hochkrimml",
+        addressRegion: "Salzburg",
+        addressCountry: "AT",
+      },
+      geo: {
+        "@type": "GeoCoordinates",
+        latitude: 47.2393,
+        longitude: 12.1735,
+      },
+      sameAs: [
+        "https://www.instagram.com/the_mountaincamp/",
+        "https://www.youtube.com/@the_mountaincamp",
+        "https://www.tiktok.com/@themountaincamp",
+      ],
+      contactPoint: {
+        "@type": "ContactPoint",
+        email: "themountaincampde@gmail.com",
+        contactType: "Customer Service",
+        availableLanguage: ["German", "English"],
+      },
+      priceRange: "€€",
+      openingHours: "Mo-Su",
+    }
+
+    const breadcrumbData = {
+      "@context": "https://schema.org",
+      "@type": "BreadcrumbList",
+      itemListElement: [
+        {
+          "@type": "ListItem",
+          position: 1,
+          name: "Home",
+          item: "https://themountaincamp.de",
+        },
+        {
+          "@type": "ListItem",
+          position: 2,
+          name: "Trailrunning Camp Austria",
+          item: "https://themountaincamp.de",
+        },
+      ],
+    }
+
+    const websiteData = {
+      "@context": "https://schema.org",
+      "@type": "WebSite",
+      name: "The Mountaincamp - Trailrunning Camp Austria",
+      alternateName: [
+        "Trailrunning Camp Österreich",
+        "Trailrunning Camp Austria",
+        "Trailrunning Camp für Anfänger",
+        "Trailrunning Camp for Beginners",
+        "Trailrunning Festival Alpen",
+        "Alpine Trailrunning Camp",
+      ],
+      url: "https://themountaincamp.de",
+      description:
+        "Premier trailrunning camp for beginners in Austria and the Austrian Alps. The ultimate trailrunning camp, training camp, and festival featuring epic trails, expert coaching, and unforgettable community experiences for all levels.",
+      inLanguage: ["de-DE", "en-US"],
+      potentialAction: {
+        "@type": "SearchAction",
+        target: "https://themountaincamp.de/?s={search_term_string}",
+        "query-input": "required name=search_term_string",
+      },
+    }
+
+    const scripts = [eventStructuredData, organizationData, breadcrumbData, websiteData]
+    scripts.forEach((data) => {
+      const script = document.createElement("script")
+      script.type = "application/ld+json"
+      script.text = JSON.stringify(data)
+      document.head.appendChild(script)
+    })
+
+    return () => {
+      const scriptElements = document.querySelectorAll('script[type="application/ld+json"]')
+      scriptElements.forEach((scriptEl) => {
+        if (document.head.contains(scriptEl)) {
+          document.head.removeChild(scriptEl)
+        }
+      })
+    }
+  }, [])
+
+  useEffect(() => {
+    const playVideo = () => {
+      if (videoRef.current) {
+        videoRef.current.play().catch(() => { })
+      }
+    }
+
+    playVideo()
+
+    const handleInteraction = () => {
+      playVideo()
+      document.removeEventListener("touchstart", handleInteraction)
+      document.removeEventListener("click", handleInteraction)
+    }
+
+    document.addEventListener("touchstart", handleInteraction, { once: true })
+    document.addEventListener("click", handleInteraction, { once: true })
+
+    return () => {
+      document.removeEventListener("touchstart", handleInteraction)
+      document.removeEventListener("click", handleInteraction)
+    }
+  }, [])
+
+  useEffect(() => {
+    const handleScroll = () => {
+      if (window.scrollY > 100 && !hasScrolled) {
+        setHasScrolled(true)
+      }
+      if (window.scrollY <= 100 && hasScrolled) {
+        setHasScrolled(false)
+      }
+    }
+
+    window.addEventListener("scroll", handleScroll)
+    return () => window.removeEventListener("scroll", handleScroll)
+  }, [hasScrolled])
+
+  const testimonials = [
+    {
+      quote:
+        "Overall, it was my first experience trail running and I loved it – the running, the people, the amazing scenery etc.",
+      name: "Trail Runner",
+    },
+    {
+      quote: "Bringing the people together and sharing the pain/fun during the run was a great experience.",
+      name: "Community Member",
+    },
+    {
+      quote: "Great atmosphere, amazing mountains, a lot of activities offered.",
+      name: "Mountain Lover",
+    },
+    {
+      quote: "Got me hooked on trail running hobby and made unique, lovely, crazy friends.",
+      name: "New Trail Runner",
+    },
+    {
+      quote:
+        "Being able to do great sport activities all day from early morning to late night with super nice friends! Thank you!",
+      name: "Active Participant",
+    },
+    {
+      quote:
+        "Thank you. Just thank you, Jonas. You are doing great. It will be the greatest Trailcamp in the World soon.",
+      name: "Grateful Runner",
+    },
+    {
+      quote:
+        "Just a big thank you – I had the best time! Overall an amazing experience, definitely one of the highlights of this year!",
+      name: "Happy Camper",
+    },
+    {
+      quote:
+        "Thanks Jonas for organising, the last few days have been truly amazing, I was able to combine community, trail running and hard training!",
+      name: "Dedicated Athlete",
+    },
+    {
+      quote: "Many thanks for the organisation and the great time! Was purely amazing",
+      name: "Satisfied Participant",
+    },
+    {
+      quote: "I loved the Mountaincamp 2025 really much and I am proud of everybody!!!",
+      name: "Proud Member",
+    },
+  ]
+
+  const galleryImages = [
+    {
+      src: "/images/camp-social-gathering.jpg",
+      alt:
+        language === "de"
+          ? "Trailrunning Camp Österreich Teilnehmer auf der Terrasse der Lodge"
+          : "Trail running camp Austria participants socializing on lodge terrace",
+      caption: "Community Vibes",
+    },
+    {
+      src: "/images/lodge-group-start.jpg",
+      alt:
+        language === "de"
+          ? "Trailrunning Camp Gruppe an der Berghütte in Hochkrimml"
+          : "Trail running camp group gathered at mountain lodge in Hochkrimml",
+      caption: language === "de" ? "Bereit zum Laufen" : "Ready to Run",
+    },
+    {
+      src: "/images/terrace-community-time.jpg",
+      alt:
+        language === "de"
+          ? "Trailrunning Camp Community auf der Terrasse bei Sonnenuntergang"
+          : "Trail running camp community gathering on terrace at sunset",
+      caption: "Community Vibes",
+    },
+    {
+      src: "/images/trail-runners-mountain-path.jpg",
+      alt:
+        language === "de"
+          ? "Trailrunnerinnen auf einem Bergpfad in Österreich"
+          : "Two female trail runners on mountain path in Austria",
+      caption: language === "de" ? "Trail Abenteuer" : "Trail Adventures",
+    },
+    {
+      src: "/images/runner-golden-meadow.jpg",
+      alt:
+        language === "de"
+          ? "Trailrunner auf Bergwiese in den österreichischen Alpen"
+          : "Trail runner in alpine meadow in Austria",
+      caption: language === "de" ? "Bergfreiheit" : "Mountain Freedom",
+    },
+    {
+      src: "/images/mountain-trail-aerial.jpg",
+      alt:
+        language === "de"
+          ? "Luftaufnahme von Trailrunnern auf alpinem Bergpfad"
+          : "Aerial view of trail runners on alpine mountain trail",
+      caption: language === "de" ? "Epische Trails" : "Epic Trails",
+    },
+    {
+      src: "/images/forest-runner-celebration.jpg",
+      alt:
+        language === "de"
+          ? "Trailrunner feiert im Wald beim Mountaincamp"
+          : "Trail runner celebrating in forest during camp",
+      caption: language === "de" ? "Pure Freude" : "Pure Joy",
+    },
+    {
+      src: "/images/lodge-terrace-relaxation.jpg",
+      alt:
+        language === "de"
+          ? "Teilnehmer entspannen nach dem Trailrunning auf der Lodge Terrasse"
+          : "Camp participants relaxing on lodge terrace after trail running",
+      caption: language === "de" ? "Erholungszeit" : "Recovery Time",
+    },
+    {
+      src: "/images/peaceful-terrace-moment.jpg",
+      alt:
+        language === "de"
+          ? "Ruhiger Moment auf der Terrasse der Berghütte in Hochkrimml"
+          : "Peaceful moment on mountain lodge terrace in Hochkrimml",
+      caption: language === "de" ? "Ruhige Momente" : "Peaceful Moments",
+    },
+  ]
+
+  const activities = [
+    {
+      title: language === "de" ? "Trailrunning Technik" : "Trailrunning Technique",
+      image: "/images/trailrunning-technique-class.jpg",
+      description:
+        language === "de"
+          ? "Lerne die richtige Trailrunning-Technik von erfahrenen Coaches auf wunderschönen Alpenpfaden."
+          : "Learn proper trailrunning techniques from experienced coaches on beautiful alpine trails.",
+    },
+    {
+      title: language === "de" ? "Bogenschießen" : "Archery",
+      image: "/images/archery.jpeg",
+      description:
+        language === "de"
+          ? "Teste deine Präzision und Konzentration beim Bogenschießen vor atemberaubender Bergkulisse."
+          : "Test your precision and focus with archery sessions in a stunning mountain backdrop.",
+    },
+    {
+      title: language === "de" ? "MTB Tour" : "MTB Trip",
+      image: "/images/mtb-trip.png",
+      description:
+        language === "de"
+          ? "Erkunde malerische Bergpfade auf zwei Rädern bei unseren geführten Mountainbike-Touren."
+          : "Explore scenic mountain trails on two wheels with our guided mountain biking excursions.",
+    },
+    {
+      title: language === "de" ? "Filmabend" : "Movie Night",
+      image: "/images/movie-night.png",
+      description:
+        language === "de"
+          ? "Entspanne und genieße inspirierende Outdoor- und Abenteuerfilme unter dem Sternenhimmel mit anderen Campern."
+          : "Relax and enjoy inspiring outdoor and adventure films under the stars with fellow campers.",
+    },
+    {
+      title: language === "de" ? "Kanufahren" : "Canoeing",
+      image: "/images/canoeing-lake.jpeg",
+      description:
+        language === "de"
+          ? "Paddle über kristallklare Alpenseen und genieße dabei atemberaubende Bergblicke."
+          : "Paddle across crystal-clear alpine lakes while taking in breathtaking mountain views.",
+    },
+    {
+      title: language === "de" ? "Aquarellmalerei" : "Aquarell Painting",
+      image: "/images/aquarell-painting.png",
+      description:
+        language === "de"
+          ? "Drücke deine Kreativität aus, indem du die atemberaubenden Alpenlandschaften mit Wasserfarben malst."
+          : "Express your creativity by painting the stunning alpine landscapes with watercolors.",
+    },
+    {
+      title: language === "de" ? "Töpferkurs" : "Clay Class",
+      image: "/images/clay-class.png",
+      description:
+        language === "de"
+          ? "Mach dir die Hände schmutzig und erschaffe wunderschöne Keramik, inspiriert von der natürlichen Umgebung."
+          : "Get your hands dirty and create beautiful pottery inspired by the natural surroundings.",
+    },
+    {
+      title: "Yoga",
+      image: "/images/yoga.png",
+      description:
+        language === "de"
+          ? "Finde Balance und erhole dich mit Yoga-Sessions, die speziell für Läufer konzipiert sind."
+          : "Restore balance and recover with yoga sessions designed specifically for runners.",
+    },
+    {
+      title: language === "de" ? "Stricken" : "Knitting",
+      image: "/images/knitting.png",
+      description:
+        language === "de"
+          ? "Lerne Stricken in entspannter Atmosphäre – eine perfekte achtsame Aktivität nach einem Lauftag."
+          : "Learn to knit in a relaxed setting - a perfect mindful activity after a day of running.",
+    },
+    {
+      title: language === "de" ? "Kletterkurs" : "Climbing Class",
+      image: "/images/climbing-class-real.jpeg",
+      description:
+        language === "de"
+          ? "Baue Kraft und Selbstvertrauen auf mit Indoor-Klettersessions unter Anleitung erfahrener Instruktoren."
+          : "Build strength and confidence with indoor climbing sessions led by experienced instructors.",
+    },
+    {
+      title: language === "de" ? "Upcycling Kurs" : "Upcycling Class",
+      image: "/images/upcycling-class.png",
+      description:
+        language === "de"
+          ? "Verwandle alte Materialien in neue Schätze in unserem kreativen und umweltfreundlichen Upcycling-Workshop."
+          : "Transform old materials into new treasures in our creative and eco-friendly upcycling workshop.",
+    },
+    {
+      title: language === "de" ? "Lagerfeuer Abend" : "Campfire Evening",
+      image: "/images/campfire-evening.jpeg",
+      description:
+        language === "de"
+          ? "Teile Geschichten und verbinde dich mit anderen Läufern am gemütlichen Lagerfeuer unter dem Sternenhimmel."
+          : "Share stories and connect with fellow runners around a cozy campfire under the stars.",
+    },
+    {
+      title: "Sunset Rave",
+      image: "/images/mountain-top-sunset-rave.jpg",
+      description:
+        language === "de"
+          ? "Tanze zu großartiger Musik mit spektakulärem Bergblick bei unserer legendären Sunset Party."
+          : "Dance to great music with spectacular mountain views at our legendary sunset party.",
+    },
+  ]
+
+  const handleMenuToggle = () => {
+    setMobileMenuOpen(!mobileMenuOpen)
+  }
+
+  const nextActivity = () => {
+    setCurrentActivityIndex((prev) => (prev + 1) % activities.length)
+  }
+
+  const prevActivity = () => {
+    setCurrentActivityIndex((prev) => (prev - 1 + activities.length) % activities.length)
+  }
+
   return (
-    <>
-      <Script
-        id="structured-data-event"
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(eventStructuredData) }}
-      />
-      <Script
-        id="structured-data-organization"
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(organizationStructuredData) }}
-      />
-      <Script
-        id="structured-data-breadcrumb"
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbStructuredData) }}
-      />
-      <Script
-        id="structured-data-faq"
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(faqStructuredData) }}
-      />
-      <HomePageClient />
-    </>
+    <div className="min-h-screen w-full overflow-x-hidden bg-white">
+      <ImagePreloader imageSources={SECTION_IMAGES} onComplete={() => { }} />
+
+
+      {isMobile && hasScrolled && (
+        <motion.div
+          initial={{ y: 100, opacity: 0 }}
+          animate={{ y: 0, opacity: 1 }}
+          className="fixed bottom-0 left-0 right-0 z-40 border-t border-white/10 bg-black/95 px-4 py-3 backdrop-blur-md safe-area-pb"
+        >
+          <div className="flex items-center justify-between gap-3">
+            <div className="flex-1">
+              <p className="text-sm font-bold text-white">
+                {language === "de" ? "Sichere dir deinen Platz!" : "Secure your spot!"}
+              </p>
+              <p className="text-xs text-white/60">
+                {language === "de" ? "Ab €530 - Begrenzte Plätze" : "From €530 - Limited spots"}
+              </p>
+            </div>
+            <Button
+              size="sm"
+              className="whitespace-nowrap bg-primary px-4 py-2 font-bold text-white hover:bg-primary/90"
+              asChild
+            >
+              <a href={bookingUrl} target="_blank" rel="noopener noreferrer">
+                {language === "de" ? "Jetzt buchen" : "Book now"}
+              </a>
+            </Button>
+          </div>
+        </motion.div>
+      )}
+
+      <header className="absolute top-0 z-50 w-full bg-transparent">
+        <div className="container flex h-20 items-center justify-between">
+          <div className="flex items-center">
+            <div className={`relative ${isMobile ? "h-10 w-32" : "h-14 w-auto"}`}>
+              <ImageWithFallback
+                src="/images/MTC-Logo_2025_weiß.png"
+                alt="The Mountaincamp Logo"
+                width={isMobile ? 128 : 200}
+                height={isMobile ? 40 : 56}
+                className="h-full w-auto object-contain"
+                priority
+                sizes="(max-width: 768px) 128px, 200px"
+              />
+            </div>
+          </div>
+
+          <nav className="hidden items-center gap-4 md:flex lg:gap-6">
+            <Link
+              href="#about"
+              className="whitespace-nowrap text-sm font-bold uppercase text-white transition-colors hover:text-primary"
+            >
+              {t("about")}
+            </Link>
+            <Link
+              href="#experience"
+              className="whitespace-nowrap text-sm font-bold uppercase text-white transition-colors hover:text-primary"
+            >
+              {t("experience")}
+            </Link>
+            <PreloadLink
+              href="/house"
+              imagesToPreload={HOUSE_PAGE_IMAGES}
+              className="whitespace-nowrap text-sm font-bold uppercase text-white transition-colors hover:text-primary"
+            >
+              {t("house")}
+            </PreloadLink>
+            <PreloadLink
+              href="/trails"
+              imagesToPreload={TRAILS_PAGE_IMAGES}
+              className="whitespace-nowrap text-sm font-bold uppercase text-white transition-colors hover:text-primary"
+            >
+              {t("trails")}
+            </PreloadLink>
+            <Link
+              href="#testimonials"
+              className="whitespace-nowrap text-sm font-bold uppercase text-white transition-colors hover:text-primary"
+            >
+              {t("testimonials")}
+            </Link>
+            <Link
+              href="/bus-departures"
+              className="whitespace-nowrap text-sm font-bold uppercase text-white transition-colors hover:text-primary"
+            >
+              Transport
+            </Link>
+            <LanguageSwitcher />
+          </nav>
+
+          <div className="flex items-center">
+            <button
+              className="flex h-12 w-12 items-center justify-center md:hidden"
+              onClick={handleMenuToggle}
+              aria-label="Open menu"
+              type="button"
+            >
+              <Menu className="h-7 w-7 text-white" />
+            </button>
+          </div>
+        </div>
+      </header>
+
+      <AnimatePresence>
+        {mobileMenuOpen && (
+          <motion.div
+            className="fixed inset-0 z-50 flex flex-col bg-black"
+            initial={{ opacity: 0, x: "100%" }}
+            animate={{ opacity: 1, x: 0 }}
+            exit={{ opacity: 0, x: "100%" }}
+            transition={{
+              type: "spring",
+              damping: 30,
+              stiffness: 300,
+              mass: 0.8,
+            }}
+          >
+            <div className="container flex h-20 items-center justify-between">
+              <Image
+                src="/images/MTC-Logo_2025_weiß.png"
+                alt="The Mountaincamp Logo"
+                width={128}
+                height={40}
+                className="h-10 w-auto"
+                sizes="128px"
+              />
+              <motion.button
+                onClick={handleMenuToggle}
+                aria-label="Close menu"
+                className="flex h-12 w-12 items-center justify-center"
+                type="button"
+                whileTap={{ scale: 0.9 }}
+                whileHover={{ scale: 1.1 }}
+              >
+                <X className="h-7 w-7 text-white" />
+              </motion.button>
+            </div>
+
+            <div className="flex flex-1 flex-col items-center justify-center gap-8 overflow-y-auto py-8">
+              {[
+                { key: "about", href: "#about", label: t("about") },
+                { key: "experience", href: "#experience", label: t("experience") },
+                { key: "house", href: "/house", label: t("house") },
+                { key: "trails", href: "/trails", label: t("trails") },
+                { key: "testimonials", href: "#testimonials", label: t("testimonials") },
+                { key: "transport", href: "/bus-departures", label: "Transport" },
+              ].map((item, index) => (
+                <motion.div
+                  key={item.key}
+                  initial={{ opacity: 0, x: 50 }}
+                  animate={{ opacity: 1, x: 0 }}
+                  transition={{ delay: index * 0.1, duration: 0.5 }}
+                >
+                  <Link
+                    href={item.href}
+                    className="px-8 py-4 text-2xl font-bold text-white transition-colors hover:text-primary"
+                    onClick={handleMenuToggle}
+                  >
+                    {item.label}
+                  </Link>
+                </motion.div>
+              ))}
+
+              <motion.div
+                initial={{ opacity: 0, x: 50 }}
+                animate={{ opacity: 1, x: 0 }}
+                transition={{ delay: 0.6, duration: 0.5 }}
+              >
+                <LanguageSwitcher />
+              </motion.div>
+            </div>
+          </motion.div>
+        )}
+      </AnimatePresence>
+
+      <main className="w-full overflow-x-hidden">
+        <section ref={heroRef} className="relative min-h-[140vh] overflow-hidden">
+          <div className="absolute inset-0">
+            <motion.div style={{ scale: heroScale }} className="h-full w-full">
+              <video
+                ref={videoRef}
+                autoPlay
+                loop
+                muted
+                playsInline
+                preload="auto"
+                className="h-full w-full object-cover object-center"
+                poster="/images/forest-group-photo.jpg"
+                src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/1127%20%281%29-FEgWVPpCJfcsT3ni35EZXLPrKTpGVQ.mp4"
+              />
+            </motion.div>
+          </div>
+
+          <div className="absolute inset-0 bg-gradient-to-b from-black/20 via-transparent to-transparent" />
+
+          <motion.div
+            style={{ y: heroTextY, opacity: heroOpacity }}
+            className="container relative z-20 flex h-screen flex-col items-center justify-center text-center text-white"
+          >
+            <div className="absolute inset-0 rounded-3xl bg-black/40 opacity-0 backdrop-blur-sm" />
+
+            <div className="relative z-10 mx-auto w-full max-w-md px-5 md:max-w-4xl">
+              <motion.div
+                initial={{ opacity: 1, scale: 1 }}
+                animate={{ opacity: 1, scale: 1 }}
+                transition={{
+                  delay: 0,
+                  duration: 0,
+                  type: "spring",
+                  stiffness: 100,
+                  damping: 15,
+                }}
+                className="mb-6"
+              >
+                {isMobile ? (
+                  <Image
+                    src="/images/MTC-Logo_2025_weiß.png"
+                    alt="The Mountaincamp Logo"
+                    width={250}
+                    height={100}
+                    className="mx-auto"
+                    priority
+                    sizes="250px"
+                  />
+                ) : null}
+
+                <h1 className="text-center font-bold uppercase leading-[0.9] tracking-tight">
+                  <span className={`block text-xl md:text-3xl lg:text-4xl xl:text-5xl ${isMobile ? "mt-4" : ""}`}>
+                    {language === "de" ? "Trailrunning Camp in Österreich" : "Trail Running Camp in Austria"}
+                  </span>
+                  <span className="mt-2 block text-3xl md:text-5xl lg:text-6xl xl:text-7xl">The Mountaincamp 2027</span>
+                </h1>
+              </motion.div>
+
+              <motion.div
+                initial={{ opacity: 0, y: 30 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: 0.6, duration: 0.8 }}
+                className="mx-auto max-w-3xl px-4 md:px-0"
+              >
+                <p className="text-base leading-relaxed text-white/90 md:text-2xl">
+                  {language === "de"
+                    ? "5 Tage Trailrunning Camp, Community und Abenteuer in den österreichischen Alpen."
+                    : "5 days of trail running camp, community and adventure in the Austrian Alps."}
+                </p>
+
+                <p className="mt-3 text-sm font-semibold text-white/90 md:text-xl">
+                  {language === "de" ? "Hochkrimml | 18.–22. August 2027" : "Hochkrimml | August 18–22, 2027"}
+                </p>
+              </motion.div>
+
+              <motion.div
+                initial={{ opacity: 0, y: 30 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: 0.8, duration: 0.8 }}
+                className="mt-5 flex w-full flex-col items-center gap-2"
+              >
+                <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }} className="flex w-full justify-center">
+                  <Button size="lg" className="btn-primary w-full max-w-[280px] px-6 py-3 text-base" asChild>
+                    <Link href="#experience">{language === "de" ? "Entdecke das Camp" : "Discover the Camp"}</Link>
+                  </Button>
+                </motion.div>
+
+                <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }} className="flex w-full justify-center">
+                  <Button size="lg" className="btn-outline w-full max-w-[280px] px-6 py-3 text-base" asChild>
+                    <a href={bookingUrl} target="_blank" rel="noopener noreferrer">
+                      {language === "de" ? "Jetzt buchen" : "Book Now"}
+                    </a>
+                  </Button>
+                </motion.div>
+              </motion.div>
+            </div>
+          </motion.div>
+
+          {/* Urgency Banner — sits at the bottom of the hero */}
+          {dynamicValues.tickets > 0 && (
+            <motion.div
+              initial={{ y: 20, opacity: 0 }}
+              animate={{ y: 0, opacity: 1 }}
+              transition={{ duration: 0.6, delay: 1 }}
+              className="absolute bottom-0 left-0 right-0 z-20"
+            >
+              <div className="bg-black/60 backdrop-blur-sm border-t border-white/10 px-4 py-3 md:py-4">
+                <div className="container flex flex-col items-center justify-between gap-2 sm:flex-row">
+                  <div className="flex items-center gap-3">
+                    <div className="flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-primary text-white">
+                      <svg className="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 5v2m0 4v2m0 4v2M5 5a2 2 0 00-2 2v3a2 2 0 110 4v3a2 2 0 002 2h14a2 2 0 002-2v-3a2 2 0 110-4V7a2 2 0 00-2-2H5z" />
+                      </svg>
+                    </div>
+                    <p className="text-sm font-bold text-white md:text-base">
+                      {language === "de"
+                        ? `Nur noch ${dynamicValues.tickets} Tickets verfügbar!`
+                        : `Only ${dynamicValues.tickets} tickets left!`}
+                      <span className="ml-2 font-normal text-white/70 text-xs md:text-sm">
+                        {language === "de" ? "Sichere dir deinen Platz." : "Secure your spot."}
+                      </span>
+                    </p>
+                  </div>
+                  <a
+                    href="https://my.camps.digital/masken/buchungen/vuejs?&vendor=mountaincamp&destination_id=2467&termin_id=36011&locale=de#/"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="shrink-0 rounded-full bg-primary px-5 py-2 text-sm font-bold text-white transition-colors hover:bg-primary/90"
+                  >
+                    {language === "de" ? "Jetzt buchen" : "Book now"}
+                  </a>
+                </div>
+              </div>
+            </motion.div>
+          )}
+
+          <motion.div
+            className="absolute bottom-14 left-1/2 z-20 -translate-x-1/2"
+            animate={{
+              y: [0, 10, 0],
+              opacity: [0.5, 1, 0.5],
+            }}
+            transition={{
+              repeat: Number.POSITIVE_INFINITY,
+              duration: 2,
+              ease: "easeInOut",
+            }}
+          >
+            <ChevronDown className="h-10 w-10 text-white" />
+          </motion.div>
+        </section>
+
+        {/* SEO Content Section 1 - Intro */}
+        <section className="bg-white py-10 md:py-14">
+          <div className="container max-w-4xl">
+            <h2 className="text-2xl font-bold text-gray-900 md:text-4xl">
+              {language === "de" ? "Trailrunning Camp in den österreichischen Alpen" : "Trail Running Camp in the Austrian Alps"}
+            </h2>
+
+            <p className="mt-4 text-lg leading-relaxed text-gray-700">
+              {language === "de"
+                ? "The Mountaincamp ist ein 5-tägiges Trailrunning Camp in Österreich in Hochkrimml. Dich erwarten geführte Trailruns, Techniktraining, Community, Workshops und Erholung in den Alpen – für Anfänger, Fortgeschrittene und ambitionierte Läufer."
+                : "The Mountaincamp is a 5-day trail running camp in Austria in Hochkrimml. Expect guided trail runs, technique coaching, community, workshops and recovery in the Alps for beginners, intermediate runners and ambitious athletes."}
+            </p>
+
+            <p className="mt-4 text-lg leading-relaxed text-gray-700">
+              {language === "de"
+                ? "Unser Camp befindet sich auf 1.700 Metern Höhe inmitten der atemberaubenden Berglandschaft der Salzburger Alpen. Egal ob du zum ersten Mal einen Trail läufst oder bereits Erfahrung hast – bei uns findest du die richtige Gruppe und das passende Programm."
+                : "Our camp is located at 1,700 meters altitude in the stunning mountain landscape of the Salzburg Alps. Whether you're running a trail for the first time or already have experience – you'll find the right group and program with us."}
+            </p>
+
+            <div className="mt-6 flex flex-wrap gap-4">
+              <Link href="/trails" className="text-primary font-semibold hover:underline inline-flex items-center gap-1">
+                {language === "de" ? "Unsere Trails entdecken" : "Discover our trails"} <ArrowRight className="h-4 w-4" />
+              </Link>
+              <Link href="/house" className="text-primary font-semibold hover:underline inline-flex items-center gap-1">
+                {language === "de" ? "Die Unterkunft ansehen" : "View the accommodation"} <ArrowRight className="h-4 w-4" />
+              </Link>
+            </div>
+          </div>
+        </section>
+
+        {/* Schedule Banner */}
+        <motion.section
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6 }}
+          className="relative z-30 bg-gradient-to-r from-primary/95 to-primary/85 py-12 md:py-16"
+        >
+          <div className="container">
+            <div className="flex flex-col items-start justify-between gap-6 sm:flex-row sm:items-center">
+              <div className="flex-1">
+                <h3 className="text-2xl font-bold text-white md:text-3xl mb-2">
+                  {language === "de"
+                    ? "Der Zeitplan für das Mountaincamp 2027 ist online!"
+                    : "The Mountaincamp 2027 schedule is live!"}
+                </h3>
+                <p className="text-white/90 text-lg leading-relaxed">
+                  {language === "de"
+                    ? "Schaue jetzt rein und such dir aus, was du neben den täglichen Trailruns noch machen möchtest. Die Buchung der Workshops öffnet am Mittwoch, den 15.7."
+                    : "Check it out now and choose what you want to do alongside the daily trail runs. Workshop bookings open on the 15 of July."}
+                </p>
+              </div>
+              <Link
+                href="/zeitplan"
+                className="shrink-0 inline-flex items-center gap-2 rounded-full bg-white px-6 py-3 font-bold text-primary hover:bg-white/90 transition-colors whitespace-nowrap"
+              >
+                {language === "de" ? "Zeitplan ansehen" : "View schedule"}
+                <ArrowRight className="h-5 w-5" />
+              </Link>
+            </div>
+          </div>
+        </motion.section>
+
+        <section id="about" className="relative z-30">
+          <div className="pointer-events-none absolute left-0 right-0 top-0 h-64 bg-gradient-to-b from-transparent via-white/5 via-white/10 via-white/15 via-white/20 via-white/25" />
+
+          <div className="bg-white pb-16 pt-24 md:pb-24 md:pt-40">
+            <div className="container">
+              <div className="grid items-center gap-8 lg:grid-cols-2 md:gap-16">
+                <motion.div
+                  initial={{ opacity: 0, x: -50 }}
+                  whileInView={{ opacity: 1, x: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 0.8 }}
+                >
+                  <h2 className="mb-6 text-2xl font-bold text-gray-900 md:mb-8 md:text-4xl">
+                    {language === "de" ? "Dein Trailrunning Camp in Österreich" : "Your Trail Running Camp in Austria"}
+                  </h2>
+                  <div className="space-y-3 text-gray-600">
+                    {[1, 2, 3, 4, 5, 6].map((n) => (
+                      <div className="flex items-start gap-3" key={n}>
+                        <div className="mt-1.5 h-1.5 w-1.5 flex-shrink-0 rounded-full bg-primary" />
+                        <p className="text-lg leading-relaxed">{t(`aboutFeature${n}` as "aboutFeature1" | "aboutFeature2" | "aboutFeature3" | "aboutFeature4" | "aboutFeature5" | "aboutFeature6")}</p>
+                      </div>
+                    ))}
+
+                    <div className="flex flex-col gap-4 pt-4 sm:flex-row">
+                      <div className="flex items-center gap-3">
+                        <div className="rounded-full bg-primary/20 p-2">
+                          <Calendar className="h-5 w-5 text-primary" />
+                        </div>
+                        <span className="text-lg text-gray-900">
+                          {language === "de" ? "18.–22. August 2027" : "August 18–22, 2027"}
+                        </span>
+                      </div>
+                      <div className="flex items-center gap-3">
+                        <div className="rounded-full bg-primary/20 p-2">
+                          <MapPin className="h-5 w-5 text-primary" />
+                        </div>
+                        <span className="text-lg text-gray-900">
+                          {language === "de" ? "Hochkrimml, Österreich" : "Hochkrimml, Austria"}
+                        </span>
+                      </div>
+                    </div>
+                  </div>
+                </motion.div>
+
+                <motion.div
+                  initial={{ opacity: 0, scale: 0.9 }}
+                  whileInView={{ opacity: 1, scale: 1 }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 0.8 }}
+                  className="relative h-[300px] overflow-hidden rounded-xl md:h-[500px]"
+                >
+                  <Image
+                    src="/images/alpine-village-group.jpg"
+                    alt={language === "de" ? "Trailrunning Camp Österreich Teilnehmer in Hochkrimml" : "Trail running camp Austria participants in Hochkrimml"}
+                    fill
+                    className="object-cover"
+                    loading="lazy"
+                    sizes="(max-width: 1024px) 100vw, 50vw"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent" />
+                  <div className="absolute bottom-0 left-0 p-6">
+                    <span className="bg-primary px-4 py-2 text-sm font-bold uppercase text-white">
+                      {language === "de" ? "Entdecken" : "Explore"}
+                    </span>
+                  </div>
+                </motion.div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section className="bg-primary py-8 md:py-12">
+          <div className="container">
+            <div className="flex flex-col items-center justify-between gap-6 md:flex-row">
+              <div className="text-center md:text-left">
+                <h3 className="mb-2 text-xl font-bold text-white md:text-2xl">
+                  {language === "de" ? "Bereit für dein Trailrunning Abenteuer?" : "Ready for your trail running adventure?"}
+                </h3>
+                <p className="text-sm text-white/80 md:text-base">
+                  {language === "de"
+                    ? "Nur noch wenige Plätze verfügbar - Sichere dir jetzt deinen Spot!"
+                    : "Only a few spots left - Secure yours now!"}
+                </p>
+              </div>
+              <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
+                <Button
+                  size="lg"
+                  className="bg-white px-8 py-3 text-base font-bold text-primary hover:bg-white/90 md:text-lg"
+                  asChild
+                >
+                  <a href={bookingUrl} target="_blank" rel="noopener noreferrer">
+                    {language === "de" ? "Jetzt Ticket sichern" : "Get Your Ticket"}
+                  </a>
+                </Button>
+              </motion.div>
+            </div>
+          </div>
+        </section>
+
+        <section id="experience" className="bg-gray-50 py-16 md:py-24">
+          <div className="container">
+            <SectionTitle
+              title={language === "de" ? "Das erwartet dich im Trailrunning Camp" : "What to expect at the trail running camp"}
+              subtitle={
+                language === "de"
+                  ? "Trailrunning, Recovery, kreative Workshops und Community in den österreichischen Alpen."
+                  : "Trail running, recovery, creative workshops and community in the Austrian Alps."
+              }
+              align="center"
+              light={true}
+            />
+
+            <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-4 md:gap-8">
+              <motion.div
+                initial={{ opacity: 0, y: 30 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.5 }}
+                className="transform hover:scale-105"
+              >
+                <FeatureCard
+                  title={t("trailrunningTitle")}
+                  description={t("trailrunningDesc")}
+                  icon={<Mountain className="h-8 w-8" />}
+                  light={true}
+                />
+              </motion.div>
+
+              <motion.div
+                initial={{ opacity: 0, y: 30 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.5, delay: 0.1 }}
+                className="transform hover:scale-105"
+              >
+                <FeatureCard
+                  title={t("recoveryTitle")}
+                  description={t("recoveryDesc")}
+                  icon={<Flame className="h-8 w-8" />}
+                  light={true}
+                />
+              </motion.div>
+
+              <motion.div
+                initial={{ opacity: 0, y: 30 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.5, delay: 0.2 }}
+                className="transform hover:scale-105"
+              >
+                <FeatureCard
+                  title={t("creativityTitle")}
+                  description={t("creativityDesc")}
+                  icon={<Sparkles className="h-8 w-8" />}
+                  light={true}
+                />
+              </motion.div>
+
+              <motion.div
+                initial={{ opacity: 0, y: 30 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.5, delay: 0.3 }}
+                className="transform hover:scale-105"
+              >
+                <FeatureCard
+                  title={t("raveTitle")}
+                  description={t("raveDesc")}
+                  icon={<Music className="h-8 w-8" />}
+                  light={true}
+                />
+              </motion.div>
+            </div>
+          </div>
+        </section>
+
+        <section className="bg-white py-24">
+          <div className="container">
+            <SectionTitle
+              title={language === "de" ? "Aktivitäten im Trailrunning Camp" : "Activities at the trail running camp"}
+              subtitle={
+                language === "de"
+                  ? "Neben den täglichen Runs erwarten dich Workshops, kreative Sessions und gemeinsame Erlebnisse."
+                  : "Beyond the daily runs, expect workshops, creative sessions and shared experiences."
+              }
+              align="center"
+              light={true}
+            />
+
+            <div className="relative mx-auto max-w-2xl">
+              <motion.div
+                key={currentActivityIndex}
+                initial={{ opacity: 0, x: 100 }}
+                animate={{ opacity: 1, x: 0 }}
+                exit={{ opacity: 0, x: -100 }}
+                transition={{ duration: 0.5 }}
+                className="relative"
+              >
+                {isMobile ? (
+                  <ActivityCardMobile
+                    title={activities[currentActivityIndex].title}
+                    description={activities[currentActivityIndex].description}
+                    image={activities[currentActivityIndex].image}
+                  />
+                ) : (
+                  <div className="activity-card group mx-auto aspect-square max-w-md">
+                    <Image
+                      src={activities[currentActivityIndex].image || "/placeholder.svg"}
+                      alt={activities[currentActivityIndex].title}
+                      fill
+                      className="object-cover transition-transform duration-700 group-hover:scale-110"
+                      loading="lazy"
+                      sizes="(max-width: 768px) 100vw, 448px"
+                    />
+                    <div className="activity-card-overlay opacity-80 group-hover:opacity-90" />
+                    <div className="activity-card-content">
+                      <h3 className="text-2xl font-bold text-white">{activities[currentActivityIndex].title}</h3>
+                      <p className="mt-4 max-h-32 overflow-y-auto text-lg text-white/90">
+                        {activities[currentActivityIndex].description}
+                      </p>
+                    </div>
+                  </div>
+                )}
+              </motion.div>
+
+              <button
+                onClick={prevActivity}
+                className="absolute left-4 top-1/2 z-10 -translate-y-1/2 rounded-full border border-white/20 bg-black/60 p-4 text-white shadow-lg backdrop-blur-sm transition-all duration-300 hover:bg-black/80"
+                aria-label="Previous activity"
+              >
+                <ChevronDown className="h-8 w-8 rotate-90" />
+              </button>
+
+              <button
+                onClick={nextActivity}
+                className="absolute right-4 top-1/2 z-10 -translate-y-1/2 rounded-full border border-white/20 bg-black/60 p-4 text-white shadow-lg backdrop-blur-sm transition-all duration-300 hover:bg-black/80"
+                aria-label="Next activity"
+              >
+                <ChevronDown className="h-8 w-8 -rotate-90" />
+              </button>
+
+              <div className="mt-8 flex justify-center gap-2">
+                {activities.map((_, index) => (
+                  <button
+                    key={index}
+                    onClick={() => setCurrentActivityIndex(index)}
+                    className={`h-3 w-3 rounded-full transition-all duration-300 ${index === currentActivityIndex ? "scale-125 bg-primary" : "bg-gray-300 hover:bg-gray-400"
+                      }`}
+                    aria-label={`Go to activity ${index + 1}`}
+                  />
+                ))}
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <RouteOverviewSection />
+
+        <section className="bg-gray-50 py-24">
+          <div className="container">
+            <SectionTitle
+              title={language === "de" ? "Eindrücke aus dem Trailrunning Camp" : "Impressions from the trail running camp"}
+              align="center"
+              light={true}
+            />
+
+            <div className="grid grid-cols-2 gap-4 md:grid-cols-3">
+              {galleryImages.map((image, index) => (
+                <motion.div
+                  key={index}
+                  initial={{ opacity: 0, scale: 0.9 }}
+                  whileInView={{ opacity: 1, scale: 1 }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 0.5, delay: index * 0.1 }}
+                  className="group relative aspect-square overflow-hidden"
+                >
+                  <ImageWithFallback
+                    src={image.src || "/placeholder.svg"}
+                    alt={image.alt}
+                    width={600}
+                    height={600}
+                    className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-110"
+                    fallbackSrc="/placeholder.svg?height=600&width=600"
+                    loading="lazy"
+                    sizes="(max-width: 768px) 50vw, 33vw"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent opacity-0 transition-opacity duration-300 group-hover:opacity-100" />
+                  <div className="absolute bottom-0 left-0 p-4 text-white opacity-0 transition-opacity duration-300 group-hover:opacity-100">
+                    <span className="font-bold text-white">{image.caption}</span>
+                  </div>
+                </motion.div>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        <InstagramReelsSection />
+
+        <section id="testimonials" className="relative overflow-hidden bg-white py-24">
+          <div className="absolute left-0 top-0 h-full w-full bg-[radial-gradient(ellipse_at_top_right,_var(--tw-gradient-stops))] from-primary/10 via-transparent to-transparent" />
+
+          <div className="container relative z-10">
+            <SectionTitle
+              title={language === "de" ? "Erfahrungen aus dem Trailrunning Camp" : "What runners say about the trail running camp"}
+              align="center"
+              light={true}
+            />
+
+            <div className="mx-auto max-w-4xl">
+              <TestimonialSlider testimonials={testimonials} autoPlay={true} interval={6000} />
+            </div>
+
+            <motion.div
+              initial={{ opacity: 0, y: 50 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.8 }}
+              className="mt-16"
+            >
+                <PriceCategoryBars cat4Filled={dynamicValues.cat4} />
+            </motion.div>
+          </div>
+        </section>
+
+        <FAQSection />
+
+        {/* SEO Content Section 2 - Community & Workshops */}
+        <section className="bg-gray-50 py-12 md:py-16">
+          <div className="container max-w-4xl">
+            <h2 className="text-2xl font-bold text-gray-900 md:text-3xl">
+              {language === "de" ? "Community, Workshops und mehr beim Trailrunning Camp" : "Community, Workshops and more at the trail running camp"}
+            </h2>
+
+            <p className="mt-4 text-lg leading-relaxed text-gray-700">
+              {language === "de"
+                ? "Das Mountaincamp ist mehr als nur Laufen. Neben den täglichen Trailruns bieten wir kreative Workshops wie Töpfern, Aquarellmalerei und Yoga an. Unsere erfahrenen Coaches helfen dir dabei, deine Lauftechnik zu verbessern – egal ob du Anfänger bist oder bereits Erfahrung mitbringst."
+                : "The Mountaincamp is more than just running. In addition to the daily trail runs, we offer creative workshops such as pottery, watercolor painting and yoga. Our experienced coaches help you improve your running technique – whether you're a beginner or already have experience."}
+            </p>
+
+            <p className="mt-4 text-lg leading-relaxed text-gray-700">
+              {language === "de"
+                ? "Die Community steht bei uns im Mittelpunkt. Gemeinsame Mahlzeiten, Lagerfeuerabende und die legendäre Sunset Rave Party schaffen unvergessliche Erinnerungen. Unsere Unterkunft in Hochkrimml bietet Platz für alle Teilnehmer und ist der perfekte Ausgangspunkt für die schönsten Trails der Region."
+                : "Community is at the heart of what we do. Shared meals, campfire evenings and the legendary sunset rave party create unforgettable memories. Our accommodation in Hochkrimml offers space for all participants and is the perfect starting point for the most beautiful trails in the region."}
+            </p>
+
+            <div className="mt-6 flex flex-wrap gap-4">
+              <Link href="/bus-departures" className="text-primary font-semibold hover:underline inline-flex items-center gap-1">
+                {language === "de" ? "Anreise planen" : "Plan your journey"} <ArrowRight className="h-4 w-4" />
+              </Link>
+            </div>
+          </div>
+        </section>
+
+        <section className="overflow-hidden bg-gray-900 py-12 md:py-24">
+          <div className="container mb-12">
+            <SectionTitle
+              title={language === "de" ? "Partner des Trailrunning Camps" : "Partners of the trail running camp"}
+              subtitle={
+                language === "de"
+                  ? "Marken und Partner, die das Mountaincamp begleiten."
+                  : "Brands and partners supporting The Mountaincamp."
+              }
+              align="center"
+              light={false}
+            />
+          </div>
+
+          <div className="relative overflow-hidden">
+            <div className="absolute bottom-0 left-0 top-0 z-10 w-16 md:w-32 bg-gradient-to-r from-gray-900 to-transparent pointer-events-none" />
+            <div className="absolute bottom-0 right-0 top-0 z-10 w-16 md:w-32 bg-gradient-to-l from-gray-900 to-transparent pointer-events-none" />
+
+            <PartnerCarousel />
+          </div>
+        </section>
+
+        <section id="register" className="bg-black py-16 text-white md:py-24">
+          <div className="container">
+            <div className="grid items-center gap-8 lg:grid-cols-2 md:gap-16">
+              <motion.div
+                initial={{ opacity: 0, x: -50 }}
+                whileInView={{ opacity: 1, x: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.8 }}
+              >
+                <h2 className="mb-4 text-2xl font-bold uppercase tracking-tight text-white md:mb-6 md:text-4xl">
+                  {language === "de" ? "Jetzt deinen Platz im Trailrunning Camp sichern" : "Secure your spot at the trail running camp"}
+                </h2>
+                <p className="mb-8 text-xl text-white">
+                  {language === "de" ? "18.–22. August 2027" : "August 18–22, 2027"}
+                  <br />
+                  {language === "de" ? "Österreichische Alpen" : "Austrian Alps"}
+                </p>
+                <ul className="space-y-4">
+                  <li className="flex items-center gap-3">
+                    <ArrowRight className="h-4 w-4 text-primary" />
+                    <span className="text-white">{t("accommodation")}</span>
+                  </li>
+                  <li className="flex items-center gap-3">
+                    <ArrowRight className="h-4 w-4 text-primary" />
+                    <span className="text-white">{t("meals")}</span>
+                  </li>
+                  <li className="flex items-center gap-3">
+                    <ArrowRight className="h-4 w-4 text-primary" />
+                    <span className="text-white">{t("allLevels")}</span>
+                  </li>
+                  <li className="flex items-center gap-3">
+                    <ArrowRight className="h-4 w-4 text-primary" />
+                    <span className="text-white">{t("limitedSpots")}</span>
+                  </li>
+                </ul>
+
+                <div className="mt-12 inline-block">
+                  <div className="rounded-t-lg bg-primary px-6 py-3">
+                    <span className="text-sm font-medium uppercase text-white">{t("packageTitle")}</span>
+                  </div>
+                  <div className="rounded-b-lg bg-gray-800 px-6 py-4">
+                    <span className="text-3xl font-bold text-white">€530</span>
+                  </div>
+                </div>
+              </motion.div>
+
+              <motion.div
+                initial={{ opacity: 0, y: 50 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.8 }}
+              >
+                <div className="rounded-xl border border-gray-700 bg-gray-800 p-8 text-white">
+                  <h3 className="mb-6 text-center text-2xl font-bold uppercase text-white">
+                    {language === "de" ? "Jetzt anmelden" : "Register Now"}
+                  </h3>
+
+                  <div className="text-center">
+                    <Button
+                      size="lg"
+                      className="bg-primary px-8 py-4 text-lg font-bold text-white hover:bg-primary/90"
+                      asChild
+                    >
+                      <a href={bookingUrl} target="_blank" rel="noopener noreferrer">
+                        {t("registerNow")}
+                      </a>
+                    </Button>
+                    <p className="mt-4 text-sm text-white/70">
+                      {language === "de"
+                        ? "Sichere dir jetzt deinen Platz im Mountaincamp!"
+                        : "Secure your spot at The Mountaincamp now!"}
+                    </p>
+                  </div>
+                </div>
+              </motion.div>
+            </div>
+          </div>
+        </section>
+
+        <section className="relative overflow-hidden bg-black py-16 text-white md:py-24">
+          <div className="absolute inset-0">
+            <Image
+              src="/images/mountain-summit.jpeg"
+              alt={language === "de" ? "Trailrunning in den österreichischen Alpen" : "Trail running in the Austrian Alps"}
+              fill
+              className="object-cover opacity-30"
+              loading="lazy"
+              sizes="100vw"
+            />
+          </div>
+          <div className="container relative z-10">
+            <div className="mx-auto max-w-4xl text-center">
+              <motion.h2
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.8 }}
+                className="mb-6 text-2xl font-bold md:mb-8 md:text-4xl lg:text-5xl"
+              >
+                {language === "de" ? "Trailrunning Camp Österreich 2027" : "Trail Running Camp Austria 2027"}
+              </motion.h2>
+              <motion.p
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.8, delay: 0.2 }}
+                className="mb-12 text-xl text-gray-300"
+              >
+                {language === "de"
+                  ? "Fünf Tage Trailrunning, Community und unvergessliche Momente in den österreichischen Alpen."
+                  : "Five days of trail running, community and unforgettable moments in the Austrian Alps."}
+              </motion.p>
+              <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.8, delay: 0.4 }}
+                className="flex flex-col items-center justify-center gap-6 sm:flex-row"
+              >
+                <Button size="lg" className="btn-primary px-8 text-lg" asChild>
+                  <a href={bookingUrl} target="_blank" rel="noopener noreferrer">
+                    {t("registerNow")}
+                  </a>
+                </Button>
+                <div className="flex items-center gap-4 text-gray-300">
+                  <Calendar className="h-5 w-5" />
+                  <span>{language === "de" ? "18.–22. August 2027" : "August 18–22, 2027"}</span>
+                </div>
+              </motion.div>
+            </div>
+          </div>
+        </section>
+      </main>
+
+      <footer className="footer pb-24 md:pb-16">
+        <div className="container">
+          <div className="mb-12 flex flex-col items-center justify-between gap-8 md:flex-row">
+            <div className="text-center md:text-left">
+              <Image
+                src="/images/MTC-Logo_2025_weiß.png"
+                alt="The Mountaincamp Logo"
+                width={180}
+                height={40}
+                className="mb-4 h-12 w-auto"
+                loading="lazy"
+                sizes="180px"
+              />
+              <p className="text-white/60">
+                {language === "de"
+                  ? "Trailrunning-Camp in den österreichischen Alpen"
+                  : "Trailrunning camp in the Austrian Alps"}
+              </p>
+            </div>
+
+            <div className="grid grid-cols-2 gap-8 md:grid-cols-4 md:gap-16">
+              <div className="flex flex-col gap-3">
+                <h4 className="footer-heading text-white">{t("navigation")}</h4>
+                <Link href="#about" className="footer-link">
+                  {t("about")}
+                </Link>
+                <Link href="#experience" className="footer-link">
+                  {t("experience")}
+                </Link>
+                <Link href="#testimonials" className="footer-link">
+                  {t("testimonials")}
+                </Link>
+                <Link href="#register" className="footer-link">
+                  {t("register")}
+                </Link>
+                <Link href="/bus-departures" className="footer-link">
+                  Transport
+                </Link>
+              </div>
+
+              <div className="flex flex-col gap-3">
+                <h4 className="footer-heading text-white">{t("contact")}</h4>
+                <a href="mailto:themountaincampde@gmail.com" className="footer-link">
+                  themountaincampde@gmail.com
+                </a>
+              </div>
+
+              <div className="flex flex-col gap-3">
+                <h4 className="footer-heading text-white">{t("followUs")}</h4>
+                <div className="flex flex-wrap gap-4">
+                  <a
+                    href="https://www.instagram.com/the_mountaincamp/"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="text-white/60 transition-colors hover:text-primary"
+                    aria-label="Instagram"
+                  >
+                    <svg className="h-6 w-6" fill="currentColor" viewBox="0 0 24 24">
+                      <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/>
+                    </svg>
+                  </a>
+                  <a
+                    href="https://www.facebook.com/profile.php?id=61566807910764"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="text-white/60 transition-colors hover:text-primary"
+                    aria-label="Facebook"
+                  >
+                    <svg className="h-6 w-6" fill="currentColor" viewBox="0 0 24 24">
+                      <path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/>
+                    </svg>
+                  </a>
+                  <a
+                    href="https://www.youtube.com/@the_mountaincamp"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="text-white/60 transition-colors hover:text-primary"
+                    aria-label="YouTube"
+                  >
+                    <svg className="h-6 w-6" fill="currentColor" viewBox="0 0 24 24">
+                      <path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/>
+                    </svg>
+                  </a>
+                  <a
+                    href="https://open.spotify.com/playlist/33kezN4oDEMyKsFBCicpu6"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="text-white/60 transition-colors hover:text-primary"
+                    aria-label="Spotify"
+                  >
+                    <svg className="h-6 w-6" fill="currentColor" viewBox="0 0 24 24">
+                      <path d="M12 0C5.4 0 0 5.4 0 12s5.4 12 12 12 12-5.4 12-12S18.66 0 12 0zm5.521 17.34c-.24.359-.66.48-1.021.24-2.82-1.74-6.36-2.101-10.561-1.141-.418.122-.779-.179-.899-.539-.12-.421.18-.78.54-.9 4.56-1.021 8.52-.6 11.64 1.32.42.18.479.659.301 1.02zm1.44-3.3c-.301.42-.841.6-1.262.3-3.239-1.98-8.159-2.58-11.939-1.38-.479.12-1.02-.12-1.14-.6-.12-.48.12-1.021.6-1.141C9.6 9.9 15 10.561 18.72 12.84c.361.181.54.78.241 1.2zm.12-3.36C15.24 8.4 8.82 8.16 5.16 9.301c-.6.179-1.2-.181-1.38-.721-.18-.601.18-1.2.72-.181 4.26-1.26 11.28-1.02 15.721 1.621.539.3.719 1.02.42 1.56-.299.421-1.02.599-1.559.3z"/>
+                    </svg>
+                  </a>
+                  <a
+                    href="https://www.tiktok.com/@themountaincamp"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="text-white/60 transition-colors hover:text-primary"
+                    aria-label="TikTok"
+                  >
+                    <svg className="h-6 w-6" fill="currentColor" viewBox="0 0 24 24">
+                      <path d="M12.525.02c1.31-.02 2.61-.01 3.91-.02.08 1.53.63 3.09 1.75 4.17 1.12 1.11 2.7 1.62 4.24 1.79v4.03c-1.44-.05-2.89-.35-4.2-.97-.57-.26-1.1-.59-1.62-.93-.01 2.92.01 5.84-.02 8.75-.08 1.4-.54 2.79-1.35 3.94-1.31 1.92-3.58 3.17-5.91 3.21-1.43.08-2.86-.31-4.08-1.03-2.02-1.19-3.44-3.37-3.65-5.71-.02-.5-.03-1-.01-1.49.18-1.9 1.12-3.72 2.58-4.96 1.66-1.44 3.98-2.13 6.15-1.72.02 1.48-.04 2.96-.04 4.44-.99-.32-2.15-.23-3.02.37-.63.41-1.11 1.04-1.36 1.75-.21.51-.15 1.07-.14 1.61.24 1.64 1.82 3.02 3.5 2.87 1.12-.01 2.19-.66 2.77-1.61.19-.33.4-.67.41-1.06.1-1.79.06-3.57.07-5.36.01-4.03-.01-8.05.02-12.07z"/>
+                    </svg>
+                  </a>
+                  <a
+                    href="https://www.komoot.com/de-de/user/themountaincamp"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="text-white/60 transition-colors hover:text-primary"
+                    aria-label="Komoot"
+                  >
+                    <svg className="h-6 w-6" fill="currentColor" viewBox="0 0 24 24">
+                      <path d="M12 0C5.373 0 0 5.373 0 12s5.373 12 12 12 12-5.373 12-12S18.627 0 12 0zm0 3.6c4.636 0 8.4 3.764 8.4 8.4s-3.764 8.4-8.4 8.4-8.4-3.764-8.4-8.4S7.364 3.6 12 3.6zm0 2.4a6 6 0 100 12 6 6 0 000-12zm0 2.4a3.6 3.6 0 110 7.2 3.6 3.6 0 010-7.2z"/>
+                    </svg>
+                  </a>
+                  <a
+                    href="https://www.outdooractive.com/de/source/the-mountaincamp/811085093/"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="text-white/60 transition-colors hover:text-primary"
+                    aria-label="Outdooractive"
+                  >
+                    <svg className="h-6 w-6" fill="currentColor" viewBox="0 0 24 24">
+                      <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/>
+                      <path d="M12 22V12M2 7v10M22 7v10" strokeWidth="0" />
+                      <circle cx="12" cy="12" r="3" />
+                    </svg>
+                  </a>
+                </div>
+              </div>
+
+              <div className="flex flex-col gap-3">
+                <h4 className="footer-heading text-white">{t("legal")}</h4>
+                <Link href="/legal/privacy-policy" className="footer-link">
+                  {language === "de" ? "Datenschutz" : "Privacy Policy"}
+                </Link>
+                <Link href="/legal/imprint" className="footer-link">
+                  {language === "de" ? "Impressum" : "Imprint"}
+                </Link>
+                <Link href="/agb" className="footer-link">
+                  {language === "de" ? "AGB" : "Terms & Conditions"}
+                </Link>
+              </div>
+            </div>
+          </div>
+          <div className="border-t border-white/10 py-6 text-center text-white/60">
+            © 2025 The Mountaincamp. {language === "de" ? "Alle Rechte vorbehalten." : "All rights reserved."}
+          </div>
+        </div>
+      </footer>
+    </div>
   )
 }
