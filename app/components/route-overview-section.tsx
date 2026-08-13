@@ -71,7 +71,7 @@ export default function RouteOverviewSection() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.5, delay: index * 0.1 }}
-              className="bg-white p-8 rounded-xl shadow-md hover:shadow-xl transition-all duration-300 border border-gray-100"
+              className="bg-white p-8 hover:transition-all duration-300 border border-gray-100"
             >
               <div className="mb-6">{route.icon}</div>
               <h3 className="text-2xl font-bold mb-4 text-gray-900">{route.name}</h3>
@@ -99,7 +99,7 @@ export default function RouteOverviewSection() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6 }}
-          className="bg-white p-8 rounded-xl shadow-md max-w-4xl mx-auto"
+          className="bg-white p-8 max-w-4xl mx-auto"
         >
           <h3 className="text-2xl font-bold mb-4 text-gray-900 text-center">
             {language === "de" ? "Das alpine Terrain" : "The Alpine Terrain"}

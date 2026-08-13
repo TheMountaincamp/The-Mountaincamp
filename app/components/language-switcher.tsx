@@ -37,7 +37,7 @@ export default function LanguageSwitcher() {
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -10 }}
             transition={{ duration: 0.2 }}
-            className="absolute right-0 mt-2 w-24 rounded-md bg-black shadow-lg border border-primary/20 z-50"
+            className="absolute right-0 mt-2 w-24 bg-black border border-primary/20 z-50"
           >
             <div className="py-1" role="menu" aria-orientation="vertical">
               <button

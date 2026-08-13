@@ -190,7 +190,7 @@ export default function BusDeparturesPage() {
               {busRoutes.map((route, index) => (
                 <motion.div
                   key={route.city}
-                  className="rounded-lg border-2 border-gray-600 bg-gray-800 p-6 shadow-lg transition-all duration-300 hover:border-primary hover:shadow-xl"
+                  className="border-2 border-gray-600 bg-gray-800 p-6 transition-all duration-300 hover:border-primary hover:"
                   initial={{ opacity: 0, y: 20 }}
                   animate={{ opacity: isLoaded ? 1 : 0, y: isLoaded ? 0 : 20 }}
                   transition={{ duration: 0.5, delay: 0.3 + index * 0.1 }}
@@ -259,12 +259,12 @@ export default function BusDeparturesPage() {
               {language === "de" ? "Rückfahrt" : "Return"}
             </h2>
 
-            <div className="rounded-lg border border-gray-600 bg-gray-800 p-8 shadow-lg">
+            <div className="border border-gray-600 bg-gray-800 p-8">
               <div className="space-y-6">
                 {returnSchedule.map((stop, index) => (
                   <motion.div
                     key={`${stop.location}-${stop.time}`}
-                    className="flex items-center gap-6 rounded-lg bg-black/30 p-4"
+                    className="flex items-center gap-6 bg-black/30 p-4"
                     initial={{ opacity: 0, x: -20 }}
                     animate={{ opacity: isLoaded ? 1 : 0, x: isLoaded ? 0 : -20 }}
                     transition={{ duration: 0.5, delay: 0.5 + index * 0.1 }}
@@ -298,7 +298,7 @@ export default function BusDeparturesPage() {
             </h2>
 
             <div className="grid grid-cols-1 gap-8 md:grid-cols-2">
-              <div className="rounded-lg border border-gray-600 bg-gray-800 p-6 shadow-md">
+              <div className="border border-gray-600 bg-gray-800 p-6">
                 <h3 className="mb-4 text-xl font-bold text-primary">
                   {language === "de" ? "Buchung & Kosten" : "Booking & Costs"}
                 </h3>
@@ -321,7 +321,7 @@ export default function BusDeparturesPage() {
                 </ul>
               </div>
 
-              <div className="rounded-lg border border-gray-600 bg-gray-800 p-6 shadow-md">
+              <div className="border border-gray-600 bg-gray-800 p-6">
                 <h3 className="mb-4 text-xl font-bold text-primary">
                   {language === "de" ? "Was mitbringen?" : "What to bring?"}
                 </h3>
@@ -345,7 +345,7 @@ export default function BusDeparturesPage() {
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: isLoaded ? 1 : 0, y: isLoaded ? 0 : 30 }}
             transition={{ duration: 0.8, delay: 0.8 }}
-            className="rounded-lg border border-primary/40 bg-primary/20 p-8 text-center"
+            className="border border-primary/40 bg-primary/20 p-8 text-center"
           >
             <h3 className="mb-4 text-2xl font-bold text-white">
               {language === "de" ? "Fragen zur Anreise?" : "Questions about transport?"}
@@ -360,7 +360,7 @@ export default function BusDeparturesPage() {
             <div className="flex flex-col justify-center gap-4 sm:flex-row">
               <a
                 href="mailto:themountaincampde@gmail.com"
-                className="rounded-lg bg-primary px-6 py-3 text-white transition-colors hover:bg-primary-dark"
+                className="bg-primary px-6 py-3 text-white transition-colors hover:bg-primary-dark"
               >
                 themountaincampde@gmail.com
               </a>
@@ -374,10 +374,10 @@ export default function BusDeparturesPage() {
           <div className="flex flex-col items-center justify-between md:flex-row">
             <div className="mb-4 md:mb-0">
               <Image
-                src="/images/MTC-Logo_2025_weiß.png"
+                src="/images/mountaincamp-logo-white.png"
                 alt="The Mountaincamp Logo"
                 width={150}
-                height={40}
+                height={29}
                 className="h-10 w-auto"
                 unoptimized
               />

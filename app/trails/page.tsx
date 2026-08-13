@@ -18,7 +18,7 @@ const CRITICAL_IMAGES = [
   "/images/trail-runners-group.jpeg",
   "/images/mountain-lake.png",
   "/images/canoeing-lake.jpeg",
-  "/images/MTC-Logo_2025_weiß.png",
+  "/images/mountaincamp-logo-white.png",
 ]
 
 type LocalizedText = {
@@ -245,7 +245,7 @@ export default function TrailsPage() {
               {trails.map((trail, index) => (
                 <motion.div
                   key={index}
-                  className="overflow-hidden rounded-lg border border-gray-200 bg-gray-50 transition-all duration-300 hover:border-primary hover:shadow-lg"
+                  className="overflow-hidden border border-gray-200 bg-gray-50 transition-all duration-300 hover:border-primary hover:"
                   initial={{ opacity: 0, y: 20 }}
                   animate={{ opacity: isLoaded ? 1 : 0, y: isLoaded ? 0 : 20 }}
                   transition={{ duration: 0.5, delay: 0.3 + index * 0.1 }}
@@ -293,8 +293,8 @@ export default function TrailsPage() {
             transition={{ duration: 0.8, delay: 0.4 }}
             className="mb-10"
           >
-            <h2 className="mb-8 text-2xl font-bold uppercase">{t("guidedRunsTitle")}</h2>
-            <div className="rounded-lg border border-gray-200 bg-gray-50 p-8 shadow-sm">
+            <h2 className="mb-8 text-2xl font-bold uppercase">{t("dailyTrailRunsTitle")}</h2>
+            <div className="border border-gray-200 bg-gray-50 p-8">
               <h3 className="mb-4 text-xl font-bold">{t("dailyGuidedRuns")}</h3>
               <p className="mb-6 text-gray-600">{t("guidedRunsDescription")}</p>
               <ul className="space-y-4">
@@ -338,7 +338,7 @@ export default function TrailsPage() {
             <h2 className="mb-8 text-2xl font-bold uppercase">{t("trailTipsTitle")}</h2>
 
             <div className="grid grid-cols-1 gap-8 md:grid-cols-2">
-              <div className="rounded-lg border border-gray-200 bg-gray-50 p-6 shadow-sm">
+              <div className="border border-gray-200 bg-gray-50 p-6">
                 <h3 className="mb-4 text-xl font-bold">{t("equipment")}</h3>
                 <ul className="space-y-2 text-gray-600">
                   <li>• {t("trailShoes")}</li>
@@ -349,7 +349,7 @@ export default function TrailsPage() {
                 </ul>
               </div>
 
-              <div className="rounded-lg border border-gray-200 bg-gray-50 p-6 shadow-sm">
+              <div className="border border-gray-200 bg-gray-50 p-6">
                 <h3 className="mb-4 text-xl font-bold">{t("safety")}</h3>
                 <ul className="space-y-2 text-gray-600">
                   <li>• {t("informSomeone")}</li>
@@ -361,7 +361,7 @@ export default function TrailsPage() {
               </div>
             </div>
 
-            <div className="mt-8 rounded-lg border border-gray-200 bg-gray-50 p-6 shadow-sm">
+            <div className="mt-8 border border-gray-200 bg-gray-50 p-6">
               <h3 className="mb-4 text-xl font-bold">{lang === "de" ? "Sicherheit" : "Safety"}</h3>
               <ul className="space-y-2 text-gray-600">
                 <li>• {lang === "de" ? "Informiere immer jemanden über deine Route" : "Always inform someone about your route"}</li>
@@ -380,10 +380,10 @@ export default function TrailsPage() {
           <div className="flex flex-col items-center justify-between md:flex-row">
             <div className="mb-4 md:mb-0">
               <Image
-                src="/images/MTC-Logo_2025_weiß.png"
+                src="/images/mountaincamp-logo-black.png"
                 alt="The Mountaincamp Logo"
                 width={150}
-                height={40}
+                height={29}
                 className="h-10 w-auto"
               />
             </div>

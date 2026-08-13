@@ -14,8 +14,8 @@ interface FeatureCardProps {
 export default function FeatureCard({ title, description, icon, light = false }: FeatureCardProps) {
   return (
     <motion.div
-      className={`group relative overflow-hidden border-2 p-8 hover:border-primary transition-all duration-500 shadow-lg hover:shadow-primary/20 ${
-        light ? "border-gray-200 bg-white hover:shadow-lg" : "border-primary/30 bg-card"
+      className={`group relative overflow-hidden border-2 p-8 hover:border-primary transition-all duration-500 hover:shadow-primary/20 ${
+        light ? "border-gray-200 bg-white hover:" : "border-primary/30 bg-card"
       }`}
       whileHover={{
         y: -8,

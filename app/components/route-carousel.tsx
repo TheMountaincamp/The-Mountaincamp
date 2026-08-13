@@ -160,7 +160,7 @@ interface RouteCardProps {
 
 function RouteCard({ route, isActive = false }: RouteCardProps) {
   return (
-    <div className="relative w-[280px] sm:w-[320px] md:w-[380px] h-[380px] md:h-[420px] rounded-xl overflow-hidden shadow-xl">
+    <div className="relative w-[280px] sm:w-[320px] md:w-[380px] h-[380px] md:h-[420px] overflow-hidden">
       <div className="absolute inset-0 z-10">
         <Image
           src={route.image || "/placeholder.svg"}

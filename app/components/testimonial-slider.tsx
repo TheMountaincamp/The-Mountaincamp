@@ -6,7 +6,7 @@ import { ChevronLeft, ChevronRight, Quote } from "lucide-react"
 
 interface Testimonial {
   name: string
-  program: string
+  program?: string
   quote: string
   image?: string
 }
@@ -54,7 +54,7 @@ export default function TestimonialSlider({ testimonials, autoPlay = true, inter
   }
 
   return (
-    <div className="relative overflow-hidden rounded-xl bg-gray-50 p-8 shadow-lg">
+    <div className="relative overflow-hidden bg-gray-50 p-8">
       <div className="absolute right-8 top-8 text-primary/20">
         <Quote size={80} />
       </div>

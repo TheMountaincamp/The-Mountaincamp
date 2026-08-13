@@ -1,4 +1,4 @@
-import type React from "react"
+import * as React from "react"
 import { Suspense } from "react"
 import type { Metadata, Viewport } from "next"
 import { Inter } from "next/font/google"
@@ -14,8 +14,8 @@ const inter = Inter({ subsets: ["latin"], display: "swap" })
 
 const CRITICAL_IMAGES = [
   "/images/hero-trail-runners.jpeg",
-  "/images/MTC-Logo_2025.png",
-  "/images/MTC-Logo_2025_weiß.png",
+  "/images/mountaincamp-logo-black.png",
+  "/images/mountaincamp-logo-white.png",
 ]
 
 export const viewport: Viewport = {
@@ -23,7 +23,7 @@ export const viewport: Viewport = {
   initialScale: 1,
   maximumScale: 5,
   themeColor: [
-    { media: "(prefers-color-scheme: light)", color: "#5f5c95" },
+    { media: "(prefers-color-scheme: light)", color: "#ffffff" },
     { media: "(prefers-color-scheme: dark)", color: "#000000" },
   ],
 }
@@ -31,10 +31,10 @@ export const viewport: Viewport = {
 export const metadata: Metadata = {
   metadataBase: new URL("https://themountaincamp.de"),
 
-  title: "Trailrunning Camp Österreich 2026 | The Mountaincamp in den Alpen",
+  title: "Trailrunning Camp Österreich 2027 | The Mountaincamp in den Alpen",
 
   description:
-    "Trailrunning Camp in Österreich: 5 Tage in den Alpen für Anfänger, Fortgeschrittene und Profis. Join 130 runners for a trail running camp in the Austrian Alps with coaching, trails and community. Hochkrimml, 5.–9. August 2026.",
+    "Trailrunning Camp in Österreich: 5 Tage in den Alpen für Anfänger, Fortgeschrittene und Profis. Join 130 runners for a trail running camp in the Austrian Alps with coaching, trails and community. Hochkrimml, 18.–22. August 2027.",
 
   keywords: [
     "trailrunning camp",
@@ -47,7 +47,7 @@ export const metadata: Metadata = {
     "trailrunning retreat",
     "trail running retreat",
     "trailrunning hochkrimml",
-    "trailrunning camp 2026",
+    "trailrunning camp 2027",
     "the mountaincamp",
   ],
 
@@ -56,9 +56,9 @@ export const metadata: Metadata = {
   },
 
   openGraph: {
-    title: "Trailrunning Camp Österreich 2026 | The Mountaincamp in den Alpen",
+    title: "Trailrunning Camp Österreich 2027 | The Mountaincamp in den Alpen",
     description:
-      "Trailrunning Camp in Österreich: 5 Tage in den Alpen für alle Levels. Join 130 runners for a trail running camp in the Austrian Alps with coaching, trails and community. Hochkrimml, 5.–9. August 2026.",
+      "Trailrunning Camp in Österreich: 5 Tage in den Alpen für alle Levels. Join 130 runners for a trail running camp in the Austrian Alps with coaching, trails and community. Hochkrimml, 18.–22. August 2027.",
     url: "https://themountaincamp.de",
     siteName: "The Mountaincamp",
     images: [
@@ -76,9 +76,9 @@ export const metadata: Metadata = {
 
   twitter: {
     card: "summary_large_image",
-    title: "Trailrunning Camp Österreich 2026 | The Mountaincamp",
+    title: "Trailrunning Camp Österreich 2027 | The Mountaincamp",
     description:
-      "5 Tage Trailrunning in den österreichischen Alpen. Join 130 runners for coaching, trails and community in Hochkrimml, 5.–9. August 2026.",
+      "5 Tage Trailrunning in den österreichischen Alpen. Join 130 runners for coaching, trails and community in Hochkrimml, 18.–22. August 2027.",
     images: ["/images/hero-trail-runners.jpeg"],
     creator: "@themountaincamp",
     site: "@themountaincamp",
@@ -127,14 +127,19 @@ export default function RootLayout({
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
         <link rel="preconnect" href="https://www.instagram.com" />
 
-        <link rel="dns-prefetch" href="https://my.camps.digital" />
         <link rel="dns-prefetch" href="https://open.spotify.com" />
         <link rel="dns-prefetch" href="https://www.komoot.com" />
         <link rel="dns-prefetch" href="https://www.google-analytics.com" />
 
-        {CRITICAL_IMAGES.map((src, index) => (
-          <link key={index} rel="preload" href={src} as="image" fetchPriority="high" />
-        ))}
+        {CRITICAL_IMAGES.map((src, index) =>
+          React.createElement("link", {
+            key: index,
+            rel: "preload",
+            href: src,
+            as: "image",
+            fetchpriority: "high",
+          }),
+        )}
 
         <link rel="icon" href="/favicon.png" />
         <link rel="icon" href="/favicon.svg" type="image/svg+xml" />

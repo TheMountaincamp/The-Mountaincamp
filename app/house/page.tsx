@@ -16,7 +16,7 @@ const CRITICAL_IMAGES = [
   "/images/house-bathroom-sink.jpeg",
   "/images/house-shower.jpeg",
   "/images/house-toilet.jpeg",
-  "/images/MTC-Logo_2025.png",
+  "/images/mountaincamp-logo-black.png",
 ]
 
 type FacilityDescription = {
@@ -138,7 +138,7 @@ export default function HousePage() {
               {facilities.map((facility, index) => (
                 <motion.div
                   key={index}
-                  className="rounded-lg border border-gray-200 bg-gray-50 p-6 transition-all duration-300 hover:border-primary hover:shadow-lg"
+                  className="border border-gray-200 bg-gray-50 p-6 transition-all duration-300 hover:border-primary hover:"
                   initial={{ opacity: 0, y: 20 }}
                   animate={{ opacity: isLoaded ? 1 : 0, y: isLoaded ? 0 : 20 }}
                   transition={{ duration: 0.5, delay: 0.3 + index * 0.1 }}
@@ -160,7 +160,7 @@ export default function HousePage() {
           >
             <h2 className="mb-8 text-2xl font-bold uppercase text-gray-900">{t("roomsTitle")}</h2>
             <div className="grid grid-cols-1 gap-8 md:grid-cols-2">
-              <div className="relative h-80 overflow-hidden rounded-lg">
+              <div className="relative h-80 overflow-hidden">
                 <Image
                   src="/images/cozy-bunk-accommodation.jpg"
                   alt="Cozy bunk bed accommodation"
@@ -174,7 +174,7 @@ export default function HousePage() {
                 </div>
               </div>
 
-              <div className="relative h-80 overflow-hidden rounded-lg">
+              <div className="relative h-80 overflow-hidden">
                 <Image
                   src="/images/wooden-dormitory-interior.jpg"
                   alt="Wooden dormitory interior"
@@ -198,7 +198,7 @@ export default function HousePage() {
           >
             <h2 className="mb-8 text-2xl font-bold uppercase text-gray-900">{t("bathroomFacilities")}</h2>
             <div className="grid grid-cols-1 gap-6 md:grid-cols-3">
-              <div className="relative h-64 overflow-hidden rounded-lg">
+              <div className="relative h-64 overflow-hidden">
                 <Image
                   src="/images/house-bathroom-sink.jpeg"
                   alt="Modern bathroom with sink"
@@ -212,7 +212,7 @@ export default function HousePage() {
                 </div>
               </div>
 
-              <div className="relative h-64 overflow-hidden rounded-lg">
+              <div className="relative h-64 overflow-hidden">
                 <Image
                   src="/images/house-shower.jpeg"
                   alt="Clean shower facilities"
@@ -226,7 +226,7 @@ export default function HousePage() {
                 </div>
               </div>
 
-              <div className="relative h-64 overflow-hidden rounded-lg">
+              <div className="relative h-64 overflow-hidden">
                 <Image
                   src="/images/house-toilet.jpeg"
                   alt="Modern toilet facilities"
@@ -249,7 +249,7 @@ export default function HousePage() {
             className="mb-16"
           >
             <h2 className="mb-8 text-2xl font-bold uppercase text-gray-900">{t("locationTitle")}</h2>
-            <div className="relative aspect-video overflow-hidden rounded-lg">
+            <div className="relative aspect-video overflow-hidden">
               <iframe
                 src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d21493.756807086395!2d12.13922555!3d47.23286205!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x4776f9b1a0c8f4e9%3A0x3f4e01b6b0a2b6e0!2s6372%20Hochkrimml%2C%20Austria!5e0!3m2!1sen!2sde!4v1712593066345!5m2!1sen!2sde"
                 width="100%"
@@ -271,10 +271,10 @@ export default function HousePage() {
           <div className="flex flex-col items-center justify-between md:flex-row">
             <div className="mb-4 md:mb-0">
               <Image
-                src="/images/MTC-Logo_2025.png"
+                src="/images/mountaincamp-logo-black.png"
                 alt="The Mountaincamp Logo"
                 width={150}
-                height={40}
+                height={29}
                 className="h-10 w-auto"
               />
             </div>
