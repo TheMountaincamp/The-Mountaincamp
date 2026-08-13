@@ -55,7 +55,7 @@ export default function FAQSection() {
     {
       question: "Was sind die schönsten Trailrunning-Events?",
       answer:
-        "The Mountaincamp ist mehr als ein Event - es ist ein 5-tägiges Trailrunning-Festival in den Alpen! Neben täglichen geführten Läufen erlebst du eine einzigartige Community, Workshops, Yoga, Klettern und die legendäre Sunset Rave auf dem Berg. Es verbindet die Schönheit alpiner Trails mit unvergesslichen Gemeinschaftserlebnissen.",
+        "The Mountaincamp ist mehr als ein Event - es ist ein 5-tägiges Trailrunning-Festival in den Alpen! Neben täglichen täglichen Trailruns erlebst du eine einzigartige Community, Workshops, Yoga, Klettern und die legendäre Sunset Rave auf dem Berg. Es verbindet die Schönheit alpiner Trails mit unvergesslichen Gemeinschaftserlebnissen.",
     },
     {
       question: "Für wen ist The Mountaincamp geeignet?",
@@ -138,7 +138,7 @@ export default function FAQSection() {
     {
       question: "What are the most beautiful trailrunning events?",
       answer:
-        "The Mountaincamp is more than an event - it's a 5-day trailrunning festival in the Alps! Besides daily guided runs, you experience a unique community, workshops, yoga, climbing, and the legendary Sunset Rave on the mountain. It combines the beauty of alpine trails with unforgettable community experiences.",
+        "The Mountaincamp is more than an event - it's a 5-day trailrunning festival in the Alps! Besides daily trail runs, you experience a unique community, workshops, yoga, climbing, and the legendary Sunset Rave on the mountain. It combines the beauty of alpine trails with unforgettable community experiences.",
     },
     {
       question: "Who is The Mountaincamp suitable for?",
@@ -153,7 +153,7 @@ export default function FAQSection() {
     {
       question: "What's included in The Mountaincamp price?",
       answer:
-        "The price of €530 includes 4 nights accommodation in our cozy mountain house, half board with two meals daily (breakfast and dinner) and guided trailrunning tours through the Alps.",
+        "The price of €530 includes 4 nights accommodation in our cozy mountain house, half board with two meals daily (breakfast and dinner) and daily trail runs through the Alps.",
     },
     {
       question: "How difficult are the trails at The Mountaincamp?",

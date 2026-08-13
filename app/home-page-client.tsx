@@ -37,9 +37,9 @@ const SECTION_IMAGES = ["/images/MTC-Logo_2025_weiß.png"]
 const HOUSE_PAGE_IMAGES = ["/images/mountain-lodge.jpeg"]
 const TRAILS_PAGE_IMAGES = ["/images/mountain-trail-runner.jpeg", "/images/trail-runners-group.jpeg"]
 
-// Start date: May 20, 2026 — 23 tickets, cat4 at 40%
+// Start date: May 20, 2027 — 23 tickets, cat4 at 40%
 // Every 2 days: -1 ticket, +2% cat4
-const COUNTDOWN_START_DATE = new Date("2026-05-20T00:00:00Z")
+const COUNTDOWN_START_DATE = new Date("2027-05-20T00:00:00Z")
 const COUNTDOWN_START_TICKETS = 40
 const COUNTDOWN_START_CAT4 = 40
 
@@ -685,7 +685,7 @@ export default function HomePageClient() {
                   <span className={`block text-xl md:text-3xl lg:text-4xl xl:text-5xl ${isMobile ? "mt-4" : ""}`}>
                     {language === "de" ? "Trailrunning Camp in Österreich" : "Trail Running Camp in Austria"}
                   </span>
-                  <span className="mt-2 block text-3xl md:text-5xl lg:text-6xl xl:text-7xl">The Mountaincamp 2026</span>
+                  <span className="mt-2 block text-3xl md:text-5xl lg:text-6xl xl:text-7xl">The Mountaincamp 2027</span>
                 </h1>
               </motion.div>
 
@@ -702,7 +702,7 @@ export default function HomePageClient() {
                 </p>
 
                 <p className="mt-3 text-sm font-semibold text-white/90 md:text-xl">
-                  {language === "de" ? "Hochkrimml | 5.–9. August 2026" : "Hochkrimml | August 5–9, 2026"}
+                  {language === "de" ? "Hochkrimml | 18.–22. August 2027" : "Hochkrimml | August 18–22, 2027"}
                 </p>
               </motion.div>
 
@@ -792,8 +792,8 @@ export default function HomePageClient() {
 
             <p className="mt-4 text-lg leading-relaxed text-gray-700">
               {language === "de"
-                ? "The Mountaincamp ist ein 5-tägiges Trailrunning Camp in Österreich in Hochkrimml. Dich erwarten geführte Trailruns, Techniktraining, Community, Workshops und Erholung in den Alpen – für Anfänger, Fortgeschrittene und ambitionierte Läufer."
-                : "The Mountaincamp is a 5-day trail running camp in Austria in Hochkrimml. Expect guided trail runs, technique coaching, community, workshops and recovery in the Alps for beginners, intermediate runners and ambitious athletes."}
+                ? "The Mountaincamp ist ein 5-tägiges Trailrunning Camp in Österreich in Hochkrimml. Dich erwarten tägliche Trailruns, Techniktraining, Community, Workshops und Erholung in den Alpen – für Anfänger, Fortgeschrittene und ambitionierte Läufer."
+                : "The Mountaincamp is a 5-day trail running camp in Austria in Hochkrimml. Expect daily trail runs, technique coaching, community, workshops and recovery in the Alps for beginners, intermediate runners and ambitious athletes."}
             </p>
 
             <p className="mt-4 text-lg leading-relaxed text-gray-700">
@@ -826,8 +826,8 @@ export default function HomePageClient() {
               <div className="flex-1">
                 <h3 className="text-2xl font-bold text-white md:text-3xl mb-2">
                   {language === "de"
-                    ? "Der Zeitplan für das Mountaincamp 2026 ist online!"
-                    : "The Mountaincamp 2026 schedule is live!"}
+                    ? "Der Zeitplan für das Mountaincamp 2027 ist online!"
+                    : "The Mountaincamp 2027 schedule is live!"}
                 </h3>
                 <p className="text-white/90 text-lg leading-relaxed">
                   {language === "de"
@@ -875,7 +875,7 @@ export default function HomePageClient() {
                           <Calendar className="h-5 w-5 text-primary" />
                         </div>
                         <span className="text-lg text-gray-900">
-                          {language === "de" ? "5.–9. August 2026" : "August 5–9, 2026"}
+                          {language === "de" ? "18.–22. August 2027" : "August 18–22, 2027"}
                         </span>
                       </div>
                       <div className="flex items-center gap-3">
@@ -1234,7 +1234,7 @@ export default function HomePageClient() {
                   {language === "de" ? "Jetzt deinen Platz im Trailrunning Camp sichern" : "Secure your spot at the trail running camp"}
                 </h2>
                 <p className="mb-8 text-xl text-white">
-                  {language === "de" ? "5.–9. August 2026" : "August 5–9, 2026"}
+                  {language === "de" ? "18.–22. August 2027" : "August 18–22, 2027"}
                   <br />
                   {language === "de" ? "Österreichische Alpen" : "Austrian Alps"}
                 </p>
@@ -1319,7 +1319,7 @@ export default function HomePageClient() {
                 transition={{ duration: 0.8 }}
                 className="mb-6 text-2xl font-bold md:mb-8 md:text-4xl lg:text-5xl"
               >
-                {language === "de" ? "Trailrunning Camp Österreich 2026" : "Trail Running Camp Austria 2026"}
+                {language === "de" ? "Trailrunning Camp Österreich 2027" : "Trail Running Camp Austria 2027"}
               </motion.h2>
               <motion.p
                 initial={{ opacity: 0, y: 20 }}
@@ -1344,7 +1344,7 @@ export default function HomePageClient() {
                 </Button>
                 <div className="flex items-center gap-4 text-gray-300">
                   <Calendar className="h-5 w-5" />
-                  <span>{language === "de" ? "5.–9. August 2026" : "August 5–9, 2026"}</span>
+                  <span>{language === "de" ? "18.–22. August 2027" : "August 18–22, 2027"}</span>
                 </div>
               </motion.div>
             </div>

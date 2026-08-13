@@ -9,7 +9,7 @@ export const translations = {
     trails: "Trails",
 
     // Hero section
-    heroDate: "6.-10. August 2025",
+    heroDate: "18.-22. August 2027",
     heroSubtitle1: "Das größte Trailrunning-Camp in den Alpen",
     heroSubtitle2: "4 Nächte, 3 Tage Laufen, 100% Community",
     heroSubtitle3: "Jedes Level, jedes Tempo",
@@ -34,7 +34,7 @@ export const translations = {
     // New bullet points for what's included
     aboutFeature1: "4 Nächte auf 1700m Höhe",
     aboutFeature2: "Frühstück & Abendessen",
-    aboutFeature3: "Geführte Trailruns durch atemberaubende Natur",
+    aboutFeature3: "Tägliche Trailruns durch atemberaubende Natur",
     aboutFeature4: "Sauna & Recovery Lounge",
     aboutFeature5: "Aktivitäten | Workshops | Vorträge",
     aboutFeature6: "Snacks & Gels für deine Läufe",
@@ -45,7 +45,7 @@ export const translations = {
 
     // Feature cards
     trailrunningTitle: "Trailrunning & Abenteuer",
-    trailrunningDesc: "Geführte Läufe auf atemberaubenden Alpenpfaden, konzipiert für alle Erfahrungsstufen.",
+    trailrunningDesc: "Tägliche Trailruns auf atemberaubenden Alpenpfaden, konzipiert für alle Erfahrungsstufen.",
     recoveryTitle: "Erholung & Gemeinschaft",
     recoveryDesc: "Yoga, Eisbäder, Saunen und Geschichten am Lagerfeuer zum Aufladen und Verbinden.",
     creativityTitle: "Kreativität & Wachstum",
@@ -77,7 +77,7 @@ export const translations = {
       "Komm in Stimmung mit unserer offiziellen Trailrunning-Playlist. Der perfekte Soundtrack für deine Bergabenteuer.",
     // Registration section
     joinTitle: "Begleite uns in den Alpen",
-    joinDate: "6.-10. August 2025",
+    joinDate: "18.-22. August 2027",
     joinLocation: "Österreichische Alpen",
     accommodation: "4 Übernachtungen inklusive",
     meals: "Frühstück und Abendessen inklusive",
@@ -132,14 +132,14 @@ export const translations = {
     trailsDescription: "Von einfachen Pfaden bis zu anspruchsvollen Bergpfaden - hier findest du die perfekte Route für dein Niveau.",
     routesTitle: "UNSERE ROUTEN",
     difficultyTitle: "SCHWIERIGKEITSGRADE",
-    guidedRunsTitle: "GEFÜHRTE LÄUFE",
+    dailyTrailRunsTitle: "TÄGLICHE TRAILRUNS",
     trailTipsTitle: "TRAIL-TIPPS",
     trailsMainDescription: "Die österreichischen Alpen bieten einige der spektakulärsten Trailrunning-Strecken Europas. Von sanften Waldwegen bis hin zu anspruchsvollen alpinen Pfaden - hier findet jeder Läufer die perfekte Route.",
-    trailsGuideDescription: "Während des Mountaincamps bieten wir täglich geführte Läufe für verschiedene Niveaus an, sodass du die besten Trails der Region mit erfahrenen Guides erkunden kannst.",
+    trailsGuideDescription: "Während des Mountaincamps bieten wir täglich Trailruns für verschiedene Niveaus an, sodass du die besten Trails der Region mit erfahrenen Guides erkunden kannst.",
     ourTrailRoutes: "Unsere Trailrouten",
     sampleRoutes: "Beispielrouten nach Schwierigkeit",
-    dailyGuidedRuns: "Tägliche geführte Läufe",
-    guidedRunsDescription: "Während des Mountaincamps bieten wir täglich mehrere geführte Läufe an, die auf verschiedene Erfahrungsstufen und Vorlieben zugeschnitten sind:",
+    dailyGuidedRuns: "Tägliche Trailruns",
+    guidedRunsDescription: "Während des Mountaincamps bieten wir täglich mehrere Trailruns an, die auf verschiedene Erfahrungsstufen und Vorlieben zugeschnitten sind:",
     beginnerGroup: "Anfänger-Gruppe",
     beginnerGroupDesc: "Gemütliches Tempo, flachere Trails, perfekt für Trailrunning-Neulinge.",
     intermediateGroup: "Mittlere Gruppe",
@@ -173,7 +173,7 @@ export const translations = {
     trails: "Trails",
 
     // Hero section
-    heroDate: "August 6-10, 2025",
+    heroDate: "August 18-22, 2027",
     heroSubtitle1: "A trailrunning camp in the Austrian Alps",
     heroSubtitle2: "4 nights, 3 days of running, 100% community",
     heroSubtitle3: "Every level, every pace",
@@ -198,7 +198,7 @@ export const translations = {
     // New bullet points for what's included
     aboutFeature1: "4 nights at 1700m altitude",
     aboutFeature2: "Breakfast & dinner",
-    aboutFeature3: "Daily guided trail runs",
+    aboutFeature3: "Daily daily trail trail runs",
     aboutFeature4: "Sauna & recovery lounge",
     aboutFeature5: "Activities | workshops | talks",
     aboutFeature6: "Snacks & gels",
@@ -209,7 +209,7 @@ export const translations = {
 
     // Feature cards
     trailrunningTitle: "Trailrunning & Adventure",
-    trailrunningDesc: "Guided runs on breathtaking alpine trails, designed for all experience levels.",
+    trailrunningDesc: "Daily trail runs on breathtaking alpine trails, designed for all experience levels.",
     recoveryTitle: "Recovery & Community",
     recoveryDesc: "Yoga, ice baths, saunas, and fireside storytelling to recharge and connect.",
     creativityTitle: "Creativity & Growth",
@@ -242,7 +242,7 @@ export const translations = {
       "Get in the mood with our official trailrunning playlist. The perfect soundtrack for your mountain adventures.",
     // Registration section
     joinTitle: "Join Us in the Alps",
-    joinDate: "August 6-10, 2025",
+    joinDate: "August 18-22, 2027",
     joinLocation: "Austrian Alps",
     accommodation: "4 nights accommodation included",
     meals: "Breakfast and Dinner included",
@@ -297,14 +297,14 @@ export const translations = {
     trailsDescription: "From easy paths to challenging mountain trails - find the perfect route for your level.",
     routesTitle: "OUR ROUTES",
     difficultyTitle: "DIFFICULTY LEVELS",
-    guidedRunsTitle: "GUIDED RUNS",
+    dailyTrailRunsTitle: "DAILY TRAIL RUNS",
     trailTipsTitle: "TRAIL TIPS",
     trailsMainDescription: "The Austrian Alps offer some of the most spectacular trail running routes in Europe. From gentle forest paths to challenging alpine trails - every runner will find the perfect route here.",
-    trailsGuideDescription: "During the Mountaincamp, we offer daily guided runs for different levels, allowing you to explore the best trails in the region with experienced guides.",
+    trailsGuideDescription: "During the Mountaincamp, we offer daily trail runs for different levels, allowing you to explore the best trails in the region with experienced guides.",
     ourTrailRoutes: "Our Trail Routes",
     sampleRoutes: "Sample Routes by Difficulty",
-    dailyGuidedRuns: "Daily Guided Runs",
-    guidedRunsDescription: "During the Mountaincamp, we offer multiple guided runs daily, tailored to different experience levels and preferences:",
+    dailyGuidedRuns: "Daily Trail Runs",
+    guidedRunsDescription: "During the Mountaincamp, we offer multiple daily trail runs tailored to different experience levels and preferences:",
     beginnerGroup: "Beginner Group",
     beginnerGroupDesc: "Easy pace, flatter trails, perfect for trail running beginners.",
     intermediateGroup: "Intermediate Group",
