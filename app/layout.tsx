@@ -1,4 +1,4 @@
-import type React from "react"
+import * as React from "react"
 import { Suspense } from "react"
 import type { Metadata, Viewport } from "next"
 import { Inter } from "next/font/google"
@@ -131,9 +131,15 @@ export default function RootLayout({
         <link rel="dns-prefetch" href="https://www.komoot.com" />
         <link rel="dns-prefetch" href="https://www.google-analytics.com" />
 
-        {CRITICAL_IMAGES.map((src, index) => (
-          <link key={index} rel="preload" href={src} as="image" fetchPriority="high" />
-        ))}
+        {CRITICAL_IMAGES.map((src, index) =>
+          React.createElement("link", {
+            key: index,
+            rel: "preload",
+            href: src,
+            as: "image",
+            fetchpriority: "high",
+          }),
+        )}
 
         <link rel="icon" href="/favicon.png" />
         <link rel="icon" href="/favicon.svg" type="image/svg+xml" />

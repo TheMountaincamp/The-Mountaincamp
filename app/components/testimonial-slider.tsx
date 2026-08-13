@@ -6,7 +6,7 @@ import { ChevronLeft, ChevronRight, Quote } from "lucide-react"
 
 interface Testimonial {
   name: string
-  program: string
+  program?: string
   quote: string
   image?: string
 }
