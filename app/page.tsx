@@ -37,9 +37,9 @@ const SECTION_IMAGES = ["/images/MTC-Logo_2025_weiß.png"]
 const HOUSE_PAGE_IMAGES = ["/images/mountain-lodge.jpeg"]
 const TRAILS_PAGE_IMAGES = ["/images/mountain-trail-runner.jpeg", "/images/trail-runners-group.jpeg"]
 
-// Start date: May 20, 2026 — 23 tickets, cat4 at 40%
+// Start date: May 20, 2027 — countdown for the 2027 camp
 // Every 2 days: -1 ticket, +2% cat4
-const COUNTDOWN_START_DATE = new Date("2026-05-20T00:00:00Z")
+const COUNTDOWN_START_DATE = new Date("2027-05-20T00:00:00Z")
 const COUNTDOWN_START_TICKETS = 40
 const COUNTDOWN_START_CAT4 = 40
 
@@ -990,39 +990,6 @@ export default function Home() {
             </div>
           </div>
         </section>
-
-        {/* Schedule Banner */}
-        <motion.section
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.6 }}
-          className="relative z-30 bg-gradient-to-r from-primary/95 to-primary/85 py-12 md:py-16"
-        >
-          <div className="container">
-            <div className="flex flex-col items-start justify-between gap-6 sm:flex-row sm:items-center">
-              <div className="flex-1">
-                <h3 className="text-2xl font-bold text-white md:text-3xl mb-2">
-                  {language === "de"
-                    ? "Der Zeitplan für das Mountaincamp 2027 ist online!"
-                    : "The Mountaincamp 2027 schedule is live!"}
-                </h3>
-                <p className="text-white/90 text-lg leading-relaxed">
-                  {language === "de"
-                    ? "Schaue jetzt rein und such dir aus, was du neben den täglichen Trailruns noch machen möchtest. Die Buchung der Workshops öffnet am Mittwoch, den 15.7."
-                    : "Check it out now and choose what you want to do alongside the daily trail runs. Workshop bookings open on the 15 of July."}
-                </p>
-              </div>
-              <Link
-                href="/zeitplan"
-                className="shrink-0 inline-flex items-center gap-2 rounded-full bg-white px-6 py-3 font-bold text-primary hover:bg-white/90 transition-colors whitespace-nowrap"
-              >
-                {language === "de" ? "Zeitplan ansehen" : "View schedule"}
-                <ArrowRight className="h-5 w-5" />
-              </Link>
-            </div>
-          </div>
-        </motion.section>
 
         <section id="about" className="relative z-30">
           <div className="pointer-events-none absolute left-0 right-0 top-0 h-64 bg-gradient-to-b from-transparent via-white/5 via-white/10 via-white/15 via-white/20 via-white/25" />
