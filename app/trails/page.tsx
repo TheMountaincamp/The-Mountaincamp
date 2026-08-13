@@ -293,7 +293,7 @@ export default function TrailsPage() {
             transition={{ duration: 0.8, delay: 0.4 }}
             className="mb-10"
           >
-            <h2 className="mb-8 text-2xl font-bold uppercase">{t("guidedRunsTitle")}</h2>
+            <h2 className="mb-8 text-2xl font-bold uppercase">{t("dailyTrailRunsTitle")}</h2>
             <div className="rounded-lg border border-gray-200 bg-gray-50 p-8 shadow-sm">
               <h3 className="mb-4 text-xl font-bold">{t("dailyGuidedRuns")}</h3>
               <p className="mb-6 text-gray-600">{t("guidedRunsDescription")}</p>

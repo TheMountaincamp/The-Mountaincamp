@@ -24,7 +24,7 @@ import FeatureCard from "@/app/components/feature-card"
 import SectionTitle from "@/app/components/section-title"
 import ActivityCardMobile from "@/app/components/activity-card-mobile"
 import LanguageSwitcher from "@/app/components/language-switcher"
-import PriceCategoryBars from "@/app/components/price-category-bars"
+import NotifySignupForm from "@/app/components/notify-signup-form"
 import ImageWithFallback from "@/app/components/image-with-fallback"
 import ImagePreloader from "@/app/components/image-preloader"
 import PreloadLink from "@/app/components/preload-link"
@@ -36,22 +36,6 @@ import RouteOverviewSection from "@/app/components/route-overview-section"
 const SECTION_IMAGES = ["/images/MTC-Logo_2025_weiß.png"]
 const HOUSE_PAGE_IMAGES = ["/images/mountain-lodge.jpeg"]
 const TRAILS_PAGE_IMAGES = ["/images/mountain-trail-runner.jpeg", "/images/trail-runners-group.jpeg"]
-
-// Start date: May 20, 2027 — 23 tickets, cat4 at 40%
-// Every 2 days: -1 ticket, +2% cat4
-const COUNTDOWN_START_DATE = new Date("2027-05-20T00:00:00Z")
-const COUNTDOWN_START_TICKETS = 40
-const COUNTDOWN_START_CAT4 = 40
-
-function getDynamicValues() {
-  const now = new Date()
-  const msPerDay = 1000 * 60 * 60 * 24
-  const daysSinceStart = Math.floor((now.getTime() - COUNTDOWN_START_DATE.getTime()) / msPerDay)
-  const periods = Math.max(0, Math.floor(daysSinceStart / 2))
-  const tickets = Math.max(0, COUNTDOWN_START_TICKETS - periods)
-  const cat4 = Math.min(100, COUNTDOWN_START_CAT4 + periods * 2)
-  return { tickets, cat4 }
-}
 
 const PARTNERS = [
   { src: "/images/partner-1.png", alt: "KRAFT. - Partner des Mountaincamp Trailrunning Camps" },
@@ -153,7 +137,6 @@ function PartnerCarousel() {
 export default function HomePageClient() {
   const { t, language } = useLanguage()
   const isMobile = useMobile()
-  const [dynamicValues] = useState(() => getDynamicValues())
 
   const [currentActivityIndex, setCurrentActivityIndex] = useState(0)
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
@@ -161,9 +144,6 @@ export default function HomePageClient() {
 
   const videoRef = useRef<HTMLVideoElement>(null)
   const heroRef = useRef(null)
-
-  const bookingUrl = `https://my.camps.digital/masken/buchungen/vuejs?&vendor=mountaincamp&destination_id=2467&termin_id=36011&locale=${language === "de" ? "de" : "en"
-    }#/`
 
   const { scrollYProgress } = useScroll({
     target: heroRef,
@@ -468,10 +448,10 @@ export default function HomePageClient() {
           <div className="flex items-center justify-between gap-3">
             <div className="flex-1">
               <p className="text-sm font-bold text-white">
-                {language === "de" ? "Sichere dir deinen Platz!" : "Secure your spot!"}
+                {language === "de" ? "Sei als Erste:r dabei!" : "Be the first to know!"}
               </p>
               <p className="text-xs text-white/60">
-                {language === "de" ? "Ab €530 - Begrenzte Plätze" : "From €530 - Limited spots"}
+                {language === "de" ? "Anmeldung startet in Kürze" : "Registration opens soon"}
               </p>
             </div>
             <Button
@@ -479,9 +459,7 @@ export default function HomePageClient() {
               className="whitespace-nowrap bg-primary px-4 py-2 font-bold text-white hover:bg-primary/90"
               asChild
             >
-              <a href={bookingUrl} target="_blank" rel="noopener noreferrer">
-                {language === "de" ? "Jetzt buchen" : "Book now"}
-              </a>
+              <a href="#register">{language === "de" ? "Benachrichtigen" : "Notify me"}</a>
             </Button>
           </div>
         </motion.div>
@@ -720,52 +698,27 @@ export default function HomePageClient() {
 
                 <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }} className="flex w-full justify-center">
                   <Button size="lg" className="btn-outline w-full max-w-[280px] px-6 py-3 text-base" asChild>
-                    <a href={bookingUrl} target="_blank" rel="noopener noreferrer">
-                      {language === "de" ? "Jetzt buchen" : "Book Now"}
-                    </a>
+                    <a href="#register">{language === "de" ? "Benachrichtigt werden" : "Notify Me"}</a>
                   </Button>
                 </motion.div>
               </motion.div>
+
+              <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: 1, duration: 0.8 }}
+                className="mt-6 flex justify-center"
+              >
+                <span className="inline-flex items-center gap-2 rounded-full border border-white/30 bg-white/10 px-4 py-2 text-xs font-semibold uppercase tracking-wide text-white backdrop-blur-sm md:text-sm">
+                  <span className="relative flex h-2 w-2">
+                    <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-primary opacity-75" />
+                    <span className="relative inline-flex h-2 w-2 rounded-full bg-primary" />
+                  </span>
+                  {t("comingSoonBadge")}
+                </span>
+              </motion.div>
             </div>
           </motion.div>
-
-          {/* Urgency Banner — sits at the bottom of the hero */}
-          {dynamicValues.tickets > 0 && (
-            <motion.div
-              initial={{ y: 20, opacity: 0 }}
-              animate={{ y: 0, opacity: 1 }}
-              transition={{ duration: 0.6, delay: 1 }}
-              className="absolute bottom-0 left-0 right-0 z-20"
-            >
-              <div className="bg-black/60 backdrop-blur-sm border-t border-white/10 px-4 py-3 md:py-4">
-                <div className="container flex flex-col items-center justify-between gap-2 sm:flex-row">
-                  <div className="flex items-center gap-3">
-                    <div className="flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-primary text-white">
-                      <svg className="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 5v2m0 4v2m0 4v2M5 5a2 2 0 00-2 2v3a2 2 0 110 4v3a2 2 0 002 2h14a2 2 0 002-2v-3a2 2 0 110-4V7a2 2 0 00-2-2H5z" />
-                      </svg>
-                    </div>
-                    <p className="text-sm font-bold text-white md:text-base">
-                      {language === "de"
-                        ? `Nur noch ${dynamicValues.tickets} Tickets verfügbar!`
-                        : `Only ${dynamicValues.tickets} tickets left!`}
-                      <span className="ml-2 font-normal text-white/70 text-xs md:text-sm">
-                        {language === "de" ? "Sichere dir deinen Platz." : "Secure your spot."}
-                      </span>
-                    </p>
-                  </div>
-                  <a
-                    href="https://my.camps.digital/masken/buchungen/vuejs?&vendor=mountaincamp&destination_id=2467&termin_id=36011&locale=de#/"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="shrink-0 rounded-full bg-primary px-5 py-2 text-sm font-bold text-white transition-colors hover:bg-primary/90"
-                  >
-                    {language === "de" ? "Jetzt buchen" : "Book now"}
-                  </a>
-                </div>
-              </div>
-            </motion.div>
-          )}
 
           <motion.div
             className="absolute bottom-14 left-1/2 z-20 -translate-x-1/2"
@@ -813,7 +766,7 @@ export default function HomePageClient() {
           </div>
         </section>
 
-        {/* Schedule Banner */}
+        {/* Early-bird notify banner */}
         <motion.section
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -822,26 +775,12 @@ export default function HomePageClient() {
           className="relative z-30 bg-gradient-to-r from-primary/95 to-primary/85 py-12 md:py-16"
         >
           <div className="container">
-            <div className="flex flex-col items-start justify-between gap-6 sm:flex-row sm:items-center">
+            <div className="flex flex-col items-start justify-between gap-6 lg:flex-row lg:items-center">
               <div className="flex-1">
-                <h3 className="text-2xl font-bold text-white md:text-3xl mb-2">
-                  {language === "de"
-                    ? "Der Zeitplan für das Mountaincamp 2027 ist online!"
-                    : "The Mountaincamp 2027 schedule is live!"}
-                </h3>
-                <p className="text-white/90 text-lg leading-relaxed">
-                  {language === "de"
-                    ? "Schaue jetzt rein und such dir aus, was du neben den täglichen Trailruns noch machen möchtest. Die Buchung der Workshops öffnet am Mittwoch, den 15.7."
-                    : "Check it out now and choose what you want to do alongside the daily trail runs. Workshop bookings open on the 15 of July."}
-                </p>
+                <h3 className="text-2xl font-bold text-white md:text-3xl mb-2">{t("notifyTitle")}</h3>
+                <p className="text-white/90 text-lg leading-relaxed">{t("notifyDesc")}</p>
               </div>
-              <Link
-                href="/zeitplan"
-                className="shrink-0 inline-flex items-center gap-2 rounded-full bg-white px-6 py-3 font-bold text-primary hover:bg-white/90 transition-colors whitespace-nowrap"
-              >
-                {language === "de" ? "Zeitplan ansehen" : "View schedule"}
-                <ArrowRight className="h-5 w-5" />
-              </Link>
+              <NotifySignupForm className="w-full max-w-md shrink-0 [&_input]:bg-white [&_input]:text-gray-900 [&_button]:bg-white [&_button]:text-primary [&_button:hover]:bg-white/90" />
             </div>
           </div>
         </motion.section>
@@ -865,7 +804,9 @@ export default function HomePageClient() {
                     {[1, 2, 3, 4, 5, 6].map((n) => (
                       <div className="flex items-start gap-3" key={n}>
                         <div className="mt-1.5 h-1.5 w-1.5 flex-shrink-0 rounded-full bg-primary" />
-                        <p className="text-lg leading-relaxed">{t(`aboutFeature${n}`)}</p>
+                        <p className="text-lg leading-relaxed">
+                          {t(`aboutFeature${n}` as Parameters<typeof t>[0])}
+                        </p>
                       </div>
                     ))}
 
@@ -919,28 +860,14 @@ export default function HomePageClient() {
 
         <section className="bg-primary py-8 md:py-12">
           <div className="container">
-            <div className="flex flex-col items-center justify-between gap-6 md:flex-row">
-              <div className="text-center md:text-left">
+            <div className="flex flex-col items-center justify-between gap-6 lg:flex-row">
+              <div className="text-center lg:text-left">
                 <h3 className="mb-2 text-xl font-bold text-white md:text-2xl">
                   {language === "de" ? "Bereit für dein Trailrunning Abenteuer?" : "Ready for your trail running adventure?"}
                 </h3>
-                <p className="text-sm text-white/80 md:text-base">
-                  {language === "de"
-                    ? "Nur noch wenige Plätze verfügbar - Sichere dir jetzt deinen Spot!"
-                    : "Only a few spots left - Secure yours now!"}
-                </p>
+                <p className="text-sm text-white/80 md:text-base">{t("notifyDesc")}</p>
               </div>
-              <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
-                <Button
-                  size="lg"
-                  className="bg-white px-8 py-3 text-base font-bold text-primary hover:bg-white/90 md:text-lg"
-                  asChild
-                >
-                  <a href={bookingUrl} target="_blank" rel="noopener noreferrer">
-                    {language === "de" ? "Jetzt Ticket sichern" : "Get Your Ticket"}
-                  </a>
-                </Button>
-              </motion.div>
+              <NotifySignupForm className="w-full max-w-md shrink-0 [&_input]:bg-white [&_input]:text-gray-900 [&_button]:bg-white [&_button]:text-primary [&_button:hover]:bg-white/90" />
             </div>
           </div>
         </section>
@@ -1157,16 +1084,6 @@ export default function HomePageClient() {
             <div className="mx-auto max-w-4xl">
               <TestimonialSlider testimonials={testimonials} autoPlay={true} interval={6000} />
             </div>
-
-            <motion.div
-              initial={{ opacity: 0, y: 50 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.8 }}
-              className="mt-16"
-            >
-                <PriceCategoryBars cat4Filled={dynamicValues.cat4} />
-            </motion.div>
           </div>
         </section>
 
@@ -1257,13 +1174,14 @@ export default function HomePageClient() {
                   </li>
                 </ul>
 
-                <div className="mt-12 inline-block">
-                  <div className="rounded-t-lg bg-primary px-6 py-3">
-                    <span className="text-sm font-medium uppercase text-white">{t("packageTitle")}</span>
-                  </div>
-                  <div className="rounded-b-lg bg-gray-800 px-6 py-4">
-                    <span className="text-3xl font-bold text-white">€530</span>
-                  </div>
+                <div className="mt-12 inline-flex items-center gap-2 rounded-full border border-white/20 bg-white/5 px-5 py-2.5">
+                  <span className="relative flex h-2 w-2">
+                    <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-primary opacity-75" />
+                    <span className="relative inline-flex h-2 w-2 rounded-full bg-primary" />
+                  </span>
+                  <span className="text-sm font-semibold uppercase tracking-wide text-white">
+                    {t("comingSoonBadge")}
+                  </span>
                 </div>
               </motion.div>
 
@@ -1274,26 +1192,9 @@ export default function HomePageClient() {
                 transition={{ duration: 0.8 }}
               >
                 <div className="rounded-xl border border-gray-700 bg-gray-800 p-8 text-white">
-                  <h3 className="mb-6 text-center text-2xl font-bold uppercase text-white">
-                    {language === "de" ? "Jetzt anmelden" : "Register Now"}
-                  </h3>
-
-                  <div className="text-center">
-                    <Button
-                      size="lg"
-                      className="bg-primary px-8 py-4 text-lg font-bold text-white hover:bg-primary/90"
-                      asChild
-                    >
-                      <a href={bookingUrl} target="_blank" rel="noopener noreferrer">
-                        {t("registerNow")}
-                      </a>
-                    </Button>
-                    <p className="mt-4 text-sm text-white/70">
-                      {language === "de"
-                        ? "Sichere dir jetzt deinen Platz im Mountaincamp!"
-                        : "Secure your spot at The Mountaincamp now!"}
-                    </p>
-                  </div>
+                  <h3 className="mb-3 text-center text-2xl font-bold uppercase text-white">{t("notifyTitle")}</h3>
+                  <p className="mb-6 text-center text-sm text-white/70">{t("notifyDesc")}</p>
+                  <NotifySignupForm className="[&_input]:bg-gray-900 [&_input]:text-white [&_input]:border-gray-700" />
                 </div>
               </motion.div>
             </div>
@@ -1335,13 +1236,9 @@ export default function HomePageClient() {
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.8, delay: 0.4 }}
-                className="flex flex-col items-center justify-center gap-6 sm:flex-row"
+                className="flex flex-col items-center justify-center gap-6"
               >
-                <Button size="lg" className="btn-primary px-8 text-lg" asChild>
-                  <a href={bookingUrl} target="_blank" rel="noopener noreferrer">
-                    {t("registerNow")}
-                  </a>
-                </Button>
+                <NotifySignupForm className="w-full max-w-md" />
                 <div className="flex items-center gap-4 text-gray-300">
                   <Calendar className="h-5 w-5" />
                   <span>{language === "de" ? "18.–22. August 2027" : "August 18–22, 2027"}</span>

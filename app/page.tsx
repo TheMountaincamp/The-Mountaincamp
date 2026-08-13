@@ -107,12 +107,8 @@ const eventStructuredData = {
   ],
   offers: {
     "@type": "Offer",
-    price: "530",
-    priceCurrency: "EUR",
-    availability: "https://schema.org/LimitedAvailability",
-    url: "https://my.camps.digital/masken/buchungen/vuejs?&vendor=mountaincamp&destination_id=2467&termin_id=36011&locale=de#/",
-    validFrom: "2027-04-01T19:00:00+02:00",
-    priceValidUntil: "2027-08-01T00:00:00+02:00",
+    availability: "https://schema.org/PreOrder",
+    url: "https://themountaincamp.de",
   },
   organizer: {
     "@type": "Organization",
@@ -193,7 +189,7 @@ const faqStructuredData = {
       name: "Wann und wo findet das Camp statt?",
       acceptedAnswer: {
         "@type": "Answer",
-        text: "Das Mountaincamp 2027 findet vom 5. bis 9. August in Hochkrimml in den österreichischen Alpen (Salzburg) statt.",
+        text: "Das Mountaincamp 2027 findet vom 18. bis 22. August in Hochkrimml in den österreichischen Alpen (Salzburg) statt.",
       },
     },
     {
@@ -209,7 +205,7 @@ const faqStructuredData = {
       name: "Was kostet die Teilnahme am Mountaincamp?",
       acceptedAnswer: {
         "@type": "Answer",
-        text: "Die Teilnahme kostet ab €530. Im Preis enthalten sind Unterkunft, Verpflegung, alle Aktivitäten, Workshops und das komplette Camp-Programm.",
+        text: "Die Preise für 2027 geben wir bekannt, sobald der Ticketverkauf startet. Im Paket enthalten sind Unterkunft, Verpflegung, alle Aktivitäten, Workshops und das komplette Camp-Programm. Trag dich für die Early-Bird-Benachrichtigung ein, um als Erste:r informiert zu werden.",
       },
     },
     {
