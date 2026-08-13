@@ -114,7 +114,7 @@ const eventStructuredData = {
     "@type": "Organization",
     name: "The Mountaincamp",
     url: "https://themountaincamp.de",
-    logo: "https://themountaincamp.de/images/MTC-Logo_2025.png",
+    logo: "https://themountaincamp.de/images/mountaincamp-logo-black.png",
     sameAs: [
       "https://www.instagram.com/the_mountaincamp/",
       "https://www.youtube.com/@the_mountaincamp",
@@ -132,7 +132,7 @@ const organizationStructuredData = {
   "@type": "Organization",
   name: "The Mountaincamp",
   url: "https://themountaincamp.de",
-  logo: "https://themountaincamp.de/images/MTC-Logo_2025.png",
+  logo: "https://themountaincamp.de/images/mountaincamp-logo-black.png",
   image: "https://themountaincamp.de/images/hero-trail-runners.jpeg",
   address: {
     "@type": "PostalAddress",

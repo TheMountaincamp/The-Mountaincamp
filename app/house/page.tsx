@@ -16,7 +16,7 @@ const CRITICAL_IMAGES = [
   "/images/house-bathroom-sink.jpeg",
   "/images/house-shower.jpeg",
   "/images/house-toilet.jpeg",
-  "/images/MTC-Logo_2025.png",
+  "/images/mountaincamp-logo-black.png",
 ]
 
 type FacilityDescription = {
@@ -271,10 +271,10 @@ export default function HousePage() {
           <div className="flex flex-col items-center justify-between md:flex-row">
             <div className="mb-4 md:mb-0">
               <Image
-                src="/images/MTC-Logo_2025.png"
+                src="/images/mountaincamp-logo-black.png"
                 alt="The Mountaincamp Logo"
                 width={150}
-                height={40}
+                height={29}
                 className="h-10 w-auto"
               />
             </div>

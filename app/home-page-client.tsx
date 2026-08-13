@@ -33,7 +33,7 @@ import InstagramReelsSection from "@/app/components/instagram-reels-section"
 import FAQSection from "@/app/components/faq-section"
 import RouteOverviewSection from "@/app/components/route-overview-section"
 
-const SECTION_IMAGES = ["/images/MTC-Logo_2025_weiß.png"]
+const SECTION_IMAGES = ["/images/mountaincamp-logo-white.png"]
 const HOUSE_PAGE_IMAGES = ["/images/mountain-lodge.jpeg"]
 const TRAILS_PAGE_IMAGES = ["/images/mountain-trail-runner.jpeg", "/images/trail-runners-group.jpeg"]
 
@@ -470,10 +470,10 @@ export default function HomePageClient() {
           <div className="flex items-center">
             <div className={`relative ${isMobile ? "h-10 w-32" : "h-14 w-auto"}`}>
               <ImageWithFallback
-                src="/images/MTC-Logo_2025_weiß.png"
+                src="/images/mountaincamp-logo-white.png"
                 alt="The Mountaincamp Logo"
                 width={isMobile ? 128 : 200}
-                height={isMobile ? 40 : 56}
+                height={isMobile ? 25 : 39}
                 className="h-full w-auto object-contain"
                 priority
                 sizes="(max-width: 768px) 128px, 200px"
@@ -552,10 +552,10 @@ export default function HomePageClient() {
           >
             <div className="container flex h-20 items-center justify-between">
               <Image
-                src="/images/MTC-Logo_2025_weiß.png"
+                src="/images/mountaincamp-logo-white.png"
                 alt="The Mountaincamp Logo"
                 width={128}
-                height={40}
+                height={25}
                 className="h-10 w-auto"
                 sizes="128px"
               />
@@ -649,11 +649,11 @@ export default function HomePageClient() {
               >
                 {isMobile ? (
                   <Image
-                    src="/images/MTC-Logo_2025_weiß.png"
+                    src="/images/mountaincamp-logo-white.png"
                     alt="The Mountaincamp Logo"
                     width={250}
-                    height={100}
-                    className="mx-auto"
+                    height={48}
+                    className="mx-auto h-auto w-auto object-contain"
                     priority
                     sizes="250px"
                   />
@@ -1254,10 +1254,10 @@ export default function HomePageClient() {
           <div className="mb-12 flex flex-col items-center justify-between gap-8 md:flex-row">
             <div className="text-center md:text-left">
               <Image
-                src="/images/MTC-Logo_2025_weiß.png"
+                src="/images/mountaincamp-logo-white.png"
                 alt="The Mountaincamp Logo"
                 width={180}
-                height={40}
+                height={35}
                 className="mb-4 h-12 w-auto"
                 loading="lazy"
                 sizes="180px"

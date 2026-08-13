@@ -7,8 +7,8 @@ import { useImagePreload } from "@/hooks/use-image-preload"
 // Critical images to preload before showing the homepage
 const CRITICAL_IMAGES = [
   "/images/hero-trail-runners.jpeg", // New hero image
-  "/images/MTC-Logo_2025.png",
-  "/images/MTC-Logo_2025_weiß.png",
+  "/images/mountaincamp-logo-black.png",
+  "/images/mountaincamp-logo-white.png",
   "/images/trail-runner-1.jpeg",
   "/images/mountain-top-sunset-rave.jpg", // Updated mountain rave image reference
   "/images/mountain-trail-runner.jpeg",
@@ -36,7 +36,7 @@ export default function Loading() {
     <div className="fixed inset-0 z-50 flex flex-col items-center justify-center bg-black">
       <div className="relative mb-8 h-20 w-60">
         <img
-          src="/images/MTC-Logo_2025_weiß.png"
+          src="/images/mountaincamp-logo-white.png"
           alt="The Mountaincamp Logo"
           className="h-full w-auto object-contain"
         />

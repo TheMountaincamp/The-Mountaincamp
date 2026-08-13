@@ -18,7 +18,7 @@ const CRITICAL_IMAGES = [
   "/images/trail-runners-group.jpeg",
   "/images/mountain-lake.png",
   "/images/canoeing-lake.jpeg",
-  "/images/MTC-Logo_2025_weiß.png",
+  "/images/mountaincamp-logo-white.png",
 ]
 
 type LocalizedText = {
@@ -380,10 +380,10 @@ export default function TrailsPage() {
           <div className="flex flex-col items-center justify-between md:flex-row">
             <div className="mb-4 md:mb-0">
               <Image
-                src="/images/MTC-Logo_2025_weiß.png"
+                src="/images/mountaincamp-logo-black.png"
                 alt="The Mountaincamp Logo"
                 width={150}
-                height={40}
+                height={29}
                 className="h-10 w-auto"
               />
             </div>

@@ -40,7 +40,7 @@ export default function SiteHeader({ transparent = true }: SiteHeaderProps) {
           <Link href="/" className="flex items-center">
             <div className="relative w-32 h-10 md:w-[200px] md:h-14">
               <Image
-                src="/images/MTC-Logo_2025_weiß.png"
+                src="/images/mountaincamp-logo-white.png"
                 alt="The Mountaincamp Logo"
                 fill
                 className="object-contain"
@@ -95,10 +95,10 @@ export default function SiteHeader({ transparent = true }: SiteHeaderProps) {
           >
             <div className="container flex justify-between items-center h-20">
               <Image
-                src="/images/MTC-Logo_2025_weiß.png"
+                src="/images/mountaincamp-logo-white.png"
                 alt="The Mountaincamp Logo"
                 width={128}
-                height={40}
+                height={25}
                 className="h-10 w-auto"
                 sizes="128px"
               />

@@ -14,8 +14,8 @@ const inter = Inter({ subsets: ["latin"], display: "swap" })
 
 const CRITICAL_IMAGES = [
   "/images/hero-trail-runners.jpeg",
-  "/images/MTC-Logo_2025.png",
-  "/images/MTC-Logo_2025_weiß.png",
+  "/images/mountaincamp-logo-black.png",
+  "/images/mountaincamp-logo-white.png",
 ]
 
 export const viewport: Viewport = {
