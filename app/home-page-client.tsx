@@ -32,6 +32,7 @@ import TestimonialSlider from "@/app/components/testimonial-slider"
 import InstagramReelsSection from "@/app/components/instagram-reels-section"
 import FAQSection from "@/app/components/faq-section"
 import RouteOverviewSection from "@/app/components/route-overview-section"
+import MasonryGallery from "@/app/components/masonry-gallery"
 
 const SECTION_IMAGES = ["/images/mountaincamp-logo-white.png"]
 const HOUSE_PAGE_IMAGES = ["/images/mountain-lodge.jpeg"]
@@ -312,6 +313,54 @@ export default function HomePageClient() {
           ? "Ruhiger Moment auf der Terrasse der Berghütte in Hochkrimml"
           : "Peaceful moment on mountain lodge terrace in Hochkrimml",
       caption: language === "de" ? "Ruhige Momente" : "Peaceful Moments",
+    },
+    {
+      src: "/images/gallery/runners-resting-altra-poufs.jpg",
+      alt:
+        language === "de"
+          ? "Trailrunner ruhen sich auf Sitzsäcken an der Verpflegungsstation aus"
+          : "Trail runners resting on beanbag seats at an aid station",
+      caption: language === "de" ? "Kurze Pause" : "Quick Break",
+    },
+    {
+      src: "/images/gallery/runner-group-closeup.jpg",
+      alt:
+        language === "de"
+          ? "Läuferin im Gespräch mit der Gruppe vor dem Start"
+          : "Runner talking with the group before the start",
+      caption: language === "de" ? "Vor dem Start" : "Before the Start",
+    },
+    {
+      src: "/images/gallery/runners-gravel-trail-fence.jpg",
+      alt:
+        language === "de"
+          ? "Trailrunner laufen an einem Holzzaun auf dem Waldweg vorbei"
+          : "Trail runners passing a wooden fence on the forest trail",
+      caption: language === "de" ? "Auf dem Trail" : "On the Trail",
+    },
+    {
+      src: "/images/gallery/runner-mountain-view-tattoo.jpg",
+      alt:
+        language === "de"
+          ? "Läuferin bindet ihre Haare zusammen mit Bergpanorama im Hintergrund"
+          : "Runner tying up her hair with a mountain panorama in the background",
+      caption: language === "de" ? "Bergpanorama" : "Mountain Views",
+    },
+    {
+      src: "/images/gallery/group-photo-forest.jpg",
+      alt:
+        language === "de"
+          ? "Große Gruppe von Trailrunnern posiert vor dem Waldrand"
+          : "Large group of trail runners posing in front of the forest",
+      caption: language === "de" ? "Die ganze Crew" : "The Whole Crew",
+    },
+    {
+      src: "/images/gallery/breakfast-buffet-indoor.jpg",
+      alt:
+        language === "de"
+          ? "Teilnehmer holen sich Frühstück am Buffet in der Lodge"
+          : "Participants getting breakfast at the lodge buffet",
+      caption: language === "de" ? "Frühstück in der Lodge" : "Lodge Breakfast",
     },
   ]
 
@@ -772,15 +821,15 @@ export default function HomePageClient() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6 }}
-          className="relative z-30 bg-primary py-12 md:py-16"
+          className="relative z-30 bg-black py-12 md:py-16"
         >
           <div className="container">
             <div className="flex flex-col items-start justify-between gap-6 lg:flex-row lg:items-center">
               <div className="flex-1">
                 <h3 className="text-2xl font-bold text-white md:text-3xl mb-2">{t("notifyTitle")}</h3>
-                <p className="text-white/90 text-lg leading-relaxed">{t("notifyDesc")}</p>
+                <p className="text-white/70 text-lg leading-relaxed">{t("notifyDesc")}</p>
               </div>
-              <NotifySignupForm className="w-full max-w-md shrink-0 [&_input]:bg-white [&_input]:text-gray-900 [&_button]:bg-white [&_button]:text-primary [&_button:hover]:bg-white/90" />
+              <NotifySignupForm className="w-full max-w-md shrink-0 [&_input]:bg-white [&_input]:text-gray-900 [&_button]:bg-primary [&_button]:text-white [&_button:hover]:bg-primary/90" />
             </div>
           </div>
         </motion.section>
@@ -858,16 +907,16 @@ export default function HomePageClient() {
           </div>
         </section>
 
-        <section className="bg-primary py-8 md:py-12">
+        <section className="bg-black py-8 md:py-12">
           <div className="container">
             <div className="flex flex-col items-center justify-between gap-6 lg:flex-row">
               <div className="text-center lg:text-left">
                 <h3 className="mb-2 text-xl font-bold text-white md:text-2xl">
                   {language === "de" ? "Bereit für dein Trailrunning Abenteuer?" : "Ready for your trail running adventure?"}
                 </h3>
-                <p className="text-sm text-white/80 md:text-base">{t("notifyDesc")}</p>
+                <p className="text-sm text-white/70 md:text-base">{t("notifyDesc")}</p>
               </div>
-              <NotifySignupForm className="w-full max-w-md shrink-0 [&_input]:bg-white [&_input]:text-gray-900 [&_button]:bg-white [&_button]:text-primary [&_button:hover]:bg-white/90" />
+              <NotifySignupForm className="w-full max-w-md shrink-0 [&_input]:bg-white [&_input]:text-gray-900 [&_button]:bg-primary [&_button]:text-white [&_button:hover]:bg-primary/90" />
             </div>
           </div>
         </section>
@@ -1039,33 +1088,7 @@ export default function HomePageClient() {
               light={true}
             />
 
-            <div className="grid grid-cols-2 gap-4 md:grid-cols-3">
-              {galleryImages.map((image, index) => (
-                <motion.div
-                  key={index}
-                  initial={{ opacity: 0, scale: 0.9 }}
-                  whileInView={{ opacity: 1, scale: 1 }}
-                  viewport={{ once: true }}
-                  transition={{ duration: 0.5, delay: index * 0.1 }}
-                  className="group relative aspect-square overflow-hidden"
-                >
-                  <ImageWithFallback
-                    src={image.src || "/placeholder.svg"}
-                    alt={image.alt}
-                    width={600}
-                    height={600}
-                    className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-110"
-                    fallbackSrc="/placeholder.svg?height=600&width=600"
-                    loading="lazy"
-                    sizes="(max-width: 768px) 50vw, 33vw"
-                  />
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent opacity-0 transition-opacity duration-300 group-hover:opacity-100" />
-                  <div className="absolute bottom-0 left-0 p-4 text-white opacity-0 transition-opacity duration-300 group-hover:opacity-100">
-                    <span className="font-bold text-white">{image.caption}</span>
-                  </div>
-                </motion.div>
-              ))}
-            </div>
+            <MasonryGallery images={galleryImages} />
           </div>
         </section>
 
