@@ -267,52 +267,44 @@ export default function HomePageClient() {
       caption: "Community Vibes",
     },
     {
-      src: "/images/trail-runners-mountain-path.jpg",
+      src: "/images/gallery/summit-celebration-dancing.jpg",
       alt:
         language === "de"
-          ? "Trailrunnerinnen auf einem Bergpfad in Österreich"
-          : "Two female trail runners on mountain path in Austria",
-      caption: language === "de" ? "Trail Abenteuer" : "Trail Adventures",
+          ? "Trailrunner tanzen und feiern gemeinsam auf dem Gipfel"
+          : "Trail runners dancing and celebrating together on the summit",
+      caption: language === "de" ? "Gipfel-Party" : "Summit Party",
     },
     {
-      src: "/images/runner-golden-meadow.jpg",
+      src: "/images/gallery/summit-cross-cheering.jpg",
       alt:
         language === "de"
-          ? "Trailrunner auf Bergwiese in den österreichischen Alpen"
-          : "Trail runner in alpine meadow in Austria",
-      caption: language === "de" ? "Bergfreiheit" : "Mountain Freedom",
+          ? "Läufer jubeln gemeinsam am Gipfelkreuz"
+          : "Runners cheering together at the summit cross",
+      caption: language === "de" ? "Gipfelglück" : "Summit Joy",
     },
     {
-      src: "/images/mountain-trail-aerial.jpg",
+      src: "/images/gallery/mountain-lake-jump.jpg",
       alt:
         language === "de"
-          ? "Luftaufnahme von Trailrunnern auf alpinem Bergpfad"
-          : "Aerial view of trail runners on alpine mountain trail",
-      caption: language === "de" ? "Epische Trails" : "Epic Trails",
+          ? "Teilnehmer springen ausgelassen in einen Bergsee"
+          : "Participants jumping joyfully into a mountain lake",
+      caption: language === "de" ? "Erfrischung im Bergsee" : "Mountain Lake Refresh",
     },
     {
-      src: "/images/forest-runner-celebration.jpg",
+      src: "/images/gallery/group-friends-summit.jpg",
       alt:
         language === "de"
-          ? "Trailrunner feiert im Wald beim Mountaincamp"
-          : "Trail runner celebrating in forest during camp",
-      caption: language === "de" ? "Pure Freude" : "Pure Joy",
+          ? "Gruppe von Freunden lacht gemeinsam auf einem Berggipfel"
+          : "Group of friends laughing together on a mountain summit",
+      caption: language === "de" ? "Neue Freundschaften" : "New Friendships",
     },
     {
-      src: "/images/lodge-terrace-relaxation.jpg",
+      src: "/images/gallery/campfire-marshmallow-evening.jpg",
       alt:
         language === "de"
-          ? "Teilnehmer entspannen nach dem Trailrunning auf der Lodge Terrasse"
-          : "Camp participants relaxing on lodge terrace after trail running",
-      caption: language === "de" ? "Erholungszeit" : "Recovery Time",
-    },
-    {
-      src: "/images/peaceful-terrace-moment.jpg",
-      alt:
-        language === "de"
-          ? "Ruhiger Moment auf der Terrasse der Berghütte in Hochkrimml"
-          : "Peaceful moment on mountain lodge terrace in Hochkrimml",
-      caption: language === "de" ? "Ruhige Momente" : "Peaceful Moments",
+          ? "Teilnehmerin lacht am Lagerfeuer beim Marshmallow-Rösten"
+          : "Participant laughing by the campfire while roasting marshmallows",
+      caption: language === "de" ? "Lagerfeuerabend" : "Campfire Evening",
     },
     {
       src: "/images/gallery/runners-resting-altra-poufs.jpg",
