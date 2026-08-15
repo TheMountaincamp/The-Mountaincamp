@@ -4,7 +4,7 @@ import { useState, useEffect } from "react"
 import Image from "next/image"
 import Link from "next/link"
 import { motion } from "framer-motion"
-import { ArrowLeft, Bus, Clock, MapPin, Calendar } from "lucide-react"
+import { ArrowLeft, Bus, MapPin, Calendar } from "lucide-react"
 import { useLanguage } from "@/contexts/language-context"
 
 export default function BusDeparturesPage() {
@@ -19,44 +19,25 @@ export default function BusDeparturesPage() {
     {
       city: "Berlin",
       departure: {
-        time: "06:35",
         location: "Hauptbahnhof (HBF)",
-        description: {
-          en: "Departure at 6:35am from Central Station",
-          de: "Abfahrt um 6:35 Uhr vom Hauptbahnhof",
-        },
       },
-      capacity: { sold: 30, total: 30 },
     },
     {
       city: "Munich",
       departure: {
-        time: "12:30",
         location: "Zentraler Omnibusbahnhof (ZOB)",
-        description: {
-          en: "Departure at 12:30pm from Central Bus Station",
-          de: "Abfahrt um 12:30 Uhr vom Zentralen Omnibusbahnhof",
-        },
       },
-      capacity: { sold: 16, total: 20 },
     },
     {
       city: "Jenbach",
       departure: {
-        time: "14:30",
         location: "Hauptbahnhof (HBF)",
-        description: {
-          en: "Departure at 2:30pm from Central Station",
-          de: "Abfahrt um 14:30 Uhr vom Hauptbahnhof",
-        },
       },
-      capacity: { sold: 14, total: 15 },
     },
   ]
 
   const returnSchedule = [
     {
-      time: "09:00",
       location: "Hochkrimml",
       description: {
         en: "Departure from The Mountaincamp",
@@ -64,7 +45,6 @@ export default function BusDeparturesPage() {
       },
     },
     {
-      time: "10:30",
       location: "Jenbach",
       description: {
         en: "Arrival at Jenbach Station",
@@ -72,7 +52,6 @@ export default function BusDeparturesPage() {
       },
     },
     {
-      time: "12:30",
       location: "Munich",
       description: {
         en: "Arrival at Munich Station",
@@ -80,7 +59,6 @@ export default function BusDeparturesPage() {
       },
     },
     {
-      time: "14:21",
       location: "Munich",
       description: {
         en: "Train departure from Munich to Berlin",
@@ -88,7 +66,6 @@ export default function BusDeparturesPage() {
       },
     },
     {
-      time: "18:22",
       location: "Berlin",
       description: {
         en: "Arrival in Berlin",
@@ -206,42 +183,7 @@ export default function BusDeparturesPage() {
                   </div>
 
                   <div className="space-y-3">
-                    <div className="flex items-center gap-2 text-primary">
-                      <Clock className="h-4 w-4" />
-                      <span className="text-lg font-bold text-white">{route.departure.time}</span>
-                    </div>
-
                     <p className="text-sm font-medium text-white/80">{route.departure.location}</p>
-                    <p className="text-sm text-white/70">{route.departure.description[language]}</p>
-
-                    <div className="border-t border-gray-600 pt-3">
-                      <div className="mb-2 flex items-center justify-between text-sm">
-                        <span className="text-white/70">
-                          {language === "de" ? "Kapazität" : "Capacity"}
-                        </span>
-                        <span className="font-medium text-white">
-                          {route.capacity.sold} / {route.capacity.total}{" "}
-                          {language === "de" ? "gebucht" : "sold"}
-                        </span>
-                      </div>
-
-                      <div className="h-2 w-full rounded-full bg-gray-700">
-                        <div
-                          className={`h-2 rounded-full transition-all ${route.capacity.sold / route.capacity.total > 0.8
-                              ? "bg-red-500"
-                              : route.capacity.sold / route.capacity.total > 0.5
-                                ? "bg-yellow-500"
-                                : "bg-primary"
-                            }`}
-                          style={{ width: `${(route.capacity.sold / route.capacity.total) * 100}%` }}
-                        />
-                      </div>
-
-                      <p className="mt-1 text-xs text-white/50">
-                        {route.capacity.total - route.capacity.sold}{" "}
-                        {language === "de" ? "Plätze verfügbar" : "seats available"}
-                      </p>
-                    </div>
                   </div>
                 </motion.div>
               ))}
@@ -263,14 +205,14 @@ export default function BusDeparturesPage() {
               <div className="space-y-6">
                 {returnSchedule.map((stop, index) => (
                   <motion.div
-                    key={`${stop.location}-${stop.time}`}
+                    key={`${stop.location}-${index}`}
                     className="flex items-center gap-6 bg-black/30 p-4"
                     initial={{ opacity: 0, x: -20 }}
                     animate={{ opacity: isLoaded ? 1 : 0, x: isLoaded ? 0 : -20 }}
                     transition={{ duration: 0.5, delay: 0.5 + index * 0.1 }}
                   >
                     <div className="flex h-16 w-16 items-center justify-center rounded-full bg-primary/20">
-                      <span className="font-bold text-primary">{stop.time}</span>
+                      <MapPin className="h-6 w-6 text-primary" />
                     </div>
 
                     <div className="flex-1">
