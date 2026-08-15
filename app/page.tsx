@@ -1,48 +1,57 @@
 import type { Metadata } from "next"
 import Script from "next/script"
-import BusDeparturesClient from "./bus-departures-client"
+import HomePageClient from "./home-page-client"
 
 export const metadata: Metadata = {
-  title: "Anreise & Bus-Shuttle | The Mountaincamp 2027 Hochkrimml",
+  title: "The Mountaincamp 2027 | Trailrunning Camp Österreich in Hochkrimml",
   description:
-    "Bus-Shuttle zum Trailrunning Camp in Hochkrimml: Abfahrten ab Berlin, München und Jenbach zum Mountaincamp 2027 (18.–22. August). Hin- und Rückfahrt inklusive.",
+    "5-tägiges Trailrunning Camp in den österreichischen Alpen. Geführte Trailruns, Techniktraining, Community, Workshops und Erholung in Hochkrimml – für Anfänger bis Fortgeschrittene. 18.-22. August 2027.",
   keywords: [
-    "Anreise Mountaincamp",
-    "Bus Hochkrimml",
-    "Shuttle Trailrunning Camp",
-    "Bus München Hochkrimml",
-    "Bus Berlin Österreich Trailrunning",
-    "Anreise Trailrunning Camp Österreich",
-    "Jenbach Hochkrimml Transfer",
-    "The Mountaincamp 2027 Transport",
+    "Trailrunning Camp",
+    "Trailrunning Camp Österreich",
+    "Trail Running Camp Austria",
+    "Mountaincamp",
+    "The Mountaincamp",
+    "Hochkrimml",
+    "Trailrunning Anfänger",
+    "Trailrunning Alpen",
+    "Laufcamp Österreich",
+    "Trail Running Workshop",
+    "Trailrunning Community",
   ],
-  alternates: {
-    canonical: "/bus-departures",
-  },
+  authors: [{ name: "The Mountaincamp" }],
+  creator: "The Mountaincamp",
+  publisher: "The Mountaincamp",
   openGraph: {
-    title: "Anreise & Bus-Shuttle | The Mountaincamp 2027",
+    title: "The Mountaincamp 2027 | Trailrunning Camp Österreich",
     description:
-      "Bus-Shuttle ab Berlin, München und Jenbach zum Trailrunning Camp in Hochkrimml. 18.–22. August 2027, Hin- und Rückfahrt inklusive.",
-    url: "https://themountaincamp.de/bus-departures",
+      "5 Tage Trailrunning, Community und Abenteuer in den österreichischen Alpen. Hochkrimml, 18.-22. August 2027.",
+    url: "https://themountaincamp.de",
     siteName: "The Mountaincamp",
     images: [
       {
-        url: "/images/bus-mountain-landscape.jpeg",
+        url: "https://themountaincamp.de/images/hero-trail-runners.jpeg",
         width: 1200,
         height: 630,
-        alt: "Bus-Shuttle durch die österreichischen Alpen zum Mountaincamp",
+        alt: "Trailrunning Camp Österreich - The Mountaincamp 2027",
       },
     ],
     locale: "de_DE",
-    alternateLocale: ["en_US"],
     type: "website",
   },
   twitter: {
     card: "summary_large_image",
-    title: "Anreise & Bus-Shuttle | The Mountaincamp 2027",
+    title: "The Mountaincamp 2027 | Trailrunning Camp Österreich",
     description:
-      "Bus-Shuttle ab Berlin, München und Jenbach zum Trailrunning Camp in Hochkrimml, 18.–22. August 2027.",
-    images: ["/images/bus-mountain-landscape.jpeg"],
+      "5 Tage Trailrunning, Community und Abenteuer in den österreichischen Alpen. Hochkrimml, 18.-22. August 2027.",
+    images: ["https://themountaincamp.de/images/hero-trail-runners.jpeg"],
+  },
+  alternates: {
+    canonical: "https://themountaincamp.de",
+    languages: {
+      "de-DE": "https://themountaincamp.de",
+      "en-US": "https://themountaincamp.de",
+    },
   },
   robots: {
     index: true,
@@ -50,9 +59,97 @@ export const metadata: Metadata = {
     googleBot: {
       index: true,
       follow: true,
+      "max-video-preview": -1,
       "max-image-preview": "large",
       "max-snippet": -1,
     },
+  },
+}
+
+const eventStructuredData = {
+  "@context": "https://schema.org",
+  "@type": "SportsEvent",
+  name: "The Mountaincamp 2027",
+  alternateName: [
+    "The Mountaincamp",
+    "Trailrunning Camp Austria",
+    "Trailrunning Camp Österreich",
+    "Trail Running Camp Austria",
+  ],
+  description:
+    "A 5-day trail running camp in Hochkrimml, Austria, for beginners, intermediate runners and experienced athletes. Trails, coaching, community and workshops in the Austrian Alps.",
+  sport: "Trail Running",
+  startDate: "2027-08-18",
+  endDate: "2027-08-22",
+  eventStatus: "https://schema.org/EventScheduled",
+  eventAttendanceMode: "https://schema.org/OfflineEventAttendanceMode",
+  location: {
+    "@type": "Place",
+    name: "Hochkrimml, Austrian Alps",
+    address: {
+      "@type": "PostalAddress",
+      streetAddress: "Hochkrimml",
+      addressLocality: "Hochkrimml",
+      addressRegion: "Salzburg",
+      postalCode: "5743",
+      addressCountry: "AT",
+    },
+    geo: {
+      "@type": "GeoCoordinates",
+      latitude: 47.2393,
+      longitude: 12.1735,
+    },
+  },
+  image: [
+    "https://themountaincamp.de/images/hero-trail-runners.jpeg",
+    "https://themountaincamp.de/images/alpine-village-group.jpg",
+    "https://themountaincamp.de/images/mountain-summit.jpeg",
+  ],
+  offers: {
+    "@type": "Offer",
+    availability: "https://schema.org/PreOrder",
+    url: "https://themountaincamp.de",
+  },
+  organizer: {
+    "@type": "Organization",
+    name: "The Mountaincamp",
+    url: "https://themountaincamp.de",
+    logo: "https://themountaincamp.de/images/mountaincamp-logo-black.png",
+    sameAs: [
+      "https://www.instagram.com/the_mountaincamp/",
+      "https://www.youtube.com/@the_mountaincamp",
+      "https://www.tiktok.com/@themountaincamp",
+    ],
+  },
+  performer: {
+    "@type": "Organization",
+    name: "The Mountaincamp Coaching Team",
+  },
+}
+
+const organizationStructuredData = {
+  "@context": "https://schema.org",
+  "@type": "Organization",
+  name: "The Mountaincamp",
+  url: "https://themountaincamp.de",
+  logo: "https://themountaincamp.de/images/mountaincamp-logo-black.png",
+  image: "https://themountaincamp.de/images/hero-trail-runners.jpeg",
+  address: {
+    "@type": "PostalAddress",
+    addressLocality: "Hochkrimml",
+    addressRegion: "Salzburg",
+    addressCountry: "AT",
+  },
+  sameAs: [
+    "https://www.instagram.com/the_mountaincamp/",
+    "https://www.youtube.com/@the_mountaincamp",
+    "https://www.tiktok.com/@themountaincamp",
+  ],
+  contactPoint: {
+    "@type": "ContactPoint",
+    email: "themountaincampde@gmail.com",
+    contactType: "Customer Service",
+    availableLanguage: ["German", "English"],
   },
 }
 
@@ -69,186 +166,91 @@ const breadcrumbStructuredData = {
     {
       "@type": "ListItem",
       position: 2,
-      name: "Anreise & Transport",
-      item: "https://themountaincamp.de/bus-departures",
+      name: "The Mountaincamp",
+      item: "https://themountaincamp.de",
     },
   ],
 }
 
-const busTripsStructuredData = {
-  "@context": "https://schema.org",
-  "@type": "ItemList",
-  name: "Bus-Shuttle Hinfahrt – The Mountaincamp 2027",
-  itemListElement: [
-    {
-      "@type": "ListItem",
-      position: 1,
-      item: {
-        "@type": "BusTrip",
-        name: "Bus-Shuttle Berlin – Hochkrimml",
-        departureTime: "2027-08-18T06:35:00+02:00",
-        departureBusStop: {
-          "@type": "BusStation",
-          name: "Berlin Hauptbahnhof",
-          address: {
-            "@type": "PostalAddress",
-            addressLocality: "Berlin",
-            addressCountry: "DE",
-          },
-        },
-        arrivalBusStop: {
-          "@type": "BusStation",
-          name: "Hochkrimml",
-          address: {
-            "@type": "PostalAddress",
-            addressLocality: "Hochkrimml",
-            addressRegion: "Salzburg",
-            addressCountry: "AT",
-          },
-        },
-        provider: {
-          "@type": "Organization",
-          name: "The Mountaincamp",
-          url: "https://themountaincamp.de",
-        },
-      },
-    },
-    {
-      "@type": "ListItem",
-      position: 2,
-      item: {
-        "@type": "BusTrip",
-        name: "Bus-Shuttle München – Hochkrimml",
-        departureTime: "2027-08-18T12:30:00+02:00",
-        departureBusStop: {
-          "@type": "BusStation",
-          name: "München Zentraler Omnibusbahnhof (ZOB)",
-          address: {
-            "@type": "PostalAddress",
-            addressLocality: "München",
-            addressCountry: "DE",
-          },
-        },
-        arrivalBusStop: {
-          "@type": "BusStation",
-          name: "Hochkrimml",
-          address: {
-            "@type": "PostalAddress",
-            addressLocality: "Hochkrimml",
-            addressRegion: "Salzburg",
-            addressCountry: "AT",
-          },
-        },
-        provider: {
-          "@type": "Organization",
-          name: "The Mountaincamp",
-          url: "https://themountaincamp.de",
-        },
-      },
-    },
-    {
-      "@type": "ListItem",
-      position: 3,
-      item: {
-        "@type": "BusTrip",
-        name: "Bus-Shuttle Jenbach – Hochkrimml",
-        departureTime: "2027-08-18T14:30:00+02:00",
-        departureBusStop: {
-          "@type": "BusStation",
-          name: "Bahnhof Jenbach",
-          address: {
-            "@type": "PostalAddress",
-            addressLocality: "Jenbach",
-            addressRegion: "Tirol",
-            addressCountry: "AT",
-          },
-        },
-        arrivalBusStop: {
-          "@type": "BusStation",
-          name: "Hochkrimml",
-          address: {
-            "@type": "PostalAddress",
-            addressLocality: "Hochkrimml",
-            addressRegion: "Salzburg",
-            addressCountry: "AT",
-          },
-        },
-        provider: {
-          "@type": "Organization",
-          name: "The Mountaincamp",
-          url: "https://themountaincamp.de",
-        },
-      },
-    },
-  ],
-}
-
-const transportFaqStructuredData = {
+const faqStructuredData = {
   "@context": "https://schema.org",
   "@type": "FAQPage",
   mainEntity: [
     {
       "@type": "Question",
-      name: "Von welchen Städten fährt der Bus zum Mountaincamp?",
+      name: "Was ist The Mountaincamp?",
       acceptedAnswer: {
         "@type": "Answer",
-        text: "Für das Mountaincamp 2027 gibt es Shuttles ab Berlin Hauptbahnhof (6:35 Uhr), München ZOB (12:30 Uhr) und Bahnhof Jenbach (14:30 Uhr). Alle drei Busse fahren am Anreisetag, dem 18. August 2027.",
+        text: "The Mountaincamp ist ein 5-tägiges Trailrunning Camp in Hochkrimml, Österreich, für Anfänger, Fortgeschrittene und ambitionierte Läufer. Es kombiniert tägliche Trailruns, Techniktraining, Workshops und Community-Events in den österreichischen Alpen.",
       },
     },
     {
       "@type": "Question",
-      name: "Ist die Rückfahrt im Bus-Ticket enthalten?",
+      name: "Wann und wo findet das Camp statt?",
       acceptedAnswer: {
         "@type": "Answer",
-        text: "Ja. Die Buchung umfasst immer Hin- und Rückfahrt. Am Abreisetag, dem 22. August 2027, startet der Bus um 9:00 Uhr in Hochkrimml.",
+        text: "Das Mountaincamp 2027 findet vom 18. bis 22. August in Hochkrimml in den österreichischen Alpen (Salzburg) statt.",
       },
     },
     {
       "@type": "Question",
-      name: "Wie lange dauert die Rückfahrt nach Berlin?",
+      name: "Ist das Camp für Anfänger geeignet?",
       acceptedAnswer: {
         "@type": "Answer",
-        text: "Ab Hochkrimml um 9:00 Uhr, Ankunft München 12:30 Uhr, Zuganschluss um 14:21 Uhr und Ankunft in Berlin um 18:22 Uhr. Insgesamt rund neun Stunden inklusive Umstieg.",
+        text: "Ja, das Camp ist für alle Level geeignet – von Trailrunning-Anfängern bis zu erfahrenen Athleten. Es gibt verschiedene Laufgruppen und Routen für jedes Fitnesslevel.",
       },
     },
     {
       "@type": "Question",
-      name: "Was kostet das Bus-Ticket zum Trailrunning Camp?",
+      name: "Was kostet die Teilnahme am Mountaincamp?",
       acceptedAnswer: {
         "@type": "Answer",
-        text: "Die Bustickets werden separat zum Camp-Ticket gebucht. Die aktuellen Preise stehen auf der Buchungsseite, sobald der Ticketverkauf für 2027 startet.",
+        text: "Die Preise für 2027 geben wir bekannt, sobald der Ticketverkauf startet. Im Paket enthalten sind Unterkunft, Verpflegung, alle Aktivitäten, Workshops und das komplette Camp-Programm. Trag dich für die Early-Bird-Benachrichtigung ein, um als Erste:r informiert zu werden.",
       },
     },
     {
       "@type": "Question",
-      name: "Kann ich auch mit dem eigenen Auto anreisen?",
+      name: "Welche Aktivitäten gibt es neben dem Trailrunning?",
       acceptedAnswer: {
         "@type": "Answer",
-        text: "Ja, eine Anreise mit dem eigenen Auto nach Hochkrimml ist möglich. Am Camp stehen Parkplätze zur Verfügung. Wer Mitfahrgelegenheiten sucht, findet diese in unserer Community-Gruppe.",
+        text: "Neben den täglichen Trailruns gibt es Yoga, Workshops (Töpfern, Aquarellmalerei, Stricken), MTB-Touren, Kanufahren, Bogenschießen, Klettern, Filmabende, Lagerfeuer und die legendäre Sunset Rave Party.",
+      },
+    },
+    {
+      "@type": "Question",
+      name: "Wie komme ich zum Camp?",
+      acceptedAnswer: {
+        "@type": "Answer",
+        text: "Es gibt organisierte Busshuttles von verschiedenen deutschen Städten (München, Stuttgart, Hamburg, Frankfurt, Köln) nach Hochkrimml. Alternativ ist eine Anreise mit dem eigenen Auto möglich.",
       },
     },
   ],
 }
 
-export default function BusDeparturesPage() {
+export default function Home() {
   return (
     <>
       <Script
-        id="structured-data-transport-breadcrumb"
+        id="structured-data-event"
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(eventStructuredData) }}
+      />
+      <Script
+        id="structured-data-organization"
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(organizationStructuredData) }}
+      />
+      <Script
+        id="structured-data-breadcrumb"
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbStructuredData) }}
       />
       <Script
-        id="structured-data-bus-trips"
+        id="structured-data-faq"
         type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(busTripsStructuredData) }}
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(faqStructuredData) }}
       />
-      <Script
-        id="structured-data-transport-faq"
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(transportFaqStructuredData) }}
-      />
-      <BusDeparturesClient />
+      <HomePageClient />
     </>
   )
 }
