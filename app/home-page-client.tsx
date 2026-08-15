@@ -25,6 +25,7 @@ import SectionTitle from "@/app/components/section-title"
 import ActivityCardMobile from "@/app/components/activity-card-mobile"
 import LanguageSwitcher from "@/app/components/language-switcher"
 import NotifySignupForm from "@/app/components/notify-signup-form"
+import EarlyBirdBanner from "@/app/components/early-bird-banner"
 import ImageWithFallback from "@/app/components/image-with-fallback"
 import ImagePreloader from "@/app/components/image-preloader"
 import PreloadLink from "@/app/components/preload-link"
@@ -492,10 +493,12 @@ export default function HomePageClient() {
           <div className="flex items-center justify-between gap-3">
             <div className="flex-1">
               <p className="text-sm font-bold text-white">
-                {language === "de" ? "Sei als Erste:r dabei!" : "Be the first to know!"}
+                {language === "de" ? "Early-Bird-Tickets" : "Early-bird tickets"}
               </p>
               <p className="text-xs text-white/60">
-                {language === "de" ? "Anmeldung startet in Kürze" : "Registration opens soon"}
+                {language === "de"
+                  ? "Sonntag, 16. August, 12:00 – 24:00 Uhr"
+                  : "Sunday, 16 August, 12:00 – 24:00 CEST"}
               </p>
             </div>
             <Button
@@ -503,7 +506,7 @@ export default function HomePageClient() {
               className="whitespace-nowrap bg-primary px-4 py-2 font-bold text-white hover:bg-primary/90"
               asChild
             >
-              <a href="#register">{language === "de" ? "Benachrichtigen" : "Notify me"}</a>
+              <a href="#register">{language === "de" ? "Erinnern" : "Remind me"}</a>
             </Button>
           </div>
         </motion.div>
@@ -753,12 +756,12 @@ export default function HomePageClient() {
                 transition={{ delay: 1, duration: 0.8 }}
                 className="mt-6 flex justify-center"
               >
-                <span className="inline-flex items-center gap-2 rounded-full border border-white/30 bg-white/10 px-4 py-2 text-xs font-semibold uppercase tracking-wide text-white backdrop-blur-sm md:text-sm">
+                <span className="inline-flex items-center gap-2 border border-primary/60 bg-primary/25 px-4 py-2 text-xs font-semibold uppercase tracking-wide text-white backdrop-blur-sm md:text-sm">
                   <span className="relative flex h-2 w-2">
-                    <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-primary opacity-75" />
-                    <span className="relative inline-flex h-2 w-2 rounded-full bg-primary" />
+                    <span className="absolute inline-flex h-full w-full animate-ping bg-primary opacity-75" />
+                    <span className="relative inline-flex h-2 w-2 bg-primary" />
                   </span>
-                  {t("comingSoonBadge")}
+                  {t("earlyBirdBadge")}
                 </span>
               </motion.div>
             </div>

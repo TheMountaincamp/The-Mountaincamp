@@ -5,7 +5,7 @@ import HomePageClient from "./home-page-client"
 export const metadata: Metadata = {
   title: "The Mountaincamp 2027 | Trailrunning Camp Österreich in Hochkrimml",
   description:
-    "5-tägiges Trailrunning Camp in den österreichischen Alpen. Geführte Trailruns, Techniktraining, Community, Workshops und Erholung in Hochkrimml – für Anfänger bis Fortgeschrittene. 18.-22. August 2027.",
+    "Early-Bird-Tickets am Sonntag, 16. August, 12–24 Uhr. 5-tägiges Trailrunning Camp in den österreichischen Alpen: tägliche Trailruns, Techniktraining, Community und Workshops in Hochkrimml, 18.–22. August 2027.",
   keywords: [
     "Trailrunning Camp",
     "Trailrunning Camp Österreich",
@@ -18,6 +18,8 @@ export const metadata: Metadata = {
     "Laufcamp Österreich",
     "Trail Running Workshop",
     "Trailrunning Community",
+    "Mountaincamp Early Bird",
+    "Mountaincamp Tickets 2027",
   ],
   authors: [{ name: "The Mountaincamp" }],
   creator: "The Mountaincamp",
@@ -107,8 +109,12 @@ const eventStructuredData = {
   ],
   offers: {
     "@type": "Offer",
+    name: "Early-Bird-Ticket",
     availability: "https://schema.org/PreOrder",
     url: "https://themountaincamp.de",
+    validFrom: "2026-08-16T12:00:00+02:00",
+    validThrough: "2026-08-17T00:00:00+02:00",
+    priceCurrency: "EUR",
   },
   organizer: {
     "@type": "Organization",
@@ -202,10 +208,10 @@ const faqStructuredData = {
     },
     {
       "@type": "Question",
-      name: "Was kostet die Teilnahme am Mountaincamp?",
+      name: "Wann startet der Ticketverkauf für das Mountaincamp 2027?",
       acceptedAnswer: {
         "@type": "Answer",
-        text: "Die Preise für 2027 geben wir bekannt, sobald der Ticketverkauf startet. Im Paket enthalten sind Unterkunft, Verpflegung, alle Aktivitäten, Workshops und das komplette Camp-Programm. Trag dich für die Early-Bird-Benachrichtigung ein, um als Erste:r informiert zu werden.",
+        text: "Die Early-Bird-Tickets für das Mountaincamp 2027 werden am Sonntag, dem 16. August, von 12:00 bis 24:00 Uhr verkauft. Das Kontingent ist begrenzt und nur in diesem Zeitfenster zum Early-Bird-Preis verfügbar.",
       },
     },
     {
