@@ -479,6 +479,9 @@ export default function HomePageClient() {
     <div className="min-h-screen w-full overflow-x-hidden bg-white">
       <ImagePreloader imageSources={SECTION_IMAGES} onComplete={() => { }} />
 
+      <EarlyBirdBanner />
+
+
 
       {isMobile && hasScrolled && (
         <motion.div
