@@ -144,6 +144,10 @@ export default function HomePageClient() {
   const [currentActivityIndex, setCurrentActivityIndex] = useState(0)
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
   const [hasScrolled, setHasScrolled] = useState(false)
+  // Aktuelle Höhe des Early-Bird-Banners (0, solange es ausgeblendet ist).
+  // Der Header wird um diesen Wert nach unten versetzt, damit er nie vom
+  // Banner verdeckt wird und das Menü immer nutzbar bleibt.
+  const [bannerHeight, setBannerHeight] = useState(0)
 
   const videoRef = useRef<HTMLVideoElement>(null)
   const heroRef = useRef(null)
@@ -481,7 +485,7 @@ export default function HomePageClient() {
     <div className="min-h-screen w-full overflow-x-hidden bg-white">
       <ImagePreloader imageSources={SECTION_IMAGES} onComplete={() => { }} />
 
-      <EarlyBirdBanner />
+      <EarlyBirdBanner onHeightChange={setBannerHeight} />
 
 
 
@@ -513,7 +517,10 @@ export default function HomePageClient() {
         </motion.div>
       )}
 
-      <header className="absolute top-0 z-50 w-full bg-transparent">
+      <header
+        className="absolute z-50 w-full bg-transparent transition-[top] duration-300"
+        style={{ top: bannerHeight }}
+      >
         <div className="container flex h-20 items-center justify-between">
           <div className="flex items-center">
             <div className={`relative ${isMobile ? "h-10 w-32" : "h-14 w-auto"}`}>

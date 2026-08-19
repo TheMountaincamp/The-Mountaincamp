@@ -1,6 +1,6 @@
 "use client"
 
-import { useEffect, useState } from "react"
+import { useEffect, useRef, useState } from "react"
 import Link from "next/link"
 import { motion, AnimatePresence, useReducedMotion } from "framer-motion"
 import { Ticket, Clock } from "lucide-react"
@@ -71,18 +71,68 @@ function Unit({ value, label }: { value: number; label: string }) {
   )
 }
 
-export default function EarlyBirdBanner() {
+interface EarlyBirdBannerProps {
+  /**
+   * Verzögerung in Millisekunden, bevor das Banner überhaupt eingeblendet
+   * wird. Standard: 10 Sekunden, damit Besucher zuerst die Seite bzw. das
+   * Header-Menü ohne Überlappung nutzen können.
+   */
+  delayMs?: number
+  /**
+   * Meldet die aktuell gerenderte Höhe des Banners (0, solange es
+   * ausgeblendet ist) nach oben, damit z. B. der fixierte Header darunter
+   * platziert werden kann statt vom Banner verdeckt zu werden.
+   */
+  onHeightChange?: (height: number) => void
+}
+
+export default function EarlyBirdBanner({ delayMs = 10_000, onHeightChange }: EarlyBirdBannerProps = {}) {
   const { language } = useLanguage()
   const prefersReducedMotion = useReducedMotion()
   const c = COPY[language]
   const earlyBirdLabel = EARLY_BIRD_LABEL[language]
   const phase2Label = PHASE_2_LABEL[language]
+  const rootRef = useRef<HTMLElement | null>(null)
 
   // mounted-Gate: Der Countdown darf erst nach der Hydration rechnen,
   // sonst rendert der Server eine andere Sekundenzahl als der Client.
   const [mounted, setMounted] = useState(false)
+  // Verzögert das Einblenden des Banners, damit die Seite (inkl.
+  // Header-Menü) erst ungestört sichtbar ist, bevor das Banner erscheint.
+  const [armed, setArmed] = useState(false)
   const [phase, setPhase] = useState<OverallPhase>("earlybird-upcoming")
   const [parts, setParts] = useState<Parts | null>(null)
+
+  useEffect(() => {
+    const timer = window.setTimeout(() => setArmed(true), delayMs)
+    return () => window.clearTimeout(timer)
+  }, [delayMs])
+
+  // Meldet die Banner-Höhe (0 solange nicht sichtbar) nach oben, damit der
+  // Header immer unterhalb des Banners bleibt und nutzbar ist.
+  useEffect(() => {
+    if (!onHeightChange) return
+    if (!armed) {
+      onHeightChange(0)
+      return
+    }
+
+    const el = rootRef.current
+    if (!el) return
+
+    const report = () => onHeightChange(el.offsetHeight)
+    report()
+
+    const resizeObserver = new ResizeObserver(report)
+    resizeObserver.observe(el)
+    window.addEventListener("resize", report)
+
+    return () => {
+      resizeObserver.disconnect()
+      window.removeEventListener("resize", report)
+      onHeightChange(0)
+    }
+  }, [armed, onHeightChange])
 
   useEffect(() => {
     setMounted(true)
@@ -135,8 +185,13 @@ export default function EarlyBirdBanner() {
   const cta = isLive ? c.ctaLive : isEnded ? c.ctaEnded : c.ctaUpcoming
   const href = isLive ? TICKET_URL : "#register"
 
+  // Vor Ablauf der Verzögerung wird nichts gerendert: Die Seite (inkl.
+  // Header-Menü) bleibt zunächst ungestört nutzbar.
+  if (!armed) return null
+
   return (
     <motion.aside
+      ref={rootRef}
       initial={prefersReducedMotion ? false : { y: -24, opacity: 0 }}
       animate={{ y: 0, opacity: 1 }}
       transition={{ duration: 0.4, ease: "easeOut" }}
