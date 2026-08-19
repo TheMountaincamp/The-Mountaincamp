@@ -498,12 +498,12 @@ export default function HomePageClient() {
           <div className="flex items-center justify-between gap-3">
             <div className="flex-1">
               <p className="text-sm font-bold text-white">
-                {language === "de" ? "Early-Bird-Tickets" : "Early-bird tickets"}
+                {language === "de" ? "Early Bird ist vorbei" : "Early bird is over"}
               </p>
               <p className="text-xs text-white/60">
                 {language === "de"
-                  ? "Sonntag, 16. August, 12:00 – 24:00 Uhr · Phase 2: Mi, 26.8. für 500€"
-                  : "Sunday, 16 August, 12:00 – 24:00 CEST · Phase 2: Wed 26 Aug for €500"}
+                  ? "Phase 2: Mi, 26.8. für 500€"
+                  : "Phase 2: Wed 26 Aug for €500"}
               </p>
             </div>
             <Button

@@ -23,7 +23,7 @@ const COPY = {
   de: {
     earlybirdUpcomingTitle: "Early-Bird-Tickets",
     earlybirdLiveTitle: "Early-Bird-Verkauf läuft",
-    phase2UpcomingTitle: "Phase 2 startet in Kürze",
+    phase2UpcomingTitle: "Early Bird ist vorbei · Phase 2 startet in Kürze",
     phase2LiveTitle: `Phase 2 läuft · ${PHASE_2_PRICE}€`,
     endedTitle: "Ticketverkauf beendet",
     endedText: "Trag dich ein, wir melden uns beim nächsten Ticket-Release.",
@@ -41,7 +41,7 @@ const COPY = {
   en: {
     earlybirdUpcomingTitle: "Early-bird tickets",
     earlybirdLiveTitle: "Early-bird sale is live",
-    phase2UpcomingTitle: "Phase 2 starts soon",
+    phase2UpcomingTitle: "Early bird is over · Phase 2 starts soon",
     phase2LiveTitle: `Phase 2 is live · ${PHASE_2_PRICE}€`,
     endedTitle: "Ticket sale has ended",
     endedText: "Sign up and we'll let you know about the next ticket release.",

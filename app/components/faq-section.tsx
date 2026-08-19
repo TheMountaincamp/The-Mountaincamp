@@ -70,7 +70,7 @@ export default function FAQSection() {
     {
       question: "Was ist im Preis von The Mountaincamp enthalten?",
       answer:
-        "Das Paket inkludiert 4 Nächte Unterkunft in unserem gemütlichen Berghaus, Halbpension mit zwei Mahlzeiten täglich (Frühstück und Abendessen) und geführte Trailrunning-Touren durch die Alpen. Die genauen Preise geben wir bekannt, sobald der Ticketverkauf startet – trag dich für die Early-Bird-Benachrichtigung ein, um nichts zu verpassen.",
+        "Das Paket inkludiert 4 Nächte Unterkunft in unserem gemütlichen Berghaus, Verpflegung mit Frühstück, kleinem Lunch und Abendessen sowie geführte Trailrunning-Touren durch die Alpen. Die genauen Preise geben wir bekannt, sobald der Ticketverkauf startet – trag dich für die Benachrichtigung ein, um nichts zu verpassen.",
     },
     {
       question: "Wie schwierig sind die Trails bei The Mountaincamp?",
@@ -153,7 +153,7 @@ export default function FAQSection() {
     {
       question: "What's included in The Mountaincamp price?",
       answer:
-        "The package includes 4 nights accommodation in our cozy mountain house, half board with two meals daily (breakfast and dinner), and guided trail running tours through the Alps. We'll announce exact pricing once tickets go on sale — sign up for the early-bird notification so you don't miss it.",
+        "The package includes 4 nights accommodation in our cozy mountain house, meals with breakfast, a small lunch and dinner, and guided trail running tours through the Alps. We'll announce exact pricing once tickets go on sale — sign up for the notification so you don't miss it.",
     },
     {
       question: "How difficult are the trails at The Mountaincamp?",
