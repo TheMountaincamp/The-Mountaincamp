@@ -263,7 +263,7 @@ export const translations = {
     bookSpot: "Be the First to Know",
     bookDesc: "Sign up and we'll notify you the moment early-bird tickets go on sale.",
     comingSoonBadge: "Registration opens soon",
-    earlyBirdBadge: "Early bird: Sunday 16 August, 12:00–24:00 · Phase 2: Wednesday 26 August for €500",
+    earlyBirdBadge: "Phase 2: Wednesday 26 August for €500",
     notifyTitle: "Early-bird sale: Sunday, 16 August",
     notifyDesc: "Early-bird tickets for The Mountaincamp 2027 are available on Sunday, 16 August only, from 12:00 to 24:00 CEST. Phase 2 follows on Wednesday, 26 August, from 00:00 to 24:00 CEST for €500. Leave your email and we'll remind you before both dates.",
     notifyPlaceholder: "Your email address",
