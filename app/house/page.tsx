@@ -45,7 +45,7 @@ export default function HousePage() {
     },
     {
       icon: <Utensils className="h-6 w-6" />,
-      title: "Breakfast, Lunch & Dinner",
+      title: "Breakfast, small Lunch & Dinner",
       description: {
         en: "Three meals per day included",
         de: "Drei Mahlzeiten pro Tag inklusive",

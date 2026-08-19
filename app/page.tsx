@@ -5,7 +5,7 @@ import HomePageClient from "./home-page-client"
 export const metadata: Metadata = {
   title: "The Mountaincamp 2027 | Trailrunning Camp Österreich in Hochkrimml",
   description:
-    "Early-Bird-Tickets am Sonntag, 16. August, 12–24 Uhr. Phase 2 startet am Mittwoch, 26. August, 00–24 Uhr, für 500€. 5-tägiges Trailrunning Camp in den österreichischen Alpen: tägliche Trailruns, Techniktraining, Community und Workshops in Hochkrimml, 18.–22. August 2027.",
+    "Early-Bird-Verkauf ist vorbei. Phase 2 startet am Mittwoch, 26. August, 00–24 Uhr, für 500€. 5-tägiges Trailrunning Camp in den österreichischen Alpen: tägliche Trailruns, Techniktraining, Community und Workshops in Hochkrimml, 18.–22. August 2027.",
   keywords: [
     "Trailrunning Camp",
     "Trailrunning Camp Österreich",
@@ -223,7 +223,7 @@ const faqStructuredData = {
       name: "Wann startet der Ticketverkauf für das Mountaincamp 2027?",
       acceptedAnswer: {
         "@type": "Answer",
-        text: "Die Early-Bird-Tickets für das Mountaincamp 2027 werden am Sonntag, dem 16. August, von 12:00 bis 24:00 Uhr verkauft. Danach folgt Phase 2 am Mittwoch, dem 26. August, von 00:00 bis 24:00 Uhr zum Preis von 500€. Das Kontingent ist begrenzt und jeweils nur in diesem Zeitfenster verfügbar.",
+        text: "Der Early-Bird-Verkauf für das Mountaincamp 2027 ist bereits vorbei. Als Nächstes folgt Phase 2 am Mittwoch, dem 26. August, von 00:00 bis 24:00 Uhr zum Preis von 500€. Das Kontingent ist begrenzt und nur in diesem Zeitfenster verfügbar.",
       },
     },
     {

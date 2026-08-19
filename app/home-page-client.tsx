@@ -144,6 +144,10 @@ export default function HomePageClient() {
   const [currentActivityIndex, setCurrentActivityIndex] = useState(0)
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
   const [hasScrolled, setHasScrolled] = useState(false)
+  // Aktuelle Höhe des Early-Bird-Banners (0, solange es ausgeblendet ist).
+  // Der Header wird um diesen Wert nach unten versetzt, damit er nie vom
+  // Banner verdeckt wird und das Menü immer nutzbar bleibt.
+  const [bannerHeight, setBannerHeight] = useState(0)
 
   const videoRef = useRef<HTMLVideoElement>(null)
   const heroRef = useRef(null)
@@ -481,7 +485,7 @@ export default function HomePageClient() {
     <div className="min-h-screen w-full overflow-x-hidden bg-white">
       <ImagePreloader imageSources={SECTION_IMAGES} onComplete={() => { }} />
 
-      <EarlyBirdBanner />
+      <EarlyBirdBanner onHeightChange={setBannerHeight} />
 
 
 
@@ -494,12 +498,12 @@ export default function HomePageClient() {
           <div className="flex items-center justify-between gap-3">
             <div className="flex-1">
               <p className="text-sm font-bold text-white">
-                {language === "de" ? "Early-Bird-Tickets" : "Early-bird tickets"}
+                {language === "de" ? "Early Bird ist vorbei" : "Early bird is over"}
               </p>
               <p className="text-xs text-white/60">
                 {language === "de"
-                  ? "Sonntag, 16. August, 12:00 – 24:00 Uhr · Phase 2: Mi, 26.8. für 500€"
-                  : "Sunday, 16 August, 12:00 – 24:00 CEST · Phase 2: Wed 26 Aug for €500"}
+                  ? "Phase 2: Mi, 26.8. für 500€"
+                  : "Phase 2: Wed 26 Aug for €500"}
               </p>
             </div>
             <Button
@@ -513,7 +517,10 @@ export default function HomePageClient() {
         </motion.div>
       )}
 
-      <header className="absolute top-0 z-50 w-full bg-transparent">
+      <header
+        className="absolute z-50 w-full bg-transparent transition-[top] duration-300"
+        style={{ top: bannerHeight }}
+      >
         <div className="container flex h-20 items-center justify-between">
           <div className="flex items-center">
             <div className={`relative ${isMobile ? "h-10 w-32" : "h-14 w-auto"}`}>
