@@ -31,22 +31,34 @@ export const EARLY_BIRD_END_MS = new Date(EARLY_BIRD_END).getTime()
 /**
  * Ticket-Kontingent & Preisstufen.
  *
- * Phase 1 (Early Bird) ist mit EARLY_BIRD_END abgelaufen. Phase 2 startet
- * automatisch zum unten definierten Zeitpunkt zum Preis von 480€. Die
- * verkaufte Stückzahl wird manuell gepflegt (kein Live-Anschluss an den
- * Ticketshop).
+ * Phase 1 (Early Bird) ist mit EARLY_BIRD_END abgelaufen. Phase 2 ist,
+ * genau wie Phase 1, ein einmaliges Zeitfenster (nicht dauerhaft offen):
+ * sie startet und endet an den unten definierten Zeitpunkten zum Preis
+ * von 500€. Die verkaufte Stückzahl wird manuell gepflegt (kein
+ * Live-Anschluss an den Ticketshop).
  */
 export const TOTAL_TICKETS = 300
 export const TICKETS_SOLD = 60
 
-/** Phase 2 startet: Donnerstag, 27. August 2026, 00:00 Uhr MESZ */
-export const PHASE_2_START = "2026-08-27T00:00:00+02:00"
+/** Phase 2 startet: Mittwoch, 26. August 2026, 00:00 Uhr MESZ */
+export const PHASE_2_START = "2026-08-26T00:00:00+02:00"
+/** Phase 2 endet: Mittwoch, 26. August 2026, 24:00 Uhr (= Donnerstag, 27. August, 00:00 Uhr) MESZ */
+export const PHASE_2_END = "2026-08-27T00:00:00+02:00"
 export const PHASE_2_PRICE = 500
 export const PHASE_2_START_MS = new Date(PHASE_2_START).getTime()
+export const PHASE_2_END_MS = new Date(PHASE_2_END).getTime()
 
 export const PHASE_2_LABEL = {
-  de: { date: "Donnerstag, 27. August", window: "ab 00:00 Uhr", full: "Donnerstag, 27. August, ab 00:00 Uhr" },
-  en: { date: "Thursday, 27 August", window: "from 00:00 CEST", full: "Thursday, 27 August, from 00:00 CEST" },
+  de: {
+    date: "Mittwoch, 26. August",
+    window: "00:00 – 24:00 Uhr",
+    full: "Mittwoch, 26. August, 00:00 – 24:00 Uhr",
+  },
+  en: {
+    date: "Wednesday, 26 August",
+    window: "00:00 – 24:00 CEST",
+    full: "Wednesday, 26 August, 00:00 – 24:00 CEST",
+  },
 } as const
 
 export type SalePhase = "upcoming" | "live" | "ended"
@@ -54,6 +66,21 @@ export type SalePhase = "upcoming" | "live" | "ended"
 export function getSalePhase(now: number = Date.now()): SalePhase {
   if (now < EARLY_BIRD_START_MS) return "upcoming"
   if (now < EARLY_BIRD_END_MS) return "live"
+  return "ended"
+}
+
+/**
+ * Gesamtstatus über beide Verkaufsphasen hinweg. Wird überall verwendet,
+ * wo neben dem Early-Bird-Status auch auf Phase 2 hingewiesen werden soll
+ * (Banner, Hero-Badge, Ticket-Kontingent-Bereich).
+ */
+export type OverallPhase = "earlybird-upcoming" | "earlybird-live" | "phase2-upcoming" | "phase2-live" | "ended"
+
+export function getOverallPhase(now: number = Date.now()): OverallPhase {
+  if (now < EARLY_BIRD_START_MS) return "earlybird-upcoming"
+  if (now < EARLY_BIRD_END_MS) return "earlybird-live"
+  if (now < PHASE_2_START_MS) return "phase2-upcoming"
+  if (now < PHASE_2_END_MS) return "phase2-live"
   return "ended"
 }
 
