@@ -264,7 +264,7 @@ export const translations = {
     bookDesc: "Sign up and we'll notify you the moment early-bird tickets go on sale.",
     comingSoonBadge: "Registration opens soon",
     earlyBirdBadge: "Phase 2: Wednesday 26 August",
-    notifyTitle: "Early-bird sale: Sunday, 16 August",
+    notifyTitle: "Next chance",
     notifyDesc: "Phase 2 follows on Wednesday, 26 August, from 00:00 to 24:00 CEST",
     notifyPlaceholder: "Your email address",
     notifyButton: "Notify me",
