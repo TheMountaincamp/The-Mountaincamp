@@ -9,6 +9,7 @@ import {
   TOTAL_TICKETS,
   TICKETS_SOLD,
   PHASE_2_START_MS,
+  PHASE_2_END_MS,
   PHASE_2_PRICE,
   PHASE_2_LABEL,
   TICKET_URL,
@@ -28,6 +29,8 @@ const COPY = {
     phase2Name: "Phase 2",
     phase2LiveBadge: "Jetzt aktiv",
     phase2UpcomingLead: "Startet in",
+    phase2LiveLead: "Endet in",
+    phase2Status: "Verkauf beendet",
     phase2Cta: "Jetzt sichern",
     d: "T",
     h: "Std",
@@ -46,6 +49,8 @@ const COPY = {
     phase2Name: "Phase 2",
     phase2LiveBadge: "Live now",
     phase2UpcomingLead: "Starts in",
+    phase2LiveLead: "Ends in",
+    phase2Status: "Sale ended",
     phase2Cta: "Get your ticket",
     d: "d",
     h: "h",
@@ -60,6 +65,8 @@ function barColor(ratio: number) {
   return "bg-primary"
 }
 
+type Phase2State = "upcoming" | "live" | "ended"
+
 export default function TicketProgressSection() {
   const { language } = useLanguage()
   const prefersReducedMotion = useReducedMotion()
@@ -70,7 +77,7 @@ export default function TicketProgressSection() {
   const remaining = TOTAL_TICKETS - TICKETS_SOLD
 
   const [mounted, setMounted] = useState(false)
-  const [phase2Live, setPhase2Live] = useState(false)
+  const [phase2State, setPhase2State] = useState<Phase2State>("upcoming")
   const [parts, setParts] = useState<ReturnType<typeof getTimeParts> | null>(null)
 
   useEffect(() => {
@@ -78,15 +85,26 @@ export default function TicketProgressSection() {
 
     const tick = () => {
       const now = Date.now()
-      const live = now >= PHASE_2_START_MS
-      setPhase2Live(live)
-      setParts(live ? null : getTimeParts(PHASE_2_START_MS, now))
+      const state: Phase2State =
+        now < PHASE_2_START_MS ? "upcoming" : now < PHASE_2_END_MS ? "live" : "ended"
+      setPhase2State(state)
+
+      if (state === "upcoming") {
+        setParts(getTimeParts(PHASE_2_START_MS, now))
+      } else if (state === "live") {
+        setParts(getTimeParts(PHASE_2_END_MS, now))
+      } else {
+        setParts(null)
+      }
     }
 
     tick()
     const id = window.setInterval(tick, 1000)
     return () => window.clearInterval(id)
   }, [])
+
+  const phase2Live = phase2State === "live"
+  const phase2Ended = phase2State === "ended"
 
   return (
     <section className="bg-white py-16 md:py-24">
@@ -156,7 +174,11 @@ export default function TicketProgressSection() {
             viewport={{ once: true }}
             transition={{ duration: 0.6, delay: 0.25 }}
             className={`relative border p-6 md:p-8 ${
-              phase2Live ? "border-primary bg-primary text-white" : "border-gray-200 bg-white"
+              phase2Live
+                ? "border-primary bg-primary text-white"
+                : phase2Ended
+                  ? "border-gray-200 bg-gray-50"
+                  : "border-gray-200 bg-white"
             }`}
           >
             <div className="mb-4 flex items-center gap-2">
@@ -167,6 +189,10 @@ export default function TicketProgressSection() {
                   )}
                   <span className="relative inline-flex h-2.5 w-2.5 bg-white" />
                 </span>
+              ) : phase2Ended ? (
+                <span className="flex h-6 w-6 shrink-0 items-center justify-center bg-gray-400">
+                  <Check className="h-4 w-4 text-white" aria-hidden="true" />
+                </span>
               ) : (
                 <Clock className="h-4 w-4 shrink-0 text-primary" aria-hidden="true" />
               )}
@@ -175,7 +201,7 @@ export default function TicketProgressSection() {
                   phase2Live ? "text-white/85" : "text-gray-500"
                 }`}
               >
-                {phase2Live ? c.phase2LiveBadge : label.full}
+                {phase2Live ? c.phase2LiveBadge : phase2Ended ? c.phase2Status : label.full}
               </span>
             </div>
 
@@ -187,32 +213,74 @@ export default function TicketProgressSection() {
               >
                 {c.phase2Name}
               </h3>
-              <span className={`text-2xl font-bold ${phase2Live ? "text-white" : "text-primary"}`}>
-                {PHASE_2_PRICE}€
-              </span>
+              {!phase2Ended && (
+                <span className={`text-2xl font-bold ${phase2Live ? "text-white" : "text-primary"}`}>
+                  {PHASE_2_PRICE}€
+                </span>
+              )}
             </div>
 
-            {!phase2Live && mounted && parts && (
+            {!phase2Ended && mounted && parts && (
               <div className="mb-4 flex items-center gap-2">
-                <span className="sr-only">{c.phase2UpcomingLead}</span>
+                <span className="sr-only">{phase2Live ? c.phase2LiveLead : c.phase2UpcomingLead}</span>
                 <span className="flex items-center gap-1" aria-live="off">
                   {parts.days > 0 && (
-                    <span className="flex min-w-[2.5rem] flex-col items-center bg-gray-100 px-2 py-1 tabular-nums">
+                    <span
+                      className={`flex min-w-[2.5rem] flex-col items-center px-2 py-1 tabular-nums ${
+                        phase2Live ? "bg-white/15" : "bg-gray-100"
+                      }`}
+                    >
                       <span className="text-base font-bold leading-none">{String(parts.days).padStart(2, "0")}</span>
-                      <span className="text-[9px] uppercase tracking-wide text-gray-500">{c.d}</span>
+                      <span
+                        className={`text-[9px] uppercase tracking-wide ${
+                          phase2Live ? "text-white/70" : "text-gray-500"
+                        }`}
+                      >
+                        {c.d}
+                      </span>
                     </span>
                   )}
-                  <span className="flex min-w-[2.5rem] flex-col items-center bg-gray-100 px-2 py-1 tabular-nums">
+                  <span
+                    className={`flex min-w-[2.5rem] flex-col items-center px-2 py-1 tabular-nums ${
+                      phase2Live ? "bg-white/15" : "bg-gray-100"
+                    }`}
+                  >
                     <span className="text-base font-bold leading-none">{String(parts.hours).padStart(2, "0")}</span>
-                    <span className="text-[9px] uppercase tracking-wide text-gray-500">{c.h}</span>
+                    <span
+                      className={`text-[9px] uppercase tracking-wide ${
+                        phase2Live ? "text-white/70" : "text-gray-500"
+                      }`}
+                    >
+                      {c.h}
+                    </span>
                   </span>
-                  <span className="flex min-w-[2.5rem] flex-col items-center bg-gray-100 px-2 py-1 tabular-nums">
+                  <span
+                    className={`flex min-w-[2.5rem] flex-col items-center px-2 py-1 tabular-nums ${
+                      phase2Live ? "bg-white/15" : "bg-gray-100"
+                    }`}
+                  >
                     <span className="text-base font-bold leading-none">{String(parts.minutes).padStart(2, "0")}</span>
-                    <span className="text-[9px] uppercase tracking-wide text-gray-500">{c.m}</span>
+                    <span
+                      className={`text-[9px] uppercase tracking-wide ${
+                        phase2Live ? "text-white/70" : "text-gray-500"
+                      }`}
+                    >
+                      {c.m}
+                    </span>
                   </span>
-                  <span className="flex min-w-[2.5rem] flex-col items-center bg-gray-100 px-2 py-1 tabular-nums">
+                  <span
+                    className={`flex min-w-[2.5rem] flex-col items-center px-2 py-1 tabular-nums ${
+                      phase2Live ? "bg-white/15" : "bg-gray-100"
+                    }`}
+                  >
                     <span className="text-base font-bold leading-none">{String(parts.seconds).padStart(2, "0")}</span>
-                    <span className="text-[9px] uppercase tracking-wide text-gray-500">{c.s}</span>
+                    <span
+                      className={`text-[9px] uppercase tracking-wide ${
+                        phase2Live ? "text-white/70" : "text-gray-500"
+                      }`}
+                    >
+                      {c.s}
+                    </span>
                   </span>
                 </span>
               </div>

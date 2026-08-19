@@ -498,8 +498,8 @@ export default function HomePageClient() {
               </p>
               <p className="text-xs text-white/60">
                 {language === "de"
-                  ? "Sonntag, 16. August, 12:00 – 24:00 Uhr"
-                  : "Sunday, 16 August, 12:00 – 24:00 CEST"}
+                  ? "Sonntag, 16. August, 12:00 – 24:00 Uhr · Phase 2: Mi, 26.8. für 500€"
+                  : "Sunday, 16 August, 12:00 – 24:00 CEST · Phase 2: Wed 26 Aug for €500"}
               </p>
             </div>
             <Button
