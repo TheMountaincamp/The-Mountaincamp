@@ -88,7 +88,7 @@ export const translations = {
     bookSpot: "Sei als Erste:r dabei",
     bookDesc: "Trag dich ein und wir informieren dich über den nächsten Ticket-Release.",
     comingSoonBadge: "Anmeldung startet in Kürze",
-    earlyBirdBadge: "Phase 2: Mittwoch, 26. August für 500€",
+    earlyBirdBadge: "Phase 2: Mittwoch, 26. August",
     notifyTitle: "Nächster Ticket-Release",
     notifyDesc: "Phase 2 startet am Mittwoch, 26. August, von 00:00 bis 24:00 Uhr zum Preis von 500€. Trag deine E-Mail-Adresse ein und wir erinnern dich rechtzeitig.",
     notifyPlaceholder: "Deine E-Mail-Adresse",

@@ -502,8 +502,8 @@ export default function HomePageClient() {
               </p>
               <p className="text-xs text-white/60">
                 {language === "de"
-                  ? "Mi, 26.8. für 500€"
-                  : "Wed 26 Aug for €500"}
+                  ? "Mi, 26.8."
+                  : "Wed 26 Aug"}
               </p>
             </div>
             <Button
