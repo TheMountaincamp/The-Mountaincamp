@@ -26,6 +26,7 @@ import ActivityCardMobile from "@/app/components/activity-card-mobile"
 import LanguageSwitcher from "@/app/components/language-switcher"
 import NotifySignupForm from "@/app/components/notify-signup-form"
 import EarlyBirdBanner from "@/app/components/early-bird-banner"
+import TicketProgressSection from "@/app/components/ticket-progress-section"
 import ImageWithFallback from "@/app/components/image-with-fallback"
 import ImagePreloader from "@/app/components/image-preloader"
 import PreloadLink from "@/app/components/preload-link"
@@ -1158,6 +1159,8 @@ export default function HomePageClient() {
             <PartnerCarousel />
           </div>
         </section>
+
+        <TicketProgressSection />
 
         <section id="register" className="bg-black py-16 text-white md:py-24">
           <div className="container">

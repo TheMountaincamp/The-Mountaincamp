@@ -28,6 +28,27 @@ export const TICKET_URL = "https://my.camps.digital/travel/selfhosted/extern/bm?
 export const EARLY_BIRD_START_MS = new Date(EARLY_BIRD_START).getTime()
 export const EARLY_BIRD_END_MS = new Date(EARLY_BIRD_END).getTime()
 
+/**
+ * Ticket-Kontingent & Preisstufen.
+ *
+ * Phase 1 (Early Bird) ist mit EARLY_BIRD_END abgelaufen. Phase 2 startet
+ * automatisch zum unten definierten Zeitpunkt zum Preis von 480€. Die
+ * verkaufte Stückzahl wird manuell gepflegt (kein Live-Anschluss an den
+ * Ticketshop).
+ */
+export const TOTAL_TICKETS = 300
+export const TICKETS_SOLD = 60
+
+/** Phase 2 startet: Donnerstag, 20. August 2026, 00:00 Uhr MESZ */
+export const PHASE_2_START = "2026-08-20T00:00:00+02:00"
+export const PHASE_2_PRICE = 480
+export const PHASE_2_START_MS = new Date(PHASE_2_START).getTime()
+
+export const PHASE_2_LABEL = {
+  de: { date: "Donnerstag, 20. August", window: "ab 00:00 Uhr", full: "Donnerstag, 20. August, ab 00:00 Uhr" },
+  en: { date: "Thursday, 20 August", window: "from 00:00 CEST", full: "Thursday, 20 August, from 00:00 CEST" },
+} as const
+
 export type SalePhase = "upcoming" | "live" | "ended"
 
 export function getSalePhase(now: number = Date.now()): SalePhase {
