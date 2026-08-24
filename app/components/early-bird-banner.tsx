@@ -62,11 +62,9 @@ type Parts = ReturnType<typeof getTimeParts>
 
 function Unit({ value, label }: { value: number; label: string }) {
   return (
-    <span className="flex min-w-[2.75rem] flex-col items-center bg-black/30 px-2 py-1 tabular-nums">
-      <span className="text-lg font-bold leading-none md:text-xl">
-        {String(value).padStart(2, "0")}
-      </span>
-      <span className="text-[10px] uppercase tracking-wide opacity-70">{label}</span>
+    <span className="flex min-w-[2rem] flex-col items-center bg-black/30 px-1.5 py-0.5 tabular-nums md:min-w-[2.75rem] md:px-2 md:py-1">
+      <span className="text-sm font-bold leading-none md:text-xl">{String(value).padStart(2, "0")}</span>
+      <span className="text-[8px] uppercase tracking-wide opacity-70 md:text-[10px]">{label}</span>
     </span>
   )
 }
@@ -74,8 +72,9 @@ function Unit({ value, label }: { value: number; label: string }) {
 interface EarlyBirdBannerProps {
   /**
    * Verzögerung in Millisekunden, bevor das Banner überhaupt eingeblendet
-   * wird. Standard: 10 Sekunden, damit Besucher zuerst die Seite bzw. das
-   * Header-Menü ohne Überlappung nutzen können.
+   * wird. Standard: 3 Sekunden, damit Besucher zuerst kurz die Seite bzw.
+   * das Header-Menü ohne Überlappung sehen können, bevor das Banner
+   * erscheint.
    */
   delayMs?: number
   /**
@@ -86,7 +85,7 @@ interface EarlyBirdBannerProps {
   onHeightChange?: (height: number) => void
 }
 
-export default function EarlyBirdBanner({ delayMs = 10_000, onHeightChange }: EarlyBirdBannerProps = {}) {
+export default function EarlyBirdBanner({ delayMs = 3_000, onHeightChange }: EarlyBirdBannerProps = {}) {
   const { language } = useLanguage()
   const prefersReducedMotion = useReducedMotion()
   const c = COPY[language]
@@ -200,22 +199,22 @@ export default function EarlyBirdBanner({ delayMs = 10_000, onHeightChange }: Ea
         isLive ? "border-primary/50 bg-primary" : "border-white/10 bg-black"
       } text-white`}
     >
-      <div className="container flex flex-col items-center gap-3 py-3 md:flex-row md:justify-between md:gap-6 md:py-2.5">
+      <div className="container flex flex-col items-center gap-1.5 py-1.5 md:flex-row md:justify-between md:gap-6 md:py-2.5">
         {/* Linke Seite: Status + Datum */}
-        <div className="flex flex-col items-center gap-1 text-center md:items-start md:text-left">
-          <div className="flex items-center gap-3">
+        <div className="flex flex-col items-center gap-0.5 text-center md:items-start md:text-left">
+          <div className="flex items-center gap-2 md:gap-3">
             {isLive ? (
-              <span className="relative flex h-2.5 w-2.5 shrink-0" aria-hidden="true">
+              <span className="relative flex h-2 w-2 shrink-0 md:h-2.5 md:w-2.5" aria-hidden="true">
                 {!prefersReducedMotion && (
                   <span className="absolute inline-flex h-full w-full animate-ping bg-white opacity-75" />
                 )}
-                <span className="relative inline-flex h-2.5 w-2.5 bg-white" />
+                <span className="relative inline-flex h-2 w-2 bg-white md:h-2.5 md:w-2.5" />
               </span>
             ) : (
-              <Ticket className="h-5 w-5 shrink-0 text-primary" aria-hidden="true" />
+              <Ticket className="h-4 w-4 shrink-0 text-primary md:h-5 md:w-5" aria-hidden="true" />
             )}
 
-            <p className="text-sm font-bold uppercase tracking-wide md:text-base">
+            <p className="text-xs font-bold uppercase tracking-wide md:text-base">
               {title}
               <span
                 className={`ml-2 font-normal normal-case ${
@@ -228,12 +227,14 @@ export default function EarlyBirdBanner({ delayMs = 10_000, onHeightChange }: Ea
           </div>
 
           {showPhase2Hint && (
-            <p className="pl-8 text-xs font-medium normal-case text-white/50 md:pl-8">{c.phase2Hint}</p>
+            <p className="pl-6 text-[10px] font-medium normal-case text-white/50 md:pl-8 md:text-xs">
+              {c.phase2Hint}
+            </p>
           )}
         </div>
 
         {/* Rechte Seite: Countdown + CTA */}
-        <div className="flex flex-wrap items-center justify-center gap-3">
+        <div className="flex flex-wrap items-center justify-center gap-1.5 md:gap-3">
           <AnimatePresence mode="wait">
             {mounted && parts && (
               <motion.div
@@ -241,11 +242,11 @@ export default function EarlyBirdBanner({ delayMs = 10_000, onHeightChange }: Ea
                 initial={prefersReducedMotion ? false : { opacity: 0 }}
                 animate={{ opacity: 1 }}
                 exit={{ opacity: 0 }}
-                className="flex items-center gap-2"
+                className="flex items-center gap-1.5 md:gap-2"
               >
-                <Clock className="h-4 w-4 shrink-0 opacity-70" aria-hidden="true" />
+                <Clock className="h-3 w-3 shrink-0 opacity-70 md:h-4 md:w-4" aria-hidden="true" />
                 <span className="sr-only">{isLive ? c.liveLead : c.upcomingLead}</span>
-                <span className="flex items-center gap-1" aria-live="off">
+                <span className="flex items-center gap-0.5 md:gap-1" aria-live="off">
                   {parts.days > 0 && <Unit value={parts.days} label={c.d} />}
                   <Unit value={parts.hours} label={c.h} />
                   <Unit value={parts.minutes} label={c.m} />
@@ -257,13 +258,13 @@ export default function EarlyBirdBanner({ delayMs = 10_000, onHeightChange }: Ea
 
           <Link
             href={href}
-            className={`inline-flex shrink-0 items-center gap-2 px-5 py-2 text-sm font-bold uppercase tracking-wide transition-colors focus-visible:outline-2 focus-visible:outline-offset-2 ${
+            className={`inline-flex shrink-0 items-center gap-1.5 px-3 py-1 text-xs font-bold uppercase tracking-wide transition-colors focus-visible:outline-2 focus-visible:outline-offset-2 md:gap-2 md:px-5 md:py-2 md:text-sm ${
               isLive
                 ? "bg-white text-primary hover:bg-white/90 focus-visible:outline-white"
                 : "bg-primary text-white hover:bg-primary-dark focus-visible:outline-primary"
             }`}
           >
-            <Ticket className="h-4 w-4" aria-hidden="true" />
+            <Ticket className="h-3.5 w-3.5 md:h-4 md:w-4" aria-hidden="true" />
             {cta}
           </Link>
         </div>
