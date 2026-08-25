@@ -38,14 +38,14 @@ export default function SiteHeader({ transparent = true }: SiteHeaderProps) {
         <div className="container flex h-20 items-center justify-between">
           {/* Logo */}
           <Link href="/" className="flex items-center">
-            <div className="relative w-32 h-10 md:w-[200px] md:h-14">
+            <div className="relative h-7 w-24 md:h-14 md:w-[200px]">
               <Image
                 src="/images/mountaincamp-logo-white.png"
                 alt="The Mountaincamp Logo"
                 fill
                 className="object-contain"
                 priority
-                sizes="(max-width: 768px) 128px, 200px"
+                sizes="(max-width: 768px) 96px, 200px"
               />
             </div>
           </Link>
@@ -97,10 +97,10 @@ export default function SiteHeader({ transparent = true }: SiteHeaderProps) {
               <Image
                 src="/images/mountaincamp-logo-white.png"
                 alt="The Mountaincamp Logo"
-                width={128}
-                height={25}
-                className="h-10 w-auto"
-                sizes="128px"
+                width={96}
+                height={19}
+                className="h-7 w-auto"
+                sizes="96px"
               />
               <motion.button
                 onClick={handleMenuToggle}
