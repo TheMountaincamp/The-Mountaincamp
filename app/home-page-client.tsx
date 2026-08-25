@@ -718,8 +718,8 @@ export default function HomePageClient() {
                   <span className={`block text-lg md:text-3xl lg:text-4xl xl:text-5xl ${isMobile ? "mt-2" : ""}`}>
                     {language === "de" ? "Trailrunning Camp in Österreich" : "Trail Running Camp in Austria"}
                   </span>
-                  <span className="mt-1 block text-2xl md:mt-2 md:text-5xl lg:text-6xl xl:text-7xl">
-                    The Mountaincamp 2027
+                  <span className="mt-0 block text-2xl md:mt-2 md:text-5xl lg:text-6xl xl:text-7xl">
+                    {language === "de" ? "Mountaincamp 2027" : "Mountaincamp 2027"}
                   </span>
                 </h1>
               </motion.div>
@@ -732,8 +732,12 @@ export default function HomePageClient() {
               >
                 <p className="text-base leading-relaxed text-white/90 md:text-2xl">
                   {language === "de"
-                    ? "5 Tage Trailrunning Camp, Community und Abenteuer in den österreichischen Alpen."
-                    : "5 days of trail running camp, community and adventure in the Austrian Alps."}
+                    ? "5 tägiges Trailrunning Camp in den österreichischen Alpen"
+                    : "5-day trail running camp in the Austrian Alps"}
+                </p>
+
+                <p className="mt-2 text-xs font-semibold uppercase tracking-wide text-white/80 md:text-base">
+                  {language === "de" ? "Trailrunning | Community | Party" : "Trail Running | Community | Party"}
                 </p>
 
                 <p className="mt-3 text-sm font-semibold text-white/90 md:text-xl">
