@@ -61,6 +61,20 @@ export const PHASE_2_LABEL = {
   },
 } as const
 
+/**
+ * Nächster Ticket-Release nach Phase 2: Mittwoch, 16. September 2026,
+ * 00:00 Uhr MESZ. Anders als Early Bird und Phase 2 wird hier bewusst kein
+ * Preis/Phasen-Label angezeigt – nur das Datum als Ankündigung. Was nach
+ * diesem Termin passiert, ist noch offen und wird später ergänzt.
+ */
+export const NEXT_LAUNCH_START = "2026-09-16T00:00:00+02:00"
+export const NEXT_LAUNCH_START_MS = new Date(NEXT_LAUNCH_START).getTime()
+
+export const NEXT_LAUNCH_LABEL = {
+  de: { date: "Mittwoch, 16. September" },
+  en: { date: "Wednesday, 16 September" },
+} as const
+
 export type SalePhase = "upcoming" | "live" | "ended"
 
 export function getSalePhase(now: number = Date.now()): SalePhase {
@@ -74,13 +88,20 @@ export function getSalePhase(now: number = Date.now()): SalePhase {
  * wo neben dem Early-Bird-Status auch auf Phase 2 hingewiesen werden soll
  * (Banner, Hero-Badge, Ticket-Kontingent-Bereich).
  */
-export type OverallPhase = "earlybird-upcoming" | "earlybird-live" | "phase2-upcoming" | "phase2-live" | "ended"
+export type OverallPhase =
+  | "earlybird-upcoming"
+  | "earlybird-live"
+  | "phase2-upcoming"
+  | "phase2-live"
+  | "next-launch-upcoming"
+  | "ended"
 
 export function getOverallPhase(now: number = Date.now()): OverallPhase {
   if (now < EARLY_BIRD_START_MS) return "earlybird-upcoming"
   if (now < EARLY_BIRD_END_MS) return "earlybird-live"
   if (now < PHASE_2_START_MS) return "phase2-upcoming"
   if (now < PHASE_2_END_MS) return "phase2-live"
+  if (now < NEXT_LAUNCH_START_MS) return "next-launch-upcoming"
   return "ended"
 }
 

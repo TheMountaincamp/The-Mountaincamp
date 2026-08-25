@@ -13,6 +13,8 @@ import {
   PHASE_2_END_MS,
   PHASE_2_PRICE,
   PHASE_2_LABEL,
+  NEXT_LAUNCH_START_MS,
+  NEXT_LAUNCH_LABEL,
   TICKET_URL,
   getOverallPhase,
   getTimeParts,
@@ -25,6 +27,7 @@ const COPY = {
     earlybirdLiveTitle: "Early-Bird-Verkauf läuft",
     phase2UpcomingTitle: "Phase 2 startet in Kürze",
     phase2LiveTitle: `Phase 2 läuft · ${PHASE_2_PRICE}€`,
+    nextLaunchTitle: "Nächster Launch",
     endedTitle: "Ticketverkauf beendet",
     endedText: "Trag dich ein, wir melden uns beim nächsten Ticket-Release.",
     liveLead: "Noch",
@@ -43,6 +46,7 @@ const COPY = {
     earlybirdLiveTitle: "Early-bird sale is live",
     phase2UpcomingTitle: "Phase 2 starts soon",
     phase2LiveTitle: `Phase 2 is live · ${PHASE_2_PRICE}€`,
+    nextLaunchTitle: "Next launch",
     endedTitle: "Ticket sale has ended",
     endedText: "Sign up and we'll let you know about the next ticket release.",
     liveLead: "Only",
@@ -91,6 +95,7 @@ export default function EarlyBirdBanner({ delayMs = 3_000, onHeightChange }: Ear
   const c = COPY[language]
   const earlyBirdLabel = EARLY_BIRD_LABEL[language]
   const phase2Label = PHASE_2_LABEL[language]
+  const nextLaunchLabel = NEXT_LAUNCH_LABEL[language]
   const rootRef = useRef<HTMLElement | null>(null)
 
   // mounted-Gate: Der Countdown darf erst nach der Hydration rechnen,
@@ -149,6 +154,8 @@ export default function EarlyBirdBanner({ delayMs = 3_000, onHeightChange }: Ear
         setParts(getTimeParts(PHASE_2_START_MS, now))
       } else if (nextPhase === "phase2-live") {
         setParts(getTimeParts(PHASE_2_END_MS, now))
+      } else if (nextPhase === "next-launch-upcoming") {
+        setParts(getTimeParts(NEXT_LAUNCH_START_MS, now))
       } else {
         setParts(null)
       }
@@ -172,14 +179,18 @@ export default function EarlyBirdBanner({ delayMs = 3_000, onHeightChange }: Ear
           ? c.phase2UpcomingTitle
           : phase === "phase2-live"
             ? c.phase2LiveTitle
-            : c.endedTitle
+            : phase === "next-launch-upcoming"
+              ? c.nextLaunchTitle
+              : c.endedTitle
 
   const dateText =
     phase === "earlybird-upcoming" || phase === "earlybird-live"
       ? earlyBirdLabel.full
       : phase === "phase2-upcoming" || phase === "phase2-live"
         ? phase2Label.full
-        : c.endedText
+        : phase === "next-launch-upcoming"
+          ? nextLaunchLabel.date
+          : c.endedText
 
   const cta = isLive ? c.ctaLive : isEnded ? c.ctaEnded : c.ctaUpcoming
   const href = isLive ? TICKET_URL : "#register"
