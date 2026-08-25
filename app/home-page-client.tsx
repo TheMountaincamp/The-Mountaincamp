@@ -523,15 +523,15 @@ export default function HomePageClient() {
       >
         <div className="container flex h-20 items-center justify-between">
           <div className="flex items-center">
-            <div className={`relative ${isMobile ? "h-10 w-32" : "h-14 w-auto"}`}>
+            <div className={`relative ${isMobile ? "h-7 w-24" : "h-14 w-auto"}`}>
               <ImageWithFallback
                 src="/images/mountaincamp-logo-white.png"
                 alt="The Mountaincamp Logo"
-                width={isMobile ? 128 : 200}
-                height={isMobile ? 25 : 39}
+                width={isMobile ? 96 : 200}
+                height={isMobile ? 19 : 39}
                 className="h-full w-auto object-contain"
                 priority
-                sizes="(max-width: 768px) 128px, 200px"
+                sizes="(max-width: 768px) 96px, 200px"
               />
             </div>
           </div>
@@ -609,10 +609,10 @@ export default function HomePageClient() {
               <Image
                 src="/images/mountaincamp-logo-white.png"
                 alt="The Mountaincamp Logo"
-                width={128}
-                height={25}
-                className="h-10 w-auto"
-                sizes="128px"
+                width={96}
+                height={19}
+                className="h-7 w-auto"
+                sizes="96px"
               />
               <motion.button
                 onClick={handleMenuToggle}
@@ -700,25 +700,27 @@ export default function HomePageClient() {
                   stiffness: 100,
                   damping: 15,
                 }}
-                className="mb-6"
+                className="mb-4 md:mb-6"
               >
                 {isMobile ? (
                   <Image
                     src="/images/mountaincamp-logo-white.png"
                     alt="The Mountaincamp Logo"
-                    width={250}
-                    height={48}
-                    className="mx-auto h-auto w-auto object-contain"
+                    width={160}
+                    height={31}
+                    className="mx-auto h-auto w-32 object-contain"
                     priority
-                    sizes="250px"
+                    sizes="128px"
                   />
                 ) : null}
 
                 <h1 className="text-center font-bold uppercase leading-[0.9] tracking-tight">
-                  <span className={`block text-xl md:text-3xl lg:text-4xl xl:text-5xl ${isMobile ? "mt-4" : ""}`}>
+                  <span className={`block text-lg md:text-3xl lg:text-4xl xl:text-5xl ${isMobile ? "mt-2" : ""}`}>
                     {language === "de" ? "Trailrunning Camp in Österreich" : "Trail Running Camp in Austria"}
                   </span>
-                  <span className="mt-2 block text-3xl md:text-5xl lg:text-6xl xl:text-7xl">The Mountaincamp 2027</span>
+                  <span className="mt-1 block text-2xl md:mt-2 md:text-5xl lg:text-6xl xl:text-7xl">
+                    The Mountaincamp 2027
+                  </span>
                 </h1>
               </motion.div>
 
