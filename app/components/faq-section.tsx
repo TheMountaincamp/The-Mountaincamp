@@ -97,6 +97,11 @@ export default function FAQSection() {
       answer:
         "Ja! Wir haben spezielle Anfängergruppen mit kürzeren Distanzen und Technik-Coaching. Du solltest eine Grundfitness haben und Freude am Laufen in den Bergen. Unsere Guides helfen dir, die richtige Trailrunning-Technik zu lernen.",
     },
+    {
+      question: "Was gibt es beim Mountaincamp neben dem Laufen?",
+      answer:
+        "Das Mountaincamp ist mehr als nur Laufen. Neben den täglichen Trailruns bieten wir kreative Workshops wie Töpfern, Aquarellmalerei und Yoga an. Unsere erfahrenen Coaches helfen dir dabei, deine Lauftechnik zu verbessern – egal ob du Anfänger bist oder bereits Erfahrung mitbringst. Die Community steht bei uns im Mittelpunkt: Gemeinsame Mahlzeiten, Lagerfeuerabende und die legendäre Sunset Rave Party schaffen unvergessliche Erinnerungen. Unsere Unterkunft in Hochkrimml bietet Platz für alle Teilnehmer und ist der perfekte Ausgangspunkt für die schönsten Trails der Region.",
+    },
   ]
 
   const faqsEN: FAQItem[] = [
@@ -179,6 +184,11 @@ export default function FAQSection() {
       question: "Can I participate as a beginner at The Mountaincamp?",
       answer:
         "Yes! We have special beginner groups with shorter distances and technique coaching. You should have basic fitness and enjoy running in the mountains. Our guides will help you learn proper trailrunning technique.",
+    },
+    {
+      question: "What else is there at the Mountaincamp besides running?",
+      answer:
+        "The Mountaincamp is more than just running. In addition to the daily trail runs, we offer creative workshops such as pottery, watercolor painting and yoga. Our experienced coaches help you improve your running technique – whether you're a beginner or already have experience. Community is at the heart of what we do: shared meals, campfire evenings and the legendary sunset rave party create unforgettable memories. Our accommodation in Hochkrimml offers space for all participants and is the perfect starting point for the most beautiful trails in the region.",
     },
   ]
 

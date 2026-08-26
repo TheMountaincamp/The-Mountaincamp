@@ -966,11 +966,11 @@ export default function HomePageClient() {
         <section id="experience" className="bg-gray-50 py-16 md:py-24">
           <div className="container">
             <SectionTitle
-              title={language === "de" ? "Das erwartet dich im Trailrunning Camp" : "What to expect at the trail running camp"}
+              title={language === "de" ? "Das erwartet dich im Mountaincamp" : "What to expect at the Mountaincamp"}
               subtitle={
                 language === "de"
-                  ? "Trailrunning, Recovery, kreative Workshops und Community in den österreichischen Alpen."
-                  : "Trail running, recovery, creative workshops and community in the Austrian Alps."
+                  ? "Trailrunning, Community, Recovery, Party und kreative Workshops an 5 unvergesslichen Tagen in den österreichischen Alpen."
+                  : "Trail running, community, recovery, party and creative workshops over 5 unforgettable days in the Austrian Alps."
               }
               align="center"
               light={true}
@@ -1153,33 +1153,6 @@ export default function HomePageClient() {
         </section>
 
         <FAQSection />
-
-        {/* SEO Content Section 2 - Community & Workshops */}
-        <section className="bg-gray-50 py-12 md:py-16">
-          <div className="container max-w-4xl">
-            <h2 className="text-2xl font-bold text-gray-900 md:text-3xl">
-              {language === "de" ? "Community, Workshops und mehr beim Trailrunning Camp" : "Community, Workshops and more at the trail running camp"}
-            </h2>
-
-            <p className="mt-4 text-lg leading-relaxed text-gray-700">
-              {language === "de"
-                ? "Das Mountaincamp ist mehr als nur Laufen. Neben den täglichen Trailruns bieten wir kreative Workshops wie Töpfern, Aquarellmalerei und Yoga an. Unsere erfahrenen Coaches helfen dir dabei, deine Lauftechnik zu verbessern – egal ob du Anfänger bist oder bereits Erfahrung mitbringst."
-                : "The Mountaincamp is more than just running. In addition to the daily trail runs, we offer creative workshops such as pottery, watercolor painting and yoga. Our experienced coaches help you improve your running technique – whether you're a beginner or already have experience."}
-            </p>
-
-            <p className="mt-4 text-lg leading-relaxed text-gray-700">
-              {language === "de"
-                ? "Die Community steht bei uns im Mittelpunkt. Gemeinsame Mahlzeiten, Lagerfeuerabende und die legendäre Sunset Rave Party schaffen unvergessliche Erinnerungen. Unsere Unterkunft in Hochkrimml bietet Platz für alle Teilnehmer und ist der perfekte Ausgangspunkt für die schönsten Trails der Region."
-                : "Community is at the heart of what we do. Shared meals, campfire evenings and the legendary sunset rave party create unforgettable memories. Our accommodation in Hochkrimml offers space for all participants and is the perfect starting point for the most beautiful trails in the region."}
-            </p>
-
-            <div className="mt-6 flex flex-wrap gap-4">
-              <Link href="/bus-departures" className="text-primary font-semibold hover:underline inline-flex items-center gap-1">
-                {language === "de" ? "Anreise planen" : "Plan your journey"} <ArrowRight className="h-4 w-4" />
-              </Link>
-            </div>
-          </div>
-        </section>
 
         <section className="overflow-hidden bg-gray-900 py-12 md:py-24">
           <div className="container mb-12">
