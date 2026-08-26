@@ -966,11 +966,11 @@ export default function HomePageClient() {
         <section id="experience" className="bg-gray-50 py-16 md:py-24">
           <div className="container">
             <SectionTitle
-              title={language === "de" ? "Das erwartet dich im Trailrunning Camp" : "What to expect at the trail running camp"}
+              title={language === "de" ? "Das erwartet dich im Mountaincamp" : "What to expect at the Mountaincamp"}
               subtitle={
                 language === "de"
-                  ? "Trailrunning, Recovery, kreative Workshops und Community in den österreichischen Alpen."
-                  : "Trail running, recovery, creative workshops and community in the Austrian Alps."
+                  ? "Trailrunning, Community, Recovery, Party und kreative Workshops an 5 unvergesslichen Tagen in den österreichischen Alpen."
+                  : "Trail running, community, recovery, party and creative workshops over 5 unforgettable days in the Austrian Alps."
               }
               align="center"
               light={true}
