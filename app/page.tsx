@@ -242,6 +242,14 @@ const faqStructuredData = {
         text: "Es gibt organisierte Busshuttles von verschiedenen deutschen Städten (München, Stuttgart, Hamburg, Frankfurt, Köln) nach Hochkrimml. Alternativ ist eine Anreise mit dem eigenen Auto möglich.",
       },
     },
+    {
+      "@type": "Question",
+      name: "Was gibt es beim Mountaincamp neben dem Laufen?",
+      acceptedAnswer: {
+        "@type": "Answer",
+        text: "Das Mountaincamp ist mehr als nur Laufen. Neben den täglichen Trailruns bieten wir kreative Workshops wie Töpfern, Aquarellmalerei und Yoga an. Die Community steht bei uns im Mittelpunkt: Gemeinsame Mahlzeiten, Lagerfeuerabende und die legendäre Sunset Rave Party schaffen unvergessliche Erinnerungen. Unsere Unterkunft in Hochkrimml bietet Platz für alle Teilnehmer und ist der perfekte Ausgangspunkt für die schönsten Trails der Region.",
+      },
+    },
   ],
 }
 
