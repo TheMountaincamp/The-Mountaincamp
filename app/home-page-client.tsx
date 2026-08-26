@@ -35,6 +35,7 @@ import InstagramReelsSection from "@/app/components/instagram-reels-section"
 import FAQSection from "@/app/components/faq-section"
 import RouteOverviewSection from "@/app/components/route-overview-section"
 import MasonryGallery from "@/app/components/masonry-gallery"
+import { getOverallPhase, TICKET_URL } from "@/app/lib/early-bird"
 
 const SECTION_IMAGES = ["/images/mountaincamp-logo-white.png"]
 const HOUSE_PAGE_IMAGES = ["/images/mountain-lodge.jpeg"]
@@ -148,6 +149,23 @@ export default function HomePageClient() {
   // Der Header wird um diesen Wert nach unten versetzt, damit er nie vom
   // Banner verdeckt wird und das Menü immer nutzbar bleibt.
   const [bannerHeight, setBannerHeight] = useState(0)
+
+  // Solange kein Verkaufsfenster (Early Bird oder Phase 2) aktiv ist, führen
+  // die "Jetzt anmelden"-Buttons zum Newsletter-Formular (#register). Läuft
+  // der Ticketverkauf gerade, verlinken dieselben Buttons direkt zum
+  // Ticketportal. Start mit false, damit Server- und Client-Markup beim
+  // ersten Render identisch sind; der echte Wert wird nach dem Mount gesetzt.
+  const [isBookable, setIsBookable] = useState(false)
+
+  useEffect(() => {
+    const updateBookable = () => {
+      const phase = getOverallPhase()
+      setIsBookable(phase === "earlybird-live" || phase === "phase2-live")
+    }
+    updateBookable()
+    const interval = setInterval(updateBookable, 30_000)
+    return () => clearInterval(interval)
+  }, [])
 
   const videoRef = useRef<HTMLVideoElement>(null)
   const heroRef = useRef(null)
@@ -511,7 +529,13 @@ export default function HomePageClient() {
               className="whitespace-nowrap bg-primary px-4 py-2 font-bold text-white hover:bg-primary/90"
               asChild
             >
-              <a href="#register">{language === "de" ? "Erinnern" : "Remind me"}</a>
+              {isBookable ? (
+                <a href={TICKET_URL} target="_blank" rel="noopener noreferrer">
+                  {language === "de" ? "Ticket sichern" : "Get ticket"}
+                </a>
+              ) : (
+                <a href="#register">{language === "de" ? "Erinnern" : "Remind me"}</a>
+              )}
             </Button>
           </div>
         </motion.div>
@@ -759,7 +783,13 @@ export default function HomePageClient() {
 
                 <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }} className="flex w-full justify-center">
                   <Button size="lg" className="btn-outline w-full max-w-[280px] px-6 py-3 text-base" asChild>
-                    <a href="#register">{language === "de" ? "Benachrichtigt werden" : "Notify Me"}</a>
+                    {isBookable ? (
+                      <a href={TICKET_URL} target="_blank" rel="noopener noreferrer">
+                        {language === "de" ? "Jetzt Tickets sichern" : "Get your ticket"}
+                      </a>
+                    ) : (
+                      <a href="#register">{language === "de" ? "Benachrichtigt werden" : "Notify Me"}</a>
+                    )}
                   </Button>
                 </motion.div>
               </motion.div>
@@ -1318,9 +1348,15 @@ export default function HomePageClient() {
                 <Link href="#testimonials" className="footer-link">
                   {t("testimonials")}
                 </Link>
-                <Link href="#register" className="footer-link">
-                  {t("register")}
-                </Link>
+                {isBookable ? (
+                  <a href={TICKET_URL} target="_blank" rel="noopener noreferrer" className="footer-link">
+                    {t("register")}
+                  </a>
+                ) : (
+                  <Link href="#register" className="footer-link">
+                    {t("register")}
+                  </Link>
+                )}
                 <Link href="/bus-departures" className="footer-link">
                   Transport
                 </Link>
