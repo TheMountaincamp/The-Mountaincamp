@@ -63,12 +63,11 @@ export const PHASE_2_LABEL = {
 
 /**
  * Nächster Ticket-Release nach Phase 2: Mittwoch, 16. September 2026,
- * 00:00 Uhr MESZ. Anders als Early Bird und Phase 2 wird hier bewusst kein
- * Preis/Phasen-Label angezeigt – nur das Datum als Ankündigung. Was nach
- * diesem Termin passiert, ist noch offen und wird später ergänzt.
+ * 00:00 Uhr MESZ, zum Preis von 550€.
  */
 export const NEXT_LAUNCH_START = "2026-09-16T00:00:00+02:00"
 export const NEXT_LAUNCH_START_MS = new Date(NEXT_LAUNCH_START).getTime()
+export const NEXT_LAUNCH_PRICE = 550
 
 export const NEXT_LAUNCH_LABEL = {
   de: { date: "Mittwoch, 16. September" },
