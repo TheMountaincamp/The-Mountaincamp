@@ -38,7 +38,7 @@ export const EARLY_BIRD_END_MS = new Date(EARLY_BIRD_END).getTime()
  * Live-Anschluss an den Ticketshop).
  */
 export const TOTAL_TICKETS = 300
-export const TICKETS_SOLD = 60
+export const TICKETS_SOLD = 70
 
 /** Phase 2 startet: Mittwoch, 26. August 2026, 00:00 Uhr MESZ */
 export const PHASE_2_START = "2026-08-26T00:00:00+02:00"
