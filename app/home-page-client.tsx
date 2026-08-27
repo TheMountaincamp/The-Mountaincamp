@@ -35,7 +35,7 @@ import InstagramReelsSection from "@/app/components/instagram-reels-section"
 import FAQSection from "@/app/components/faq-section"
 import RouteOverviewSection from "@/app/components/route-overview-section"
 import MasonryGallery from "@/app/components/masonry-gallery"
-import { getOverallPhase, TICKET_URL } from "@/app/lib/early-bird"
+import { getOverallPhase, PHASE_2_LABEL, NEXT_LAUNCH_LABEL, TICKET_URL, type OverallPhase } from "@/app/lib/early-bird"
 
 const SECTION_IMAGES = ["/images/mountaincamp-logo-white.png"]
 const HOUSE_PAGE_IMAGES = ["/images/mountain-lodge.jpeg"]
@@ -156,10 +156,15 @@ export default function HomePageClient() {
   // Ticketportal. Start mit false, damit Server- und Client-Markup beim
   // ersten Render identisch sind; der echte Wert wird nach dem Mount gesetzt.
   const [isBookable, setIsBookable] = useState(false)
+  // Treibt die Beschriftung der mobilen Sticky-Bar ("Phase 2" / "Nächster
+  // Launch" + Datum) an, damit sie nicht wie zuvor ein statisch
+  // eingebranntes Datum zeigt, das nach Ablauf der Phase veraltet.
+  const [salePhase, setSalePhase] = useState<OverallPhase>("phase2-upcoming")
 
   useEffect(() => {
     const updateBookable = () => {
       const phase = getOverallPhase()
+      setSalePhase(phase)
       setIsBookable(phase === "earlybird-live" || phase === "phase2-live")
     }
     updateBookable()
@@ -516,12 +521,14 @@ export default function HomePageClient() {
           <div className="flex items-center justify-between gap-3">
             <div className="flex-1">
               <p className="text-sm font-bold text-white">
-                {language === "de" ? "Phase 2" : "Phase 2"}
+                {salePhase === "next-launch-upcoming"
+                  ? language === "de"
+                    ? "Nächster Launch"
+                    : "Next launch"
+                  : "Phase 2"}
               </p>
               <p className="text-xs text-white/60">
-                {language === "de"
-                  ? "Mi, 26.8."
-                  : "Wed 26 Aug"}
+                {salePhase === "next-launch-upcoming" ? NEXT_LAUNCH_LABEL[language].date : PHASE_2_LABEL[language].date}
               </p>
             </div>
             <Button
