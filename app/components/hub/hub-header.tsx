@@ -3,6 +3,7 @@
 import { useEffect, useState } from "react"
 import Link from "next/link"
 import { MountaincampLogo } from "@/components/brand/mountaincamp-logo"
+import LanguageSwitcher from "@/app/components/language-switcher"
 
 export function HubHeader() {
   const [scrolled, setScrolled] = useState(false)
@@ -28,6 +29,7 @@ export function HubHeader() {
           <MountaincampLogo className="h-5 w-auto text-mc-white" />
           <span className="sr-only">Mountaincamp</span>
         </Link>
+        <LanguageSwitcher />
       </div>
     </header>
   )
