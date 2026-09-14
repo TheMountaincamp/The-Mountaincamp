@@ -1,5 +1,6 @@
 "use client"
 
+import { useState } from "react"
 import { Lock, ArrowUpRight } from "lucide-react"
 
 const CONTEXT_PATHS = [
@@ -29,7 +30,7 @@ const REGIONS = [
     color: "var(--mc-rose)",
     locked: false,
     href: "/community",
-    caption: "Community — jetzt buchbar",
+    caption: "300+ Teilnehmer:innen — für jedes Level",
   },
   {
     key: "tirol",
@@ -40,7 +41,7 @@ const REGIONS = [
     color: "var(--mc-mist)",
     locked: true,
     href: "/performance",
-    caption: "Performance — Coming Soon",
+    caption: "50–70 Teilnehmer:innen — strukturiertes Training",
   },
   {
     key: "corse",
@@ -51,11 +52,14 @@ const REGIONS = [
     color: "var(--mc-sage)",
     locked: true,
     href: "/adventure",
-    caption: "Adventure — Coming Soon",
+    caption: "15–20 Teilnehmer:innen — technisches Trailpacking",
   },
 ] as const
 
 export function InteractiveMap() {
+  const [hovered, setHovered] = useState<string | null>(null)
+  const activeRegion = REGIONS.find((r) => r.key === hovered)
+
   return (
     <section className="relative min-h-screen w-full flex items-center justify-center overflow-hidden">
       <video
@@ -68,23 +72,23 @@ export function InteractiveMap() {
         poster="/images/forest-group-photo.jpg"
         src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/1127%20%281%29-FEgWVPpCJfcsT3ni35EZXLPrKTpGVQ.mp4"
       />
-      <div className="absolute inset-0 bg-black/55" />
-      <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-black/40" />
+      <div className="absolute inset-0 bg-black/25" />
+      <div className="absolute inset-0 bg-gradient-to-t from-black/55 via-transparent to-black/20" />
 
       <div className="relative z-10 w-full max-w-xl px-6 py-12 flex flex-col items-center">
         <p className="font-oswald uppercase tracking-[0.2em] text-mc-orange text-xs md:text-sm mb-6 text-center">
-          Wähle deinen Trail
+          Finde dein Camp
         </p>
 
-        <div className="w-full rounded-2xl border border-mc-dust/15 bg-black/30 backdrop-blur-md p-6">
+        <div className="w-full rounded-2xl border border-mc-dust/20 bg-black/20 backdrop-blur-md p-6">
           <svg
-            viewBox="0 0 800 619"
+            viewBox="370 165 350 360"
             className="w-full h-auto max-h-[70vh]"
             role="img"
             aria-label="Karte der Mountaincamp-Regionen: Salzburg, Tirol, Korsika"
           >
-            {/* Blasser Kontext: umliegende Länder + übrige österreichische Bundesländer */}
-            <g fill="none" stroke="var(--mc-dust)" strokeOpacity={0.16} strokeWidth={1}>
+            {/* Kontext: umliegende Länder + übrige österreichische Bundesländer */}
+            <g fill="none" stroke="var(--mc-dust)" strokeOpacity={0.4} strokeWidth={1}>
               {CONTEXT_PATHS.map((d, i) => (
                 <path key={i} d={d} />
               ))}
@@ -92,14 +96,22 @@ export function InteractiveMap() {
 
             {/* Hervorgehobene Regionen */}
             {REGIONS.map((region) => (
-              <a key={region.key} href={region.href} aria-label={`${region.label} — ${region.caption}`}>
+              <a
+                key={region.key}
+                href={region.href}
+                aria-label={`${region.label} — ${region.caption}`}
+                onMouseEnter={() => setHovered(region.key)}
+                onMouseLeave={() => setHovered(null)}
+                onFocus={() => setHovered(region.key)}
+                onBlur={() => setHovered(null)}
+              >
                 <path
                   d={region.d}
                   fill={region.color}
-                  fillOpacity={0.1}
+                  fillOpacity={0.16}
                   stroke={region.color}
-                  strokeWidth={2.2}
-                  className="transition-all duration-300 hover:fill-opacity-25 focus:outline focus:outline-2 focus:outline-mc-orange focus:outline-offset-2"
+                  strokeWidth={2.4}
+                  className="transition-all duration-300 hover:fill-opacity-35 focus:outline focus:outline-2 focus:outline-mc-orange focus:outline-offset-2"
                   style={{ cursor: "pointer" }}
                 />
                 <text
@@ -132,6 +144,30 @@ export function InteractiveMap() {
                 )}
               </a>
             ))}
+
+            {/* Hover-Tooltip: zuletzt gezeichnet, liegt über allem */}
+            {activeRegion && (
+              <foreignObject
+                x={activeRegion.labelPos.x - 95}
+                y={activeRegion.labelPos.y - 58}
+                width={190}
+                height={46}
+                className="pointer-events-none"
+              >
+                <div
+                  className="w-full h-full flex items-center justify-center rounded-md text-center px-2 font-switzer"
+                  style={{
+                    background: "rgba(0,0,0,0.88)",
+                    border: `1px solid ${activeRegion.color}`,
+                    color: "var(--mc-dust)",
+                    fontSize: 11,
+                    lineHeight: 1.3,
+                  }}
+                >
+                  {activeRegion.caption}
+                </div>
+              </foreignObject>
+            )}
           </svg>
         </div>
 
