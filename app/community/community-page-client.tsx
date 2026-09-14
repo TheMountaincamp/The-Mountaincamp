@@ -391,6 +391,46 @@ useEffect(() => {
       caption: language === "de" ? "Erholungszeit" : "Recovery Time",
     },
     {
+      src: "/images/participants/waterfall-group.jpg",
+      alt: language === "de" ? "Gruppe von Trailrunner:innen feiert gemeinsam vor einem Wasserfall" : "Group of trail runners celebrating together at a waterfall",
+      caption: language === "de" ? "Gemeinsam Feiern" : "Celebrate Together",
+    },
+    {
+      src: "/images/participants/lodge-runner-back.jpg",
+      alt: language === "de" ? "Läuferin von hinten vor der Mountaincamp-Lodge" : "Runner seen from behind in front of the Mountaincamp lodge",
+      caption: language === "de" ? "Zuhause in den Bergen" : "Home in the Mountains",
+    },
+    {
+      src: "/images/participants/craft-workshop.jpg",
+      alt: language === "de" ? "Teilnehmende gestalten gemeinsam beim Kreativ-Workshop" : "Participants creating together in a craft workshop",
+      caption: language === "de" ? "Kreativ-Workshop" : "Creative Workshop",
+    },
+    {
+      src: "/images/participants/runner-portrait-smile.jpg",
+      alt: language === "de" ? "Lächelnder Läufer mit Trailrunning-Ausrüstung im Wald" : "Smiling runner with trail running gear in the forest",
+      caption: language === "de" ? "Pure Vorfreude" : "Pure Excitement",
+    },
+    {
+      src: "/images/participants/ridge-descent-poles.jpg",
+      alt: language === "de" ? "Trailrunner:innen mit Stöcken auf einem Bergrücken vor Gletscherkulisse" : "Trail runners with poles on a mountain ridge with a glacier backdrop",
+      caption: language === "de" ? "Über den Gipfeln" : "Above the Peaks",
+    },
+    {
+      src: "/images/participants/hut-stop-valley.jpg",
+      alt: language === "de" ? "Gruppe macht Rast an einer Berghütte mit Tiefblick ins Tal" : "Group resting at a mountain hut overlooking the valley",
+      caption: language === "de" ? "Rast mit Aussicht" : "Rest with a View",
+    },
+    {
+      src: "/images/participants/lakeside-walk.jpg",
+      alt: language === "de" ? "Zwei Läufer:innen wandern an einem Bergsee entlang" : "Two runners walking along a mountain lake",
+      caption: language === "de" ? "Am Bergsee" : "By the Lake",
+    },
+    {
+      src: "/images/participants/foggy-trail-valley.jpg",
+      alt: language === "de" ? "Läufer:innen auf nebligem Bergpfad über einem Wolkenmeer" : "Runners on a foggy mountain trail above a sea of clouds",
+      caption: language === "de" ? "Über den Wolken" : "Above the Clouds",
+    },
+    {
       src: "/images/peaceful-terrace-moment.jpg",
       alt:
         language === "de"
