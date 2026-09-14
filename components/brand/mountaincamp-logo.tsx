@@ -8,6 +8,15 @@ export function MountaincampLogo({ className }: { className?: string }) {
   )
 }
 
+// Minimal icon mark (triple-peak "M") — use for favicons, avatars, and tight square surfaces.
+export function MountaincampM({ className }: { className?: string }) {
+  return (
+    <svg viewBox="0 0 176.4 169.1" className={className} fill="currentColor" role="img" aria-label="Mountaincamp">
+      <path d="M93.1,84.6l-10.3,22.6c-.1.3-.1.7,0,1l27.3,60.2c.2.4.6.7,1.1.7h19.5c.9,0,1.4-.9,1.1-1.7l-37.6-82.8c-.2-.5-.9-.5-1.1,0M94.2,82.5l10.3-22.6c.1-.3.1-.7,0-1L78,.7c-.4-.9-1.7-.9-2.2,0l-1,2.1h0S.1,167.4.1,167.4c-.4.8.2,1.7,1.1,1.7h19.5c.5,0,.9-.3,1.1-.7l54-119c.4-.9,1.7-.9,2.2,0l15.1,33.2c.2.5.9.5,1.1,0M176.3,167.4L117.3,37.6c-.4-.9-1.8-.9-2.2,0l-9.7,21.4c-.1.3-.1.7,0,1l49.2,108.4c.2.4.6.7,1.1.7h19.4c.9,0,1.5-.9,1.1-1.7" />
+    </svg>
+  )
+}
+
 // Short-form mark — use only for very small surfaces (e.g. the footer).
 export function MountaincampMTC({ className }: { className?: string }) {
   return (
