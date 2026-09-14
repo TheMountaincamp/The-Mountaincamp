@@ -2,23 +2,23 @@ import Image from "next/image"
 
 const photos = [
   {
-    src: "/images/main-group-photo.jpg",
-    alt: "Gruppe von Freund:innen feiert gemeinsam am Berg",
+    src: "/images/participants/waterfall-group.jpg",
+    alt: "Gruppe von Trailrunner:innen feiert gemeinsam vor einem Wasserfall",
     heightClass: "h-[220px] md:h-[280px]",
   },
   {
-    src: "/images/mountain-top-sunset-rave.jpg",
-    alt: "Ausgelassene Feier auf einem Gipfel bei Sonnenuntergang",
+    src: "/images/participants/lodge-runner-back.jpg",
+    alt: "Läuferin von hinten vor der Mountaincamp-Lodge",
     heightClass: "h-[220px] md:h-[360px]",
   },
   {
-    src: "/images/canoeing-lake.jpeg",
-    alt: "Gruppe im Kanu auf einem türkisen Bergsee",
+    src: "/images/participants/craft-workshop.jpg",
+    alt: "Teilnehmende gestalten gemeinsam beim Kreativ-Workshop",
     heightClass: "h-[220px] md:h-[360px]",
   },
   {
-    src: "/images/trail-runners-mountain-path.jpg",
-    alt: "Läuferinnen und Läufer auf einem schmalen Bergpfad",
+    src: "/images/participants/runner-portrait-smile.jpg",
+    alt: "Lächelnder Läufer mit Trailrunning-Ausrüstung im Wald",
     heightClass: "h-[220px] md:h-[280px]",
   },
 ]

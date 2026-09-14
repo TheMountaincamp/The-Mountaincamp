@@ -30,8 +30,8 @@ const formats: Format[] = [
   {
     id: "community",
     label: "Community",
-    image: "/images/hero-trail-runners.jpeg",
-    alt: "Gruppe von Trailrunnerinnen und Trailrunnern läuft gemeinsam durch die Berge",
+    image: "/images/participants/breakfast-community.jpg",
+    alt: "Teilnehmende holen sich gemeinsam Frühstück beim Mountaincamp",
     badge: "Buchbar",
     badgeVariant: "filled",
     title: "4 Nächte. 3 Lauftage. 100% Community.",
@@ -44,8 +44,8 @@ const formats: Format[] = [
   {
     id: "performance",
     label: "Performance",
-    image: "/images/mountain-trail-runner.jpeg",
-    alt: "Trailrunnerin läuft konzentriert einen steilen Bergpfad hinauf",
+    image: "/images/participants/trail-runners-fence.jpg",
+    alt: "Zwei Trailrunner in vollem Tempo auf dem Bergpfad",
     badge: "Coming Soon",
     badgeVariant: "outline",
     title: "Für die, die weiter wollen.",
@@ -57,8 +57,8 @@ const formats: Format[] = [
   {
     id: "adventure",
     label: "Adventure",
-    image: "/images/waterfall-group-photo.jpg",
-    alt: "Gruppe steht gemeinsam vor einem Wasserfall in den Bergen",
+    image: "/images/participants/forest-hike-poles.jpg",
+    alt: "Gruppe wandert mit Trekkingstöcken durch den Bergwald",
     badge: "Coming Soon",
     badgeVariant: "outline",
     title: "Dein erster Schritt auf den Trail.",
