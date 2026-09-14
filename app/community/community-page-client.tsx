@@ -677,26 +677,27 @@ useEffect(() => {
         )}
       </AnimatePresence>
 
-      <main>
+      <main className="relative bg-white">
         {/* Hero section */}
         <section ref={heroRef} className="relative min-h-[140vh] overflow-hidden">
           <div className="absolute inset-0">
             <motion.div style={{ scale: heroScale }} className="h-full w-full">
-              <video
-                ref={videoRef}
-                autoPlay
-                loop
-                muted
-                playsInline
-                preload="auto"
-                className="h-full w-full object-cover object-center"
-                poster="/images/forest-group-photo.jpg"
-                src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/1127%20%281%29-FEgWVPpCJfcsT3ni35EZXLPrKTpGVQ.mp4"
+              <Image
+                src="/images/community-waterfall-group.jpg"
+                alt={
+                  language === "de"
+                    ? "Fünf lachende Trailrunner Arm in Arm vor dem Krimmler Wasserfall"
+                    : "Five laughing trail runners arm in arm in front of the Krimml waterfall"
+                }
+                fill
+                priority
+                className="object-cover object-center"
+                sizes="100vw"
               />
             </motion.div>
           </div>
 
-          <div className="absolute inset-0 bg-gradient-to-b from-black/20 via-transparent to-transparent"></div>
+          <div className="absolute inset-0 bg-gradient-to-b from-black/50 via-black/20 to-white/40"></div>
 
           {/* Hero content */}
           <motion.div
@@ -801,9 +802,9 @@ useEffect(() => {
 
         {/* About section */}
         <section id="about" className="relative -mt-32 z-30">
-          <div className="absolute top-0 left-0 right-0 h-64 bg-gradient-to-b from-transparent via-white/5 via-white/10 via-white/15 via-white/20 via-white/25 pointer-events-none"></div>
+          <div className="absolute top-0 left-0 right-0 h-64 bg-gradient-to-b from-transparent to-white pointer-events-none"></div>
 
-          <div className="bg-white pt-40 pb-24">
+          <div className="pt-40 pb-24">
             <div className="container">
               <div className="grid gap-16 lg:grid-cols-2 items-center">
                 <motion.div
@@ -865,13 +866,14 @@ useEffect(() => {
                   whileInView={{ opacity: 1, scale: 1 }}
                   viewport={{ once: true }}
                   transition={{ duration: 0.8 }}
-                  className="relative h-[500px] overflow-hidden rounded-xl"
+                  whileHover={{ scale: 1.02 }}
+                  className="group relative h-[500px] overflow-hidden rounded-2xl shadow-lg"
                 >
                   <Image
                     src="/images/alpine-village-group.jpg"
                     alt="Trailrunning camp Austria - Mountain camp participants walking together in Alpine village Hochkrimml"
                     fill
-                    className="object-cover"
+                    className="object-cover transition-transform duration-700 group-hover:scale-110"
                     loading="lazy"
                     sizes="(max-width: 1024px) 100vw, 50vw"
                   />
@@ -888,7 +890,7 @@ useEffect(() => {
         </section>
 
         {/* Experience section with animated cards */}
-        <section id="experience" className="py-24 bg-gray-50">
+        <section id="experience" className="py-24 bg-gradient-to-b from-transparent via-mc-dust/30 to-transparent">
           <div className="container">
             <SectionTitle title={t("experienceTitle")} subtitle={t("experienceSubtitle")} align="center" light={true} />
 
@@ -957,7 +959,7 @@ useEffect(() => {
         </section>
 
         {/* Activities showcase */}
-        <section className="py-24 bg-white">
+        <section className="py-24">
           <div className="container">
             <SectionTitle title={t("activitiesTitle")} subtitle={t("activitiesSubtitle")} align="center" light={true} />
 
@@ -1035,7 +1037,7 @@ useEffect(() => {
         <RouteOverviewSection />
 
         {/* Gallery section with hover effects */}
-        <section className="py-24 bg-gray-50">
+        <section className="py-24 bg-gradient-to-b from-transparent via-mc-rose/12 to-transparent">
           <div className="container">
             <SectionTitle title={t("galleryTitle")} align="center" light={true} />
 
@@ -1047,7 +1049,8 @@ useEffect(() => {
                   whileInView={{ opacity: 1, scale: 1 }}
                   viewport={{ once: true }}
                   transition={{ duration: 0.5, delay: index * 0.1 }}
-                  className="aspect-square overflow-hidden group relative"
+                  whileHover={{ y: -8 }}
+                  className="aspect-square overflow-hidden group relative rounded-2xl shadow-sm hover:shadow-xl transition-shadow duration-300"
                 >
                   <ImageWithFallback
                     src={image.src || "/placeholder.svg"}
@@ -1071,7 +1074,7 @@ useEffect(() => {
 
         <InstagramReelsSection />
 
-        <section id="testimonials" className="py-24 relative overflow-hidden bg-white">
+        <section id="testimonials" className="py-24 relative overflow-hidden">
           <div className="absolute top-0 left-0 w-full h-full bg-[radial-gradient(ellipse_at_top_right,_var(--tw-gradient-stops))] from-primary/10 via-transparent to-transparent"></div>
 
           <div className="container relative z-10">
@@ -1140,15 +1143,15 @@ useEffect(() => {
         <FAQSection />
 
         {/* Partners section */}
-        <section className="py-24 bg-gray-900 overflow-hidden">
+        <section className="py-24 bg-gradient-to-b from-transparent via-mc-dust/40 to-transparent overflow-hidden">
           <div className="container mb-12">
-            <SectionTitle title={t("partnersTitle")} subtitle={t("partnersSubtitle")} align="center" light={false} />
+            <SectionTitle title={t("partnersTitle")} subtitle={t("partnersSubtitle")} align="center" light={true} />
           </div>
 
           <div className="relative">
             {/* Gradient overlays for fade effect */}
-            <div className="absolute left-0 top-0 bottom-0 w-32 bg-gradient-to-r from-gray-900 to-transparent z-10" />
-            <div className="absolute right-0 top-0 bottom-0 w-32 bg-gradient-to-l from-gray-900 to-transparent z-10" />
+            <div className="absolute left-0 top-0 bottom-0 w-32 bg-gradient-to-r from-white to-transparent z-10" />
+            <div className="absolute right-0 top-0 bottom-0 w-32 bg-gradient-to-l from-white to-transparent z-10" />
 
             <motion.div
               className="flex gap-20 items-center"
@@ -1172,7 +1175,7 @@ useEffect(() => {
                                         alt={`Partner ${num}`}
                                         width={600}
                                         height={150}
-                                        className={`w-auto object-contain opacity-70 hover:opacity-100 transition-opacity duration-300 ${num === 8 ? "h-24" : "h-36"}`}
+                                        className={`w-auto object-contain brightness-0 opacity-50 hover:opacity-80 transition-all duration-300 ${num === 8 ? "h-24" : "h-36"}`}
                                         loading="lazy"
                                         sizes="600px"
                                       />
@@ -1185,7 +1188,7 @@ useEffect(() => {
         </section>
 
         {/* Registration section with improved form */}
-        <section id="register" className="py-24 bg-black text-white">
+        <section id="register" className="py-24 bg-gradient-to-b from-transparent via-mc-mist/15 to-transparent text-gray-900">
           <div className="container">
             <div className="grid gap-16 lg:grid-cols-2 items-center">
               <motion.div
@@ -1194,8 +1197,8 @@ useEffect(() => {
                 viewport={{ once: true }}
                 transition={{ duration: 0.8 }}
               >
-                <h2 className="text-4xl font-bold uppercase tracking-tight mb-6 text-white">{t("joinTitle")}</h2>
-                <p className="text-xl mb-8 text-white">
+                <h2 className="text-4xl font-bold uppercase tracking-tight mb-6 text-gray-900">{t("joinTitle")}</h2>
+                <p className="text-xl mb-8 text-gray-700">
                   {language === "de" ? "5.-9. August 2026" : "August 5-9, 2026"}
                   <br />
                   {language === "de" ? "Österreichische Alpen" : "Austrian Alps"}
@@ -1203,19 +1206,19 @@ useEffect(() => {
                 <ul className="space-y-4">
                   <li className="flex items-center gap-3">
                     <ArrowRight className="h-4 w-4 text-primary" />
-                    <span className="text-white">{t("accommodation")}</span>
+                    <span className="text-gray-900">{t("accommodation")}</span>
                   </li>
                   <li className="flex items-center gap-3">
                     <ArrowRight className="h-4 w-4 text-primary" />
-                    <span className="text-white">{t("meals")}</span>
+                    <span className="text-gray-900">{t("meals")}</span>
                   </li>
                   <li className="flex items-center gap-3">
                     <ArrowRight className="h-4 w-4 text-primary" />
-                    <span className="text-white">{t("allLevels")}</span>
+                    <span className="text-gray-900">{t("allLevels")}</span>
                   </li>
                   <li className="flex items-center gap-3">
                     <ArrowRight className="h-4 w-4 text-primary" />
-                    <span className="text-white">{t("limitedSpots")}</span>
+                    <span className="text-gray-900">{t("limitedSpots")}</span>
                   </li>
                 </ul>
 
@@ -1235,8 +1238,8 @@ useEffect(() => {
                 viewport={{ once: true }}
                 transition={{ duration: 0.8 }}
               >
-                <div className="bg-gray-800 p-8 text-white rounded-xl border border-gray-700">
-                  <h3 className="text-2xl font-bold uppercase mb-6 text-center text-white">
+                <div className="bg-white p-8 text-gray-900 rounded-2xl border border-gray-200 shadow-lg">
+                  <h3 className="text-2xl font-bold uppercase mb-6 text-center text-gray-900">
                     {language === "de" ? "Jetzt anmelden" : "Register Now"}
                   </h3>
 
@@ -1254,7 +1257,7 @@ useEffect(() => {
                         {t("registerNow")}
                       </a>
                     </Button>
-                    <p className="text-white/70 mt-4 text-sm">
+                    <p className="text-gray-600 mt-4 text-sm">
                       {language === "de"
                         ? "Sichere dir jetzt deinen Platz im Mountaincamp!"
                         : "Secure your spot at The Mountaincamp now!"}
@@ -1267,16 +1270,17 @@ useEffect(() => {
         </section>
 
         {/* Join us in the alps section */}
-        <section className="relative py-24 bg-black text-white overflow-hidden">
+        <section className="relative py-32 text-white overflow-hidden">
           <div className="absolute inset-0">
             <Image
               src="/images/mountain-summit.jpeg"
               alt="Mountain summit view"
               fill
-              className="object-cover opacity-30"
+              className="object-cover"
               loading="lazy"
               sizes="100vw"
             />
+            <div className="absolute inset-0 bg-gradient-to-b from-white via-black/45 to-black/70"></div>
           </div>
           <div className="container relative z-10">
             <div className="max-w-4xl mx-auto text-center">
