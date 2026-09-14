@@ -6,8 +6,8 @@ import { Lock, ArrowRight } from "lucide-react"
 const REGIONS = {
   salzburg: {
     label: "Salzburg",
-    points: "320,210 380,150 430,190 440,240 400,270 330,260",
-    labelPos: { x: 375, y: 215 },
+    points: "340,220 400,140 460,175 470,225 430,260 350,270",
+    labelPos: { x: 400, y: 205 },
     color: "var(--mc-rose)",
     locked: false,
     href: "/community",
@@ -15,8 +15,8 @@ const REGIONS = {
   },
   tirol: {
     label: "Tirol",
-    points: "200,240 260,200 320,210 330,260 300,300 240,300 210,270",
-    labelPos: { x: 255, y: 255 },
+    points: "270,215 282,205 340,220 350,270 310,310 250,305 225,260",
+    labelPos: { x: 295, y: 262 },
     color: "var(--mc-mist)",
     locked: true,
     href: "/performance",
@@ -24,8 +24,8 @@ const REGIONS = {
   },
   corsica: {
     label: "Corsica",
-    points: "150,430 168,440 175,480 165,520 148,500 140,460",
-    labelPos: { x: 158, y: 475 },
+    points: "200,380 218,390 225,430 212,465 195,450 188,410",
+    labelPos: { x: 205, y: 425 },
     color: "var(--mc-sage)",
     locked: true,
     href: "/adventure",
@@ -34,13 +34,14 @@ const REGIONS = {
 } as const
 
 const CONTEXT_SHAPES = [
-  "100,40 320,30 420,60 430,120 380,150 250,140 130,110 90,80",       // Deutschland (Süd)
-  "420,60 560,50 600,90 580,140 480,150 430,120",                     // Tschechien
-  "90,150 180,130 250,140 260,200 200,240 130,220 90,190",            // Schweiz
-  "430,190 480,150 580,140 620,180 600,230 520,260 440,240",          // Rest-Österreich
-  "520,260 600,230 630,270 600,310 540,300",                          // Slowenien
-  "260,300 300,300 400,270 440,240 460,290 380,340 300,340",          // Italien (Nord)
-  "20,150 90,150 90,190 60,260 20,260",                               // Frankreich (Ost-Rand)
+  "100,40 340,25 460,55 470,110 400,140 260,135 140,105 90,75",       // Deutschland (Süd)
+  "460,55 590,45 630,85 610,135 500,145 470,110",                     // Tschechien
+  "90,160 190,140 260,150 270,215 210,255 140,240 95,205",            // Schweiz
+  "268,205 280,200 282,218 270,222",                                  // Liechtenstein
+  "460,175 500,145 610,135 645,175 625,225 545,255 470,225",          // Rest-Österreich
+  "545,255 625,225 655,265 625,305 565,295",                          // Slowenien
+  "310,310 430,260 545,255 520,340 480,430 440,520 400,480 420,400 370,350 300,340", // Italien
+  "20,160 90,160 95,205 70,280 40,340 15,300",                        // Frankreich (Ost-Rand)
 ]
 
 export function InteractiveMap() {
