@@ -1,13 +1,13 @@
 "use client"
 
 import { useState } from "react"
-import Image from "next/image"
 import Link from "next/link"
 import { motion, AnimatePresence } from "framer-motion"
 import { Menu, X } from "lucide-react"
 import { useLanguage } from "@/contexts/language-context"
 import LanguageSwitcher from "@/app/components/language-switcher"
 import { Button } from "@/components/ui/button"
+import { MountaincampLogo } from "@/components/brand/mountaincamp-logo"
 
 interface SiteHeaderProps {
   transparent?: boolean
@@ -33,22 +33,21 @@ export default function SiteHeader({ transparent = true }: SiteHeaderProps) {
   return (
     <>
       <header
-        className={`absolute top-0 z-50 w-full ${transparent ? "bg-transparent" : "bg-black/80 backdrop-blur-sm"}`}
+        className={`absolute top-0 z-50 w-full ${transparent ? "bg-transparent" : "bg-mc-black/80 backdrop-blur-sm"}`}
       >
         <div className="container flex h-20 items-center justify-between">
-          {/* Logo */}
-          <Link href="/" className="flex items-center">
-            <div className="relative w-32 h-10 md:w-[200px] md:h-14">
-              <Image
-                src="/images/MTC-Logo_2025_weiß.png"
-                alt="The Mountaincamp Logo"
-                fill
-                className="object-contain"
-                priority
-                sizes="(max-width: 768px) 128px, 200px"
-              />
-            </div>
-          </Link>
+          {/* Logo + back link */}
+          <div className="flex items-center gap-4">
+            <Link
+              href="/"
+              className="hidden text-sm font-medium uppercase tracking-wide text-mc-dust hover:text-mc-orange transition-colors md:inline-flex focus-visible:outline focus-visible:outline-2 focus-visible:outline-mc-orange focus-visible:outline-offset-4"
+            >
+              ← Mountaincamp
+            </Link>
+            <Link href="/" className="flex items-center focus-visible:outline focus-visible:outline-2 focus-visible:outline-mc-orange focus-visible:outline-offset-4">
+              <MountaincampLogo className="h-8 w-auto md:h-10 text-white" />
+            </Link>
+          </div>
 
           {/* Desktop navigation */}
           <nav className="hidden md:flex gap-8">
@@ -107,14 +106,7 @@ export default function SiteHeader({ transparent = true }: SiteHeaderProps) {
             }}
           >
             <div className="container flex justify-between items-center h-20">
-              <Image
-                src="/images/MTC-Logo_2025_weiß.png"
-                alt="The Mountaincamp Logo"
-                width={128}
-                height={40}
-                className="h-10 w-auto"
-                sizes="128px"
-              />
+              <MountaincampLogo className="h-8 w-auto text-white" />
               <motion.button
                 onClick={handleMenuToggle}
                 aria-label="Close menu"

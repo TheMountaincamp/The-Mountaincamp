@@ -1,7 +1,7 @@
 import type React from "react"
 import { Suspense } from "react"
 import type { Metadata, Viewport } from "next"
-import { Inter } from "next/font/google"
+import { Oswald } from "next/font/google"
 import "./globals.css"
 import { ThemeProvider } from "@/components/theme-provider"
 import { CookieConsentProvider } from "@/contexts/cookie-consent-context"
@@ -10,7 +10,14 @@ import CookieBanner from "@/components/cookie-banner"
 import Script from "next/script"
 import { Analytics } from "@vercel/analytics/react"
 
-const inter = Inter({ subsets: ["latin"], display: "swap" })
+// Display font (headlines, labels, buttons, numbers) — placeholder for the
+// not-yet-licensed brand typeface "Field Gothic Narrow". Always used condensed/uppercase.
+const oswald = Oswald({
+  subsets: ["latin", "latin-ext"],
+  weight: ["300", "500", "600", "700"],
+  variable: "--font-oswald",
+  display: "swap",
+})
 
 const CRITICAL_IMAGES = [
   "/images/hero-trail-runners.jpeg",
@@ -144,7 +151,7 @@ export default function RootLayout({
         <link rel="apple-touch-icon" sizes="180x180" href="/apple-icon-180.png" />
         <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#000000" />
       </head>
-      <body className={inter.className}>
+      <body className={`${oswald.variable} font-sans`}>
         <Suspense fallback={<div className="min-h-screen bg-black"></div>}>
           <LanguageProvider>
             <CookieConsentProvider>
