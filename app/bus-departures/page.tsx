@@ -324,17 +324,7 @@ export default function BusDeparturesPage() {
       {/* Footer */}
       <footer className="bg-black border-t border-white/10 py-8">
         <div className="container mx-auto px-4">
-          <div className="flex flex-col md:flex-row justify-between items-center">
-            <div className="mb-4 md:mb-0">
-              <Image
-                src="/images/MTC-Logo_2025_weiß.png"
-                alt="The Mountaincamp Logo"
-                width={150}
-                height={40}
-                className="h-10 w-auto"
-                unoptimized={true}
-              />
-            </div>
+          <div className="flex justify-center items-center">
             <div className="flex gap-8">
               <Link href="/" className="text-white/60 hover:text-primary transition-colors">
                 Home

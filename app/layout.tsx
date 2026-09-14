@@ -19,11 +19,7 @@ const oswald = Oswald({
   display: "swap",
 })
 
-const CRITICAL_IMAGES = [
-  "/images/hero-trail-runners.jpeg",
-  "/images/MTC-Logo_2025.png",
-  "/images/MTC-Logo_2025_weiß.png",
-]
+const CRITICAL_IMAGES = ["/images/hero-trail-runners.jpeg"]
 
 export const viewport: Viewport = {
   width: "device-width",

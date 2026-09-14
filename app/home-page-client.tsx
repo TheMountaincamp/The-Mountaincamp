@@ -25,7 +25,7 @@ import FAQSection from "@/app/components/faq-section"
 import RouteOverviewSection from "@/app/components/route-overview-section"
 
 // Define critical images for sections that will be visible later
-const SECTION_IMAGES = ["/images/MTC-Logo_2025_weiß.png"]
+const SECTION_IMAGES: string[] = []
 
 // Define images for the House page to preload when hovering over the link
 const HOUSE_PAGE_IMAGES = ["/images/mountain-lodge.jpeg"]
@@ -544,22 +544,7 @@ useEffect(() => {
 
       {/* Dynamic header - transparent on top, dark when scrolled */}
       <header className="absolute top-0 z-50 w-full bg-transparent">
-        <div className="container flex h-20 items-center justify-between">
-          {/* Logo container with fixed width on mobile */}
-          <div className="flex items-center">
-            <div className={`relative ${isMobile ? "w-32 h-10" : "w-auto h-14"}`}>
-              <ImageWithFallback
-                src="/images/MTC-Logo_2025_weiß.png"
-                alt="The Mountaincamp Logo"
-                width={isMobile ? 128 : 200}
-                height={isMobile ? 40 : 56}
-                className="h-full w-auto object-contain"
-                priority
-                sizes="(max-width: 768px) 128px, 200px"
-              />
-            </div>
-          </div>
-
+        <div className="container flex h-20 items-center justify-end">
           {/* Desktop navigation */}
           <nav className="hidden md:flex gap-8">
             <Link href="#about" className="text-sm font-bold uppercase hover:text-primary transition-colors text-white">
@@ -644,15 +629,7 @@ useEffect(() => {
               mass: 0.8,
             }}
           >
-            <div className="container flex justify-between items-center h-20">
-              <Image
-                src="/images/MTC-Logo_2025_weiß.png"
-                alt="The Mountaincamp Logo"
-                width={128}
-                height={40}
-                className="h-10 w-auto"
-                sizes="128px"
-              />
+            <div className="container flex justify-end items-center h-20">
               <motion.button
                 onClick={handleMenuToggle}
                 aria-label="Close menu"
@@ -729,33 +706,6 @@ useEffect(() => {
             <div className="absolute inset-0 bg-black/40 backdrop-blur-sm rounded-3xl opacity-0" />
 
             <div className="relative z-10">
-              <motion.div
-                initial={{ opacity: 1, scale: 1 }}
-                animate={{ opacity: 1, scale: 1 }}
-                transition={{
-                  delay: 0,
-                  duration: 0,
-                  type: "spring",
-                  stiffness: 100,
-                  damping: 15,
-                }}
-                className="mb-6"
-              >
-                {isMobile ? (
-                  <Image
-                    src="/images/MTC-Logo_2025_weiß.png"
-                    alt="The Mountaincamp Logo"
-                    width={250}
-                    height={100}
-                    className="mx-auto"
-                    priority
-                    sizes="250px"
-                  />
-                ) : (
-                  <h1 className="text-6xl font-bold uppercase tracking-tight">THE MOUNTAINCAMP</h1>
-                )}
-              </motion.div>
-
               <motion.p
                 initial={{ opacity: 0, y: 30 }}
                 animate={{ opacity: 1, y: 0 }}
@@ -1104,49 +1054,6 @@ useEffect(() => {
               <TestimonialSlider testimonials={testimonials} autoPlay={true} interval={6000} />
             </div>
 
-            {/* Spotify Playlist Section */}
-            <motion.div
-              initial={{ opacity: 0, y: 50 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.8 }}
-              className="mt-16 mb-16 relative overflow-hidden rounded-xl"
-            >
-              {/* Background image */}
-              <div className="absolute inset-0 z-0">
-                <Image
-                  src="/images/mountain-top-sunset-rave.jpg"
-                  alt="Mountain rave"
-                  fill
-                  className="object-cover"
-                  loading="lazy"
-                  sizes="100vw"
-                />
-                <div className="absolute inset-0 bg-black/80 backdrop-blur-sm"></div>
-              </div>
-
-              {/* Content */}
-              <div className="relative z-10 p-12 text-white">
-                <div className="text-center mb-8">
-                  <h3 className="text-3xl font-bold mb-4 text-white">{t("playlistTitle")}</h3>
-                  <p className="max-w-2xl mx-auto text-white/80">{t("playlistDesc")}</p>
-                </div>
-                <div className="flex justify-center">
-                  <iframe
-                    style={{ borderRadius: "12px" }}
-                    src={`https://open.spotify.com/embed/playlist/33kezN4oDEMyKsFBCicpu6?utm_source=generator&theme=0&cache=${Date.now()}`}
-                    width="100%"
-                    height="380"
-                    frameBorder="0"
-                    allowFullScreen
-                    allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
-                    className="max-w-3xl shadow-2xl"
-                    loading="lazy"
-                  ></iframe>
-                </div>
-              </div>
-            </motion.div>
-
             {/* Price Category Bars */}
             <motion.div
               initial={{ opacity: 0, y: 50 }}
@@ -1349,15 +1256,6 @@ useEffect(() => {
         <div className="container">
           <div className="flex flex-col md:flex-row justify-between items-center mb-12">
             <div className="mb-8 md:mb-0">
-              <Image
-                src="/images/MTC-Logo_2025_weiß.png"
-                alt="The Mountaincamp Logo"
-                width={180}
-                height={40}
-                className="h-12 w-auto mb-4"
-                loading="lazy"
-                sizes="180px"
-              />
               <p className="text-white/60">
                 {language === "de"
                   ? "Trailrunning-Camp in den österreichischen Alpen"

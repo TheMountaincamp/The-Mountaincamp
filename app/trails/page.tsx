@@ -19,7 +19,6 @@ const CRITICAL_IMAGES = [
   "/images/trail-runners-group.jpeg",
   "/images/mountain-lake.png",
   "/images/canoeing-lake.jpeg",
-  "/images/MTC-Logo_2025_weiß.png",
 ]
 
 export default function TrailsPage() {
@@ -414,16 +413,7 @@ export default function TrailsPage() {
       {/* Footer */}
       <footer className="bg-gray-100 border-t border-gray-200 py-8">
         <div className="container mx-auto px-4">
-          <div className="flex flex-col md:flex-row justify-between items-center">
-            <div className="mb-4 md:mb-0">
-              <Image
-                src="/images/MTC-Logo_2025_weiß.png"
-                alt="The Mountaincamp Logo"
-                width={150}
-                height={40}
-                className="h-10 w-auto"
-              />
-            </div>
+          <div className="flex justify-center items-center">
             <div className="flex gap-8">
               <Link href="/" className="text-gray-600 hover:text-primary transition-colors">
                 Home

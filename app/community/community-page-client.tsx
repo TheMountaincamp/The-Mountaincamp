@@ -26,7 +26,7 @@ import RouteOverviewSection from "@/app/components/route-overview-section"
 import { MountaincampLogo } from "@/components/brand/mountaincamp-logo"
 
 // Define critical images for sections that will be visible later
-const SECTION_IMAGES = ["/images/MTC-Logo_2025_weiß.png"]
+const SECTION_IMAGES: string[] = []
 
 // Define images for the House page to preload when hovering over the link
 const HOUSE_PAGE_IMAGES = ["/images/mountain-lodge.jpeg"]
@@ -719,19 +719,7 @@ useEffect(() => {
                 }}
                 className="mb-6"
               >
-                {isMobile ? (
-                  <Image
-                    src="/images/MTC-Logo_2025_weiß.png"
-                    alt="The Mountaincamp Logo"
-                    width={250}
-                    height={100}
-                    className="mx-auto"
-                    priority
-                    sizes="250px"
-                  />
-                ) : (
-                  <h1 className="text-6xl font-bold uppercase tracking-tight">THE MOUNTAINCAMP</h1>
-                )}
+                <h1 className="sr-only">The Mountaincamp</h1>
               </motion.div>
 
               <motion.p
@@ -1084,49 +1072,6 @@ useEffect(() => {
               <TestimonialSlider testimonials={testimonials} autoPlay={true} interval={6000} />
             </div>
 
-            {/* Spotify Playlist Section */}
-            <motion.div
-              initial={{ opacity: 0, y: 50 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.8 }}
-              className="mt-16 mb-16 relative overflow-hidden rounded-xl"
-            >
-              {/* Background image */}
-              <div className="absolute inset-0 z-0">
-                <Image
-                  src="/images/mountain-top-sunset-rave.jpg"
-                  alt="Mountain rave"
-                  fill
-                  className="object-cover"
-                  loading="lazy"
-                  sizes="100vw"
-                />
-                <div className="absolute inset-0 bg-black/80 backdrop-blur-sm"></div>
-              </div>
-
-              {/* Content */}
-              <div className="relative z-10 p-12 text-white">
-                <div className="text-center mb-8">
-                  <h3 className="text-3xl font-bold mb-4 text-white">{t("playlistTitle")}</h3>
-                  <p className="max-w-2xl mx-auto text-white/80">{t("playlistDesc")}</p>
-                </div>
-                <div className="flex justify-center">
-                  <iframe
-                    style={{ borderRadius: "12px" }}
-                    src={`https://open.spotify.com/embed/playlist/33kezN4oDEMyKsFBCicpu6?utm_source=generator&theme=0&cache=${Date.now()}`}
-                    width="100%"
-                    height="380"
-                    frameBorder="0"
-                    allowFullScreen
-                    allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
-                    className="max-w-3xl shadow-2xl"
-                    loading="lazy"
-                  ></iframe>
-                </div>
-              </div>
-            </motion.div>
-
             {/* Price Category Bars */}
             <motion.div
               initial={{ opacity: 0, y: 50 }}
@@ -1330,15 +1275,6 @@ useEffect(() => {
         <div className="container">
           <div className="flex flex-col md:flex-row justify-between items-center mb-12">
             <div className="mb-8 md:mb-0">
-              <Image
-                src="/images/MTC-Logo_2025_weiß.png"
-                alt="The Mountaincamp Logo"
-                width={180}
-                height={40}
-                className="h-12 w-auto mb-4"
-                loading="lazy"
-                sizes="180px"
-              />
               <p className="text-white/60">
                 {language === "de"
                   ? "Trailrunning-Camp in den österreichischen Alpen"
