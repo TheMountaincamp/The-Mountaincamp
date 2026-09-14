@@ -21,6 +21,26 @@ const photos = [
     alt: "Lächelnder Läufer mit Trailrunning-Ausrüstung im Wald",
     heightClass: "h-[220px] md:h-[280px]",
   },
+  {
+    src: "/images/participants/ridge-descent-poles.jpg",
+    alt: "Trailrunner:innen mit Stöcken auf einem Bergrücken vor Gletscherkulisse",
+    heightClass: "h-[220px] md:h-[360px]",
+  },
+  {
+    src: "/images/participants/hut-stop-valley.jpg",
+    alt: "Gruppe macht Rast an einer Berghütte mit Tiefblick ins Tal",
+    heightClass: "h-[220px] md:h-[280px]",
+  },
+  {
+    src: "/images/participants/lakeside-walk.jpg",
+    alt: "Zwei Läufer:innen wandern an einem Bergsee entlang",
+    heightClass: "h-[220px] md:h-[360px]",
+  },
+  {
+    src: "/images/participants/foggy-trail-valley.jpg",
+    alt: "Läufer:innen auf nebligem Bergpfad über einem Wolkenmeer",
+    heightClass: "h-[220px] md:h-[280px]",
+  },
 ]
 
 export function HubPhotoStrip() {
