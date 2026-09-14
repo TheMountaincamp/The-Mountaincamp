@@ -1,6 +1,6 @@
 import { HubHeader } from "@/app/components/hub/hub-header"
-import { HubHero } from "@/app/components/hub/hub-hero"
-import { HubFormatCards } from "@/app/components/hub/hub-format-cards"
+import { FormatSwitcher } from "@/app/components/hub/format-switcher"
+import { HubPhotoStrip } from "@/app/components/hub/hub-photo-strip"
 import { HubValueStrip } from "@/app/components/hub/hub-value-strip"
 import { HubFooter } from "@/app/components/hub/hub-footer"
 
@@ -9,8 +9,10 @@ export default function Home() {
     <div className="min-h-screen bg-mc-black text-mc-white">
       <HubHeader />
       <main>
-        <HubHero />
-        <HubFormatCards />
+        <FormatSwitcher />
+        <div className="py-8 md:py-12">
+          <HubPhotoStrip />
+        </div>
         <HubValueStrip />
       </main>
       <HubFooter />
