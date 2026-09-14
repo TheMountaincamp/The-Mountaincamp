@@ -341,60 +341,75 @@ useEffect(() => {
   // Translate gallery images captions and alt texts
   const galleryImages = [
     {
-      src: "/images/camp-social-gathering.jpg",
+      src: "/images/gallery-team-huddle.jpg",
       alt:
         language === "de"
-          ? "Camp-Teilnehmer beim Socializen auf der Terrasse der Lodge"
-          : "Camp participants socializing on lodge terrace",
+          ? "Große Gruppe von Läufern in einem Team-Huddle vor der Lodge"
+          : "Large group of runners in a team huddle outside the lodge",
       caption: language === "de" ? "Community Vibes" : "Community Vibes",
     },
     {
-      src: "/images/lodge-group-start.jpg",
+      src: "/images/gallery-start-line-flag.jpg",
       alt:
         language === "de"
-          ? "Gruppe von Läufern versammelt an der Berghütte"
-          : "Group of runners gathered at mountain lodge",
+          ? "Läufer versammeln sich im Nebel am Start neben der Suunto-Fahne"
+          : "Runners gathering in the mist at the start line beside the Suunto flag",
       caption: language === "de" ? "Bereit zum Laufen" : "Ready to Run",
     },
     {
-      src: "/images/terrace-community-time.jpg",
+      src: "/images/gallery-guitar-golden-hour.jpg",
       alt:
         language === "de"
-          ? "Große Gruppe auf der Terrasse der Lodge bei Sonnenuntergang"
-          : "Large group gathering on lodge terrace at sunset",
+          ? "Camper spielt Gitarre auf einer Brücke im goldenen Abendlicht"
+          : "Camper playing guitar on a bridge in the golden evening light",
       caption: language === "de" ? "Community Vibes" : "Community Vibes",
     },
     {
-      src: "/images/trail-runners-mountain-path.jpg",
-      alt: language === "de" ? "Zwei Trailrunnerinnen auf einem Bergpfad" : "Two female trail runners on mountain path",
+      src: "/images/gallery-foggy-ridge-poles.jpg",
+      alt:
+        language === "de"
+          ? "Läufer mit Trekkingstöcken erklimmen einen nebligen Bergrücken"
+          : "Runners with trekking poles climbing a foggy mountain ridge",
       caption: language === "de" ? "Trail Abenteuer" : "Trail Adventures",
     },
     {
-      src: "/images/runner-golden-meadow.jpg",
-      alt: language === "de" ? "Läufer auf goldener Bergwiese" : "Runner in golden mountain meadow",
+      src: "/images/gallery-flag-hillside-cow.jpg",
+      alt:
+        language === "de"
+          ? "Läuferin schwenkt eine Fahne auf einem Hügel neben einer Kuh, See im Hintergrund"
+          : "Runner waving a flag on a hillside next to a cow, lake in the background",
       caption: language === "de" ? "Bergfreiheit" : "Mountain Freedom",
     },
     {
-      src: "/images/mountain-trail-aerial.jpg",
-      alt: language === "de" ? "Luftaufnahme von Läufern auf Bergpfad" : "Aerial view of runners on mountain trail",
+      src: "/images/gallery-forest-road-sprint.jpg",
+      alt:
+        language === "de"
+          ? "Läufer sprintet mit Bewegungsunschärfe auf einer Waldstraße"
+          : "Runner sprinting with motion blur along a forest road",
       caption: language === "de" ? "Epische Trails" : "Epic Trails",
     },
     {
-      src: "/images/forest-runner-celebration.jpg",
-      alt: language === "de" ? "Fröhlicher Läufer feiert im Wald" : "Joyful runner celebrating in forest",
+      src: "/images/gallery-summit-celebration.jpg",
+      alt:
+        language === "de"
+          ? "Gruppe feiert jubelnd am Gipfelkreuz"
+          : "Group celebrating and cheering at the summit cross",
       caption: language === "de" ? "Pure Freude" : "Pure Joy",
     },
     {
-      src: "/images/lodge-terrace-relaxation.jpg",
-      alt: language === "de" ? "Camper entspannen auf der Lodge-Terrasse" : "Campers relaxing on lodge terrace",
+      src: "/images/gallery-lake-cooldown.jpg",
+      alt:
+        language === "de"
+          ? "Läufer erholen sich mit einer Abkühlung im Bergsee"
+          : "Runners cooling off and recovering in the alpine lake",
       caption: language === "de" ? "Erholungszeit" : "Recovery Time",
     },
     {
-      src: "/images/peaceful-terrace-moment.jpg",
+      src: "/images/gallery-solo-descent.jpg",
       alt:
         language === "de"
-          ? "Person entspannt unter Sonnenschirm auf der Terrasse der Berghütte"
-          : "Person relaxing under umbrella on mountain lodge terrace",
+          ? "Läuferin läuft einen ruhigen Bergrücken oberhalb eines Alpensees hinab"
+          : "Runner descending a quiet mountain ridge above an alpine lake",
       caption: language === "de" ? "Ruhige Momente" : "Peaceful Moments",
     },
   ]
