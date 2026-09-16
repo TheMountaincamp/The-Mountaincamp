@@ -14,7 +14,6 @@ import {
   PHASE_2_PRICE,
   PHASE_2_LABEL,
   NEXT_LAUNCH_START_MS,
-  NEXT_LAUNCH_END_MS,
   NEXT_LAUNCH_LABEL,
   TICKET_URL,
   getOverallPhase,
@@ -30,14 +29,11 @@ const COPY = {
     phase2LiveTitle: `Phase 2 läuft · ${PHASE_2_PRICE}€`,
     nextLaunchTitle: "Nächster Launch",
     nextLaunchLiveTitle: "Verkauf läuft",
-    endedTitle: "Ticketverkauf beendet",
-    endedText: "Trag dich ein, wir melden uns beim nächsten Ticket-Release.",
     liveLead: "Noch",
     upcomingLead: "Start in",
     phase2Hint: `Danach Phase 2: ${PHASE_2_LABEL.de.date} für ${PHASE_2_PRICE}€`,
     ctaLive: "Jetzt Tickets sichern",
     ctaUpcoming: "Erinnerung aktivieren",
-    ctaEnded: "Auf die Warteliste",
     d: "T",
     h: "Std",
     m: "Min",
@@ -50,14 +46,11 @@ const COPY = {
     phase2LiveTitle: `Phase 2 is live · ${PHASE_2_PRICE}€`,
     nextLaunchTitle: "Next launch",
     nextLaunchLiveTitle: "Sale is live",
-    endedTitle: "Ticket sale has ended",
-    endedText: "Sign up and we'll let you know about the next ticket release.",
     liveLead: "Only",
     upcomingLead: "Starts in",
     phase2Hint: `Then Phase 2: ${PHASE_2_LABEL.en.date} for ${PHASE_2_PRICE}€`,
     ctaLive: "Get your ticket",
     ctaUpcoming: "Remind me",
-    ctaEnded: "Join the waitlist",
     d: "d",
     h: "h",
     m: "m",
@@ -159,9 +152,9 @@ export default function EarlyBirdBanner({ delayMs = 3_000, onHeightChange }: Ear
         setParts(getTimeParts(PHASE_2_END_MS, now))
       } else if (nextPhase === "next-launch-upcoming") {
         setParts(getTimeParts(NEXT_LAUNCH_START_MS, now))
-      } else if (nextPhase === "next-launch-live") {
-        setParts(getTimeParts(NEXT_LAUNCH_END_MS, now))
       } else {
+        // next-launch-live läuft ab jetzt durchgehend ohne Enddatum,
+        // daher kein Countdown mehr.
         setParts(null)
       }
     }
@@ -172,7 +165,6 @@ export default function EarlyBirdBanner({ delayMs = 3_000, onHeightChange }: Ear
   }, [])
 
   const isLive = phase === "earlybird-live" || phase === "phase2-live" || phase === "next-launch-live"
-  const isEnded = phase === "ended"
   const showPhase2Hint = phase === "earlybird-upcoming" || phase === "earlybird-live"
 
   const title =
@@ -186,9 +178,7 @@ export default function EarlyBirdBanner({ delayMs = 3_000, onHeightChange }: Ear
             ? c.phase2LiveTitle
             : phase === "next-launch-upcoming"
               ? c.nextLaunchTitle
-              : phase === "next-launch-live"
-                ? c.nextLaunchLiveTitle
-                : c.endedTitle
+              : c.nextLaunchLiveTitle
 
   const dateText =
     phase === "earlybird-upcoming" || phase === "earlybird-live"
@@ -197,11 +187,9 @@ export default function EarlyBirdBanner({ delayMs = 3_000, onHeightChange }: Ear
         ? phase2Label.full
         : phase === "next-launch-upcoming"
           ? nextLaunchLabel.date
-          : phase === "next-launch-live"
-            ? nextLaunchLabel.full
-            : c.endedText
+          : nextLaunchLabel.since
 
-  const cta = isLive ? c.ctaLive : isEnded ? c.ctaEnded : c.ctaUpcoming
+  const cta = isLive ? c.ctaLive : c.ctaUpcoming
   const href = isLive ? TICKET_URL : "#register"
 
   // Vor Ablauf der Verzögerung wird nichts gerendert: Die Seite (inkl.

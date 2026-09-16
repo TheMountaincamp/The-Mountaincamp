@@ -63,26 +63,22 @@ export const PHASE_2_LABEL = {
 
 /**
  * Nächster Ticket-Release nach Phase 2: Mittwoch, 16. September 2026,
- * 09:00 Uhr MESZ, zum Preis von 550€. Läuft, wie Phase 2, bis Mitternacht
- * desselben Tages (= NEXT_LAUNCH_END).
+ * 09:00 Uhr MESZ, zum Preis von 550€. Anders als Early Bird und Phase 2
+ * ist dies KEIN zeitlich begrenztes Verkaufsfenster mehr – der Verkauf
+ * läuft ab dem Start durchgehend weiter (kein Enddatum).
  */
 export const NEXT_LAUNCH_START = "2026-09-16T09:00:00+02:00"
-/** Nächster Launch endet: Mittwoch, 16. September 2026, 24:00 Uhr (= Donnerstag, 17. September, 00:00 Uhr) MESZ */
-export const NEXT_LAUNCH_END = "2026-09-17T00:00:00+02:00"
 export const NEXT_LAUNCH_START_MS = new Date(NEXT_LAUNCH_START).getTime()
-export const NEXT_LAUNCH_END_MS = new Date(NEXT_LAUNCH_END).getTime()
 export const NEXT_LAUNCH_PRICE = 550
 
 export const NEXT_LAUNCH_LABEL = {
   de: {
     date: "Mittwoch, 16. September",
-    window: "09:00 – 24:00 Uhr",
-    full: "Mittwoch, 16. September, 09:00 – 24:00 Uhr",
+    since: "Seit Mittwoch, 16. September, 09:00 Uhr",
   },
   en: {
     date: "Wednesday, 16 September",
-    window: "09:00 – 24:00 CEST",
-    full: "Wednesday, 16 September, 09:00 – 24:00 CEST",
+    since: "Since Wednesday, 16 September, 09:00 CEST",
   },
 } as const
 
@@ -106,7 +102,6 @@ export type OverallPhase =
   | "phase2-live"
   | "next-launch-upcoming"
   | "next-launch-live"
-  | "ended"
 
 export function getOverallPhase(now: number = Date.now()): OverallPhase {
   if (now < EARLY_BIRD_START_MS) return "earlybird-upcoming"
@@ -114,8 +109,8 @@ export function getOverallPhase(now: number = Date.now()): OverallPhase {
   if (now < PHASE_2_START_MS) return "phase2-upcoming"
   if (now < PHASE_2_END_MS) return "phase2-live"
   if (now < NEXT_LAUNCH_START_MS) return "next-launch-upcoming"
-  if (now < NEXT_LAUNCH_END_MS) return "next-launch-live"
-  return "ended"
+  // Ab hier läuft der Verkauf durchgehend weiter – kein Enddatum mehr.
+  return "next-launch-live"
 }
 
 /** Verbleibende Zeit bis zum nächsten Phasenwechsel, in Einzelteilen. */
