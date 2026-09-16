@@ -14,6 +14,7 @@ import {
   PHASE_2_PRICE,
   PHASE_2_LABEL,
   NEXT_LAUNCH_START_MS,
+  NEXT_LAUNCH_END_MS,
   NEXT_LAUNCH_LABEL,
   TICKET_URL,
   getOverallPhase,
@@ -28,6 +29,7 @@ const COPY = {
     phase2UpcomingTitle: "Phase 2 startet in Kürze",
     phase2LiveTitle: `Phase 2 läuft · ${PHASE_2_PRICE}€`,
     nextLaunchTitle: "Nächster Launch",
+    nextLaunchLiveTitle: "Verkauf läuft",
     endedTitle: "Ticketverkauf beendet",
     endedText: "Trag dich ein, wir melden uns beim nächsten Ticket-Release.",
     liveLead: "Noch",
@@ -47,6 +49,7 @@ const COPY = {
     phase2UpcomingTitle: "Phase 2 starts soon",
     phase2LiveTitle: `Phase 2 is live · ${PHASE_2_PRICE}€`,
     nextLaunchTitle: "Next launch",
+    nextLaunchLiveTitle: "Sale is live",
     endedTitle: "Ticket sale has ended",
     endedText: "Sign up and we'll let you know about the next ticket release.",
     liveLead: "Only",
@@ -156,6 +159,8 @@ export default function EarlyBirdBanner({ delayMs = 3_000, onHeightChange }: Ear
         setParts(getTimeParts(PHASE_2_END_MS, now))
       } else if (nextPhase === "next-launch-upcoming") {
         setParts(getTimeParts(NEXT_LAUNCH_START_MS, now))
+      } else if (nextPhase === "next-launch-live") {
+        setParts(getTimeParts(NEXT_LAUNCH_END_MS, now))
       } else {
         setParts(null)
       }
@@ -166,7 +171,7 @@ export default function EarlyBirdBanner({ delayMs = 3_000, onHeightChange }: Ear
     return () => window.clearInterval(id)
   }, [])
 
-  const isLive = phase === "earlybird-live" || phase === "phase2-live"
+  const isLive = phase === "earlybird-live" || phase === "phase2-live" || phase === "next-launch-live"
   const isEnded = phase === "ended"
   const showPhase2Hint = phase === "earlybird-upcoming" || phase === "earlybird-live"
 
@@ -181,7 +186,9 @@ export default function EarlyBirdBanner({ delayMs = 3_000, onHeightChange }: Ear
             ? c.phase2LiveTitle
             : phase === "next-launch-upcoming"
               ? c.nextLaunchTitle
-              : c.endedTitle
+              : phase === "next-launch-live"
+                ? c.nextLaunchLiveTitle
+                : c.endedTitle
 
   const dateText =
     phase === "earlybird-upcoming" || phase === "earlybird-live"
@@ -190,7 +197,9 @@ export default function EarlyBirdBanner({ delayMs = 3_000, onHeightChange }: Ear
         ? phase2Label.full
         : phase === "next-launch-upcoming"
           ? nextLaunchLabel.date
-          : c.endedText
+          : phase === "next-launch-live"
+            ? nextLaunchLabel.full
+            : c.endedText
 
   const cta = isLive ? c.ctaLive : isEnded ? c.ctaEnded : c.ctaUpcoming
   const href = isLive ? TICKET_URL : "#register"
