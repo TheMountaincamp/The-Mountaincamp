@@ -165,7 +165,7 @@ export default function HomePageClient() {
     const updateBookable = () => {
       const phase = getOverallPhase()
       setSalePhase(phase)
-      setIsBookable(phase === "earlybird-live" || phase === "phase2-live")
+      setIsBookable(phase === "earlybird-live" || phase === "phase2-live" || phase === "next-launch-live")
     }
     updateBookable()
     const interval = setInterval(updateBookable, 30_000)
@@ -521,14 +521,20 @@ export default function HomePageClient() {
           <div className="flex items-center justify-between gap-3">
             <div className="flex-1">
               <p className="text-sm font-bold text-white">
-                {salePhase === "next-launch-upcoming"
+                {salePhase === "next-launch-live"
                   ? language === "de"
-                    ? "Nächster Launch"
-                    : "Next launch"
-                  : "Phase 2"}
+                    ? "Verkauf läuft"
+                    : "Sale is live"
+                  : salePhase === "next-launch-upcoming"
+                    ? language === "de"
+                      ? "Nächster Launch"
+                      : "Next launch"
+                    : "Phase 2"}
               </p>
               <p className="text-xs text-white/60">
-                {salePhase === "next-launch-upcoming" ? NEXT_LAUNCH_LABEL[language].date : PHASE_2_LABEL[language].date}
+                {salePhase === "next-launch-live" || salePhase === "next-launch-upcoming"
+                  ? NEXT_LAUNCH_LABEL[language].date
+                  : PHASE_2_LABEL[language].date}
               </p>
             </div>
             <Button
@@ -812,7 +818,11 @@ export default function HomePageClient() {
                     <span className="absolute inline-flex h-full w-full animate-ping bg-primary opacity-75" />
                     <span className="relative inline-flex h-2 w-2 bg-primary" />
                   </span>
-                  {t("earlyBirdBadge")}
+                  {isBookable
+                    ? language === "de"
+                      ? "Buchung ist jetzt geöffnet"
+                      : "Booking is now open"
+                    : t("earlyBirdBadge")}
                 </span>
               </motion.div>
             </div>
@@ -875,10 +885,30 @@ export default function HomePageClient() {
           <div className="container">
             <div className="flex flex-col items-start justify-between gap-6 lg:flex-row lg:items-center">
               <div className="flex-1">
-                <h3 className="text-2xl font-bold text-white md:text-3xl mb-2">{t("notifyTitle")}</h3>
-                <p className="text-white/70 text-lg leading-relaxed">{t("notifyDesc")}</p>
+                <h3 className="text-2xl font-bold text-white md:text-3xl mb-2">
+                  {isBookable
+                    ? language === "de"
+                      ? "Die Buchung ist jetzt geöffnet"
+                      : "Booking is now open"
+                    : t("notifyTitle")}
+                </h3>
+                <p className="text-white/70 text-lg leading-relaxed">
+                  {isBookable
+                    ? language === "de"
+                      ? `Seit Mittwoch, 16. September, 09:00 Uhr kannst du dein Ticket direkt buchen.`
+                      : "Since Wednesday, 16 September, 09:00 CEST you can book your ticket directly."
+                    : t("notifyDesc")}
+                </p>
               </div>
-              <NotifySignupForm className="w-full max-w-md shrink-0 [&_input]:bg-white [&_input]:text-gray-900 [&_button]:bg-primary [&_button]:text-white [&_button:hover]:bg-primary/90" />
+              {isBookable ? (
+                <Button size="lg" className="w-full shrink-0 bg-primary text-white hover:bg-primary/90 md:w-auto" asChild>
+                  <a href={TICKET_URL} target="_blank" rel="noopener noreferrer">
+                    {language === "de" ? "Jetzt Tickets sichern" : "Get your ticket"}
+                  </a>
+                </Button>
+              ) : (
+                <NotifySignupForm className="w-full max-w-md shrink-0 [&_input]:bg-white [&_input]:text-gray-900 [&_button]:bg-primary [&_button]:text-white [&_button:hover]:bg-primary/90" />
+              )}
             </div>
           </div>
         </motion.section>
@@ -963,9 +993,23 @@ export default function HomePageClient() {
                 <h3 className="mb-2 text-xl font-bold text-white md:text-2xl">
                   {language === "de" ? "Bereit für dein Trailrunning Abenteuer?" : "Ready for your trail running adventure?"}
                 </h3>
-                <p className="text-sm text-white/70 md:text-base">{t("notifyDesc")}</p>
+                <p className="text-sm text-white/70 md:text-base">
+                  {isBookable
+                    ? language === "de"
+                      ? "Seit Mittwoch, 16. September, 09:00 Uhr kannst du dein Ticket direkt buchen."
+                      : "Since Wednesday, 16 September, 09:00 CEST you can book your ticket directly."
+                    : t("notifyDesc")}
+                </p>
               </div>
-              <NotifySignupForm className="w-full max-w-md shrink-0 [&_input]:bg-white [&_input]:text-gray-900 [&_button]:bg-primary [&_button]:text-white [&_button:hover]:bg-primary/90" />
+              {isBookable ? (
+                <Button size="lg" className="w-full shrink-0 bg-primary text-white hover:bg-primary/90 md:w-auto" asChild>
+                  <a href={TICKET_URL} target="_blank" rel="noopener noreferrer">
+                    {language === "de" ? "Jetzt Tickets sichern" : "Get your ticket"}
+                  </a>
+                </Button>
+              ) : (
+                <NotifySignupForm className="w-full max-w-md shrink-0 [&_input]:bg-white [&_input]:text-gray-900 [&_button]:bg-primary [&_button]:text-white [&_button:hover]:bg-primary/90" />
+              )}
             </div>
           </div>
         </section>
@@ -1227,7 +1271,11 @@ export default function HomePageClient() {
                     <span className="relative inline-flex h-2 w-2 rounded-full bg-primary" />
                   </span>
                   <span className="text-sm font-semibold uppercase tracking-wide text-white">
-                    {t("comingSoonBadge")}
+                    {isBookable
+                      ? language === "de"
+                        ? "Buchung ist jetzt geöffnet"
+                        : "Booking is now open"
+                      : t("comingSoonBadge")}
                   </span>
                 </div>
               </motion.div>
@@ -1239,9 +1287,25 @@ export default function HomePageClient() {
                 transition={{ duration: 0.8 }}
               >
                 <div className="border border-gray-700 bg-gray-800 p-8 text-white">
-                  <h3 className="mb-3 text-center text-2xl font-bold uppercase text-white">{t("notifyTitle")}</h3>
-                  <p className="mb-6 text-center text-sm text-white/70">{t("notifyDesc")}</p>
-                  <NotifySignupForm className="[&_input]:bg-gray-900 [&_input]:text-white [&_input]:border-gray-700" />
+                  <h3 className="mb-3 text-center text-2xl font-bold uppercase text-white">
+                    {isBookable ? (language === "de" ? "Die Buchung ist jetzt geöffnet" : "Booking is now open") : t("notifyTitle")}
+                  </h3>
+                  <p className="mb-6 text-center text-sm text-white/70">
+                    {isBookable
+                      ? language === "de"
+                        ? "Seit Mittwoch, 16. September, 09:00 Uhr kannst du dein Ticket direkt buchen."
+                        : "Since Wednesday, 16 September, 09:00 CEST you can book your ticket directly."
+                      : t("notifyDesc")}
+                  </p>
+                  {isBookable ? (
+                    <Button size="lg" className="w-full bg-primary text-white hover:bg-primary/90" asChild>
+                      <a href={TICKET_URL} target="_blank" rel="noopener noreferrer">
+                        {language === "de" ? "Jetzt Tickets sichern" : "Get your ticket"}
+                      </a>
+                    </Button>
+                  ) : (
+                    <NotifySignupForm className="[&_input]:bg-gray-900 [&_input]:text-white [&_input]:border-gray-700" />
+                  )}
                 </div>
               </motion.div>
             </div>
