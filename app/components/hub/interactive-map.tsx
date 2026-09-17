@@ -80,6 +80,14 @@ export function InteractiveMap() {
           Finde dein Camp
         </p>
 
+        <p className="font-switzer text-sm md:text-base leading-relaxed text-mc-dust text-center max-w-lg mb-8">
+          The Mountaincamp brings people together in the Alps for a unique trail running experience.
+          <br className="hidden md:block" />
+          Over five days, we combine running, connection, and creativity. We are creating moments that go far beyond the trails.
+          <br className="hidden md:block" />
+          It&rsquo;s not about racing. It&rsquo;s about being out there together.
+        </p>
+
         <div className="w-full rounded-2xl border border-mc-dust/20 bg-black/20 backdrop-blur-md p-6">
           <svg
             viewBox="370 165 350 360"
@@ -124,14 +132,31 @@ export function InteractiveMap() {
                   {region.label}
                 </text>
                 {region.locked ? (
-                  <foreignObject
-                    x={region.labelPos.x + region.iconOffset.dx}
-                    y={region.labelPos.y + region.iconOffset.dy}
-                    width={18}
-                    height={18}
-                  >
-                    <Lock className="w-full h-full" style={{ color: "var(--mc-dust)" }} />
-                  </foreignObject>
+                  <g className="pointer-events-none">
+                    <foreignObject
+                      x={region.labelPos.x + region.iconOffset.dx}
+                      y={region.labelPos.y + region.iconOffset.dy}
+                      width={16}
+                      height={16}
+                    >
+                      <Lock className="w-full h-full" style={{ color: "var(--mc-dust)" }} />
+                    </foreignObject>
+                    <text
+                      x={region.labelPos.x}
+                      y={region.labelPos.y + 36}
+                      textAnchor="middle"
+                      className="font-oswald uppercase select-none"
+                      style={{
+                        fill: "var(--mc-dust)",
+                        fontSize: 11,
+                        letterSpacing: "0.12em",
+                        fontWeight: 500,
+                        filter: "drop-shadow(0 1px 3px rgba(0,0,0,0.9))",
+                      }}
+                    >
+                      Coming Soon
+                    </text>
+                  </g>
                 ) : (
                   <foreignObject
                     x={region.labelPos.x + region.iconOffset.dx}
@@ -145,23 +170,22 @@ export function InteractiveMap() {
               </a>
             ))}
 
-            {/* Hover-Tooltip: zuletzt gezeichnet, liegt über allem */}
+            {/* Hover-Tooltip: reiner Text, kein Kasten, liegt über allem */}
             {activeRegion && (
               <foreignObject
-                x={activeRegion.labelPos.x - 95}
-                y={activeRegion.labelPos.y - 58}
-                width={190}
-                height={46}
+                x={activeRegion.labelPos.x - 100}
+                y={activeRegion.labelPos.y - 56}
+                width={200}
+                height={40}
                 className="pointer-events-none"
               >
                 <div
-                  className="w-full h-full flex items-center justify-center rounded-md text-center px-2 font-switzer"
+                  className="w-full h-full flex items-center justify-center text-center font-switzer font-bold"
                   style={{
-                    background: "rgba(0,0,0,0.88)",
-                    border: `1px solid ${activeRegion.color}`,
-                    color: "var(--mc-dust)",
-                    fontSize: 11,
-                    lineHeight: 1.3,
+                    color: "var(--mc-white)",
+                    fontSize: 13,
+                    lineHeight: 1.35,
+                    textShadow: "0 1px 3px rgba(0,0,0,0.95), 0 0 10px rgba(0,0,0,0.8)",
                   }}
                 >
                   {activeRegion.caption}
