@@ -820,8 +820,8 @@ export default function HomePageClient() {
                   </span>
                   {isBookable
                     ? language === "de"
-                      ? "Buchung ist jetzt geöffnet"
-                      : "Booking is now open"
+                      ? "Buchung geöffnet"
+                      : "Booking open"
                     : t("earlyBirdBadge")}
                 </span>
               </motion.div>
@@ -888,15 +888,15 @@ export default function HomePageClient() {
                 <h3 className="text-2xl font-bold text-white md:text-3xl mb-2">
                   {isBookable
                     ? language === "de"
-                      ? "Die Buchung ist jetzt geöffnet"
-                      : "Booking is now open"
+                      ? "Buchung geöffnet"
+                      : "Booking open"
                     : t("notifyTitle")}
                 </h3>
                 <p className="text-white/70 text-lg leading-relaxed">
                   {isBookable
                     ? language === "de"
-                      ? `Seit Mittwoch, 16. September, 09:00 Uhr kannst du dein Ticket direkt buchen.`
-                      : "Since Wednesday, 16 September, 09:00 CEST you can book your ticket directly."
+                      ? "Du kannst dein Ticket jetzt direkt buchen."
+                      : "You can book your ticket directly now."
                     : t("notifyDesc")}
                 </p>
               </div>
@@ -996,8 +996,8 @@ export default function HomePageClient() {
                 <p className="text-sm text-white/70 md:text-base">
                   {isBookable
                     ? language === "de"
-                      ? "Seit Mittwoch, 16. September, 09:00 Uhr kannst du dein Ticket direkt buchen."
-                      : "Since Wednesday, 16 September, 09:00 CEST you can book your ticket directly."
+                      ? "Du kannst dein Ticket jetzt direkt buchen."
+                      : "You can book your ticket directly now."
                     : t("notifyDesc")}
                 </p>
               </div>
