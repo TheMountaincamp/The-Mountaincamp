@@ -281,6 +281,30 @@ export default function DatenschutzPage() {
               vertragliche oder gesetzliche Verpflichtungen entgegenstehen.
             </p>
 
+            <p>
+              <strong>o Meta Pixel (Reichweitenmessung und Werbung)</strong>
+            </p>
+            <p>
+              Wenn Sie in unserem Cookie-Banner in Marketing-Cookies einwilligen, binden wir den Meta Pixel der Meta
+              Platforms Ireland Ltd., Merrion Road, Dublin 4, D04 X2K5, Irland (&quot;Meta&quot;) ein. Ohne diese
+              Einwilligung wird der Pixel nicht geladen.
+            </p>
+            <p>
+              Der Pixel erfasst, welche Seiten Sie aufrufen, ob Sie sich für Ticket-Benachrichtigungen eintragen und ob
+              Sie auf einen Link zu unserer Buchungsseite klicken. Dabei werden insbesondere Ihre IP-Adresse,
+              Browser- und Geräteinformationen sowie ein Cookie-Identifier an Meta übermittelt. Wir nutzen diese
+              Informationen, um die Wirkung unserer Anzeigen auf Instagram und Facebook zu messen und Anzeigen an
+              Personen auszuspielen, die sich für The Mountaincamp interessieren. Meta kann die Daten mit Ihrem
+              Nutzerkonto verknüpfen und auch für eigene Zwecke verwenden. Für die Erhebung und Übermittlung sind wir
+              und Meta gemeinsam verantwortlich (Art. 26 DSGVO).
+            </p>
+            <p>
+              Rechtsgrundlage ist Ihre Einwilligung nach Art. 6 Abs. 1 lit. a DSGVO und § 25 Abs. 1 TDDDG. Eine
+              Übermittlung in die USA ist möglich. Meta ist unter dem EU-US Data Privacy Framework zertifiziert. Sie
+              können Ihre Einwilligung jederzeit über den Link &quot;Cookie-Einstellungen&quot; im Footer widerrufen.
+              Weitere Informationen: https://www.facebook.com/privacy/policy
+            </p>
+
             {/* Additional sections would continue here */}
 
             <h2 className="text-xl font-bold mt-8 mb-4 text-white">6. Weitergabe an Dritte</h2>
