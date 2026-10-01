@@ -185,9 +185,7 @@ export default function EarlyBirdBanner({ delayMs = 3_000, onHeightChange }: Ear
       ? earlyBirdLabel.full
       : phase === "phase2-upcoming" || phase === "phase2-live"
         ? phase2Label.full
-        : phase === "next-launch-upcoming"
-          ? nextLaunchLabel.date
-          : nextLaunchLabel.since
+        : nextLaunchLabel.date
 
   const cta = isLive ? c.ctaLive : c.ctaUpcoming
   const href = isLive ? TICKET_URL : "#register"
