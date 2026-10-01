@@ -119,7 +119,7 @@ export default function CookieBanner() {
                       <div>
                         <h3 className="font-medium">Marketing-Cookies</h3>
                         <p className="text-sm text-gray-500">
-                          Diese Cookies werden verwendet, um Werbung relevanter für Sie zu gestalten.
+                          Diese Cookies werden verwendet, um Werbung relevanter für Sie zu gestalten und ihren Erfolg zu messen (Meta Pixel der Meta Platforms Ireland Ltd.).
                         </p>
                       </div>
                       <label className="relative inline-flex items-center cursor-pointer">

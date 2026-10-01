@@ -6,6 +6,7 @@ import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 import { useLanguage } from "@/contexts/language-context"
 import { cn } from "@/lib/utils"
+import { trackMeta } from "@/lib/meta-pixel"
 
 type Status = "idle" | "submitting" | "success" | "error"
 
@@ -41,6 +42,7 @@ export default function NotifySignupForm({ className }: { className?: string }) 
       }
 
       setStatus("success")
+      trackMeta("Lead", { content_name: "Ticket-Benachrichtigung" })
     } catch (error) {
       console.error("[v0] Error submitting notify form:", error)
       setErrorMessage(t("notifyErrorGeneric"))
