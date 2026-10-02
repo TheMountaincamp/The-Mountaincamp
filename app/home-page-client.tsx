@@ -531,11 +531,13 @@ export default function HomePageClient() {
                       : "Next launch"
                     : "Phase 2"}
               </p>
-              <p className="text-xs text-white/60">
-                {salePhase === "next-launch-live" || salePhase === "next-launch-upcoming"
-                  ? NEXT_LAUNCH_LABEL[language].date
-                  : PHASE_2_LABEL[language].date}
-              </p>
+              {salePhase !== "next-launch-live" && (
+                <p className="text-xs text-white/60">
+                  {salePhase === "next-launch-upcoming"
+                    ? NEXT_LAUNCH_LABEL[language].date
+                    : PHASE_2_LABEL[language].date}
+                </p>
+              )}
             </div>
             <Button
               size="sm"
