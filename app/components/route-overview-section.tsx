@@ -106,12 +106,12 @@ export default function RouteOverviewSection() {
           </h3>
           <p className="text-gray-600 leading-relaxed text-center mb-6">
             {language === "de"
-              ? "Hochkrimml liegt auf 1.600m Höhe in den Kitzbüheler Alpen und bietet direkten Zugang zu einem Netzwerk spektakulärer Trailrunning-Strecken. Von sanften Almwegen bis zu technischen Gipfeltrails – die Vielfalt der österreichischen Alpen macht jedes Trailrunning-Erlebnis einzigartig."
-              : "Hochkrimml is located at 1,600m altitude in the Kitzbühel Alps and offers direct access to a network of spectacular trailrunning routes. From gentle alpine paths to technical summit trails – the diversity of the Austrian Alps makes every trailrunning experience unique."}
+              ? "Hochkrimml liegt auf 1.700 m Höhe in den Kitzbüheler Alpen und bietet direkten Zugang zu einem Netzwerk spektakulärer Trailrunning-Strecken. Von sanften Almwegen bis zu technischen Gipfeltrails – die Vielfalt der österreichischen Alpen macht jedes Trailrunning-Erlebnis einzigartig."
+              : "Hochkrimml is located at 1,700 m altitude in the Kitzbühel Alps and offers direct access to a network of spectacular trailrunning routes. From gentle alpine paths to technical summit trails – the diversity of the Austrian Alps makes every trailrunning experience unique."}
           </p>
           <div className="grid md:grid-cols-3 gap-6 text-center">
             <div>
-              <div className="text-3xl font-bold text-primary mb-2">1,600m</div>
+              <div className="text-3xl font-bold text-primary mb-2">1,700m</div>
               <div className="text-gray-600">{language === "de" ? "Ausgangshöhe" : "Starting Altitude"}</div>
             </div>
             <div>

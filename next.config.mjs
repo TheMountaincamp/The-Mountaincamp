@@ -78,6 +78,11 @@ const nextConfig = {
   async redirects() {
     return [
       {
+        source: '/legal/conditions-of-raffle-participation',
+        destination: '/',
+        permanent: true,
+      },
+      {
         source: '/en',
         destination: '/',
         permanent: false,

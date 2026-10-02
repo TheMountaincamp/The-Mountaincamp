@@ -1,254 +1,127 @@
 import type { Metadata } from "next"
-import Script from "next/script"
 import HomePageClient from "./home-page-client"
+import { faqsDE } from "@/app/data/faq"
+import { SITE_URL, SITE_NAME, OG_IMAGE, SAME_AS, jsonLd } from "@/app/lib/seo"
+import { NEXT_LAUNCH_PRICE, NEXT_LAUNCH_START, TICKET_URL, TICKETS_SOLD, TOTAL_TICKETS } from "@/app/lib/early-bird"
 
 export const metadata: Metadata = {
-  title: "The Mountaincamp 2027 | Trailrunning Camp Österreich in Hochkrimml",
+  title: {
+    absolute: "Trailrunning Camp Österreich 2027 | The Mountaincamp in Hochkrimml",
+  },
   description:
-    "Phase 2 startet am Mittwoch, 26. August, 00–24 Uhr, für 500€. 5-tägiges Trailrunning Camp in den österreichischen Alpen: tägliche Trailruns, Techniktraining, Community und Workshops in Hochkrimml, 18.–22. August 2027.",
+    "Trailrunning Camp in den österreichischen Alpen: 5 Tage tägliche Trailruns, Workshops und Community in Hochkrimml. Für alle Level, 18. bis 22. August 2027.",
   keywords: [
     "Trailrunning Camp",
     "Trailrunning Camp Österreich",
     "Trail Running Camp Austria",
-    "Mountaincamp",
-    "The Mountaincamp",
-    "Hochkrimml",
+    "Trailrunning Camp Alpen",
     "Trailrunning Anfänger",
-    "Trailrunning Alpen",
     "Laufcamp Österreich",
-    "Trail Running Workshop",
+    "Trailrunning Hochkrimml",
     "Trailrunning Community",
-    "Mountaincamp Early Bird",
-    "Mountaincamp Tickets 2027",
+    "The Mountaincamp",
+    "Mountaincamp 2027",
   ],
-  authors: [{ name: "The Mountaincamp" }],
-  creator: "The Mountaincamp",
-  publisher: "The Mountaincamp",
+  alternates: {
+    canonical: SITE_URL,
+  },
   openGraph: {
-    title: "The Mountaincamp 2027 | Trailrunning Camp Österreich",
+    title: "The Mountaincamp 2027 | Trailrunning Camp in Österreich",
     description:
-      "5 Tage Trailrunning, Community und Abenteuer in den österreichischen Alpen. Hochkrimml, 18.-22. August 2027.",
-    url: "https://themountaincamp.de",
-    siteName: "The Mountaincamp",
-    images: [
-      {
-        url: "https://themountaincamp.de/images/hero-trail-runners.jpeg",
-        width: 1200,
-        height: 630,
-        alt: "Trailrunning Camp Österreich - The Mountaincamp 2027",
-      },
-    ],
+      "5 Tage Trailrunning, Workshops und Community in den österreichischen Alpen. Hochkrimml, 18. bis 22. August 2027.",
+    url: SITE_URL,
+    siteName: SITE_NAME,
+    images: [OG_IMAGE],
     locale: "de_DE",
+    alternateLocale: ["en_US"],
     type: "website",
   },
   twitter: {
     card: "summary_large_image",
-    title: "The Mountaincamp 2027 | Trailrunning Camp Österreich",
+    title: "The Mountaincamp 2027 | Trailrunning Camp in Österreich",
     description:
-      "5 Tage Trailrunning, Community und Abenteuer in den österreichischen Alpen. Hochkrimml, 18.-22. August 2027.",
-    images: ["https://themountaincamp.de/images/hero-trail-runners.jpeg"],
-  },
-  alternates: {
-    canonical: "https://themountaincamp.de",
-    languages: {
-      "de-DE": "https://themountaincamp.de",
-      "en-US": "https://themountaincamp.de",
-    },
-  },
-  robots: {
-    index: true,
-    follow: true,
-    googleBot: {
-      index: true,
-      follow: true,
-      "max-video-preview": -1,
-      "max-image-preview": "large",
-      "max-snippet": -1,
-    },
+      "5 Tage Trailrunning, Workshops und Community in den österreichischen Alpen. Hochkrimml, 18. bis 22. August 2027.",
+    images: [OG_IMAGE.url],
   },
 }
 
-const eventStructuredData = {
-  "@context": "https://schema.org",
-  "@type": "SportsEvent",
-  name: "The Mountaincamp 2027",
-  alternateName: [
-    "The Mountaincamp",
-    "Trailrunning Camp Austria",
-    "Trailrunning Camp Österreich",
-    "Trail Running Camp Austria",
-  ],
-  description:
-    "A 5-day trail running camp in Hochkrimml, Austria, for beginners, intermediate runners and experienced athletes. Trails, coaching, community and workshops in the Austrian Alps.",
-  sport: "Trail Running",
-  startDate: "2027-08-18",
-  endDate: "2027-08-22",
-  eventStatus: "https://schema.org/EventScheduled",
-  eventAttendanceMode: "https://schema.org/OfflineEventAttendanceMode",
-  location: {
-    "@type": "Place",
-    name: "Hochkrimml, Austrian Alps",
-    address: {
-      "@type": "PostalAddress",
-      streetAddress: "Hochkrimml",
-      addressLocality: "Hochkrimml",
-      addressRegion: "Salzburg",
-      postalCode: "5743",
-      addressCountry: "AT",
-    },
-    geo: {
-      "@type": "GeoCoordinates",
-      latitude: 47.2393,
-      longitude: 12.1735,
-    },
-  },
-  image: [
-    "https://themountaincamp.de/images/hero-trail-runners.jpeg",
-    "https://themountaincamp.de/images/alpine-village-group.jpg",
-    "https://themountaincamp.de/images/mountain-summit.jpeg",
-  ],
-  offers: [
-    {
-      "@type": "Offer",
-      name: "Early-Bird-Ticket",
-      availability: "https://schema.org/SoldOut",
-      url: "https://themountaincamp.de",
-      validFrom: "2026-08-16T12:00:00+02:00",
-      validThrough: "2026-08-17T00:00:00+02:00",
-      priceCurrency: "EUR",
-    },
-    {
-      "@type": "Offer",
-      name: "Phase 2 Ticket",
-      availability: "https://schema.org/PreOrder",
-      url: "https://themountaincamp.de",
-      price: "500",
-      validFrom: "2026-08-26T00:00:00+02:00",
-      validThrough: "2026-08-27T00:00:00+02:00",
-      priceCurrency: "EUR",
-    },
-  ],
-  organizer: {
-    "@type": "Organization",
-    name: "The Mountaincamp",
-    url: "https://themountaincamp.de",
-    logo: "https://themountaincamp.de/images/mountaincamp-logo-black.png",
-    sameAs: [
-      "https://www.instagram.com/the_mountaincamp/",
-      "https://www.youtube.com/@the_mountaincamp",
-      "https://www.tiktok.com/@themountaincamp",
-    ],
-  },
-  performer: {
-    "@type": "Organization",
-    name: "The Mountaincamp Coaching Team",
-  },
-}
-
-const organizationStructuredData = {
-  "@context": "https://schema.org",
+const organization = {
   "@type": "Organization",
-  name: "The Mountaincamp",
-  url: "https://themountaincamp.de",
-  logo: "https://themountaincamp.de/images/mountaincamp-logo-black.png",
-  image: "https://themountaincamp.de/images/hero-trail-runners.jpeg",
-  address: {
-    "@type": "PostalAddress",
-    addressLocality: "Hochkrimml",
-    addressRegion: "Salzburg",
-    addressCountry: "AT",
-  },
-  sameAs: [
-    "https://www.instagram.com/the_mountaincamp/",
-    "https://www.youtube.com/@the_mountaincamp",
-    "https://www.tiktok.com/@themountaincamp",
-  ],
+  "@id": `${SITE_URL}/#organization`,
+  name: SITE_NAME,
+  url: SITE_URL,
+  logo: `${SITE_URL}/images/mountaincamp-logo-black.png`,
+  image: `${SITE_URL}${OG_IMAGE.url}`,
+  slogan: "Connected by the Trail.",
+  sameAs: SAME_AS,
   contactPoint: {
     "@type": "ContactPoint",
     email: "themountaincampde@gmail.com",
-    contactType: "Customer Service",
+    contactType: "customer service",
     availableLanguage: ["German", "English"],
   },
 }
 
-const breadcrumbStructuredData = {
+const structuredData = {
   "@context": "https://schema.org",
-  "@type": "BreadcrumbList",
-  itemListElement: [
+  "@graph": [
+    organization,
     {
-      "@type": "ListItem",
-      position: 1,
-      name: "Home",
-      item: "https://themountaincamp.de",
+      "@type": "WebSite",
+      "@id": `${SITE_URL}/#website`,
+      url: SITE_URL,
+      name: SITE_NAME,
+      inLanguage: ["de", "en"],
+      publisher: { "@id": `${SITE_URL}/#organization` },
     },
     {
-      "@type": "ListItem",
-      position: 2,
-      name: "The Mountaincamp",
-      item: "https://themountaincamp.de",
-    },
-  ],
-}
-
-const faqStructuredData = {
-  "@context": "https://schema.org",
-  "@type": "FAQPage",
-  mainEntity: [
-    {
-      "@type": "Question",
-      name: "Was ist The Mountaincamp?",
-      acceptedAnswer: {
-        "@type": "Answer",
-        text: "The Mountaincamp ist ein 5-tägiges Trailrunning Camp in Hochkrimml, Österreich, für Anfänger, Fortgeschrittene und ambitionierte Läufer. Es kombiniert tägliche Trailruns, Techniktraining, Workshops und Community-Events in den österreichischen Alpen.",
+      "@type": "SportsEvent",
+      "@id": `${SITE_URL}/#event-2027`,
+      name: "The Mountaincamp 2027",
+      alternateName: ["Trailrunning Camp Österreich", "Trail Running Camp Austria"],
+      description:
+        "5-tägiges Trailrunning Camp in Hochkrimml, Österreich, für alle Level: tägliche Trailruns in Gruppen nach Tempo, Workshops, gemeinsame Abende und Sunset Rave.",
+      sport: "Trail Running",
+      startDate: "2027-08-18",
+      endDate: "2027-08-22",
+      eventStatus: "https://schema.org/EventScheduled",
+      eventAttendanceMode: "https://schema.org/OfflineEventAttendanceMode",
+      maximumAttendeeCapacity: TOTAL_TICKETS,
+      location: {
+        "@type": "Place",
+        name: "Hochkrimml, Hohe Tauern",
+        address: {
+          "@type": "PostalAddress",
+          addressLocality: "Hochkrimml",
+          addressRegion: "Salzburg",
+          postalCode: "5743",
+          addressCountry: "AT",
+        },
+        geo: { "@type": "GeoCoordinates", latitude: 47.2393, longitude: 12.1735 },
       },
+      image: [
+        `${SITE_URL}${OG_IMAGE.url}`,
+        `${SITE_URL}/images/hero-trail-runners.jpeg`,
+        `${SITE_URL}/images/mountain-top-sunset-rave.jpg`,
+      ],
+      offers: {
+        "@type": "Offer",
+        url: TICKET_URL,
+        price: String(NEXT_LAUNCH_PRICE),
+        priceCurrency: "EUR",
+        availability: TICKETS_SOLD >= TOTAL_TICKETS ? "https://schema.org/SoldOut" : "https://schema.org/InStock",
+        validFrom: NEXT_LAUNCH_START,
+      },
+      organizer: { "@id": `${SITE_URL}/#organization` },
     },
     {
-      "@type": "Question",
-      name: "Wann und wo findet das Camp statt?",
-      acceptedAnswer: {
-        "@type": "Answer",
-        text: "Das Mountaincamp 2027 findet vom 18. bis 22. August in Hochkrimml in den österreichischen Alpen (Salzburg) statt.",
-      },
-    },
-    {
-      "@type": "Question",
-      name: "Ist das Camp für Anfänger geeignet?",
-      acceptedAnswer: {
-        "@type": "Answer",
-        text: "Ja, das Camp ist für alle Level geeignet – von Trailrunning-Anfängern bis zu erfahrenen Athleten. Es gibt verschiedene Laufgruppen und Routen für jedes Fitnesslevel.",
-      },
-    },
-    {
-      "@type": "Question",
-      name: "Wann startet der Ticketverkauf für das Mountaincamp 2027?",
-      acceptedAnswer: {
-        "@type": "Answer",
-        text: "Phase 2 für das Mountaincamp 2027 startet am Mittwoch, dem 26. August, von 00:00 bis 24:00 Uhr zum Preis von 500€. Das Kontingent ist begrenzt und nur in diesem Zeitfenster verfügbar.",
-      },
-    },
-    {
-      "@type": "Question",
-      name: "Welche Aktivitäten gibt es neben dem Trailrunning?",
-      acceptedAnswer: {
-        "@type": "Answer",
-        text: "Neben den täglichen Trailruns gibt es Yoga, Workshops (Töpfern, Aquarellmalerei, Stricken), MTB-Touren, Kanufahren, Bogenschießen, Klettern, Filmabende, Lagerfeuer und die legendäre Sunset Rave Party.",
-      },
-    },
-    {
-      "@type": "Question",
-      name: "Wie komme ich zum Camp?",
-      acceptedAnswer: {
-        "@type": "Answer",
-        text: "Es gibt organisierte Busshuttles von verschiedenen deutschen Städten (München, Stuttgart, Hamburg, Frankfurt, Köln) nach Hochkrimml. Alternativ ist eine Anreise mit dem eigenen Auto möglich.",
-      },
-    },
-    {
-      "@type": "Question",
-      name: "Was gibt es beim Mountaincamp neben dem Laufen?",
-      acceptedAnswer: {
-        "@type": "Answer",
-        text: "Das Mountaincamp ist mehr als nur Laufen. Neben den täglichen Trailruns bieten wir kreative Workshops wie Töpfern, Aquarellmalerei und Yoga an. Die Community steht bei uns im Mittelpunkt: Gemeinsame Mahlzeiten, Lagerfeuerabende und die legendäre Sunset Rave Party schaffen unvergessliche Erinnerungen. Unsere Unterkunft in Hochkrimml bietet Platz für alle Teilnehmer und ist der perfekte Ausgangspunkt für die schönsten Trails der Region.",
-      },
+      "@type": "FAQPage",
+      "@id": `${SITE_URL}/#faq`,
+      mainEntity: faqsDE.map((f) => ({
+        "@type": "Question",
+        name: f.question,
+        acceptedAnswer: { "@type": "Answer", text: f.answer },
+      })),
     },
   ],
 }
@@ -256,26 +129,7 @@ const faqStructuredData = {
 export default function Home() {
   return (
     <>
-      <Script
-        id="structured-data-event"
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(eventStructuredData) }}
-      />
-      <Script
-        id="structured-data-organization"
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(organizationStructuredData) }}
-      />
-      <Script
-        id="structured-data-breadcrumb"
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbStructuredData) }}
-      />
-      <Script
-        id="structured-data-faq"
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(faqStructuredData) }}
-      />
+      <script type="application/ld+json" dangerouslySetInnerHTML={jsonLd(structuredData)} />
       <HomePageClient />
     </>
   )

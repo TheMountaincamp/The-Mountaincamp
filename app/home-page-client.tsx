@@ -714,7 +714,7 @@ export default function HomePageClient() {
                 playsInline
                 preload="auto"
                 className="h-full w-full object-cover object-center"
-                poster="/images/forest-group-photo.jpg"
+                poster="/_next/image?url=%2Fimages%2Fforest-group-photo.jpg&w=1920&q=85"
                 src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/1127%20%281%29-FEgWVPpCJfcsT3ni35EZXLPrKTpGVQ.mp4"
               />
             </motion.div>
