@@ -102,6 +102,9 @@ export default function HousePage() {
             transition={{ duration: 0.8, delay: 0.2 }}
           >
             {t("houseTitle")}
+            <span className="sr-only">
+              {language === "de" ? ": Unterkunft beim Trailrunning Camp in Hochkrimml" : ": accommodation at the trail running camp in Hochkrimml"}
+            </span>
           </motion.h1>
           <motion.p
             className="max-w-2xl text-xl text-white/80 md:text-2xl"

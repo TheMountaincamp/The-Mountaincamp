@@ -203,6 +203,9 @@ export default function TrailsPage() {
             transition={{ duration: 0.8, delay: 0.2 }}
           >
             {t("trailsTitle")}
+            <span className="sr-only">
+              {lang === "de" ? ": Trailrunning Routen rund um Hochkrimml" : ": trail running routes around Hochkrimml"}
+            </span>
           </motion.h1>
           <motion.p
             className="max-w-2xl text-xl text-white/80 md:text-2xl"

@@ -83,7 +83,7 @@ export default function BusDeparturesPage() {
           fill
           className="object-cover"
           priority
-          unoptimized
+          sizes="100vw"
         />
         <div className="absolute inset-0 bg-gradient-to-b from-black/70 via-black/50 to-black" />
 
@@ -95,6 +95,9 @@ export default function BusDeparturesPage() {
             transition={{ duration: 0.8, delay: 0.2 }}
           >
             TRANSPORT
+            <span className="sr-only">
+              {language === "de" ? ": Busanreise zum Trailrunning Camp in Hochkrimml" : ": bus travel to the trail running camp in Hochkrimml"}
+            </span>
           </motion.h1>
 
           <motion.p
@@ -321,7 +324,6 @@ export default function BusDeparturesPage() {
                 width={150}
                 height={29}
                 className="h-10 w-auto"
-                unoptimized
               />
             </div>
 
