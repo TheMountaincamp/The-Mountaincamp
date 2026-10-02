@@ -311,7 +311,7 @@ export default function DatenschutzPage() {
             <p>
               Auf unserer Seite &quot;Tickets&quot; ist die Buchungsmaske unseres Buchungssystems camps.digital
               eingebunden. Beim Aufruf der Seite lädt Ihr Browser die Maske von Servern des Anbieters (gehostet bei
-              Amazon Web Services) und von my.camps.digital. Dabei werden insbesondere Ihre IP-Adresse sowie Browser-
+              Amazon Web Services), von my.camps.digital und vom Content Delivery Network jsDelivr. Dabei werden insbesondere Ihre IP-Adresse sowie Browser-
               und Geräteinformationen übermittelt. Die Daten, die Sie bei der Buchung eingeben (zum Beispiel Name,
               Kontaktdaten, Anreise und Zahlungsangaben), werden an camps.digital übertragen und dort in unserem
               Auftrag verarbeitet.

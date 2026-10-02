@@ -15,6 +15,27 @@ import { BOOKING_URL } from "@/app/lib/early-bird"
 const MASK_HTML_URL = "https://main.d1u2qdrqduf5v6.amplifyapp.com/index.html"
 const JQUERY_SRC = "/vendor/jquery-3.7.1.min.js"
 
+// Die Maske liest Anbieter, Reise und Termin aus der Adresszeile. Fehlen sie,
+// setzen wir die Werte für The Mountaincamp 2027 (gleiche wie in BOOKING_URL).
+const DEFAULT_PARAMS: Record<string, string> = {
+  vendor: "mountaincamp",
+  anbieter_id: "39",
+  destination_id: "2647",
+  termin_id: "38057",
+}
+
+function ensureParams() {
+  const url = new URL(window.location.href)
+  let changed = false
+  for (const [k, v] of Object.entries(DEFAULT_PARAMS)) {
+    if (!url.searchParams.get(k)) {
+      url.searchParams.set(k, v)
+      changed = true
+    }
+  }
+  if (changed) window.history.replaceState(window.history.state, "", url.toString())
+}
+
 type JQ = ((el: Element) => { load: (url: string, cb: (r: string, status: string, xhr: XMLHttpRequest) => void) => void }) & {
   fn?: unknown
 }
@@ -69,6 +90,7 @@ export default function BookingMask({ lang }: { lang: "de" | "en" }) {
       window.location.reload()
       return
     }
+    ensureParams()
     loadJquery()
       .then(($) => {
         if (cancelled) return
