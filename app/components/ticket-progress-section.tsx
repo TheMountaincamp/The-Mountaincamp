@@ -1,7 +1,6 @@
 "use client"
 
 import { useEffect, useState } from "react"
-import Link from "next/link"
 import { motion, useReducedMotion } from "framer-motion"
 import { Check, Ticket, Clock } from "lucide-react"
 import { useLanguage } from "@/contexts/language-context"
@@ -287,13 +286,13 @@ export default function TicketProgressSection() {
             )}
 
             {phase2Live && (
-              <Link
+              <a
                 href={TICKET_URL}
                 className="inline-flex items-center gap-2 bg-white px-5 py-2 text-sm font-bold uppercase tracking-wide text-primary transition-colors hover:bg-white/90 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white"
               >
                 <Ticket className="h-4 w-4" aria-hidden="true" />
                 {c.phase2Cta}
-              </Link>
+              </a>
             )}
           </motion.div>
         </div>

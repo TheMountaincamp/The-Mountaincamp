@@ -1,7 +1,6 @@
 "use client"
 
 import { useEffect, useRef, useState } from "react"
-import Link from "next/link"
 import { motion, AnimatePresence, useReducedMotion } from "framer-motion"
 import { Ticket, Clock } from "lucide-react"
 import { useLanguage } from "@/contexts/language-context"
@@ -264,7 +263,7 @@ export default function EarlyBirdBanner({ delayMs = 3_000, onHeightChange }: Ear
             )}
           </AnimatePresence>
 
-          <Link
+          <a
             href={href}
             className={`inline-flex shrink-0 items-center gap-1.5 px-3 py-1 text-xs font-bold uppercase tracking-wide transition-colors focus-visible:outline-2 focus-visible:outline-offset-2 md:gap-2 md:px-5 md:py-2 md:text-sm ${
               isLive
@@ -274,7 +273,7 @@ export default function EarlyBirdBanner({ delayMs = 3_000, onHeightChange }: Ear
           >
             <Ticket className="h-3.5 w-3.5 md:h-4 md:w-4" aria-hidden="true" />
             {cta}
-          </Link>
+          </a>
         </div>
       </div>
     </motion.aside>

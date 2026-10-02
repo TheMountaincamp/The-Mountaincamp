@@ -106,7 +106,7 @@ const structuredData = {
       ],
       offers: {
         "@type": "Offer",
-        url: TICKET_URL,
+        url: `${SITE_URL}${TICKET_URL}`,
         price: String(NEXT_LAUNCH_PRICE),
         priceCurrency: "EUR",
         availability: TICKETS_SOLD >= TOTAL_TICKETS ? "https://schema.org/SoldOut" : "https://schema.org/InStock",

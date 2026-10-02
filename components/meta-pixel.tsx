@@ -13,7 +13,10 @@ const CONTENT_PAGES: Record<string, string> = {
   "/bus-departures": "Busanreise",
 }
 
-// Links zur Buchungsstrecke (externes Buchungssystem)
+// Ticketseite mit eingebetteter Buchungsmaske
+const TICKET_PAGE = "/tickets"
+
+// Direkte Links zum externen Buchungssystem (Fallback-Link)
 const CHECKOUT_LINK = 'a[href*="camps.digital"]'
 
 function loadPixel() {
@@ -61,6 +64,8 @@ export default function MetaPixel() {
     trackMeta("PageView")
     const name = CONTENT_PAGES[pathname]
     if (name) trackMeta("ViewContent", { content_name: name, content_category: "Camp" })
+    // Ticketseite mit eingebetteter Buchungsmaske = Beginn der Buchung
+    if (pathname === TICKET_PAGE) trackMeta("InitiateCheckout", { content_name: "The Mountaincamp 2027", currency: "EUR" })
   }, [allowed, pathname])
 
   // Klick auf einen Ticket-Link = Beginn der Buchung
@@ -69,7 +74,7 @@ export default function MetaPixel() {
     const onClick = (event: MouseEvent) => {
       const target = event.target as Element | null
       const link = target?.closest?.(CHECKOUT_LINK)
-      if (!link) return
+      if (!link || window.location.pathname === TICKET_PAGE) return
       trackMeta("InitiateCheckout", { content_name: "The Mountaincamp 2027", currency: "EUR" })
     }
     document.addEventListener("click", onClick, true)

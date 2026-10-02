@@ -20,12 +20,11 @@ export const EARLY_BIRD_START = "2026-08-16T12:00:00+02:00"
 /** Verkaufsende: Sonntag, 16. August 2026, 24:00 Uhr (Mitternacht) MESZ */
 export const EARLY_BIRD_END = "2026-08-17T00:00:00+02:00"
 
-/**
- * Link zum Ticketshop.
- * TODO: Durch die echte Shop-URL ersetzen. Solange hier "#register" steht,
- * springt der Button nur zum Newsletter-Formular.
- */
-export const TICKET_URL = "https://my.camps.digital/travel/selfhosted/extern/bm?&vendor=mountaincamp&anbieter_id=39&destination_id=2647&termin_id=38057"
+/** Externe Buchungsseite von camps.digital (Fallback, falls die eingebettete Maske nicht lädt) */
+export const BOOKING_URL = "https://my.camps.digital/travel/selfhosted/extern/bm?&vendor=mountaincamp&anbieter_id=39&destination_id=2647&termin_id=38057"
+
+/** Ziel aller Ticket-Buttons: eigene Seite mit eingebetteter Buchungsmaske */
+export const TICKET_URL = "/tickets"
 
 export const EARLY_BIRD_START_MS = new Date(EARLY_BIRD_START).getTime()
 export const EARLY_BIRD_END_MS = new Date(EARLY_BIRD_END).getTime()
@@ -65,13 +64,13 @@ export const PHASE_2_LABEL = {
 
 /**
  * Nächster Ticket-Release nach Phase 2: Mittwoch, 16. September 2026,
- * 09:00 Uhr MESZ, zum Preis von 550€. Anders als Early Bird und Phase 2
+ * 09:00 Uhr MESZ, zum Preis von 550€ (aktuell 530€ laut camps.digital). Anders als Early Bird und Phase 2
  * ist dies KEIN zeitlich begrenztes Verkaufsfenster mehr – der Verkauf
  * läuft ab dem Start durchgehend weiter (kein Enddatum).
  */
 export const NEXT_LAUNCH_START = "2026-09-16T09:00:00+02:00"
 export const NEXT_LAUNCH_START_MS = new Date(NEXT_LAUNCH_START).getTime()
-export const NEXT_LAUNCH_PRICE = 550
+export const NEXT_LAUNCH_PRICE = 530
 
 export const NEXT_LAUNCH_LABEL = {
   de: {
