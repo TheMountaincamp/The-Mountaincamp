@@ -64,13 +64,13 @@ export const PHASE_2_LABEL = {
 
 /**
  * Nächster Ticket-Release nach Phase 2: Mittwoch, 16. September 2026,
- * 09:00 Uhr MESZ, zum Preis von 550€. Anders als Early Bird und Phase 2
+ * 09:00 Uhr MESZ, zum Preis von 550€ (aktuell 530€ laut camps.digital). Anders als Early Bird und Phase 2
  * ist dies KEIN zeitlich begrenztes Verkaufsfenster mehr – der Verkauf
  * läuft ab dem Start durchgehend weiter (kein Enddatum).
  */
 export const NEXT_LAUNCH_START = "2026-09-16T09:00:00+02:00"
 export const NEXT_LAUNCH_START_MS = new Date(NEXT_LAUNCH_START).getTime()
-export const NEXT_LAUNCH_PRICE = 550
+export const NEXT_LAUNCH_PRICE = 530
 
 export const NEXT_LAUNCH_LABEL = {
   de: {
