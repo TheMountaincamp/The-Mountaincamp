@@ -7,19 +7,7 @@ import { motion } from "framer-motion"
 import { Mountain, ArrowUp, Clock, Route } from "lucide-react"
 import { useLanguage } from "@/contexts/language-context"
 import RouteCarousel from "@/app/components/route-carousel"
-import ImagePreloader from "@/app/components/image-preloader"
 import SiteHeader from "@/app/components/site-header"
-
-const CRITICAL_IMAGES = [
-  "/images/trails-header-group.jpeg",
-  "/images/alpine-landscape.jpeg",
-  "/images/trail-runner-1.jpeg",
-  "/images/summit-view.jpeg",
-  "/images/trail-runners-group.jpeg",
-  "/images/mountain-lake.png",
-  "/images/canoeing-lake.jpeg",
-  "/images/mountaincamp-logo-white.png",
-]
 
 type LocalizedText = {
   en: string
@@ -180,7 +168,6 @@ export default function TrailsPage() {
 
   return (
     <div className="min-h-screen bg-white text-gray-900">
-      <ImagePreloader imageSources={CRITICAL_IMAGES} />
 
       <SiteHeader />
 

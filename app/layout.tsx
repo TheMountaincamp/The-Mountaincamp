@@ -15,7 +15,6 @@ import { Analytics } from "@vercel/analytics/react"
 const inter = Inter({ subsets: ["latin"], display: "swap" })
 
 const CRITICAL_IMAGES = [
-  "/images/hero-trail-runners.jpeg",
   "/images/mountaincamp-logo-black.png",
   "/images/mountaincamp-logo-white.png",
 ]

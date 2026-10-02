@@ -116,7 +116,11 @@ export default function MasonryGallery({ images }: { images: MasonryGalleryImage
             onClick={(event: React.MouseEvent) => event.stopPropagation()}
           >
             <img
-              src={images[activeIndex].src || "/placeholder.svg"}
+              src={
+                images[activeIndex].src?.startsWith("/images/")
+                  ? `/_next/image?url=${encodeURIComponent(images[activeIndex].src)}&w=1920&q=85`
+                  : images[activeIndex].src || "/placeholder.svg"
+              }
               alt={images[activeIndex].alt}
               className="max-h-[80vh] w-auto max-w-full object-contain"
             />

@@ -14,7 +14,7 @@ export const faqsDE: FAQItem[] = [
   {
     question: "Wo kann man Trailrunning machen?",
     answer:
-      "Trailrunning kannst du überall machen, wo es natürliche Wege gibt: in den Alpen, im Mittelgebirge, in Wäldern oder sogar in Parks. Die österreichischen Alpen bieten mit ihren spektakulären Bergpfaden ideale Bedingungen. Unser Camp in Hochkrimml auf 1.600m Höhe liegt inmitten eines der schönsten Trailrunning-Gebiete Österreichs mit hunderten Kilometern alpiner Trails.",
+      "Trailrunning kannst du überall machen, wo es natürliche Wege gibt: in den Alpen, im Mittelgebirge, in Wäldern oder sogar in Parks. Die österreichischen Alpen bieten mit ihren spektakulären Bergpfaden ideale Bedingungen. Unser Camp in Hochkrimml auf 1.700 m Höhe liegt inmitten eines der schönsten Trailrunning-Gebiete Österreichs mit hunderten Kilometern alpiner Trails.",
   },
   {
     question: "Wie fange ich mit Trailrunning an?",
@@ -54,7 +54,7 @@ export const faqsDE: FAQItem[] = [
   {
     question: "Wo genau findet The Mountaincamp statt?",
     answer:
-      "Das Camp findet in Hochkrimml in den österreichischen Alpen statt, auf 1.600m Höhe. Die Region bietet spektakuläre alpine Trails mit atemberaubenden Bergpanoramen und ist perfekt für Trailrunning in den Alpen.",
+      "Das Camp findet in Hochkrimml in den österreichischen Alpen statt, auf 1.700 m Höhe. Die Region bietet spektakuläre alpine Trails mit atemberaubenden Bergpanoramen und ist perfekt für Trailrunning in den Alpen.",
   },
   {
     question: "Was ist im Preis von The Mountaincamp enthalten?",
@@ -102,7 +102,7 @@ export const faqsEN: FAQItem[] = [
   {
     question: "Where can you do trailrunning?",
     answer:
-      "You can do trailrunning anywhere with natural paths: in the Alps, low mountain ranges, forests, or even parks. The Austrian Alps offer ideal conditions with spectacular mountain trails. Our camp in Hochkrimml at 1,600m altitude is in one of Austria's most beautiful trailrunning areas with hundreds of kilometers of alpine trails.",
+      "You can do trailrunning anywhere with natural paths: in the Alps, low mountain ranges, forests, or even parks. The Austrian Alps offer ideal conditions with spectacular mountain trails. Our camp in Hochkrimml at 1,700 m altitude is in one of Austria's most beautiful trailrunning areas with hundreds of kilometers of alpine trails.",
   },
   {
     question: "How do I start trailrunning?",
@@ -142,7 +142,7 @@ export const faqsEN: FAQItem[] = [
   {
     question: "Where exactly does The Mountaincamp take place?",
     answer:
-      "The camp takes place in Hochkrimml in the Austrian Alps, at 1,600m altitude. The region offers spectacular alpine trails with breathtaking mountain panoramas and is perfect for trailrunning in the Alps.",
+      "The camp takes place in Hochkrimml in the Austrian Alps, at 1,700 m altitude. The region offers spectacular alpine trails with breathtaking mountain panoramas and is perfect for trailrunning in the Alps.",
   },
   {
     question: "What's included in The Mountaincamp price?",

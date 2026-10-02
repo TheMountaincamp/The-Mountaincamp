@@ -6,18 +6,7 @@ import Link from "next/link"
 import { motion } from "framer-motion"
 import { Wifi, Utensils, Thermometer, Droplets, Mountain } from "lucide-react"
 import { useLanguage } from "@/contexts/language-context"
-import ImagePreloader from "@/app/components/image-preloader"
 import SiteHeader from "@/app/components/site-header"
-
-const CRITICAL_IMAGES = [
-  "/images/mountain-lodge.jpeg",
-  "/images/cozy-bunk-accommodation.jpg",
-  "/images/wooden-dormitory-interior.jpg",
-  "/images/house-bathroom-sink.jpeg",
-  "/images/house-shower.jpeg",
-  "/images/house-toilet.jpeg",
-  "/images/mountaincamp-logo-black.png",
-]
 
 type FacilityDescription = {
   en: string
@@ -79,7 +68,6 @@ export default function HousePage() {
 
   return (
     <div className="min-h-screen bg-white text-gray-900">
-      <ImagePreloader imageSources={CRITICAL_IMAGES} />
 
       <SiteHeader />
 
