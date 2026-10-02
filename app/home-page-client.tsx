@@ -545,7 +545,7 @@ export default function HomePageClient() {
               asChild
             >
               {isBookable ? (
-                <a href={TICKET_URL} target="_blank" rel="noopener noreferrer">
+                <a href={TICKET_URL}>
                   {language === "de" ? "Ticket sichern" : "Get ticket"}
                 </a>
               ) : (
@@ -799,7 +799,7 @@ export default function HomePageClient() {
                 <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }} className="flex w-full justify-center">
                   <Button size="lg" className="btn-outline w-full max-w-[280px] px-6 py-3 text-base" asChild>
                     {isBookable ? (
-                      <a href={TICKET_URL} target="_blank" rel="noopener noreferrer">
+                      <a href={TICKET_URL}>
                         {language === "de" ? "Jetzt Tickets sichern" : "Get your ticket"}
                       </a>
                     ) : (
@@ -904,7 +904,7 @@ export default function HomePageClient() {
               </div>
               {isBookable ? (
                 <Button size="lg" className="w-full shrink-0 bg-primary text-white hover:bg-primary/90 md:w-auto" asChild>
-                  <a href={TICKET_URL} target="_blank" rel="noopener noreferrer">
+                  <a href={TICKET_URL}>
                     {language === "de" ? "Jetzt Tickets sichern" : "Get your ticket"}
                   </a>
                 </Button>
@@ -1005,7 +1005,7 @@ export default function HomePageClient() {
               </div>
               {isBookable ? (
                 <Button size="lg" className="w-full shrink-0 bg-primary text-white hover:bg-primary/90 md:w-auto" asChild>
-                  <a href={TICKET_URL} target="_blank" rel="noopener noreferrer">
+                  <a href={TICKET_URL}>
                     {language === "de" ? "Jetzt Tickets sichern" : "Get your ticket"}
                   </a>
                 </Button>
@@ -1301,7 +1301,7 @@ export default function HomePageClient() {
                   </p>
                   {isBookable ? (
                     <Button size="lg" className="w-full bg-primary text-white hover:bg-primary/90" asChild>
-                      <a href={TICKET_URL} target="_blank" rel="noopener noreferrer">
+                      <a href={TICKET_URL}>
                         {language === "de" ? "Jetzt Tickets sichern" : "Get your ticket"}
                       </a>
                     </Button>
@@ -1395,7 +1395,7 @@ export default function HomePageClient() {
                   {t("testimonials")}
                 </Link>
                 {isBookable ? (
-                  <a href={TICKET_URL} target="_blank" rel="noopener noreferrer" className="footer-link">
+                  <a href={TICKET_URL} className="footer-link">
                     {t("register")}
                   </a>
                 ) : (

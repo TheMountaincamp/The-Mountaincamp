@@ -291,7 +291,7 @@ export default function DatenschutzPage() {
             </p>
             <p>
               Der Pixel erfasst, welche Seiten Sie aufrufen, ob Sie sich für Ticket-Benachrichtigungen eintragen und ob
-              Sie auf einen Link zu unserer Buchungsseite klicken. Dabei werden insbesondere Ihre IP-Adresse,
+              Sie unsere Ticketseite aufrufen oder auf einen Link zu unserer Buchungsseite klicken. Dabei werden insbesondere Ihre IP-Adresse,
               Browser- und Geräteinformationen sowie ein Cookie-Identifier an Meta übermittelt. Wir nutzen diese
               Informationen, um die Wirkung unserer Anzeigen auf Instagram und Facebook zu messen und Anzeigen an
               Personen auszuspielen, die sich für The Mountaincamp interessieren. Meta kann die Daten mit Ihrem
@@ -303,6 +303,23 @@ export default function DatenschutzPage() {
               Übermittlung in die USA ist möglich. Meta ist unter dem EU-US Data Privacy Framework zertifiziert. Sie
               können Ihre Einwilligung jederzeit über den Link &quot;Cookie-Einstellungen&quot; im Footer widerrufen.
               Weitere Informationen: https://www.facebook.com/privacy/policy
+            </p>
+
+            <p>
+              <strong>o Buchungsmaske von camps.digital</strong>
+            </p>
+            <p>
+              Auf unserer Seite &quot;Tickets&quot; ist die Buchungsmaske unseres Buchungssystems camps.digital
+              eingebunden. Beim Aufruf der Seite lädt Ihr Browser die Maske von Servern des Anbieters (gehostet bei
+              Amazon Web Services) und von my.camps.digital. Dabei werden insbesondere Ihre IP-Adresse sowie Browser-
+              und Geräteinformationen übermittelt. Die Daten, die Sie bei der Buchung eingeben (zum Beispiel Name,
+              Kontaktdaten, Anreise und Zahlungsangaben), werden an camps.digital übertragen und dort in unserem
+              Auftrag verarbeitet.
+            </p>
+            <p>
+              Rechtsgrundlage ist die Durchführung vorvertraglicher Maßnahmen und die Erfüllung des
+              Buchungsvertrags (Art. 6 Abs. 1 lit. b DSGVO) sowie unser berechtigtes Interesse an einer
+              reibungslosen Buchung direkt auf unserer Website (Art. 6 Abs. 1 lit. f DSGVO).
             </p>
 
             {/* Additional sections would continue here */}
