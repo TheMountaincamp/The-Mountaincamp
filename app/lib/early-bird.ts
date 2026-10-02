@@ -12,6 +12,8 @@
  * Hydration-Mismatch in React.
  */
 
+import ticketData from "@/app/data/tickets.json"
+
 /** Verkaufsstart: Sonntag, 16. August 2026, 12:00 Uhr (Mittag) MESZ */
 export const EARLY_BIRD_START = "2026-08-16T12:00:00+02:00"
 
@@ -34,11 +36,11 @@ export const EARLY_BIRD_END_MS = new Date(EARLY_BIRD_END).getTime()
  * Phase 1 (Early Bird) ist mit EARLY_BIRD_END abgelaufen. Phase 2 ist,
  * genau wie Phase 1, ein einmaliges Zeitfenster (nicht dauerhaft offen):
  * sie startet und endet an den unten definierten Zeitpunkten zum Preis
- * von 500€. Die verkaufte Stückzahl wird manuell gepflegt (kein
- * Live-Anschluss an den Ticketshop).
+ * von 500€. Die verkaufte Stückzahl steht in app/data/tickets.json und wird
+ * täglich automatisch aus der Paxliste von camps.digital aktualisiert.
  */
 export const TOTAL_TICKETS = 300
-export const TICKETS_SOLD = 75
+export const TICKETS_SOLD: number = ticketData.sold
 
 /** Phase 2 startet: Mittwoch, 26. August 2026, 00:00 Uhr MESZ */
 export const PHASE_2_START = "2026-08-26T00:00:00+02:00"

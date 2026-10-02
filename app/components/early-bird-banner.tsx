@@ -185,7 +185,9 @@ export default function EarlyBirdBanner({ delayMs = 3_000, onHeightChange }: Ear
       ? earlyBirdLabel.full
       : phase === "phase2-upcoming" || phase === "phase2-live"
         ? phase2Label.full
-        : nextLaunchLabel.date
+        : phase === "next-launch-upcoming"
+          ? nextLaunchLabel.date
+          : ""
 
   const cta = isLive ? c.ctaLive : c.ctaUpcoming
   const href = isLive ? TICKET_URL : "#register"
@@ -222,13 +224,13 @@ export default function EarlyBirdBanner({ delayMs = 3_000, onHeightChange }: Ear
 
             <p className="text-xs font-bold uppercase tracking-wide md:text-base">
               {title}
-              <span
+              {dateText && <span
                 className={`ml-2 font-normal normal-case ${
                   isLive ? "text-white/85" : "text-white/60"
                 }`}
               >
                 {dateText}
-              </span>
+              </span>}
             </p>
           </div>
 
