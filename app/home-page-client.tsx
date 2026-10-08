@@ -516,15 +516,15 @@ export default function HomePageClient() {
         <motion.div
           initial={{ y: 100, opacity: 0 }}
           animate={{ y: 0, opacity: 1 }}
-          className="fixed bottom-0 left-0 right-0 z-40 border-t border-white/10 bg-black/95 px-4 py-3 backdrop-blur-md safe-area-pb"
+          className="frost-grey fixed bottom-0 left-0 right-0 z-40 border-t border-gray-200 px-4 py-3 safe-area-pb"
         >
           <div className="flex items-center justify-between gap-3">
             <div className="flex-1">
               <p className="text-sm font-bold text-white">
                 {salePhase === "next-launch-live"
                   ? language === "de"
-                    ? "Verkauf läuft"
-                    : "Sale is live"
+                    ? "Hol dir jetzt dein Ticket und spare"
+                    : "Get your ticket now and save"
                   : salePhase === "next-launch-upcoming"
                     ? language === "de"
                       ? "Nächster Launch"
@@ -882,7 +882,7 @@ export default function HomePageClient() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6 }}
-          className="relative z-30 bg-black py-12 md:py-16"
+          className="frost-grey relative z-30 py-12 md:py-16"
         >
           <div className="container">
             <div className="flex flex-col items-start justify-between gap-6 lg:flex-row lg:items-center">
@@ -988,7 +988,7 @@ export default function HomePageClient() {
           </div>
         </section>
 
-        <section className="bg-black py-8 md:py-12">
+        <section className="frost-grey py-8 md:py-12">
           <div className="container">
             <div className="flex flex-col items-center justify-between gap-6 lg:flex-row">
               <div className="text-center lg:text-left">
@@ -1231,7 +1231,7 @@ export default function HomePageClient() {
 
         <TicketProgressSection />
 
-        <section id="register" className="bg-black py-16 text-white md:py-24">
+        <section id="register" className="frost-grey py-16 text-white md:py-24">
           <div className="container">
             <div className="grid items-center gap-8 lg:grid-cols-2 md:gap-16">
               <motion.div
@@ -1288,7 +1288,7 @@ export default function HomePageClient() {
                 viewport={{ once: true }}
                 transition={{ duration: 0.8 }}
               >
-                <div className="border border-gray-700 bg-gray-800 p-8 text-white">
+                <div className="border border-white/70 bg-white/55 p-8 text-gray-900 shadow-sm backdrop-blur-md">
                   <h3 className="mb-3 text-center text-2xl font-bold uppercase text-white">
                     {isBookable ? (language === "de" ? "Die Buchung ist jetzt geöffnet" : "Booking is now open") : t("notifyTitle")}
                   </h3>
@@ -1306,7 +1306,7 @@ export default function HomePageClient() {
                       </a>
                     </Button>
                   ) : (
-                    <NotifySignupForm className="[&_input]:bg-gray-900 [&_input]:text-white [&_input]:border-gray-700" />
+                    <NotifySignupForm className="[&_input]:bg-white [&_input]:text-gray-900 [&_input]:border-gray-300" />
                   )}
                 </div>
               </motion.div>
@@ -1314,13 +1314,13 @@ export default function HomePageClient() {
           </div>
         </section>
 
-        <section className="relative overflow-hidden bg-black py-16 text-white md:py-24">
+        <section className="relative overflow-hidden bg-neutral-600 py-16 text-white md:py-24">
           <div className="absolute inset-0">
             <Image
               src="/images/mountain-summit.jpeg"
               alt={language === "de" ? "Trailrunning in den österreichischen Alpen" : "Trail running in the Austrian Alps"}
               fill
-              className="object-cover opacity-30"
+              className="object-cover opacity-40 blur-sm"
               loading="lazy"
               sizes="100vw"
             />

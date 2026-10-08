@@ -14,7 +14,7 @@ export default function TicketsPage() {
     <div className="min-h-screen bg-white text-gray-900">
       <SiteHeader transparent={false} />
 
-      <div className="bg-black px-6 pb-12 pt-32 text-center text-white">
+      <div className="frost-grey px-6 pb-12 pt-32 text-center text-white">
         <h1 className="mb-3 text-4xl font-bold md:text-5xl">
           {lang === "de" ? "Tickets" : "Tickets"}
           <span className="sr-only">

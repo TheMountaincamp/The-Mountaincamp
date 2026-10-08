@@ -297,3 +297,53 @@
     padding-inline: 1rem;
   }
 }
+
+/* Helle, unscharfe Fläche statt Schwarz, rein per CSS-Verlauf, mit ganz leichtem Schatten.
+   Text darin wird dunkel gesetzt, damit der Kontrast stimmt; orange Buttons und dunkle Karten bleiben weiß beschriftet. */
+.frost-grey {
+  isolation: isolate;
+  overflow: hidden;
+  background-color: #e8ebee;
+  color: #111827;
+  box-shadow: 0 1px 2px rgba(15, 23, 42, 0.05), 0 8px 24px rgba(15, 23, 42, 0.07);
+}
+.frost-grey:not(.fixed) {
+  position: relative;
+  z-index: 1;
+}
+.frost-grey::before {
+  content: "";
+  position: absolute;
+  inset: -40px;
+  z-index: -1;
+  /* Weicher Verlauf wie Milchglas: kühles Blaugrau oben links, fast Weiß in der Mitte, warmes Sand unten */
+  background:
+    radial-gradient(ellipse 60% 70% at 8% 10%, #c3d0d8 0%, transparent 70%),
+    radial-gradient(ellipse 55% 60% at 55% 40%, #f1f2f3 0%, transparent 75%),
+    radial-gradient(ellipse 45% 55% at 95% 25%, #dfe3ea 0%, transparent 70%),
+    radial-gradient(ellipse 90% 45% at 30% 105%, #c9bba6 0%, transparent 70%),
+    radial-gradient(ellipse 50% 40% at 95% 100%, #d6d2cc 0%, transparent 70%),
+    #e6e9ec;
+  filter: blur(30px);
+}
+.frost-grey.text-white,
+.frost-grey .text-white {
+  color: #111827;
+}
+.frost-grey[class*="text-white/"],
+.frost-grey [class*="text-white/"] {
+  color: #4b5563;
+}
+.frost-grey [class*="border-white"] {
+  border-color: rgba(17, 24, 39, 0.15);
+}
+.frost-grey .bg-primary,
+.frost-grey .bg-primary *,
+.frost-grey .btn-primary,
+.frost-grey .bg-gray-800,
+.frost-grey .bg-gray-800 .text-white {
+  color: #fff;
+}
+.frost-grey .bg-gray-800 [class*="text-white/"] {
+  color: rgba(255, 255, 255, 0.7);
+}
