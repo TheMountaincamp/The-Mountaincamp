@@ -3,6 +3,7 @@
 import { useLanguage } from "@/contexts/language-context"
 import SiteHeader from "@/app/components/site-header"
 import BookingMask from "./booking-mask"
+import SocialProof from "./social-proof"
 import { BOOKING_URL } from "@/app/lib/early-bird"
 
 export default function TicketsPage() {
@@ -30,6 +31,7 @@ export default function TicketsPage() {
       </div>
 
       <div className="container mx-auto px-4 py-10">
+        <SocialProof lang={lang} />
         <BookingMask lang={lang} />
         <p className="mt-10 text-center text-sm text-gray-500">
           {lang === "de" ? "Probleme bei der Buchung? " : "Trouble booking? "}
