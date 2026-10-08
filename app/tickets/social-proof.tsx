@@ -23,7 +23,7 @@ const T = {
     men: "Männer",
     level: ["Beginner", "Intermediate", "Advanced"],
     newish: "Beginner & Intermediate",
-    quote: { q: "Ich bin jetzt offiziell besessen von Trailrunning.", who: "Teilnehmer:in 2026, übersetzt" },
+    quote: { q: "Jeder Tag hat seine besonderen Momente. Running Rave, Trailrun am Gletscher und Feuer mit Livemusik!", who: "Teilnehmer:in 2026, übersetzt" },
   },
   en: {
     sold: (s: number, t: number) => `${s} of ${t} spots are taken.`,
@@ -36,7 +36,7 @@ const T = {
     men: "men",
     level: ["Beginner", "Intermediate", "Advanced"],
     newish: "beginner & intermediate",
-    quote: { q: "I am now officially obsessed with trail running.", who: "Participant 2026" },
+    quote: { q: "I think every day has its special moments. Running rave, glacier trail run and fire with live music!", who: "Participant 2026" },
   },
 } as const
 
@@ -84,15 +84,15 @@ export default function SocialProof({ lang }: { lang: "de" | "en" }) {
           <Label>{t.womenL}</Label>
           <div className="mt-2 flex flex-col gap-2 md:flex-row md:items-center md:gap-4">
             <svg
-              viewBox="0 0 36 36"
+              viewBox="0 0 42 42"
               className="h-14 w-14 shrink-0 -rotate-90 md:h-16 md:w-16"
               role="img"
               aria-label={`${WOMEN} % ${t.women}, ${100 - WOMEN} % ${t.men}`}
             >
-              <circle cx="18" cy="18" r="15.915" fill="none" stroke="#d1d5db" strokeWidth="6" />
+              <circle cx="21" cy="21" r="15.915" fill="none" stroke="#d1d5db" strokeWidth="6" />
               <circle
-                cx="18"
-                cy="18"
+                cx="21"
+                cy="21"
                 r="15.915"
                 fill="none"
                 stroke="#111827"
