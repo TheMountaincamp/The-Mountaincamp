@@ -14,8 +14,8 @@ export default function TicketsPage() {
     <div className="min-h-screen bg-white text-gray-900">
       <SiteHeader transparent={false} />
 
-      <div className="frost-grey px-6 pb-12 pt-32 text-center text-white">
-        <h1 className="mb-3 text-4xl font-bold md:text-5xl">
+      <div className="frost-grey px-6 pb-5 pt-24 text-center text-white md:pb-12 md:pt-32">
+        <h1 className="mb-1 text-2xl font-bold md:mb-3 md:text-5xl">
           {lang === "de" ? "Tickets" : "Tickets"}
           <span className="sr-only">
             {lang === "de"
@@ -23,14 +23,14 @@ export default function TicketsPage() {
               : ": book the trail running camp in Hochkrimml"}
           </span>
         </h1>
-        <p className="mx-auto max-w-2xl text-lg text-white/80">
+        <p className="mx-auto max-w-2xl text-sm text-white/80 md:text-lg">
           {lang === "de"
             ? "The Mountaincamp 2027, 18. bis 22. August 2027 in Hochkrimml"
             : "The Mountaincamp 2027, 18 to 22 August 2027 in Hochkrimml"}
         </p>
       </div>
 
-      <div className="container mx-auto px-4 py-10">
+      <div className="container mx-auto px-4 py-5 md:py-10">
         <SocialProof lang={lang} />
         <BookingMask lang={lang} />
         <p className="mt-10 text-center text-sm text-gray-500">
