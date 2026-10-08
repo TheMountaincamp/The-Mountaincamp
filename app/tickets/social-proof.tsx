@@ -56,23 +56,23 @@ export default function SocialProof({ lang }: { lang: "de" | "en" }) {
   return (
     <section
       aria-label={lang === "de" ? "Wer dabei ist" : "Who is coming"}
-      className="mx-auto mb-12 max-w-3xl border-b border-gray-200 pb-10"
+      className="mx-auto mb-5 max-w-3xl border-b border-gray-200 pb-5 md:mb-12 md:pb-10"
     >
-      <p className="text-2xl font-semibold tracking-tight md:text-3xl">
+      <p className="text-lg font-semibold leading-snug tracking-tight md:text-3xl">
         {t.sold(sold, TOTAL_TICKETS)} <span className="font-normal text-gray-500">{t.cta}</span>
       </p>
-      <div className="mt-3 h-px w-full bg-gray-200" aria-hidden="true">
+      <div className="mt-2 h-px w-full bg-gray-200 md:mt-3" aria-hidden="true">
         <div className="h-px bg-gray-900" style={{ width: `${pct}%` }} />
       </div>
 
-      <div className="mt-8 text-xs uppercase tracking-wider text-gray-400">{t.year}</div>
-      <div className="mt-3 grid grid-cols-3 gap-4 md:gap-8">
+      <div className="mt-8 hidden text-xs uppercase tracking-wider text-gray-400 md:block">{t.year}</div>
+      <div className="mt-4 grid grid-cols-3 gap-3 md:mt-3 md:gap-8">
         {/* Zufriedenheit: fünf Segmente, anteilig gefüllt */}
         <div>
           <Label>{t.satL}</Label>
           <div className="mt-2 flex flex-col md:flex-row md:items-baseline md:gap-1.5">
-            <span className="whitespace-nowrap text-2xl font-semibold md:text-3xl">{num(SATISFACTION)}</span>
-            <span className="min-h-[2.6em] text-xs leading-tight text-gray-500 md:min-h-0 md:text-sm">{t.satOf}</span>
+            <span className="whitespace-nowrap text-xl font-semibold md:text-3xl">{num(SATISFACTION)}</span>
+            <span className="text-[11px] leading-tight text-gray-500 md:text-sm">{t.satOf}</span>
           </div>
           <div className="mt-2 flex gap-1" role="img" aria-label={`${t.satL} ${num(SATISFACTION)} ${t.satOf}`}>
             {[0, 1, 2, 3, 4].map((i) => (
@@ -86,10 +86,10 @@ export default function SocialProof({ lang }: { lang: "de" | "en" }) {
         {/* Teilnehmende: Kreisdiagramm Frauen / Männer */}
         <div>
           <Label>{t.womenL}</Label>
-          <div className="mt-2 flex flex-col gap-2 md:flex-row md:items-center md:gap-4">
+          <div className="mt-1.5 flex items-center gap-1.5 md:mt-2 md:gap-4">
             <svg
               viewBox="0 0 42 42"
-              className="h-14 w-14 shrink-0 -rotate-90 md:h-16 md:w-16"
+              className="h-9 w-9 shrink-0 -rotate-90 md:h-16 md:w-16"
               role="img"
               aria-label={`${WOMEN} % ${t.women}, ${100 - WOMEN} % ${t.men}`}
             >
@@ -104,7 +104,7 @@ export default function SocialProof({ lang }: { lang: "de" | "en" }) {
                 strokeDasharray={`${WOMEN} ${100 - WOMEN}`}
               />
             </svg>
-            <div className="space-y-1 whitespace-nowrap text-xs text-gray-600 md:text-sm">
+            <div className="space-y-0.5 whitespace-nowrap text-[11px] text-gray-600 md:space-y-1 md:text-sm">
               <div className="flex items-center gap-1.5">
                 <span className="inline-block h-2 w-2 bg-gray-900" />
                 {WOMEN} % {t.women}
@@ -121,8 +121,8 @@ export default function SocialProof({ lang }: { lang: "de" | "en" }) {
         <div>
           <Label>Level</Label>
           <div className="mt-2 flex flex-col md:flex-row md:items-baseline md:gap-1.5">
-            <span className="whitespace-nowrap text-2xl font-semibold md:text-3xl">{LEVELS[0] + LEVELS[1]} %</span>
-            <span className="min-h-[2.6em] text-xs leading-tight text-gray-500 md:min-h-0 md:text-sm">{t.newish}</span>
+            <span className="whitespace-nowrap text-xl font-semibold md:text-3xl">{LEVELS[0] + LEVELS[1]} %</span>
+            <span className="text-[11px] leading-tight text-gray-500 md:text-sm">{t.newish}</span>
           </div>
           <div
             className="mt-2 flex h-1.5 gap-1"
@@ -143,7 +143,7 @@ export default function SocialProof({ lang }: { lang: "de" | "en" }) {
         </div>
       </div>
 
-      <figure className="mt-10 border-l-2 border-gray-900 pl-4">
+      <figure className="mt-10 hidden border-l-2 border-gray-900 pl-4 md:block">
         <blockquote className="text-lg leading-snug">
           {lang === "de" ? "„" : "“"}
           {t.quote.q}
