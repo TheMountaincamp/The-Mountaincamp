@@ -298,7 +298,7 @@
   }
 }
 
-/* Helle, unscharfe Fläche statt Schwarz (Vorlage: public/images/frost-bg.jpg) mit ganz leichtem Schatten.
+/* Helle, unscharfe Fläche statt Schwarz, rein per CSS-Verlauf, mit ganz leichtem Schatten.
    Text darin wird dunkel gesetzt, damit der Kontrast stimmt; orange Buttons und dunkle Karten bleiben weiß beschriftet. */
 .frost-grey {
   isolation: isolate;
@@ -314,10 +314,17 @@
 .frost-grey::before {
   content: "";
   position: absolute;
-  inset: -24px;
+  inset: -40px;
   z-index: -1;
-  background: url("/images/frost-bg.jpg") center / cover no-repeat;
-  filter: blur(10px);
+  /* Weicher Verlauf wie Milchglas: kühles Blaugrau oben links, fast Weiß in der Mitte, warmes Sand unten */
+  background:
+    radial-gradient(ellipse 60% 70% at 8% 10%, #c3d0d8 0%, transparent 70%),
+    radial-gradient(ellipse 55% 60% at 55% 40%, #f1f2f3 0%, transparent 75%),
+    radial-gradient(ellipse 45% 55% at 95% 25%, #dfe3ea 0%, transparent 70%),
+    radial-gradient(ellipse 90% 45% at 30% 105%, #c9bba6 0%, transparent 70%),
+    radial-gradient(ellipse 50% 40% at 95% 100%, #d6d2cc 0%, transparent 70%),
+    #e6e9ec;
+  filter: blur(30px);
 }
 .frost-grey.text-white,
 .frost-grey .text-white {
