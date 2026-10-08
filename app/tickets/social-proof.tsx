@@ -19,11 +19,11 @@ const T = {
     year: "Camp 2026",
     satOf: "von 5",
     women: "Frauen",
+    womenShort: "Frauen",
     men: "Männer",
     level: ["Beginner", "Intermediate", "Advanced"],
     newish: "Beginner & Intermediate",
     quote: { q: "Ich bin jetzt offiziell besessen von Trailrunning.", who: "Teilnehmer:in 2026, übersetzt" },
-    solo: "Allein dabei? Gemeinsame Anreise, Laufgruppen nach Tempo, WhatsApp-Kanal vorab.",
   },
   en: {
     sold: (s: number, t: number) => `${s} of ${t} spots are taken.`,
@@ -32,11 +32,11 @@ const T = {
     year: "2026 camp",
     satOf: "out of 5",
     women: "women",
+    womenShort: "women",
     men: "men",
     level: ["Beginner", "Intermediate", "Advanced"],
     newish: "beginner & intermediate",
     quote: { q: "I am now officially obsessed with trail running.", who: "Participant 2026" },
-    solo: "Coming alone? Shared travel, groups by pace, WhatsApp channel before the camp.",
   },
 } as const
 
@@ -90,6 +90,10 @@ export default function SocialProof({ lang }: { lang: "de" | "en" }) {
             <div className="bg-gray-900" style={{ width: `${WOMEN}%` }} />
             <div className="ml-1 flex-1 bg-gray-300" />
           </div>
+          <div className="mt-2 flex justify-between gap-1 whitespace-nowrap text-xs text-gray-500">
+            <span>{t.womenShort}</span>
+            <span>{100 - WOMEN} % {t.men}</span>
+          </div>
         </div>
 
         {/* Level */}
@@ -127,7 +131,6 @@ export default function SocialProof({ lang }: { lang: "de" | "en" }) {
         <figcaption className="mt-2 text-sm text-gray-500">{t.quote.who}</figcaption>
       </figure>
 
-      <p className="mt-8 text-sm text-gray-700">{t.solo}</p>
     </section>
   )
 }
