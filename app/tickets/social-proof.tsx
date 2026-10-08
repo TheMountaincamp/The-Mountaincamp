@@ -15,7 +15,7 @@ const T = {
   de: {
     sold: (s: number, t: number) => `${s} von ${t} Plätzen sind vergeben.`,
     satL: "Bewertung",
-    womenL: "Frauenanteil",
+    womenL: "Teilnehmende",
     year: "Camp 2026",
     satOf: "von 5",
     women: "Frauen",
@@ -28,7 +28,7 @@ const T = {
   en: {
     sold: (s: number, t: number) => `${s} of ${t} spots are taken.`,
     satL: "Rating",
-    womenL: "Women",
+    womenL: "Participants",
     year: "2026 camp",
     satOf: "out of 5",
     women: "women",
@@ -79,20 +79,37 @@ export default function SocialProof({ lang }: { lang: "de" | "en" }) {
           </div>
         </div>
 
-        {/* Frauenanteil */}
+        {/* Teilnehmende: Kreisdiagramm Frauen / Männer */}
         <div>
           <Label>{t.womenL}</Label>
-          <div className="mt-2 flex flex-col md:flex-row md:items-baseline md:gap-1.5">
-            <span className="whitespace-nowrap text-2xl font-semibold md:text-3xl">{WOMEN} %</span>
-            <span className="min-h-[2.6em] text-xs leading-tight text-gray-500 md:min-h-0 md:text-sm">{t.women}</span>
-          </div>
-          <div className="mt-2 flex h-1.5" role="img" aria-label={`${WOMEN} % ${t.women}, ${100 - WOMEN} % ${t.men}`}>
-            <div className="bg-gray-900" style={{ width: `${WOMEN}%` }} />
-            <div className="ml-1 flex-1 bg-gray-300" />
-          </div>
-          <div className="mt-2 flex justify-between gap-1 whitespace-nowrap text-xs text-gray-500">
-            <span>{t.womenShort}</span>
-            <span>{100 - WOMEN} % {t.men}</span>
+          <div className="mt-2 flex flex-col gap-2 md:flex-row md:items-center md:gap-4">
+            <svg
+              viewBox="0 0 36 36"
+              className="h-14 w-14 shrink-0 -rotate-90 md:h-16 md:w-16"
+              role="img"
+              aria-label={`${WOMEN} % ${t.women}, ${100 - WOMEN} % ${t.men}`}
+            >
+              <circle cx="18" cy="18" r="15.915" fill="none" stroke="#d1d5db" strokeWidth="6" />
+              <circle
+                cx="18"
+                cy="18"
+                r="15.915"
+                fill="none"
+                stroke="#111827"
+                strokeWidth="6"
+                strokeDasharray={`${WOMEN} ${100 - WOMEN}`}
+              />
+            </svg>
+            <div className="space-y-1 whitespace-nowrap text-xs text-gray-600 md:text-sm">
+              <div className="flex items-center gap-1.5">
+                <span className="inline-block h-2 w-2 bg-gray-900" />
+                {WOMEN} % {t.women}
+              </div>
+              <div className="flex items-center gap-1.5">
+                <span className="inline-block h-2 w-2 bg-gray-300" />
+                {100 - WOMEN} % {t.men}
+              </div>
+            </div>
           </div>
         </div>
 
