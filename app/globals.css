@@ -298,27 +298,45 @@
   }
 }
 
-/* Unscharfe graue Fläche statt Schwarz: verschwommenes Campfoto unter einem grauen Schleier.
-   Grundton #696d71, weiße Schrift erreicht damit rund 5:1 Kontrast. */
+/* Helle, unscharfe Fläche statt Schwarz (Vorlage: public/images/frost-bg.jpg) mit ganz leichtem Schatten.
+   Text darin wird dunkel gesetzt, damit der Kontrast stimmt; orange Buttons und dunkle Karten bleiben weiß beschriftet. */
 .frost-grey {
-  position: relative;
   isolation: isolate;
   overflow: hidden;
-  background-color: #696d71;
+  background-color: #e8ebee;
+  color: #111827;
+  box-shadow: 0 1px 2px rgba(15, 23, 42, 0.05), 0 8px 24px rgba(15, 23, 42, 0.07);
+}
+.frost-grey:not(.fixed) {
+  position: relative;
+  z-index: 1;
 }
 .frost-grey::before {
   content: "";
   position: absolute;
-  inset: -60px;
-  z-index: -2;
-  background: url("/images/gallery/runners-gravel-trail-fence.jpg") center / cover no-repeat;
-  filter: blur(48px) saturate(0.35);
-  opacity: 0.6;
-}
-.frost-grey::after {
-  content: "";
-  position: absolute;
-  inset: 0;
+  inset: -24px;
   z-index: -1;
-  background: rgba(96, 100, 104, 0.6);
+  background: url("/images/frost-bg.jpg") center / cover no-repeat;
+  filter: blur(10px);
+}
+.frost-grey.text-white,
+.frost-grey .text-white {
+  color: #111827;
+}
+.frost-grey[class*="text-white/"],
+.frost-grey [class*="text-white/"] {
+  color: #4b5563;
+}
+.frost-grey [class*="border-white"] {
+  border-color: rgba(17, 24, 39, 0.15);
+}
+.frost-grey .bg-primary,
+.frost-grey .bg-primary *,
+.frost-grey .btn-primary,
+.frost-grey .bg-gray-800,
+.frost-grey .bg-gray-800 .text-white {
+  color: #fff;
+}
+.frost-grey .bg-gray-800 [class*="text-white/"] {
+  color: rgba(255, 255, 255, 0.7);
 }

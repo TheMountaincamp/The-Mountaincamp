@@ -203,7 +203,7 @@ export default function EarlyBirdBanner({ delayMs = 3_000, onHeightChange }: Ear
       transition={{ duration: 0.4, ease: "easeOut" }}
       aria-label={title}
       className={`relative z-[60] w-full border-b ${
-        isLive ? "border-primary/50 bg-primary" : "border-white/20 bg-neutral-600/90 backdrop-blur-xl"
+        isLive ? "border-primary/50 bg-primary" : "frost-grey border-gray-200"
       } text-white`}
     >
       <div className="container flex flex-col items-center gap-1.5 py-1.5 md:flex-row md:justify-between md:gap-6 md:py-2.5">

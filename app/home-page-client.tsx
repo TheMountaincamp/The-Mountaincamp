@@ -516,7 +516,7 @@ export default function HomePageClient() {
         <motion.div
           initial={{ y: 100, opacity: 0 }}
           animate={{ y: 0, opacity: 1 }}
-          className="fixed bottom-0 left-0 right-0 z-40 border-t border-white/20 bg-neutral-600/80 px-4 py-3 backdrop-blur-xl safe-area-pb"
+          className="frost-grey fixed bottom-0 left-0 right-0 z-40 border-t border-gray-200 px-4 py-3 safe-area-pb"
         >
           <div className="flex items-center justify-between gap-3">
             <div className="flex-1">
@@ -1288,7 +1288,7 @@ export default function HomePageClient() {
                 viewport={{ once: true }}
                 transition={{ duration: 0.8 }}
               >
-                <div className="border border-gray-700 bg-gray-800 p-8 text-white">
+                <div className="border border-white/70 bg-white/55 p-8 text-gray-900 shadow-sm backdrop-blur-md">
                   <h3 className="mb-3 text-center text-2xl font-bold uppercase text-white">
                     {isBookable ? (language === "de" ? "Die Buchung ist jetzt geöffnet" : "Booking is now open") : t("notifyTitle")}
                   </h3>
@@ -1306,7 +1306,7 @@ export default function HomePageClient() {
                       </a>
                     </Button>
                   ) : (
-                    <NotifySignupForm className="[&_input]:bg-gray-900 [&_input]:text-white [&_input]:border-gray-700" />
+                    <NotifySignupForm className="[&_input]:bg-white [&_input]:text-gray-900 [&_input]:border-gray-300" />
                   )}
                 </div>
               </motion.div>
