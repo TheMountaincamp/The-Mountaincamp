@@ -14,6 +14,7 @@ const LEVELS = [44, 40, 16] // Beginner, Intermediate, Advanced
 const T = {
   de: {
     sold: (s: number, t: number) => `${s} von ${t} Plätzen sind vergeben.`,
+    cta: "Hol dir jetzt dein Ticket.",
     satL: "Bewertung",
     womenL: "Teilnehmende",
     year: "Camp 2026",
@@ -27,6 +28,7 @@ const T = {
   },
   en: {
     sold: (s: number, t: number) => `${s} of ${t} spots are taken.`,
+    cta: "Get your ticket now.",
     satL: "Rating",
     womenL: "Participants",
     year: "2026 camp",
@@ -56,7 +58,9 @@ export default function SocialProof({ lang }: { lang: "de" | "en" }) {
       aria-label={lang === "de" ? "Wer dabei ist" : "Who is coming"}
       className="mx-auto mb-12 max-w-3xl border-b border-gray-200 pb-10"
     >
-      <p className="text-2xl font-semibold tracking-tight md:text-3xl">{t.sold(sold, TOTAL_TICKETS)}</p>
+      <p className="text-2xl font-semibold tracking-tight md:text-3xl">
+        {t.sold(sold, TOTAL_TICKETS)} <span className="font-normal text-gray-500">{t.cta}</span>
+      </p>
       <div className="mt-3 h-px w-full bg-gray-200" aria-hidden="true">
         <div className="h-px bg-gray-900" style={{ width: `${pct}%` }} />
       </div>
