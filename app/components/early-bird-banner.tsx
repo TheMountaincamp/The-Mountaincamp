@@ -27,7 +27,7 @@ const COPY = {
     phase2UpcomingTitle: "Phase 2 startet in Kürze",
     phase2LiveTitle: `Phase 2 läuft · ${PHASE_2_PRICE}€`,
     nextLaunchTitle: "Nächster Launch",
-    nextLaunchLiveTitle: "Verkauf läuft",
+    nextLaunchLiveTitle: "Hol dir jetzt dein Ticket und spare",
     liveLead: "Noch",
     upcomingLead: "Start in",
     phase2Hint: `Danach Phase 2: ${PHASE_2_LABEL.de.date} für ${PHASE_2_PRICE}€`,
@@ -44,7 +44,7 @@ const COPY = {
     phase2UpcomingTitle: "Phase 2 starts soon",
     phase2LiveTitle: `Phase 2 is live · ${PHASE_2_PRICE}€`,
     nextLaunchTitle: "Next launch",
-    nextLaunchLiveTitle: "Sale is live",
+    nextLaunchLiveTitle: "Get your ticket now and save",
     liveLead: "Only",
     upcomingLead: "Starts in",
     phase2Hint: `Then Phase 2: ${PHASE_2_LABEL.en.date} for ${PHASE_2_PRICE}€`,
@@ -203,7 +203,7 @@ export default function EarlyBirdBanner({ delayMs = 3_000, onHeightChange }: Ear
       transition={{ duration: 0.4, ease: "easeOut" }}
       aria-label={title}
       className={`relative z-[60] w-full border-b ${
-        isLive ? "border-primary/50 bg-primary" : "border-white/10 bg-black"
+        isLive ? "border-primary/50 bg-primary" : "border-white/20 bg-neutral-600/90 backdrop-blur-xl"
       } text-white`}
     >
       <div className="container flex flex-col items-center gap-1.5 py-1.5 md:flex-row md:justify-between md:gap-6 md:py-2.5">
