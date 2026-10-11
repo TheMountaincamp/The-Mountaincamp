@@ -19,6 +19,13 @@ const TICKET_PAGE = "/tickets"
 // Direkte Links zum externen Buchungssystem (Fallback-Link)
 const CHECKOUT_LINK = 'a[href*="camps.digital"]'
 
+// Die CADI-Buchungsmaske (iFrame) meldet ihre Schritte per postMessage als
+// {type: "data-layer-push", content: {event, conversionValue}}. Getestet am 11.10.2026:
+// buchung-step0 (Maske geladen), buchung-step1 (Checkout), buchung-click-purchase
+// (Klick auf Kaufen), buchung-thx (Bestätigungsseite, Buchung abgeschlossen).
+const CADI_ORIGIN = /^https:\/\/[a-z0-9-]+\.d1u2qdrqduf5v6\.amplifyapp\.com$/
+const CAMP_NAME = "The Mountaincamp 2027"
+
 function loadPixel() {
   if (typeof window === "undefined" || window.fbq) return
   const queue: unknown[][] = []
@@ -64,8 +71,8 @@ export default function MetaPixel() {
     trackMeta("PageView")
     const name = CONTENT_PAGES[pathname]
     if (name) trackMeta("ViewContent", { content_name: name, content_category: "Camp" })
-    // Ticketseite mit eingebetteter Buchungsmaske = Beginn der Buchung
-    if (pathname === TICKET_PAGE) trackMeta("InitiateCheckout", { content_name: "The Mountaincamp 2027", currency: "EUR" })
+    // Auf der Ticketseite meldet die Buchungsmaske selbst, wann der Checkout beginnt
+    if (pathname === TICKET_PAGE) trackMeta("ViewContent", { content_name: "Tickets", content_category: "Camp" })
   }, [allowed, pathname])
 
   // Klick auf einen Ticket-Link = Beginn der Buchung
@@ -79,6 +86,49 @@ export default function MetaPixel() {
     }
     document.addEventListener("click", onClick, true)
     return () => document.removeEventListener("click", onClick, true)
+  }, [allowed])
+
+  // Buchungsschritte aus der CADI-Maske
+  useEffect(() => {
+    if (!allowed) return
+    let fahrt = ""
+    const onMessage = (event: MessageEvent) => {
+      if (!CADI_ORIGIN.test(event.origin)) return
+      let msg: { type?: string; content?: { event?: string; conversionValue?: number; fullPath?: string } }
+      try {
+        msg = typeof event.data === "string" ? JSON.parse(event.data) : event.data
+      } catch {
+        return
+      }
+      if (!msg || !msg.content) return
+      if (msg.type === "sync-url" && msg.content.fullPath) {
+        const m = /fahrt=([a-z0-9]+)/i.exec(msg.content.fullPath)
+        if (m) fahrt = m[1]
+        return
+      }
+      if (msg.type !== "data-layer-push") return
+      const value = Number(msg.content.conversionValue) || 0
+      switch (msg.content.event) {
+        case "buchung-step1":
+          trackMeta("InitiateCheckout", { content_name: CAMP_NAME, currency: "EUR" })
+          break
+        case "buchung-click-purchase":
+          trackMeta("AddPaymentInfo", { content_name: CAMP_NAME, currency: "EUR", value })
+          break
+        case "buchung-thx": {
+          // Pro Buchung nur einmal zählen, auch wenn die Bestätigung neu geladen wird
+          const key = "mc-purchase-" + (fahrt || String(value))
+          try {
+            if (sessionStorage.getItem(key)) return
+            sessionStorage.setItem(key, "1")
+          } catch {}
+          window.fbq?.("track", "Purchase", { content_name: CAMP_NAME, currency: "EUR", value }, fahrt ? { eventID: "cadi-" + fahrt } : undefined)
+          break
+        }
+      }
+    }
+    window.addEventListener("message", onMessage)
+    return () => window.removeEventListener("message", onMessage)
   }, [allowed])
 
   return null
