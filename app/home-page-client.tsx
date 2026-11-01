@@ -27,6 +27,7 @@ import LanguageSwitcher from "@/app/components/language-switcher"
 import NotifySignupForm from "@/app/components/notify-signup-form"
 import EarlyBirdBanner from "@/app/components/early-bird-banner"
 import TicketProgressSection from "@/app/components/ticket-progress-section"
+import TicketPrompt from "@/app/components/ticket-prompt"
 import ImageWithFallback from "@/app/components/image-with-fallback"
 import ImagePreloader from "@/app/components/image-preloader"
 import PreloadLink from "@/app/components/preload-link"
@@ -509,6 +510,7 @@ export default function HomePageClient() {
       <ImagePreloader imageSources={SECTION_IMAGES} onComplete={() => { }} />
 
       <EarlyBirdBanner onHeightChange={setBannerHeight} />
+      <TicketPrompt />
 
 
 
