@@ -106,7 +106,7 @@ function PhaseCard({ phase, index, now }: { phase: SalePhaseConfig; index: numbe
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true }}
       transition={{ duration: 0.6, delay: 0.15 + index * 0.08 }}
-      className={`relative border p-6 md:p-8 ${
+      className={`relative flex flex-col border p-6 ${
         live ? "border-primary bg-primary text-white" : ended ? "border-gray-200 bg-gray-50" : "border-gray-200 bg-white"
       }`}
     >
@@ -130,7 +130,7 @@ function PhaseCard({ phase, index, now }: { phase: SalePhaseConfig; index: numbe
         </span>
       </div>
 
-      <div className="flex items-baseline justify-between gap-4">
+      <div className="flex flex-col gap-1">
         <h3 className={`text-xl font-bold uppercase tracking-tight ${live ? "text-white" : "text-gray-900"}`}>
           {phase.name[lang]}
         </h3>
@@ -201,7 +201,7 @@ export default function TicketProgressSection() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6, delay: 0.1 }}
-          className="mx-auto mb-10 max-w-3xl"
+          className="mx-auto mb-10 max-w-6xl"
         >
           <div className="mb-2 flex items-baseline justify-between gap-4">
             <span className="text-sm font-semibold uppercase tracking-wide text-gray-500">
@@ -221,7 +221,7 @@ export default function TicketProgressSection() {
           </div>
         </motion.div>
 
-        <div className="mx-auto grid max-w-3xl gap-6 md:grid-cols-2">
+        <div className="mx-auto grid max-w-6xl gap-4 md:grid-cols-2 lg:grid-cols-4">
           {SALE_PHASES.map((phase, i) => (
             <PhaseCard key={phase.id} phase={phase} index={i} now={now} />
           ))}
