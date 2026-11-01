@@ -81,6 +81,70 @@ export const NEXT_LAUNCH_LABEL = {
   },
 } as const
 
+/**
+ * Preisphasen 2027, wie sie im Bereich "Ticket-Kontingent" angezeigt werden.
+ *
+ * Eine Phase ist "ended", sobald ihr Ende erreicht ist, "upcoming", solange
+ * ihr Start in der Zukunft liegt oder noch nicht feststeht (start: null),
+ * sonst "live". Die nächste Phase startet automatisch, wenn die vorige endet.
+ * Willst du Preise oder Termine ändern, änderst du nur diese Liste.
+ */
+export interface SalePhaseConfig {
+  id: string
+  name: { de: string; en: string }
+  /** Preis in Euro; null = Preis wird nicht angezeigt (z. B. abgelaufener Early Bird) */
+  price: number | null
+  /** ISO-Zeitpunkt mit Offset; null = Start steht noch nicht fest */
+  start: string | null
+  /** ISO-Zeitpunkt mit Offset; null = kein festes Ende */
+  end: string | null
+  /** Optionaler Text, wenn Start noch nicht feststeht */
+  upcomingNote?: { de: string; en: string }
+}
+
+/** Ende Frühbucher (Phase 2): Montag, 30. November 2026, 24:00 Uhr MEZ = Start Phase 3 */
+export const PHASE_FRUEHBUCHER_END = "2026-12-01T00:00:00+01:00"
+
+export const SALE_PHASES: SalePhaseConfig[] = [
+  {
+    id: "phase-1",
+    name: { de: "Phase 1 · Early Bird", en: "Phase 1 · Early bird" },
+    price: null,
+    start: EARLY_BIRD_START,
+    end: NEXT_LAUNCH_START,
+  },
+  {
+    id: "phase-2",
+    name: { de: "Phase 2 · Frühbucher", en: "Phase 2 · Early booking" },
+    price: 530,
+    start: NEXT_LAUNCH_START,
+    end: PHASE_FRUEHBUCHER_END,
+  },
+  {
+    id: "phase-3",
+    name: { de: "Phase 3", en: "Phase 3" },
+    price: 580,
+    start: PHASE_FRUEHBUCHER_END,
+    end: null,
+  },
+  {
+    id: "phase-4",
+    name: { de: "Phase 4", en: "Phase 4" },
+    price: 630,
+    start: null,
+    end: null,
+    upcomingNote: { de: "Folgt nach Phase 3", en: "Follows Phase 3" },
+  },
+]
+
+export type PhaseState = "upcoming" | "live" | "ended"
+
+export function getPhaseState(p: SalePhaseConfig, now: number = Date.now()): PhaseState {
+  if (p.end && now >= new Date(p.end).getTime()) return "ended"
+  if (!p.start || now < new Date(p.start).getTime()) return "upcoming"
+  return "live"
+}
+
 export type SalePhase = "upcoming" | "live" | "ended"
 
 export function getSalePhase(now: number = Date.now()): SalePhase {
