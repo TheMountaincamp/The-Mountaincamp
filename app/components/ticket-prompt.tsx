@@ -117,16 +117,26 @@ export default function TicketPrompt() {
     <AnimatePresence>
       {open && (
         <motion.div
+          key="ticket-prompt-backdrop"
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          exit={{ opacity: 0 }}
+          transition={{ duration: 0.35 }}
+          onClick={dismiss}
+          className="fixed inset-0 z-[70] flex items-center justify-center bg-black/40 px-4"
+        >
+        <motion.div
           role="dialog"
-          aria-modal="false"
+          aria-modal="true"
+          onClick={(e) => e.stopPropagation()}
           aria-labelledby="ticket-prompt-title"
           initial={prefersReducedMotion ? { opacity: 0 } : { opacity: 0, y: 40, scale: 0.97 }}
           animate={{ opacity: 1, y: 0, scale: 1 }}
           exit={prefersReducedMotion ? { opacity: 0 } : { opacity: 0, y: 24 }}
           transition={{ duration: 0.35, ease: "easeOut" }}
-          className="fixed inset-x-3 bottom-[5.5rem] z-[70] mx-auto max-w-sm overflow-hidden border border-gray-200 bg-white shadow-2xl md:inset-x-auto md:bottom-6 md:right-6 md:mx-0"
+          className="w-full max-w-sm overflow-hidden border border-white/40 bg-white/70 shadow-2xl backdrop-blur-md"
         >
-          <div className="flex items-center justify-between bg-primary px-5 py-2">
+          <div className="flex items-center justify-between bg-primary/85 px-5 py-2">
             <span className="text-xs font-bold uppercase tracking-wide text-white">{c.kicker(endDate)}</span>
             <button
               type="button"
@@ -142,9 +152,9 @@ export default function TicketPrompt() {
             <h2 id="ticket-prompt-title" className="text-xl font-bold uppercase leading-tight tracking-tight text-gray-900">
               {c.title(save)}
             </h2>
-            <p className="mt-2 text-sm text-gray-600">{c.body(live.price, later)}</p>
+            <p className="mt-2 text-sm text-gray-700">{c.body(live.price, later)}</p>
 
-            <div className="mt-4 flex items-center gap-2 text-sm text-gray-500">
+            <div className="mt-4 flex items-center gap-2 text-sm text-gray-600">
               <span>{c.endsIn}</span>
               <span className="font-bold tabular-nums text-gray-900" aria-live="off">
                 {parts.days > 0 && `${parts.days}${c.d} `}
@@ -164,6 +174,7 @@ export default function TicketPrompt() {
               {c.cta}
             </a>
           </div>
+        </motion.div>
         </motion.div>
       )}
     </AnimatePresence>
