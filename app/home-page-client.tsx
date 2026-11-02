@@ -758,7 +758,7 @@ export default function HomePageClient() {
                 <h1 className="text-center font-bold uppercase leading-[0.9] tracking-tight">
                   <span className={`block text-lg md:text-3xl lg:text-4xl xl:text-5xl ${isMobile ? "mt-2" : ""}`}>
                     {language === "de" ? "Trailrunning Camp in Österreich" : "Trail Running Camp in Austria"}
-                  </span>
+                  </span>{" "}
                   <span className="mt-0 block text-2xl md:mt-2 md:text-5xl lg:text-6xl xl:text-7xl">
                     {language === "de" ? "Mountaincamp 2027" : "Mountaincamp 2027"}
                   </span>

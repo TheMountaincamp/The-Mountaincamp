@@ -5,7 +5,7 @@ export const metadata: Metadata = pageMetadata({
   path: "/trails",
   title: "Trailrunning Routen rund um Hochkrimml",
   description:
-    "Trailrunning rund um Hochkrimml: Beispielrouten vom Seekarsee über die Zittauer Hütte bis zu den Krimmler Wasserfällen. Tägliche Trailruns in Gruppen für jedes Level.",
+    "Trailrunning rund um Hochkrimml: Routen vom Seekarsee über die Zittauer Hütte bis zu den Krimmler Wasserfällen. Tägliche Trailruns in Gruppen für jedes Level.",
 })
 
 export default function Layout({ children }: { children: React.ReactNode }) {
