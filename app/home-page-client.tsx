@@ -36,7 +36,7 @@ import InstagramReelsSection from "@/app/components/instagram-reels-section"
 import FAQSection from "@/app/components/faq-section"
 import RouteOverviewSection from "@/app/components/route-overview-section"
 import MasonryGallery from "@/app/components/masonry-gallery"
-import { getOverallPhase, PHASE_2_LABEL, NEXT_LAUNCH_LABEL, TICKET_URL, type OverallPhase } from "@/app/lib/early-bird"
+import { getOverallPhase, PHASE_2_LABEL, NEXT_LAUNCH_LABEL, TICKET_URL, SALE_PHASES, getPhaseState, type OverallPhase } from "@/app/lib/early-bird"
 
 const SECTION_IMAGES = ["/images/mountaincamp-logo-white.png"]
 const HOUSE_PAGE_IMAGES = ["/images/mountain-lodge.jpeg"]
@@ -137,6 +137,31 @@ function PartnerCarousel() {
       </div>
     </div>
   )
+}
+
+/**
+ * Text der Buchungsbox: nennt Enddatum und Ersparnis der laufenden Preisphase.
+ * Läuft keine Phase mit Enddatum, kommt ein neutraler Satz.
+ */
+function bookingBoxText(lang: "de" | "en") {
+  const now = Date.now()
+  const live = SALE_PHASES.find((p) => p.price !== null && getPhaseState(p, now) === "live")
+  const later = Math.max(...SALE_PHASES.map((p) => p.price ?? 0))
+  const save = live?.price != null ? later - live.price : 0
+  if (!live?.end || save <= 0) {
+    return lang === "de"
+      ? "Sichere dir deinen Spot im Trailrunning Camp 2027."
+      : "Secure your spot at the trail running camp 2027."
+  }
+  const end = new Date(new Date(live.end).getTime() - 1)
+  const date = new Intl.DateTimeFormat(lang === "de" ? "de-AT" : "en-GB", {
+    timeZone: "Europe/Vienna",
+    day: "numeric",
+    month: lang === "de" ? "numeric" : "long",
+  }).format(end)
+  return lang === "de"
+    ? `Bis zum ${date} gilt noch der Frühbucher-Preis. Sichere dir deinen Spot und spare ${save}\u00a0€.`
+    : `The early booking price runs until ${date}. Secure your spot and save €${save}.`
 }
 
 export default function HomePageClient() {
@@ -1182,14 +1207,10 @@ export default function HomePageClient() {
               >
                 <div className="border border-white/70 bg-white/55 p-8 text-gray-900 shadow-sm backdrop-blur-md">
                   <h3 className="mb-3 text-center text-2xl font-bold uppercase text-white">
-                    {isBookable ? (language === "de" ? "Die Buchung ist jetzt geöffnet" : "Booking is now open") : t("notifyTitle")}
+                    {isBookable ? (language === "de" ? "Hol dir jetzt dein Ticket" : "Get your ticket now") : t("notifyTitle")}
                   </h3>
                   <p className="mb-6 text-center text-sm text-white/70">
-                    {isBookable
-                      ? language === "de"
-                        ? "Seit Mittwoch, 16. September, 09:00 Uhr kannst du dein Ticket direkt buchen."
-                        : "Since Wednesday, 16 September, 09:00 CEST you can book your ticket directly."
-                      : t("notifyDesc")}
+                    {isBookable ? bookingBoxText(language as "de" | "en") : t("notifyDesc")}
                   </p>
                   {isBookable ? (
                     <Button size="lg" className="w-full bg-primary text-white hover:bg-primary/90" asChild>
