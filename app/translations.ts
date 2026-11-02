@@ -92,9 +92,9 @@ export const translations = {
     notifyTitle: "Nächster Ticket-Release",
     notifyDesc: "Der nächste Ticket-Release ist am Mittwoch, 16. September. Trag deine E-Mail-Adresse ein und wir erinnern dich rechtzeitig, sobald die Tickets verfügbar sind.",
     notifyPlaceholder: "Deine E-Mail-Adresse",
-    notifyButton: "Benachrichtigen",
+    notifyButton: "Auf dem Laufenden bleiben",
     notifySubmitting: "Wird gesendet...",
-    notifySuccess: "Danke! Wir melden uns, sobald die Tickets da sind.",
+    notifySuccess: "Danke! Wir halten Dich auf dem Laufenden.",
     notifyErrorInvalid: "Bitte gib eine gültige E-Mail-Adresse ein.",
     notifyErrorGeneric: "Etwas ist schiefgelaufen. Bitte versuche es erneut.",
 
@@ -267,9 +267,9 @@ export const translations = {
     notifyTitle: "Next ticket release",
     notifyDesc: "The next ticket release is on Wednesday, 16 September. Leave your email and we'll remind you as soon as tickets are available.",
     notifyPlaceholder: "Your email address",
-    notifyButton: "Notify me",
+    notifyButton: "Keep me updated",
     notifySubmitting: "Submitting...",
-    notifySuccess: "Thanks! We'll let you know as soon as tickets are live.",
+    notifySuccess: "Thanks! We'll keep you posted.",
     notifyErrorInvalid: "Please enter a valid email address.",
     notifyErrorGeneric: "Something went wrong. Please try again.",
 
