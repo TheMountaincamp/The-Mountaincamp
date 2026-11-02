@@ -4,7 +4,7 @@ import type { Metadata } from "next"
 // diese Seite wird ausschließlich über den direkten Link geteilt (z. B. in
 // der Instagram-Bio für das Gewinnspiel). Daher auch `robots: noindex`.
 export const metadata: Metadata = {
-  title: "Teilnahmebedingungen Gewinnspiel | The Mountaincamp",
+  title: "Teilnahmebedingungen Gewinnspiel",
   description: "Teilnahmebedingungen zum Instagram-Gewinnspiel „Win a ticket to The Mountaincamp 2027“.",
   robots: {
     index: false,

@@ -33,7 +33,7 @@ export const metadata: Metadata = {
   metadataBase: new URL("https://themountaincamp.de"),
 
   title: {
-    default: "Trailrunning Camp Österreich 2027 | The Mountaincamp in Hochkrimml",
+    default: "Trailrunning Camp Österreich 2027 | The Mountaincamp",
     template: "%s | The Mountaincamp",
   },
 

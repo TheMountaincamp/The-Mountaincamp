@@ -2,11 +2,31 @@ import type { Metadata } from "next"
 import HomePageClient from "./home-page-client"
 import { faqsDE } from "@/app/data/faq"
 import { SITE_URL, SITE_NAME, OG_IMAGE, SAME_AS, jsonLd } from "@/app/lib/seo"
-import { NEXT_LAUNCH_PRICE, NEXT_LAUNCH_START, TICKET_URL, TICKETS_SOLD, TOTAL_TICKETS } from "@/app/lib/early-bird"
+import { SALE_PHASES, getPhaseState, TICKET_URL, TICKETS_SOLD, TOTAL_TICKETS } from "@/app/lib/early-bird"
+
+// Seite stündlich neu erzeugen, damit der Preis im Event-Schema der aktuellen Verkaufsphase folgt
+export const revalidate = 3600
+
+/** Angebot für das Event-Schema aus der gerade laufenden Preisphase */
+function currentOffer() {
+  const now = Date.now()
+  const live = SALE_PHASES.find((p) => p.price !== null && getPhaseState(p, now) === "live")
+  const fallback = SALE_PHASES.filter((p) => p.price !== null).find((p) => getPhaseState(p, now) !== "ended")
+  const phase = live ?? fallback
+  return {
+    "@type": "Offer",
+    url: `${SITE_URL}${TICKET_URL}`,
+    price: String(phase?.price ?? ""),
+    priceCurrency: "EUR",
+    availability: TICKETS_SOLD >= TOTAL_TICKETS ? "https://schema.org/SoldOut" : "https://schema.org/InStock",
+    ...(phase?.start ? { validFrom: phase.start } : {}),
+    ...(phase?.end ? { priceValidUntil: new Date(new Date(phase.end).getTime() - 1).toISOString().slice(0, 10) } : {}),
+  }
+}
 
 export const metadata: Metadata = {
   title: {
-    absolute: "Trailrunning Camp Österreich 2027 | The Mountaincamp in Hochkrimml",
+    absolute: "Trailrunning Camp Österreich 2027 | The Mountaincamp",
   },
   description:
     "Trailrunning Camp in den österreichischen Alpen: 5 Tage tägliche Trailruns, Workshops und Community in Hochkrimml. Für alle Level, 18. bis 22. August 2027.",
@@ -104,14 +124,7 @@ const structuredData = {
         `${SITE_URL}/images/hero-trail-runners.jpeg`,
         `${SITE_URL}/images/mountain-top-sunset-rave.jpg`,
       ],
-      offers: {
-        "@type": "Offer",
-        url: `${SITE_URL}${TICKET_URL}`,
-        price: String(NEXT_LAUNCH_PRICE),
-        priceCurrency: "EUR",
-        availability: TICKETS_SOLD >= TOTAL_TICKETS ? "https://schema.org/SoldOut" : "https://schema.org/InStock",
-        validFrom: NEXT_LAUNCH_START,
-      },
+      offers: currentOffer(),
       organizer: { "@id": `${SITE_URL}/#organization` },
     },
     {
