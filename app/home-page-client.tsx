@@ -514,49 +514,6 @@ export default function HomePageClient() {
 
 
 
-      {isMobile && hasScrolled && (
-        <motion.div
-          initial={{ y: 100, opacity: 0 }}
-          animate={{ y: 0, opacity: 1 }}
-          className="frost-grey fixed bottom-0 left-0 right-0 z-40 border-t border-gray-200 px-4 py-3 safe-area-pb"
-        >
-          <div className="flex items-center justify-between gap-3">
-            <div className="flex-1">
-              <p className="text-sm font-bold text-white">
-                {salePhase === "next-launch-live"
-                  ? language === "de"
-                    ? "Hol dir jetzt dein Ticket und spare"
-                    : "Get your ticket now and save"
-                  : salePhase === "next-launch-upcoming"
-                    ? language === "de"
-                      ? "Nächster Launch"
-                      : "Next launch"
-                    : "Phase 2"}
-              </p>
-              {salePhase !== "next-launch-live" && (
-                <p className="text-xs text-white/60">
-                  {salePhase === "next-launch-upcoming"
-                    ? NEXT_LAUNCH_LABEL[language].date
-                    : PHASE_2_LABEL[language].date}
-                </p>
-              )}
-            </div>
-            <Button
-              size="sm"
-              className="whitespace-nowrap bg-primary px-4 py-2 font-bold text-white hover:bg-primary/90"
-              asChild
-            >
-              {isBookable ? (
-                <a href={TICKET_URL}>
-                  {language === "de" ? "Ticket sichern" : "Get ticket"}
-                </a>
-              ) : (
-                <a href="#register">{language === "de" ? "Erinnern" : "Remind me"}</a>
-              )}
-            </Button>
-          </div>
-        </motion.div>
-      )}
 
       <header
         className="absolute z-50 w-full bg-transparent transition-[top] duration-300"
@@ -878,45 +835,6 @@ export default function HomePageClient() {
           </div>
         </section>
 
-        {/* Early-bird notify banner */}
-        <motion.section
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.6 }}
-          className="frost-grey relative z-30 py-12 md:py-16"
-        >
-          <div className="container">
-            <div className="flex flex-col items-start justify-between gap-6 lg:flex-row lg:items-center">
-              <div className="flex-1">
-                <h3 className="text-2xl font-bold text-white md:text-3xl mb-2">
-                  {isBookable
-                    ? language === "de"
-                      ? "Buchung geöffnet"
-                      : "Booking open"
-                    : t("notifyTitle")}
-                </h3>
-                <p className="text-white/70 text-lg leading-relaxed">
-                  {isBookable
-                    ? language === "de"
-                      ? "Du kannst dein Ticket jetzt direkt buchen."
-                      : "You can book your ticket directly now."
-                    : t("notifyDesc")}
-                </p>
-              </div>
-              {isBookable ? (
-                <Button size="lg" className="w-full shrink-0 bg-primary text-white hover:bg-primary/90 md:w-auto" asChild>
-                  <a href={TICKET_URL}>
-                    {language === "de" ? "Jetzt Tickets sichern" : "Get your ticket"}
-                  </a>
-                </Button>
-              ) : (
-                <NotifySignupForm className="w-full max-w-md shrink-0 [&_input]:bg-white [&_input]:text-gray-900 [&_button]:bg-primary [&_button]:text-white [&_button:hover]:bg-primary/90" />
-              )}
-            </div>
-          </div>
-        </motion.section>
-
         <section id="about" className="relative z-30">
           <div className="pointer-events-none absolute left-0 right-0 top-0 h-64 bg-gradient-to-b from-transparent via-white/5 via-white/10 via-white/15 via-white/20 via-white/25" />
 
@@ -986,34 +904,6 @@ export default function HomePageClient() {
                   </div>
                 </motion.div>
               </div>
-            </div>
-          </div>
-        </section>
-
-        <section className="frost-grey py-8 md:py-12">
-          <div className="container">
-            <div className="flex flex-col items-center justify-between gap-6 lg:flex-row">
-              <div className="text-center lg:text-left">
-                <h3 className="mb-2 text-xl font-bold text-white md:text-2xl">
-                  {language === "de" ? "Bereit für dein Trailrunning Abenteuer?" : "Ready for your trail running adventure?"}
-                </h3>
-                <p className="text-sm text-white/70 md:text-base">
-                  {isBookable
-                    ? language === "de"
-                      ? "Du kannst dein Ticket jetzt direkt buchen."
-                      : "You can book your ticket directly now."
-                    : t("notifyDesc")}
-                </p>
-              </div>
-              {isBookable ? (
-                <Button size="lg" className="w-full shrink-0 bg-primary text-white hover:bg-primary/90 md:w-auto" asChild>
-                  <a href={TICKET_URL}>
-                    {language === "de" ? "Jetzt Tickets sichern" : "Get your ticket"}
-                  </a>
-                </Button>
-              ) : (
-                <NotifySignupForm className="w-full max-w-md shrink-0 [&_input]:bg-white [&_input]:text-gray-900 [&_button]:bg-primary [&_button]:text-white [&_button:hover]:bg-primary/90" />
-              )}
             </div>
           </div>
         </section>
