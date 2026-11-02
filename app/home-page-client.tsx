@@ -1243,7 +1243,7 @@ export default function HomePageClient() {
                 transition={{ duration: 0.8, delay: 0.4 }}
                 className="flex flex-col items-center justify-center gap-6"
               >
-                <NotifySignupForm className="w-full max-w-md" />
+                <NotifySignupForm className="w-full max-w-md [&_input]:border-white/60 [&_input]:bg-white/10 [&_input]:text-white [&_input::placeholder]:text-white/70 [&_svg]:text-white/70 [&>div]:text-white" />
                 <div className="flex items-center gap-4 text-gray-300">
                   <Calendar className="h-5 w-5" />
                   <span>{language === "de" ? "18.–22. August 2027" : "August 18–22, 2027"}</span>
