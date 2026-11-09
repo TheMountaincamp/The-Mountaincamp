@@ -77,7 +77,7 @@ export default function BusDeparturesPage() {
             animate={{ opacity: isLoaded ? 1 : 0, y: isLoaded ? 0 : 20 }}
             transition={{ duration: 0.8, delay: 0.4 }}
           >
-            {language === "de" ? "Gemeinsam ins Mountaincamp" : "Together to The Mountaincamp"}
+            {language === "de" ? "Gemeinsam nachhaltig ins Mountaincamp" : "Travel sustainably, together, to The Mountaincamp"}
           </motion.p>
         </div>
 
