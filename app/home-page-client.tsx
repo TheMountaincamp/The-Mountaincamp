@@ -842,6 +842,17 @@ export default function HomePageClient() {
               </Link>
             </div>
           </div>
+
+          <div className="container mt-10 max-w-3xl md:mt-14">
+            <Image
+              src="/images/gruppenbild-2026.webp"
+              alt={language === "de" ? "Teilnehmende vom Mountaincamp 2026 auf einem Gipfel" : "Participants of the Mountaincamp 2026 on a summit"}
+              width={1400}
+              height={1256}
+              sizes="(max-width: 768px) 100vw, 768px"
+              className="h-auto w-full [mask-image:linear-gradient(to_bottom,black_70%,transparent),linear-gradient(to_right,transparent,black_12%,black_88%,transparent)] [mask-composite:intersect] [-webkit-mask-composite:source-in]"
+            />
+          </div>
         </section>
 
         <section id="about" className="relative z-30">
