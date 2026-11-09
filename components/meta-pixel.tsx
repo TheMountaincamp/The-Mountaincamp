@@ -4,6 +4,7 @@ import { useEffect, useRef } from "react"
 import { usePathname } from "next/navigation"
 import { useCookieConsent } from "@/contexts/cookie-consent-context"
 import { META_PIXEL_ID, trackMeta } from "@/lib/meta-pixel"
+import { SALE_PHASES, getPhaseState } from "@/app/lib/early-bird"
 
 // Seiten, die als ViewContent zählen (Produkt- und Infoseiten des Camps)
 const CONTENT_PAGES: Record<string, string> = {
@@ -130,6 +131,34 @@ export default function MetaPixel() {
     window.addEventListener("message", onMessage)
     return () => window.removeEventListener("message", onMessage)
   }, [allowed])
+
+  // Fallback: Landet jemand direkt auf der Bestätigungs-URL (z. B. nach der
+  // Rückleitung vom Zahlungsanbieter), steht im Parameter bm-path
+  // "/confirmation?fahrt=...". Kommt binnen 8 Sekunden kein buchung-thx aus der
+  // Maske, wird der Kauf hier gezählt. Gleiche eventID und gleicher
+  // sessionStorage-Schlüssel wie oben, damit nichts doppelt zählt.
+  useEffect(() => {
+    if (!allowed || pathname !== TICKET_PAGE) return
+    const bmPath = new URLSearchParams(window.location.search).get("bm-path") || ""
+    if (!bmPath.startsWith("/confirmation")) return
+    const fahrt = /fahrt=([a-z0-9]+)/i.exec(bmPath)?.[1] || ""
+    if (!fahrt) return
+    const key = "mc-purchase-" + fahrt
+    const timer = window.setTimeout(() => {
+      try {
+        if (sessionStorage.getItem(key)) return
+        sessionStorage.setItem(key, "1")
+      } catch {}
+      const live = SALE_PHASES.find((p) => getPhaseState(p) === "live" && p.price)
+      window.fbq?.(
+        "track",
+        "Purchase",
+        { content_name: CAMP_NAME, currency: "EUR", value: live?.price ?? 0 },
+        { eventID: "cadi-" + fahrt },
+      )
+    }, 8000)
+    return () => window.clearTimeout(timer)
+  }, [allowed, pathname])
 
   return null
 }
