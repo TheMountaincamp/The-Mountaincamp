@@ -1139,7 +1139,7 @@ export default function HomePageClient() {
 
           <div className="container relative z-10">
             <SectionTitle
-              title={language === "de" ? "Erfahrungen aus dem Trailrunning Camp" : "What runners say about the trail running camp"}
+              title={language === "de" ? "Erfahrungen aus dem Mountaincamp" : "Experiences from the Mountaincamp"}
               align="center"
               light={true}
             />

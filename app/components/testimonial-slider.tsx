@@ -71,10 +71,10 @@ export default function TestimonialSlider({ testimonials, autoPlay = true, inter
             animate="center"
             exit="exit"
             transition={{ duration: 0.5 }}
-            className="absolute inset-0 flex flex-col items-center justify-center gap-6 sm:flex-row sm:gap-10"
+            className="absolute inset-0 flex flex-col-reverse items-center justify-between gap-4 sm:flex-row sm:justify-center sm:gap-10"
           >
             {testimonials[currentIndex].image && (
-              <div className="relative h-40 w-32 flex-shrink-0 sm:h-[260px] sm:w-[190px]">
+              <div className="relative -mb-8 h-44 w-32 flex-shrink-0 self-center sm:h-[calc(100%+2rem)] sm:w-[200px] sm:self-end">
                 <Image
                   src={testimonials[currentIndex].image!}
                   alt={`${testimonials[currentIndex].name}, Teilnehmende am Mountaincamp`}
@@ -84,7 +84,7 @@ export default function TestimonialSlider({ testimonials, autoPlay = true, inter
                 />
               </div>
             )}
-            <div className="flex flex-col justify-center pb-12 sm:pb-0">
+            <div className="flex min-w-0 flex-1 flex-col justify-center">
               {testimonials[currentIndex].question && (
                 <p className="mb-2 text-sm font-semibold uppercase tracking-wide text-gray-400">
                   {testimonials[currentIndex].question}
