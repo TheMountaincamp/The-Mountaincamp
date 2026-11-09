@@ -850,7 +850,7 @@ export default function HomePageClient() {
               width={1400}
               height={1256}
               sizes="(max-width: 768px) 100vw, 768px"
-              className="h-auto w-full [mask-image:linear-gradient(to_bottom,black_70%,transparent),linear-gradient(to_right,transparent,black_12%,black_88%,transparent)] [mask-composite:intersect] [-webkit-mask-composite:source-in]"
+              className="h-auto w-full"
             />
           </div>
         </section>
