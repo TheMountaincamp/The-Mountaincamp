@@ -4,7 +4,7 @@ import { useState, useEffect } from "react"
 import Image from "next/image"
 import Link from "next/link"
 import { motion } from "framer-motion"
-import { ArrowLeft, Bus, MapPin, Calendar } from "lucide-react"
+import { ArrowLeft, Bus, MapPin, Calendar, TrainFront, Mountain } from "lucide-react"
 import { useLanguage } from "@/contexts/language-context"
 
 export default function BusDeparturesPage() {
@@ -20,17 +20,27 @@ export default function BusDeparturesPage() {
       city: { de: "Berlin", en: "Berlin" },
       location: { de: "Hauptbahnhof", en: "Central Station" },
       price: 120,
+      modes: ["train", "bus"] as const,
     },
     {
       city: { de: "München", en: "Munich" },
       location: { de: "Zentraler Omnibusbahnhof (ZOB)", en: "Central Bus Station (ZOB)" },
       price: 80,
+      modes: ["bus"] as const,
     },
     {
       city: { de: "Jenbach", en: "Jenbach" },
       location: { de: "Bahnhof", en: "Train station" },
       price: 40,
+      modes: ["bus"] as const,
     },
+  ]
+
+  const routeStops: { name: { de: string; en: string }; next?: "train" | "bus"; final?: boolean }[] = [
+    { name: { de: "Berlin", en: "Berlin" }, next: "train" },
+    { name: { de: "München", en: "Munich" }, next: "bus" },
+    { name: { de: "Jenbach", en: "Jenbach" }, next: "bus" },
+    { name: { de: "Hochkrimml", en: "Hochkrimml" }, final: true },
   ]
 
   const returnSchedule = [
@@ -158,8 +168,36 @@ export default function BusDeparturesPage() {
           >
             <h2 className="mb-8 flex items-center gap-3 text-2xl font-bold uppercase text-gray-900">
               <Bus className="h-6 w-6 text-primary" />
-              {language === "de" ? "Abfahrtsorte und Preise" : "Departure points and prices"}
+              {language === "de" ? "Anreise und Preise" : "Route and prices"}
             </h2>
+
+            <div className="mb-8 border border-gray-200 bg-gray-50 p-6 md:p-8">
+              <div className="flex flex-col gap-0 md:flex-row md:items-center">
+                {routeStops.map((stop, index) => (
+                  <div key={stop.name.en} className="flex flex-col md:flex-1 md:flex-row md:items-center last:md:flex-none">
+                    <div className="flex items-center gap-3 md:flex-col md:gap-2">
+                      <div
+                        className={`flex h-11 w-11 flex-shrink-0 items-center justify-center rounded-full ${
+                          stop.final ? "bg-primary text-white" : "border-2 border-primary bg-white text-primary"
+                        }`}
+                      >
+                        {stop.final ? <Mountain className="h-5 w-5" /> : <MapPin className="h-5 w-5" />}
+                      </div>
+                      <span className="whitespace-nowrap font-bold text-gray-900">{stop.name[language]}</span>
+                    </div>
+                    {stop.next && (
+                      <div className="ml-[21px] flex items-center gap-2 border-l-2 border-dashed border-primary/50 py-4 pl-6 md:ml-0 md:flex-1 md:flex-col md:gap-1 md:border-l-0 md:py-0 md:pl-0">
+                        <div className="hidden w-full border-t-2 border-dashed border-primary/50 md:block" />
+                        <span className="inline-flex items-center gap-1.5 rounded-full bg-white px-3 py-1 text-xs font-medium text-gray-700 shadow-sm md:-mt-4">
+                          {stop.next === "train" ? <TrainFront className="h-4 w-4 text-primary" /> : <Bus className="h-4 w-4 text-primary" />}
+                          {stop.next === "train" ? (language === "de" ? "Zug" : "Train") : "Bus"}
+                        </span>
+                      </div>
+                    )}
+                  </div>
+                ))}
+              </div>
+            </div>
 
             <div className="grid grid-cols-1 gap-6 md:grid-cols-3">
               {busRoutes.map((route, index) => (
@@ -177,7 +215,18 @@ export default function BusDeparturesPage() {
                     </div>
                     <h3 className="text-xl font-bold text-gray-900">{route.city[language]}</h3>
                   </div>
-                  <p className="mb-6 text-sm text-gray-600">{route.location[language]}</p>
+                  <p className="mb-4 text-sm text-gray-600">{route.location[language]}</p>
+                  <div className="mb-6 flex flex-wrap gap-2">
+                    {route.modes.map((mode) => (
+                      <span
+                        key={mode}
+                        className="inline-flex items-center gap-1.5 rounded-full border border-primary/30 bg-primary/10 px-3 py-1 text-xs font-medium text-primary"
+                      >
+                        {mode === "train" ? <TrainFront className="h-3.5 w-3.5" /> : <Bus className="h-3.5 w-3.5" />}
+                        {mode === "train" ? (language === "de" ? "Zug" : "Train") : "Bus"}
+                      </span>
+                    ))}
+                  </div>
                   <div className="mt-auto border-t border-gray-200 pt-4">
                     <p className="text-3xl font-bold text-gray-900">{fmt(route.price)}</p>
                     <p className="text-sm text-gray-500">{language === "de" ? "Hin- und Rückfahrt" : "Return trip"}</p>
