@@ -17,7 +17,7 @@ const CADI_SCRIPTS = [
 ]
 
 // Die Maske liest Anbieter, Reise, Termin und Sprache aus der Adresszeile.
-// Fehlen sie, setzen wir die Werte für The Mountaincamp 2027 (wie in BOOKING_URL).
+// Fehlen sie, setzen wir die Werte für the Mountaincamp 2027 (wie in BOOKING_URL).
 const DEFAULT_PARAMS: Record<string, string> = {
   vendor: "mountaincamp",
   destination_id: "2647",
@@ -88,7 +88,7 @@ export default function BookingMask({ lang }: { lang: "de" | "en" }) {
       )}
       <iframe
         id="bm-iframe"
-        title={lang === "de" ? "Buchung The Mountaincamp 2027" : "Booking The Mountaincamp 2027"}
+        title={lang === "de" ? "Buchung the Mountaincamp 2027" : "Booking the Mountaincamp 2027"}
         width="100%"
         height="900"
         style={{ border: "none", outline: "none", overflow: "hidden", display: "block" }}
