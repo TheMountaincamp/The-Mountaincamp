@@ -251,6 +251,34 @@ export default function HomePageClient() {
   const testimonials = [
     {
       quote:
+        "THANK YOU!!! I am now officially obsessed with trail running. I really think that for such a huge group, the camp and the organisation was incredible.",
+      name: "Gia",
+      program: "Mountaincamp 2026",
+      image: "/images/testimonials/gia.webp",
+    },
+    {
+      quote:
+        "The amazing runs in combination with great people and unique atmosphere. I loved that it was not all about being a good runner but having fun no matter your level.",
+      name: "María",
+      program: "Mountaincamp 2026",
+      image: "/images/testimonials/maria.webp",
+    },
+    {
+      question: "What would keep you from coming back?",
+      quote: "Wenn ich nicht wüsste, dass die Buchung offen ist.",
+      name: "Katharina",
+      program: "Mountaincamp 2026",
+      image: "/images/testimonials/katharina.webp",
+    },
+    {
+      quote:
+        "The great community: diverse, friendly, open to everyone and new people. I'll apply as a captain again, and no matter if I'll be chosen or not, I'm in!",
+      name: "Alex",
+      program: "Mountaincamp 2026",
+      image: "/images/testimonials/alex.webp",
+    },
+    {
+      quote:
         "Overall, it was my first experience trail running and I loved it – the running, the people, the amazing scenery etc.",
       name: "Trail Runner",
     },
