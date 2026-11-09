@@ -77,7 +77,7 @@ export default function BusDeparturesPage() {
             animate={{ opacity: isLoaded ? 1 : 0, y: isLoaded ? 0 : 20 }}
             transition={{ duration: 0.8, delay: 0.4 }}
           >
-            {language === "de" ? "Gemeinsam nachhaltig ins Mountaincamp" : "Travel sustainably, together, to The Mountaincamp"}
+            {language === "de" ? "Gemeinsam nachhaltig ins Mountaincamp" : "Travel sustainably, together, to the Mountaincamp"}
           </motion.p>
         </div>
 
@@ -266,7 +266,7 @@ export default function BusDeparturesPage() {
             <div className="mb-4 md:mb-0">
               <Image
                 src="/images/mountaincamp-logo-black.png"
-                alt="The Mountaincamp Logo"
+                alt="the Mountaincamp Logo"
                 width={150}
                 height={29}
                 className="h-10 w-auto"
