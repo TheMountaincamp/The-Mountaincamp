@@ -277,52 +277,8 @@ export default function HomePageClient() {
       program: "Mountaincamp 2026",
       image: "/images/testimonials/alex.webp",
     },
-    {
-      quote:
-        "Overall, it was my first experience trail running and I loved it – the running, the people, the amazing scenery etc.",
-      name: "Trail Runner",
-    },
-    {
-      quote: "Bringing the people together and sharing the pain/fun during the run was a great experience.",
-      name: "Community Member",
-    },
-    {
-      quote: "Great atmosphere, amazing mountains, a lot of activities offered.",
-      name: "Mountain Lover",
-    },
-    {
-      quote: "Got me hooked on trail running hobby and made unique, lovely, crazy friends.",
-      name: "New Trail Runner",
-    },
-    {
-      quote:
-        "Being able to do great sport activities all day from early morning to late night with super nice friends! Thank you!",
-      name: "Active Participant",
-    },
-    {
-      quote:
-        "Thank you. Just thank you, Jonas. You are doing great. It will be the greatest Trailcamp in the World soon.",
-      name: "Grateful Runner",
-    },
-    {
-      quote:
-        "Just a big thank you – I had the best time! Overall an amazing experience, definitely one of the highlights of this year!",
-      name: "Happy Camper",
-    },
-    {
-      quote:
-        "Thanks Jonas for organising, the last few days have been truly amazing, I was able to combine community, trail running and hard training!",
-      name: "Dedicated Athlete",
-    },
-    {
-      quote: "Many thanks for the organisation and the great time! Was purely amazing",
-      name: "Satisfied Participant",
-    },
-    {
-      quote: "I loved the Mountaincamp 2025 really much and I am proud of everybody!!!",
-      name: "Proud Member",
-    },
   ]
+
 
   const galleryImages = [
     {

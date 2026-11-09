@@ -42,7 +42,7 @@ export default function TestimonialSlider({ testimonials, autoPlay = true, inter
 
   const variants = {
     enter: (direction: number) => ({
-      x: direction > 0 ? 200 : -200,
+      x: direction > 0 ? 40 : -40,
       opacity: 0,
     }),
     center: {
@@ -50,7 +50,7 @@ export default function TestimonialSlider({ testimonials, autoPlay = true, inter
       opacity: 1,
     },
     exit: (direction: number) => ({
-      x: direction < 0 ? 200 : -200,
+      x: direction < 0 ? 40 : -40,
       opacity: 0,
     }),
   }
@@ -62,7 +62,7 @@ export default function TestimonialSlider({ testimonials, autoPlay = true, inter
       </div>
 
       <div className="relative h-[460px] sm:h-[340px] md:h-[300px]">
-        <AnimatePresence custom={direction} mode="wait">
+        <AnimatePresence custom={direction} initial={false}>
           <motion.div
             key={currentIndex}
             custom={direction}
@@ -70,7 +70,7 @@ export default function TestimonialSlider({ testimonials, autoPlay = true, inter
             initial="enter"
             animate="center"
             exit="exit"
-            transition={{ duration: 0.5 }}
+            transition={{ duration: 0.9, ease: [0.22, 1, 0.36, 1] }}
             className="absolute inset-0 flex flex-col-reverse items-center justify-between gap-4 sm:flex-row sm:justify-center sm:gap-10"
           >
             {testimonials[currentIndex].image && (
