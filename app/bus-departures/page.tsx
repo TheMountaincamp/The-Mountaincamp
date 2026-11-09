@@ -4,7 +4,7 @@ import { useState, useEffect } from "react"
 import Image from "next/image"
 import Link from "next/link"
 import { motion } from "framer-motion"
-import { ArrowLeft, Bus, MapPin, Calendar, TrainFront, Mountain } from "lucide-react"
+import { ArrowLeft, Bus, MapPin, TrainFront, Mountain } from "lucide-react"
 import { useLanguage } from "@/contexts/language-context"
 
 export default function BusDeparturesPage() {
@@ -41,44 +41,6 @@ export default function BusDeparturesPage() {
     { name: { de: "München", en: "Munich" }, next: "bus" },
     { name: { de: "Jenbach", en: "Jenbach" }, next: "bus" },
     { name: { de: "Hochkrimml", en: "Hochkrimml" }, final: true },
-  ]
-
-  const returnSchedule = [
-    {
-      location: "Hochkrimml",
-      description: {
-        en: "Departure from The Mountaincamp",
-        de: "Abfahrt vom Mountaincamp",
-      },
-    },
-    {
-      location: "Jenbach",
-      description: {
-        en: "Arrival at Jenbach Station",
-        de: "Ankunft am Bahnhof Jenbach",
-      },
-    },
-    {
-      location: language === "de" ? "München" : "Munich",
-      description: {
-        en: "Arrival at Munich Station",
-        de: "Ankunft am Bahnhof München",
-      },
-    },
-    {
-      location: language === "de" ? "München" : "Munich",
-      description: {
-        en: "Train departure from Munich to Berlin",
-        de: "Zugabfahrt von München nach Berlin",
-      },
-    },
-    {
-      location: "Berlin",
-      description: {
-        en: "Arrival in Berlin",
-        de: "Ankunft in Berlin",
-      },
-    },
   ]
 
   const fmt = (n: number) => (language === "de" ? `${n} €` : `€${n}`)
@@ -242,40 +204,6 @@ export default function BusDeparturesPage() {
             transition={{ duration: 0.8, delay: 0.4 }}
             className="mb-16"
           >
-            <h2 className="mb-8 flex items-center gap-3 text-2xl font-bold uppercase text-gray-900">
-              <Calendar className="h-6 w-6 text-primary" />
-              {language === "de" ? "Rückfahrt" : "Return"}
-            </h2>
-
-            <div className="border border-gray-200 bg-gray-50 p-6 md:p-8">
-              <div className="space-y-4">
-                {returnSchedule.map((stop, index) => (
-                  <motion.div
-                    key={`${stop.location}-${index}`}
-                    className="flex items-center gap-6 bg-white p-4 shadow-sm"
-                    initial={{ opacity: 0, x: -20 }}
-                    animate={{ opacity: isLoaded ? 1 : 0, x: isLoaded ? 0 : -20 }}
-                    transition={{ duration: 0.5, delay: 0.5 + index * 0.1 }}
-                  >
-                    <div className="flex h-12 w-12 flex-shrink-0 items-center justify-center rounded-full bg-primary/10">
-                      <MapPin className="h-5 w-5 text-primary" />
-                    </div>
-                    <div className="flex-1">
-                      <h4 className="text-lg font-bold text-gray-900">{stop.location}</h4>
-                      <p className="text-sm text-gray-600">{stop.description[language]}</p>
-                    </div>
-                  </motion.div>
-                ))}
-              </div>
-            </div>
-          </motion.div>
-
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: isLoaded ? 1 : 0, y: isLoaded ? 0 : 30 }}
-            transition={{ duration: 0.8, delay: 0.6 }}
-            className="mb-16"
-          >
             <h2 className="mb-8 text-2xl font-bold uppercase text-gray-900">
               {language === "de" ? "Wichtige Informationen" : "Important information"}
             </h2>
@@ -309,7 +237,7 @@ export default function BusDeparturesPage() {
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: isLoaded ? 1 : 0, y: isLoaded ? 0 : 30 }}
-            transition={{ duration: 0.8, delay: 0.8 }}
+            transition={{ duration: 0.8, delay: 0.6 }}
             className="border border-primary/30 bg-primary/10 p-8 text-center"
           >
             <h3 className="mb-4 text-2xl font-bold text-gray-900">
