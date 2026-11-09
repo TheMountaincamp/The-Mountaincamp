@@ -15,40 +15,28 @@ interface InstagramReel {
 
 const reels: InstagramReel[] = [
   {
-    id: "DOY4eu9jNej",
-    url: "https://www.instagram.com/reel/DOY4eu9jNej/",
-    caption: "Trail Running",
-    captionDe: "Trail Running",
+    id: "DfZ5p_LI-PA",
+    url: "https://www.instagram.com/p/DfZ5p_LI-PA/",
+    caption: "Camp Highlights",
+    captionDe: "Camp-Highlights",
   },
   {
-    id: "DNFxZ4ns8Nr",
-    url: "https://www.instagram.com/reel/DNFxZ4ns8Nr/",
-    caption: "Mountain Views",
-    captionDe: "Bergpanorama",
+    id: "Dd-_3ndRJIW",
+    url: "https://www.instagram.com/p/Dd-_3ndRJIW/",
+    caption: "1 Camp, 300 People",
+    captionDe: "1 Camp, 300 Leute",
   },
   {
-    id: "DNIUf5jsUCL",
-    url: "https://www.instagram.com/reel/DNIUf5jsUCL/",
-    caption: "Camp Life",
-    captionDe: "Camp Leben",
+    id: "DdbYaD0oGFO",
+    url: "https://www.instagram.com/p/DdbYaD0oGFO/",
+    caption: "Take it easy",
+    captionDe: "Take it easy",
   },
   {
-    id: "DNcmu4FMUiW",
-    url: "https://www.instagram.com/reel/DNcmu4FMUiW/",
-    caption: "Alpine Adventure",
-    captionDe: "Alpen Abenteuer",
-  },
-  {
-    id: "DPgNPYhjMqW",
-    url: "https://www.instagram.com/reel/DPgNPYhjMqW/",
-    caption: "Summit Moments",
-    captionDe: "Gipfelmomente",
-  },
-  {
-    id: "DNaW6bKMuYr",
-    url: "https://www.instagram.com/reel/DNaW6bKMuYr/",
-    caption: "Trail Community",
-    captionDe: "Trail Community",
+    id: "DcK784LMpZD",
+    url: "https://www.instagram.com/p/DcK784LMpZD/",
+    caption: "MTC26",
+    captionDe: "MTC26",
   },
 ]
 
@@ -100,7 +88,7 @@ export default function InstagramReelsSection() {
               >
                 <div className="relative aspect-[9/16] overflow-hidden bg-gray-900">
                   <Image
-                    src={`https://www.instagram.com/p/${reel.id}/media/?size=l`}
+                    src={`/images/reels/${reel.id}.webp`}
                     alt={language === "de" ? reel.captionDe : reel.caption}
                     fill
                     className="object-cover"
