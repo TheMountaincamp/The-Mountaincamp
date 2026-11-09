@@ -72,7 +72,7 @@ export default function InstagramReelsSection() {
           <p className="text-lg text-gray-600 max-w-2xl mx-auto">
             {language === "de"
               ? "Erlebe die besten Momente vom Mountaincamp"
-              : "Experience the best moments from The Mountaincamp"}
+              : "Experience the best moments from the Mountaincamp"}
           </p>
         </motion.div>
 

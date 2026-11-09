@@ -1115,7 +1115,7 @@ export default function HomePageClient() {
               subtitle={
                 language === "de"
                   ? "Marken und Partner, die das Mountaincamp begleiten."
-                  : "Brands and partners supporting The Mountaincamp."
+                  : "Brands and partners supporting the Mountaincamp."
               }
               align="center"
               light={false}
@@ -1412,7 +1412,7 @@ export default function HomePageClient() {
             </div>
           </div>
           <div className="border-t border-white/10 py-6 text-center text-white/60">
-            © 2025 The Mountaincamp. {language === "de" ? "Alle Rechte vorbehalten." : "All rights reserved."}
+            © 2025 the Mountaincamp. {language === "de" ? "Alle Rechte vorbehalten." : "All rights reserved."}
           </div>
         </div>
       </footer>

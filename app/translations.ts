@@ -27,7 +27,7 @@ export const translations = {
     // About section
     aboutTitle: "Das erwartet dich",
     aboutSubtitle:
-      "Bei The Mountaincamp glauben wir, dass Laufen mehr ist als nur Kilometer schrubben – es geht darum, Grenzen zu überwinden, Gemeinschaft zu bilden und das Leben zu feiern.",
+      "Bei the Mountaincamp glauben wir, dass Laufen mehr ist als nur Kilometer schrubben – es geht darum, Grenzen zu überwinden, Gemeinschaft zu bilden und das Leben zu feiern.",
     aboutText1: "Nicht einfach ein Camp. Mehr als nur Laufen.\nTrails am Morgen, Abkühlung im See, echte Momente.",
     aboutText2: "Für alle Levels. Kein Leistungsdruck.\nFür alle, die mehr als nur Kilometer suchen.",
     aboutText3: "Laufen. Verbinden. Erleben.\nThe Mountaincamp.",
@@ -201,7 +201,7 @@ export const translations = {
     // About section
     aboutTitle: "What awaits you",
     aboutSubtitle:
-      "At The Mountaincamp we believe running is about more than just miles — it's about pushing boundaries, building community, and celebrating life.",
+      "At the Mountaincamp we believe running is about more than just miles — it's about pushing boundaries, building community, and celebrating life.",
     aboutText1: "Not just a camp. More than just running.\nTrail runs in the morning, lake dips, real moments.",
     aboutText2: "For every level. No pressure.\nFor those chasing more than just miles.",
     aboutText3: "Run. Connect. Experience.\nThe Mountaincamp.",
