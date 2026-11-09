@@ -34,8 +34,8 @@ export default function FAQSection() {
           </h2>
           <p className="text-xl text-gray-600">
             {language === "de"
-              ? "Alles, was du über The Mountaincamp wissen musst"
-              : "Everything you need to know about The Mountaincamp"}
+              ? "Alles, was du über the Mountaincamp wissen musst"
+              : "Everything you need to know about the Mountaincamp"}
           </p>
         </motion.div>
 

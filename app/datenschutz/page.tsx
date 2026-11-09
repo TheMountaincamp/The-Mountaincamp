@@ -294,7 +294,7 @@ export default function DatenschutzPage() {
               Sie unsere Ticketseite aufrufen oder auf einen Link zu unserer Buchungsseite klicken. Dabei werden insbesondere Ihre IP-Adresse,
               Browser- und Geräteinformationen sowie ein Cookie-Identifier an Meta übermittelt. Wir nutzen diese
               Informationen, um die Wirkung unserer Anzeigen auf Instagram und Facebook zu messen und Anzeigen an
-              Personen auszuspielen, die sich für The Mountaincamp interessieren. Meta kann die Daten mit Ihrem
+              Personen auszuspielen, die sich für the Mountaincamp interessieren. Meta kann die Daten mit Ihrem
               Nutzerkonto verknüpfen und auch für eigene Zwecke verwenden. Für die Erhebung und Übermittlung sind wir
               und Meta gemeinsam verantwortlich (Art. 26 DSGVO).
             </p>

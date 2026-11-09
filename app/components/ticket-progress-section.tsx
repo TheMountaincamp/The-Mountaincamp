@@ -18,7 +18,7 @@ import {
 const COPY = {
   de: {
     title: "Ticket-Kontingent",
-    subtitle: "Die Plätze für The Mountaincamp 2027 sind limitiert.",
+    subtitle: "Die Plätze für the Mountaincamp 2027 sind limitiert.",
     sold: "vergeben",
     of: "von",
     tickets: "Tickets",
@@ -36,7 +36,7 @@ const COPY = {
   },
   en: {
     title: "Ticket allocation",
-    subtitle: "Spots for The Mountaincamp 2027 are limited.",
+    subtitle: "Spots for the Mountaincamp 2027 are limited.",
     sold: "claimed",
     of: "of",
     tickets: "tickets",

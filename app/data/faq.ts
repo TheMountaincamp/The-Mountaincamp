@@ -47,22 +47,22 @@ export const faqsDE: FAQItem[] = [
       "The Mountaincamp ist mehr als ein Event - es ist ein 5-tägiges Trailrunning-Festival in den Alpen! Neben täglichen täglichen Trailruns erlebst du eine einzigartige Community, Workshops, Yoga, Klettern und die legendäre Sunset Rave auf dem Berg. Es verbindet die Schönheit alpiner Trails mit unvergesslichen Gemeinschaftserlebnissen.",
   },
   {
-    question: "Für wen ist The Mountaincamp geeignet?",
+    question: "Für wen ist the Mountaincamp geeignet?",
     answer:
       "The Mountaincamp in den österreichischen Alpen ist für alle Level geeignet – von Anfängern bis zu erfahrenen Trail Runnern. Wir bieten verschiedene Gruppen nach Tempo und Erfahrung, sodass jeder die perfekte Herausforderung findet.",
   },
   {
-    question: "Wo genau findet The Mountaincamp statt?",
+    question: "Wo genau findet the Mountaincamp statt?",
     answer:
       "Das Camp findet in Hochkrimml in den österreichischen Alpen statt, auf 1.700 m Höhe. Die Region bietet spektakuläre alpine Trails mit atemberaubenden Bergpanoramen und ist perfekt für Trailrunning in den Alpen.",
   },
   {
-    question: "Was ist im Preis von The Mountaincamp enthalten?",
+    question: "Was ist im Preis von the Mountaincamp enthalten?",
     answer:
       "Das Paket inkludiert 4 Nächte Unterkunft in unserem gemütlichen Berghaus, Verpflegung mit Frühstück, kleinem Lunch und Abendessen sowie tägliche Trailruns in den Alpen. Den aktuellen Ticketpreis findest du im Ticketbereich auf dieser Seite.",
   },
   {
-    question: "Wie schwierig sind die Trails bei The Mountaincamp?",
+    question: "Wie schwierig sind die Trails bei the Mountaincamp?",
     answer:
       "Wir bieten täglich mehrere Gruppen mit unterschiedlichen Distanzen und Höhenmetern an. Von entspannten 10km-Läufen bis zu anspruchsvollen 25km+ Bergtouren mit 1.500+ Höhenmetern ist alles dabei. Unsere erfahrenen Guides passen die Routen an die Gruppe an.",
   },
@@ -72,7 +72,7 @@ export const faqsDE: FAQItem[] = [
       "Ja, bitte bringe deine eigenen Trailrunning-Schuhe, Laufbekleidung und einen kleinen Rucksack mit. Wir empfehlen auch Trinkflaschen, Sonnenschutz und wetterfeste Kleidung für die Alpen. Eine detaillierte Packliste erhältst du nach der Anmeldung.",
   },
   {
-    question: "Wie komme ich zu The Mountaincamp?",
+    question: "Wie komme ich zu the Mountaincamp?",
     answer:
       "Entweder mit dem Auto (diese Option empfehlen wir nicht, da sie den höchsten CO2-Ausstoß hat) oder du buchst den Bus (von Berlin, München oder Jenbach). Details zur Anreise findest du auf unserer Bus-Anreise Seite.",
   },
@@ -82,7 +82,7 @@ export const faqsDE: FAQItem[] = [
       "Absolut! Wir bieten täglich vegetarische und vegane Optionen an. Bitte gib bei der Anmeldung deine Ernährungspräferenzen oder Allergien an, damit wir uns optimal vorbereiten können.",
   },
   {
-    question: "Kann ich als Anfänger bei The Mountaincamp teilnehmen?",
+    question: "Kann ich als Anfänger bei the Mountaincamp teilnehmen?",
     answer:
       "Ja! Wir haben spezielle Anfängergruppen mit kürzeren Distanzen und Technik-Coaching. Du solltest eine Grundfitness haben und Freude am Laufen in den Bergen. Unsere Guides helfen dir, die richtige Trailrunning-Technik zu lernen.",
   },
@@ -135,22 +135,22 @@ export const faqsEN: FAQItem[] = [
       "The Mountaincamp is more than an event - it's a 5-day trailrunning festival in the Alps! Besides daily trail runs, you experience a unique community, workshops, yoga, climbing, and the legendary Sunset Rave on the mountain. It combines the beauty of alpine trails with unforgettable community experiences.",
   },
   {
-    question: "Who is The Mountaincamp suitable for?",
+    question: "Who is the Mountaincamp suitable for?",
     answer:
       "The Mountaincamp in the Austrian Alps is suitable for all levels – from beginners to experienced trail runners. We offer different groups based on pace and experience, so everyone finds the perfect challenge.",
   },
   {
-    question: "Where exactly does The Mountaincamp take place?",
+    question: "Where exactly does the Mountaincamp take place?",
     answer:
       "The camp takes place in Hochkrimml in the Austrian Alps, at 1,700 m altitude. The region offers spectacular alpine trails with breathtaking mountain panoramas and is perfect for trailrunning in the Alps.",
   },
   {
-    question: "What's included in The Mountaincamp price?",
+    question: "What's included in the Mountaincamp price?",
     answer:
       "The package includes 4 nights accommodation in our cozy mountain house, meals with breakfast, a small lunch and dinner, and daily trail runs in the Alps. You can find the current ticket price in the ticket section on this page.",
   },
   {
-    question: "How difficult are the trails at The Mountaincamp?",
+    question: "How difficult are the trails at the Mountaincamp?",
     answer:
       "We offer multiple groups daily with different distances and elevation gains. From relaxed 10km runs to challenging 25km+ mountain tours with 1,500+ meters elevation gain. Our experienced guides adapt routes to the group.",
   },
@@ -160,7 +160,7 @@ export const faqsEN: FAQItem[] = [
       "Yes, please bring your own trail running shoes, running clothes and a small backpack. We also recommend water bottles, sun protection and weatherproof clothing for the Alps. You'll receive a detailed packing list after registration.",
   },
   {
-    question: "How do I get to The Mountaincamp?",
+    question: "How do I get to the Mountaincamp?",
     answer:
       "Either by car (we do not recommend this option, as it has the highest CO2 impact) or you book the bus (from Berlin, Munich or Jenbach). Find travel details on our bus transport page.",
   },
@@ -170,7 +170,7 @@ export const faqsEN: FAQItem[] = [
       "We offer daily vegetarian and vegan options. Please indicate your dietary preferences or allergies during registration so we can prepare optimally.",
   },
   {
-    question: "Can I participate as a beginner at The Mountaincamp?",
+    question: "Can I participate as a beginner at the Mountaincamp?",
     answer:
       "Yes! We have special beginner groups with shorter distances and technique coaching. You should have basic fitness and enjoy running in the mountains. Our guides will help you learn proper trailrunning technique.",
   },

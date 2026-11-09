@@ -5,7 +5,7 @@ import type { Metadata } from "next"
 // der Instagram-Bio für das Gewinnspiel). Daher auch `robots: noindex`.
 export const metadata: Metadata = {
   title: "Teilnahmebedingungen Gewinnspiel",
-  description: "Teilnahmebedingungen zum Instagram-Gewinnspiel „Win a ticket to The Mountaincamp 2027“.",
+  description: "Teilnahmebedingungen zum Instagram-Gewinnspiel „Win a ticket to the Mountaincamp 2027“.",
   robots: {
     index: false,
     follow: false,
@@ -19,14 +19,14 @@ export default function GiveawayTermsPage() {
         <article className="space-y-12">
           <section lang="de" className="space-y-6">
             <h1 className="text-balance text-xl font-semibold leading-snug">
-              Teilnahmebedingungen zum Instagram-Gewinnspiel „Win a ticket to The Mountaincamp 2027“
+              Teilnahmebedingungen zum Instagram-Gewinnspiel „Win a ticket to the Mountaincamp 2027“
             </h1>
 
             <div className="space-y-5 text-[15px] leading-relaxed text-neutral-800">
               <section>
                 <h2 className="font-semibold">1. Veranstalter</h2>
                 <p>
-                  Veranstalter ist Jonas Westbrock, The Mountaincamp, Im Schulgarten 28, 49685 Höltinghausen,
+                  Veranstalter ist Jonas Westbrock, the Mountaincamp, Im Schulgarten 28, 49685 Höltinghausen,
                   Deutschland. Kontakt: themountaincampde@gmail.com.
                 </p>
               </section>
@@ -60,7 +60,7 @@ export default function GiveawayTermsPage() {
               <section>
                 <h2 className="font-semibold">5. Gewinn</h2>
                 <p>
-                  Gewonnen wird ein Ticket für The Mountaincamp Community 2027 vom 18. bis 22. August 2027 in
+                  Gewonnen wird ein Ticket für the Mountaincamp Community 2027 vom 18. bis 22. August 2027 in
                   Hochkrimml, Österreich. Enthalten sind die im Ticket beschriebenen Leistungen. Nicht enthalten sind
                   An- und Abreise, Versicherungen und zusätzlich buchbare Aktivitäten.
                 </p>
@@ -133,14 +133,14 @@ export default function GiveawayTermsPage() {
 
           <section lang="en" className="space-y-6">
             <h2 className="text-balance text-xl font-semibold leading-snug">
-              Terms and conditions for the Instagram giveaway &ldquo;Win a ticket to The Mountaincamp 2027&rdquo;
+              Terms and conditions for the Instagram giveaway &ldquo;Win a ticket to the Mountaincamp 2027&rdquo;
             </h2>
 
             <div className="space-y-5 text-[15px] leading-relaxed text-neutral-800">
               <section>
                 <h3 className="font-semibold">1. Organiser</h3>
                 <p>
-                  The giveaway is run by Jonas Westbrock, The Mountaincamp, Im Schulgarten 28, 49685 Höltinghausen,
+                  The giveaway is run by Jonas Westbrock, the Mountaincamp, Im Schulgarten 28, 49685 Höltinghausen,
                   Germany. Contact: themountaincampde@gmail.com.
                 </p>
               </section>
@@ -173,7 +173,7 @@ export default function GiveawayTermsPage() {
               <section>
                 <h3 className="font-semibold">5. The prize</h3>
                 <p>
-                  The prize is one ticket to The Mountaincamp Community 2027, 18 to 22 August 2027 in Hochkrimml,
+                  The prize is one ticket to the Mountaincamp Community 2027, 18 to 22 August 2027 in Hochkrimml,
                   Austria. It covers what the ticket itself includes. Travel to and from the camp, insurance and
                   separately bookable activities are not included.
                 </p>
