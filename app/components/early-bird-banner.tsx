@@ -27,7 +27,8 @@ const COPY = {
     phase2UpcomingTitle: "Phase 2 startet in Kürze",
     phase2LiveTitle: `Phase 2 läuft · ${PHASE_2_PRICE}€`,
     nextLaunchTitle: "Nächster Launch",
-    nextLaunchLiveTitle: "Hol dir jetzt dein Ticket und spare",
+    nextLaunchLiveTitle: "Hol dir jetzt dein Ticket",
+    nextLaunchLiveSuffix: "und spare 100€",
     liveLead: "Noch",
     upcomingLead: "Start in",
     phase2Hint: `Danach Phase 2: ${PHASE_2_LABEL.de.date} für ${PHASE_2_PRICE}€`,
@@ -44,7 +45,8 @@ const COPY = {
     phase2UpcomingTitle: "Phase 2 starts soon",
     phase2LiveTitle: `Phase 2 is live · ${PHASE_2_PRICE}€`,
     nextLaunchTitle: "Next launch",
-    nextLaunchLiveTitle: "Get your ticket now and save",
+    nextLaunchLiveTitle: "Get your ticket now",
+    nextLaunchLiveSuffix: "and save 100€",
     liveLead: "Only",
     upcomingLead: "Starts in",
     phase2Hint: `Then Phase 2: ${PHASE_2_LABEL.en.date} for ${PHASE_2_PRICE}€`,
@@ -201,7 +203,7 @@ export default function EarlyBirdBanner({ delayMs = 3_000, onHeightChange }: Ear
       initial={prefersReducedMotion ? false : { y: -24, opacity: 0 }}
       animate={{ y: 0, opacity: 1 }}
       transition={{ duration: 0.4, ease: "easeOut" }}
-      aria-label={title}
+      aria-label={phase === "next-launch-live" ? `${title} ${c.nextLaunchLiveSuffix}` : title}
       className={`relative z-[60] w-full border-b ${
         isLive ? "border-primary/50 bg-primary" : "frost-grey border-gray-200"
       } text-white`}
@@ -223,6 +225,7 @@ export default function EarlyBirdBanner({ delayMs = 3_000, onHeightChange }: Ear
 
             <p className="text-xs font-bold uppercase tracking-wide md:text-base">
               {title}
+              {phase === "next-launch-live" && <span className="ml-1.5 font-light">{c.nextLaunchLiveSuffix}</span>}
               {dateText && <span
                 className={`ml-2 font-normal normal-case ${
                   isLive ? "text-white/85" : "text-white/60"
