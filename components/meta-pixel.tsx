@@ -27,6 +27,10 @@ const CHECKOUT_LINK = 'a[href*="camps.digital"]'
 const CADI_ORIGIN = /^https:\/\/[a-z0-9-]+\.d1u2qdrqduf5v6\.amplifyapp\.com$/
 const CAMP_NAME = "The Mountaincamp 2027"
 
+// URL beim ersten Laden merken: Die Buchungsmaske schreibt bm-path danach um,
+// und die Cookie-Einwilligung kommt oft erst später.
+const INITIAL_SEARCH = typeof window !== "undefined" ? window.location.search : ""
+
 function loadPixel() {
   if (typeof window === "undefined" || window.fbq) return
   const queue: unknown[][] = []
@@ -92,7 +96,8 @@ export default function MetaPixel() {
   // Buchungsschritte aus der CADI-Maske
   useEffect(() => {
     if (!allowed) return
-    let fahrt = ""
+    // Buchungs-ID schon aus der Start-URL holen, falls die Maske sie nicht per sync-url meldet
+    let fahrt = /fahrt=([a-z0-9]+)/i.exec(new URLSearchParams(INITIAL_SEARCH).get("bm-path") || "")?.[1] || ""
     const onMessage = (event: MessageEvent) => {
       if (!CADI_ORIGIN.test(event.origin)) return
       let msg: { type?: string; content?: { event?: string; conversionValue?: number; fullPath?: string } }
@@ -134,12 +139,15 @@ export default function MetaPixel() {
 
   // Fallback: Landet jemand direkt auf der Bestätigungs-URL (z. B. nach der
   // Rückleitung vom Zahlungsanbieter), steht im Parameter bm-path
-  // "/confirmation?fahrt=...". Kommt binnen 8 Sekunden kein buchung-thx aus der
+  // "/confirmation?fahrt=...". Kommt binnen 25 Sekunden kein buchung-thx aus der
   // Maske, wird der Kauf hier gezählt. Gleiche eventID und gleicher
   // sessionStorage-Schlüssel wie oben, damit nichts doppelt zählt.
   useEffect(() => {
     if (!allowed || pathname !== TICKET_PAGE) return
-    const bmPath = new URLSearchParams(window.location.search).get("bm-path") || ""
+    const bmPath =
+      new URLSearchParams(INITIAL_SEARCH).get("bm-path") ||
+      new URLSearchParams(window.location.search).get("bm-path") ||
+      ""
     if (!bmPath.startsWith("/confirmation")) return
     const fahrt = /fahrt=([a-z0-9]+)/i.exec(bmPath)?.[1] || ""
     if (!fahrt) return
@@ -156,7 +164,7 @@ export default function MetaPixel() {
         { content_name: CAMP_NAME, currency: "EUR", value: live?.price ?? 0 },
         { eventID: "cadi-" + fahrt },
       )
-    }, 8000)
+    }, 25000)
     return () => window.clearTimeout(timer)
   }, [allowed, pathname])
 
