@@ -17,22 +17,19 @@ export default function BusDeparturesPage() {
 
   const busRoutes = [
     {
-      city: "Berlin",
-      departure: {
-        location: "Hauptbahnhof (HBF)",
-      },
+      city: { de: "Berlin", en: "Berlin" },
+      location: { de: "Hauptbahnhof", en: "Central Station" },
+      price: 120,
     },
     {
-      city: "Munich",
-      departure: {
-        location: "Zentraler Omnibusbahnhof (ZOB)",
-      },
+      city: { de: "München", en: "Munich" },
+      location: { de: "Zentraler Omnibusbahnhof (ZOB)", en: "Central Bus Station (ZOB)" },
+      price: 80,
     },
     {
-      city: "Jenbach",
-      departure: {
-        location: "Hauptbahnhof (HBF)",
-      },
+      city: { de: "Jenbach", en: "Jenbach" },
+      location: { de: "Bahnhof", en: "Train station" },
+      price: 40,
     },
   ]
 
@@ -52,14 +49,14 @@ export default function BusDeparturesPage() {
       },
     },
     {
-      location: "Munich",
+      location: language === "de" ? "München" : "Munich",
       description: {
         en: "Arrival at Munich Station",
         de: "Ankunft am Bahnhof München",
       },
     },
     {
-      location: "Munich",
+      location: language === "de" ? "München" : "Munich",
       description: {
         en: "Train departure from Munich to Berlin",
         de: "Zugabfahrt von München nach Berlin",
@@ -74,22 +71,24 @@ export default function BusDeparturesPage() {
     },
   ]
 
+  const fmt = (n: number) => (language === "de" ? `${n} €` : `€${n}`)
+
   return (
-    <div className="min-h-screen bg-black text-white">
-      <div className="relative h-[50vh] min-h-[400px]">
+    <div className="min-h-screen bg-white text-gray-900">
+      <div className="relative h-[60vh] min-h-[420px]">
         <Image
-          src="/images/bus-mountain-landscape.jpeg"
-          alt="Bus transport through the mountains"
+          src="/images/bus-hochkrimml.jpg"
+          alt={language === "de" ? "Mountaincamp-Bus vor den Bergen in Hochkrimml" : "Mountaincamp bus in front of the mountains in Hochkrimml"}
           fill
-          className="object-cover"
+          className="object-cover object-[center_45%]"
           priority
           sizes="100vw"
         />
-        <div className="absolute inset-0 bg-gradient-to-b from-black/70 via-black/50 to-black" />
+        <div className="absolute inset-0 bg-gradient-to-b from-black/50 via-black/35 to-black/40" />
 
-        <div className="absolute inset-0 flex flex-col items-center justify-center p-6 text-center">
+        <div className="absolute inset-0 flex flex-col items-center justify-center p-6 text-center text-white">
           <motion.h1
-            className="mb-4 text-4xl font-bold md:text-6xl"
+            className="mb-4 text-4xl font-bold drop-shadow md:text-6xl"
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: isLoaded ? 1 : 0, y: isLoaded ? 0 : 20 }}
             transition={{ duration: 0.8, delay: 0.2 }}
@@ -101,14 +100,12 @@ export default function BusDeparturesPage() {
           </motion.h1>
 
           <motion.p
-            className="max-w-2xl text-xl text-white/80 md:text-2xl"
+            className="max-w-2xl text-xl text-white/90 drop-shadow md:text-2xl"
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: isLoaded ? 1 : 0, y: isLoaded ? 0 : 20 }}
             transition={{ duration: 0.8, delay: 0.4 }}
           >
-            {language === "de"
-              ? "Bequeme Anreise zum Mountaincamp"
-              : "Convenient transport to The Mountaincamp"}
+            {language === "de" ? "Gemeinsam ins Mountaincamp" : "Together to The Mountaincamp"}
           </motion.p>
         </div>
 
@@ -118,7 +115,7 @@ export default function BusDeparturesPage() {
           animate={{ opacity: isLoaded ? 1 : 0, x: isLoaded ? 0 : -20 }}
           transition={{ duration: 0.5 }}
         >
-          <Link href="/" className="flex items-center gap-2 text-white transition-colors hover:text-primary">
+          <Link href="/" className="flex items-center gap-2 text-white drop-shadow transition-colors hover:text-primary">
             <ArrowLeft className="h-5 w-5" />
             <span>{language === "de" ? "Zurück" : "Back"}</span>
           </Link>
@@ -133,24 +130,22 @@ export default function BusDeparturesPage() {
             transition={{ duration: 0.8 }}
             className="mb-16 text-center"
           >
-            <h2 className="mb-6 text-3xl font-bold text-white">
-              {language === "de"
-                ? "Entspannt zum Mountaincamp"
-                : "Relax on your way to The Mountaincamp"}
+            <h2 className="mb-6 text-3xl font-bold uppercase text-gray-900">
+              {language === "de" ? "Dein Camp beginnt schon unterwegs" : "Your camp starts on the way"}
             </h2>
 
-            <p className="mx-auto mb-4 max-w-2xl text-white/80">
+            <p className="mx-auto mb-4 max-w-2xl text-lg leading-relaxed text-gray-600">
               {language === "de"
-                ? "Wir bieten bequeme Bus- und Zugverbindungen von Berlin, München und Jenbach."
-                : "We offer convenient bus and train transport from Berlin, Munich and Jenbach."}
+                ? "Trailrunning selbst ist nahezu CO2-frei. Den Unterschied macht, wie du zum Camp und wieder nach Hause kommst. Die gemeinsame Anreise mit Bus und Bahn ist dabei der nachhaltigste Weg und obendrein richtig bequem: Du lernst deine Gruppe schon unterwegs kennen, und dein Camp beginnt nicht erst auf dem Berg, sondern schon am Bahnhof."
+                : "Trail running itself is almost carbon free. What makes the difference is how you get to the camp and back home. Travelling together by bus and train is the most sustainable way, and a comfortable one too: you get to know your group on the way, and your camp starts at the station, not just on the mountain."}
             </p>
 
-            <div className="mt-4 inline-flex items-center gap-2 rounded-full border border-primary/40 bg-primary/20 px-4 py-2">
+            <div className="mt-4 inline-flex items-center gap-2 rounded-full border border-primary/30 bg-primary/10 px-4 py-2">
               <Bus className="h-4 w-4 text-primary" />
               <span className="text-sm font-medium text-primary">
                 {language === "de"
-                  ? "Die Buchung beinhaltet Hin- und Rückfahrt"
-                  : "Booking includes transport to the camp and back"}
+                  ? "Hin- und Rückfahrt, zubuchbar bei der Ticketbuchung"
+                  : "Return trip, add it when you book your ticket"}
               </span>
             </div>
           </motion.div>
@@ -161,32 +156,31 @@ export default function BusDeparturesPage() {
             transition={{ duration: 0.8, delay: 0.2 }}
             className="mb-16"
           >
-            <h2 className="mb-8 flex items-center gap-3 text-2xl font-bold uppercase text-white">
+            <h2 className="mb-8 flex items-center gap-3 text-2xl font-bold uppercase text-gray-900">
               <Bus className="h-6 w-6 text-primary" />
-              {language === "de" ? "Hinfahrt" : "Departure"}
+              {language === "de" ? "Abfahrtsorte und Preise" : "Departure points and prices"}
             </h2>
 
             <div className="grid grid-cols-1 gap-6 md:grid-cols-3">
               {busRoutes.map((route, index) => (
                 <motion.div
-                  key={route.city}
-                  className="border-2 border-gray-600 bg-gray-800 p-6 transition-all duration-300 hover:border-primary hover:"
+                  key={route.city.en}
+                  className="flex flex-col border border-gray-200 bg-gray-50 p-6 transition-all duration-300 hover:border-primary hover:shadow-md"
                   initial={{ opacity: 0, y: 20 }}
                   animate={{ opacity: isLoaded ? 1 : 0, y: isLoaded ? 0 : 20 }}
                   transition={{ duration: 0.5, delay: 0.3 + index * 0.1 }}
                   whileHover={{ y: -5, transition: { duration: 0.2 } }}
                 >
                   <div className="mb-4 flex items-center gap-3">
-                    <div className="rounded-full bg-primary/20 p-2">
+                    <div className="rounded-full bg-primary/10 p-2">
                       <MapPin className="h-5 w-5 text-primary" />
                     </div>
-                    <div className="flex-1">
-                      <h3 className="text-xl font-bold text-white">{route.city}</h3>
-                    </div>
+                    <h3 className="text-xl font-bold text-gray-900">{route.city[language]}</h3>
                   </div>
-
-                  <div className="space-y-3">
-                    <p className="text-sm font-medium text-white/80">{route.departure.location}</p>
+                  <p className="mb-6 text-sm text-gray-600">{route.location[language]}</p>
+                  <div className="mt-auto border-t border-gray-200 pt-4">
+                    <p className="text-3xl font-bold text-gray-900">{fmt(route.price)}</p>
+                    <p className="text-sm text-gray-500">{language === "de" ? "Hin- und Rückfahrt" : "Return trip"}</p>
                   </div>
                 </motion.div>
               ))}
@@ -199,33 +193,28 @@ export default function BusDeparturesPage() {
             transition={{ duration: 0.8, delay: 0.4 }}
             className="mb-16"
           >
-            <h2 className="mb-8 flex items-center gap-3 text-2xl font-bold uppercase text-white">
+            <h2 className="mb-8 flex items-center gap-3 text-2xl font-bold uppercase text-gray-900">
               <Calendar className="h-6 w-6 text-primary" />
               {language === "de" ? "Rückfahrt" : "Return"}
             </h2>
 
-            <div className="border border-gray-600 bg-gray-800 p-8">
-              <div className="space-y-6">
+            <div className="border border-gray-200 bg-gray-50 p-6 md:p-8">
+              <div className="space-y-4">
                 {returnSchedule.map((stop, index) => (
                   <motion.div
                     key={`${stop.location}-${index}`}
-                    className="flex items-center gap-6 bg-black/30 p-4"
+                    className="flex items-center gap-6 bg-white p-4 shadow-sm"
                     initial={{ opacity: 0, x: -20 }}
                     animate={{ opacity: isLoaded ? 1 : 0, x: isLoaded ? 0 : -20 }}
                     transition={{ duration: 0.5, delay: 0.5 + index * 0.1 }}
                   >
-                    <div className="flex h-16 w-16 items-center justify-center rounded-full bg-primary/20">
-                      <MapPin className="h-6 w-6 text-primary" />
+                    <div className="flex h-12 w-12 flex-shrink-0 items-center justify-center rounded-full bg-primary/10">
+                      <MapPin className="h-5 w-5 text-primary" />
                     </div>
-
                     <div className="flex-1">
-                      <h4 className="text-lg font-bold text-white">{stop.location}</h4>
-                      <p className="text-sm text-white/80">{stop.description[language]}</p>
+                      <h4 className="text-lg font-bold text-gray-900">{stop.location}</h4>
+                      <p className="text-sm text-gray-600">{stop.description[language]}</p>
                     </div>
-
-                    {index < returnSchedule.length - 1 && (
-                      <div className="hidden h-0.5 w-8 bg-primary/30 md:block" />
-                    )}
                   </motion.div>
                 ))}
               </div>
@@ -238,49 +227,31 @@ export default function BusDeparturesPage() {
             transition={{ duration: 0.8, delay: 0.6 }}
             className="mb-16"
           >
-            <h2 className="mb-8 text-2xl font-bold uppercase text-white">
-              {language === "de" ? "Wichtige Informationen" : "Important Information"}
+            <h2 className="mb-8 text-2xl font-bold uppercase text-gray-900">
+              {language === "de" ? "Wichtige Informationen" : "Important information"}
             </h2>
 
             <div className="grid grid-cols-1 gap-8 md:grid-cols-2">
-              <div className="border border-gray-600 bg-gray-800 p-6">
+              <div className="border border-gray-200 bg-gray-50 p-6">
                 <h3 className="mb-4 text-xl font-bold text-primary">
-                  {language === "de" ? "Buchung & Kosten" : "Booking & Costs"}
+                  {language === "de" ? "Buchung und Kosten" : "Booking and costs"}
                 </h3>
-
-                <ul className="space-y-2 text-white/80">
-                  <li>
-                    •{" "}
-                    {language === "de"
-                      ? "Bustickets können separat gebucht werden"
-                      : "Bus tickets can be booked separately"}
-                  </li>
-                  <li>• {language === "de" ? "Preis: Siehe Buchungsseite" : "Price: See booking page"}</li>
+                <ul className="space-y-2 text-gray-700">
+                  <li>• {language === "de" ? "Den Transfer buchst du direkt bei der Ticketbuchung dazu" : "Add the transfer directly when you book your ticket"}</li>
+                  <li>• {language === "de" ? "Preise gelten für Hin- und Rückfahrt" : "Prices are for the return trip"}</li>
                   <li>• {language === "de" ? "Begrenzte Plätze verfügbar" : "Limited seats available"}</li>
-                  <li>
-                    •{" "}
-                    {language === "de"
-                      ? "Buchung über unser Anmeldeformular"
-                      : "Booking via our registration form"}
-                  </li>
                 </ul>
               </div>
 
-              <div className="border border-gray-600 bg-gray-800 p-6">
+              <div className="border border-gray-200 bg-gray-50 p-6">
                 <h3 className="mb-4 text-xl font-bold text-primary">
                   {language === "de" ? "Was mitbringen?" : "What to bring?"}
                 </h3>
-
-                <ul className="space-y-2 text-white/80">
-                  <li>• {language === "de" ? "Gültiger Personalausweis/Reisepass" : "Valid ID/passport"}</li>
-                  <li>
-                    •{" "}
-                    {language === "de"
-                      ? "Bequeme Kleidung für die Fahrt"
-                      : "Comfortable clothing for the journey"}
-                  </li>
+                <ul className="space-y-2 text-gray-700">
+                  <li>• {language === "de" ? "Gültiger Personalausweis oder Reisepass" : "Valid ID or passport"}</li>
+                  <li>• {language === "de" ? "Bequeme Kleidung für die Fahrt" : "Comfortable clothes for the journey"}</li>
                   <li>• {language === "de" ? "Snacks und Getränke (optional)" : "Snacks and drinks (optional)"}</li>
-                  <li>• {language === "de" ? "Unterhaltung für die Fahrt" : "Entertainment for the journey"}</li>
+                  <li>• {language === "de" ? "Gute Laune für die Gruppe" : "Good vibes for the group"}</li>
                 </ul>
               </div>
             </div>
@@ -290,18 +261,16 @@ export default function BusDeparturesPage() {
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: isLoaded ? 1 : 0, y: isLoaded ? 0 : 30 }}
             transition={{ duration: 0.8, delay: 0.8 }}
-            className="border border-primary/40 bg-primary/20 p-8 text-center"
+            className="border border-primary/30 bg-primary/10 p-8 text-center"
           >
-            <h3 className="mb-4 text-2xl font-bold text-white">
-              {language === "de" ? "Fragen zur Anreise?" : "Questions about transport?"}
+            <h3 className="mb-4 text-2xl font-bold text-gray-900">
+              {language === "de" ? "Fragen zur Anreise?" : "Questions about getting there?"}
             </h3>
-
-            <p className="mb-6 text-white/80">
+            <p className="mb-6 text-gray-600">
               {language === "de"
-                ? "Kontaktiere uns für weitere Informationen zur Busanreise oder bei speziellen Anfragen."
-                : "Contact us for more information about bus transport or for special requests."}
+                ? "Schreib uns, wenn du Fragen zur Anreise oder besondere Wünsche hast."
+                : "Get in touch if you have questions about travel or special requests."}
             </p>
-
             <div className="flex flex-col justify-center gap-4 sm:flex-row">
               <a
                 href="mailto:themountaincampde@gmail.com"
@@ -314,35 +283,24 @@ export default function BusDeparturesPage() {
         </div>
       </div>
 
-      <footer className="border-t border-white/10 bg-black py-8">
+      <footer className="border-t border-gray-200 bg-white py-8">
         <div className="container mx-auto px-4">
           <div className="flex flex-col items-center justify-between md:flex-row">
             <div className="mb-4 md:mb-0">
               <Image
-                src="/images/mountaincamp-logo-white.png"
+                src="/images/mountaincamp-logo-black.png"
                 alt="The Mountaincamp Logo"
                 width={150}
                 height={29}
                 className="h-10 w-auto"
               />
             </div>
-
-            <div className="flex gap-8">
-              <Link href="/" className="text-white/60 transition-colors hover:text-primary">
-                Home
-              </Link>
-              <Link href="/house" className="text-white/60 transition-colors hover:text-primary">
-                {language === "de" ? "Haus" : "House"}
-              </Link>
-              <Link href="/trails" className="text-white/60 transition-colors hover:text-primary">
-                Trails
-              </Link>
-              <Link href="/impressum" className="text-white/60 transition-colors hover:text-primary">
-                {language === "de" ? "Impressum" : "Imprint"}
-              </Link>
-              <Link href="/datenschutz" className="text-white/60 transition-colors hover:text-primary">
-                {language === "de" ? "Datenschutz" : "Privacy"}
-              </Link>
+            <div className="flex flex-wrap justify-center gap-6">
+              <Link href="/" className="text-gray-500 transition-colors hover:text-primary">Home</Link>
+              <Link href="/house" className="text-gray-500 transition-colors hover:text-primary">{language === "de" ? "Haus" : "House"}</Link>
+              <Link href="/trails" className="text-gray-500 transition-colors hover:text-primary">Trails</Link>
+              <Link href="/impressum" className="text-gray-500 transition-colors hover:text-primary">{language === "de" ? "Impressum" : "Imprint"}</Link>
+              <Link href="/datenschutz" className="text-gray-500 transition-colors hover:text-primary">{language === "de" ? "Datenschutz" : "Privacy"}</Link>
             </div>
           </div>
         </div>
