@@ -98,6 +98,10 @@ export default function MetaPixel() {
     if (!allowed) return
     // Buchungs-ID schon aus der Start-URL holen, falls die Maske sie nicht per sync-url meldet
     let fahrt = /fahrt=([a-z0-9]+)/i.exec(new URLSearchParams(INITIAL_SEARCH).get("bm-path") || "")?.[1] || ""
+    // Nur zählen, wenn in diesem Seitenaufruf wirklich gebucht wurde (Checkout
+    // gestartet) oder eine Buchungs-ID bekannt ist. Schützt vor falschen Käufen,
+    // wenn ein Link mit bm-path=/confirmation ohne Buchungs-ID geöffnet wird.
+    let started = false
     const onMessage = (event: MessageEvent) => {
       if (!CADI_ORIGIN.test(event.origin)) return
       let msg: { type?: string; content?: { event?: string; conversionValue?: number; fullPath?: string } }
@@ -116,12 +120,14 @@ export default function MetaPixel() {
       const value = Number(msg.content.conversionValue) || 0
       switch (msg.content.event) {
         case "buchung-step1":
+          started = true
           trackMeta("InitiateCheckout", { content_name: CAMP_NAME, currency: "EUR" })
           break
         case "buchung-click-purchase":
           trackMeta("AddPaymentInfo", { content_name: CAMP_NAME, currency: "EUR", value })
           break
         case "buchung-thx": {
+          if (!fahrt && !started) return
           // Pro Buchung nur einmal zählen, auch wenn die Bestätigung neu geladen wird
           const key = "mc-purchase-" + (fahrt || String(value))
           try {

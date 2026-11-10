@@ -37,9 +37,9 @@ export default function CookieBanner() {
         exit={{ y: 100, opacity: 0 }}
         className="fixed bottom-0 left-0 right-0 z-50 bg-white border-t border-gray-200"
       >
-        <div className="container mx-auto p-4 md:p-6">
-          <div className="flex justify-between items-start mb-4">
-            <h2 className="text-xl font-bold">Cookie-Einstellungen</h2>
+        <div className="container mx-auto p-3 md:p-6">
+          <div className="flex justify-between items-start mb-2 md:mb-4">
+            <h2 className="text-base font-bold md:text-xl">Cookie-Einstellungen</h2>
             <button
               onClick={() => setShowDetails(!showDetails)}
               className="text-gray-500 hover:text-gray-700 flex items-center text-sm"
@@ -58,12 +58,13 @@ export default function CookieBanner() {
             </button>
           </div>
 
-          <div className="mb-4">
-            <p className="text-gray-600 mb-2">
-              Wir verwenden Cookies, um Ihnen die bestmögliche Erfahrung auf unserer Website zu bieten. Einige Cookies
-              sind technisch notwendig, während andere uns helfen, Ihre Erfahrung zu verbessern.
+          <div className="mb-3 md:mb-4">
+            <p className="mb-1 text-sm text-gray-600 md:mb-2 md:text-base">
+              Wir verwenden Cookies, um Ihnen die bestmögliche Erfahrung auf unserer Website zu bieten.
+              <span className="hidden md:inline"> Einige Cookies
+              sind technisch notwendig, während andere uns helfen, Ihre Erfahrung zu verbessern.</span>
             </p>
-            <p className="text-gray-600 text-sm">
+            <p className="text-gray-600 text-xs md:text-sm">
               Weitere Informationen finden Sie in unserer{" "}
               <Link href="/datenschutz" className="text-primary underline">
                 Datenschutzerklärung
@@ -138,7 +139,7 @@ export default function CookieBanner() {
             )}
           </AnimatePresence>
 
-          <div className="flex flex-col sm:flex-row gap-2 justify-end">
+          <div className="grid grid-cols-2 gap-2 sm:flex sm:justify-end">
             <Button variant="outline" onClick={rejectAll} className="border-gray-300 text-gray-700 hover:bg-gray-100">
               Nur notwendige Cookies
             </Button>
