@@ -19,12 +19,12 @@ const SHUTTLES = [
 const COPY = {
   de: {
     includedTitle: "Das ist im Ticket enthalten",
+    includedNote: "Workshops wie Yoga, Töpfern und Aquarell kannst du dazubuchen.",
     included: [
       "4 Nächte im Berghaus in Hochkrimml auf 1.700 m, Basis Mehrbettzimmer",
       "Vollpension: Frühstück, kleiner Lunch und Abendessen, auch vegetarisch und vegan",
       "Tägliche geführte Trailruns in Gruppen nach Tempo und Erfahrung, von entspannten 10 km bis zu Bergtouren mit über 1.500 Höhenmetern",
       "Technik-Coaching, auch für Einsteigerinnen und Einsteiger",
-      "Workshops wie Yoga, Töpfern und Aquarell",
       "Gemeinsame Abende, Lagerfeuer und der Sunset Rave",
     ],
     pricesTitle: "Preise 2027",
@@ -40,7 +40,7 @@ const COPY = {
     travelLink: "Alle Abfahrtsorte und Zeiten",
     cancelTitle: "Storno",
     cancel:
-      "Kommt etwas dazwischen, kannst du jederzeit schriftlich stornieren. Bis 30 Tage vor dem Camp beträgt die Gebühr 20\u00a0% des Preises, danach staffelt sie sich nach unseren AGB. Wir empfehlen eine Reiserücktrittsversicherung.",
+      "Kommt etwas dazwischen, kannst du jederzeit schriftlich stornieren. Buchst du bis 30 Tage vor Camp-Start, ist das innerhalb von 7 Tagen nach der Buchung kostenlos. Danach beträgt die Gebühr bis 30 Tage vor dem Camp 20\u00a0% des Preises, danach staffelt sie sich nach unseren AGB. Wir empfehlen eine Reiserücktrittsversicherung.",
     agb: "AGB lesen",
     faqTitle: "Kurz gefragt",
     faq: [
@@ -60,12 +60,12 @@ const COPY = {
   },
   en: {
     includedTitle: "What your ticket includes",
+    includedNote: "Workshops such as yoga, pottery and watercolour can be booked as add-ons.",
     included: [
       "4 nights in the mountain house in Hochkrimml at 1,700 m, shared dorm as standard",
       "Full board: breakfast, a light lunch and dinner, with vegetarian and vegan options",
       "Daily guided trail runs in groups by pace and experience, from relaxed 10 km runs to mountain tours with more than 1,500 m of climbing",
       "Technique coaching, including for beginners",
-      "Workshops such as yoga, pottery and watercolour",
       "Evenings together, campfires and the Sunset Rave",
     ],
     pricesTitle: "Prices 2027",
@@ -80,7 +80,7 @@ const COPY = {
     travelLink: "All departure points and times",
     cancelTitle: "Cancellation",
     cancel:
-      "If something comes up, you can cancel in writing at any time. Up to 30 days before the camp the fee is 20% of the price, after that it increases as set out in our terms. We recommend travel cancellation insurance.",
+      "If something comes up, you can cancel in writing at any time. If you book at least 30 days before the camp starts, cancelling within 7 days of booking is free of charge. After that, the fee is 20% of the price up to 30 days before the camp, after that it increases as set out in our terms. We recommend travel cancellation insurance.",
     agb: "Read the terms (German)",
     faqTitle: "Quick answers",
     faq: [
@@ -114,6 +114,7 @@ export default function TicketInfo({ lang }: { lang: "de" | "en" }) {
               <li key={item}>{item}</li>
             ))}
           </ul>
+          <p className="mt-3 text-sm text-gray-600">{c.includedNote}</p>
         </div>
 
         <div>
