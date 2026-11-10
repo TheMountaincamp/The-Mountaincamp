@@ -16,9 +16,10 @@ const COPY = {
       "4 Nächte im Berghaus auf 1.700 m",
       "Vollpension, auch vegetarisch und vegan",
       "Tägliche geführte Trailruns für jedes Level",
-      "Workshops, Lagerfeuer und Sunset Rave",
+      "Gemeinsame Abende, Lagerfeuer und Sunset Rave",
     ],
     extras: [
+      "Zubuchbar: Workshops wie Yoga, Töpfern und Aquarell",
       "Shuttle ab Berlin 120 €, München 80 €, Jenbach 40 €",
       "Die meisten reisen allein oder zu zweit an",
       "Storno jederzeit möglich, bis 30 Tage vorher 20 % Gebühr",
@@ -33,9 +34,10 @@ const COPY = {
       "4 nights in a mountain lodge at 1,700 m",
       "Full board, vegetarian and vegan too",
       "Daily guided trail runs for every level",
-      "Workshops, campfires and the sunset rave",
+      "Evenings together, campfires and the sunset rave",
     ],
     extras: [
+      "Add-ons: workshops such as yoga, pottery and watercolour",
       "Shuttle from Berlin 120 €, Munich 80 €, Jenbach 40 €",
       "Most people come alone or as a pair",
       "Cancel any time, 20 % fee up to 30 days before",
