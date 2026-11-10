@@ -130,7 +130,8 @@ export default function AGBPage() {
                 erklären. Die Rücktrittskosten betragen:
               </p>
               <ul className="list-disc pl-6 mb-4">
-                <li>Bis 30 Tage vor Reisebeginn: 20 % des Reisepreises</li>
+                <li>Innerhalb von 14 Tagen nach Buchung: kostenfrei, sofern die Buchung mindestens 30 Tage vor Reisebeginn erfolgt</li>
+                <li>Danach bis 30 Tage vor Reisebeginn: 20 % des Reisepreises</li>
                 <li>29 bis 22 Tage vor Reisebeginn: 30 % des Reisepreises</li>
                 <li>21 bis 15 Tage vor Reisebeginn: 40 % des Reisepreises</li>
                 <li>14 bis 7 Tage vor Reisebeginn: 60 % des Reisepreises</li>
