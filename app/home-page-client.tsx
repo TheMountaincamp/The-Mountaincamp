@@ -930,7 +930,7 @@ export default function HomePageClient() {
           </div>
 
           <SplitImageSlider
-            images={["/images/alpine-village-group.jpg", "/images/trail-runners-group.jpeg", "/images/mountain-top-sunset-rave.jpg"]}
+            images={["/images/alpine-village-group.jpg", "/images/trails-header-group.jpeg", "/images/mountain-top-sunset-rave.jpg"]}
             alt={language === "de" ? "Trailrunning Camp Österreich Teilnehmer in Hochkrimml" : "Trail running camp Austria participants in Hochkrimml"}
           />
         </section>
