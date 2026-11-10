@@ -40,7 +40,7 @@ const COPY = {
     travelLink: "Alle Abfahrtsorte und Zeiten",
     cancelTitle: "Storno",
     cancel:
-      "Kommt etwas dazwischen, kannst du jederzeit schriftlich stornieren. Bis 30 Tage vor dem Camp beträgt die Gebühr 20\u00a0% des Preises, danach staffelt sie sich nach unseren AGB. Wir empfehlen eine Reiserücktrittsversicherung.",
+      "Kommt etwas dazwischen, kannst du jederzeit schriftlich stornieren. Innerhalb von 14 Tagen nach der Buchung ist das kostenlos. Danach beträgt die Gebühr bis 30 Tage vor dem Camp 20\u00a0% des Preises, danach staffelt sie sich nach unseren AGB. Wir empfehlen eine Reiserücktrittsversicherung.",
     agb: "AGB lesen",
     faqTitle: "Kurz gefragt",
     faq: [
@@ -80,7 +80,7 @@ const COPY = {
     travelLink: "All departure points and times",
     cancelTitle: "Cancellation",
     cancel:
-      "If something comes up, you can cancel in writing at any time. Up to 30 days before the camp the fee is 20% of the price, after that it increases as set out in our terms. We recommend travel cancellation insurance.",
+      "If something comes up, you can cancel in writing at any time. Within 14 days of booking it is free of charge. After that, the fee is 20% of the price up to 30 days before the camp, after that it increases as set out in our terms. We recommend travel cancellation insurance.",
     agb: "Read the terms (German)",
     faqTitle: "Quick answers",
     faq: [
