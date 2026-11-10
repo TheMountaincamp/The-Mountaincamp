@@ -406,6 +406,70 @@ export default function HomePageClient() {
 
   const activities = [
     {
+      title: language === "de" ? "Outdoor Movie Night" : "Outdoor Movie Night",
+      image: "/images/movie-night-2026.webp",
+      description:
+        language === "de"
+          ? "Leinwand auf der Wiese, Berge im Hintergrund. Outdoor- und Lauffilme mit der ganzen Gruppe."
+          : "A screen on the meadow, mountains behind it. Outdoor and running films with the whole group.",
+    },
+    {
+      title: language === "de" ? "Linoldruck Workshop" : "Linocut Print Workshop",
+      image: "/images/linoprint-workshop.webp",
+      description:
+        language === "de"
+          ? "Motiv schneiden, Farbe auftragen, drucken. Du nimmst deinen eigenen Print mit nach Hause."
+          : "Carve a motif, roll the ink, print. You take your own print home.",
+    },
+    {
+      title: language === "de" ? "Nutrition Workshop" : "Nutrition Workshop",
+      image: "/images/nutrition-workshop.webp",
+      description:
+        language === "de"
+          ? "Was du vor, während und nach langen Läufen isst und trinkst. Praxisnah erklärt."
+          : "What to eat and drink before, during and after long runs. Explained in practical terms.",
+    },
+    {
+      title: language === "de" ? "Recovery Lounge" : "Recovery Lounge",
+      image: "/images/recovery-lounge.webp",
+      description:
+        language === "de"
+          ? "Beine hoch nach dem Lauf: Kompression, Massage-Tools und Ruhe mit Blick auf die Berge."
+          : "Feet up after the run: compression, massage tools and quiet time with a mountain view.",
+    },
+    {
+      title: language === "de" ? "Karaoke Night" : "Karaoke Night",
+      image: "/images/karaoke-night.webp",
+      description:
+        language === "de"
+          ? "Mikro an, Hemmungen aus. Der Abend, an dem aus der Laufgruppe eine Crew wird."
+          : "Mic on, nerves off. The night your running group turns into a crew.",
+    },
+    {
+      title: language === "de" ? "Upcycling Workshop" : "Upcycling Workshop",
+      image: "/images/upcycling-2026.webp",
+      description:
+        language === "de"
+          ? "Aus Seil und Flasche wird ein Halter für unterwegs. Selbst geknotet, direkt im Einsatz."
+          : "Rope and a bottle become a carrier for the trail. Knotted by you, ready to use.",
+    },
+    {
+      title: language === "de" ? "Töpferkurs" : "Clay Class",
+      image: "/images/clay-class-2026.webp",
+      description:
+        language === "de"
+          ? "Ton formen statt Kilometer zählen. Kleine Schalen und Schmuck, inspiriert von der Umgebung."
+          : "Shape clay instead of counting kilometres. Small bowls and jewellery inspired by the surroundings.",
+    },
+    {
+      title: language === "de" ? "Sunrise Hike" : "Sunrise Hike",
+      image: "/images/sunrise-hike.webp",
+      description:
+        language === "de"
+          ? "Früh los, oben sein, wenn die Sonne über die Gipfel kommt."
+          : "Leave early, be at the top when the sun comes over the peaks.",
+    },
+    {
       title: language === "de" ? "Trailrunning Technik" : "Trailrunning Technique",
       image: "/images/trailrunning-technique-class.jpg",
       description:
@@ -430,14 +494,6 @@ export default function HomePageClient() {
           : "Explore scenic mountain trails on two wheels with our guided mountain biking excursions.",
     },
     {
-      title: language === "de" ? "Filmabend" : "Movie Night",
-      image: "/images/movie-night.png",
-      description:
-        language === "de"
-          ? "Entspanne und genieße inspirierende Outdoor- und Abenteuerfilme unter dem Sternenhimmel mit anderen Campern."
-          : "Relax and enjoy inspiring outdoor and adventure films under the stars with fellow campers.",
-    },
-    {
       title: language === "de" ? "Kanufahren" : "Canoeing",
       image: "/images/canoeing-lake.jpeg",
       description:
@@ -452,14 +508,6 @@ export default function HomePageClient() {
         language === "de"
           ? "Drücke deine Kreativität aus, indem du die atemberaubenden Alpenlandschaften mit Wasserfarben malst."
           : "Express your creativity by painting the stunning alpine landscapes with watercolors.",
-    },
-    {
-      title: language === "de" ? "Töpferkurs" : "Clay Class",
-      image: "/images/clay-class.png",
-      description:
-        language === "de"
-          ? "Mach dir die Hände schmutzig und erschaffe wunderschöne Keramik, inspiriert von der natürlichen Umgebung."
-          : "Get your hands dirty and create beautiful pottery inspired by the natural surroundings.",
     },
     {
       title: "Yoga",
@@ -484,14 +532,6 @@ export default function HomePageClient() {
         language === "de"
           ? "Baue Kraft und Selbstvertrauen auf mit Indoor-Klettersessions unter Anleitung erfahrener Instruktoren."
           : "Build strength and confidence with indoor climbing sessions led by experienced instructors.",
-    },
-    {
-      title: language === "de" ? "Upcycling Kurs" : "Upcycling Class",
-      image: "/images/upcycling-class.png",
-      description:
-        language === "de"
-          ? "Verwandle alte Materialien in neue Schätze in unserem kreativen und umweltfreundlichen Upcycling-Workshop."
-          : "Transform old materials into new treasures in our creative and eco-friendly upcycling workshop.",
     },
     {
       title: language === "de" ? "Lagerfeuer Abend" : "Campfire Evening",
