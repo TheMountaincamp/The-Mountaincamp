@@ -573,6 +573,7 @@ export default function HomePageClient() {
             <Link href="#experience" className="whitespace-nowrap text-sm font-bold uppercase text-white transition-colors hover:text-primary">{t("experience")}</Link>
             <PreloadLink href="/house" imagesToPreload={HOUSE_PAGE_IMAGES} className="whitespace-nowrap text-sm font-bold uppercase text-white transition-colors hover:text-primary">{t("house")}</PreloadLink>
             <PreloadLink href="/trails" imagesToPreload={TRAILS_PAGE_IMAGES} className="whitespace-nowrap text-sm font-bold uppercase text-white transition-colors hover:text-primary">{t("trails")}</PreloadLink>
+            <Link href="/bus-departures" className="whitespace-nowrap text-sm font-bold uppercase text-white transition-colors hover:text-primary">Transport</Link>
           </nav>
 
           <Link href="/" aria-label="The Mountaincamp" className="flex justify-center">
@@ -589,7 +590,6 @@ export default function HomePageClient() {
 
           <nav className="flex items-center justify-end gap-4 lg:gap-6">
             <Link href="#testimonials" className="whitespace-nowrap text-sm font-bold uppercase text-white transition-colors hover:text-primary">{t("testimonials")}</Link>
-            <Link href="/bus-departures" className="whitespace-nowrap text-sm font-bold uppercase text-white transition-colors hover:text-primary">Transport</Link>
             <LanguageSwitcher />
             <Link
               href="/tickets"
@@ -846,26 +846,33 @@ export default function HomePageClient() {
             </div>
           </div>
 
-          <div className="container mt-10 max-w-3xl md:mt-14">
+          <div className="container mt-10 grid max-w-6xl items-center gap-8 md:mt-14 md:grid-cols-2 md:gap-14">
             <Image
-              src="/images/gruppenbild-2026.webp"
-              alt={language === "de" ? "Teilnehmende vom Mountaincamp 2026 auf einem Gipfel" : "Participants of the Mountaincamp 2026 on a summit"}
-              width={1400}
-              height={1256}
-              sizes="(max-width: 768px) 100vw, 768px"
+              src="/images/gruppenbild-2026-ganz.webp"
+              alt={language === "de" ? "Sechs Teilnehmende vom Mountaincamp 2026 auf einem Gipfel" : "Six participants of the Mountaincamp 2026 on a summit"}
+              width={1200}
+              height={1800}
+              sizes="(max-width: 768px) 100vw, 560px"
               className="h-auto w-full"
             />
-            <p className="mt-4 text-center text-xl font-bold text-gray-900 md:text-2xl">
-              {language === "de" ? "Nur zwei von ihnen kannten sich vor dem Camp." : "Only two of them knew each other before the camp."}
-            </p>
+            <div>
+              <p className="text-3xl font-bold leading-tight text-gray-900 md:text-5xl">
+                {language === "de" ? "Nur zwei von den sechs kannten sich vor dem Camp." : "Only two of the six knew each other before the camp."}
+              </p>
+              <p className="mt-5 text-lg leading-relaxed text-gray-600">
+                {language === "de"
+                  ? "Es ist egal, ob du alleine oder als Gruppe anreist, du wirst mit vielen neuen Freunden heimfahren."
+                  : "Whether you travel alone or as a group, you will head home with lots of new friends."}
+              </p>
+            </div>
           </div>
         </section>
 
         <Marquee
           items={
             language === "de"
-              ? ["Trailruns", "Gletscherlauf", "Sunset Rave", "Lagerfeuer", "Techniktraining", "Yoga", "Töpfern", "Live-Musik", "Community", "Bergseen"]
-              : ["Trail runs", "Glacier run", "Sunset rave", "Campfire", "Technique coaching", "Yoga", "Pottery", "Live music", "Community", "Mountain lakes"]
+              ? ["Krafttraining Workshop", "Nutrition Workshop", "Stretching Workshop", "Morning Yoga", "Upcycling Classes", "Landscape Painting", "Kletterkurs", "Techniktraining", "Strickkurs", "Mountainbike-Ausfahrt", "Eisbaden", "Gipfelrave", "Outdoor Movie Night", "Lagerfeuerabend", "Speakers Night"]
+              : ["Strength workshop", "Nutrition workshop", "Stretching workshop", "Morning yoga", "Upcycling classes", "Landscape painting", "Climbing course", "Technique coaching", "Knitting class", "Mountain bike ride", "Ice bathing", "Summit rave", "Outdoor movie night", "Campfire night", "Speakers night"]
           }
         />
 

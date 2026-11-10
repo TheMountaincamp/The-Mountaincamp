@@ -13,7 +13,7 @@ export default function Marquee({ items }: { items: string[] }) {
     </ul>
   )
   return (
-    <div className="overflow-hidden border-y border-gray-900 bg-gray-900 py-3 text-white">
+    <div className="overflow-hidden border-y border-[#E3D7C5] bg-white py-3 text-[#B8A07E]">
       <div className="flex w-max animate-[marquee_40s_linear_infinite] motion-reduce:animate-none">
         {row(false)}
         {row(true)}
