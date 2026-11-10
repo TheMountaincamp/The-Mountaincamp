@@ -857,12 +857,12 @@ export default function HomePageClient() {
             />
             <div>
               <p className="text-3xl font-bold leading-tight text-gray-900 md:text-5xl">
-                {language === "de" ? "Nur zwei von den sechs kannten sich vor dem Camp." : "Only two of the six knew each other before the camp."}
+                {language === "de" ? "Sechs Freunde. Vor dem Camp kannten sich nur zwei." : "Six friends. Only two knew each other before the camp."}
               </p>
               <p className="mt-5 text-lg leading-relaxed text-gray-600">
                 {language === "de"
-                  ? "Es ist egal, ob du alleine oder als Gruppe anreist, du wirst mit vielen neuen Freunden heimfahren."
-                  : "Whether you travel alone or as a group, you will head home with lots of new friends."}
+                  ? "Ob du allein anreist oder mit Freunden: Nach Hause fährst du mit einer neuen Crew."
+                  : "Whether you come alone or with friends, you go home with a new crew."}
               </p>
             </div>
           </div>
