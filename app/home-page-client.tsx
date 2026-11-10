@@ -458,8 +458,8 @@ export default function HomePageClient() {
       image: "/images/clay-class-2026.webp",
       description:
         language === "de"
-          ? "Ton formen statt Kilometer zählen. Kleine Schalen und Schmuck, inspiriert von der Umgebung."
-          : "Shape clay instead of counting kilometres. Small bowls and jewellery inspired by the surroundings.",
+          ? "Die Beine ruhen, die Hände arbeiten. Aus Ton entstehen kleine Schalen und Schmuck zum Mitnehmen."
+          : "Legs rest, hands work. Shape small bowls and jewellery from clay to take home.",
     },
     {
       title: language === "de" ? "Sunrise Hike" : "Sunrise Hike",
