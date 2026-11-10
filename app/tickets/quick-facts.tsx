@@ -2,6 +2,7 @@
 
 import { Check } from "lucide-react"
 import { SALE_PHASES, getPhaseState } from "@/app/lib/early-bird"
+import BookingHelper from "./booking-helper"
 
 /**
  * Kurzinfo direkt über der Buchungsmaske: Preis, Frist, Leistungen in Stichworten.
@@ -91,17 +92,10 @@ export default function QuickFacts({ lang }: { lang: "de" | "en" }) {
         ))}
       </ul>
 
-      <div className="mt-5 flex items-center gap-4">
-        <a
-          href="#buchung"
-          className="inline-flex items-center bg-primary px-6 py-3 text-sm font-bold uppercase tracking-wide text-white transition-colors hover:bg-primary-dark"
-        >
-          {t.cta}
-        </a>
-        <a href="#details" className="text-sm leading-none text-gray-600 underline">
-          {t.more}
-        </a>
-      </div>
+      <BookingHelper lang={lang} basePrice={live?.price ?? null} />
+      <a href="#details" className="mt-3 inline-block text-sm text-gray-600 underline">
+        {t.more}
+      </a>
     </section>
   )
 }
