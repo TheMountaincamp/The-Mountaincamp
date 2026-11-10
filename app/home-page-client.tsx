@@ -30,6 +30,8 @@ import TicketProgressSection from "@/app/components/ticket-progress-section"
 import TicketPrompt from "@/app/components/ticket-prompt"
 import ImageWithFallback from "@/app/components/image-with-fallback"
 import ImagePreloader from "@/app/components/image-preloader"
+import Marquee from "@/app/components/marquee"
+import SplitImageSlider from "@/app/components/split-image-slider"
 import PreloadLink from "@/app/components/preload-link"
 import TestimonialSlider from "@/app/components/testimonial-slider"
 import InstagramReelsSection from "@/app/components/instagram-reels-section"
@@ -175,6 +177,13 @@ export default function HomePageClient() {
   // Der Header wird um diesen Wert nach unten versetzt, damit er nie vom
   // Banner verdeckt wird und das Menü immer nutzbar bleibt.
   const [bannerHeight, setBannerHeight] = useState(0)
+  const [scrollY, setScrollY] = useState(0)
+  useEffect(() => {
+    const onScroll = () => setScrollY(window.scrollY)
+    onScroll()
+    window.addEventListener("scroll", onScroll, { passive: true })
+    return () => window.removeEventListener("scroll", onScroll)
+  }, [])
 
   // Solange kein Verkaufsfenster (Early Bird oder Phase 2) aktiv ist, führen
   // die "Jetzt anmelden"-Buttons zum Newsletter-Formular (#register). Läuft
@@ -525,76 +534,70 @@ export default function HomePageClient() {
 
 
       <header
-        className="absolute z-50 w-full bg-transparent transition-[top] duration-300"
-        style={{ top: bannerHeight }}
+        className={`absolute z-50 w-full transition-[background-color,top] duration-300 md:fixed ${
+          scrollY > 80 ? "md:bg-black/80 md:backdrop-blur-sm" : "bg-transparent"
+        }`}
+        style={{ top: Math.max(0, bannerHeight - scrollY) }}
       >
-        <div className="container flex h-20 items-center justify-between">
-          <div className="flex items-center">
-            <div className={`relative ${isMobile ? "h-7 w-24" : "h-14 w-auto"}`}>
-              <ImageWithFallback
-                src="/images/mountaincamp-logo-white.png"
-                alt="The Mountaincamp Logo"
-                width={isMobile ? 96 : 200}
-                height={isMobile ? 19 : 39}
-                className="h-full w-auto object-contain"
-                priority
-                sizes="(max-width: 768px) 96px, 200px"
-              />
-            </div>
+        {/* Mobil: Logo links, Menü rechts */}
+        <div className="container flex h-20 items-center justify-between md:hidden">
+          <div className="relative h-7 w-24">
+            <ImageWithFallback
+              src="/images/mountaincamp-logo-white.png"
+              alt="The Mountaincamp Logo"
+              width={96}
+              height={19}
+              className="h-full w-auto object-contain"
+              priority
+              sizes="96px"
+            />
           </div>
+          <button
+            className="flex h-12 w-12 items-center justify-center"
+            onClick={handleMenuToggle}
+            aria-label="Open menu"
+            type="button"
+          >
+            <Menu className="h-7 w-7 text-white" />
+          </button>
+        </div>
 
-          <nav className="hidden items-center gap-4 md:flex lg:gap-6">
-            <Link
-              href="#about"
-              className="whitespace-nowrap text-sm font-bold uppercase text-white transition-colors hover:text-primary"
-            >
-              {t("about")}
-            </Link>
-            <Link
-              href="#experience"
-              className="whitespace-nowrap text-sm font-bold uppercase text-white transition-colors hover:text-primary"
-            >
-              {t("experience")}
-            </Link>
-            <PreloadLink
-              href="/house"
-              imagesToPreload={HOUSE_PAGE_IMAGES}
-              className="whitespace-nowrap text-sm font-bold uppercase text-white transition-colors hover:text-primary"
-            >
-              {t("house")}
-            </PreloadLink>
-            <PreloadLink
-              href="/trails"
-              imagesToPreload={TRAILS_PAGE_IMAGES}
-              className="whitespace-nowrap text-sm font-bold uppercase text-white transition-colors hover:text-primary"
-            >
-              {t("trails")}
-            </PreloadLink>
-            <Link
-              href="#testimonials"
-              className="whitespace-nowrap text-sm font-bold uppercase text-white transition-colors hover:text-primary"
-            >
-              {t("testimonials")}
-            </Link>
-            <Link
-              href="/bus-departures"
-              className="whitespace-nowrap text-sm font-bold uppercase text-white transition-colors hover:text-primary"
-            >
-              Transport
-            </Link>
-            <LanguageSwitcher />
+        {/* Desktop: Logo mittig, Navigation links und rechts, bleibt beim Scrollen sichtbar */}
+        <div
+          className={`container hidden grid-cols-[1fr_auto_1fr] items-center gap-6 transition-[height] duration-300 md:grid ${
+            scrollY > 80 ? "h-16" : "h-24"
+          }`}
+        >
+          <nav className="flex items-center gap-4 lg:gap-6">
+            <Link href="#about" className="whitespace-nowrap text-sm font-bold uppercase text-white transition-colors hover:text-primary">{t("about")}</Link>
+            <Link href="#experience" className="whitespace-nowrap text-sm font-bold uppercase text-white transition-colors hover:text-primary">{t("experience")}</Link>
+            <PreloadLink href="/house" imagesToPreload={HOUSE_PAGE_IMAGES} className="whitespace-nowrap text-sm font-bold uppercase text-white transition-colors hover:text-primary">{t("house")}</PreloadLink>
+            <PreloadLink href="/trails" imagesToPreload={TRAILS_PAGE_IMAGES} className="whitespace-nowrap text-sm font-bold uppercase text-white transition-colors hover:text-primary">{t("trails")}</PreloadLink>
+            <Link href="/bus-departures" className="whitespace-nowrap text-sm font-bold uppercase text-white transition-colors hover:text-primary">Transport</Link>
           </nav>
 
-          <div className="flex items-center">
-            <button
-              className="flex h-12 w-12 items-center justify-center md:hidden"
-              onClick={handleMenuToggle}
-              aria-label="Open menu"
-              type="button"
+          <Link href="/" aria-label="The Mountaincamp" className="flex justify-center">
+            <ImageWithFallback
+              src="/images/mountaincamp-logo-white.png"
+              alt="The Mountaincamp Logo"
+              width={200}
+              height={39}
+              className={`w-auto object-contain transition-[height] duration-300 ${scrollY > 80 ? "h-8" : "h-12"}`}
+              priority
+              sizes="200px"
+            />
+          </Link>
+
+          <nav className="flex items-center justify-end gap-4 lg:gap-6">
+            <Link href="#testimonials" className="whitespace-nowrap text-sm font-bold uppercase text-white transition-colors hover:text-primary">{t("testimonials")}</Link>
+            <LanguageSwitcher />
+            <Link
+              href="/tickets"
+              className="whitespace-nowrap bg-primary px-4 py-2 text-sm font-bold uppercase text-white transition-colors hover:bg-primary-dark"
             >
-              <Menu className="h-7 w-7 text-white" />
-            </button>
-          </div>
+              Tickets
+            </Link>
+          </nav>
         </div>
       </header>
 
@@ -843,89 +846,93 @@ export default function HomePageClient() {
             </div>
           </div>
 
-          <div className="container mt-10 max-w-3xl md:mt-14">
+          <div className="container mt-10 grid max-w-6xl items-center gap-8 md:mt-14 md:grid-cols-2 md:gap-14">
             <Image
-              src="/images/gruppenbild-2026.webp"
-              alt={language === "de" ? "Teilnehmende vom Mountaincamp 2026 auf einem Gipfel" : "Participants of the Mountaincamp 2026 on a summit"}
-              width={1400}
-              height={1256}
-              sizes="(max-width: 768px) 100vw, 768px"
+              src="/images/gruppenbild-2026-ganz.webp"
+              alt={language === "de" ? "Sechs Teilnehmende vom Mountaincamp 2026 auf einem Gipfel" : "Six participants of the Mountaincamp 2026 on a summit"}
+              width={1200}
+              height={1800}
+              sizes="(max-width: 768px) 100vw, 560px"
               className="h-auto w-full"
             />
+            <div>
+              <p className="text-3xl font-bold leading-tight text-gray-900 md:text-5xl">
+                {language === "de" ? "Sechs Freunde. Vor dem Camp kannten sich nur zwei." : "Six friends. Only two knew each other before the camp."}
+              </p>
+              <p className="mt-5 text-lg leading-relaxed text-gray-600">
+                {language === "de"
+                  ? "Ob du allein anreist oder mit Freunden: Nach Hause fährst du mit einer neuen Crew."
+                  : "Whether you come alone or with friends, you go home with a new crew."}
+              </p>
+            </div>
           </div>
         </section>
 
-        <section id="about" className="relative z-30">
-          <div className="pointer-events-none absolute left-0 right-0 top-0 h-64 bg-gradient-to-b from-transparent via-white/5 via-white/10 via-white/15 via-white/20 via-white/25" />
+        <Marquee
+          items={
+            language === "de"
+              ? ["Krafttraining Workshop", "Nutrition Workshop", "Stretching Workshop", "Morning Yoga", "Upcycling Classes", "Landscape Painting", "Kletterkurs", "Techniktraining", "Strickkurs", "Mountainbike-Ausfahrt", "Eisbaden", "Gipfelrave", "Outdoor Movie Night", "Lagerfeuerabend", "Speakers Night"]
+              : ["Strength workshop", "Nutrition workshop", "Stretching workshop", "Morning yoga", "Upcycling classes", "Landscape painting", "Climbing course", "Technique coaching", "Knitting class", "Mountain bike ride", "Ice bathing", "Summit rave", "Outdoor movie night", "Campfire night", "Speakers night"]
+          }
+        />
 
-          <div className="bg-white pb-16 pt-24 md:pb-24 md:pt-40">
-            <div className="container">
-              <div className="grid items-center gap-8 lg:grid-cols-2 md:gap-16">
-                <motion.div
-                  initial={{ opacity: 0, x: -50 }}
-                  whileInView={{ opacity: 1, x: 0 }}
-                  viewport={{ once: true }}
-                  transition={{ duration: 0.8 }}
-                >
-                  <h2 className="mb-6 text-2xl font-bold text-gray-900 md:mb-8 md:text-4xl">
-                    {language === "de" ? "Dein Trailrunning Camp in Österreich" : "Your Trail Running Camp in Austria"}
-                  </h2>
-                  <div className="space-y-3 text-gray-600">
-                    {[1, 2, 3, 4, 5, 6].map((n) => (
-                      <div className="flex items-start gap-3" key={n}>
-                        <div className="mt-1.5 h-1.5 w-1.5 flex-shrink-0 rounded-full bg-primary" />
-                        <p className="text-lg leading-relaxed">
-                          {t(`aboutFeature${n}` as Parameters<typeof t>[0])}
-                        </p>
-                      </div>
-                    ))}
-
-                    <div className="flex flex-col gap-4 pt-4 sm:flex-row">
-                      <div className="flex items-center gap-3">
-                        <div className="rounded-full bg-primary/20 p-2">
-                          <Calendar className="h-5 w-5 text-primary" />
-                        </div>
-                        <span className="text-lg text-gray-900">
-                          {language === "de" ? "18.–22. August 2027" : "August 18–22, 2027"}
-                        </span>
-                      </div>
-                      <div className="flex items-center gap-3">
-                        <div className="rounded-full bg-primary/20 p-2">
-                          <MapPin className="h-5 w-5 text-primary" />
-                        </div>
-                        <span className="text-lg text-gray-900">
-                          {language === "de" ? "Hochkrimml, Österreich" : "Hochkrimml, Austria"}
-                        </span>
-                      </div>
-                    </div>
+        <section id="about" className="relative z-30 grid lg:grid-cols-2">
+          <div className="flex items-center bg-[#EFE7DC] px-6 py-14 md:px-12 md:py-20 lg:min-h-[720px] lg:px-16 xl:px-24">
+            <motion.div
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.8 }}
+              className="max-w-xl"
+            >
+              <h2 className="mb-6 text-3xl font-bold leading-tight text-gray-900 md:mb-8 md:text-5xl">
+                {language === "de" ? "Dein Trailrunning Camp in Österreich" : "Your Trail Running Camp in Austria"}
+              </h2>
+              <div className="space-y-3 text-gray-700">
+                {[1, 2, 3, 4, 5, 6].map((n) => (
+                  <div className="flex items-start gap-3" key={n}>
+                    <div className="mt-2 h-1.5 w-1.5 flex-shrink-0 rounded-full bg-primary" />
+                    <p className="text-lg leading-relaxed">
+                      {t(`aboutFeature${n}` as Parameters<typeof t>[0])}
+                    </p>
                   </div>
-                </motion.div>
+                ))}
 
-                <motion.div
-                  initial={{ opacity: 0, scale: 0.9 }}
-                  whileInView={{ opacity: 1, scale: 1 }}
-                  viewport={{ once: true }}
-                  transition={{ duration: 0.8 }}
-                  className="relative h-[300px] overflow-hidden md:h-[500px]"
-                >
-                  <Image
-                    src="/images/alpine-village-group.jpg"
-                    alt={language === "de" ? "Trailrunning Camp Österreich Teilnehmer in Hochkrimml" : "Trail running camp Austria participants in Hochkrimml"}
-                    fill
-                    className="object-cover"
-                    loading="lazy"
-                    sizes="(max-width: 1024px) 100vw, 50vw"
-                  />
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent" />
-                  <div className="absolute bottom-0 left-0 p-6">
-                    <span className="bg-primary px-4 py-2 text-sm font-bold uppercase text-white">
-                      {language === "de" ? "Entdecken" : "Explore"}
+                <div className="flex flex-col gap-4 pt-4 sm:flex-row">
+                  <div className="flex items-center gap-3">
+                    <div className="rounded-full bg-primary/20 p-2">
+                      <Calendar className="h-5 w-5 text-primary" />
+                    </div>
+                    <span className="text-lg text-gray-900">
+                      {language === "de" ? "18.–22. August 2027" : "August 18–22, 2027"}
                     </span>
                   </div>
-                </motion.div>
+                  <div className="flex items-center gap-3">
+                    <div className="rounded-full bg-primary/20 p-2">
+                      <MapPin className="h-5 w-5 text-primary" />
+                    </div>
+                    <span className="text-lg text-gray-900">
+                      {language === "de" ? "Hochkrimml, Österreich" : "Hochkrimml, Austria"}
+                    </span>
+                  </div>
+                </div>
+
+                <div className="pt-6">
+                  <Link
+                    href="/tickets"
+                    className="inline-flex items-center bg-primary px-6 py-3 text-sm font-bold uppercase tracking-wide text-white transition-colors hover:bg-primary-dark"
+                  >
+                    {language === "de" ? "Ticket sichern" : "Get your ticket"}
+                  </Link>
+                </div>
               </div>
-            </div>
+            </motion.div>
           </div>
+
+          <SplitImageSlider
+            images={["/images/alpine-village-group.jpg", "/images/trails-header-group.jpeg", "/images/mountain-top-sunset-rave.jpg"]}
+            alt={language === "de" ? "Trailrunning Camp Österreich Teilnehmer in Hochkrimml" : "Trail running camp Austria participants in Hochkrimml"}
+          />
         </section>
 
         <section id="experience" className="bg-gray-50 py-16 md:py-24">

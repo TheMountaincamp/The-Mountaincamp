@@ -347,3 +347,8 @@
 .frost-grey .bg-gray-800 [class*="text-white/"] {
   color: rgba(255, 255, 255, 0.7);
 }
+
+@keyframes marquee {
+  from { transform: translateX(0); }
+  to { transform: translateX(-50%); }
+}
