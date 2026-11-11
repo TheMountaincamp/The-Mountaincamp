@@ -978,11 +978,11 @@ export default function HomePageClient() {
         <section id="experience" className="bg-gray-50 py-16 md:py-24">
           <div className="container">
             <SectionTitle
-              title={language === "de" ? "Das erwartet dich im Mountaincamp" : "What to expect at the Mountaincamp"}
+              title={language === "de" ? "Fünf Tage. Ein Berg. Deine Crew." : "Five days. One mountain. Your crew."}
               subtitle={
                 language === "de"
-                  ? "Trailrunning, Community, Recovery, Party und kreative Workshops an 5 unvergesslichen Tagen in den österreichischen Alpen."
-                  : "Trail running, community, recovery, party and creative workshops over 5 unforgettable days in the Austrian Alps."
+                  ? "Tagsüber Trails, nachmittags Recovery, abends die Party am Berg. 18. bis 22. August 2027 in Hochkrimml."
+                  : "Trail runs by day, recovery in the afternoon, the party on the mountain at night. 18 to 22 August 2027 in Hochkrimml."
               }
               align="center"
               light={true}
