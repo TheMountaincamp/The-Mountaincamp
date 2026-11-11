@@ -53,7 +53,7 @@ export default function RouteOverviewSection() {
           transition={{ duration: 0.6 }}
           className="text-center mb-16"
         >
-          <h2 className="text-4xl font-bold mb-4 text-gray-900">
+          <h2 className="mb-4 text-3xl font-bold uppercase tracking-tight text-gray-900 md:text-4xl">
             {language === "de" ? "Unsere Alpine Trails" : "Our Alpine Trails"}
           </h2>
           <p className="text-xl text-gray-600 max-w-3xl mx-auto">

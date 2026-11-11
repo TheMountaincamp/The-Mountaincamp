@@ -860,7 +860,7 @@ export default function HomePageClient() {
         {/* SEO Content Section 1 - Intro */}
         <section className="bg-white py-10 md:py-14">
           <div className="container max-w-4xl">
-            <h2 className="text-2xl font-bold text-gray-900 md:text-4xl">
+            <h2 className="text-2xl font-bold uppercase tracking-tight text-gray-900 md:text-4xl">
               {language === "de" ? "Trailrunning Camp in den österreichischen Alpen" : "Trail Running Camp in the Austrian Alps"}
             </h2>
 
@@ -896,7 +896,7 @@ export default function HomePageClient() {
               className="h-auto w-full"
             />
             <div>
-              <p className="text-3xl font-bold leading-tight text-gray-900 md:text-5xl">
+              <p className="text-3xl font-bold uppercase leading-tight tracking-tight text-gray-900 md:text-5xl">
                 {language === "de" ? "Sechs Freunde. Vor dem Camp kannten sich nur zwei." : "Six friends. Only two knew each other before the camp."}
               </p>
               <p className="mt-5 text-lg leading-relaxed text-gray-600">
@@ -925,7 +925,7 @@ export default function HomePageClient() {
               transition={{ duration: 0.8 }}
               className="max-w-xl"
             >
-              <h2 className="mb-6 text-3xl font-bold leading-tight text-gray-900 md:mb-8 md:text-5xl">
+              <h2 className="mb-6 text-3xl font-bold uppercase leading-tight tracking-tight text-gray-900 md:mb-8 md:text-5xl">
                 {language === "de" ? "Dein Trailrunning Camp in Österreich" : "Your Trail Running Camp in Austria"}
               </h2>
               <div className="space-y-3 text-gray-700">
@@ -1055,11 +1055,11 @@ export default function HomePageClient() {
         <section className="bg-white py-24">
           <div className="container">
             <SectionTitle
-              title={language === "de" ? "Aktivitäten im Trailrunning Camp" : "Activities at the trail running camp"}
+              title={language === "de" ? "Aktivitäten" : "Activities"}
               subtitle={
                 language === "de"
-                  ? "Neben den täglichen Runs erwarten dich Workshops, kreative Sessions und gemeinsame Erlebnisse."
-                  : "Beyond the daily runs, expect workshops, creative sessions and shared experiences."
+                  ? "Neben den täglichen Runs erwarten dich im Trailrunning Camp Workshops, kreative Sessions und gemeinsame Erlebnisse."
+                  : "Beyond the daily runs, the trail running camp offers workshops, creative sessions and shared experiences."
               }
               align="center"
               light={true}
@@ -1137,7 +1137,12 @@ export default function HomePageClient() {
         <section className="bg-gray-50 py-24">
           <div className="container">
             <SectionTitle
-              title={language === "de" ? "Eindrücke aus dem Trailrunning Camp" : "Impressions from the trail running camp"}
+              title={language === "de" ? "Eindrücke" : "Impressions"}
+              subtitle={
+                language === "de"
+                  ? "Momente aus dem Trailrunning Camp 2026 in Hochkrimml."
+                  : "Moments from the 2026 trail running camp in Hochkrimml."
+              }
               align="center"
               light={true}
             />
