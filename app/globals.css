@@ -352,3 +352,11 @@
   from { transform: translateX(0); }
   to { transform: translateX(-50%); }
 }
+
+/* Kein nativer Play-Button über dem Header-Video (iOS Safari) */
+.hero-video::-webkit-media-controls,
+.hero-video::-webkit-media-controls-start-playback-button,
+.hero-video::-webkit-media-controls-overlay-play-button {
+  display: none !important;
+  -webkit-appearance: none;
+}

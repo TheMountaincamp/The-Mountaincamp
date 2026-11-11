@@ -221,10 +221,21 @@ export default function HomePageClient() {
 
   useEffect(() => {
     const playVideo = () => {
-      if (videoRef.current) {
-        videoRef.current.play().catch(() => { })
-      }
+      const v = videoRef.current
+      if (!v) return
+      // iOS spielt nur stumm und inline automatisch ab. React setzt "muted" nicht
+      // als HTML-Attribut, deshalb hier explizit setzen.
+      v.muted = true
+      v.defaultMuted = true
+      v.setAttribute("muted", "")
+      v.setAttribute("playsinline", "")
+      v.setAttribute("webkit-playsinline", "")
+      v.play().catch(() => { })
     }
+    const onVisible = () => {
+      if (document.visibilityState === "visible") playVideo()
+    }
+    document.addEventListener("visibilitychange", onVisible)
 
     playVideo()
 
@@ -238,6 +249,7 @@ export default function HomePageClient() {
     document.addEventListener("click", handleInteraction, { once: true })
 
     return () => {
+      document.removeEventListener("visibilitychange", onVisible)
       document.removeEventListener("touchstart", handleInteraction)
       document.removeEventListener("click", handleInteraction)
     }
@@ -724,7 +736,9 @@ export default function HomePageClient() {
                 muted
                 playsInline
                 preload="auto"
-                className="h-full w-full object-cover object-center"
+                controls={false}
+                disablePictureInPicture
+                className="hero-video h-full w-full object-cover object-center"
                 poster="/_next/image?url=%2Fimages%2Fforest-group-photo.jpg&w=1920&q=85"
                 src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/1127%20%281%29-FEgWVPpCJfcsT3ni35EZXLPrKTpGVQ.mp4"
               />
