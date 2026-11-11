@@ -54,7 +54,7 @@ export default function InstagramReelsSection() {
           transition={{ duration: 0.6 }}
           className="text-center mb-16"
         >
-          <h2 className="text-4xl md:text-5xl font-bold mb-4 text-gray-900">
+          <h2 className="mb-4 text-3xl font-bold uppercase tracking-tight text-gray-900 md:text-4xl">
             {language === "de" ? "Live von den Trails" : "Live from the Trails"}
           </h2>
           <p className="text-lg text-gray-600 max-w-2xl mx-auto">
