@@ -44,15 +44,15 @@ export const translations = {
     experienceSubtitle: "Alles inklusive in deinem unvergesslichen Abenteuer",
 
     // Feature cards
-    trailrunningTitle: "Trailrunning & Abenteuer",
-    trailrunningDesc: "Tägliche Trailruns auf atemberaubenden Alpenpfaden, konzipiert für alle Erfahrungsstufen.",
-    recoveryTitle: "Erholung & Gemeinschaft",
-    recoveryDesc: "Yoga, Eisbäder, Saunen und Geschichten am Lagerfeuer zum Aufladen und Verbinden.",
-    creativityTitle: "Kreativität & Wachstum",
+    trailrunningTitle: "Trails für jedes Level",
+    trailrunningDesc: "Jeden Tag geführte Läufe in Gruppen nach Tempo. Von entspannten 10 km bis zur Gipfeltour mit 1.500 Höhenmetern.",
+    recoveryTitle: "Erholung wie die Profis",
+    recoveryDesc: "Recovery Lounge, Sauna, Eisbaden und Morning Yoga. Deine Beine danken es dir an Tag vier.",
+    creativityTitle: "Lern etwas Neues",
     creativityDesc:
-      "Inspirierende Gespräche, aktive & kreative Erholung und eine Energie, die dich für das Leben begeistern wird.",
-    raveTitle: "Sunset Rave",
-    raveDesc: "Nach dem Laufens kannst du die müden Beine bei der Summit-Party ausschütteln",
+      "Talks zu Training, Ernährung und Mindset, dazu kreative Workshops von Linoldruck bis Töpfern. Einige Workshops sind kostenlos, andere zubuchbar.",
+    raveTitle: "Abende, die bleiben",
+    raveDesc: "Lagerfeuer, Karaoke, Outdoor-Kino und der Gipfelrave. Die meisten kommen allein. Keiner fährt allein nach Hause.",
 
     // Mountain Rave section
     raveHighlightTitle: "SUNSET RAVE",
@@ -218,16 +218,16 @@ export const translations = {
     experienceSubtitle: "Everything included in your unforgettable mountain adventure",
 
     // Feature cards
-    trailrunningTitle: "Trailrunning & Adventure",
-    trailrunningDesc: "Daily trail runs on breathtaking alpine trails, designed for all experience levels.",
-    recoveryTitle: "Recovery & Community",
-    recoveryDesc: "Yoga, ice baths, saunas, and fireside storytelling to recharge and connect.",
-    creativityTitle: "Creativity & Growth",
+    trailrunningTitle: "Trails for every level",
+    trailrunningDesc: "Guided runs every day, in groups by pace. From relaxed 10 km to summit tours with 1,500 m of climbing.",
+    recoveryTitle: "Recover like a pro",
+    recoveryDesc: "Recovery lounge, sauna, ice baths and morning yoga. Your legs will thank you on day four.",
+    creativityTitle: "Learn something new",
     creativityDesc:
-      "Inspirational talks, Active & Creative Recovery, and an energy that will leave you fired up for life.",
-    raveTitle: "Sunset Rave",
+      "Talks on training, nutrition and mindset, plus creative workshops from linocut to pottery. Some workshops are free, others are bookable add-ons.",
+    raveTitle: "Nights to remember",
     raveDesc:
-      "After a day of running, let loose at our mountain-top party, with music, lights, and a vibe like no other.",
+      "Campfire, karaoke, outdoor cinema and the summit rave. Most people arrive alone. Nobody leaves alone.",
 
     // Mountain Rave section
     raveHighlightTitle: "MOUNTAIN-TOP SUNSET RAVE",
