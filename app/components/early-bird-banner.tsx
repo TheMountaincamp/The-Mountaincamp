@@ -14,6 +14,7 @@ import {
   PHASE_2_LABEL,
   NEXT_LAUNCH_START_MS,
   NEXT_LAUNCH_LABEL,
+  PHASE_FRUEHBUCHER_END,
   TICKET_URL,
   getOverallPhase,
   getTimeParts,
@@ -38,6 +39,11 @@ const COPY = {
     h: "Std",
     m: "Min",
     s: "Sek",
+    saleTitle: "Bis 30.11. buchen & sparen",
+    days: "Tage",
+    hours: "Stunden",
+    minutes: "Minuten",
+    seconds: "Sekunden",
   },
   en: {
     earlybirdUpcomingTitle: "Early-bird tickets",
@@ -56,10 +62,34 @@ const COPY = {
     h: "h",
     m: "m",
     s: "s",
+    saleTitle: "Book by 30.11. & save",
+    days: "Days",
+    hours: "Hours",
+    minutes: "Minutes",
+    seconds: "Seconds",
   },
 } as const
 
 type Parts = ReturnType<typeof getTimeParts>
+
+const FRUEHBUCHER_END_MS = new Date(PHASE_FRUEHBUCHER_END).getTime()
+
+function BigUnit({ value, label }: { value: number; label: string }) {
+  return (
+    <span className="flex min-w-[3.25rem] flex-col items-center tabular-nums md:min-w-[3.5rem]">
+      <span className="text-3xl font-bold leading-none md:text-[2rem]">{String(value).padStart(2, "0")}</span>
+      <span className="mt-1 text-[11px] font-medium leading-none text-white/85 md:text-xs">{label}</span>
+    </span>
+  )
+}
+
+function Colon() {
+  return (
+    <span className="text-2xl font-bold leading-none text-black/35 md:text-[1.75rem]" aria-hidden="true">
+      :
+    </span>
+  )
+}
 
 function Unit({ value, label }: { value: number; label: string }) {
   return (
@@ -153,9 +183,11 @@ export default function EarlyBirdBanner({ delayMs = 3_000, onHeightChange }: Ear
         setParts(getTimeParts(PHASE_2_END_MS, now))
       } else if (nextPhase === "next-launch-upcoming") {
         setParts(getTimeParts(NEXT_LAUNCH_START_MS, now))
+      } else if (now < FRUEHBUCHER_END_MS) {
+        // Frühbucher-Phase: Countdown bis 30.11., 24:00 Uhr.
+        setParts(getTimeParts(FRUEHBUCHER_END_MS, now))
       } else {
-        // next-launch-live läuft ab jetzt durchgehend ohne Enddatum,
-        // daher kein Countdown mehr.
+        // Danach läuft der Verkauf ohne Enddatum, kein Countdown.
         setParts(null)
       }
     }
@@ -196,6 +228,39 @@ export default function EarlyBirdBanner({ delayMs = 3_000, onHeightChange }: Ear
   // Vor Ablauf der Verzögerung wird nichts gerendert: Die Seite (inkl.
   // Header-Menü) bleibt zunächst ungestört nutzbar.
   if (!armed) return null
+
+  // Frühbucher-Countdown im großen Format: Titel links, Countdown rechts,
+  // mobil untereinander. Das ganze Banner verlinkt auf die Tickets.
+  if (phase === "next-launch-live" && mounted && parts && parts.total > 0) {
+    return (
+      <motion.aside
+        ref={rootRef}
+        initial={prefersReducedMotion ? false : { y: -24, opacity: 0 }}
+        animate={{ y: 0, opacity: 1 }}
+        transition={{ duration: 0.4, ease: "easeOut" }}
+        aria-label={c.saleTitle}
+        className="relative z-[60] w-full bg-primary text-white"
+      >
+        <a
+          href={TICKET_URL}
+          className="container flex flex-col items-center justify-center gap-2 py-3 transition-opacity hover:opacity-95 focus-visible:outline-2 focus-visible:outline-offset-[-4px] focus-visible:outline-white md:flex-row md:gap-10 md:py-3.5"
+        >
+          <p className="text-center text-xl font-bold uppercase leading-tight tracking-tight md:text-[2rem]">
+            {c.saleTitle}
+          </p>
+          <span className="flex items-start gap-2 md:gap-3" aria-live="off">
+            <BigUnit value={parts.days} label={c.days} />
+            <Colon />
+            <BigUnit value={parts.hours} label={c.hours} />
+            <Colon />
+            <BigUnit value={parts.minutes} label={c.minutes} />
+            <Colon />
+            <BigUnit value={parts.seconds} label={c.seconds} />
+          </span>
+        </a>
+      </motion.aside>
+    )
+  }
 
   return (
     <motion.aside
