@@ -1462,10 +1462,10 @@ export default function HomePageClient() {
 
               <div className="flex flex-col gap-3">
                 <h4 className="footer-heading text-white">{t("legal")}</h4>
-                <Link href="/legal/privacy-policy" className="footer-link">
+                <Link href="/datenschutz" className="footer-link">
                   {language === "de" ? "Datenschutz" : "Privacy Policy"}
                 </Link>
-                <Link href="/legal/imprint" className="footer-link">
+                <Link href="/impressum" className="footer-link">
                   {language === "de" ? "Impressum" : "Imprint"}
                 </Link>
                 <Link href="/agb" className="footer-link">
