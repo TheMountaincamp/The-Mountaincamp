@@ -2,27 +2,10 @@ import type { Metadata } from "next"
 import HomePageClient from "./home-page-client"
 import { faqsDE } from "@/app/data/faq"
 import { SITE_URL, SITE_NAME, OG_IMAGE, SAME_AS, jsonLd, languageAlternates } from "@/app/lib/seo"
-import { SALE_PHASES, getPhaseState, TICKET_URL, TICKETS_SOLD, TOTAL_TICKETS } from "@/app/lib/early-bird"
+import { eventSchema } from "@/app/lib/event-schema"
 
 // Seite stündlich neu erzeugen, damit der Preis im Event-Schema der aktuellen Verkaufsphase folgt
 export const revalidate = 3600
-
-/** Angebot für das Event-Schema aus der gerade laufenden Preisphase */
-function currentOffer() {
-  const now = Date.now()
-  const live = SALE_PHASES.find((p) => p.price !== null && getPhaseState(p, now) === "live")
-  const fallback = SALE_PHASES.filter((p) => p.price !== null).find((p) => getPhaseState(p, now) !== "ended")
-  const phase = live ?? fallback
-  return {
-    "@type": "Offer",
-    url: `${SITE_URL}${TICKET_URL}`,
-    price: String(phase?.price ?? ""),
-    priceCurrency: "EUR",
-    availability: TICKETS_SOLD >= TOTAL_TICKETS ? "https://schema.org/SoldOut" : "https://schema.org/InStock",
-    ...(phase?.start ? { validFrom: phase.start } : {}),
-    ...(phase?.end ? { priceValidUntil: new Date(new Date(phase.end).getTime() - 1).toISOString().slice(0, 10) } : {}),
-  }
-}
 
 export const metadata: Metadata = {
   title: {
@@ -100,39 +83,7 @@ const structuredData = {
       inLanguage: ["de", "en"],
       publisher: { "@id": `${SITE_URL}/#organization` },
     },
-    {
-      "@type": "SportsEvent",
-      "@id": `${SITE_URL}/#event-2027`,
-      name: "Mountaincamp 2027",
-      alternateName: ["Mountain Camp 2027", "The Mountain Camp 2027", "Trailrunning Camp Österreich", "Trail Running Camp Austria"],
-      description:
-        "5-tägiges Trailrunning Camp in Hochkrimml, Österreich, für alle Level: tägliche Trailruns in Gruppen nach Tempo, Workshops, gemeinsame Abende und Summit Rave.",
-      sport: "Trail Running",
-      startDate: "2027-08-18",
-      endDate: "2027-08-22",
-      eventStatus: "https://schema.org/EventScheduled",
-      eventAttendanceMode: "https://schema.org/OfflineEventAttendanceMode",
-      maximumAttendeeCapacity: TOTAL_TICKETS,
-      location: {
-        "@type": "Place",
-        name: "Hochkrimml, Hohe Tauern",
-        address: {
-          "@type": "PostalAddress",
-          addressLocality: "Hochkrimml",
-          addressRegion: "Salzburg",
-          postalCode: "5743",
-          addressCountry: "AT",
-        },
-        geo: { "@type": "GeoCoordinates", latitude: 47.2393, longitude: 12.1735 },
-      },
-      image: [
-        `${SITE_URL}${OG_IMAGE.url}`,
-        `${SITE_URL}/images/hero-trail-runners.jpeg`,
-        `${SITE_URL}/images/mountain-top-sunset-rave.jpg`,
-      ],
-      offers: currentOffer(),
-      organizer: { "@id": `${SITE_URL}/#organization` },
-    },
+    eventSchema("de"),
     {
       "@type": "FAQPage",
       "@id": `${SITE_URL}/#faq`,

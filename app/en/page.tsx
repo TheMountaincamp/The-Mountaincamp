@@ -2,6 +2,10 @@ import type { Metadata } from "next"
 import HomePageClient from "@/app/home-page-client"
 import { faqsEN } from "@/app/data/faq"
 import { SITE_URL, SITE_NAME, OG_IMAGE, jsonLd, languageAlternates } from "@/app/lib/seo"
+import { eventSchema } from "@/app/lib/event-schema"
+
+// Stündlich neu erzeugen, damit der Preis im Event-Schema der aktuellen Verkaufsphase folgt
+export const revalidate = 3600
 
 const TITLE = "Trail Running Camp Austria 2027 | Mountaincamp"
 const DESCRIPTION =
@@ -24,21 +28,27 @@ export const metadata: Metadata = {
   twitter: { card: "summary_large_image", title: TITLE, description: DESCRIPTION, images: [OG_IMAGE.url] },
 }
 
-const faq = {
+const structuredData = {
   "@context": "https://schema.org",
-  "@type": "FAQPage",
-  inLanguage: "en",
-  mainEntity: faqsEN.map((f) => ({
-    "@type": "Question",
-    name: f.question,
-    acceptedAnswer: { "@type": "Answer", text: f.answer },
-  })),
+  "@graph": [
+    eventSchema("en"),
+    {
+      "@type": "FAQPage",
+      "@id": `${SITE_URL}/en#faq`,
+      inLanguage: "en",
+      mainEntity: faqsEN.map((f) => ({
+        "@type": "Question",
+        name: f.question,
+        acceptedAnswer: { "@type": "Answer", text: f.answer },
+      })),
+    },
+  ],
 }
 
 export default function EnHome() {
   return (
     <>
-      <script type="application/ld+json" dangerouslySetInnerHTML={jsonLd(faq)} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={jsonLd(structuredData)} />
       <HomePageClient />
     </>
   )
