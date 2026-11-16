@@ -1,7 +1,7 @@
 "use client"
 
 import { useState } from "react"
-import Link from "next/link"
+import Link from "@/app/components/locale-link"
 import type { LinkProps } from "next/link"
 import type { ReactNode } from "react"
 

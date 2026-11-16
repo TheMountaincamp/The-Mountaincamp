@@ -1,7 +1,7 @@
 import type { Metadata } from "next"
 import HomePageClient from "./home-page-client"
 import { faqsDE } from "@/app/data/faq"
-import { SITE_URL, SITE_NAME, OG_IMAGE, SAME_AS, jsonLd } from "@/app/lib/seo"
+import { SITE_URL, SITE_NAME, OG_IMAGE, SAME_AS, jsonLd, languageAlternates } from "@/app/lib/seo"
 import { SALE_PHASES, getPhaseState, TICKET_URL, TICKETS_SOLD, TOTAL_TICKETS } from "@/app/lib/early-bird"
 
 // Seite stündlich neu erzeugen, damit der Preis im Event-Schema der aktuellen Verkaufsphase folgt
@@ -47,6 +47,7 @@ export const metadata: Metadata = {
   ],
   alternates: {
     canonical: SITE_URL,
+    languages: languageAlternates("/"),
   },
   openGraph: {
     title: "Mountaincamp 2027 | Trailrunning Camp in Österreich",

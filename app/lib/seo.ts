@@ -23,20 +23,36 @@ export const SAME_AS = [
 ]
 
 /** Metadaten für eine Unterseite mit eigener Canonical-URL und eigenem Vorschautext */
-export function pageMetadata(opts: { path: string; title: string; description: string; noindex?: boolean }): Metadata {
-  const url = opts.path === "/" ? SITE_URL : `${SITE_URL}${opts.path}`
+/** hreflang-Paar für Seiten, die es auf Deutsch und unter /en gibt */
+export function languageAlternates(path: string) {
+  const de = path === "/" ? SITE_URL : `${SITE_URL}${path}`
+  const en = path === "/" ? `${SITE_URL}/en` : `${SITE_URL}/en${path}`
+  return { de, en, "x-default": de }
+}
+
+export function pageMetadata(opts: {
+  path: string
+  title: string
+  description: string
+  noindex?: boolean
+  /** "de" oder "en": Seite hat eine zweite Sprachfassung; path ist immer der deutsche Pfad */
+  bilingual?: "de" | "en"
+}): Metadata {
+  const alt = opts.bilingual ? languageAlternates(opts.path) : null
+  const url = alt ? alt[opts.bilingual!] : opts.path === "/" ? SITE_URL : `${SITE_URL}${opts.path}`
+  const en = opts.bilingual === "en"
   return {
     title: opts.title,
     description: opts.description,
-    alternates: { canonical: url },
+    alternates: { canonical: url, ...(alt ? { languages: alt } : {}) },
     openGraph: {
       title: opts.title,
       description: opts.description,
       url,
       siteName: SITE_NAME,
       images: [OG_IMAGE],
-      locale: "de_DE",
-      alternateLocale: ["en_US"],
+      locale: en ? "en_US" : "de_DE",
+      alternateLocale: [en ? "de_DE" : "en_US"],
       type: "website",
     },
     twitter: {

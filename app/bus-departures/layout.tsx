@@ -3,6 +3,7 @@ import { pageMetadata, breadcrumb, jsonLd } from "@/app/lib/seo"
 
 export const metadata: Metadata = pageMetadata({
   path: "/bus-departures",
+  bilingual: "de",
   title: "Busanreise zum Trailrunning Camp",
   description:
     "Gemeinsame Busanreise zum Mountaincamp nach Hochkrimml: Abfahrten aus Berlin, München und Jenbach. Abfahrtsorte, Rückfahrt und alles zur Anreise ohne Auto.",

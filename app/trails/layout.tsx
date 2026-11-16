@@ -3,6 +3,7 @@ import { pageMetadata, breadcrumb, jsonLd } from "@/app/lib/seo"
 
 export const metadata: Metadata = pageMetadata({
   path: "/trails",
+  bilingual: "de",
   title: "Trailrunning Routen rund um Hochkrimml",
   description:
     "Trailrunning rund um Hochkrimml: Routen vom Seekarsee über die Zittauer Hütte bis zu den Krimmler Wasserfällen. Tägliche Trailruns in Gruppen für jedes Level.",
