@@ -33,25 +33,25 @@ export const metadata: Metadata = {
   metadataBase: new URL("https://themountaincamp.de"),
 
   title: {
-    default: "Trailrunning Camp Österreich 2027 | The Mountaincamp",
-    template: "%s | The Mountaincamp",
+    default: "Trailrunning Camp Österreich 2027 | Mountaincamp",
+    template: "%s | Mountaincamp",
   },
 
   description:
-    "Trailrunning Camp in den österreichischen Alpen: 5 Tage tägliche Trailruns, Workshops und Community in Hochkrimml. Für alle Level, 18. bis 22. August 2027.",
+    "5 Tage Trailrunning in Hochkrimml: tägliche Trailruns für alle Level, Vollpension, Workshops und Bus ab Berlin und München. 18. bis 22. August 2027.",
 
-  applicationName: "The Mountaincamp",
-  authors: [{ name: "The Mountaincamp", url: "https://themountaincamp.de" }],
-  creator: "The Mountaincamp",
-  publisher: "The Mountaincamp",
+  applicationName: "Mountaincamp",
+  authors: [{ name: "Mountaincamp", url: "https://themountaincamp.de" }],
+  creator: "Mountaincamp",
+  publisher: "Mountaincamp",
   formatDetection: { telephone: false, email: false, address: false },
 
   openGraph: {
-    title: "The Mountaincamp 2027 | Trailrunning Camp in Österreich",
+    title: "Mountaincamp 2027 | Trailrunning Camp in Österreich",
     description:
       "5 Tage Trailrunning, Workshops und Community in den österreichischen Alpen. Hochkrimml, 18. bis 22. August 2027.",
     url: "https://themountaincamp.de",
-    siteName: "The Mountaincamp",
+    siteName: "Mountaincamp",
     images: [OG_IMAGE],
     locale: "de_DE",
     alternateLocale: ["en_US"],
@@ -60,7 +60,7 @@ export const metadata: Metadata = {
 
   twitter: {
     card: "summary_large_image",
-    title: "The Mountaincamp 2027 | Trailrunning Camp in Österreich",
+    title: "Mountaincamp 2027 | Trailrunning Camp in Österreich",
     description:
       "5 Tage Trailrunning, Workshops und Community in den österreichischen Alpen. Hochkrimml, 18. bis 22. August 2027.",
     images: [OG_IMAGE.url],

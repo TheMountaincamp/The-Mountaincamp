@@ -584,7 +584,7 @@ export default function HomePageClient() {
           <div className="relative h-7 w-24">
             <ImageWithFallback
               src="/images/mountaincamp-logo-white.png"
-              alt="The Mountaincamp Logo"
+              alt="Mountaincamp Logo"
               width={96}
               height={19}
               className="h-full w-auto object-contain"
@@ -616,10 +616,10 @@ export default function HomePageClient() {
             <Link href="/bus-departures" className="whitespace-nowrap text-sm font-bold uppercase text-white transition-colors hover:text-primary">Transport</Link>
           </nav>
 
-          <Link href="/" aria-label="The Mountaincamp" className="flex justify-center">
+          <Link href="/" aria-label="Mountaincamp" className="flex justify-center">
             <ImageWithFallback
               src="/images/mountaincamp-logo-white.png"
-              alt="The Mountaincamp Logo"
+              alt="Mountaincamp Logo"
               width={200}
               height={39}
               className={`w-auto object-contain transition-[height] duration-300 ${scrollY > 80 ? "h-8" : "h-12"}`}
@@ -658,7 +658,7 @@ export default function HomePageClient() {
             <div className="container flex h-20 items-center justify-between">
               <Image
                 src="/images/mountaincamp-logo-white.png"
-                alt="The Mountaincamp Logo"
+                alt="Mountaincamp Logo"
                 width={96}
                 height={19}
                 className="h-7 w-auto"
@@ -755,7 +755,7 @@ export default function HomePageClient() {
                 {isMobile ? (
                   <Image
                     src="/images/mountaincamp-logo-white.png"
-                    alt="The Mountaincamp Logo"
+                    alt="Mountaincamp Logo"
                     width={160}
                     height={31}
                     className="mx-auto h-auto w-32 object-contain"
@@ -866,8 +866,8 @@ export default function HomePageClient() {
 
             <p className="mt-4 text-lg leading-relaxed text-gray-700">
               {language === "de"
-                ? "The Mountaincamp ist ein 5-tägiges Trailrunning Camp in Österreich in Hochkrimml. Dich erwarten tägliche Trailruns, Techniktraining, Community, Workshops und Erholung in den Alpen – für Anfänger, Fortgeschrittene und ambitionierte Läufer."
-                : "The Mountaincamp is a 5-day trail running camp in Austria in Hochkrimml. Expect daily trail runs, technique coaching, community, workshops and recovery in the Alps for beginners, intermediate runners and ambitious athletes."}
+                ? "Das Mountaincamp ist ein 5-tägiges Trailrunning Camp in Österreich, in Hochkrimml auf 1.700 m. Dich erwarten tägliche Trailruns, Techniktraining, Community, Workshops und Erholung in den Alpen, für Anfänger:innen, Fortgeschrittene und ambitionierte Läufer:innen."
+                : "The Mountaincamp is a 5-day trail running camp in Hochkrimml, Austria, at 1,700 m. Expect daily trail runs, technique coaching, community, workshops and recovery in the Alps for beginners, intermediate runners and ambitious athletes."}
             </p>
 
             <p className="mt-4 text-lg leading-relaxed text-gray-700">
@@ -1328,7 +1328,7 @@ export default function HomePageClient() {
             <div className="text-center md:text-left">
               <Image
                 src="/images/mountaincamp-logo-white.png"
-                alt="The Mountaincamp Logo"
+                alt="Mountaincamp Logo"
                 width={180}
                 height={35}
                 className="mb-4 h-12 w-auto"

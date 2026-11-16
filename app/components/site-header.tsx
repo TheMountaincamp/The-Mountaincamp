@@ -41,7 +41,7 @@ export default function SiteHeader({ transparent = true }: SiteHeaderProps) {
             <div className="relative h-7 w-24 md:h-14 md:w-[200px]">
               <Image
                 src="/images/mountaincamp-logo-white.png"
-                alt="The Mountaincamp Logo"
+                alt="Mountaincamp Logo"
                 fill
                 className="object-contain"
                 priority
@@ -96,7 +96,7 @@ export default function SiteHeader({ transparent = true }: SiteHeaderProps) {
             <div className="container flex justify-between items-center h-20">
               <Image
                 src="/images/mountaincamp-logo-white.png"
-                alt="The Mountaincamp Logo"
+                alt="Mountaincamp Logo"
                 width={96}
                 height={19}
                 className="h-7 w-auto"

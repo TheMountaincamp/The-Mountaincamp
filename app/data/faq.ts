@@ -19,7 +19,7 @@ export const faqsDE: FAQItem[] = [
   {
     question: "Wie fange ich mit Trailrunning an?",
     answer:
-      "Starte mit kurzen, einfachen Trails in deiner Umgebung. Du brauchst gute Trailrunning-Schuhe mit Profil und solltest langsam beginnen, um dich an den unebenen Untergrund zu gewöhnen. The Mountaincamp ist perfekt für Anfänger, Fortgeschrittene und Profis.",
+      "Starte mit kurzen, einfachen Trails in deiner Umgebung. Du brauchst gute Trailrunning-Schuhe mit Profil und solltest langsam beginnen, um dich an den unebenen Untergrund zu gewöhnen. Das Mountaincamp ist perfekt für Anfänger, Fortgeschrittene und Profis.",
   },
   {
     question: "Was muss ich beim Trailrunning beachten?",
@@ -44,12 +44,12 @@ export const faqsDE: FAQItem[] = [
   {
     question: "Was sind die schönsten Trailrunning-Events?",
     answer:
-      "The Mountaincamp ist mehr als ein Event - es ist ein 5-tägiges Trailrunning-Festival in den Alpen! Neben täglichen täglichen Trailruns erlebst du eine einzigartige Community, Workshops, Yoga, Klettern und die legendäre Sunset Rave auf dem Berg. Es verbindet die Schönheit alpiner Trails mit unvergesslichen Gemeinschaftserlebnissen.",
+      "Das Mountaincamp ist mehr als ein Event - es ist ein 5-tägiges Trailrunning-Festival in den Alpen! Neben täglichen täglichen Trailruns erlebst du eine einzigartige Community, Workshops, Yoga, Klettern und die legendäre Sunset Rave auf dem Berg. Es verbindet die Schönheit alpiner Trails mit unvergesslichen Gemeinschaftserlebnissen.",
   },
   {
     question: "Für wen ist the Mountaincamp geeignet?",
     answer:
-      "The Mountaincamp in den österreichischen Alpen ist für alle Level geeignet – von Anfängern bis zu erfahrenen Trail Runnern. Wir bieten verschiedene Gruppen nach Tempo und Erfahrung, sodass jeder die perfekte Herausforderung findet.",
+      "Das Mountaincamp in den österreichischen Alpen ist für alle Level geeignet – von Anfängern bis zu erfahrenen Trail Runnern. Wir bieten verschiedene Gruppen nach Tempo und Erfahrung, sodass jeder die perfekte Herausforderung findet.",
   },
   {
     question: "Wo genau findet the Mountaincamp statt?",
