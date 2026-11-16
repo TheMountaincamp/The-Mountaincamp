@@ -7,176 +7,156 @@ export interface FAQItem {
 
 export const faqsDE: FAQItem[] = [
   {
-    question: "Was ist Trailrunning?",
+    question: "Für wen ist das Mountaincamp geeignet?",
     answer:
-      "Trailrunning ist Laufen abseits befestigter Straßen auf natürlichen Wegen in den Bergen, Wäldern oder Hügeln. Im Gegensatz zum Straßenlauf läufst du auf unbefestigten Pfaden mit Wurzeln, Steinen und wechselndem Untergrund. Trailrunning verbindet Laufsport mit Naturerlebnis und Abenteuer in den Bergen.",
+      "Für alle Level, vom ersten Trail bis zu erfahrenen Läufer:innen. Wir laufen täglich in mehreren Gruppen nach Tempo und Erfahrung. Du brauchst eine Grundfitness und Lust auf Laufen in den Bergen.",
   },
   {
-    question: "Wo kann man Trailrunning machen?",
+    question: "Kann ich als Anfänger:in teilnehmen?",
     answer:
-      "Trailrunning kannst du überall machen, wo es natürliche Wege gibt: in den Alpen, im Mittelgebirge, in Wäldern oder sogar in Parks. Die österreichischen Alpen bieten mit ihren spektakulären Bergpfaden ideale Bedingungen. Unser Camp in Hochkrimml auf 1.700 m Höhe liegt inmitten eines der schönsten Trailrunning-Gebiete Österreichs mit hunderten Kilometern alpiner Trails.",
+      "Ja. Es gibt Einsteigergruppen mit kürzeren Distanzen und ein Techniktraining für die ersten Schritte im Gelände. Viele Teilnehmende kommen vom Straßenlauf und laufen im Camp zum ersten Mal auf Trails.",
+  },
+  {
+    question: "Kann ich allein anreisen?",
+    answer:
+      "Ja, die meisten reisen allein oder zu zweit an. Durch die gemeinsame Anreise, die Laufgruppen und die Abende lernst du schnell Leute kennen.",
+  },
+  {
+    question: "Wann und wo findet das Mountaincamp statt?",
+    answer:
+      "Vom 18. bis 22. August 2027 in Hochkrimml im Salzburger Land, Österreich, auf 1.700 m am Rand des Nationalparks Hohe Tauern.",
+  },
+  {
+    question: "Was ist im Ticket enthalten?",
+    answer:
+      "4 Nächte im Berghaus, Vollpension, tägliche Trailruns in Gruppen nach Tempo sowie die gemeinsamen Abende mit Lagerfeuer und Summit Rave. Den aktuellen Preis findest du im Ticketbereich.",
+  },
+  {
+    question: "Sind die Workshops im Ticket enthalten?",
+    answer:
+      "Einige Workshops sind kostenlos, andere kannst du dazubuchen, zum Beispiel Yoga, Töpfern oder den Nutrition Workshop. Das Programm mit allen Workshops bekommst du vor dem Camp.",
+  },
+  {
+    question: "Wie schwierig sind die Trails?",
+    answer:
+      "Jeden Tag gibt es mehrere Gruppen mit unterschiedlichen Distanzen und Höhenmetern, von entspannten 10 km bis zur Gipfeltour mit 1.500 Höhenmetern. Du wählst jeden Tag neu, was zu dir passt.",
+  },
+  {
+    question: "Wie komme ich zum Mountaincamp?",
+    answer:
+      "Am einfachsten mit unserem Shuttle: ab Berlin mit Zug und Bus, ab München und Jenbach mit dem Bus. Du kannst auch mit dem Auto anreisen, die gemeinsame Anreise verursacht aber deutlich weniger CO2. Alle Details stehen auf der Seite zur Anreise.",
+  },
+  {
+    question: "Kann ich mein Ticket stornieren?",
+    answer:
+      "Ja. Innerhalb von 7 Tagen nach der Buchung ist die Stornierung kostenlos, wenn du mindestens 30 Tage vor dem Camp gebucht hast. Danach gelten die Stornobedingungen in unseren AGB.",
+  },
+  {
+    question: "Gibt es vegetarisches und veganes Essen?",
+    answer:
+      "Ja, bei jeder Mahlzeit. Gib deine Ernährungsweise und Unverträglichkeiten bei der Buchung an, dann plant die Küche damit.",
+  },
+  {
+    question: "Welche Ausrüstung brauche ich?",
+    answer:
+      "Trailrunning-Schuhe mit Profil, Laufkleidung, eine Laufweste oder einen kleinen Rucksack, Trinkflaschen, Sonnenschutz und eine Regenjacke. Eine Packliste bekommst du nach der Buchung.",
+  },
+  {
+    question: "Was gibt es neben dem Laufen?",
+    answer:
+      "Nachmittags Recovery und Workshops, abends Programm: Lagerfeuer, Outdoor Movie Night, Karaoke und an einem Abend der Summit Rave. Gegessen wird gemeinsam.",
+  },
+  {
+    question: "Was ist Trailrunning?",
+    answer:
+      "Trailrunning ist Laufen abseits befestigter Straßen, auf Wegen durch Wald, Wiesen und Berge. Der Untergrund wechselt, es geht bergauf und bergab. Das Tempo ist niedriger als auf der Straße, und bergauf zu gehen gehört dazu.",
   },
   {
     question: "Wie fange ich mit Trailrunning an?",
     answer:
-      "Starte mit kurzen, einfachen Trails in deiner Umgebung. Du brauchst gute Trailrunning-Schuhe mit Profil und solltest langsam beginnen, um dich an den unebenen Untergrund zu gewöhnen. Das Mountaincamp ist perfekt für Anfänger, Fortgeschrittene und Profis.",
+      "Starte mit kurzen, einfachen Wegen in deiner Umgebung und nimm dir Zeit, dich an den Untergrund zu gewöhnen. Wichtig sind Schuhe mit Profil. Im Mountaincamp lernst du in der Einsteigergruppe die Technik für bergauf und bergab.",
   },
   {
-    question: "Was muss ich beim Trailrunning beachten?",
+    question: "Was muss ich beim Trailrunning in den Bergen beachten?",
     answer:
-      "Wichtig sind: gute Trailrunning-Schuhe mit Grip, ausreichend Wasser, Wetterschutz für die Berge, ein Handy für Notfälle und eine realistische Einschätzung deiner Fitness. In den Alpen solltest du auch Höhenmeter und Wetter beachten. In unserem Camp lernst du alle wichtigen Sicherheitsaspekte und die richtige Ausrüstung kennen.",
-  },
-  {
-    question: "Wie schnell läuft man beim Trailrunning?",
-    answer:
-      "Trailrunning ist deutlich langsamer als Straßenlauf - das ist völlig normal! Bergauf gehst du oft, bergab läufst du kontrolliert. Das Tempo hängt stark vom Gelände und den Höhenmetern ab. In unserem Camp bieten wir verschiedene Gruppen für unterschiedliche Geschwindigkeiten, sodass jeder sein passendes Tempo findet.",
-  },
-  {
-    question: "Warum Trailrunning?",
-    answer:
-      "Trailrunning bietet mehr als nur Sport: Du erlebst atemberaubende Natur, trainierst den ganzen Körper durch das abwechslungsreiche Gelände, schonst deine Gelenke durch den weichen Untergrund und findest mentale Erholung in den Bergen. Es ist Abenteuer, Fitness und Naturerlebnis in einem - perfekt für alle, die mehr wollen als nur auf Asphalt zu laufen.",
-  },
-  {
-    question: "Was sind die schönsten Trailrunning-Strecken?",
-    answer:
-      "Die österreichischen Alpen gehören zu den spektakulärsten Trailrunning-Regionen Europas. Hochkrimml bietet Trails mit Panoramablicken auf 3.000er-Gipfel, kristallklare Bergseen und alpine Hochwege. In unserem Camp läufst du täglich auf verschiedenen Routen - von flowigen Waldpfaden bis zu anspruchsvollen Gipfeltouren mit atemberaubenden Ausblicken.",
-  },
-  {
-    question: "Was sind die schönsten Trailrunning-Events?",
-    answer:
-      "Das Mountaincamp ist mehr als ein Event - es ist ein 5-tägiges Trailrunning-Festival in den Alpen! Neben täglichen täglichen Trailruns erlebst du eine einzigartige Community, Workshops, Yoga, Klettern und die legendäre Sunset Rave auf dem Berg. Es verbindet die Schönheit alpiner Trails mit unvergesslichen Gemeinschaftserlebnissen.",
-  },
-  {
-    question: "Für wen ist the Mountaincamp geeignet?",
-    answer:
-      "Das Mountaincamp in den österreichischen Alpen ist für alle Level geeignet – von Anfängern bis zu erfahrenen Trail Runnern. Wir bieten verschiedene Gruppen nach Tempo und Erfahrung, sodass jeder die perfekte Herausforderung findet.",
-  },
-  {
-    question: "Wo genau findet the Mountaincamp statt?",
-    answer:
-      "Das Camp findet in Hochkrimml in den österreichischen Alpen statt, auf 1.700 m Höhe. Die Region bietet spektakuläre alpine Trails mit atemberaubenden Bergpanoramen und ist perfekt für Trailrunning in den Alpen.",
-  },
-  {
-    question: "Was ist im Preis von the Mountaincamp enthalten?",
-    answer:
-      "Das Paket inkludiert 4 Nächte Unterkunft in unserem gemütlichen Berghaus, Verpflegung mit Frühstück, kleinem Lunch und Abendessen sowie tägliche Trailruns in den Alpen. Den aktuellen Ticketpreis findest du im Ticketbereich auf dieser Seite.",
-  },
-  {
-    question: "Wie schwierig sind die Trails bei the Mountaincamp?",
-    answer:
-      "Wir bieten täglich mehrere Gruppen mit unterschiedlichen Distanzen und Höhenmetern an. Von entspannten 10km-Läufen bis zu anspruchsvollen 25km+ Bergtouren mit 1.500+ Höhenmetern ist alles dabei. Unsere erfahrenen Guides passen die Routen an die Gruppe an.",
-  },
-  {
-    question: "Muss ich meine eigene Trailrunning-Ausrüstung mitbringen?",
-    answer:
-      "Ja, bitte bringe deine eigenen Trailrunning-Schuhe, Laufbekleidung und einen kleinen Rucksack mit. Wir empfehlen auch Trinkflaschen, Sonnenschutz und wetterfeste Kleidung für die Alpen. Eine detaillierte Packliste erhältst du nach der Anmeldung.",
-  },
-  {
-    question: "Wie komme ich zu the Mountaincamp?",
-    answer:
-      "Entweder mit dem Auto (diese Option empfehlen wir nicht, da sie den höchsten CO2-Ausstoß hat) oder du buchst den Bus (von Berlin, München oder Jenbach). Details zur Anreise findest du auf unserer Bus-Anreise Seite.",
-  },
-  {
-    question: "Gibt es vegetarische oder vegane Optionen beim Essen?",
-    answer:
-      "Absolut! Wir bieten täglich vegetarische und vegane Optionen an. Bitte gib bei der Anmeldung deine Ernährungspräferenzen oder Allergien an, damit wir uns optimal vorbereiten können.",
-  },
-  {
-    question: "Kann ich als Anfänger bei the Mountaincamp teilnehmen?",
-    answer:
-      "Ja! Wir haben spezielle Anfängergruppen mit kürzeren Distanzen und Technik-Coaching. Du solltest eine Grundfitness haben und Freude am Laufen in den Bergen. Unsere Guides helfen dir, die richtige Trailrunning-Technik zu lernen.",
-  },
-  {
-    question: "Was gibt es beim Mountaincamp neben dem Laufen?",
-    answer:
-      "Das Mountaincamp ist mehr als nur Laufen. Neben den täglichen Trailruns bieten wir kreative Workshops wie Töpfern, Aquarellmalerei und Yoga an. Unsere erfahrenen Coaches helfen dir dabei, deine Lauftechnik zu verbessern – egal ob du Anfänger bist oder bereits Erfahrung mitbringst. Die Community steht bei uns im Mittelpunkt: Gemeinsame Mahlzeiten, Lagerfeuerabende und die legendäre Sunset Rave Party schaffen unvergessliche Erinnerungen. Unsere Unterkunft in Hochkrimml bietet Platz für alle Teilnehmer und ist der perfekte Ausgangspunkt für die schönsten Trails der Region.",
+      "Schuhe mit Grip, genug Wasser, Wetterschutz und ein geladenes Handy. Plane in den Alpen Höhenmeter und Wetter mit ein und schätze deine Fitness realistisch ein. Im Camp laufen wir in Gruppen, niemand ist allein unterwegs.",
   },
 ]
 
 export const faqsEN: FAQItem[] = [
   {
-    question: "What is trailrunning?",
+    question: "Who is the Mountaincamp for?",
     answer:
-      "Trailrunning is running off paved roads on natural paths in mountains, forests, or hills. Unlike road running, you run on unpaved trails with roots, rocks, and changing terrain. Trailrunning combines running with nature experiences and mountain adventures.",
+      "For all levels, from your first trail to experienced runners. We run in several groups every day, sorted by pace and experience. You need a basic level of fitness and the wish to run in the mountains.",
   },
   {
-    question: "Where can you do trailrunning?",
+    question: "Can I join as a beginner?",
     answer:
-      "You can do trailrunning anywhere with natural paths: in the Alps, low mountain ranges, forests, or even parks. The Austrian Alps offer ideal conditions with spectacular mountain trails. Our camp in Hochkrimml at 1,700 m altitude is in one of Austria's most beautiful trailrunning areas with hundreds of kilometers of alpine trails.",
+      "Yes. There are beginner groups with shorter distances and a technique session for your first steps on trails. Many participants come from road running and run their first trails at camp.",
   },
   {
-    question: "How do I start trailrunning?",
+    question: "Can I come on my own?",
     answer:
-      "Start with short, easy trails in your area. You need good trail running shoes with grip and should start slowly to get used to uneven terrain. The Mountaincamp is perfect for beginners, intermediates and pros.",
+      "Yes, most people come alone or with one friend. The shared journey, the running groups and the evenings make it easy to meet people.",
   },
   {
-    question: "What should I consider when trailrunning?",
+    question: "When and where does the Mountaincamp take place?",
     answer:
-      "Important: good trail running shoes with grip, sufficient water, weather protection for mountains, a phone for emergencies, and realistic fitness assessment. In the Alps, also consider elevation gain and weather. In our camp, you learn all important safety aspects and proper equipment.",
+      "From 18 to 22 August 2027 in Hochkrimml, Salzburger Land, Austria, at 1,700 m on the edge of the Hohe Tauern National Park.",
   },
   {
-    question: "How fast do you run when trailrunning?",
+    question: "What is included in the ticket?",
     answer:
-      "Trailrunning is significantly slower than road running - that's completely normal! Uphill you often walk, downhill you run controlled. Pace depends heavily on terrain and elevation. In our camp, we offer different groups for different speeds, so everyone finds their suitable pace.",
+      "4 nights in the mountain house, full board, daily trail runs in groups by pace and the evenings together with campfire and summit rave. You find the current price in the ticket section.",
   },
   {
-    question: "Why trailrunning?",
+    question: "Are workshops included in the ticket?",
     answer:
-      "Trailrunning offers more than just sport: you experience breathtaking nature, train your whole body through varied terrain, protect your joints with soft ground, and find mental recovery in the mountains. It's adventure, fitness, and nature experience in one - perfect for those who want more than just running on asphalt.",
+      "Some workshops are free, others are bookable add-ons, for example yoga, the clay class or the nutrition workshop. You get the full program before the camp.",
   },
   {
-    question: "What are the most beautiful trailrunning routes?",
+    question: "How difficult are the trails?",
     answer:
-      "The Austrian Alps are among Europe's most spectacular trailrunning regions. Hochkrimml offers trails with panoramic views of 3,000m peaks, crystal-clear mountain lakes, and alpine high paths. In our camp, you run daily on different routes - from flowy forest paths to challenging summit tours with breathtaking views.",
-  },
-  {
-    question: "What are the most beautiful trailrunning events?",
-    answer:
-      "The Mountaincamp is more than an event - it's a 5-day trailrunning festival in the Alps! Besides daily trail runs, you experience a unique community, workshops, yoga, climbing, and the legendary Sunset Rave on the mountain. It combines the beauty of alpine trails with unforgettable community experiences.",
-  },
-  {
-    question: "Who is the Mountaincamp suitable for?",
-    answer:
-      "The Mountaincamp in the Austrian Alps is suitable for all levels – from beginners to experienced trail runners. We offer different groups based on pace and experience, so everyone finds the perfect challenge.",
-  },
-  {
-    question: "Where exactly does the Mountaincamp take place?",
-    answer:
-      "The camp takes place in Hochkrimml in the Austrian Alps, at 1,700 m altitude. The region offers spectacular alpine trails with breathtaking mountain panoramas and is perfect for trailrunning in the Alps.",
-  },
-  {
-    question: "What's included in the Mountaincamp price?",
-    answer:
-      "The package includes 4 nights accommodation in our cozy mountain house, meals with breakfast, a small lunch and dinner, and daily trail runs in the Alps. You can find the current ticket price in the ticket section on this page.",
-  },
-  {
-    question: "How difficult are the trails at the Mountaincamp?",
-    answer:
-      "We offer multiple groups daily with different distances and elevation gains. From relaxed 10km runs to challenging 25km+ mountain tours with 1,500+ meters elevation gain. Our experienced guides adapt routes to the group.",
-  },
-  {
-    question: "Do I need to bring my own trailrunning equipment?",
-    answer:
-      "Yes, please bring your own trail running shoes, running clothes and a small backpack. We also recommend water bottles, sun protection and weatherproof clothing for the Alps. You'll receive a detailed packing list after registration.",
+      "Every day there are several groups with different distances and elevation, from a relaxed 10 km to a summit tour with 1,500 m of climbing. You choose each day what suits you.",
   },
   {
     question: "How do I get to the Mountaincamp?",
     answer:
-      "Either by car (we do not recommend this option, as it has the highest CO2 impact) or you book the bus (from Berlin, Munich or Jenbach). Find travel details on our bus transport page.",
+      "The easiest way is our shuttle: from Berlin by train and bus, from Munich and Jenbach by bus. You can also come by car, but the shared journey causes far less CO2. All details are on the travel page.",
   },
   {
-    question: "Are there vegetarian or vegan food options?",
+    question: "Can I cancel my ticket?",
     answer:
-      "We offer daily vegetarian and vegan options. Please indicate your dietary preferences or allergies during registration so we can prepare optimally.",
+      "Yes. Cancellation is free within 7 days of booking if you booked at least 30 days before the camp. After that, the cancellation terms in our terms and conditions apply.",
   },
   {
-    question: "Can I participate as a beginner at the Mountaincamp?",
+    question: "Is there vegetarian and vegan food?",
     answer:
-      "Yes! We have special beginner groups with shorter distances and technique coaching. You should have basic fitness and enjoy running in the mountains. Our guides will help you learn proper trailrunning technique.",
+      "Yes, at every meal. Tell us your diet and intolerances when you book and the kitchen plans for it.",
   },
   {
-    question: "What else is there at the Mountaincamp besides running?",
+    question: "What gear do I need?",
     answer:
-      "The Mountaincamp is more than just running. In addition to the daily trail runs, we offer creative workshops such as pottery, watercolor painting and yoga. Our experienced coaches help you improve your running technique – whether you're a beginner or already have experience. Community is at the heart of what we do: shared meals, campfire evenings and the legendary sunset rave party create unforgettable memories. Our accommodation in Hochkrimml offers space for all participants and is the perfect starting point for the most beautiful trails in the region.",
+      "Trail running shoes with grip, running clothes, a running vest or small backpack, water bottles, sun protection and a rain jacket. You get a packing list after booking.",
+  },
+  {
+    question: "What is there besides running?",
+    answer:
+      "Recovery and workshops in the afternoon, a program every evening: campfire, outdoor movie night, karaoke and one night the summit rave. We eat together.",
+  },
+  {
+    question: "What is trail running?",
+    answer:
+      "Trail running is running off paved roads, on paths through forests, meadows and mountains. The ground changes and it goes up and down. The pace is slower than on the road, and walking uphill is part of it.",
+  },
+  {
+    question: "How do I start trail running?",
+    answer:
+      "Start with short, easy paths near you and take time to get used to the ground. Shoes with grip matter most. At the Mountaincamp you learn uphill and downhill technique in the beginner group.",
+  },
+  {
+    question: "What should I keep in mind when trail running in the mountains?",
+    answer:
+      "Shoes with grip, enough water, weather protection and a charged phone. In the Alps, plan for elevation and weather and be realistic about your fitness. At camp we run in groups, nobody is out alone.",
   },
 ]

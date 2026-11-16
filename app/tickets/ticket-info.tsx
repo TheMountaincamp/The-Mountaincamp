@@ -25,7 +25,7 @@ const COPY = {
       "Vollpension: Frühstück, kleiner Lunch und Abendessen, auch vegetarisch und vegan",
       "Tägliche geführte Trailruns in Gruppen nach Tempo und Erfahrung, von entspannten 10 km bis zu Bergtouren mit über 1.500 Höhenmetern",
       "Technik-Coaching, auch für Einsteigerinnen und Einsteiger",
-      "Gemeinsame Abende, Lagerfeuer und der Sunset Rave",
+      "Gemeinsame Abende, Lagerfeuer und der Summit Rave",
     ],
     pricesTitle: "Preise 2027",
     pricesIntro:
@@ -66,7 +66,7 @@ const COPY = {
       "Full board: breakfast, a light lunch and dinner, with vegetarian and vegan options",
       "Daily guided trail runs in groups by pace and experience, from relaxed 10 km runs to mountain tours with more than 1,500 m of climbing",
       "Technique coaching, including for beginners",
-      "Evenings together, campfires and the Sunset Rave",
+      "Evenings together, campfires and the summit rave",
     ],
     pricesTitle: "Prices 2027",
     pricesIntro:

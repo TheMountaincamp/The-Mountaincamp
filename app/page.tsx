@@ -105,7 +105,7 @@ const structuredData = {
       name: "Mountaincamp 2027",
       alternateName: ["Mountain Camp 2027", "The Mountain Camp 2027", "Trailrunning Camp Österreich", "Trail Running Camp Austria"],
       description:
-        "5-tägiges Trailrunning Camp in Hochkrimml, Österreich, für alle Level: tägliche Trailruns in Gruppen nach Tempo, Workshops, gemeinsame Abende und Sunset Rave.",
+        "5-tägiges Trailrunning Camp in Hochkrimml, Österreich, für alle Level: tägliche Trailruns in Gruppen nach Tempo, Workshops, gemeinsame Abende und Summit Rave.",
       sport: "Trail Running",
       startDate: "2027-08-18",
       endDate: "2027-08-22",

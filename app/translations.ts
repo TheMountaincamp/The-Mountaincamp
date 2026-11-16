@@ -19,7 +19,7 @@ export const translations = {
     // Key features
     epicTrails: "TRAILS",
     epicTrailsDesc: "Erlebe atemberaubende Trails für alle Laufniveaus",
-    sunsetRave: "SUNSET RAVE",
+    sunsetRave: "SUMMIT RAVE",
     sunsetRaveDesc: "Tanz die müden Beine locker bei unserer legendären Summit-Party",
     community: "COMMUNITY",
     communityDesc: "Connecte dich mit Laufenden aus ganz Europa",
@@ -45,19 +45,19 @@ export const translations = {
 
     // Feature cards
     trailrunningTitle: "Trails für jedes Level",
-    trailrunningDesc: "Jeden Tag geführte Läufe in Gruppen nach Tempo. Von entspannten 10 km bis zur Gipfeltour mit 1.500 Höhenmetern.",
+    trailrunningDesc: "Tägliche Trailruns in Gruppen nach Tempo. Von entspannten 10 km bis zur Gipfeltour mit 1.500 Höhenmetern.",
     recoveryTitle: "Erholung wie die Profis",
     recoveryDesc: "Recovery Lounge, Sauna, Eisbaden und Morning Yoga. Deine Beine danken es dir an Tag vier.",
     creativityTitle: "Lern etwas Neues",
     creativityDesc:
       "Talks zu Training, Ernährung und Mindset, dazu kreative Workshops von Linoldruck bis Töpfern. Einige Workshops sind kostenlos, andere zubuchbar.",
     raveTitle: "Abende, die bleiben",
-    raveDesc: "Lagerfeuer, Karaoke, Outdoor-Kino und der Gipfelrave. Die meisten kommen allein. Keiner fährt allein nach Hause.",
+    raveDesc: "Lagerfeuer, Karaoke, Outdoor-Kino und der Summit Rave. Die meisten kommen allein. Keiner fährt allein nach Hause.",
 
     // Mountain Rave section
-    raveHighlightTitle: "SUNSET RAVE",
+    raveHighlightTitle: "SUMMIT RAVE",
     raveHighlightDesc:
-      "Erlebe die ultimative Feier von Laufen, Musik und Gemeinschaft. Unser legendärer Sunset Rave findet auf einem Berggipfel statt, mit Panoramablick, unglaublicher Musik und einer Atmosphäre, die du nie vergessen wirst.",
+      "Erlebe die ultimative Feier von Laufen, Musik und Gemeinschaft. Unser Summit Rave findet auf einem Berggipfel statt, mit Panoramablick, unglaublicher Musik und einer Atmosphäre, die du nie vergessen wirst.",
     raveBullet1: "Live DJ-Sets mit Bergblick",
     raveBullet2: "Beine ausschütteln",
     raveBullet3: "Feiere mit deiner Community",
@@ -193,7 +193,7 @@ export const translations = {
     // Key features
     epicTrails: "EPIC TRAILS",
     epicTrailsDesc: "Experience breathtaking alpine routes designed for all running levels",
-    sunsetRave: "SUNSET RAVE",
+    sunsetRave: "SUMMIT RAVE",
     sunsetRaveDesc: "Dance under the stars at our legendary mountain-top party",
     community: "COMMUNITY",
     communityDesc: "Connect with like-minded runners in an unforgettable shared experience",
@@ -219,7 +219,7 @@ export const translations = {
 
     // Feature cards
     trailrunningTitle: "Trails for every level",
-    trailrunningDesc: "Guided runs every day, in groups by pace. From relaxed 10 km to summit tours with 1,500 m of climbing.",
+    trailrunningDesc: "Daily trail runs in groups by pace. From relaxed 10 km to summit tours with 1,500 m of climbing.",
     recoveryTitle: "Recover like a pro",
     recoveryDesc: "Recovery lounge, sauna, ice baths and morning yoga. Your legs will thank you on day four.",
     creativityTitle: "Learn something new",
@@ -230,9 +230,9 @@ export const translations = {
       "Campfire, karaoke, outdoor cinema and the summit rave. Most people arrive alone. Nobody leaves alone.",
 
     // Mountain Rave section
-    raveHighlightTitle: "MOUNTAIN-TOP SUNSET RAVE",
+    raveHighlightTitle: "SUMMIT RAVE",
     raveHighlightDesc:
-      "Experience the ultimate celebration of running, music, and community. Our legendary sunset rave takes place on a mountain summit, with panoramic views, incredible music, and an atmosphere you'll never forget.",
+      "Experience the ultimate celebration of running, music, and community. Our summit rave takes place on a mountain summit, with panoramic views, incredible music, and an atmosphere you'll never forget.",
     raveBullet1: "Live DJ sets with mountain views",
     raveBullet2: "Shaking out them tired legs",
     raveBullet3: "Celebrate with your running community",
