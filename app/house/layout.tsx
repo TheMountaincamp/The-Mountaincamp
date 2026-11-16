@@ -3,6 +3,7 @@ import { pageMetadata, breadcrumb, jsonLd } from "@/app/lib/seo"
 
 export const metadata: Metadata = pageMetadata({
   path: "/house",
+  bilingual: "de",
   title: "Unterkunft in Hochkrimml",
   description:
     "Das Berghaus des Mountaincamp in Hochkrimml: Zimmer, Vollpension, Sauna und WLAN. Hier wohnst du während des Trailrunning Camps vom 18. bis 22. August 2027.",

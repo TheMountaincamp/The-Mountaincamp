@@ -2,6 +2,7 @@
 
 import { useEffect, useRef } from "react"
 import { usePathname } from "next/navigation"
+import { stripEn } from "@/app/lib/locale"
 import { useCookieConsent } from "@/contexts/cookie-consent-context"
 import { META_PIXEL_ID, trackMeta } from "@/lib/meta-pixel"
 import { SALE_PHASES, getPhaseState } from "@/app/lib/early-bird"
@@ -74,7 +75,7 @@ export default function MetaPixel() {
     if (!allowed || !pathname || lastTracked.current === pathname) return
     lastTracked.current = pathname
     trackMeta("PageView")
-    const name = CONTENT_PAGES[pathname]
+    const name = CONTENT_PAGES[stripEn(pathname)]
     if (name) trackMeta("ViewContent", { content_name: name, content_category: "Camp" })
     // Auf der Ticketseite meldet die Buchungsmaske selbst, wann der Checkout beginnt
     if (pathname === TICKET_PAGE) trackMeta("ViewContent", { content_name: "Tickets", content_category: "Camp" })

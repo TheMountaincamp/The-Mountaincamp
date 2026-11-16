@@ -2,7 +2,7 @@
 
 import { useState, useEffect } from "react"
 import Image from "next/image"
-import Link from "next/link"
+import Link from "@/app/components/locale-link"
 import { motion } from "framer-motion"
 import { Mountain, ArrowUp, Clock, Route } from "lucide-react"
 import { useLanguage } from "@/contexts/language-context"
