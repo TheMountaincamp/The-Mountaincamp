@@ -519,7 +519,7 @@ export default function HomePageClient() {
     },
     {
       title: language === "de" ? "Stricken" : "Knitting",
-      image: "/images/knitting.png",
+      image: "/images/knitting.jpg",
       description:
         language === "de"
           ? "Lerne Stricken in entspannter Atmosphäre – eine perfekte achtsame Aktivität nach einem Lauftag."
