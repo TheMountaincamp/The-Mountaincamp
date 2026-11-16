@@ -37,7 +37,7 @@ export default function Loading() {
       <div className="relative mb-8 h-20 w-60">
         <img
           src="/images/mountaincamp-logo-white.png"
-          alt="The Mountaincamp Logo"
+          alt="Mountaincamp Logo"
           className="h-full w-auto object-contain"
         />
       </div>

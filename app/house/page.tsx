@@ -263,7 +263,7 @@ export default function HousePage() {
             <div className="mb-4 md:mb-0">
               <Image
                 src="/images/mountaincamp-logo-black.png"
-                alt="The Mountaincamp Logo"
+                alt="Mountaincamp Logo"
                 width={150}
                 height={29}
                 className="h-10 w-auto"

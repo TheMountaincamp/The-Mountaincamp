@@ -27,7 +27,7 @@ export default function TicketsPage() {
         </h1>
         <p className="mx-auto max-w-2xl text-sm text-white/80 md:text-lg">
           {lang === "de"
-            ? "The Mountaincamp 2027, 18. bis 22. August 2027 in Hochkrimml"
+            ? "Mountaincamp 2027, 18. bis 22. August 2027 in Hochkrimml"
             : "The Mountaincamp 2027, 18 to 22 August 2027 in Hochkrimml"}
         </p>
       </div>

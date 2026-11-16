@@ -5,7 +5,7 @@
 import type { Metadata } from "next"
 
 export const SITE_URL = "https://themountaincamp.de"
-export const SITE_NAME = "The Mountaincamp"
+export const SITE_NAME = "Mountaincamp"
 
 /** Vorschaubild für Social Media und Suchergebnisse, exakt 1200 x 630 px */
 export const OG_IMAGE = {
@@ -55,7 +55,7 @@ export function breadcrumb(name: string, path: string) {
     "@context": "https://schema.org",
     "@type": "BreadcrumbList",
     itemListElement: [
-      { "@type": "ListItem", position: 1, name: "The Mountaincamp", item: SITE_URL },
+      { "@type": "ListItem", position: 1, name: "Mountaincamp", item: SITE_URL },
       { "@type": "ListItem", position: 2, name, item: `${SITE_URL}${path}` },
     ],
   }

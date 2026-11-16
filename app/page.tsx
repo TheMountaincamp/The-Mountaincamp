@@ -26,10 +26,10 @@ function currentOffer() {
 
 export const metadata: Metadata = {
   title: {
-    absolute: "Trailrunning Camp Österreich 2027 | The Mountaincamp",
+    absolute: "Trailrunning Camp Österreich 2027 | Mountaincamp",
   },
   description:
-    "Trailrunning Camp in den österreichischen Alpen: 5 Tage tägliche Trailruns, Workshops und Community in Hochkrimml. Für alle Level, 18. bis 22. August 2027.",
+    "5 Tage Trailrunning in Hochkrimml: tägliche Trailruns für alle Level, Vollpension, Workshops und Bus ab Berlin und München. 18. bis 22. August 2027.",
   keywords: [
     "Trailrunning Camp",
     "Trailrunning Camp Österreich",
@@ -49,7 +49,7 @@ export const metadata: Metadata = {
     canonical: SITE_URL,
   },
   openGraph: {
-    title: "The Mountaincamp 2027 | Trailrunning Camp in Österreich",
+    title: "Mountaincamp 2027 | Trailrunning Camp in Österreich",
     description:
       "5 Tage Trailrunning, Workshops und Community in den österreichischen Alpen. Hochkrimml, 18. bis 22. August 2027.",
     url: SITE_URL,
@@ -61,7 +61,7 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "The Mountaincamp 2027 | Trailrunning Camp in Österreich",
+    title: "Mountaincamp 2027 | Trailrunning Camp in Österreich",
     description:
       "5 Tage Trailrunning, Workshops und Community in den österreichischen Alpen. Hochkrimml, 18. bis 22. August 2027.",
     images: [OG_IMAGE.url],
@@ -72,7 +72,7 @@ const organization = {
   "@type": "Organization",
   "@id": `${SITE_URL}/#organization`,
   name: SITE_NAME,
-  alternateName: ["Mountain Camp", "The Mountain Camp", "Mountaincamp", "Mountain Camp Hochkrimml"],
+  alternateName: ["The Mountaincamp", "Mountain Camp", "The Mountain Camp", "Mountain Camp Hochkrimml"],
   url: SITE_URL,
   logo: `${SITE_URL}/images/mountaincamp-logo-black.png`,
   image: `${SITE_URL}${OG_IMAGE.url}`,
@@ -95,14 +95,14 @@ const structuredData = {
       "@id": `${SITE_URL}/#website`,
       url: SITE_URL,
       name: SITE_NAME,
-      alternateName: ["Mountain Camp", "Mountaincamp"],
+      alternateName: ["The Mountaincamp", "Mountain Camp"],
       inLanguage: ["de", "en"],
       publisher: { "@id": `${SITE_URL}/#organization` },
     },
     {
       "@type": "SportsEvent",
       "@id": `${SITE_URL}/#event-2027`,
-      name: "The Mountaincamp 2027",
+      name: "Mountaincamp 2027",
       alternateName: ["Mountain Camp 2027", "The Mountain Camp 2027", "Trailrunning Camp Österreich", "Trail Running Camp Austria"],
       description:
         "5-tägiges Trailrunning Camp in Hochkrimml, Österreich, für alle Level: tägliche Trailruns in Gruppen nach Tempo, Workshops, gemeinsame Abende und Sunset Rave.",
