@@ -16,7 +16,7 @@ const COPY = {
       "4 Nächte im Berghaus auf 1.700 m",
       "Vollpension, auch vegetarisch und vegan",
       "Tägliche geführte Trailruns für jedes Level",
-      "Gemeinsame Abende, Lagerfeuer und Sunset Rave",
+      "Gemeinsame Abende, Lagerfeuer und Summit Rave",
     ],
     extras: [
       "Zubuchbar: Workshops wie Yoga, Töpfern und Aquarell",
@@ -34,7 +34,7 @@ const COPY = {
       "4 nights in a mountain lodge at 1,700 m",
       "Full board, vegetarian and vegan too",
       "Daily guided trail runs for every level",
-      "Evenings together, campfires and the sunset rave",
+      "Evenings together, campfires and the summit rave",
     ],
     extras: [
       "Add-ons: workshops such as yoga, pottery and watercolour",

@@ -542,12 +542,12 @@ export default function HomePageClient() {
           : "Share stories and connect with fellow runners around a cozy campfire under the stars.",
     },
     {
-      title: "Sunset Rave",
+      title: "Summit Rave",
       image: "/images/mountain-top-sunset-rave.jpg",
       description:
         language === "de"
-          ? "Tanze zu großartiger Musik mit spektakulärem Bergblick bei unserer legendären Sunset Party."
-          : "Dance to great music with spectacular mountain views at our legendary sunset party.",
+          ? "Musik, Bergblick und 300 Leute, die tagsüber zusammen gelaufen sind. Getanzt wird oben am Berg."
+          : "Music, mountain views and 300 people who ran together during the day. We dance up on the mountain.",
     },
   ]
 
@@ -861,7 +861,7 @@ export default function HomePageClient() {
         <section className="bg-white py-10 md:py-14">
           <div className="container max-w-4xl">
             <h2 className="text-2xl font-bold uppercase tracking-tight text-gray-900 md:text-4xl">
-              {language === "de" ? "Trailrunning Camp in den österreichischen Alpen" : "Trail Running Camp in the Austrian Alps"}
+              {language === "de" ? "Trailrunning für Einsteiger:innen und Erfahrene" : "Trail running for beginners and experienced runners"}
             </h2>
 
             <p className="mt-4 text-lg leading-relaxed text-gray-700">
@@ -911,7 +911,7 @@ export default function HomePageClient() {
         <Marquee
           items={
             language === "de"
-              ? ["Krafttraining Workshop", "Nutrition Workshop", "Stretching Workshop", "Morning Yoga", "Upcycling Classes", "Landscape Painting", "Kletterkurs", "Techniktraining", "Strickkurs", "Mountainbike-Ausfahrt", "Eisbaden", "Gipfelrave", "Outdoor Movie Night", "Lagerfeuerabend", "Speakers Night"]
+              ? ["Krafttraining Workshop", "Nutrition Workshop", "Stretching Workshop", "Morning Yoga", "Upcycling Classes", "Landscape Painting", "Kletterkurs", "Techniktraining", "Strickkurs", "Mountainbike-Ausfahrt", "Eisbaden", "Summit Rave", "Outdoor Movie Night", "Lagerfeuerabend", "Speakers Night"]
               : ["Strength workshop", "Nutrition workshop", "Stretching workshop", "Morning yoga", "Upcycling classes", "Landscape painting", "Climbing course", "Technique coaching", "Knitting class", "Mountain bike ride", "Ice bathing", "Summit rave", "Outdoor movie night", "Campfire night", "Speakers night"]
           }
         />
