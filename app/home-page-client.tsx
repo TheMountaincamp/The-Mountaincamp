@@ -487,7 +487,7 @@ export default function HomePageClient() {
     },
     {
       title: language === "de" ? "MTB Tour" : "MTB Trip",
-      image: "/images/mtb-trip.png",
+      image: "/images/mtb-trip.jpg",
       description:
         language === "de"
           ? "Erkunde malerische Bergpfade auf zwei Rädern bei unseren geführten Mountainbike-Touren."
@@ -503,7 +503,7 @@ export default function HomePageClient() {
     },
     {
       title: language === "de" ? "Aquarellmalerei" : "Aquarell Painting",
-      image: "/images/aquarell-painting.png",
+      image: "/images/aquarell-painting.jpg",
       description:
         language === "de"
           ? "Drücke deine Kreativität aus, indem du die atemberaubenden Alpenlandschaften mit Wasserfarben malst."
@@ -511,7 +511,7 @@ export default function HomePageClient() {
     },
     {
       title: "Yoga",
-      image: "/images/yoga.png",
+      image: "/images/yoga.jpg",
       description:
         language === "de"
           ? "Finde Balance und erhole dich mit Yoga-Sessions, die speziell für Läufer konzipiert sind."
@@ -519,7 +519,7 @@ export default function HomePageClient() {
     },
     {
       title: language === "de" ? "Stricken" : "Knitting",
-      image: "/images/knitting.png",
+      image: "/images/knitting.jpg",
       description:
         language === "de"
           ? "Lerne Stricken in entspannter Atmosphäre – eine perfekte achtsame Aktivität nach einem Lauftag."
