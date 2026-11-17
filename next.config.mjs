@@ -83,6 +83,11 @@ const nextConfig = {
         permanent: true,
       },
       {
+        source: '/zeitplan',
+        destination: '/',
+        permanent: true,
+      },
+      {
         source: '/en/tickets',
         destination: '/tickets',
         permanent: false,
