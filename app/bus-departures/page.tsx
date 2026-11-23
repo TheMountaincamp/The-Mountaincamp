@@ -19,7 +19,7 @@ export default function BusDeparturesPage() {
     {
       city: { de: "Berlin", en: "Berlin" },
       location: { de: "Hauptbahnhof", en: "Central Station" },
-      price: 120,
+      price: 140,
       modes: ["train", "bus"] as const,
     },
     {

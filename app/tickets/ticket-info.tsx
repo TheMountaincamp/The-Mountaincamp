@@ -11,7 +11,7 @@ import { SALE_PHASES } from "@/app/lib/early-bird"
 
 const ROOM_UPGRADES = { four: 60, double: 180 }
 const SHUTTLES = [
-  { city: "Berlin", price: 120 },
+  { city: "Berlin", price: 140 },
   { city: "München", cityEn: "Munich", price: 80 },
   { city: "Jenbach", price: 40 },
 ]
