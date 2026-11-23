@@ -20,7 +20,7 @@ const COPY = {
     ],
     extras: [
       "Zubuchbar: Workshops wie Yoga, Töpfern und Aquarell",
-      "Shuttle ab Berlin 120 €, München 80 €, Jenbach 40 €",
+      "Shuttle ab Berlin 140 €, München 80 €, Jenbach 40 €",
       "Die meisten reisen allein oder zu zweit an",
       "7 Tage nach Buchung kostenlos stornieren (bei Buchung bis 30 Tage vor Camp-Start), danach bis 30 Tage vorher 20 %",
     ],
@@ -38,7 +38,7 @@ const COPY = {
     ],
     extras: [
       "Add-ons: workshops such as yoga, pottery and watercolour",
-      "Shuttle from Berlin 120 €, Munich 80 €, Jenbach 40 €",
+      "Shuttle from Berlin 140 €, Munich 80 €, Jenbach 40 €",
       "Most people come alone or as a pair",
       "Free cancellation within 7 days of booking (if booked at least 30 days before the camp), then 20 % up to 30 days before",
     ],
