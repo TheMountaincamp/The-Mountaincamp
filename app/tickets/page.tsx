@@ -3,7 +3,6 @@
 import { useLanguage } from "@/contexts/language-context"
 import SiteHeader from "@/app/components/site-header"
 import BookingMask from "./booking-mask"
-import SocialProof from "./social-proof"
 import TicketInfo from "./ticket-info"
 import QuickFacts from "./quick-facts"
 import { BOOKING_URL } from "@/app/lib/early-bird"
@@ -33,7 +32,6 @@ export default function TicketsPage() {
       </div>
 
       <div className="container mx-auto px-4 py-5 md:py-10">
-        <SocialProof lang={lang} />
         <QuickFacts lang={lang} />
         <div id="buchung" className="scroll-mt-20">
           <BookingMask lang={lang} />
