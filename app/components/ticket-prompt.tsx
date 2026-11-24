@@ -1,11 +1,13 @@
 "use client"
 
+import { useSiteConfig } from "@/contexts/site-config-context"
+
 import { useEffect, useState } from "react"
 import { AnimatePresence, motion, useReducedMotion } from "framer-motion"
 import { Ticket, X } from "lucide-react"
 import { useLanguage } from "@/contexts/language-context"
 import { useCookieConsent } from "@/contexts/cookie-consent-context"
-import { SALE_PHASES, TICKET_URL, getPhaseState, getTimeParts } from "@/app/lib/early-bird"
+import { TICKET_URL, getPhaseState, getTimeParts } from "@/app/lib/early-bird"
 
 /**
  * Kauf-Popup: erscheint nach DELAY_MS auf der Seite, solange eine Preisphase
@@ -76,6 +78,7 @@ export default function TicketPrompt() {
     return () => window.clearTimeout(t)
   }, [])
 
+  const { phases: SALE_PHASES } = useSiteConfig()
   const live = SALE_PHASES.find((p) => getPhaseState(p, now) === "live")
   const later = Math.max(...SALE_PHASES.map((p) => p.price ?? 0))
   const save = live?.price != null ? later - live.price : 0

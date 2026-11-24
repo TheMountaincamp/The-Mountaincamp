@@ -1,5 +1,8 @@
 "use client"
 
+import { useSiteConfig } from "@/contexts/site-config-context"
+import { shuttlePrice } from "@/app/lib/site-config"
+
 import { useState, useEffect } from "react"
 import Image from "next/image"
 import Link from "@/app/components/locale-link"
@@ -9,6 +12,7 @@ import { useLanguage } from "@/contexts/language-context"
 
 export default function BusDeparturesPage() {
   const { language } = useLanguage()
+  const siteConfig = useSiteConfig()
   const [isLoaded, setIsLoaded] = useState(false)
 
   useEffect(() => {
@@ -19,19 +23,19 @@ export default function BusDeparturesPage() {
     {
       city: { de: "Berlin", en: "Berlin" },
       location: { de: "Hauptbahnhof", en: "Central Station" },
-      price: 140,
+      price: shuttlePrice(siteConfig, "berlin"),
       modes: ["train", "bus"] as const,
     },
     {
       city: { de: "München", en: "Munich" },
       location: { de: "Zentraler Omnibusbahnhof (ZOB)", en: "Central Bus Station (ZOB)" },
-      price: 80,
+      price: shuttlePrice(siteConfig, "muenchen"),
       modes: ["bus"] as const,
     },
     {
       city: { de: "Jenbach", en: "Jenbach" },
       location: { de: "Bahnhof", en: "Train station" },
-      price: 40,
+      price: shuttlePrice(siteConfig, "jenbach"),
       modes: ["bus"] as const,
     },
   ]

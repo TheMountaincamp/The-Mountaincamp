@@ -5,11 +5,15 @@ import SiteHeader from "@/app/components/site-header"
 import BookingMask from "./booking-mask"
 import TicketInfo from "./ticket-info"
 import QuickFacts from "./quick-facts"
+import NotifySignupForm from "@/app/components/notify-signup-form"
+import { useSiteConfig } from "@/contexts/site-config-context"
 import { BOOKING_URL } from "@/app/lib/early-bird"
 
 export default function TicketsPage() {
   const { language } = useLanguage()
   const lang = language === "de" ? "de" : "en"
+  const { tickets } = useSiteConfig()
+  const soldOut = tickets.sold >= tickets.total
 
   return (
     <div className="min-h-screen bg-white text-gray-900">
@@ -32,6 +36,19 @@ export default function TicketsPage() {
       </div>
 
       <div className="container mx-auto px-4 py-5 md:py-10">
+        {soldOut && (
+          <section id="warteliste" className="mx-auto mb-8 max-w-3xl border border-gray-900 p-5 md:p-6">
+            <h2 className="text-xl font-bold md:text-2xl">
+              {lang === "de" ? "Ausgebucht. Trag dich auf die Warteliste ein." : "Sold out. Join the waitlist."}
+            </h2>
+            <p className="mt-1 text-sm text-gray-600">
+              {lang === "de"
+                ? "Wird ein Platz frei, melden wir uns in der Reihenfolge der Anmeldung."
+                : "If a spot opens up, we contact people in the order they signed up."}
+            </p>
+            <NotifySignupForm interest="waitlist" source="tickets" className="mt-4" />
+          </section>
+        )}
         <QuickFacts lang={lang} />
         <div id="buchung" className="scroll-mt-20">
           <BookingMask lang={lang} />

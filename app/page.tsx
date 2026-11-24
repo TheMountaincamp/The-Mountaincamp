@@ -3,6 +3,8 @@ import HomePageClient from "./home-page-client"
 import { faqsDE } from "@/app/data/faq"
 import { SITE_URL, SITE_NAME, OG_IMAGE, SAME_AS, jsonLd, languageAlternates } from "@/app/lib/seo"
 import { eventSchema } from "@/app/lib/event-schema"
+import { getSiteConfig } from "@/app/lib/site-config-server"
+import type { SiteConfig } from "@/app/lib/site-config"
 
 // Seite stündlich neu erzeugen, damit der Preis im Event-Schema der aktuellen Verkaufsphase folgt
 export const revalidate = 3600
@@ -70,7 +72,8 @@ const organization = {
   },
 }
 
-const structuredData = {
+function buildStructuredData(config: SiteConfig) {
+  return {
   "@context": "https://schema.org",
   "@graph": [
     organization,
@@ -83,7 +86,7 @@ const structuredData = {
       inLanguage: ["de", "en"],
       publisher: { "@id": `${SITE_URL}/#organization` },
     },
-    eventSchema("de"),
+    eventSchema("de", config),
     {
       "@type": "FAQPage",
       "@id": `${SITE_URL}/#faq`,
@@ -94,9 +97,11 @@ const structuredData = {
       })),
     },
   ],
+  }
 }
 
-export default function Home() {
+export default async function Home() {
+  const structuredData = buildStructuredData(await getSiteConfig())
   return (
     <>
       <script type="application/ld+json" dangerouslySetInnerHTML={jsonLd(structuredData)} />

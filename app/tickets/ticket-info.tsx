@@ -1,6 +1,6 @@
 "use client"
 
-import { SALE_PHASES } from "@/app/lib/early-bird"
+import { useSiteConfig } from "@/contexts/site-config-context"
 
 /**
  * Infotext unter der Buchungsmaske: Leistungen, Preise, Anreise, Storno und
@@ -10,11 +10,6 @@ import { SALE_PHASES } from "@/app/lib/early-bird"
  */
 
 const ROOM_UPGRADES = { four: 60, double: 180 }
-const SHUTTLES = [
-  { city: "Berlin", price: 140 },
-  { city: "München", cityEn: "Munich", price: 80 },
-  { city: "Jenbach", price: 40 },
-]
 
 const COPY = {
   de: {
@@ -102,7 +97,9 @@ const COPY = {
 
 export default function TicketInfo({ lang }: { lang: "de" | "en" }) {
   const c = COPY[lang]
-  const phases = SALE_PHASES.filter((p) => p.price !== null)
+  const config = useSiteConfig()
+  const phases = config.phases.filter((p) => p.price !== null)
+  const SHUTTLES = config.shuttles.map((s) => ({ city: s.city.de, cityEn: s.city.en, price: s.price }))
 
   return (
     <section className="mx-auto mt-16 max-w-3xl text-gray-700">

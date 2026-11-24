@@ -1,9 +1,7 @@
-import { db } from "@/lib/db"
-import { earlyBirdSignups } from "@/lib/db/schema"
 import { NextResponse } from "next/server"
+import { addLead, EMAIL_REGEX } from "@/lib/leads"
 
-const EMAIL_REGEX = /^[^\s@]+@[^\s@]+\.[^\s@]+$/
-
+/** Alte Adresse der Ticket-Benachrichtigung, schreibt jetzt in die Leads-Tabelle */
 export async function POST(request: Request) {
   try {
     const body = await request.json()
@@ -13,11 +11,10 @@ export async function POST(request: Request) {
       return NextResponse.json({ error: "invalid_email" }, { status: 400 })
     }
 
-    await db.insert(earlyBirdSignups).values({ email }).onConflictDoNothing()
-
+    await addLead({ email, interest: "ticket-notify", source: "notify" })
     return NextResponse.json({ ok: true })
   } catch (error) {
-    console.error("[v0] Error saving early bird signup:", error)
+    console.error("[notify]", error)
     return NextResponse.json({ error: "server_error" }, { status: 500 })
   }
 }

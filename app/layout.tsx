@@ -6,6 +6,8 @@ import "./globals.css"
 import { ThemeProvider } from "@/components/theme-provider"
 import { CookieConsentProvider } from "@/contexts/cookie-consent-context"
 import { LanguageProvider } from "@/contexts/language-context"
+import { SiteConfigProvider } from "@/contexts/site-config-context"
+import { getSiteConfig } from "@/app/lib/site-config-server"
 import CookieBanner from "@/components/cookie-banner"
 import MetaPixel from "@/components/meta-pixel"
 import Script from "next/script"
@@ -97,11 +99,12 @@ export const metadata: Metadata = {
   manifest: "/manifest.json",
 }
 
-export default function RootLayout({
+export default async function RootLayout({
   children,
 }: Readonly<{
   children: React.ReactNode
 }>) {
+  const siteConfig = await getSiteConfig()
   return (
     <html lang="de" suppressHydrationWarning>
       <head>
@@ -132,6 +135,7 @@ export default function RootLayout({
       </head>
 
       <body className={inter.className}>
+        <SiteConfigProvider value={siteConfig}>
         <Suspense fallback={<div className="min-h-screen bg-black"></div>}>
           <LanguageProvider>
             <CookieConsentProvider>
@@ -149,6 +153,7 @@ export default function RootLayout({
             </CookieConsentProvider>
           </LanguageProvider>
         </Suspense>
+        </SiteConfigProvider>
 
         <Script
           strategy="afterInteractive"
