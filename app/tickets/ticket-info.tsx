@@ -1,5 +1,6 @@
 "use client"
 
+import { copy } from "@/app/lib/texts"
 import { useSiteConfig } from "@/contexts/site-config-context"
 
 /**
@@ -96,7 +97,7 @@ const COPY = {
 } as const
 
 export default function TicketInfo({ lang }: { lang: "de" | "en" }) {
-  const c = COPY[lang]
+  const c = copy(lang, "tickets.ticket-info", COPY)
   const config = useSiteConfig()
   const phases = config.phases.filter((p) => p.price !== null)
   const SHUTTLES = config.shuttles.map((s) => ({ city: s.city.de, cityEn: s.city.en, price: s.price }))

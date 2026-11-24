@@ -1,5 +1,6 @@
 "use client"
 
+import { tx } from "@/app/lib/texts"
 import { useEffect, useState } from "react"
 import { BOOKING_URL } from "@/app/lib/early-bird"
 
@@ -80,15 +81,15 @@ export default function BookingMask({ lang }: { lang: "de" | "en" }) {
     <div className="mx-auto w-full max-w-[1100px]">
       {failed && (
         <p className="py-12 text-center text-gray-700">
-          {lang === "de" ? "Die Buchung konnte hier nicht geladen werden. " : "The booking could not be loaded here. "}
+          {tx(lang, "tickets.die-buchung-konnte-hier-nicht-geladen", "Die Buchung konnte hier nicht geladen werden. ", "The booking could not be loaded here. ")}
           <a href={BOOKING_URL} target="_blank" rel="noopener noreferrer" className="font-semibold underline">
-            {lang === "de" ? "Direkt zur Buchungsseite" : "Open the booking page"}
+            {tx(lang, "tickets.direkt-zur-buchungsseite", "Direkt zur Buchungsseite", "Open the booking page")}
           </a>
         </p>
       )}
       <iframe
         id="bm-iframe"
-        title={lang === "de" ? "Buchung the Mountaincamp 2027" : "Booking the Mountaincamp 2027"}
+        title={tx(lang, "tickets.buchung-the-mountaincamp-2027", "Buchung the Mountaincamp 2027", "Booking the Mountaincamp 2027")}
         width="100%"
         height="900"
         style={{ border: "none", outline: "none", overflow: "hidden", display: "block" }}

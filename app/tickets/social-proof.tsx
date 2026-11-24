@@ -1,5 +1,6 @@
 "use client"
 
+import { copy, tx } from "@/app/lib/texts"
 import { useSiteConfig } from "@/contexts/site-config-context"
 
 /**
@@ -49,7 +50,7 @@ function Label({ children }: { children: React.ReactNode }) {
 }
 
 export default function SocialProof({ lang }: { lang: "de" | "en" }) {
-  const t = T[lang]
+  const t = copy(lang, "tickets.social-proof.t", T)
   const { tickets } = useSiteConfig()
   const TICKETS_SOLD = tickets.sold
   const TOTAL_TICKETS = tickets.total
@@ -60,7 +61,7 @@ export default function SocialProof({ lang }: { lang: "de" | "en" }) {
 
   return (
     <section
-      aria-label={lang === "de" ? "Wer dabei ist" : "Who is coming"}
+      aria-label={tx(lang, "tickets.wer-dabei-ist", "Wer dabei ist", "Who is coming")}
       className="mx-auto mb-5 max-w-3xl border-b border-gray-200 pb-5 md:mb-12 md:pb-10"
     >
       <p className="text-lg font-semibold leading-snug tracking-tight md:text-3xl">

@@ -8,6 +8,7 @@ import { CookieConsentProvider } from "@/contexts/cookie-consent-context"
 import { LanguageProvider } from "@/contexts/language-context"
 import { SiteConfigProvider } from "@/contexts/site-config-context"
 import { getSiteConfig } from "@/app/lib/site-config-server"
+import { getTextOverrides } from "@/app/lib/texts-server"
 import CookieBanner from "@/components/cookie-banner"
 import MetaPixel from "@/components/meta-pixel"
 import Script from "next/script"
@@ -104,7 +105,7 @@ export default async function RootLayout({
 }: Readonly<{
   children: React.ReactNode
 }>) {
-  const siteConfig = await getSiteConfig()
+  const [siteConfig, textOverrides] = await Promise.all([getSiteConfig(), getTextOverrides()])
   return (
     <html lang="de" suppressHydrationWarning>
       <head>
@@ -137,7 +138,7 @@ export default async function RootLayout({
       <body className={inter.className}>
         <SiteConfigProvider value={siteConfig}>
         <Suspense fallback={<div className="min-h-screen bg-black"></div>}>
-          <LanguageProvider>
+          <LanguageProvider overrides={textOverrides}>
             <CookieConsentProvider>
               <ThemeProvider
                 attribute="class"

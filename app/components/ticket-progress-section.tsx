@@ -1,5 +1,6 @@
 "use client"
 
+import { copy } from "@/app/lib/texts"
 import { useSiteConfig } from "@/contexts/site-config-context"
 
 import { useEffect, useState } from "react"
@@ -72,7 +73,7 @@ function formatStart(iso: string, language: "de" | "en") {
 function PhaseCard({ phase, index, now }: { phase: SalePhaseConfig; index: number; now: number | null }) {
   const { language } = useLanguage()
   const prefersReducedMotion = useReducedMotion()
-  const c = COPY[language]
+  const c = copy(language, "start.ticket-progress-section", COPY)
   const lang = language as "de" | "en"
   const state: PhaseState = now === null ? (index === 0 ? "ended" : "upcoming") : getPhaseState(phase, now)
   const live = state === "live"
@@ -165,7 +166,7 @@ function PhaseCard({ phase, index, now }: { phase: SalePhaseConfig; index: numbe
 
 export default function TicketProgressSection() {
   const { language } = useLanguage()
-  const c = COPY[language]
+  const c = copy(language, "start.ticket-progress-section", COPY)
   const { tickets, phases } = useSiteConfig()
   const TICKETS_SOLD = tickets.sold
   const TOTAL_TICKETS = tickets.total

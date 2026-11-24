@@ -1,5 +1,6 @@
 "use client"
 
+import { copy } from "@/app/lib/texts"
 import { useSiteConfig } from "@/contexts/site-config-context"
 import { fruehbucherEnd } from "@/app/lib/site-config"
 
@@ -120,7 +121,7 @@ interface EarlyBirdBannerProps {
 export default function EarlyBirdBanner({ delayMs = 3_000, onHeightChange }: EarlyBirdBannerProps = {}) {
   const { language } = useLanguage()
   const prefersReducedMotion = useReducedMotion()
-  const c = COPY[language]
+  const c = copy(language, "start.early-bird-banner", COPY)
   const earlyBirdLabel = EARLY_BIRD_LABEL[language]
   const phase2Label = PHASE_2_LABEL[language]
   const nextLaunchLabel = NEXT_LAUNCH_LABEL[language]

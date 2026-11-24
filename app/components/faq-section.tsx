@@ -1,5 +1,6 @@
 "use client"
 
+import { copy, tx } from "@/app/lib/texts"
 import { useState } from "react"
 import { motion, AnimatePresence } from "framer-motion"
 import { ChevronDown } from "lucide-react"
@@ -8,12 +9,14 @@ import { Button } from "@/components/ui/button"
 
 import { faqsDE, faqsEN } from "@/app/data/faq"
 
+const FAQ_COPY = { de: faqsDE, en: faqsEN }
+
 export default function FAQSection() {
   const { language } = useLanguage()
   const [openIndex, setOpenIndex] = useState<number | null>(null)
   const [showAllFaqs, setShowAllFaqs] = useState(false)
 
-  const faqs = language === "de" ? faqsDE : faqsEN
+  const faqs = copy(language, "start.faq", FAQ_COPY)
   const visibleFaqs = showAllFaqs ? faqs : faqs.slice(0, 5)
   const hasMoreFaqs = faqs.length > 5
 
@@ -30,12 +33,10 @@ export default function FAQSection() {
           className="text-center mb-16"
         >
           <h2 className="mb-4 text-3xl font-bold uppercase tracking-tight text-gray-900 md:text-4xl">
-            {language === "de" ? "Häufig gestellte Fragen" : "Frequently Asked Questions"}
+            {tx(language, "start.haeufig-gestellte-fragen", "Häufig gestellte Fragen", "Frequently Asked Questions")}
           </h2>
           <p className="text-xl text-gray-600">
-            {language === "de"
-              ? "Alles, was du über the Mountaincamp wissen musst"
-              : "Everything you need to know about the Mountaincamp"}
+            {tx(language, "start.alles-was-du-ueber-the-mountaincamp", "Alles, was du über the Mountaincamp wissen musst", "Everything you need to know about the Mountaincamp")}
           </p>
         </motion.div>
 
@@ -89,9 +90,7 @@ export default function FAQSection() {
           >
             <Button onClick={() => setShowAllFaqs(!showAllFaqs)} variant="outline" size="lg" className="gap-2">
               {showAllFaqs
-                ? language === "de"
-                  ? "Weniger anzeigen"
-                  : "Show less"
+                ? tx(language, "start.weniger-anzeigen", "Weniger anzeigen", "Show less")
                 : language === "de"
                   ? `Weitere ${faqs.length - 5} Fragen anzeigen`
                   : `Show ${faqs.length - 5} more questions`}
@@ -107,7 +106,7 @@ export default function FAQSection() {
           transition={{ duration: 0.6, delay: 0.4 }}
           className="mt-12 text-center"
         >
-          <p className="text-gray-600 mb-4">{language === "de" ? "Noch Fragen?" : "Still have questions?"}</p>
+          <p className="text-gray-600 mb-4">{tx(language, "start.noch-fragen", "Noch Fragen?", "Still have questions?")}</p>
           <a
             href="mailto:themountaincampde@gmail.com"
             className="text-primary hover:text-primary/80 font-semibold transition-colors"

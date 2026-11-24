@@ -1,5 +1,6 @@
 "use client"
 
+import { tx } from "@/app/lib/texts"
 import { useLanguage } from "@/contexts/language-context"
 import SiteHeader from "@/app/components/site-header"
 import BookingMask from "./booking-mask"
@@ -21,17 +22,13 @@ export default function TicketsPage() {
 
       <div className="frost-grey px-6 pb-5 pt-24 text-center text-white md:pb-12 md:pt-32">
         <h1 className="mb-1 text-2xl font-bold md:mb-3 md:text-5xl">
-          {lang === "de" ? "Tickets" : "Tickets"}
+          {tx(lang, "tickets.tickets", "Tickets", "Tickets")}
           <span className="sr-only">
-            {lang === "de"
-              ? ": Trailrunning Camp in Hochkrimml buchen"
-              : ": book the trail running camp in Hochkrimml"}
+            {tx(lang, "tickets.trailrunning-camp-in-hochkrimml-buchen", ": Trailrunning Camp in Hochkrimml buchen", ": book the trail running camp in Hochkrimml")}
           </span>
         </h1>
         <p className="mx-auto max-w-2xl text-sm text-white/80 md:text-lg">
-          {lang === "de"
-            ? "Mountaincamp 2027, 18. bis 22. August 2027 in Hochkrimml"
-            : "The Mountaincamp 2027, 18 to 22 August 2027 in Hochkrimml"}
+          {tx(lang, "tickets.mountaincamp-2027-18-bis-22-august", "Mountaincamp 2027, 18. bis 22. August 2027 in Hochkrimml", "The Mountaincamp 2027, 18 to 22 August 2027 in Hochkrimml")}
         </p>
       </div>
 
@@ -39,12 +36,10 @@ export default function TicketsPage() {
         {soldOut && (
           <section id="warteliste" className="mx-auto mb-8 max-w-3xl border border-gray-900 p-5 md:p-6">
             <h2 className="text-xl font-bold md:text-2xl">
-              {lang === "de" ? "Ausgebucht. Trag dich auf die Warteliste ein." : "Sold out. Join the waitlist."}
+              {tx(lang, "tickets.ausgebucht-trag-dich-auf-die-warteliste", "Ausgebucht. Trag dich auf die Warteliste ein.", "Sold out. Join the waitlist.")}
             </h2>
             <p className="mt-1 text-sm text-gray-600">
-              {lang === "de"
-                ? "Wird ein Platz frei, melden wir uns in der Reihenfolge der Anmeldung."
-                : "If a spot opens up, we contact people in the order they signed up."}
+              {tx(lang, "tickets.wird-ein-platz-frei-melden-wir", "Wird ein Platz frei, melden wir uns in der Reihenfolge der Anmeldung.", "If a spot opens up, we contact people in the order they signed up.")}
             </p>
             <NotifySignupForm interest="waitlist" source="tickets" className="mt-4" />
           </section>
@@ -57,11 +52,11 @@ export default function TicketsPage() {
           <TicketInfo lang={lang} />
         </div>
         <p className="mt-10 text-center text-sm text-gray-500">
-          {lang === "de" ? "Probleme bei der Buchung? " : "Trouble booking? "}
+          {tx(lang, "tickets.probleme-bei-der-buchung", "Probleme bei der Buchung? ", "Trouble booking? ")}
           <a href={BOOKING_URL} target="_blank" rel="noopener noreferrer" className="underline">
-            {lang === "de" ? "Buchungsseite in neuem Tab öffnen" : "Open the booking page in a new tab"}
+            {tx(lang, "tickets.buchungsseite-in-neuem-tab-oeffnen", "Buchungsseite in neuem Tab öffnen", "Open the booking page in a new tab")}
           </a>
-          {lang === "de" ? " oder schreib uns an " : " or email us at "}
+          {tx(lang, "tickets.oder-schreib-uns-an", " oder schreib uns an ", " or email us at ")}
           <a href="mailto:themountaincampde@gmail.com" className="underline">
             themountaincampde@gmail.com
           </a>
