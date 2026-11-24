@@ -13,7 +13,10 @@ import { SALE_PHASES, type SalePhaseConfig } from "@/app/lib/early-bird"
 export interface ShuttleConfig {
   id: "berlin" | "muenchen" | "jenbach"
   city: { de: string; en: string }
+  /** Preis pro Strecke (Hinfahrt oder Rückfahrt), pro Person */
   price: number
+  /** Gespeicherte Werte vor der Umstellung waren Hin- und Rückfahrt zusammen */
+  perLeg?: boolean
 }
 
 export interface SiteConfig {
@@ -26,9 +29,9 @@ export const DEFAULT_SITE_CONFIG: SiteConfig = {
   tickets: { sold: ticketData.sold, total: 300, updatedAt: ticketData.updatedAt ?? null },
   phases: SALE_PHASES,
   shuttles: [
-    { id: "berlin", city: { de: "Berlin", en: "Berlin" }, price: 140 },
-    { id: "muenchen", city: { de: "München", en: "Munich" }, price: 80 },
-    { id: "jenbach", city: { de: "Jenbach", en: "Jenbach" }, price: 40 },
+    { id: "berlin", city: { de: "Berlin", en: "Berlin" }, price: 70, perLeg: true },
+    { id: "muenchen", city: { de: "München", en: "Munich" }, price: 40, perLeg: true },
+    { id: "jenbach", city: { de: "Jenbach", en: "Jenbach" }, price: 20, perLeg: true },
   ],
 }
 
@@ -52,7 +55,7 @@ export function mergeSiteConfig(stored: Partial<SiteConfig>): SiteConfig {
     }),
     shuttles: d.shuttles.map((sh) => {
       const s = stored.shuttles?.find((x) => x.id === sh.id)
-      return s ? { ...sh, price: s.price } : sh
+      return s?.perLeg ? { ...sh, price: s.price } : sh
     }),
   }
 }

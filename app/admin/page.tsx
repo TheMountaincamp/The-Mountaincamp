@@ -100,7 +100,7 @@ export default async function AdminPage({ searchParams }: { searchParams: { save
         </form>
       </Card>
 
-      <Card title="Shuttle-Preise" note="Hin und zurück pro Person. Erscheint auf Ticketseite, Anreiseseite und in llms.txt. Den Preis in CADI musst du separat ändern.">
+      <Card title="Shuttle-Preise" note="Preis pro Strecke und Person (Hinfahrt und Rückfahrt werden einzeln gebucht). Erscheint auf Ticketseite, Anreiseseite und in llms.txt. Den Preis in CADI musst du separat ändern.">
         <form method="post" action="/admin/save?section=shuttles" className="flex flex-wrap items-end gap-3">
           {config.shuttles.map((s) => (
             <label key={s.id} className="text-sm">

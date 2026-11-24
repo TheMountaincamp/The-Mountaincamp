@@ -35,7 +35,7 @@ export async function POST(request: Request) {
     } else if (section === "shuttles") {
       await saveSetting(
         "shuttles",
-        current.shuttles.map((s) => ({ ...s, price: int(form.get(`shuttle-${s.id}`)) })),
+        current.shuttles.map((s) => ({ ...s, price: int(form.get(`shuttle-${s.id}`)), perLeg: true })),
       )
     } else if (section === "phases") {
       await saveSetting(
