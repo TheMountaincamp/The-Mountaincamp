@@ -52,6 +52,7 @@
   "page": "anreise",
   "section": "Kopfbereich",
   "order": 1,
+  "alt": true,
   "de": "Mountaincamp-Bus vor den Bergen in Hochkrimml",
   "en": "Mountaincamp bus in front of the mountains in Hochkrimml"
  },
@@ -835,6 +836,7 @@
   "page": "start",
   "section": "Intro",
   "order": 3,
+  "alt": true,
   "de": "Sechs Teilnehmende vom Mountaincamp 2026 auf einem Gipfel",
   "en": "Six participants of the Mountaincamp 2026 on a summit"
  },
@@ -891,6 +893,7 @@
   "page": "start",
   "section": "Über uns",
   "order": 5,
+  "alt": true,
   "de": "Trailrunning Camp Österreich Teilnehmer in Hochkrimml",
   "en": "Trail running camp Austria participants in Hochkrimml"
  },
@@ -899,6 +902,7 @@
   "page": "start",
   "section": "Erlebnis",
   "order": 6,
+  "alt": true,
   "de": "Fünf Tage. Ein Berg. Deine Crew.",
   "en": "Five days. One mountain. Your crew."
  },
@@ -1251,6 +1255,7 @@
   "page": "start",
   "section": "Aktivitäten",
   "order": 7,
+  "alt": true,
   "de": "Aktivitäten",
   "en": "Activities"
  },
@@ -1371,6 +1376,7 @@
   "page": "start",
   "section": "Eindrücke (Galerie)",
   "order": 9,
+  "alt": true,
   "de": "Trailrunning Camp Österreich Teilnehmer auf der Terrasse der Lodge",
   "en": "Trail running camp Austria participants socializing on lodge terrace"
  },
@@ -1379,6 +1385,7 @@
   "page": "start",
   "section": "Eindrücke (Galerie)",
   "order": 9,
+  "alt": true,
   "de": "Trailrunning Camp Gruppe an der Berghütte in Hochkrimml",
   "en": "Trail running camp group gathered at mountain lodge in Hochkrimml"
  },
@@ -1395,6 +1402,7 @@
   "page": "start",
   "section": "Eindrücke (Galerie)",
   "order": 9,
+  "alt": true,
   "de": "Trailrunning Camp Community auf der Terrasse bei Sonnenuntergang",
   "en": "Trail running camp community gathering on terrace at sunset"
  },
@@ -1403,6 +1411,7 @@
   "page": "start",
   "section": "Eindrücke (Galerie)",
   "order": 9,
+  "alt": true,
   "de": "Trailrunner tanzen und feiern gemeinsam auf dem Gipfel",
   "en": "Trail runners dancing and celebrating together on the summit"
  },
@@ -1419,6 +1428,7 @@
   "page": "start",
   "section": "Eindrücke (Galerie)",
   "order": 9,
+  "alt": true,
   "de": "Läufer jubeln gemeinsam am Gipfelkreuz",
   "en": "Runners cheering together at the summit cross"
  },
@@ -1435,6 +1445,7 @@
   "page": "start",
   "section": "Eindrücke (Galerie)",
   "order": 9,
+  "alt": true,
   "de": "Teilnehmer springen ausgelassen in einen Bergsee",
   "en": "Participants jumping joyfully into a mountain lake"
  },
@@ -1451,6 +1462,7 @@
   "page": "start",
   "section": "Eindrücke (Galerie)",
   "order": 9,
+  "alt": true,
   "de": "Gruppe von Freunden lacht gemeinsam auf einem Berggipfel",
   "en": "Group of friends laughing together on a mountain summit"
  },
@@ -1467,6 +1479,7 @@
   "page": "start",
   "section": "Eindrücke (Galerie)",
   "order": 9,
+  "alt": true,
   "de": "Teilnehmerin lacht am Lagerfeuer beim Marshmallow-Rösten",
   "en": "Participant laughing by the campfire while roasting marshmallows"
  },
@@ -1483,6 +1496,7 @@
   "page": "start",
   "section": "Eindrücke (Galerie)",
   "order": 9,
+  "alt": true,
   "de": "Trailrunner ruhen sich auf Sitzsäcken an der Verpflegungsstation aus",
   "en": "Trail runners resting on beanbag seats at an aid station"
  },
@@ -1499,6 +1513,7 @@
   "page": "start",
   "section": "Eindrücke (Galerie)",
   "order": 9,
+  "alt": true,
   "de": "Läuferin im Gespräch mit der Gruppe vor dem Start",
   "en": "Runner talking with the group before the start"
  },
@@ -1515,6 +1530,7 @@
   "page": "start",
   "section": "Eindrücke (Galerie)",
   "order": 9,
+  "alt": true,
   "de": "Trailrunner laufen an einem Holzzaun auf dem Waldweg vorbei",
   "en": "Trail runners passing a wooden fence on the forest trail"
  },
@@ -1531,6 +1547,7 @@
   "page": "start",
   "section": "Eindrücke (Galerie)",
   "order": 9,
+  "alt": true,
   "de": "Läuferin bindet ihre Haare zusammen mit Bergpanorama im Hintergrund",
   "en": "Runner tying up her hair with a mountain panorama in the background"
  },
@@ -1547,6 +1564,7 @@
   "page": "start",
   "section": "Eindrücke (Galerie)",
   "order": 9,
+  "alt": true,
   "de": "Große Gruppe von Trailrunnern posiert vor dem Waldrand",
   "en": "Large group of trail runners posing in front of the forest"
  },
@@ -1563,6 +1581,7 @@
   "page": "start",
   "section": "Eindrücke (Galerie)",
   "order": 9,
+  "alt": true,
   "de": "Teilnehmer holen sich Frühstück am Buffet in der Lodge",
   "en": "Participants getting breakfast at the lodge buffet"
  },
@@ -1579,6 +1598,7 @@
   "page": "start",
   "section": "Eindrücke (Galerie)",
   "order": 9,
+  "alt": true,
   "de": "Eindrücke",
   "en": "Impressions"
  },
@@ -1619,6 +1639,7 @@
   "page": "start",
   "section": "Erfahrungen",
   "order": 11,
+  "alt": true,
   "de": "Erfahrungen aus dem Mountaincamp",
   "en": "Experiences from the Mountaincamp"
  },
@@ -1899,6 +1920,7 @@
   "page": "start",
   "section": "Partner",
   "order": 13,
+  "alt": true,
   "de": "Partner des Trailrunning Camps",
   "en": "Partners of the trail running camp"
  },
@@ -2131,6 +2153,7 @@
   "page": "start",
   "section": "Abschluss",
   "order": 16,
+  "alt": true,
   "de": "Trailrunning in den österreichischen Alpen",
   "en": "Trail running in the Austrian Alps"
  },
@@ -2355,6 +2378,7 @@
   "page": "tickets",
   "section": "Auf einen Blick",
   "order": 3,
+  "alt": true,
   "de": "Das Wichtigste auf einen Blick",
   "en": "At a glance"
  },
@@ -2379,6 +2403,7 @@
   "page": "tickets",
   "section": "Buchung",
   "order": 4,
+  "alt": true,
   "de": "Buchung the Mountaincamp 2027",
   "en": "Booking the Mountaincamp 2027"
  },

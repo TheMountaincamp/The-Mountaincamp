@@ -61,6 +61,14 @@ const strip = (n) => {
   while (n && (ts.isParenthesizedExpression(n) || ts.isAsExpression(n) || ts.isSatisfiesExpression?.(n))) n = n.expression
   return n
 }
+// Bildbeschreibung (alt) statt sichtbarer Text?
+function isAlt(node) {
+  for (let p = node.parent, i = 0; p && i < 4; p = p.parent, i++) {
+    if (ts.isJsxAttribute(p)) return ["alt", "aria-label", "title"].includes(p.name.getText())
+    if (ts.isPropertyAssignment(p)) return /^(alt|ariaLabel)$/.test(p.name.getText())
+  }
+  return false
+}
 const isStr = (n) => n && (ts.isStringLiteral(n) || ts.isNoSubstitutionTemplateLiteral(n))
 
 // Bezeichner auflösen: lokale Konstante oder Import aus "@/..." bzw. relativem Pfad
@@ -184,9 +192,9 @@ for (const file of DIRS.flatMap((d) => walk(path.join(ROOT, d)))) {
       const fn = node.expression.text
       const a = node.arguments
       if (fn === "tx" && a.length === 4 && isStr(a[1]) && isStr(a[2]) && isStr(a[3])) {
-        add({ key: a[1].text, de: a[2].text, en: a[3].text, file: rel, block: blockAt(sf, node.getStart(sf)), pos: node.getStart(sf) })
+        add({ key: a[1].text, de: a[2].text, en: a[3].text, alt: isAlt(node), file: rel, block: blockAt(sf, node.getStart(sf)), pos: node.getStart(sf) })
       } else if (fn === "txo" && a.length === 3 && isStr(a[0]) && isStr(a[1]) && isStr(a[2])) {
-        add({ key: a[0].text, de: a[1].text, en: a[2].text, file: rel, block: blockAt(sf, node.getStart(sf)), pos: node.getStart(sf) })
+        add({ key: a[0].text, de: a[1].text, en: a[2].text, alt: isAlt(node), file: rel, block: blockAt(sf, node.getStart(sf)), pos: node.getStart(sf) })
       } else if (fn === "copy" && a.length === 3 && isStr(a[1])) {
         const dict = deref(sf, a[2])
         if (dict.node && ts.isObjectLiteralExpression(dict.node)) {
@@ -241,6 +249,7 @@ const result = entries
       section: name,
       order: Number(order),
       ...(e.shared ? { shared: true } : {}),
+      ...(e.alt || /\.alt$/.test(e.key) ? { alt: true } : {}),
       de: e.de,
       en: e.en,
       _file: e.file,
