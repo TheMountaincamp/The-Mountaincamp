@@ -44,7 +44,7 @@ ${phaseLines}
 
 ## Getting there
 
-Shared bus and train shuttles to the camp, return trip prices:
+Shared bus and train shuttles to the camp. Outbound and return are booked separately, prices each way:
 - From Berlin (train and bus): ${p("berlin")} €
 - From Munich (bus): ${p("muenchen")} €
 - From Jenbach (bus): ${p("jenbach")} €

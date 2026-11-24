@@ -97,12 +97,12 @@
   "en": "Trail running itself is almost carbon free. What makes the difference is how you get to the camp and back home. Travelling together by bus and train is the most sustainable way, and a comfortable one too: you get to know your group on the way, and your camp starts at the station, not just on the mountain."
  },
  {
-  "key": "anreise.hin-und-rueckfahrt-zubuchbar-bei-der",
+  "key": "anreise.hin-und-rueckfahrt-einzeln-zubuchbar",
   "page": "anreise",
   "section": "Intro",
   "order": 2,
-  "de": "Hin- und Rückfahrt, zubuchbar bei der Ticketbuchung",
-  "en": "Return trip, add it when you book your ticket"
+  "de": "Hinfahrt und Rückfahrt einzeln zubuchbar bei der Ticketbuchung",
+  "en": "Outbound and return booked separately, add them when you book your ticket"
  },
  {
   "key": "anreise.berlin",
@@ -177,12 +177,12 @@
   "en": "Train"
  },
  {
-  "key": "anreise.hin-und-rueckfahrt",
+  "key": "anreise.pro-strecke",
   "page": "anreise",
   "section": "Anreise und Preise",
   "order": 3,
-  "de": "Hin- und Rückfahrt",
-  "en": "Return trip"
+  "de": "pro Strecke, Hin- und Rückfahrt einzeln buchbar",
+  "en": "each way, outbound and return booked separately"
  },
  {
   "key": "anreise.wichtige-informationen",
@@ -209,12 +209,12 @@
   "en": "Add the transfer directly when you book your ticket"
  },
  {
-  "key": "anreise.preise-gelten-fuer-hin-und-rueckfahrt",
+  "key": "anreise.preise-gelten-pro-strecke",
   "page": "anreise",
   "section": "Wichtige Informationen",
   "order": 4,
-  "de": "Preise gelten für Hin- und Rückfahrt",
-  "en": "Prices are for the return trip"
+  "de": "Preise gelten pro Strecke, Hin- und Rückfahrt buchst du einzeln",
+  "en": "Prices are per direction, outbound and return are booked separately"
  },
  {
   "key": "anreise.begrenzte-plaetze-verfuegbar",
@@ -2338,8 +2338,8 @@
   "page": "tickets",
   "section": "Auf einen Blick",
   "order": 3,
-  "de": "Shuttle ab Berlin {berlin} €, München {muenchen} €, Jenbach {jenbach} €",
-  "en": "Shuttle from Berlin {berlin} €, Munich {muenchen} €, Jenbach {jenbach} €"
+  "de": "Shuttle pro Strecke ab Berlin {berlin} €, München {muenchen} €, Jenbach {jenbach} €",
+  "en": "Shuttle each way from Berlin {berlin} €, Munich {muenchen} €, Jenbach {jenbach} €"
  },
  {
   "key": "tickets.quick-facts.extras.2",
@@ -2464,6 +2464,14 @@
   "en": "Evenings together, campfires and the summit rave"
  },
  {
+  "key": "tickets.je-strecke",
+  "page": "tickets",
+  "section": "Ticket-Details",
+  "order": 5,
+  "de": "je Strecke",
+  "en": "each way"
+ },
+ {
   "key": "tickets.ticket-info.pricesTitle",
   "page": "tickets",
   "section": "Preise 2027",
@@ -2508,8 +2516,8 @@
   "page": "tickets",
   "section": "Zimmer und Anreise",
   "order": 7,
-  "de": "Wir fahren gemeinsam mit dem Shuttle nach Hochkrimml und wieder zurück. Hin- und Rückfahrt kosten:",
-  "en": "We travel to Hochkrimml and back together by shuttle. The return trip costs:"
+  "de": "Wir fahren gemeinsam mit dem Shuttle nach Hochkrimml und wieder zurück. Hinfahrt und Rückfahrt buchst du einzeln, pro Strecke kostet es:",
+  "en": "We travel to Hochkrimml and back together by shuttle. Outbound and return are booked separately, each way costs:"
  },
  {
   "key": "tickets.ticket-info.travelLink",

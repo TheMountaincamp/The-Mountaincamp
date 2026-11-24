@@ -121,7 +121,7 @@ export default function BusDeparturesPage() {
             <div className="mt-4 inline-flex items-center gap-2 rounded-full border border-primary/30 bg-primary/10 px-4 py-2">
               <Bus className="h-4 w-4 text-primary" />
               <span className="text-sm font-medium text-primary">
-                {tx(language, "anreise.hin-und-rueckfahrt-zubuchbar-bei-der", "Hin- und Rückfahrt, zubuchbar bei der Ticketbuchung", "Return trip, add it when you book your ticket")}
+                {tx(language, "anreise.hin-und-rueckfahrt-einzeln-zubuchbar", "Hinfahrt und Rückfahrt einzeln zubuchbar bei der Ticketbuchung", "Outbound and return booked separately, add them when you book your ticket")}
               </span>
             </div>
           </motion.div>
@@ -196,7 +196,7 @@ export default function BusDeparturesPage() {
                   </div>
                   <div className="mt-auto border-t border-gray-200 pt-4">
                     <p className="text-3xl font-bold text-gray-900">{fmt(route.price)}</p>
-                    <p className="text-sm text-gray-500">{tx(language, "anreise.hin-und-rueckfahrt", "Hin- und Rückfahrt", "Return trip")}</p>
+                    <p className="text-sm text-gray-500">{tx(language, "anreise.pro-strecke", "pro Strecke, Hin- und Rückfahrt einzeln buchbar", "each way, outbound and return booked separately")}</p>
                   </div>
                 </motion.div>
               ))}
@@ -221,7 +221,7 @@ export default function BusDeparturesPage() {
                 </h3>
                 <ul className="space-y-2 text-gray-700">
                   <li>• {tx(language, "anreise.den-transfer-buchst-du-direkt-bei", "Den Transfer buchst du direkt bei der Ticketbuchung dazu", "Add the transfer directly when you book your ticket")}</li>
-                  <li>• {tx(language, "anreise.preise-gelten-fuer-hin-und-rueckfahrt", "Preise gelten für Hin- und Rückfahrt", "Prices are for the return trip")}</li>
+                  <li>• {tx(language, "anreise.preise-gelten-pro-strecke", "Preise gelten pro Strecke, Hin- und Rückfahrt buchst du einzeln", "Prices are per direction, outbound and return are booked separately")}</li>
                   <li>• {tx(language, "anreise.begrenzte-plaetze-verfuegbar", "Begrenzte Plätze verfügbar", "Limited seats available")}</li>
                 </ul>
               </div>

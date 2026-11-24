@@ -1,7 +1,7 @@
 "use client"
 // @block 05 Ticket-Details
 
-import { copy } from "@/app/lib/texts"
+import { copy, tx } from "@/app/lib/texts"
 import { useSiteConfig } from "@/contexts/site-config-context"
 
 /**
@@ -33,7 +33,7 @@ const COPY = {
       `Statt im Mehrbettzimmer kannst du für alle vier Nächte auch im 4er-Zimmer (+${four} €) oder im Doppelzimmer (+${double} €) schlafen.`,
     travelTitle: "Anreise ohne Auto",
     travel:
-      "Wir fahren gemeinsam mit dem Shuttle nach Hochkrimml und wieder zurück. Hin- und Rückfahrt kosten:",
+      "Wir fahren gemeinsam mit dem Shuttle nach Hochkrimml und wieder zurück. Hinfahrt und Rückfahrt buchst du einzeln, pro Strecke kostet es:",
     travelLink: "Alle Abfahrtsorte und Zeiten",
     cancelTitle: "Storno",
     cancel:
@@ -73,7 +73,7 @@ const COPY = {
     rooms: (four: number, double: number) =>
       `Instead of a shared dorm you can stay in a 4-bed room (+€${four}) or a double room (+€${double}) for all four nights.`,
     travelTitle: "Getting there without a car",
-    travel: "We travel to Hochkrimml and back together by shuttle. The return trip costs:",
+    travel: "We travel to Hochkrimml and back together by shuttle. Outbound and return are booked separately, each way costs:",
     travelLink: "All departure points and times",
     cancelTitle: "Cancellation",
     cancel:
@@ -137,7 +137,8 @@ export default function TicketInfo({ lang }: { lang: "de" | "en" }) {
           <ul className="mb-3 list-disc space-y-1 pl-5">
             {SHUTTLES.map((s) => (
               <li key={s.city}>
-                {lang === "en" && s.cityEn ? s.cityEn : s.city}: {lang === "de" ? `${s.price} €` : `€${s.price}`}
+                {lang === "en" && s.cityEn ? s.cityEn : s.city}: {lang === "de" ? `${s.price} €` : `€${s.price}`}{" "}
+                {tx(lang, "tickets.je-strecke", "je Strecke", "each way")}
               </li>
             ))}
           </ul>
