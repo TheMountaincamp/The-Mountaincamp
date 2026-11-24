@@ -1,5 +1,7 @@
 "use client"
+// @block 03 Auf einen Blick
 
+import { copy, tx } from "@/app/lib/texts"
 import { Check } from "lucide-react"
 import { getPhaseState } from "@/app/lib/early-bird"
 import { useSiteConfig } from "@/contexts/site-config-context"
@@ -55,7 +57,7 @@ function fmtDate(iso: string, lang: "de" | "en") {
 }
 
 export default function QuickFacts({ lang }: { lang: "de" | "en" }) {
-  const t = COPY[lang]
+  const t = copy(lang, "tickets.quick-facts", COPY)
   const { phases: SALE_PHASES, shuttles } = useSiteConfig()
   const fillPrices = (x: string) => x.replace(/\{(berlin|muenchen|jenbach)\}/g, (_, id) => String(shuttles.find((s) => s.id === id)?.price ?? ""))
   const idx = SALE_PHASES.findIndex((p) => getPhaseState(p) === "live" && p.price)
@@ -64,7 +66,7 @@ export default function QuickFacts({ lang }: { lang: "de" | "en" }) {
 
   return (
     <section
-      aria-label={lang === "de" ? "Das Wichtigste auf einen Blick" : "At a glance"}
+      aria-label={tx(lang, "tickets.das-wichtigste-auf-einen-blick", "Das Wichtigste auf einen Blick", "At a glance")}
       className="mx-auto mb-6 max-w-3xl md:mb-10"
     >
       {live && (

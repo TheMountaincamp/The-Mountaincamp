@@ -112,6 +112,12 @@ export default async function AdminPage({ searchParams }: { searchParams: { save
         </form>
       </Card>
 
+      <Card title="Texte" note="Alle Texte von Startseite, Tickets, Anreise und mehr bearbeiten, auf Deutsch und Englisch.">
+        <Link href="/admin/texte" className="inline-block text-sm font-semibold underline">
+          Texte bearbeiten
+        </Link>
+      </Card>
+
       <Card title="Leads">
         <ul className="space-y-1 text-sm">
           {Object.entries(LEAD_INTERESTS).map(([id, label]) => (

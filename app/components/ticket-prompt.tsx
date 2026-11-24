@@ -1,5 +1,7 @@
 "use client"
+// @block 00 Ticket-Hinweis (Popup)
 
+import { copy } from "@/app/lib/texts"
 import { useSiteConfig } from "@/contexts/site-config-context"
 
 import { useEffect, useState } from "react"
@@ -61,7 +63,7 @@ function writeStore(store: "local" | "session", key: string, value: string) {
 export default function TicketPrompt() {
   const { language } = useLanguage()
   const lang = language as "de" | "en"
-  const c = COPY[lang]
+  const c = copy(lang, "start.ticket-prompt", COPY)
   const { showBanner } = useCookieConsent()
   const prefersReducedMotion = useReducedMotion()
 

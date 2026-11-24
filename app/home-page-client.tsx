@@ -1,5 +1,6 @@
 "use client"
 
+import { tx } from "@/app/lib/texts"
 import { useSiteConfig } from "@/contexts/site-config-context"
 
 import { useState, useEffect, useRef } from "react"
@@ -147,15 +148,14 @@ function PartnerCarousel() {
  * Text der Buchungsbox: nennt Enddatum und Ersparnis der laufenden Preisphase.
  * Läuft keine Phase mit Enddatum, kommt ein neutraler Satz.
  */
+// @block 15 Anmeldung
 function bookingBoxText(lang: "de" | "en", SALE_PHASES: SalePhaseConfig[]) {
   const now = Date.now()
   const live = SALE_PHASES.find((p) => p.price !== null && getPhaseState(p, now) === "live")
   const later = Math.max(...SALE_PHASES.map((p) => p.price ?? 0))
   const save = live?.price != null ? later - live.price : 0
   if (!live?.end || save <= 0) {
-    return lang === "de"
-      ? "Sichere dir deinen Spot im Trailrunning Camp 2027."
-      : "Secure your spot at the trail running camp 2027."
+    return tx(lang, "start.sichere-dir-deinen-spot-im-trailrunning", "Sichere dir deinen Spot im Trailrunning Camp 2027.", "Secure your spot at the trail running camp 2027.")
   }
   const end = new Date(new Date(live.end).getTime() - 1)
   const date = new Intl.DateTimeFormat(lang === "de" ? "de-AT" : "en-GB", {
@@ -260,6 +260,7 @@ export default function HomePageClient() {
     return () => window.removeEventListener("scroll", handleScroll)
   }, [hasScrolled])
 
+  // @block 11 Erfahrungen
   const testimonials = [
     {
       quote:
@@ -292,265 +293,203 @@ export default function HomePageClient() {
   ]
 
 
+  // @block 09 Eindrücke (Galerie)
   const galleryImages = [
     {
       src: "/images/camp-social-gathering.jpg",
       alt:
-        language === "de"
-          ? "Trailrunning Camp Österreich Teilnehmer auf der Terrasse der Lodge"
-          : "Trail running camp Austria participants socializing on lodge terrace",
+        tx(language, "start.trailrunning-camp-oesterreich-teilnehmer-auf-der", "Trailrunning Camp Österreich Teilnehmer auf der Terrasse der Lodge", "Trail running camp Austria participants socializing on lodge terrace"),
       caption: "Community Vibes",
     },
     {
       src: "/images/lodge-group-start.jpg",
       alt:
-        language === "de"
-          ? "Trailrunning Camp Gruppe an der Berghütte in Hochkrimml"
-          : "Trail running camp group gathered at mountain lodge in Hochkrimml",
-      caption: language === "de" ? "Bereit zum Laufen" : "Ready to Run",
+        tx(language, "start.trailrunning-camp-gruppe-an-der-berghuette", "Trailrunning Camp Gruppe an der Berghütte in Hochkrimml", "Trail running camp group gathered at mountain lodge in Hochkrimml"),
+      caption: tx(language, "start.bereit-zum-laufen", "Bereit zum Laufen", "Ready to Run"),
     },
     {
       src: "/images/terrace-community-time.jpg",
       alt:
-        language === "de"
-          ? "Trailrunning Camp Community auf der Terrasse bei Sonnenuntergang"
-          : "Trail running camp community gathering on terrace at sunset",
+        tx(language, "start.trailrunning-camp-community-auf-der-terrasse", "Trailrunning Camp Community auf der Terrasse bei Sonnenuntergang", "Trail running camp community gathering on terrace at sunset"),
       caption: "Community Vibes",
     },
     {
       src: "/images/gallery/summit-celebration-dancing.jpg",
       alt:
-        language === "de"
-          ? "Trailrunner tanzen und feiern gemeinsam auf dem Gipfel"
-          : "Trail runners dancing and celebrating together on the summit",
-      caption: language === "de" ? "Gipfel-Party" : "Summit Party",
+        tx(language, "start.trailrunner-tanzen-und-feiern-gemeinsam-auf", "Trailrunner tanzen und feiern gemeinsam auf dem Gipfel", "Trail runners dancing and celebrating together on the summit"),
+      caption: tx(language, "start.gipfel-party", "Gipfel-Party", "Summit Party"),
     },
     {
       src: "/images/gallery/summit-cross-cheering.jpg",
       alt:
-        language === "de"
-          ? "Läufer jubeln gemeinsam am Gipfelkreuz"
-          : "Runners cheering together at the summit cross",
-      caption: language === "de" ? "Gipfelglück" : "Summit Joy",
+        tx(language, "start.laeufer-jubeln-gemeinsam-am-gipfelkreuz", "Läufer jubeln gemeinsam am Gipfelkreuz", "Runners cheering together at the summit cross"),
+      caption: tx(language, "start.gipfelglueck", "Gipfelglück", "Summit Joy"),
     },
     {
       src: "/images/gallery/mountain-lake-jump.jpg",
       alt:
-        language === "de"
-          ? "Teilnehmer springen ausgelassen in einen Bergsee"
-          : "Participants jumping joyfully into a mountain lake",
-      caption: language === "de" ? "Erfrischung im Bergsee" : "Mountain Lake Refresh",
+        tx(language, "start.teilnehmer-springen-ausgelassen-in-einen-bergsee", "Teilnehmer springen ausgelassen in einen Bergsee", "Participants jumping joyfully into a mountain lake"),
+      caption: tx(language, "start.erfrischung-im-bergsee", "Erfrischung im Bergsee", "Mountain Lake Refresh"),
     },
     {
       src: "/images/gallery/group-friends-summit.jpg",
       alt:
-        language === "de"
-          ? "Gruppe von Freunden lacht gemeinsam auf einem Berggipfel"
-          : "Group of friends laughing together on a mountain summit",
-      caption: language === "de" ? "Neue Freundschaften" : "New Friendships",
+        tx(language, "start.gruppe-von-freunden-lacht-gemeinsam-auf", "Gruppe von Freunden lacht gemeinsam auf einem Berggipfel", "Group of friends laughing together on a mountain summit"),
+      caption: tx(language, "start.neue-freundschaften", "Neue Freundschaften", "New Friendships"),
     },
     {
       src: "/images/gallery/campfire-marshmallow-evening.jpg",
       alt:
-        language === "de"
-          ? "Teilnehmerin lacht am Lagerfeuer beim Marshmallow-Rösten"
-          : "Participant laughing by the campfire while roasting marshmallows",
-      caption: language === "de" ? "Lagerfeuerabend" : "Campfire Evening",
+        tx(language, "start.teilnehmerin-lacht-am-lagerfeuer-beim-marshmallo", "Teilnehmerin lacht am Lagerfeuer beim Marshmallow-Rösten", "Participant laughing by the campfire while roasting marshmallows"),
+      caption: tx(language, "start.lagerfeuerabend", "Lagerfeuerabend", "Campfire Evening"),
     },
     {
       src: "/images/gallery/runners-resting-altra-poufs.jpg",
       alt:
-        language === "de"
-          ? "Trailrunner ruhen sich auf Sitzsäcken an der Verpflegungsstation aus"
-          : "Trail runners resting on beanbag seats at an aid station",
-      caption: language === "de" ? "Kurze Pause" : "Quick Break",
+        tx(language, "start.trailrunner-ruhen-sich-auf-sitzsaecken-an", "Trailrunner ruhen sich auf Sitzsäcken an der Verpflegungsstation aus", "Trail runners resting on beanbag seats at an aid station"),
+      caption: tx(language, "start.kurze-pause", "Kurze Pause", "Quick Break"),
     },
     {
       src: "/images/gallery/runner-group-closeup.jpg",
       alt:
-        language === "de"
-          ? "Läuferin im Gespräch mit der Gruppe vor dem Start"
-          : "Runner talking with the group before the start",
-      caption: language === "de" ? "Vor dem Start" : "Before the Start",
+        tx(language, "start.laeuferin-im-gespraech-mit-der-gruppe", "Läuferin im Gespräch mit der Gruppe vor dem Start", "Runner talking with the group before the start"),
+      caption: tx(language, "start.vor-dem-start", "Vor dem Start", "Before the Start"),
     },
     {
       src: "/images/gallery/runners-gravel-trail-fence.jpg",
       alt:
-        language === "de"
-          ? "Trailrunner laufen an einem Holzzaun auf dem Waldweg vorbei"
-          : "Trail runners passing a wooden fence on the forest trail",
-      caption: language === "de" ? "Auf dem Trail" : "On the Trail",
+        tx(language, "start.trailrunner-laufen-an-einem-holzzaun-auf", "Trailrunner laufen an einem Holzzaun auf dem Waldweg vorbei", "Trail runners passing a wooden fence on the forest trail"),
+      caption: tx(language, "start.auf-dem-trail", "Auf dem Trail", "On the Trail"),
     },
     {
       src: "/images/gallery/runner-mountain-view-tattoo.jpg",
       alt:
-        language === "de"
-          ? "Läuferin bindet ihre Haare zusammen mit Bergpanorama im Hintergrund"
-          : "Runner tying up her hair with a mountain panorama in the background",
-      caption: language === "de" ? "Bergpanorama" : "Mountain Views",
+        tx(language, "start.laeuferin-bindet-ihre-haare-zusammen-mit", "Läuferin bindet ihre Haare zusammen mit Bergpanorama im Hintergrund", "Runner tying up her hair with a mountain panorama in the background"),
+      caption: tx(language, "start.bergpanorama", "Bergpanorama", "Mountain Views"),
     },
     {
       src: "/images/gallery/group-photo-forest.jpg",
       alt:
-        language === "de"
-          ? "Große Gruppe von Trailrunnern posiert vor dem Waldrand"
-          : "Large group of trail runners posing in front of the forest",
-      caption: language === "de" ? "Die ganze Crew" : "The Whole Crew",
+        tx(language, "start.grosse-gruppe-von-trailrunnern-posiert-vor", "Große Gruppe von Trailrunnern posiert vor dem Waldrand", "Large group of trail runners posing in front of the forest"),
+      caption: tx(language, "start.die-ganze-crew", "Die ganze Crew", "The Whole Crew"),
     },
     {
       src: "/images/gallery/breakfast-buffet-indoor.jpg",
       alt:
-        language === "de"
-          ? "Teilnehmer holen sich Frühstück am Buffet in der Lodge"
-          : "Participants getting breakfast at the lodge buffet",
-      caption: language === "de" ? "Frühstück in der Lodge" : "Lodge Breakfast",
+        tx(language, "start.teilnehmer-holen-sich-fruehstueck-am-buffet", "Teilnehmer holen sich Frühstück am Buffet in der Lodge", "Participants getting breakfast at the lodge buffet"),
+      caption: tx(language, "start.fruehstueck-in-der-lodge", "Frühstück in der Lodge", "Lodge Breakfast"),
     },
   ]
 
+  // @block 07 Aktivitäten
   const activities = [
     {
-      title: language === "de" ? "Outdoor Movie Night" : "Outdoor Movie Night",
+      title: tx(language, "start.outdoor-movie-night", "Outdoor Movie Night", "Outdoor Movie Night"),
       image: "/images/movie-night-2026.webp",
       description:
-        language === "de"
-          ? "Leinwand auf der Wiese, Berge im Hintergrund. Outdoor- und Lauffilme mit der ganzen Gruppe."
-          : "A screen on the meadow, mountains behind it. Outdoor and running films with the whole group.",
+        tx(language, "start.leinwand-auf-der-wiese-berge-im", "Leinwand auf der Wiese, Berge im Hintergrund. Outdoor- und Lauffilme mit der ganzen Gruppe.", "A screen on the meadow, mountains behind it. Outdoor and running films with the whole group."),
     },
     {
-      title: language === "de" ? "Linoldruck Workshop" : "Linocut Print Workshop",
+      title: tx(language, "start.linoldruck-workshop", "Linoldruck Workshop", "Linocut Print Workshop"),
       image: "/images/linoprint-workshop.webp",
       description:
-        language === "de"
-          ? "Motiv schneiden, Farbe auftragen, drucken. Du nimmst deinen eigenen Print mit nach Hause."
-          : "Carve a motif, roll the ink, print. You take your own print home.",
+        tx(language, "start.motiv-schneiden-farbe-auftragen-drucken-du", "Motiv schneiden, Farbe auftragen, drucken. Du nimmst deinen eigenen Print mit nach Hause.", "Carve a motif, roll the ink, print. You take your own print home."),
     },
     {
-      title: language === "de" ? "Nutrition Workshop" : "Nutrition Workshop",
+      title: tx(language, "start.nutrition-workshop", "Nutrition Workshop", "Nutrition Workshop"),
       image: "/images/nutrition-workshop.webp",
       description:
-        language === "de"
-          ? "Was du vor, während und nach langen Läufen isst und trinkst. Praxisnah erklärt."
-          : "What to eat and drink before, during and after long runs. Explained in practical terms.",
+        tx(language, "start.was-du-vor-waehrend-und-nach", "Was du vor, während und nach langen Läufen isst und trinkst. Praxisnah erklärt.", "What to eat and drink before, during and after long runs. Explained in practical terms."),
     },
     {
-      title: language === "de" ? "Recovery Lounge" : "Recovery Lounge",
+      title: tx(language, "start.recovery-lounge", "Recovery Lounge", "Recovery Lounge"),
       image: "/images/recovery-lounge.webp",
       description:
-        language === "de"
-          ? "Beine hoch nach dem Lauf: Kompression, Massage-Tools und Ruhe mit Blick auf die Berge."
-          : "Feet up after the run: compression, massage tools and quiet time with a mountain view.",
+        tx(language, "start.beine-hoch-nach-dem-lauf-kompression", "Beine hoch nach dem Lauf: Kompression, Massage-Tools und Ruhe mit Blick auf die Berge.", "Feet up after the run: compression, massage tools and quiet time with a mountain view."),
     },
     {
-      title: language === "de" ? "Karaoke Night" : "Karaoke Night",
+      title: tx(language, "start.karaoke-night", "Karaoke Night", "Karaoke Night"),
       image: "/images/karaoke-night.webp",
       description:
-        language === "de"
-          ? "Mikro an, Hemmungen aus. Der Abend, an dem aus der Laufgruppe eine Crew wird."
-          : "Mic on, nerves off. The night your running group turns into a crew.",
+        tx(language, "start.mikro-an-hemmungen-aus-der-abend", "Mikro an, Hemmungen aus. Der Abend, an dem aus der Laufgruppe eine Crew wird.", "Mic on, nerves off. The night your running group turns into a crew."),
     },
     {
-      title: language === "de" ? "Upcycling Workshop" : "Upcycling Workshop",
+      title: tx(language, "start.upcycling-workshop", "Upcycling Workshop", "Upcycling Workshop"),
       image: "/images/upcycling-2026.webp",
       description:
-        language === "de"
-          ? "Aus Seil und Flasche wird ein Halter für unterwegs. Selbst geknotet, direkt im Einsatz."
-          : "Rope and a bottle become a carrier for the trail. Knotted by you, ready to use.",
+        tx(language, "start.aus-seil-und-flasche-wird-ein", "Aus Seil und Flasche wird ein Halter für unterwegs. Selbst geknotet, direkt im Einsatz.", "Rope and a bottle become a carrier for the trail. Knotted by you, ready to use."),
     },
     {
-      title: language === "de" ? "Töpferkurs" : "Clay Class",
+      title: tx(language, "start.toepferkurs", "Töpferkurs", "Clay Class"),
       image: "/images/clay-class-2026.webp",
       description:
-        language === "de"
-          ? "Die Beine ruhen, die Hände arbeiten. Aus Ton entstehen kleine Schalen und Schmuck zum Mitnehmen."
-          : "Legs rest, hands work. Shape small bowls and jewellery from clay to take home.",
+        tx(language, "start.die-beine-ruhen-die-haende-arbeiten", "Die Beine ruhen, die Hände arbeiten. Aus Ton entstehen kleine Schalen und Schmuck zum Mitnehmen.", "Legs rest, hands work. Shape small bowls and jewellery from clay to take home."),
     },
     {
-      title: language === "de" ? "Sunrise Hike" : "Sunrise Hike",
+      title: tx(language, "start.sunrise-hike", "Sunrise Hike", "Sunrise Hike"),
       image: "/images/sunrise-hike.webp",
       description:
-        language === "de"
-          ? "Früh los, oben sein, wenn die Sonne über die Gipfel kommt."
-          : "Leave early, be at the top when the sun comes over the peaks.",
+        tx(language, "start.frueh-los-oben-sein-wenn-die", "Früh los, oben sein, wenn die Sonne über die Gipfel kommt.", "Leave early, be at the top when the sun comes over the peaks."),
     },
     {
-      title: language === "de" ? "Trailrunning Technik" : "Trailrunning Technique",
+      title: tx(language, "start.trailrunning-technik", "Trailrunning Technik", "Trailrunning Technique"),
       image: "/images/trailrunning-technique-class.jpg",
       description:
-        language === "de"
-          ? "Lerne die richtige Trailrunning-Technik von erfahrenen Coaches auf wunderschönen Alpenpfaden."
-          : "Learn proper trailrunning techniques from experienced coaches on beautiful alpine trails.",
+        tx(language, "start.lerne-die-richtige-trailrunning-technik-von", "Lerne die richtige Trailrunning-Technik von erfahrenen Coaches auf wunderschönen Alpenpfaden.", "Learn proper trailrunning techniques from experienced coaches on beautiful alpine trails."),
     },
     {
-      title: language === "de" ? "Bogenschießen" : "Archery",
+      title: tx(language, "start.bogenschiessen", "Bogenschießen", "Archery"),
       image: "/images/archery.jpeg",
       description:
-        language === "de"
-          ? "Teste deine Präzision und Konzentration beim Bogenschießen vor atemberaubender Bergkulisse."
-          : "Test your precision and focus with archery sessions in a stunning mountain backdrop.",
+        tx(language, "start.teste-deine-praezision-und-konzentration-beim", "Teste deine Präzision und Konzentration beim Bogenschießen vor atemberaubender Bergkulisse.", "Test your precision and focus with archery sessions in a stunning mountain backdrop."),
     },
     {
-      title: language === "de" ? "MTB Tour" : "MTB Trip",
+      title: tx(language, "start.mtb-tour", "MTB Tour", "MTB Trip"),
       image: "/images/mtb-trip.jpg",
       description:
-        language === "de"
-          ? "Erkunde malerische Bergpfade auf zwei Rädern bei unseren geführten Mountainbike-Touren."
-          : "Explore scenic mountain trails on two wheels with our guided mountain biking excursions.",
+        tx(language, "start.erkunde-malerische-bergpfade-auf-zwei-raedern", "Erkunde malerische Bergpfade auf zwei Rädern bei unseren geführten Mountainbike-Touren.", "Explore scenic mountain trails on two wheels with our guided mountain biking excursions."),
     },
     {
-      title: language === "de" ? "Kanufahren" : "Canoeing",
+      title: tx(language, "start.kanufahren", "Kanufahren", "Canoeing"),
       image: "/images/canoeing-lake.jpeg",
       description:
-        language === "de"
-          ? "Paddle über kristallklare Alpenseen und genieße dabei atemberaubende Bergblicke."
-          : "Paddle across crystal-clear alpine lakes while taking in breathtaking mountain views.",
+        tx(language, "start.paddle-ueber-kristallklare-alpenseen-und-geniess", "Paddle über kristallklare Alpenseen und genieße dabei atemberaubende Bergblicke.", "Paddle across crystal-clear alpine lakes while taking in breathtaking mountain views."),
     },
     {
-      title: language === "de" ? "Aquarellmalerei" : "Aquarell Painting",
+      title: tx(language, "start.aquarellmalerei", "Aquarellmalerei", "Aquarell Painting"),
       image: "/images/aquarell-painting.jpg",
       description:
-        language === "de"
-          ? "Drücke deine Kreativität aus, indem du die atemberaubenden Alpenlandschaften mit Wasserfarben malst."
-          : "Express your creativity by painting the stunning alpine landscapes with watercolors.",
+        tx(language, "start.druecke-deine-kreativitaet-aus-indem-du", "Drücke deine Kreativität aus, indem du die atemberaubenden Alpenlandschaften mit Wasserfarben malst.", "Express your creativity by painting the stunning alpine landscapes with watercolors."),
     },
     {
       title: "Yoga",
       image: "/images/yoga.jpg",
       description:
-        language === "de"
-          ? "Finde Balance und erhole dich mit Yoga-Sessions, die speziell für Läufer konzipiert sind."
-          : "Restore balance and recover with yoga sessions designed specifically for runners.",
+        tx(language, "start.finde-balance-und-erhole-dich-mit", "Finde Balance und erhole dich mit Yoga-Sessions, die speziell für Läufer konzipiert sind.", "Restore balance and recover with yoga sessions designed specifically for runners."),
     },
     {
-      title: language === "de" ? "Stricken" : "Knitting",
+      title: tx(language, "start.stricken", "Stricken", "Knitting"),
       image: "/images/knitting.jpg",
       description:
-        language === "de"
-          ? "Lerne Stricken in entspannter Atmosphäre – eine perfekte achtsame Aktivität nach einem Lauftag."
-          : "Learn to knit in a relaxed setting - a perfect mindful activity after a day of running.",
+        tx(language, "start.lerne-stricken-in-entspannter-atmosphaere-eine", "Lerne Stricken in entspannter Atmosphäre – eine perfekte achtsame Aktivität nach einem Lauftag.", "Learn to knit in a relaxed setting - a perfect mindful activity after a day of running."),
     },
     {
-      title: language === "de" ? "Kletterkurs" : "Climbing Class",
+      title: tx(language, "start.kletterkurs", "Kletterkurs", "Climbing Class"),
       image: "/images/climbing-class-real.jpeg",
       description:
-        language === "de"
-          ? "Baue Kraft und Selbstvertrauen auf mit Indoor-Klettersessions unter Anleitung erfahrener Instruktoren."
-          : "Build strength and confidence with indoor climbing sessions led by experienced instructors.",
+        tx(language, "start.baue-kraft-und-selbstvertrauen-auf-mit", "Baue Kraft und Selbstvertrauen auf mit Indoor-Klettersessions unter Anleitung erfahrener Instruktoren.", "Build strength and confidence with indoor climbing sessions led by experienced instructors."),
     },
     {
-      title: language === "de" ? "Lagerfeuer Abend" : "Campfire Evening",
+      title: tx(language, "start.lagerfeuer-abend", "Lagerfeuer Abend", "Campfire Evening"),
       image: "/images/campfire-evening.jpeg",
       description:
-        language === "de"
-          ? "Teile Geschichten und verbinde dich mit anderen Läufern am gemütlichen Lagerfeuer unter dem Sternenhimmel."
-          : "Share stories and connect with fellow runners around a cozy campfire under the stars.",
+        tx(language, "start.teile-geschichten-und-verbinde-dich-mit", "Teile Geschichten und verbinde dich mit anderen Läufern am gemütlichen Lagerfeuer unter dem Sternenhimmel.", "Share stories and connect with fellow runners around a cozy campfire under the stars."),
     },
     {
       title: "Summit Rave",
       image: "/images/mountain-top-sunset-rave.jpg",
       description:
-        language === "de"
-          ? "Musik, Bergblick und 300 Leute, die tagsüber zusammen gelaufen sind. Getanzt wird oben am Berg."
-          : "Music, mountain views and 300 people who ran together during the day. We dance up on the mountain.",
+        tx(language, "start.musik-bergblick-und-300-leute-die", "Musik, Bergblick und 300 Leute, die tagsüber zusammen gelaufen sind. Getanzt wird oben am Berg.", "Music, mountain views and 300 people who ran together during the day. We dance up on the mountain."),
     },
   ]
 
@@ -576,6 +515,7 @@ export default function HomePageClient() {
 
 
 
+      {/* @block 01 Navigation */}
       <header
         className={`absolute z-50 w-full transition-[background-color,top] duration-300 md:fixed ${
           scrollY > 80 ? "md:bg-black/80 md:backdrop-blur-sm" : "bg-transparent"
@@ -717,6 +657,7 @@ export default function HomePageClient() {
       </AnimatePresence>
 
       <main className="w-full overflow-x-hidden">
+        {/* @block 02 Startbild */}
         <section ref={heroRef} className="relative min-h-[140vh] overflow-hidden">
           <div className="absolute inset-0">
             <motion.div style={{ scale: heroScale }} className="h-full w-full">
@@ -769,10 +710,10 @@ export default function HomePageClient() {
 
                 <h1 className="text-center font-bold uppercase leading-[0.9] tracking-tight">
                   <span className={`block text-lg md:text-3xl lg:text-4xl xl:text-5xl ${isMobile ? "mt-2" : ""}`}>
-                    {language === "de" ? "Trailrunning Camp in Österreich" : "Trail Running Camp in Austria"}
+                    {tx(language, "start.trailrunning-camp-in-oesterreich", "Trailrunning Camp in Österreich", "Trail Running Camp in Austria")}
                   </span>{" "}
                   <span className="mt-0 block text-2xl md:mt-2 md:text-5xl lg:text-6xl xl:text-7xl">
-                    {language === "de" ? "Mountaincamp 2027" : "Mountaincamp 2027"}
+                    {tx(language, "start.mountaincamp-2027", "Mountaincamp 2027", "Mountaincamp 2027")}
                   </span>
                 </h1>
               </motion.div>
@@ -784,17 +725,15 @@ export default function HomePageClient() {
                 className="mx-auto max-w-3xl px-4 md:px-0"
               >
                 <p className="text-base leading-relaxed text-white/90 md:text-2xl">
-                  {language === "de"
-                    ? "5 tägiges Trailrunning Camp in den österreichischen Alpen"
-                    : "5-day trail running camp in the Austrian Alps"}
+                  {tx(language, "start.5-taegiges-trailrunning-camp-in-den", "5 tägiges Trailrunning Camp in den österreichischen Alpen", "5-day trail running camp in the Austrian Alps")}
                 </p>
 
                 <p className="mt-2 text-xs font-semibold uppercase tracking-wide text-white/80 md:text-base">
-                  {language === "de" ? "Trailrunning | Community | Party" : "Trail Running | Community | Party"}
+                  {tx(language, "start.trailrunning-community-party", "Trailrunning | Community | Party", "Trail Running | Community | Party")}
                 </p>
 
                 <p className="mt-3 text-sm font-semibold text-white/90 md:text-xl">
-                  {language === "de" ? "Hochkrimml | 18.–22. August 2027" : "Hochkrimml | August 18–22, 2027"}
+                  {tx(language, "start.hochkrimml-18-22-august-2027", "Hochkrimml | 18.–22. August 2027", "Hochkrimml | August 18–22, 2027")}
                 </p>
               </motion.div>
 
@@ -806,7 +745,7 @@ export default function HomePageClient() {
               >
                 <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }} className="flex w-full justify-center">
                   <Button size="lg" className="btn-primary w-full max-w-[280px] px-6 py-3 text-base" asChild>
-                    <Link href="#experience">{language === "de" ? "Entdecke das Camp" : "Discover the Camp"}</Link>
+                    <Link href="#experience">{tx(language, "start.entdecke-das-camp", "Entdecke das Camp", "Discover the Camp")}</Link>
                   </Button>
                 </motion.div>
 
@@ -814,10 +753,10 @@ export default function HomePageClient() {
                   <Button size="lg" className="btn-outline w-full max-w-[280px] px-6 py-3 text-base" asChild>
                     {isBookable ? (
                       <a href={TICKET_URL}>
-                        {language === "de" ? "Jetzt Tickets sichern" : "Get your ticket"}
+                        {tx(language, "start.jetzt-tickets-sichern", "Jetzt Tickets sichern", "Get your ticket")}
                       </a>
                     ) : (
-                      <a href="#register">{language === "de" ? "Benachrichtigt werden" : "Notify Me"}</a>
+                      <a href="#register">{tx(language, "start.benachrichtigt-werden", "Benachrichtigt werden", "Notify Me")}</a>
                     )}
                   </Button>
                 </motion.div>
@@ -835,9 +774,7 @@ export default function HomePageClient() {
                     <span className="relative inline-flex h-2 w-2 bg-primary" />
                   </span>
                   {isBookable
-                    ? language === "de"
-                      ? "Buchung geöffnet"
-                      : "Booking open"
+                    ? tx(language, "start.buchung-geoeffnet", "Buchung geöffnet", "Booking open")
                     : t("earlyBirdBadge")}
                 </span>
               </motion.div>
@@ -860,31 +797,28 @@ export default function HomePageClient() {
           </motion.div>
         </section>
 
+        {/* @block 03 Intro */}
         {/* SEO Content Section 1 - Intro */}
         <section className="bg-white py-10 md:py-14">
           <div className="container max-w-4xl">
             <h2 className="text-2xl font-bold uppercase tracking-tight text-gray-900 md:text-4xl">
-              {language === "de" ? "Trailrunning für Einsteiger:innen und Erfahrene" : "Trail running for beginners and experienced runners"}
+              {tx(language, "start.trailrunning-fuer-einsteiger-innen-und-erfahrene", "Trailrunning für Einsteiger:innen und Erfahrene", "Trail running for beginners and experienced runners")}
             </h2>
 
             <p className="mt-4 text-lg leading-relaxed text-gray-700">
-              {language === "de"
-                ? "Das Mountaincamp ist ein 5-tägiges Trailrunning Camp in Österreich, in Hochkrimml auf 1.700 m. Dich erwarten tägliche Trailruns, Techniktraining, Community, Workshops und Erholung in den Alpen, für Anfänger:innen, Fortgeschrittene und ambitionierte Läufer:innen."
-                : "The Mountaincamp is a 5-day trail running camp in Hochkrimml, Austria, at 1,700 m. Expect daily trail runs, technique coaching, community, workshops and recovery in the Alps for beginners, intermediate runners and ambitious athletes."}
+              {tx(language, "start.das-mountaincamp-ist-ein-5-taegiges", "Das Mountaincamp ist ein 5-tägiges Trailrunning Camp in Österreich, in Hochkrimml auf 1.700 m. Dich erwarten tägliche Trailruns, Techniktraining, Community, Workshops und Erholung in den Alpen, für Anfänger:innen, Fortgeschrittene und ambitionierte Läufer:innen.", "The Mountaincamp is a 5-day trail running camp in Hochkrimml, Austria, at 1,700 m. Expect daily trail runs, technique coaching, community, workshops and recovery in the Alps for beginners, intermediate runners and ambitious athletes.")}
             </p>
 
             <p className="mt-4 text-lg leading-relaxed text-gray-700">
-              {language === "de"
-                ? "Unser Camp befindet sich auf 1.700 Metern Höhe inmitten der atemberaubenden Berglandschaft der Salzburger Alpen. Egal ob du zum ersten Mal einen Trail läufst oder bereits Erfahrung hast – bei uns findest du die richtige Gruppe und das passende Programm."
-                : "Our camp is located at 1,700 meters altitude in the stunning mountain landscape of the Salzburg Alps. Whether you're running a trail for the first time or already have experience – you'll find the right group and program with us."}
+              {tx(language, "start.unser-camp-befindet-sich-auf-1", "Unser Camp befindet sich auf 1.700 Metern Höhe inmitten der atemberaubenden Berglandschaft der Salzburger Alpen. Egal ob du zum ersten Mal einen Trail läufst oder bereits Erfahrung hast – bei uns findest du die richtige Gruppe und das passende Programm.", "Our camp is located at 1,700 meters altitude in the stunning mountain landscape of the Salzburg Alps. Whether you're running a trail for the first time or already have experience – you'll find the right group and program with us.")}
             </p>
 
             <div className="mt-6 flex flex-wrap gap-4">
               <Link href="/trails" className="text-primary font-semibold hover:underline inline-flex items-center gap-1">
-                {language === "de" ? "Unsere Trails entdecken" : "Discover our trails"} <ArrowRight className="h-4 w-4" />
+                {tx(language, "start.unsere-trails-entdecken", "Unsere Trails entdecken", "Discover our trails")} <ArrowRight className="h-4 w-4" />
               </Link>
               <Link href="/house" className="text-primary font-semibold hover:underline inline-flex items-center gap-1">
-                {language === "de" ? "Die Unterkunft ansehen" : "View the accommodation"} <ArrowRight className="h-4 w-4" />
+                {tx(language, "start.die-unterkunft-ansehen", "Die Unterkunft ansehen", "View the accommodation")} <ArrowRight className="h-4 w-4" />
               </Link>
             </div>
           </div>
@@ -892,7 +826,7 @@ export default function HomePageClient() {
           <div className="container mt-10 grid max-w-6xl items-center gap-8 md:mt-14 md:grid-cols-2 md:gap-14">
             <Image
               src="/images/gruppenbild-2026-ganz.webp"
-              alt={language === "de" ? "Sechs Teilnehmende vom Mountaincamp 2026 auf einem Gipfel" : "Six participants of the Mountaincamp 2026 on a summit"}
+              alt={tx(language, "start.sechs-teilnehmende-vom-mountaincamp-2026-auf", "Sechs Teilnehmende vom Mountaincamp 2026 auf einem Gipfel", "Six participants of the Mountaincamp 2026 on a summit")}
               width={1200}
               height={1800}
               sizes="(max-width: 768px) 100vw, 560px"
@@ -900,17 +834,16 @@ export default function HomePageClient() {
             />
             <div>
               <p className="text-3xl font-bold uppercase leading-tight tracking-tight text-gray-900 md:text-5xl">
-                {language === "de" ? "Sechs Freunde. Vor dem Camp kannten sich nur zwei." : "Six friends. Only two knew each other before the camp."}
+                {tx(language, "start.sechs-freunde-vor-dem-camp-kannten", "Sechs Freunde. Vor dem Camp kannten sich nur zwei.", "Six friends. Only two knew each other before the camp.")}
               </p>
               <p className="mt-5 text-lg leading-relaxed text-gray-600">
-                {language === "de"
-                  ? "Ob du allein anreist oder mit Freunden: Nach Hause fährst du mit einer neuen Crew."
-                  : "Whether you come alone or with friends, you go home with a new crew."}
+                {tx(language, "start.ob-du-allein-anreist-oder-mit", "Ob du allein anreist oder mit Freunden: Nach Hause fährst du mit einer neuen Crew.", "Whether you come alone or with friends, you go home with a new crew.")}
               </p>
             </div>
           </div>
         </section>
 
+        {/* @block 04 Laufband */}
         <Marquee
           items={
             language === "de"
@@ -919,6 +852,7 @@ export default function HomePageClient() {
           }
         />
 
+        {/* @block 05 Über uns */}
         <section id="about" className="relative z-30 grid lg:grid-cols-2">
           <div className="flex items-center bg-[#EFE7DC] px-6 py-14 md:px-12 md:py-20 lg:min-h-[720px] lg:px-16 xl:px-24">
             <motion.div
@@ -929,7 +863,7 @@ export default function HomePageClient() {
               className="max-w-xl"
             >
               <h2 className="mb-6 text-3xl font-bold uppercase leading-tight tracking-tight text-gray-900 md:mb-8 md:text-5xl">
-                {language === "de" ? "Dein Trailrunning Camp in Österreich" : "Your Trail Running Camp in Austria"}
+                {tx(language, "start.dein-trailrunning-camp-in-oesterreich", "Dein Trailrunning Camp in Österreich", "Your Trail Running Camp in Austria")}
               </h2>
               <div className="space-y-3 text-gray-700">
                 {[1, 2, 3, 4, 5, 6].map((n) => (
@@ -947,7 +881,7 @@ export default function HomePageClient() {
                       <Calendar className="h-5 w-5 text-primary" />
                     </div>
                     <span className="text-lg text-gray-900">
-                      {language === "de" ? "18.–22. August 2027" : "August 18–22, 2027"}
+                      {tx(language, "start.18-22-august-2027", "18.–22. August 2027", "August 18–22, 2027")}
                     </span>
                   </div>
                   <div className="flex items-center gap-3">
@@ -955,7 +889,7 @@ export default function HomePageClient() {
                       <MapPin className="h-5 w-5 text-primary" />
                     </div>
                     <span className="text-lg text-gray-900">
-                      {language === "de" ? "Hochkrimml, Österreich" : "Hochkrimml, Austria"}
+                      {tx(language, "start.hochkrimml-oesterreich", "Hochkrimml, Österreich", "Hochkrimml, Austria")}
                     </span>
                   </div>
                 </div>
@@ -965,7 +899,7 @@ export default function HomePageClient() {
                     href="/tickets"
                     className="inline-flex items-center bg-primary px-6 py-3 text-sm font-bold uppercase tracking-wide text-white transition-colors hover:bg-primary-dark"
                   >
-                    {language === "de" ? "Ticket sichern" : "Get your ticket"}
+                    {tx(language, "start.ticket-sichern", "Ticket sichern", "Get your ticket")}
                   </Link>
                 </div>
               </div>
@@ -974,18 +908,17 @@ export default function HomePageClient() {
 
           <SplitImageSlider
             images={["/images/alpine-village-group.jpg", "/images/trails-header-group.jpeg", "/images/mountain-top-sunset-rave.jpg"]}
-            alt={language === "de" ? "Trailrunning Camp Österreich Teilnehmer in Hochkrimml" : "Trail running camp Austria participants in Hochkrimml"}
+            alt={tx(language, "start.trailrunning-camp-oesterreich-teilnehmer-in-hoch", "Trailrunning Camp Österreich Teilnehmer in Hochkrimml", "Trail running camp Austria participants in Hochkrimml")}
           />
         </section>
 
+        {/* @block 06 Erlebnis */}
         <section id="experience" className="bg-gray-50 py-16 md:py-24">
           <div className="container">
             <SectionTitle
-              title={language === "de" ? "Fünf Tage. Ein Berg. Deine Crew." : "Five days. One mountain. Your crew."}
+              title={tx(language, "start.fuenf-tage-ein-berg-deine-crew", "Fünf Tage. Ein Berg. Deine Crew.", "Five days. One mountain. Your crew.")}
               subtitle={
-                language === "de"
-                  ? "Tagsüber Trails, nachmittags Recovery, abends die Party am Berg. 18. bis 22. August 2027 in Hochkrimml."
-                  : "Trail runs by day, recovery in the afternoon, the party on the mountain at night. 18 to 22 August 2027 in Hochkrimml."
+                tx(language, "start.tagsueber-trails-nachmittags-recovery-abends-die", "Tagsüber Trails, nachmittags Recovery, abends die Party am Berg. 18. bis 22. August 2027 in Hochkrimml.", "Trail runs by day, recovery in the afternoon, the party on the mountain at night. 18 to 22 August 2027 in Hochkrimml.")
               }
               align="center"
               light={true}
@@ -1055,14 +988,13 @@ export default function HomePageClient() {
           </div>
         </section>
 
+        {/* @block 07 Aktivitäten */}
         <section className="bg-white py-24">
           <div className="container">
             <SectionTitle
-              title={language === "de" ? "Aktivitäten" : "Activities"}
+              title={tx(language, "start.aktivitaeten", "Aktivitäten", "Activities")}
               subtitle={
-                language === "de"
-                  ? "Neben den täglichen Runs erwarten dich im Trailrunning Camp Workshops, kreative Sessions und gemeinsame Erlebnisse."
-                  : "Beyond the daily runs, the trail running camp offers workshops, creative sessions and shared experiences."
+                tx(language, "start.neben-den-taeglichen-runs-erwarten-dich", "Neben den täglichen Runs erwarten dich im Trailrunning Camp Workshops, kreative Sessions und gemeinsame Erlebnisse.", "Beyond the daily runs, the trail running camp offers workshops, creative sessions and shared experiences.")
               }
               align="center"
               light={true}
@@ -1137,14 +1069,13 @@ export default function HomePageClient() {
 
         <RouteOverviewSection />
 
+        {/* @block 09 Eindrücke (Galerie) */}
         <section className="bg-gray-50 py-24">
           <div className="container">
             <SectionTitle
-              title={language === "de" ? "Eindrücke" : "Impressions"}
+              title={tx(language, "start.eindruecke", "Eindrücke", "Impressions")}
               subtitle={
-                language === "de"
-                  ? "Momente aus dem Trailrunning Camp 2026 in Hochkrimml."
-                  : "Moments from the 2026 trail running camp in Hochkrimml."
+                tx(language, "start.momente-aus-dem-trailrunning-camp-2026", "Momente aus dem Trailrunning Camp 2026 in Hochkrimml.", "Moments from the 2026 trail running camp in Hochkrimml.")
               }
               align="center"
               light={true}
@@ -1156,12 +1087,13 @@ export default function HomePageClient() {
 
         <InstagramReelsSection />
 
+        {/* @block 11 Erfahrungen */}
         <section id="testimonials" className="relative overflow-hidden bg-white py-24">
           <div className="absolute left-0 top-0 h-full w-full bg-[radial-gradient(ellipse_at_top_right,_var(--tw-gradient-stops))] from-primary/10 via-transparent to-transparent" />
 
           <div className="container relative z-10">
             <SectionTitle
-              title={language === "de" ? "Erfahrungen aus dem Mountaincamp" : "Experiences from the Mountaincamp"}
+              title={tx(language, "start.erfahrungen-aus-dem-mountaincamp", "Erfahrungen aus dem Mountaincamp", "Experiences from the Mountaincamp")}
               align="center"
               light={true}
             />
@@ -1174,14 +1106,13 @@ export default function HomePageClient() {
 
         <FAQSection />
 
+        {/* @block 13 Partner */}
         <section className="overflow-hidden bg-gray-900 py-12 md:py-24">
           <div className="container mb-12">
             <SectionTitle
-              title={language === "de" ? "Partner des Trailrunning Camps" : "Partners of the trail running camp"}
+              title={tx(language, "start.partner-des-trailrunning-camps", "Partner des Trailrunning Camps", "Partners of the trail running camp")}
               subtitle={
-                language === "de"
-                  ? "Marken und Partner, die das Mountaincamp begleiten."
-                  : "Brands and partners supporting the Mountaincamp."
+                tx(language, "start.marken-und-partner-die-das-mountaincamp", "Marken und Partner, die das Mountaincamp begleiten.", "Brands and partners supporting the Mountaincamp.")
               }
               align="center"
               light={false}
@@ -1198,6 +1129,7 @@ export default function HomePageClient() {
 
         <TicketProgressSection />
 
+        {/* @block 15 Anmeldung */}
         <section id="register" className="frost-grey py-16 text-white md:py-24">
           <div className="container">
             <div className="grid items-center gap-8 lg:grid-cols-2 md:gap-16">
@@ -1208,12 +1140,12 @@ export default function HomePageClient() {
                 transition={{ duration: 0.8 }}
               >
                 <h2 className="mb-4 text-2xl font-bold uppercase tracking-tight text-white md:mb-6 md:text-4xl">
-                  {language === "de" ? "Jetzt deinen Platz im Trailrunning Camp sichern" : "Secure your spot at the trail running camp"}
+                  {tx(language, "start.jetzt-deinen-platz-im-trailrunning-camp", "Jetzt deinen Platz im Trailrunning Camp sichern", "Secure your spot at the trail running camp")}
                 </h2>
                 <p className="mb-8 text-xl text-white">
-                  {language === "de" ? "18.–22. August 2027" : "August 18–22, 2027"}
+                  {tx(language, "start.18-22-august-2027", "18.–22. August 2027", "August 18–22, 2027")}
                   <br />
-                  {language === "de" ? "Österreichische Alpen" : "Austrian Alps"}
+                  {tx(language, "start.oesterreichische-alpen", "Österreichische Alpen", "Austrian Alps")}
                 </p>
                 <ul className="space-y-4">
                   <li className="flex items-center gap-3">
@@ -1241,9 +1173,7 @@ export default function HomePageClient() {
                   </span>
                   <span className="text-sm font-semibold uppercase tracking-wide text-white">
                     {isBookable
-                      ? language === "de"
-                        ? "Buchung ist jetzt geöffnet"
-                        : "Booking is now open"
+                      ? tx(language, "start.buchung-ist-jetzt-geoeffnet", "Buchung ist jetzt geöffnet", "Booking is now open")
                       : t("comingSoonBadge")}
                   </span>
                 </div>
@@ -1257,7 +1187,7 @@ export default function HomePageClient() {
               >
                 <div className="border border-white/70 bg-white/55 p-8 text-gray-900 shadow-sm backdrop-blur-md">
                   <h3 className="mb-3 text-center text-2xl font-bold uppercase text-white">
-                    {isBookable ? (language === "de" ? "Hol dir jetzt dein Ticket" : "Get your ticket now") : t("notifyTitle")}
+                    {isBookable ? (tx(language, "start.hol-dir-jetzt-dein-ticket", "Hol dir jetzt dein Ticket", "Get your ticket now")) : t("notifyTitle")}
                   </h3>
                   <p className="mb-6 text-center text-sm text-white/70">
                     {isBookable ? bookingBoxText(language as "de" | "en", siteConfig.phases) : t("notifyDesc")}
@@ -1265,7 +1195,7 @@ export default function HomePageClient() {
                   {isBookable ? (
                     <Button size="lg" className="w-full bg-primary text-white hover:bg-primary/90" asChild>
                       <a href={TICKET_URL}>
-                        {language === "de" ? "Jetzt Tickets sichern" : "Get your ticket"}
+                        {tx(language, "start.jetzt-tickets-sichern", "Jetzt Tickets sichern", "Get your ticket")}
                       </a>
                     </Button>
                   ) : (
@@ -1277,11 +1207,12 @@ export default function HomePageClient() {
           </div>
         </section>
 
+        {/* @block 16 Abschluss */}
         <section className="relative overflow-hidden bg-neutral-600 py-16 text-white md:py-24">
           <div className="absolute inset-0">
             <Image
               src="/images/mountain-summit.jpeg"
-              alt={language === "de" ? "Trailrunning in den österreichischen Alpen" : "Trail running in the Austrian Alps"}
+              alt={tx(language, "start.trailrunning-in-den-oesterreichischen-alpen", "Trailrunning in den österreichischen Alpen", "Trail running in the Austrian Alps")}
               fill
               className="object-cover opacity-40 blur-sm"
               loading="lazy"
@@ -1296,7 +1227,7 @@ export default function HomePageClient() {
                 transition={{ duration: 0.8 }}
                 className="mb-6 text-2xl font-bold md:mb-8 md:text-4xl lg:text-5xl"
               >
-                {language === "de" ? "Trailrunning Camp Österreich 2027" : "Trail Running Camp Austria 2027"}
+                {tx(language, "start.trailrunning-camp-oesterreich-2027", "Trailrunning Camp Österreich 2027", "Trail Running Camp Austria 2027")}
               </motion.h2>
               <motion.p
                 initial={{ opacity: 0, y: 20 }}
@@ -1304,9 +1235,7 @@ export default function HomePageClient() {
                 transition={{ duration: 0.8, delay: 0.2 }}
                 className="mb-12 text-xl text-gray-300"
               >
-                {language === "de"
-                  ? "Fünf Tage Trailrunning, Community und unvergessliche Momente in den österreichischen Alpen."
-                  : "Five days of trail running, community and unforgettable moments in the Austrian Alps."}
+                {tx(language, "start.fuenf-tage-trailrunning-community-und-unvergessl", "Fünf Tage Trailrunning, Community und unvergessliche Momente in den österreichischen Alpen.", "Five days of trail running, community and unforgettable moments in the Austrian Alps.")}
               </motion.p>
               <motion.div
                 initial={{ opacity: 0, y: 20 }}
@@ -1317,7 +1246,7 @@ export default function HomePageClient() {
                 <NotifySignupForm className="w-full max-w-md [&_input]:border-white/60 [&_input]:bg-white/10 [&_input]:text-white [&_input::placeholder]:text-white/70 [&_svg]:text-white/70 [&>div]:text-white" />
                 <div className="flex items-center gap-4 text-gray-300">
                   <Calendar className="h-5 w-5" />
-                  <span>{language === "de" ? "18.–22. August 2027" : "August 18–22, 2027"}</span>
+                  <span>{tx(language, "start.18-22-august-2027", "18.–22. August 2027", "August 18–22, 2027")}</span>
                 </div>
               </motion.div>
             </div>
@@ -1325,6 +1254,7 @@ export default function HomePageClient() {
         </section>
       </main>
 
+      {/* @block 17 Footer */}
       <footer className="footer pb-24 md:pb-16">
         <div className="container">
           <div className="mb-12 flex flex-col items-center justify-between gap-8 md:flex-row">
@@ -1339,9 +1269,7 @@ export default function HomePageClient() {
                 sizes="180px"
               />
               <p className="text-white/60">
-                {language === "de"
-                  ? "Trailrunning-Camp in den österreichischen Alpen"
-                  : "Trailrunning camp in the Austrian Alps"}
+                {tx(language, "start.trailrunning-camp-in-den-oesterreichischen-alpen", "Trailrunning-Camp in den österreichischen Alpen", "Trailrunning camp in the Austrian Alps")}
               </p>
             </div>
 
@@ -1466,19 +1394,19 @@ export default function HomePageClient() {
               <div className="flex flex-col gap-3">
                 <h4 className="footer-heading text-white">{t("legal")}</h4>
                 <Link href="/datenschutz" className="footer-link">
-                  {language === "de" ? "Datenschutz" : "Privacy Policy"}
+                  {tx(language, "start.datenschutz", "Datenschutz", "Privacy Policy")}
                 </Link>
                 <Link href="/impressum" className="footer-link">
-                  {language === "de" ? "Impressum" : "Imprint"}
+                  {tx(language, "start.impressum", "Impressum", "Imprint")}
                 </Link>
                 <Link href="/agb" className="footer-link">
-                  {language === "de" ? "AGB" : "Terms & Conditions"}
+                  {tx(language, "start.agb", "AGB", "Terms & Conditions")}
                 </Link>
               </div>
             </div>
           </div>
           <div className="border-t border-white/10 py-6 text-center text-white/60">
-            © 2025 the Mountaincamp. {language === "de" ? "Alle Rechte vorbehalten." : "All rights reserved."}
+            © 2025 the Mountaincamp. {tx(language, "start.alle-rechte-vorbehalten", "Alle Rechte vorbehalten.", "All rights reserved.")}
           </div>
         </div>
       </footer>

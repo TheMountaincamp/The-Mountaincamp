@@ -1,5 +1,7 @@
 "use client"
+// @block 10 Instagram
 
+import { tx } from "@/app/lib/texts"
 import { motion } from "framer-motion"
 import { Instagram, Play } from "lucide-react"
 import { Button } from "@/components/ui/button"
@@ -55,12 +57,10 @@ export default function InstagramReelsSection() {
           className="text-center mb-16"
         >
           <h2 className="mb-4 text-3xl font-bold uppercase tracking-tight text-gray-900 md:text-4xl">
-            {language === "de" ? "Live von den Trails" : "Live from the Trails"}
+            {tx(language, "start.live-von-den-trails", "Live von den Trails", "Live from the Trails")}
           </h2>
           <p className="text-lg text-gray-600 max-w-2xl mx-auto">
-            {language === "de"
-              ? "Erlebe die besten Momente vom Mountaincamp"
-              : "Experience the best moments from the Mountaincamp"}
+            {tx(language, "start.erlebe-die-besten-momente-vom-mountaincamp", "Erlebe die besten Momente vom Mountaincamp", "Experience the best moments from the Mountaincamp")}
           </p>
         </motion.div>
 
@@ -136,7 +136,7 @@ export default function InstagramReelsSection() {
               className="flex items-center gap-3"
             >
               <Instagram className="h-6 w-6" />
-              <span>{language === "de" ? "Mehr auf Instagram" : "See more on Instagram"}</span>
+              <span>{tx(language, "start.mehr-auf-instagram", "Mehr auf Instagram", "See more on Instagram")}</span>
             </a>
           </Button>
         </motion.div>

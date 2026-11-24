@@ -2,8 +2,9 @@
 
 import { createContext, useContext, useState, useEffect, type ReactNode } from "react"
 import { usePathname, useRouter } from "next/navigation"
-import { type Language, translations, type TranslationKey } from "@/app/translations"
+import { type Language, type TranslationKey } from "@/app/translations"
 import { EN_PATHS, isEnPath, stripEn } from "@/app/lib/locale"
+import { setTextOverrides, tKey, type TextOverrides } from "@/app/lib/texts"
 
 type LanguageContextType = {
   language: Language
@@ -13,7 +14,9 @@ type LanguageContextType = {
 
 const LanguageContext = createContext<LanguageContextType | undefined>(undefined)
 
-export function LanguageProvider({ children }: { children: ReactNode }) {
+export function LanguageProvider({ children, overrides }: { children: ReactNode; overrides?: TextOverrides }) {
+  // Texte aus dem Admin-Bereich, vor dem Rendern der Seite setzen
+  setTextOverrides(overrides)
   const pathname = usePathname()
   const router = useRouter()
   const enUrl = isEnPath(pathname)
@@ -49,7 +52,7 @@ export function LanguageProvider({ children }: { children: ReactNode }) {
   }
 
   const t = (key: TranslationKey): string => {
-    return translations[language][key] || translations.de[key] || key
+    return tKey(language, key)
   }
 
   return <LanguageContext.Provider value={{ language, setLanguage, t }}>{children}</LanguageContext.Provider>

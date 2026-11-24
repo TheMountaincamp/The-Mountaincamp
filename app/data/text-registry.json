@@ -1,0 +1,2858 @@
+[
+ {
+  "key": "notifyErrorInvalid",
+  "page": "allgemein",
+  "section": "E-Mail-Formular",
+  "order": 99,
+  "de": "Bitte gib eine gültige E-Mail-Adresse ein.",
+  "en": "Please enter a valid email address."
+ },
+ {
+  "key": "notifyErrorGeneric",
+  "page": "allgemein",
+  "section": "E-Mail-Formular",
+  "order": 99,
+  "de": "Etwas ist schiefgelaufen. Bitte versuche es erneut.",
+  "en": "Something went wrong. Please try again."
+ },
+ {
+  "key": "notifySuccess",
+  "page": "allgemein",
+  "section": "E-Mail-Formular",
+  "order": 99,
+  "de": "Danke! Wir halten Dich auf dem Laufenden.",
+  "en": "Thanks! We'll keep you posted."
+ },
+ {
+  "key": "notifyPlaceholder",
+  "page": "allgemein",
+  "section": "E-Mail-Formular",
+  "order": 99,
+  "de": "Deine E-Mail-Adresse",
+  "en": "Your email address"
+ },
+ {
+  "key": "notifySubmitting",
+  "page": "allgemein",
+  "section": "E-Mail-Formular",
+  "order": 99,
+  "de": "Wird gesendet...",
+  "en": "Submitting..."
+ },
+ {
+  "key": "notifyButton",
+  "page": "allgemein",
+  "section": "E-Mail-Formular",
+  "order": 99,
+  "de": "Auf dem Laufenden bleiben",
+  "en": "Keep me updated"
+ },
+ {
+  "key": "anreise.mountaincamp-bus-vor-den-bergen-in",
+  "page": "anreise",
+  "section": "Kopfbereich",
+  "order": 1,
+  "alt": true,
+  "de": "Mountaincamp-Bus vor den Bergen in Hochkrimml",
+  "en": "Mountaincamp bus in front of the mountains in Hochkrimml"
+ },
+ {
+  "key": "anreise.busanreise-zum-trailrunning-camp-in-hochkrimml",
+  "page": "anreise",
+  "section": "Kopfbereich",
+  "order": 1,
+  "de": ": Busanreise zum Trailrunning Camp in Hochkrimml",
+  "en": ": bus travel to the trail running camp in Hochkrimml"
+ },
+ {
+  "key": "anreise.gemeinsam-nachhaltig-ins-mountaincamp",
+  "page": "anreise",
+  "section": "Kopfbereich",
+  "order": 1,
+  "de": "Gemeinsam nachhaltig ins Mountaincamp",
+  "en": "Travel sustainably, together, to the Mountaincamp"
+ },
+ {
+  "key": "anreise.zurueck",
+  "page": "anreise",
+  "section": "Kopfbereich",
+  "order": 1,
+  "de": "Zurück",
+  "en": "Back"
+ },
+ {
+  "key": "anreise.dein-camp-beginnt-schon-unterwegs",
+  "page": "anreise",
+  "section": "Intro",
+  "order": 2,
+  "de": "Dein Camp beginnt schon unterwegs",
+  "en": "Your camp starts on the way"
+ },
+ {
+  "key": "anreise.trailrunning-selbst-ist-nahezu-co2-frei",
+  "page": "anreise",
+  "section": "Intro",
+  "order": 2,
+  "de": "Trailrunning selbst ist nahezu CO2-frei. Den Unterschied macht, wie du zum Camp und wieder nach Hause kommst. Die gemeinsame Anreise mit Bus und Bahn ist dabei der nachhaltigste Weg und obendrein richtig bequem: Du lernst deine Gruppe schon unterwegs kennen, und dein Camp beginnt nicht erst auf dem Berg, sondern schon am Bahnhof.",
+  "en": "Trail running itself is almost carbon free. What makes the difference is how you get to the camp and back home. Travelling together by bus and train is the most sustainable way, and a comfortable one too: you get to know your group on the way, and your camp starts at the station, not just on the mountain."
+ },
+ {
+  "key": "anreise.hin-und-rueckfahrt-zubuchbar-bei-der",
+  "page": "anreise",
+  "section": "Intro",
+  "order": 2,
+  "de": "Hin- und Rückfahrt, zubuchbar bei der Ticketbuchung",
+  "en": "Return trip, add it when you book your ticket"
+ },
+ {
+  "key": "anreise.berlin",
+  "page": "anreise",
+  "section": "Anreise und Preise",
+  "order": 3,
+  "de": "Berlin",
+  "en": "Berlin"
+ },
+ {
+  "key": "anreise.hauptbahnhof",
+  "page": "anreise",
+  "section": "Anreise und Preise",
+  "order": 3,
+  "de": "Hauptbahnhof",
+  "en": "Central Station"
+ },
+ {
+  "key": "anreise.muenchen",
+  "page": "anreise",
+  "section": "Anreise und Preise",
+  "order": 3,
+  "de": "München",
+  "en": "Munich"
+ },
+ {
+  "key": "anreise.zentraler-omnibusbahnhof-zob",
+  "page": "anreise",
+  "section": "Anreise und Preise",
+  "order": 3,
+  "de": "Zentraler Omnibusbahnhof (ZOB)",
+  "en": "Central Bus Station (ZOB)"
+ },
+ {
+  "key": "anreise.jenbach",
+  "page": "anreise",
+  "section": "Anreise und Preise",
+  "order": 3,
+  "de": "Jenbach",
+  "en": "Jenbach"
+ },
+ {
+  "key": "anreise.bahnhof",
+  "page": "anreise",
+  "section": "Anreise und Preise",
+  "order": 3,
+  "de": "Bahnhof",
+  "en": "Train station"
+ },
+ {
+  "key": "anreise.hochkrimml",
+  "page": "anreise",
+  "section": "Anreise und Preise",
+  "order": 3,
+  "de": "Hochkrimml",
+  "en": "Hochkrimml"
+ },
+ {
+  "key": "anreise.anreise-und-preise",
+  "page": "anreise",
+  "section": "Anreise und Preise",
+  "order": 3,
+  "de": "Anreise und Preise",
+  "en": "Route and prices"
+ },
+ {
+  "key": "anreise.zug",
+  "page": "anreise",
+  "section": "Anreise und Preise",
+  "order": 3,
+  "de": "Zug",
+  "en": "Train"
+ },
+ {
+  "key": "anreise.hin-und-rueckfahrt",
+  "page": "anreise",
+  "section": "Anreise und Preise",
+  "order": 3,
+  "de": "Hin- und Rückfahrt",
+  "en": "Return trip"
+ },
+ {
+  "key": "anreise.wichtige-informationen",
+  "page": "anreise",
+  "section": "Wichtige Informationen",
+  "order": 4,
+  "de": "Wichtige Informationen",
+  "en": "Important information"
+ },
+ {
+  "key": "anreise.buchung-und-kosten",
+  "page": "anreise",
+  "section": "Wichtige Informationen",
+  "order": 4,
+  "de": "Buchung und Kosten",
+  "en": "Booking and costs"
+ },
+ {
+  "key": "anreise.den-transfer-buchst-du-direkt-bei",
+  "page": "anreise",
+  "section": "Wichtige Informationen",
+  "order": 4,
+  "de": "Den Transfer buchst du direkt bei der Ticketbuchung dazu",
+  "en": "Add the transfer directly when you book your ticket"
+ },
+ {
+  "key": "anreise.preise-gelten-fuer-hin-und-rueckfahrt",
+  "page": "anreise",
+  "section": "Wichtige Informationen",
+  "order": 4,
+  "de": "Preise gelten für Hin- und Rückfahrt",
+  "en": "Prices are for the return trip"
+ },
+ {
+  "key": "anreise.begrenzte-plaetze-verfuegbar",
+  "page": "anreise",
+  "section": "Wichtige Informationen",
+  "order": 4,
+  "de": "Begrenzte Plätze verfügbar",
+  "en": "Limited seats available"
+ },
+ {
+  "key": "anreise.was-mitbringen",
+  "page": "anreise",
+  "section": "Wichtige Informationen",
+  "order": 4,
+  "de": "Was mitbringen?",
+  "en": "What to bring?"
+ },
+ {
+  "key": "anreise.gueltiger-personalausweis-oder-reisepass",
+  "page": "anreise",
+  "section": "Wichtige Informationen",
+  "order": 4,
+  "de": "Gültiger Personalausweis oder Reisepass",
+  "en": "Valid ID or passport"
+ },
+ {
+  "key": "anreise.bequeme-kleidung-fuer-die-fahrt",
+  "page": "anreise",
+  "section": "Wichtige Informationen",
+  "order": 4,
+  "de": "Bequeme Kleidung für die Fahrt",
+  "en": "Comfortable clothes for the journey"
+ },
+ {
+  "key": "anreise.snacks-und-getraenke-optional",
+  "page": "anreise",
+  "section": "Wichtige Informationen",
+  "order": 4,
+  "de": "Snacks und Getränke (optional)",
+  "en": "Snacks and drinks (optional)"
+ },
+ {
+  "key": "anreise.gute-laune-fuer-die-gruppe",
+  "page": "anreise",
+  "section": "Wichtige Informationen",
+  "order": 4,
+  "de": "Gute Laune für die Gruppe",
+  "en": "Good vibes for the group"
+ },
+ {
+  "key": "anreise.fragen-zur-anreise",
+  "page": "anreise",
+  "section": "Fragen zur Anreise",
+  "order": 5,
+  "de": "Fragen zur Anreise?",
+  "en": "Questions about getting there?"
+ },
+ {
+  "key": "anreise.schreib-uns-wenn-du-fragen-zur",
+  "page": "anreise",
+  "section": "Fragen zur Anreise",
+  "order": 5,
+  "de": "Schreib uns, wenn du Fragen zur Anreise oder besondere Wünsche hast.",
+  "en": "Get in touch if you have questions about travel or special requests."
+ },
+ {
+  "key": "anreise.haus",
+  "page": "anreise",
+  "section": "Footer",
+  "order": 6,
+  "de": "Haus",
+  "en": "House"
+ },
+ {
+  "key": "anreise.impressum",
+  "page": "anreise",
+  "section": "Footer",
+  "order": 6,
+  "de": "Impressum",
+  "en": "Imprint"
+ },
+ {
+  "key": "anreise.datenschutz",
+  "page": "anreise",
+  "section": "Footer",
+  "order": 6,
+  "de": "Datenschutz",
+  "en": "Privacy"
+ },
+ {
+  "key": "houseTitle",
+  "page": "haus",
+  "section": "Kopfbereich",
+  "order": 1,
+  "de": "HAUS",
+  "en": "HOUSE"
+ },
+ {
+  "key": "houseSubtitle",
+  "page": "haus",
+  "section": "Kopfbereich",
+  "order": 1,
+  "de": "Dein Zuhause in den Bergen",
+  "en": "Your home in the mountains"
+ },
+ {
+  "key": "houseDescription",
+  "page": "haus",
+  "section": "Beschreibung",
+  "order": 2,
+  "de": "Unser gemütliches Berghaus bietet dir allen Komfort, den du nach einem Tag auf den Trails brauchst.",
+  "en": "Our cozy mountain house offers all the comfort you need after a day on the trails."
+ },
+ {
+  "key": "houseMainDescription",
+  "page": "haus",
+  "section": "Beschreibung",
+  "order": 2,
+  "de": "Dieses gemütliche Gästehaus liegt auf 1.700 Metern Höhe und bietet einen atemberaubenden Blick auf die umliegenden Gipfel. Mit komfortablen Zimmern, einem großzügigen Gemeinschaftsbereich, einer Sauna und einer Turnhalle und vielem mehr ist es der perfekte Ort, um nach einem Tag auf den Trails zu entspannen.",
+  "en": "This cozy mountain house is located at an altitude of 1,700 meters and offers breathtaking views of the surrounding peaks. With comfortable rooms, a spacious common area, a sauna, and a gym, a skatepark and a lot more! It's the perfect place to relax after a day on the trails."
+ },
+ {
+  "key": "houseMeals",
+  "page": "haus",
+  "section": "Beschreibung",
+  "order": 2,
+  "de": "Morgens, Mittags und Abends werden wir vom Küchenteam mit reichhaltigen Mahlzeiten verpflegt.",
+  "en": "In the morning, at noon and in the evening, we are getting served by the kitchen team with rich meals."
+ },
+ {
+  "key": "facilitiesTitle",
+  "page": "haus",
+  "section": "Ausstattung",
+  "order": 3,
+  "de": "AUSSTATTUNG",
+  "en": "FACILITIES"
+ },
+ {
+  "key": "roomsTitle",
+  "page": "haus",
+  "section": "Zimmer",
+  "order": 4,
+  "de": "ZIMMER",
+  "en": "ROOMS"
+ },
+ {
+  "key": "cozySleepingAreas",
+  "page": "haus",
+  "section": "Zimmer",
+  "order": 4,
+  "de": "Gemütliche Schlafplätze",
+  "en": "Cozy Sleeping Areas"
+ },
+ {
+  "key": "cozySleepingDesc",
+  "page": "haus",
+  "section": "Zimmer",
+  "order": 4,
+  "de": "Komfortable Schlafbereiche mit warmer Holzausstattung",
+  "en": "Comfortable sleeping areas with warm wooden furnishing"
+ },
+ {
+  "key": "sharedDormitory",
+  "page": "haus",
+  "section": "Zimmer",
+  "order": 4,
+  "de": "Mehrbettzimmer",
+  "en": "Shared Dormitory"
+ },
+ {
+  "key": "sharedDormitoryDesc",
+  "page": "haus",
+  "section": "Zimmer",
+  "order": 4,
+  "de": "Gemütliche Mehrbettzimmer für 6-8 Personen mit Bergblick",
+  "en": "Cozy shared rooms for 6-8 people with mountain views"
+ },
+ {
+  "key": "bathroomFacilities",
+  "page": "haus",
+  "section": "Bäder",
+  "order": 5,
+  "de": "BADEZIMMER & SANITÄRANLAGEN",
+  "en": "BATHROOM & FACILITIES"
+ },
+ {
+  "key": "washArea",
+  "page": "haus",
+  "section": "Bäder",
+  "order": 5,
+  "de": "Waschbereich",
+  "en": "Wash Area"
+ },
+ {
+  "key": "washAreaDesc",
+  "page": "haus",
+  "section": "Bäder",
+  "order": 5,
+  "de": "Moderne Waschbecken",
+  "en": "Modern wash basins"
+ },
+ {
+  "key": "showers",
+  "page": "haus",
+  "section": "Bäder",
+  "order": 5,
+  "de": "Duschen",
+  "en": "Showers"
+ },
+ {
+  "key": "showersDesc",
+  "page": "haus",
+  "section": "Bäder",
+  "order": 5,
+  "de": "Saubere Duschkabinen",
+  "en": "Clean shower facilities"
+ },
+ {
+  "key": "toilets",
+  "page": "haus",
+  "section": "Bäder",
+  "order": 5,
+  "de": "WC",
+  "en": "Toilets"
+ },
+ {
+  "key": "toiletsDesc",
+  "page": "haus",
+  "section": "Bäder",
+  "order": 5,
+  "de": "Moderne Sanitäranlagen",
+  "en": "Modern toilet facilities"
+ },
+ {
+  "key": "locationTitle",
+  "page": "haus",
+  "section": "Lage",
+  "order": 6,
+  "de": "LAGE",
+  "en": "LOCATION"
+ },
+ {
+  "key": "houseLocation",
+  "page": "haus",
+  "section": "Lage",
+  "order": 6,
+  "de": "Unser Berghaus befindet sich in Hochkrimml, Österreich, umgeben von atemberaubenden Alpengipfeln und endlosen Trailrunning-Möglichkeiten.",
+  "en": "Our mountain house is located in Hochkrimml, Austria, surrounded by breathtaking alpine peaks and endless trail running possibilities."
+ },
+ {
+  "key": "imprint",
+  "page": "haus",
+  "section": "Footer",
+  "order": 7,
+  "shared": true,
+  "de": "Impressum",
+  "en": "Imprint"
+ },
+ {
+  "key": "privacyPolicy",
+  "page": "haus",
+  "section": "Footer",
+  "order": 7,
+  "shared": true,
+  "de": "Datenschutzerklärung",
+  "en": "Privacy Policy"
+ },
+ {
+  "key": "start.early-bird-banner.earlybirdUpcomingTitle",
+  "page": "start",
+  "section": "Preis-Banner oben",
+  "order": 0,
+  "de": "Early-Bird-Tickets",
+  "en": "Early-bird tickets"
+ },
+ {
+  "key": "start.early-bird-banner.earlybirdLiveTitle",
+  "page": "start",
+  "section": "Preis-Banner oben",
+  "order": 0,
+  "de": "Early-Bird-Verkauf läuft",
+  "en": "Early-bird sale is live"
+ },
+ {
+  "key": "start.early-bird-banner.phase2UpcomingTitle",
+  "page": "start",
+  "section": "Preis-Banner oben",
+  "order": 0,
+  "de": "Phase 2 startet in Kürze",
+  "en": "Phase 2 starts soon"
+ },
+ {
+  "key": "start.early-bird-banner.nextLaunchTitle",
+  "page": "start",
+  "section": "Preis-Banner oben",
+  "order": 0,
+  "de": "Nächster Launch",
+  "en": "Next launch"
+ },
+ {
+  "key": "start.early-bird-banner.nextLaunchLiveTitle",
+  "page": "start",
+  "section": "Preis-Banner oben",
+  "order": 0,
+  "de": "Hol dir jetzt dein Ticket",
+  "en": "Get your ticket now"
+ },
+ {
+  "key": "start.early-bird-banner.nextLaunchLiveSuffix",
+  "page": "start",
+  "section": "Preis-Banner oben",
+  "order": 0,
+  "de": "und spare 100€",
+  "en": "and save 100€"
+ },
+ {
+  "key": "start.early-bird-banner.liveLead",
+  "page": "start",
+  "section": "Preis-Banner oben",
+  "order": 0,
+  "de": "Noch",
+  "en": "Only"
+ },
+ {
+  "key": "start.early-bird-banner.upcomingLead",
+  "page": "start",
+  "section": "Preis-Banner oben",
+  "order": 0,
+  "de": "Start in",
+  "en": "Starts in"
+ },
+ {
+  "key": "start.early-bird-banner.ctaLive",
+  "page": "start",
+  "section": "Preis-Banner oben",
+  "order": 0,
+  "de": "Jetzt Tickets sichern",
+  "en": "Get your ticket"
+ },
+ {
+  "key": "start.early-bird-banner.ctaUpcoming",
+  "page": "start",
+  "section": "Preis-Banner oben",
+  "order": 0,
+  "de": "Erinnerung aktivieren",
+  "en": "Remind me"
+ },
+ {
+  "key": "start.early-bird-banner.d",
+  "page": "start",
+  "section": "Preis-Banner oben",
+  "order": 0,
+  "de": "T",
+  "en": "d"
+ },
+ {
+  "key": "start.early-bird-banner.h",
+  "page": "start",
+  "section": "Preis-Banner oben",
+  "order": 0,
+  "de": "Std",
+  "en": "h"
+ },
+ {
+  "key": "start.early-bird-banner.m",
+  "page": "start",
+  "section": "Preis-Banner oben",
+  "order": 0,
+  "de": "Min",
+  "en": "m"
+ },
+ {
+  "key": "start.early-bird-banner.s",
+  "page": "start",
+  "section": "Preis-Banner oben",
+  "order": 0,
+  "de": "Sek",
+  "en": "s"
+ },
+ {
+  "key": "start.early-bird-banner.saleTitle",
+  "page": "start",
+  "section": "Preis-Banner oben",
+  "order": 0,
+  "de": "Bis 30.11. buchen & sparen",
+  "en": "Book by 30.11. & save"
+ },
+ {
+  "key": "start.early-bird-banner.days",
+  "page": "start",
+  "section": "Preis-Banner oben",
+  "order": 0,
+  "de": "Tage",
+  "en": "Days"
+ },
+ {
+  "key": "start.early-bird-banner.hours",
+  "page": "start",
+  "section": "Preis-Banner oben",
+  "order": 0,
+  "de": "Stunden",
+  "en": "Hours"
+ },
+ {
+  "key": "start.early-bird-banner.minutes",
+  "page": "start",
+  "section": "Preis-Banner oben",
+  "order": 0,
+  "de": "Minuten",
+  "en": "Minutes"
+ },
+ {
+  "key": "start.early-bird-banner.seconds",
+  "page": "start",
+  "section": "Preis-Banner oben",
+  "order": 0,
+  "de": "Sekunden",
+  "en": "Seconds"
+ },
+ {
+  "key": "start.ticket-prompt.endsIn",
+  "page": "start",
+  "section": "Ticket-Hinweis (Popup)",
+  "order": 0,
+  "de": "Endet in",
+  "en": "Ends in"
+ },
+ {
+  "key": "start.ticket-prompt.cta",
+  "page": "start",
+  "section": "Ticket-Hinweis (Popup)",
+  "order": 0,
+  "de": "Ticket sichern",
+  "en": "Get your ticket"
+ },
+ {
+  "key": "start.ticket-prompt.close",
+  "page": "start",
+  "section": "Ticket-Hinweis (Popup)",
+  "order": 0,
+  "de": "Schließen",
+  "en": "Close"
+ },
+ {
+  "key": "start.ticket-prompt.d",
+  "page": "start",
+  "section": "Ticket-Hinweis (Popup)",
+  "order": 0,
+  "de": "T",
+  "en": "d"
+ },
+ {
+  "key": "about",
+  "page": "start",
+  "section": "Navigation",
+  "order": 1,
+  "shared": true,
+  "de": "Über uns",
+  "en": "About"
+ },
+ {
+  "key": "experience",
+  "page": "start",
+  "section": "Navigation",
+  "order": 1,
+  "shared": true,
+  "de": "Erlebnis",
+  "en": "Experience"
+ },
+ {
+  "key": "house",
+  "page": "start",
+  "section": "Navigation",
+  "order": 1,
+  "shared": true,
+  "de": "Haus",
+  "en": "House"
+ },
+ {
+  "key": "trails",
+  "page": "start",
+  "section": "Navigation",
+  "order": 1,
+  "shared": true,
+  "de": "Trails",
+  "en": "Trails"
+ },
+ {
+  "key": "testimonials",
+  "page": "start",
+  "section": "Navigation",
+  "order": 1,
+  "shared": true,
+  "de": "Erfahrungen",
+  "en": "Testimonials"
+ },
+ {
+  "key": "start.trailrunning-camp-in-oesterreich",
+  "page": "start",
+  "section": "Startbild",
+  "order": 2,
+  "de": "Trailrunning Camp in Österreich",
+  "en": "Trail Running Camp in Austria"
+ },
+ {
+  "key": "start.mountaincamp-2027",
+  "page": "start",
+  "section": "Startbild",
+  "order": 2,
+  "de": "Mountaincamp 2027",
+  "en": "Mountaincamp 2027"
+ },
+ {
+  "key": "start.5-taegiges-trailrunning-camp-in-den",
+  "page": "start",
+  "section": "Startbild",
+  "order": 2,
+  "de": "5 tägiges Trailrunning Camp in den österreichischen Alpen",
+  "en": "5-day trail running camp in the Austrian Alps"
+ },
+ {
+  "key": "start.trailrunning-community-party",
+  "page": "start",
+  "section": "Startbild",
+  "order": 2,
+  "de": "Trailrunning | Community | Party",
+  "en": "Trail Running | Community | Party"
+ },
+ {
+  "key": "start.hochkrimml-18-22-august-2027",
+  "page": "start",
+  "section": "Startbild",
+  "order": 2,
+  "de": "Hochkrimml | 18.–22. August 2027",
+  "en": "Hochkrimml | August 18–22, 2027"
+ },
+ {
+  "key": "start.entdecke-das-camp",
+  "page": "start",
+  "section": "Startbild",
+  "order": 2,
+  "de": "Entdecke das Camp",
+  "en": "Discover the Camp"
+ },
+ {
+  "key": "start.jetzt-tickets-sichern",
+  "page": "start",
+  "section": "Startbild",
+  "order": 2,
+  "de": "Jetzt Tickets sichern",
+  "en": "Get your ticket"
+ },
+ {
+  "key": "start.benachrichtigt-werden",
+  "page": "start",
+  "section": "Startbild",
+  "order": 2,
+  "de": "Benachrichtigt werden",
+  "en": "Notify Me"
+ },
+ {
+  "key": "start.buchung-geoeffnet",
+  "page": "start",
+  "section": "Startbild",
+  "order": 2,
+  "de": "Buchung geöffnet",
+  "en": "Booking open"
+ },
+ {
+  "key": "earlyBirdBadge",
+  "page": "start",
+  "section": "Startbild",
+  "order": 2,
+  "de": "Nächster Ticket-Release: Mittwoch, 16. September",
+  "en": "Next ticket release: Wednesday, 16 September"
+ },
+ {
+  "key": "start.trailrunning-fuer-einsteiger-innen-und-erfahrene",
+  "page": "start",
+  "section": "Intro",
+  "order": 3,
+  "de": "Trailrunning für Einsteiger:innen und Erfahrene",
+  "en": "Trail running for beginners and experienced runners"
+ },
+ {
+  "key": "start.das-mountaincamp-ist-ein-5-taegiges",
+  "page": "start",
+  "section": "Intro",
+  "order": 3,
+  "de": "Das Mountaincamp ist ein 5-tägiges Trailrunning Camp in Österreich, in Hochkrimml auf 1.700 m. Dich erwarten tägliche Trailruns, Techniktraining, Community, Workshops und Erholung in den Alpen, für Anfänger:innen, Fortgeschrittene und ambitionierte Läufer:innen.",
+  "en": "The Mountaincamp is a 5-day trail running camp in Hochkrimml, Austria, at 1,700 m. Expect daily trail runs, technique coaching, community, workshops and recovery in the Alps for beginners, intermediate runners and ambitious athletes."
+ },
+ {
+  "key": "start.unser-camp-befindet-sich-auf-1",
+  "page": "start",
+  "section": "Intro",
+  "order": 3,
+  "de": "Unser Camp befindet sich auf 1.700 Metern Höhe inmitten der atemberaubenden Berglandschaft der Salzburger Alpen. Egal ob du zum ersten Mal einen Trail läufst oder bereits Erfahrung hast – bei uns findest du die richtige Gruppe und das passende Programm.",
+  "en": "Our camp is located at 1,700 meters altitude in the stunning mountain landscape of the Salzburg Alps. Whether you're running a trail for the first time or already have experience – you'll find the right group and program with us."
+ },
+ {
+  "key": "start.unsere-trails-entdecken",
+  "page": "start",
+  "section": "Intro",
+  "order": 3,
+  "de": "Unsere Trails entdecken",
+  "en": "Discover our trails"
+ },
+ {
+  "key": "start.die-unterkunft-ansehen",
+  "page": "start",
+  "section": "Intro",
+  "order": 3,
+  "de": "Die Unterkunft ansehen",
+  "en": "View the accommodation"
+ },
+ {
+  "key": "start.sechs-teilnehmende-vom-mountaincamp-2026-auf",
+  "page": "start",
+  "section": "Intro",
+  "order": 3,
+  "alt": true,
+  "de": "Sechs Teilnehmende vom Mountaincamp 2026 auf einem Gipfel",
+  "en": "Six participants of the Mountaincamp 2026 on a summit"
+ },
+ {
+  "key": "start.sechs-freunde-vor-dem-camp-kannten",
+  "page": "start",
+  "section": "Intro",
+  "order": 3,
+  "de": "Sechs Freunde. Vor dem Camp kannten sich nur zwei.",
+  "en": "Six friends. Only two knew each other before the camp."
+ },
+ {
+  "key": "start.ob-du-allein-anreist-oder-mit",
+  "page": "start",
+  "section": "Intro",
+  "order": 3,
+  "de": "Ob du allein anreist oder mit Freunden: Nach Hause fährst du mit einer neuen Crew.",
+  "en": "Whether you come alone or with friends, you go home with a new crew."
+ },
+ {
+  "key": "start.dein-trailrunning-camp-in-oesterreich",
+  "page": "start",
+  "section": "Über uns",
+  "order": 5,
+  "de": "Dein Trailrunning Camp in Österreich",
+  "en": "Your Trail Running Camp in Austria"
+ },
+ {
+  "key": "start.18-22-august-2027",
+  "page": "start",
+  "section": "Über uns",
+  "order": 5,
+  "de": "18.–22. August 2027",
+  "en": "August 18–22, 2027"
+ },
+ {
+  "key": "start.hochkrimml-oesterreich",
+  "page": "start",
+  "section": "Über uns",
+  "order": 5,
+  "de": "Hochkrimml, Österreich",
+  "en": "Hochkrimml, Austria"
+ },
+ {
+  "key": "start.ticket-sichern",
+  "page": "start",
+  "section": "Über uns",
+  "order": 5,
+  "de": "Ticket sichern",
+  "en": "Get your ticket"
+ },
+ {
+  "key": "start.trailrunning-camp-oesterreich-teilnehmer-in-hoch",
+  "page": "start",
+  "section": "Über uns",
+  "order": 5,
+  "alt": true,
+  "de": "Trailrunning Camp Österreich Teilnehmer in Hochkrimml",
+  "en": "Trail running camp Austria participants in Hochkrimml"
+ },
+ {
+  "key": "start.fuenf-tage-ein-berg-deine-crew",
+  "page": "start",
+  "section": "Erlebnis",
+  "order": 6,
+  "alt": true,
+  "de": "Fünf Tage. Ein Berg. Deine Crew.",
+  "en": "Five days. One mountain. Your crew."
+ },
+ {
+  "key": "start.tagsueber-trails-nachmittags-recovery-abends-die",
+  "page": "start",
+  "section": "Erlebnis",
+  "order": 6,
+  "de": "Tagsüber Trails, nachmittags Recovery, abends die Party am Berg. 18. bis 22. August 2027 in Hochkrimml.",
+  "en": "Trail runs by day, recovery in the afternoon, the party on the mountain at night. 18 to 22 August 2027 in Hochkrimml."
+ },
+ {
+  "key": "trailrunningTitle",
+  "page": "start",
+  "section": "Erlebnis",
+  "order": 6,
+  "de": "Trails für jedes Level",
+  "en": "Trails for every level"
+ },
+ {
+  "key": "trailrunningDesc",
+  "page": "start",
+  "section": "Erlebnis",
+  "order": 6,
+  "de": "Tägliche Trailruns in Gruppen nach Tempo. Von entspannten 10 km bis zur Gipfeltour mit 1.500 Höhenmetern.",
+  "en": "Daily trail runs in groups by pace. From relaxed 10 km to summit tours with 1,500 m of climbing."
+ },
+ {
+  "key": "recoveryTitle",
+  "page": "start",
+  "section": "Erlebnis",
+  "order": 6,
+  "de": "Erholung wie die Profis",
+  "en": "Recover like a pro"
+ },
+ {
+  "key": "recoveryDesc",
+  "page": "start",
+  "section": "Erlebnis",
+  "order": 6,
+  "de": "Recovery Lounge, Sauna, Eisbaden und Morning Yoga. Deine Beine danken es dir an Tag vier.",
+  "en": "Recovery lounge, sauna, ice baths and morning yoga. Your legs will thank you on day four."
+ },
+ {
+  "key": "creativityTitle",
+  "page": "start",
+  "section": "Erlebnis",
+  "order": 6,
+  "de": "Lern etwas Neues",
+  "en": "Learn something new"
+ },
+ {
+  "key": "creativityDesc",
+  "page": "start",
+  "section": "Erlebnis",
+  "order": 6,
+  "de": "Talks zu Training, Ernährung und Mindset, dazu kreative Workshops von Linoldruck bis Töpfern. Einige Workshops sind kostenlos, andere zubuchbar.",
+  "en": "Talks on training, nutrition and mindset, plus creative workshops from linocut to pottery. Some workshops are free, others are bookable add-ons."
+ },
+ {
+  "key": "raveTitle",
+  "page": "start",
+  "section": "Erlebnis",
+  "order": 6,
+  "de": "Abende, die bleiben",
+  "en": "Nights to remember"
+ },
+ {
+  "key": "raveDesc",
+  "page": "start",
+  "section": "Erlebnis",
+  "order": 6,
+  "de": "Lagerfeuer, Karaoke, Outdoor-Kino und der Summit Rave. Die meisten kommen allein. Keiner fährt allein nach Hause.",
+  "en": "Campfire, karaoke, outdoor cinema and the summit rave. Most people arrive alone. Nobody leaves alone."
+ },
+ {
+  "key": "start.outdoor-movie-night",
+  "page": "start",
+  "section": "Aktivitäten",
+  "order": 7,
+  "de": "Outdoor Movie Night",
+  "en": "Outdoor Movie Night"
+ },
+ {
+  "key": "start.leinwand-auf-der-wiese-berge-im",
+  "page": "start",
+  "section": "Aktivitäten",
+  "order": 7,
+  "de": "Leinwand auf der Wiese, Berge im Hintergrund. Outdoor- und Lauffilme mit der ganzen Gruppe.",
+  "en": "A screen on the meadow, mountains behind it. Outdoor and running films with the whole group."
+ },
+ {
+  "key": "start.linoldruck-workshop",
+  "page": "start",
+  "section": "Aktivitäten",
+  "order": 7,
+  "de": "Linoldruck Workshop",
+  "en": "Linocut Print Workshop"
+ },
+ {
+  "key": "start.motiv-schneiden-farbe-auftragen-drucken-du",
+  "page": "start",
+  "section": "Aktivitäten",
+  "order": 7,
+  "de": "Motiv schneiden, Farbe auftragen, drucken. Du nimmst deinen eigenen Print mit nach Hause.",
+  "en": "Carve a motif, roll the ink, print. You take your own print home."
+ },
+ {
+  "key": "start.nutrition-workshop",
+  "page": "start",
+  "section": "Aktivitäten",
+  "order": 7,
+  "de": "Nutrition Workshop",
+  "en": "Nutrition Workshop"
+ },
+ {
+  "key": "start.was-du-vor-waehrend-und-nach",
+  "page": "start",
+  "section": "Aktivitäten",
+  "order": 7,
+  "de": "Was du vor, während und nach langen Läufen isst und trinkst. Praxisnah erklärt.",
+  "en": "What to eat and drink before, during and after long runs. Explained in practical terms."
+ },
+ {
+  "key": "start.recovery-lounge",
+  "page": "start",
+  "section": "Aktivitäten",
+  "order": 7,
+  "de": "Recovery Lounge",
+  "en": "Recovery Lounge"
+ },
+ {
+  "key": "start.beine-hoch-nach-dem-lauf-kompression",
+  "page": "start",
+  "section": "Aktivitäten",
+  "order": 7,
+  "de": "Beine hoch nach dem Lauf: Kompression, Massage-Tools und Ruhe mit Blick auf die Berge.",
+  "en": "Feet up after the run: compression, massage tools and quiet time with a mountain view."
+ },
+ {
+  "key": "start.karaoke-night",
+  "page": "start",
+  "section": "Aktivitäten",
+  "order": 7,
+  "de": "Karaoke Night",
+  "en": "Karaoke Night"
+ },
+ {
+  "key": "start.mikro-an-hemmungen-aus-der-abend",
+  "page": "start",
+  "section": "Aktivitäten",
+  "order": 7,
+  "de": "Mikro an, Hemmungen aus. Der Abend, an dem aus der Laufgruppe eine Crew wird.",
+  "en": "Mic on, nerves off. The night your running group turns into a crew."
+ },
+ {
+  "key": "start.upcycling-workshop",
+  "page": "start",
+  "section": "Aktivitäten",
+  "order": 7,
+  "de": "Upcycling Workshop",
+  "en": "Upcycling Workshop"
+ },
+ {
+  "key": "start.aus-seil-und-flasche-wird-ein",
+  "page": "start",
+  "section": "Aktivitäten",
+  "order": 7,
+  "de": "Aus Seil und Flasche wird ein Halter für unterwegs. Selbst geknotet, direkt im Einsatz.",
+  "en": "Rope and a bottle become a carrier for the trail. Knotted by you, ready to use."
+ },
+ {
+  "key": "start.toepferkurs",
+  "page": "start",
+  "section": "Aktivitäten",
+  "order": 7,
+  "de": "Töpferkurs",
+  "en": "Clay Class"
+ },
+ {
+  "key": "start.die-beine-ruhen-die-haende-arbeiten",
+  "page": "start",
+  "section": "Aktivitäten",
+  "order": 7,
+  "de": "Die Beine ruhen, die Hände arbeiten. Aus Ton entstehen kleine Schalen und Schmuck zum Mitnehmen.",
+  "en": "Legs rest, hands work. Shape small bowls and jewellery from clay to take home."
+ },
+ {
+  "key": "start.sunrise-hike",
+  "page": "start",
+  "section": "Aktivitäten",
+  "order": 7,
+  "de": "Sunrise Hike",
+  "en": "Sunrise Hike"
+ },
+ {
+  "key": "start.frueh-los-oben-sein-wenn-die",
+  "page": "start",
+  "section": "Aktivitäten",
+  "order": 7,
+  "de": "Früh los, oben sein, wenn die Sonne über die Gipfel kommt.",
+  "en": "Leave early, be at the top when the sun comes over the peaks."
+ },
+ {
+  "key": "start.trailrunning-technik",
+  "page": "start",
+  "section": "Aktivitäten",
+  "order": 7,
+  "de": "Trailrunning Technik",
+  "en": "Trailrunning Technique"
+ },
+ {
+  "key": "start.lerne-die-richtige-trailrunning-technik-von",
+  "page": "start",
+  "section": "Aktivitäten",
+  "order": 7,
+  "de": "Lerne die richtige Trailrunning-Technik von erfahrenen Coaches auf wunderschönen Alpenpfaden.",
+  "en": "Learn proper trailrunning techniques from experienced coaches on beautiful alpine trails."
+ },
+ {
+  "key": "start.bogenschiessen",
+  "page": "start",
+  "section": "Aktivitäten",
+  "order": 7,
+  "de": "Bogenschießen",
+  "en": "Archery"
+ },
+ {
+  "key": "start.teste-deine-praezision-und-konzentration-beim",
+  "page": "start",
+  "section": "Aktivitäten",
+  "order": 7,
+  "de": "Teste deine Präzision und Konzentration beim Bogenschießen vor atemberaubender Bergkulisse.",
+  "en": "Test your precision and focus with archery sessions in a stunning mountain backdrop."
+ },
+ {
+  "key": "start.mtb-tour",
+  "page": "start",
+  "section": "Aktivitäten",
+  "order": 7,
+  "de": "MTB Tour",
+  "en": "MTB Trip"
+ },
+ {
+  "key": "start.erkunde-malerische-bergpfade-auf-zwei-raedern",
+  "page": "start",
+  "section": "Aktivitäten",
+  "order": 7,
+  "de": "Erkunde malerische Bergpfade auf zwei Rädern bei unseren geführten Mountainbike-Touren.",
+  "en": "Explore scenic mountain trails on two wheels with our guided mountain biking excursions."
+ },
+ {
+  "key": "start.kanufahren",
+  "page": "start",
+  "section": "Aktivitäten",
+  "order": 7,
+  "de": "Kanufahren",
+  "en": "Canoeing"
+ },
+ {
+  "key": "start.paddle-ueber-kristallklare-alpenseen-und-geniess",
+  "page": "start",
+  "section": "Aktivitäten",
+  "order": 7,
+  "de": "Paddle über kristallklare Alpenseen und genieße dabei atemberaubende Bergblicke.",
+  "en": "Paddle across crystal-clear alpine lakes while taking in breathtaking mountain views."
+ },
+ {
+  "key": "start.aquarellmalerei",
+  "page": "start",
+  "section": "Aktivitäten",
+  "order": 7,
+  "de": "Aquarellmalerei",
+  "en": "Aquarell Painting"
+ },
+ {
+  "key": "start.druecke-deine-kreativitaet-aus-indem-du",
+  "page": "start",
+  "section": "Aktivitäten",
+  "order": 7,
+  "de": "Drücke deine Kreativität aus, indem du die atemberaubenden Alpenlandschaften mit Wasserfarben malst.",
+  "en": "Express your creativity by painting the stunning alpine landscapes with watercolors."
+ },
+ {
+  "key": "start.finde-balance-und-erhole-dich-mit",
+  "page": "start",
+  "section": "Aktivitäten",
+  "order": 7,
+  "de": "Finde Balance und erhole dich mit Yoga-Sessions, die speziell für Läufer konzipiert sind.",
+  "en": "Restore balance and recover with yoga sessions designed specifically for runners."
+ },
+ {
+  "key": "start.stricken",
+  "page": "start",
+  "section": "Aktivitäten",
+  "order": 7,
+  "de": "Stricken",
+  "en": "Knitting"
+ },
+ {
+  "key": "start.lerne-stricken-in-entspannter-atmosphaere-eine",
+  "page": "start",
+  "section": "Aktivitäten",
+  "order": 7,
+  "de": "Lerne Stricken in entspannter Atmosphäre – eine perfekte achtsame Aktivität nach einem Lauftag.",
+  "en": "Learn to knit in a relaxed setting - a perfect mindful activity after a day of running."
+ },
+ {
+  "key": "start.kletterkurs",
+  "page": "start",
+  "section": "Aktivitäten",
+  "order": 7,
+  "de": "Kletterkurs",
+  "en": "Climbing Class"
+ },
+ {
+  "key": "start.baue-kraft-und-selbstvertrauen-auf-mit",
+  "page": "start",
+  "section": "Aktivitäten",
+  "order": 7,
+  "de": "Baue Kraft und Selbstvertrauen auf mit Indoor-Klettersessions unter Anleitung erfahrener Instruktoren.",
+  "en": "Build strength and confidence with indoor climbing sessions led by experienced instructors."
+ },
+ {
+  "key": "start.lagerfeuer-abend",
+  "page": "start",
+  "section": "Aktivitäten",
+  "order": 7,
+  "de": "Lagerfeuer Abend",
+  "en": "Campfire Evening"
+ },
+ {
+  "key": "start.teile-geschichten-und-verbinde-dich-mit",
+  "page": "start",
+  "section": "Aktivitäten",
+  "order": 7,
+  "de": "Teile Geschichten und verbinde dich mit anderen Läufern am gemütlichen Lagerfeuer unter dem Sternenhimmel.",
+  "en": "Share stories and connect with fellow runners around a cozy campfire under the stars."
+ },
+ {
+  "key": "start.musik-bergblick-und-300-leute-die",
+  "page": "start",
+  "section": "Aktivitäten",
+  "order": 7,
+  "de": "Musik, Bergblick und 300 Leute, die tagsüber zusammen gelaufen sind. Getanzt wird oben am Berg.",
+  "en": "Music, mountain views and 300 people who ran together during the day. We dance up on the mountain."
+ },
+ {
+  "key": "start.aktivitaeten",
+  "page": "start",
+  "section": "Aktivitäten",
+  "order": 7,
+  "alt": true,
+  "de": "Aktivitäten",
+  "en": "Activities"
+ },
+ {
+  "key": "start.neben-den-taeglichen-runs-erwarten-dich",
+  "page": "start",
+  "section": "Aktivitäten",
+  "order": 7,
+  "de": "Neben den täglichen Runs erwarten dich im Trailrunning Camp Workshops, kreative Sessions und gemeinsame Erlebnisse.",
+  "en": "Beyond the daily runs, the trail running camp offers workshops, creative sessions and shared experiences."
+ },
+ {
+  "key": "start.einsteiger-trail",
+  "page": "start",
+  "section": "Routen",
+  "order": 8,
+  "de": "Einsteiger Trail",
+  "en": "Beginner Trail"
+ },
+ {
+  "key": "start.perfekt-fuer-trailrunning-einsteiger-sanfte-anst",
+  "page": "start",
+  "section": "Routen",
+  "order": 8,
+  "de": "Perfekt für Trailrunning-Einsteiger. Sanfte Anstiege durch alpine Wälder mit spektakulären Ausblicken auf die österreichischen Alpen.",
+  "en": "Perfect for trailrunning beginners. Gentle ascents through alpine forests with spectacular views of the Austrian Alps."
+ },
+ {
+  "key": "start.mittelschwere-route",
+  "page": "start",
+  "section": "Routen",
+  "order": 8,
+  "de": "Mittelschwere Route",
+  "en": "Intermediate Route"
+ },
+ {
+  "key": "start.abwechslungsreiche-trails-durch-alpine-landschaf",
+  "page": "start",
+  "section": "Routen",
+  "order": 8,
+  "de": "Abwechslungsreiche Trails durch alpine Landschaften. Technische Passagen kombiniert mit flowigen Singletrails in den Bergen Österreichs.",
+  "en": "Varied trails through alpine landscapes. Technical sections combined with flowing singletrails in the Austrian mountains."
+ },
+ {
+  "key": "start.anspruchsvolle-bergtour",
+  "page": "start",
+  "section": "Routen",
+  "order": 8,
+  "de": "Anspruchsvolle Bergtour",
+  "en": "Challenging Mountain Tour"
+ },
+ {
+  "key": "start.fuer-erfahrene-trail-runner-hochalpine-gipfeltou",
+  "page": "start",
+  "section": "Routen",
+  "order": 8,
+  "de": "Für erfahrene Trail Runner. Hochalpine Gipfeltouren mit technischen Trails, steilen Anstiegen und unvergesslichen Panoramen der Alpen.",
+  "en": "For experienced trail runners. High alpine summit tours with technical trails, steep ascents and unforgettable Alpine panoramas."
+ },
+ {
+  "key": "start.unsere-alpine-trails",
+  "page": "start",
+  "section": "Routen",
+  "order": 8,
+  "de": "Unsere Alpine Trails",
+  "en": "Our Alpine Trails"
+ },
+ {
+  "key": "start.entdecke-die-schoensten-trailrunning-strecken-in",
+  "page": "start",
+  "section": "Routen",
+  "order": 8,
+  "de": "Entdecke die schönsten Trailrunning-Strecken in den österreichischen Alpen. Jeden Tag neue Routen, angepasst an dein Level.",
+  "en": "Discover the most beautiful trailrunning routes in the Austrian Alps. New routes every day, adapted to your level."
+ },
+ {
+  "key": "start.das-alpine-terrain",
+  "page": "start",
+  "section": "Routen",
+  "order": 8,
+  "de": "Das alpine Terrain",
+  "en": "The Alpine Terrain"
+ },
+ {
+  "key": "start.hochkrimml-liegt-auf-1-700-m",
+  "page": "start",
+  "section": "Routen",
+  "order": 8,
+  "de": "Hochkrimml liegt auf 1.700 m Höhe in den Kitzbüheler Alpen und bietet direkten Zugang zu einem Netzwerk spektakulärer Trailrunning-Strecken. Von sanften Almwegen bis zu technischen Gipfeltrails – die Vielfalt der österreichischen Alpen macht jedes Trailrunning-Erlebnis einzigartig.",
+  "en": "Hochkrimml is located at 1,700 m altitude in the Kitzbühel Alps and offers direct access to a network of spectacular trailrunning routes. From gentle alpine paths to technical summit trails – the diversity of the Austrian Alps makes every trailrunning experience unique."
+ },
+ {
+  "key": "start.ausgangshoehe",
+  "page": "start",
+  "section": "Routen",
+  "order": 8,
+  "de": "Ausgangshöhe",
+  "en": "Starting Altitude"
+ },
+ {
+  "key": "start.hoechste-gipfel",
+  "page": "start",
+  "section": "Routen",
+  "order": 8,
+  "de": "Höchste Gipfel",
+  "en": "Highest Peaks"
+ },
+ {
+  "key": "start.km-trails",
+  "page": "start",
+  "section": "Routen",
+  "order": 8,
+  "de": "km Trails",
+  "en": "km of Trails"
+ },
+ {
+  "key": "start.trailrunning-camp-oesterreich-teilnehmer-auf-der",
+  "page": "start",
+  "section": "Eindrücke (Galerie)",
+  "order": 9,
+  "alt": true,
+  "de": "Trailrunning Camp Österreich Teilnehmer auf der Terrasse der Lodge",
+  "en": "Trail running camp Austria participants socializing on lodge terrace"
+ },
+ {
+  "key": "start.trailrunning-camp-gruppe-an-der-berghuette",
+  "page": "start",
+  "section": "Eindrücke (Galerie)",
+  "order": 9,
+  "alt": true,
+  "de": "Trailrunning Camp Gruppe an der Berghütte in Hochkrimml",
+  "en": "Trail running camp group gathered at mountain lodge in Hochkrimml"
+ },
+ {
+  "key": "start.bereit-zum-laufen",
+  "page": "start",
+  "section": "Eindrücke (Galerie)",
+  "order": 9,
+  "de": "Bereit zum Laufen",
+  "en": "Ready to Run"
+ },
+ {
+  "key": "start.trailrunning-camp-community-auf-der-terrasse",
+  "page": "start",
+  "section": "Eindrücke (Galerie)",
+  "order": 9,
+  "alt": true,
+  "de": "Trailrunning Camp Community auf der Terrasse bei Sonnenuntergang",
+  "en": "Trail running camp community gathering on terrace at sunset"
+ },
+ {
+  "key": "start.trailrunner-tanzen-und-feiern-gemeinsam-auf",
+  "page": "start",
+  "section": "Eindrücke (Galerie)",
+  "order": 9,
+  "alt": true,
+  "de": "Trailrunner tanzen und feiern gemeinsam auf dem Gipfel",
+  "en": "Trail runners dancing and celebrating together on the summit"
+ },
+ {
+  "key": "start.gipfel-party",
+  "page": "start",
+  "section": "Eindrücke (Galerie)",
+  "order": 9,
+  "de": "Gipfel-Party",
+  "en": "Summit Party"
+ },
+ {
+  "key": "start.laeufer-jubeln-gemeinsam-am-gipfelkreuz",
+  "page": "start",
+  "section": "Eindrücke (Galerie)",
+  "order": 9,
+  "alt": true,
+  "de": "Läufer jubeln gemeinsam am Gipfelkreuz",
+  "en": "Runners cheering together at the summit cross"
+ },
+ {
+  "key": "start.gipfelglueck",
+  "page": "start",
+  "section": "Eindrücke (Galerie)",
+  "order": 9,
+  "de": "Gipfelglück",
+  "en": "Summit Joy"
+ },
+ {
+  "key": "start.teilnehmer-springen-ausgelassen-in-einen-bergsee",
+  "page": "start",
+  "section": "Eindrücke (Galerie)",
+  "order": 9,
+  "alt": true,
+  "de": "Teilnehmer springen ausgelassen in einen Bergsee",
+  "en": "Participants jumping joyfully into a mountain lake"
+ },
+ {
+  "key": "start.erfrischung-im-bergsee",
+  "page": "start",
+  "section": "Eindrücke (Galerie)",
+  "order": 9,
+  "de": "Erfrischung im Bergsee",
+  "en": "Mountain Lake Refresh"
+ },
+ {
+  "key": "start.gruppe-von-freunden-lacht-gemeinsam-auf",
+  "page": "start",
+  "section": "Eindrücke (Galerie)",
+  "order": 9,
+  "alt": true,
+  "de": "Gruppe von Freunden lacht gemeinsam auf einem Berggipfel",
+  "en": "Group of friends laughing together on a mountain summit"
+ },
+ {
+  "key": "start.neue-freundschaften",
+  "page": "start",
+  "section": "Eindrücke (Galerie)",
+  "order": 9,
+  "de": "Neue Freundschaften",
+  "en": "New Friendships"
+ },
+ {
+  "key": "start.teilnehmerin-lacht-am-lagerfeuer-beim-marshmallo",
+  "page": "start",
+  "section": "Eindrücke (Galerie)",
+  "order": 9,
+  "alt": true,
+  "de": "Teilnehmerin lacht am Lagerfeuer beim Marshmallow-Rösten",
+  "en": "Participant laughing by the campfire while roasting marshmallows"
+ },
+ {
+  "key": "start.lagerfeuerabend",
+  "page": "start",
+  "section": "Eindrücke (Galerie)",
+  "order": 9,
+  "de": "Lagerfeuerabend",
+  "en": "Campfire Evening"
+ },
+ {
+  "key": "start.trailrunner-ruhen-sich-auf-sitzsaecken-an",
+  "page": "start",
+  "section": "Eindrücke (Galerie)",
+  "order": 9,
+  "alt": true,
+  "de": "Trailrunner ruhen sich auf Sitzsäcken an der Verpflegungsstation aus",
+  "en": "Trail runners resting on beanbag seats at an aid station"
+ },
+ {
+  "key": "start.kurze-pause",
+  "page": "start",
+  "section": "Eindrücke (Galerie)",
+  "order": 9,
+  "de": "Kurze Pause",
+  "en": "Quick Break"
+ },
+ {
+  "key": "start.laeuferin-im-gespraech-mit-der-gruppe",
+  "page": "start",
+  "section": "Eindrücke (Galerie)",
+  "order": 9,
+  "alt": true,
+  "de": "Läuferin im Gespräch mit der Gruppe vor dem Start",
+  "en": "Runner talking with the group before the start"
+ },
+ {
+  "key": "start.vor-dem-start",
+  "page": "start",
+  "section": "Eindrücke (Galerie)",
+  "order": 9,
+  "de": "Vor dem Start",
+  "en": "Before the Start"
+ },
+ {
+  "key": "start.trailrunner-laufen-an-einem-holzzaun-auf",
+  "page": "start",
+  "section": "Eindrücke (Galerie)",
+  "order": 9,
+  "alt": true,
+  "de": "Trailrunner laufen an einem Holzzaun auf dem Waldweg vorbei",
+  "en": "Trail runners passing a wooden fence on the forest trail"
+ },
+ {
+  "key": "start.auf-dem-trail",
+  "page": "start",
+  "section": "Eindrücke (Galerie)",
+  "order": 9,
+  "de": "Auf dem Trail",
+  "en": "On the Trail"
+ },
+ {
+  "key": "start.laeuferin-bindet-ihre-haare-zusammen-mit",
+  "page": "start",
+  "section": "Eindrücke (Galerie)",
+  "order": 9,
+  "alt": true,
+  "de": "Läuferin bindet ihre Haare zusammen mit Bergpanorama im Hintergrund",
+  "en": "Runner tying up her hair with a mountain panorama in the background"
+ },
+ {
+  "key": "start.bergpanorama",
+  "page": "start",
+  "section": "Eindrücke (Galerie)",
+  "order": 9,
+  "de": "Bergpanorama",
+  "en": "Mountain Views"
+ },
+ {
+  "key": "start.grosse-gruppe-von-trailrunnern-posiert-vor",
+  "page": "start",
+  "section": "Eindrücke (Galerie)",
+  "order": 9,
+  "alt": true,
+  "de": "Große Gruppe von Trailrunnern posiert vor dem Waldrand",
+  "en": "Large group of trail runners posing in front of the forest"
+ },
+ {
+  "key": "start.die-ganze-crew",
+  "page": "start",
+  "section": "Eindrücke (Galerie)",
+  "order": 9,
+  "de": "Die ganze Crew",
+  "en": "The Whole Crew"
+ },
+ {
+  "key": "start.teilnehmer-holen-sich-fruehstueck-am-buffet",
+  "page": "start",
+  "section": "Eindrücke (Galerie)",
+  "order": 9,
+  "alt": true,
+  "de": "Teilnehmer holen sich Frühstück am Buffet in der Lodge",
+  "en": "Participants getting breakfast at the lodge buffet"
+ },
+ {
+  "key": "start.fruehstueck-in-der-lodge",
+  "page": "start",
+  "section": "Eindrücke (Galerie)",
+  "order": 9,
+  "de": "Frühstück in der Lodge",
+  "en": "Lodge Breakfast"
+ },
+ {
+  "key": "start.eindruecke",
+  "page": "start",
+  "section": "Eindrücke (Galerie)",
+  "order": 9,
+  "alt": true,
+  "de": "Eindrücke",
+  "en": "Impressions"
+ },
+ {
+  "key": "start.momente-aus-dem-trailrunning-camp-2026",
+  "page": "start",
+  "section": "Eindrücke (Galerie)",
+  "order": 9,
+  "de": "Momente aus dem Trailrunning Camp 2026 in Hochkrimml.",
+  "en": "Moments from the 2026 trail running camp in Hochkrimml."
+ },
+ {
+  "key": "start.live-von-den-trails",
+  "page": "start",
+  "section": "Instagram",
+  "order": 10,
+  "de": "Live von den Trails",
+  "en": "Live from the Trails"
+ },
+ {
+  "key": "start.erlebe-die-besten-momente-vom-mountaincamp",
+  "page": "start",
+  "section": "Instagram",
+  "order": 10,
+  "de": "Erlebe die besten Momente vom Mountaincamp",
+  "en": "Experience the best moments from the Mountaincamp"
+ },
+ {
+  "key": "start.mehr-auf-instagram",
+  "page": "start",
+  "section": "Instagram",
+  "order": 10,
+  "de": "Mehr auf Instagram",
+  "en": "See more on Instagram"
+ },
+ {
+  "key": "start.erfahrungen-aus-dem-mountaincamp",
+  "page": "start",
+  "section": "Erfahrungen",
+  "order": 11,
+  "alt": true,
+  "de": "Erfahrungen aus dem Mountaincamp",
+  "en": "Experiences from the Mountaincamp"
+ },
+ {
+  "key": "start.faq.0.question",
+  "page": "start",
+  "section": "FAQ",
+  "order": 12,
+  "de": "Für wen ist das Mountaincamp geeignet?",
+  "en": "Who is the Mountaincamp for?"
+ },
+ {
+  "key": "start.faq.0.answer",
+  "page": "start",
+  "section": "FAQ",
+  "order": 12,
+  "de": "Für alle Level, vom ersten Trail bis zu erfahrenen Läufer:innen. Wir laufen täglich in mehreren Gruppen nach Tempo und Erfahrung. Du brauchst eine Grundfitness und Lust auf Laufen in den Bergen.",
+  "en": "For all levels, from your first trail to experienced runners. We run in several groups every day, sorted by pace and experience. You need a basic level of fitness and the wish to run in the mountains."
+ },
+ {
+  "key": "start.faq.1.question",
+  "page": "start",
+  "section": "FAQ",
+  "order": 12,
+  "de": "Kann ich als Anfänger:in teilnehmen?",
+  "en": "Can I join as a beginner?"
+ },
+ {
+  "key": "start.faq.1.answer",
+  "page": "start",
+  "section": "FAQ",
+  "order": 12,
+  "de": "Ja. Es gibt Einsteigergruppen mit kürzeren Distanzen und ein Techniktraining für die ersten Schritte im Gelände. Viele Teilnehmende kommen vom Straßenlauf und laufen im Camp zum ersten Mal auf Trails.",
+  "en": "Yes. There are beginner groups with shorter distances and a technique session for your first steps on trails. Many participants come from road running and run their first trails at camp."
+ },
+ {
+  "key": "start.faq.2.question",
+  "page": "start",
+  "section": "FAQ",
+  "order": 12,
+  "de": "Kann ich allein anreisen?",
+  "en": "Can I come on my own?"
+ },
+ {
+  "key": "start.faq.2.answer",
+  "page": "start",
+  "section": "FAQ",
+  "order": 12,
+  "de": "Ja, die meisten reisen allein oder zu zweit an. Durch die gemeinsame Anreise, die Laufgruppen und die Abende lernst du schnell Leute kennen.",
+  "en": "Yes, most people come alone or with one friend. The shared journey, the running groups and the evenings make it easy to meet people."
+ },
+ {
+  "key": "start.faq.3.question",
+  "page": "start",
+  "section": "FAQ",
+  "order": 12,
+  "de": "Wann und wo findet das Mountaincamp statt?",
+  "en": "When and where does the Mountaincamp take place?"
+ },
+ {
+  "key": "start.faq.3.answer",
+  "page": "start",
+  "section": "FAQ",
+  "order": 12,
+  "de": "Vom 18. bis 22. August 2027 in Hochkrimml im Salzburger Land, Österreich, auf 1.700 m am Rand des Nationalparks Hohe Tauern.",
+  "en": "From 18 to 22 August 2027 in Hochkrimml, Salzburger Land, Austria, at 1,700 m on the edge of the Hohe Tauern National Park."
+ },
+ {
+  "key": "start.faq.4.question",
+  "page": "start",
+  "section": "FAQ",
+  "order": 12,
+  "de": "Was ist im Ticket enthalten?",
+  "en": "What is included in the ticket?"
+ },
+ {
+  "key": "start.faq.4.answer",
+  "page": "start",
+  "section": "FAQ",
+  "order": 12,
+  "de": "4 Nächte im Berghaus, Vollpension, tägliche Trailruns in Gruppen nach Tempo sowie die gemeinsamen Abende mit Lagerfeuer und Summit Rave. Den aktuellen Preis findest du im Ticketbereich.",
+  "en": "4 nights in the mountain house, full board, daily trail runs in groups by pace and the evenings together with campfire and summit rave. You find the current price in the ticket section."
+ },
+ {
+  "key": "start.faq.5.question",
+  "page": "start",
+  "section": "FAQ",
+  "order": 12,
+  "de": "Sind die Workshops im Ticket enthalten?",
+  "en": "Are workshops included in the ticket?"
+ },
+ {
+  "key": "start.faq.5.answer",
+  "page": "start",
+  "section": "FAQ",
+  "order": 12,
+  "de": "Einige Workshops sind kostenlos, andere kannst du dazubuchen, zum Beispiel Yoga, Töpfern oder den Nutrition Workshop. Das Programm mit allen Workshops bekommst du vor dem Camp.",
+  "en": "Some workshops are free, others are bookable add-ons, for example yoga, the clay class or the nutrition workshop. You get the full program before the camp."
+ },
+ {
+  "key": "start.faq.6.question",
+  "page": "start",
+  "section": "FAQ",
+  "order": 12,
+  "de": "Wie schwierig sind die Trails?",
+  "en": "How difficult are the trails?"
+ },
+ {
+  "key": "start.faq.6.answer",
+  "page": "start",
+  "section": "FAQ",
+  "order": 12,
+  "de": "Jeden Tag gibt es mehrere Gruppen mit unterschiedlichen Distanzen und Höhenmetern, von entspannten 10 km bis zur Gipfeltour mit 1.500 Höhenmetern. Du wählst jeden Tag neu, was zu dir passt.",
+  "en": "Every day there are several groups with different distances and elevation, from a relaxed 10 km to a summit tour with 1,500 m of climbing. You choose each day what suits you."
+ },
+ {
+  "key": "start.faq.7.question",
+  "page": "start",
+  "section": "FAQ",
+  "order": 12,
+  "de": "Wie komme ich zum Mountaincamp?",
+  "en": "How do I get to the Mountaincamp?"
+ },
+ {
+  "key": "start.faq.7.answer",
+  "page": "start",
+  "section": "FAQ",
+  "order": 12,
+  "de": "Am einfachsten mit unserem Shuttle: ab Berlin mit Zug und Bus, ab München und Jenbach mit dem Bus. Du kannst auch mit dem Auto anreisen, die gemeinsame Anreise verursacht aber deutlich weniger CO2. Alle Details stehen auf der Seite zur Anreise.",
+  "en": "The easiest way is our shuttle: from Berlin by train and bus, from Munich and Jenbach by bus. You can also come by car, but the shared journey causes far less CO2. All details are on the travel page."
+ },
+ {
+  "key": "start.faq.8.question",
+  "page": "start",
+  "section": "FAQ",
+  "order": 12,
+  "de": "Kann ich mein Ticket stornieren?",
+  "en": "Can I cancel my ticket?"
+ },
+ {
+  "key": "start.faq.8.answer",
+  "page": "start",
+  "section": "FAQ",
+  "order": 12,
+  "de": "Ja. Innerhalb von 7 Tagen nach der Buchung ist die Stornierung kostenlos, wenn du mindestens 30 Tage vor dem Camp gebucht hast. Danach gelten die Stornobedingungen in unseren AGB.",
+  "en": "Yes. Cancellation is free within 7 days of booking if you booked at least 30 days before the camp. After that, the cancellation terms in our terms and conditions apply."
+ },
+ {
+  "key": "start.faq.9.question",
+  "page": "start",
+  "section": "FAQ",
+  "order": 12,
+  "de": "Gibt es vegetarisches und veganes Essen?",
+  "en": "Is there vegetarian and vegan food?"
+ },
+ {
+  "key": "start.faq.9.answer",
+  "page": "start",
+  "section": "FAQ",
+  "order": 12,
+  "de": "Ja, bei jeder Mahlzeit. Gib deine Ernährungsweise und Unverträglichkeiten bei der Buchung an, dann plant die Küche damit.",
+  "en": "Yes, at every meal. Tell us your diet and intolerances when you book and the kitchen plans for it."
+ },
+ {
+  "key": "start.faq.10.question",
+  "page": "start",
+  "section": "FAQ",
+  "order": 12,
+  "de": "Welche Ausrüstung brauche ich?",
+  "en": "What gear do I need?"
+ },
+ {
+  "key": "start.faq.10.answer",
+  "page": "start",
+  "section": "FAQ",
+  "order": 12,
+  "de": "Trailrunning-Schuhe mit Profil, Laufkleidung, eine Laufweste oder einen kleinen Rucksack, Trinkflaschen, Sonnenschutz und eine Regenjacke. Eine Packliste bekommst du nach der Buchung.",
+  "en": "Trail running shoes with grip, running clothes, a running vest or small backpack, water bottles, sun protection and a rain jacket. You get a packing list after booking."
+ },
+ {
+  "key": "start.faq.11.question",
+  "page": "start",
+  "section": "FAQ",
+  "order": 12,
+  "de": "Was gibt es neben dem Laufen?",
+  "en": "What is there besides running?"
+ },
+ {
+  "key": "start.faq.11.answer",
+  "page": "start",
+  "section": "FAQ",
+  "order": 12,
+  "de": "Nachmittags Recovery und Workshops, abends Programm: Lagerfeuer, Outdoor Movie Night, Karaoke und an einem Abend der Summit Rave. Gegessen wird gemeinsam.",
+  "en": "Recovery and workshops in the afternoon, a program every evening: campfire, outdoor movie night, karaoke and one night the summit rave. We eat together."
+ },
+ {
+  "key": "start.faq.12.question",
+  "page": "start",
+  "section": "FAQ",
+  "order": 12,
+  "de": "Was ist Trailrunning?",
+  "en": "What is trail running?"
+ },
+ {
+  "key": "start.faq.12.answer",
+  "page": "start",
+  "section": "FAQ",
+  "order": 12,
+  "de": "Trailrunning ist Laufen abseits befestigter Straßen, auf Wegen durch Wald, Wiesen und Berge. Der Untergrund wechselt, es geht bergauf und bergab. Das Tempo ist niedriger als auf der Straße, und bergauf zu gehen gehört dazu.",
+  "en": "Trail running is running off paved roads, on paths through forests, meadows and mountains. The ground changes and it goes up and down. The pace is slower than on the road, and walking uphill is part of it."
+ },
+ {
+  "key": "start.faq.13.question",
+  "page": "start",
+  "section": "FAQ",
+  "order": 12,
+  "de": "Wie fange ich mit Trailrunning an?",
+  "en": "How do I start trail running?"
+ },
+ {
+  "key": "start.faq.13.answer",
+  "page": "start",
+  "section": "FAQ",
+  "order": 12,
+  "de": "Starte mit kurzen, einfachen Wegen in deiner Umgebung und nimm dir Zeit, dich an den Untergrund zu gewöhnen. Wichtig sind Schuhe mit Profil. Im Mountaincamp lernst du in der Einsteigergruppe die Technik für bergauf und bergab.",
+  "en": "Start with short, easy paths near you and take time to get used to the ground. Shoes with grip matter most. At the Mountaincamp you learn uphill and downhill technique in the beginner group."
+ },
+ {
+  "key": "start.faq.14.question",
+  "page": "start",
+  "section": "FAQ",
+  "order": 12,
+  "de": "Was muss ich beim Trailrunning in den Bergen beachten?",
+  "en": "What should I keep in mind when trail running in the mountains?"
+ },
+ {
+  "key": "start.faq.14.answer",
+  "page": "start",
+  "section": "FAQ",
+  "order": 12,
+  "de": "Schuhe mit Grip, genug Wasser, Wetterschutz und ein geladenes Handy. Plane in den Alpen Höhenmeter und Wetter mit ein und schätze deine Fitness realistisch ein. Im Camp laufen wir in Gruppen, niemand ist allein unterwegs.",
+  "en": "Shoes with grip, enough water, weather protection and a charged phone. In the Alps, plan for elevation and weather and be realistic about your fitness. At camp we run in groups, nobody is out alone."
+ },
+ {
+  "key": "start.haeufig-gestellte-fragen",
+  "page": "start",
+  "section": "FAQ",
+  "order": 12,
+  "de": "Häufig gestellte Fragen",
+  "en": "Frequently Asked Questions"
+ },
+ {
+  "key": "start.alles-was-du-ueber-the-mountaincamp",
+  "page": "start",
+  "section": "FAQ",
+  "order": 12,
+  "de": "Alles, was du über the Mountaincamp wissen musst",
+  "en": "Everything you need to know about the Mountaincamp"
+ },
+ {
+  "key": "start.weniger-anzeigen",
+  "page": "start",
+  "section": "FAQ",
+  "order": 12,
+  "de": "Weniger anzeigen",
+  "en": "Show less"
+ },
+ {
+  "key": "start.noch-fragen",
+  "page": "start",
+  "section": "FAQ",
+  "order": 12,
+  "de": "Noch Fragen?",
+  "en": "Still have questions?"
+ },
+ {
+  "key": "start.partner-des-trailrunning-camps",
+  "page": "start",
+  "section": "Partner",
+  "order": 13,
+  "alt": true,
+  "de": "Partner des Trailrunning Camps",
+  "en": "Partners of the trail running camp"
+ },
+ {
+  "key": "start.marken-und-partner-die-das-mountaincamp",
+  "page": "start",
+  "section": "Partner",
+  "order": 13,
+  "de": "Marken und Partner, die das Mountaincamp begleiten.",
+  "en": "Brands and partners supporting the Mountaincamp."
+ },
+ {
+  "key": "start.ticket-progress-section.title",
+  "page": "start",
+  "section": "Ticketphasen",
+  "order": 14,
+  "de": "Ticket-Kontingent",
+  "en": "Ticket allocation"
+ },
+ {
+  "key": "start.ticket-progress-section.subtitle",
+  "page": "start",
+  "section": "Ticketphasen",
+  "order": 14,
+  "de": "Die Plätze für the Mountaincamp 2027 sind limitiert.",
+  "en": "Spots for the Mountaincamp 2027 are limited."
+ },
+ {
+  "key": "start.ticket-progress-section.sold",
+  "page": "start",
+  "section": "Ticketphasen",
+  "order": 14,
+  "de": "vergeben",
+  "en": "claimed"
+ },
+ {
+  "key": "start.ticket-progress-section.of",
+  "page": "start",
+  "section": "Ticketphasen",
+  "order": 14,
+  "de": "von",
+  "en": "of"
+ },
+ {
+  "key": "start.ticket-progress-section.tickets",
+  "page": "start",
+  "section": "Ticketphasen",
+  "order": 14,
+  "de": "Tickets",
+  "en": "tickets"
+ },
+ {
+  "key": "start.ticket-progress-section.liveBadge",
+  "page": "start",
+  "section": "Ticketphasen",
+  "order": 14,
+  "de": "Jetzt aktiv",
+  "en": "Live now"
+ },
+ {
+  "key": "start.ticket-progress-section.ended",
+  "page": "start",
+  "section": "Ticketphasen",
+  "order": 14,
+  "de": "Verkauf beendet",
+  "en": "Sale ended"
+ },
+ {
+  "key": "start.ticket-progress-section.from",
+  "page": "start",
+  "section": "Ticketphasen",
+  "order": 14,
+  "de": "Ab",
+  "en": "From"
+ },
+ {
+  "key": "start.ticket-progress-section.upcomingLead",
+  "page": "start",
+  "section": "Ticketphasen",
+  "order": 14,
+  "de": "Startet in",
+  "en": "Starts in"
+ },
+ {
+  "key": "start.ticket-progress-section.liveLead",
+  "page": "start",
+  "section": "Ticketphasen",
+  "order": 14,
+  "de": "Endet in",
+  "en": "Ends in"
+ },
+ {
+  "key": "start.ticket-progress-section.cta",
+  "page": "start",
+  "section": "Ticketphasen",
+  "order": 14,
+  "de": "Jetzt sichern",
+  "en": "Get your ticket"
+ },
+ {
+  "key": "start.ticket-progress-section.d",
+  "page": "start",
+  "section": "Ticketphasen",
+  "order": 14,
+  "de": "T",
+  "en": "d"
+ },
+ {
+  "key": "start.ticket-progress-section.h",
+  "page": "start",
+  "section": "Ticketphasen",
+  "order": 14,
+  "de": "Std",
+  "en": "h"
+ },
+ {
+  "key": "start.ticket-progress-section.m",
+  "page": "start",
+  "section": "Ticketphasen",
+  "order": 14,
+  "de": "Min",
+  "en": "m"
+ },
+ {
+  "key": "start.ticket-progress-section.s",
+  "page": "start",
+  "section": "Ticketphasen",
+  "order": 14,
+  "de": "Sek",
+  "en": "s"
+ },
+ {
+  "key": "start.sichere-dir-deinen-spot-im-trailrunning",
+  "page": "start",
+  "section": "Anmeldung",
+  "order": 15,
+  "de": "Sichere dir deinen Spot im Trailrunning Camp 2027.",
+  "en": "Secure your spot at the trail running camp 2027."
+ },
+ {
+  "key": "start.jetzt-deinen-platz-im-trailrunning-camp",
+  "page": "start",
+  "section": "Anmeldung",
+  "order": 15,
+  "de": "Jetzt deinen Platz im Trailrunning Camp sichern",
+  "en": "Secure your spot at the trail running camp"
+ },
+ {
+  "key": "start.oesterreichische-alpen",
+  "page": "start",
+  "section": "Anmeldung",
+  "order": 15,
+  "de": "Österreichische Alpen",
+  "en": "Austrian Alps"
+ },
+ {
+  "key": "accommodation",
+  "page": "start",
+  "section": "Anmeldung",
+  "order": 15,
+  "de": "4 Übernachtungen inklusive",
+  "en": "4 nights accommodation included"
+ },
+ {
+  "key": "meals",
+  "page": "start",
+  "section": "Anmeldung",
+  "order": 15,
+  "de": "Frühstück, kleiner Lunch & Abendessen inklusive",
+  "en": "Breakfast, small Lunch & Dinner included"
+ },
+ {
+  "key": "allLevels",
+  "page": "start",
+  "section": "Anmeldung",
+  "order": 15,
+  "de": "Geeignet für alle Laufniveaus",
+  "en": "Suitable for all running levels"
+ },
+ {
+  "key": "limitedSpots",
+  "page": "start",
+  "section": "Anmeldung",
+  "order": 15,
+  "de": "Begrenzte Plätze verfügbar",
+  "en": "Limited spots available"
+ },
+ {
+  "key": "start.buchung-ist-jetzt-geoeffnet",
+  "page": "start",
+  "section": "Anmeldung",
+  "order": 15,
+  "de": "Buchung ist jetzt geöffnet",
+  "en": "Booking is now open"
+ },
+ {
+  "key": "comingSoonBadge",
+  "page": "start",
+  "section": "Anmeldung",
+  "order": 15,
+  "de": "Nächster Ticket-Release: Mittwoch, 16. September",
+  "en": "Next ticket release: Wednesday, 16 September"
+ },
+ {
+  "key": "start.hol-dir-jetzt-dein-ticket",
+  "page": "start",
+  "section": "Anmeldung",
+  "order": 15,
+  "de": "Hol dir jetzt dein Ticket",
+  "en": "Get your ticket now"
+ },
+ {
+  "key": "notifyTitle",
+  "page": "start",
+  "section": "Anmeldung",
+  "order": 15,
+  "de": "Nächster Ticket-Release",
+  "en": "Next ticket release"
+ },
+ {
+  "key": "notifyDesc",
+  "page": "start",
+  "section": "Anmeldung",
+  "order": 15,
+  "de": "Der nächste Ticket-Release ist am Mittwoch, 16. September. Trag deine E-Mail-Adresse ein und wir erinnern dich rechtzeitig, sobald die Tickets verfügbar sind.",
+  "en": "The next ticket release is on Wednesday, 16 September. Leave your email and we'll remind you as soon as tickets are available."
+ },
+ {
+  "key": "start.trailrunning-in-den-oesterreichischen-alpen",
+  "page": "start",
+  "section": "Abschluss",
+  "order": 16,
+  "alt": true,
+  "de": "Trailrunning in den österreichischen Alpen",
+  "en": "Trail running in the Austrian Alps"
+ },
+ {
+  "key": "start.trailrunning-camp-oesterreich-2027",
+  "page": "start",
+  "section": "Abschluss",
+  "order": 16,
+  "de": "Trailrunning Camp Österreich 2027",
+  "en": "Trail Running Camp Austria 2027"
+ },
+ {
+  "key": "start.fuenf-tage-trailrunning-community-und-unvergessl",
+  "page": "start",
+  "section": "Abschluss",
+  "order": 16,
+  "de": "Fünf Tage Trailrunning, Community und unvergessliche Momente in den österreichischen Alpen.",
+  "en": "Five days of trail running, community and unforgettable moments in the Austrian Alps."
+ },
+ {
+  "key": "start.trailrunning-camp-in-den-oesterreichischen-alpen",
+  "page": "start",
+  "section": "Footer",
+  "order": 17,
+  "de": "Trailrunning-Camp in den österreichischen Alpen",
+  "en": "Trailrunning camp in the Austrian Alps"
+ },
+ {
+  "key": "navigation",
+  "page": "start",
+  "section": "Footer",
+  "order": 17,
+  "de": "Navigation",
+  "en": "Navigation"
+ },
+ {
+  "key": "register",
+  "page": "start",
+  "section": "Footer",
+  "order": 17,
+  "de": "Anmelden",
+  "en": "Register"
+ },
+ {
+  "key": "contact",
+  "page": "start",
+  "section": "Footer",
+  "order": 17,
+  "de": "Kontakt",
+  "en": "Contact"
+ },
+ {
+  "key": "followUs",
+  "page": "start",
+  "section": "Footer",
+  "order": 17,
+  "de": "Folge uns",
+  "en": "Follow Us"
+ },
+ {
+  "key": "legal",
+  "page": "start",
+  "section": "Footer",
+  "order": 17,
+  "de": "Rechtliches",
+  "en": "Legal"
+ },
+ {
+  "key": "start.datenschutz",
+  "page": "start",
+  "section": "Footer",
+  "order": 17,
+  "de": "Datenschutz",
+  "en": "Privacy Policy"
+ },
+ {
+  "key": "start.impressum",
+  "page": "start",
+  "section": "Footer",
+  "order": 17,
+  "de": "Impressum",
+  "en": "Imprint"
+ },
+ {
+  "key": "start.agb",
+  "page": "start",
+  "section": "Footer",
+  "order": 17,
+  "de": "AGB",
+  "en": "Terms & Conditions"
+ },
+ {
+  "key": "start.alle-rechte-vorbehalten",
+  "page": "start",
+  "section": "Footer",
+  "order": 17,
+  "de": "Alle Rechte vorbehalten.",
+  "en": "All rights reserved."
+ },
+ {
+  "key": "tickets.tickets",
+  "page": "tickets",
+  "section": "Kopfbereich",
+  "order": 1,
+  "de": "Tickets",
+  "en": "Tickets"
+ },
+ {
+  "key": "tickets.trailrunning-camp-in-hochkrimml-buchen",
+  "page": "tickets",
+  "section": "Kopfbereich",
+  "order": 1,
+  "de": ": Trailrunning Camp in Hochkrimml buchen",
+  "en": ": book the trail running camp in Hochkrimml"
+ },
+ {
+  "key": "tickets.mountaincamp-2027-18-bis-22-august",
+  "page": "tickets",
+  "section": "Kopfbereich",
+  "order": 1,
+  "de": "Mountaincamp 2027, 18. bis 22. August 2027 in Hochkrimml",
+  "en": "The Mountaincamp 2027, 18 to 22 August 2027 in Hochkrimml"
+ },
+ {
+  "key": "tickets.ausgebucht-trag-dich-auf-die-warteliste",
+  "page": "tickets",
+  "section": "Warteliste (nur wenn ausgebucht)",
+  "order": 2,
+  "de": "Ausgebucht. Trag dich auf die Warteliste ein.",
+  "en": "Sold out. Join the waitlist."
+ },
+ {
+  "key": "tickets.wird-ein-platz-frei-melden-wir",
+  "page": "tickets",
+  "section": "Warteliste (nur wenn ausgebucht)",
+  "order": 2,
+  "de": "Wird ein Platz frei, melden wir uns in der Reihenfolge der Anmeldung.",
+  "en": "If a spot opens up, we contact people in the order they signed up."
+ },
+ {
+  "key": "tickets.quick-facts.points.0",
+  "page": "tickets",
+  "section": "Auf einen Blick",
+  "order": 3,
+  "de": "4 Nächte im Berghaus auf 1.700 m",
+  "en": "4 nights in a mountain lodge at 1,700 m"
+ },
+ {
+  "key": "tickets.quick-facts.points.1",
+  "page": "tickets",
+  "section": "Auf einen Blick",
+  "order": 3,
+  "de": "Vollpension, auch vegetarisch und vegan",
+  "en": "Full board, vegetarian and vegan too"
+ },
+ {
+  "key": "tickets.quick-facts.points.2",
+  "page": "tickets",
+  "section": "Auf einen Blick",
+  "order": 3,
+  "de": "Tägliche geführte Trailruns für jedes Level",
+  "en": "Daily guided trail runs for every level"
+ },
+ {
+  "key": "tickets.quick-facts.points.3",
+  "page": "tickets",
+  "section": "Auf einen Blick",
+  "order": 3,
+  "de": "Gemeinsame Abende, Lagerfeuer und Summit Rave",
+  "en": "Evenings together, campfires and the summit rave"
+ },
+ {
+  "key": "tickets.quick-facts.extras.0",
+  "page": "tickets",
+  "section": "Auf einen Blick",
+  "order": 3,
+  "de": "Zubuchbar: Workshops wie Yoga, Töpfern und Aquarell",
+  "en": "Add-ons: workshops such as yoga, pottery and watercolour"
+ },
+ {
+  "key": "tickets.quick-facts.extras.1",
+  "page": "tickets",
+  "section": "Auf einen Blick",
+  "order": 3,
+  "de": "Shuttle ab Berlin {berlin} €, München {muenchen} €, Jenbach {jenbach} €",
+  "en": "Shuttle from Berlin {berlin} €, Munich {muenchen} €, Jenbach {jenbach} €"
+ },
+ {
+  "key": "tickets.quick-facts.extras.2",
+  "page": "tickets",
+  "section": "Auf einen Blick",
+  "order": 3,
+  "de": "Die meisten reisen allein oder zu zweit an",
+  "en": "Most people come alone or as a pair"
+ },
+ {
+  "key": "tickets.quick-facts.extras.3",
+  "page": "tickets",
+  "section": "Auf einen Blick",
+  "order": 3,
+  "de": "7 Tage nach Buchung kostenlos stornieren (bei Buchung bis 30 Tage vor Camp-Start), danach bis 30 Tage vorher 20 %",
+  "en": "Free cancellation within 7 days of booking (if booked at least 30 days before the camp), then 20 % up to 30 days before"
+ },
+ {
+  "key": "tickets.quick-facts.cta",
+  "page": "tickets",
+  "section": "Auf einen Blick",
+  "order": 3,
+  "de": "Jetzt buchen",
+  "en": "Book now"
+ },
+ {
+  "key": "tickets.quick-facts.more",
+  "page": "tickets",
+  "section": "Auf einen Blick",
+  "order": 3,
+  "de": "Alle Details",
+  "en": "All details"
+ },
+ {
+  "key": "tickets.das-wichtigste-auf-einen-blick",
+  "page": "tickets",
+  "section": "Auf einen Blick",
+  "order": 3,
+  "alt": true,
+  "de": "Das Wichtigste auf einen Blick",
+  "en": "At a glance"
+ },
+ {
+  "key": "tickets.die-buchung-konnte-hier-nicht-geladen",
+  "page": "tickets",
+  "section": "Buchung",
+  "order": 4,
+  "de": "Die Buchung konnte hier nicht geladen werden. ",
+  "en": "The booking could not be loaded here. "
+ },
+ {
+  "key": "tickets.direkt-zur-buchungsseite",
+  "page": "tickets",
+  "section": "Buchung",
+  "order": 4,
+  "de": "Direkt zur Buchungsseite",
+  "en": "Open the booking page"
+ },
+ {
+  "key": "tickets.buchung-the-mountaincamp-2027",
+  "page": "tickets",
+  "section": "Buchung",
+  "order": 4,
+  "alt": true,
+  "de": "Buchung the Mountaincamp 2027",
+  "en": "Booking the Mountaincamp 2027"
+ },
+ {
+  "key": "tickets.ticket-info.includedTitle",
+  "page": "tickets",
+  "section": "Im Ticket enthalten",
+  "order": 5,
+  "de": "Das ist im Ticket enthalten",
+  "en": "What your ticket includes"
+ },
+ {
+  "key": "tickets.ticket-info.includedNote",
+  "page": "tickets",
+  "section": "Im Ticket enthalten",
+  "order": 5,
+  "de": "Workshops wie Yoga, Töpfern und Aquarell kannst du dazubuchen.",
+  "en": "Workshops such as yoga, pottery and watercolour can be booked as add-ons."
+ },
+ {
+  "key": "tickets.ticket-info.included.0",
+  "page": "tickets",
+  "section": "Im Ticket enthalten",
+  "order": 5,
+  "de": "4 Nächte im Berghaus in Hochkrimml auf 1.700 m, Basis Mehrbettzimmer",
+  "en": "4 nights in the mountain house in Hochkrimml at 1,700 m, shared dorm as standard"
+ },
+ {
+  "key": "tickets.ticket-info.included.1",
+  "page": "tickets",
+  "section": "Im Ticket enthalten",
+  "order": 5,
+  "de": "Vollpension: Frühstück, kleiner Lunch und Abendessen, auch vegetarisch und vegan",
+  "en": "Full board: breakfast, a light lunch and dinner, with vegetarian and vegan options"
+ },
+ {
+  "key": "tickets.ticket-info.included.2",
+  "page": "tickets",
+  "section": "Im Ticket enthalten",
+  "order": 5,
+  "de": "Tägliche geführte Trailruns in Gruppen nach Tempo und Erfahrung, von entspannten 10 km bis zu Bergtouren mit über 1.500 Höhenmetern",
+  "en": "Daily guided trail runs in groups by pace and experience, from relaxed 10 km runs to mountain tours with more than 1,500 m of climbing"
+ },
+ {
+  "key": "tickets.ticket-info.included.3",
+  "page": "tickets",
+  "section": "Im Ticket enthalten",
+  "order": 5,
+  "de": "Technik-Coaching, auch für Einsteigerinnen und Einsteiger",
+  "en": "Technique coaching, including for beginners"
+ },
+ {
+  "key": "tickets.ticket-info.included.4",
+  "page": "tickets",
+  "section": "Im Ticket enthalten",
+  "order": 5,
+  "de": "Gemeinsame Abende, Lagerfeuer und der Summit Rave",
+  "en": "Evenings together, campfires and the summit rave"
+ },
+ {
+  "key": "tickets.ticket-info.pricesTitle",
+  "page": "tickets",
+  "section": "Preise 2027",
+  "order": 6,
+  "de": "Preise 2027",
+  "en": "Prices 2027"
+ },
+ {
+  "key": "tickets.ticket-info.pricesIntro",
+  "page": "tickets",
+  "section": "Preise 2027",
+  "order": 6,
+  "de": "Der Ticketpreis steigt in Phasen. Je früher du buchst, desto günstiger wird dein Platz im Trailrunning Camp.",
+  "en": "The ticket price goes up in phases. The earlier you book, the less you pay for your spot at the trail running camp."
+ },
+ {
+  "key": "tickets.ticket-info.phase",
+  "page": "tickets",
+  "section": "Preise 2027",
+  "order": 6,
+  "de": "Phase",
+  "en": "Phase"
+ },
+ {
+  "key": "tickets.ticket-info.roomsTitle",
+  "page": "tickets",
+  "section": "Zimmer und Anreise",
+  "order": 7,
+  "de": "Zimmer-Upgrade",
+  "en": "Room upgrade"
+ },
+ {
+  "key": "tickets.ticket-info.travelTitle",
+  "page": "tickets",
+  "section": "Zimmer und Anreise",
+  "order": 7,
+  "de": "Anreise ohne Auto",
+  "en": "Getting there without a car"
+ },
+ {
+  "key": "tickets.ticket-info.travel",
+  "page": "tickets",
+  "section": "Zimmer und Anreise",
+  "order": 7,
+  "de": "Wir fahren gemeinsam mit dem Shuttle nach Hochkrimml und wieder zurück. Hin- und Rückfahrt kosten:",
+  "en": "We travel to Hochkrimml and back together by shuttle. The return trip costs:"
+ },
+ {
+  "key": "tickets.ticket-info.travelLink",
+  "page": "tickets",
+  "section": "Zimmer und Anreise",
+  "order": 7,
+  "de": "Alle Abfahrtsorte und Zeiten",
+  "en": "All departure points and times"
+ },
+ {
+  "key": "tickets.ticket-info.cancelTitle",
+  "page": "tickets",
+  "section": "Storno",
+  "order": 8,
+  "de": "Storno",
+  "en": "Cancellation"
+ },
+ {
+  "key": "tickets.ticket-info.cancel",
+  "page": "tickets",
+  "section": "Storno",
+  "order": 8,
+  "de": "Kommt etwas dazwischen, kannst du jederzeit schriftlich stornieren. Buchst du bis 30 Tage vor Camp-Start, ist das innerhalb von 7 Tagen nach der Buchung kostenlos. Danach beträgt die Gebühr bis 30 Tage vor dem Camp 20 % des Preises, danach staffelt sie sich nach unseren AGB. Wir empfehlen eine Reiserücktrittsversicherung.",
+  "en": "If something comes up, you can cancel in writing at any time. If you book at least 30 days before the camp starts, cancelling within 7 days of booking is free of charge. After that, the fee is 20% of the price up to 30 days before the camp, after that it increases as set out in our terms. We recommend travel cancellation insurance."
+ },
+ {
+  "key": "tickets.ticket-info.agb",
+  "page": "tickets",
+  "section": "Storno",
+  "order": 8,
+  "de": "AGB lesen",
+  "en": "Read the terms (German)"
+ },
+ {
+  "key": "tickets.ticket-info.faqTitle",
+  "page": "tickets",
+  "section": "Kurz gefragt",
+  "order": 8.5,
+  "de": "Kurz gefragt",
+  "en": "Quick answers"
+ },
+ {
+  "key": "tickets.ticket-info.faq.0.q",
+  "page": "tickets",
+  "section": "Kurz gefragt",
+  "order": 8.5,
+  "de": "Ist das Trailrunning Camp auch für Anfänger geeignet?",
+  "en": "Is the trail running camp suitable for beginners?"
+ },
+ {
+  "key": "tickets.ticket-info.faq.0.a",
+  "page": "tickets",
+  "section": "Kurz gefragt",
+  "order": 8.5,
+  "de": "Ja. Es gibt Gruppen mit kürzeren Distanzen und Technik-Coaching. Du brauchst eine Grundfitness und Lust auf Berge, den Rest lernst du im Camp.",
+  "en": "Yes. There are groups with shorter distances and technique coaching. You need a basic level of fitness and a love for the mountains, the rest you learn at the camp."
+ },
+ {
+  "key": "tickets.ticket-info.faq.1.q",
+  "page": "tickets",
+  "section": "Kurz gefragt",
+  "order": 8.5,
+  "de": "Kann ich alleine kommen?",
+  "en": "Can I come on my own?"
+ },
+ {
+  "key": "tickets.ticket-info.faq.1.a",
+  "page": "tickets",
+  "section": "Kurz gefragt",
+  "order": 8.5,
+  "de": "Unbedingt. Die meisten reisen alleine oder zu zweit an. Spätestens nach dem ersten gemeinsamen Lauf kennst du Leute.",
+  "en": "Absolutely. Most people arrive alone or as a pair. By the end of the first run together you will know people."
+ },
+ {
+  "key": "tickets.ticket-info.faq.2.q",
+  "page": "tickets",
+  "section": "Kurz gefragt",
+  "order": 8.5,
+  "de": "Was muss ich mitbringen?",
+  "en": "What do I need to bring?"
+ },
+ {
+  "key": "tickets.ticket-info.faq.2.a",
+  "page": "tickets",
+  "section": "Kurz gefragt",
+  "order": 8.5,
+  "de": "Trailrunning-Schuhe, Laufkleidung, einen kleinen Laufrucksack und wetterfeste Kleidung. Nach der Buchung bekommst du eine ausführliche Packliste.",
+  "en": "Trail running shoes, running clothes, a small running pack and weatherproof layers. After booking you get a detailed packing list."
+ },
+ {
+  "key": "tickets.probleme-bei-der-buchung",
+  "page": "tickets",
+  "section": "Hilfe bei der Buchung",
+  "order": 9,
+  "de": "Probleme bei der Buchung? ",
+  "en": "Trouble booking? "
+ },
+ {
+  "key": "tickets.buchungsseite-in-neuem-tab-oeffnen",
+  "page": "tickets",
+  "section": "Hilfe bei der Buchung",
+  "order": 9,
+  "de": "Buchungsseite in neuem Tab öffnen",
+  "en": "Open the booking page in a new tab"
+ },
+ {
+  "key": "tickets.oder-schreib-uns-an",
+  "page": "tickets",
+  "section": "Hilfe bei der Buchung",
+  "order": 9,
+  "de": " oder schreib uns an ",
+  "en": " or email us at "
+ },
+ {
+  "key": "trailsTitle",
+  "page": "trails",
+  "section": "Kopfbereich",
+  "order": 1,
+  "de": "TRAILS",
+  "en": "TRAILS"
+ },
+ {
+  "key": "trailsSubtitle",
+  "page": "trails",
+  "section": "Kopfbereich",
+  "order": 1,
+  "de": "Entdecke unsere atemberaubenden Laufstrecken",
+  "en": "Discover our breathtaking running routes"
+ },
+ {
+  "key": "trailsDescription",
+  "page": "trails",
+  "section": "Beschreibung",
+  "order": 2,
+  "de": "Von einfachen Pfaden bis zu anspruchsvollen Bergpfaden - hier findest du die perfekte Route für dein Niveau.",
+  "en": "From easy paths to challenging mountain trails - find the perfect route for your level."
+ },
+ {
+  "key": "trailsMainDescription",
+  "page": "trails",
+  "section": "Beschreibung",
+  "order": 2,
+  "de": "Die österreichischen Alpen bieten einige der spektakulärsten Trailrunning-Strecken Europas. Von sanften Waldwegen bis hin zu anspruchsvollen alpinen Pfaden - hier findet jeder Läufer die perfekte Route.",
+  "en": "The Austrian Alps offer some of the most spectacular trail running routes in Europe. From gentle forest paths to challenging alpine trails - every runner will find the perfect route here."
+ },
+ {
+  "key": "trailsGuideDescription",
+  "page": "trails",
+  "section": "Beschreibung",
+  "order": 2,
+  "de": "Während des Mountaincamps bieten wir täglich Trailruns für verschiedene Niveaus an, sodass du die besten Trails der Region mit erfahrenen Guides erkunden kannst.",
+  "en": "During the Mountaincamp, we offer daily trail runs for different levels, allowing you to explore the best trails in the region with experienced guides."
+ },
+ {
+  "key": "routesTitle",
+  "page": "trails",
+  "section": "Routen",
+  "order": 3,
+  "de": "UNSERE ROUTEN",
+  "en": "OUR ROUTES"
+ },
+ {
+  "key": "sampleRoutes",
+  "page": "trails",
+  "section": "Routen",
+  "order": 3,
+  "de": "Beispielrouten nach Schwierigkeit",
+  "en": "Sample Routes by Difficulty"
+ },
+ {
+  "key": "dailyTrailRunsTitle",
+  "page": "trails",
+  "section": "Tägliche Trailruns",
+  "order": 4,
+  "de": "TÄGLICHE TRAILRUNS",
+  "en": "DAILY TRAIL RUNS"
+ },
+ {
+  "key": "dailyGuidedRuns",
+  "page": "trails",
+  "section": "Tägliche Trailruns",
+  "order": 4,
+  "de": "Tägliche Trailruns",
+  "en": "Daily Trail Runs"
+ },
+ {
+  "key": "guidedRunsDescription",
+  "page": "trails",
+  "section": "Tägliche Trailruns",
+  "order": 4,
+  "de": "Während des Mountaincamps bieten wir täglich mehrere Trailruns an, die auf verschiedene Erfahrungsstufen und Vorlieben zugeschnitten sind:",
+  "en": "During the Mountaincamp, we offer multiple daily trail runs tailored to different experience levels and preferences:"
+ },
+ {
+  "key": "beginnerGroup",
+  "page": "trails",
+  "section": "Tägliche Trailruns",
+  "order": 4,
+  "de": "Anfänger-Gruppe",
+  "en": "Beginner Group"
+ },
+ {
+  "key": "beginnerGroupDesc",
+  "page": "trails",
+  "section": "Tägliche Trailruns",
+  "order": 4,
+  "de": "Gemütliches Tempo, flachere Trails, perfekt für Trailrunning-Neulinge.",
+  "en": "Easy pace, flatter trails, perfect for trail running beginners."
+ },
+ {
+  "key": "intermediateGroup",
+  "page": "trails",
+  "section": "Tägliche Trailruns",
+  "order": 4,
+  "de": "Mittlere Gruppe",
+  "en": "Intermediate Group"
+ },
+ {
+  "key": "intermediateGroupDesc",
+  "page": "trails",
+  "section": "Tägliche Trailruns",
+  "order": 4,
+  "de": "Moderates Tempo, abwechslungsreiche Trails mit mittleren Höhenunterschieden.",
+  "en": "Moderate pace, varied trails with medium elevation gains."
+ },
+ {
+  "key": "advancedGroup",
+  "page": "trails",
+  "section": "Tägliche Trailruns",
+  "order": 4,
+  "de": "Fortgeschrittene Gruppe",
+  "en": "Advanced Group"
+ },
+ {
+  "key": "advancedGroupDesc",
+  "page": "trails",
+  "section": "Tägliche Trailruns",
+  "order": 4,
+  "de": "Schnelleres Tempo, technisch anspruchsvollere Trails mit größeren Höhenunterschieden.",
+  "en": "Faster pace, more technically challenging trails with significant elevation gains."
+ },
+ {
+  "key": "trailTipsTitle",
+  "page": "trails",
+  "section": "Tipps",
+  "order": 5,
+  "de": "TRAIL-TIPPS",
+  "en": "TRAIL TIPS"
+ },
+ {
+  "key": "equipment",
+  "page": "trails",
+  "section": "Tipps",
+  "order": 5,
+  "de": "Ausrüstung",
+  "en": "Equipment"
+ },
+ {
+  "key": "trailShoes",
+  "page": "trails",
+  "section": "Tipps",
+  "order": 5,
+  "de": "Trailrunning-Schuhe mit gutem Profil",
+  "en": "Trail running shoes with good traction"
+ },
+ {
+  "key": "hydrationPack",
+  "page": "trails",
+  "section": "Tipps",
+  "order": 5,
+  "de": "Wasserflasche oder Hydration Pack",
+  "en": "Water bottle or hydration pack"
+ },
+ {
+  "key": "weatherJacket",
+  "page": "trails",
+  "section": "Tipps",
+  "order": 5,
+  "de": "Wetterfeste Jacke",
+  "en": "Weather-appropriate jacket"
+ },
+ {
+  "key": "sunProtection",
+  "page": "trails",
+  "section": "Tipps",
+  "order": 5,
+  "de": "Sonnenschutz",
+  "en": "Sun protection"
+ },
+ {
+  "key": "firstAidKit",
+  "page": "trails",
+  "section": "Tipps",
+  "order": 5,
+  "de": "Kleine Erste-Hilfe-Ausrüstung",
+  "en": "Small first aid kit"
+ },
+ {
+  "key": "safety",
+  "page": "trails",
+  "section": "Tipps",
+  "order": 5,
+  "de": "Sicherheit",
+  "en": "Safety"
+ },
+ {
+  "key": "informSomeone",
+  "page": "trails",
+  "section": "Tipps",
+  "order": 5,
+  "de": "Informiere immer jemanden über deine Route",
+  "en": "Always inform someone about your route"
+ },
+ {
+  "key": "checkWeather",
+  "page": "trails",
+  "section": "Tipps",
+  "order": 5,
+  "de": "Überprüfe die Wettervorhersage",
+  "en": "Check the weather forecast"
+ },
+ {
+  "key": "stayOnTrails",
+  "page": "trails",
+  "section": "Tipps",
+  "order": 5,
+  "de": "Bleibe auf den markierten Wegen",
+  "en": "Stay on marked trails"
+ },
+ {
+  "key": "respectNature",
+  "page": "trails",
+  "section": "Tipps",
+  "order": 5,
+  "de": "Respektiere die Natur und Wildtiere",
+  "en": "Respect nature and wildlife"
+ },
+ {
+  "key": "packOutTrash",
+  "page": "trails",
+  "section": "Tipps",
+  "order": 5,
+  "de": "Nimm deinen Müll wieder mit",
+  "en": "Pack out what you pack in"
+ }
+]
