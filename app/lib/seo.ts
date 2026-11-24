@@ -4,7 +4,7 @@
  */
 import type { Metadata } from "next"
 
-export const SITE_URL = "https://www.themountaincamp.de"
+export const SITE_URL = "https://themountaincamp.de"
 export const SITE_NAME = "Mountaincamp"
 
 /** Vorschaubild für Social Media und Suchergebnisse, exakt 1200 x 630 px */
