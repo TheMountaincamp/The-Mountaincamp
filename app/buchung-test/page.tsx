@@ -205,10 +205,23 @@ export default function BookingTestPage() {
                       </button>
                     )}
                   </div>
-                  <p className={`${label} mt-4`}>Anreise</p>
+                  <p className={`${label} mt-4`}>Hinfahrt nach Hochkrimml</p>
                   <div className="grid gap-2 sm:grid-cols-2">
                     {TRAVEL.map((t) => (
-                      <Choice key={t.id} active={p.travel === t.id} onClick={() => update(i, { travel: t.id })} title={t.label} sub={t.sub} price={t.price} />
+                      <Choice
+                        key={t.id}
+                        active={p.travel === t.id}
+                        onClick={() => update(i, p.travelBack === p.travel ? { travel: t.id, travelBack: t.id } : { travel: t.id })}
+                        title={t.label}
+                        sub={t.sub}
+                        price={t.price}
+                      />
+                    ))}
+                  </div>
+                  <p className={`${label} mt-5`}>Rückfahrt von Hochkrimml</p>
+                  <div className="grid gap-2 sm:grid-cols-2">
+                    {TRAVEL.map((t) => (
+                      <Choice key={t.id} active={p.travelBack === t.id} onClick={() => update(i, { travelBack: t.id })} title={t.label} sub={t.sub} price={t.price} />
                     ))}
                   </div>
                   <p className={`${label} mt-5`}>Zimmer</p>
@@ -222,7 +235,7 @@ export default function BookingTestPage() {
             {step === 0 && persons.length < 6 && (
               <button
                 type="button"
-                onClick={() => setPersons((ps) => [...ps, { ...emptyPerson(), travel: ps[0].travel, room: ps[0].room }])}
+                onClick={() => setPersons((ps) => [...ps, { ...emptyPerson(), travel: ps[0].travel, travelBack: ps[0].travelBack, room: ps[0].room }])}
                 className="w-full border border-dashed border-gray-400 py-3 text-sm font-semibold hover:border-gray-900"
               >
                 + Freund:in mitbuchen
@@ -367,7 +380,7 @@ export default function BookingTestPage() {
                             {p.firstName} {p.lastName}
                           </strong>
                           <span className="block text-gray-500">
-                            {TRAVEL.find((t) => t.id === p.travel)?.label}, {ROOMS.find((r) => r.id === p.room)?.label}, Shirt {p.shirtCut} {p.shirtSize}
+                            Hin: {TRAVEL.find((t) => t.id === p.travel)?.label}, Zurück: {TRAVEL.find((t) => t.id === p.travelBack)?.label}, {ROOMS.find((r) => r.id === p.room)?.label}, Shirt {p.shirtCut} {p.shirtSize}
                             {p.diets.length ? `, ${p.diets.join(", ")}` : ""}
                           </span>
                         </span>

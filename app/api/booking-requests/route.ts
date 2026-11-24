@@ -24,6 +24,7 @@ export async function POST(request: Request) {
     birthDate: str(p.birthDate, 10),
     gender: ["f", "m", "d"].includes(p.gender as string) ? p.gender! : "",
     travel: TRAVEL.some((t) => t.id === p.travel) ? p.travel! : "eigen",
+    travelBack: TRAVEL.some((t) => t.id === p.travelBack) ? p.travelBack! : "eigen",
     room: ROOMS.some((r) => r.id === p.room) ? p.room! : "8er",
     diets: Array.isArray(p.diets) ? p.diets.filter((d) => (DIETS as readonly string[]).includes(d)) : [],
     shirtCut: (p.shirtCut === "Damen" || p.shirtCut === "Herren" ? p.shirtCut : "") as "" | "Damen" | "Herren",

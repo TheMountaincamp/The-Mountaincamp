@@ -1,9 +1,10 @@
 /** Auswahlmöglichkeiten der Testbuchung, angelehnt an die CADI-Maske (Termin 38057) */
+/** Hin- und Rückfahrt werden einzeln gebucht, Preise pro Strecke */
 export const TRAVEL = [
   { id: "eigen", label: "Eigene Anreise", sub: "Auto, Zug oder Fahrgemeinschaft", price: 0 },
-  { id: "berlin", label: "Shuttle ab Berlin", sub: "Zug und Bus, hin und zurück", price: 140 },
-  { id: "muenchen", label: "Shuttle ab München", sub: "Bus ab ZOB, hin und zurück", price: 80 },
-  { id: "jenbach", label: "Shuttle ab Jenbach", sub: "Bus ab Bahnhof, hin und zurück", price: 40 },
+  { id: "berlin", label: "Shuttle Berlin", sub: "Zug und Bus", price: 70 },
+  { id: "muenchen", label: "Shuttle München", sub: "Bus ab ZOB", price: 40 },
+  { id: "jenbach", label: "Shuttle Jenbach", sub: "Bus ab Bahnhof", price: 20 },
 ] as const
 
 export const ROOMS = [
@@ -36,6 +37,7 @@ export interface Person {
   birthDate: string
   gender: "" | "f" | "m" | "d"
   travel: TravelId
+  travelBack: TravelId
   room: RoomId
   diets: string[]
   shirtCut: "" | (typeof SHIRT_CUTS)[number]
@@ -57,11 +59,11 @@ export interface BookingRequest {
 }
 
 export function emptyPerson(): Person {
-  return { firstName: "", lastName: "", email: "", birthDate: "", gender: "", travel: "eigen", room: "8er", diets: [], shirtCut: "", shirtSize: "" }
+  return { firstName: "", lastName: "", email: "", birthDate: "", gender: "", travel: "eigen", travelBack: "eigen", room: "8er", diets: [], shirtCut: "", shirtSize: "" }
 }
 
 export function personPrice(p: Person, base: number) {
-  const t = TRAVEL.find((x) => x.id === p.travel)?.price ?? 0
+  const t = (TRAVEL.find((x) => x.id === p.travel)?.price ?? 0) + (TRAVEL.find((x) => x.id === p.travelBack)?.price ?? 0)
   const r = ROOMS.find((x) => x.id === p.room)?.price ?? 0
   return base + t + r
 }
