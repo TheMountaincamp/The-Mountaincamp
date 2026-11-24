@@ -1,9 +1,12 @@
 import { SITE_URL, OG_IMAGE } from "@/app/lib/seo"
-import { SALE_PHASES, getPhaseState, TICKET_URL, TICKETS_SOLD, TOTAL_TICKETS } from "@/app/lib/early-bird"
+import { getPhaseState, TICKET_URL } from "@/app/lib/early-bird"
+import { DEFAULT_SITE_CONFIG, type SiteConfig } from "@/app/lib/site-config"
 
 /** Angebot für das Event-Schema aus der gerade laufenden Preisphase */
-function currentOffer() {
+function currentOffer(config: SiteConfig) {
   const now = Date.now()
+  const SALE_PHASES = config.phases
+  const { sold: TICKETS_SOLD, total: TOTAL_TICKETS } = config.tickets
   const live = SALE_PHASES.find((p) => p.price !== null && getPhaseState(p, now) === "live")
   const fallback = SALE_PHASES.filter((p) => p.price !== null).find((p) => getPhaseState(p, now) !== "ended")
   const phase = live ?? fallback
@@ -19,7 +22,7 @@ function currentOffer() {
 }
 
 /** Event-Schema für die Startseite, deutsch oder englisch */
-export function eventSchema(lang: "de" | "en") {
+export function eventSchema(lang: "de" | "en", config: SiteConfig = DEFAULT_SITE_CONFIG) {
   const en = lang === "en"
   return {
     "@type": "SportsEvent",
@@ -36,7 +39,7 @@ export function eventSchema(lang: "de" | "en") {
     endDate: "2027-08-22",
     eventStatus: "https://schema.org/EventScheduled",
     eventAttendanceMode: "https://schema.org/OfflineEventAttendanceMode",
-    maximumAttendeeCapacity: TOTAL_TICKETS,
+    maximumAttendeeCapacity: config.tickets.total,
     location: {
       "@type": "Place",
       name: "Hochkrimml, Hohe Tauern",
@@ -54,7 +57,7 @@ export function eventSchema(lang: "de" | "en") {
       `${SITE_URL}/images/hero-trail-runners.jpeg`,
       `${SITE_URL}/images/mountain-top-sunset-rave.jpg`,
     ],
-    offers: currentOffer(),
+    offers: currentOffer(config),
     organizer: { "@type": "Organization", "@id": `${SITE_URL}/#organization`, name: "Mountaincamp", url: SITE_URL },
   }
 }

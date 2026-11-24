@@ -5,7 +5,8 @@ import { usePathname } from "next/navigation"
 import { stripEn } from "@/app/lib/locale"
 import { useCookieConsent } from "@/contexts/cookie-consent-context"
 import { META_PIXEL_ID, trackMeta } from "@/lib/meta-pixel"
-import { SALE_PHASES, getPhaseState } from "@/app/lib/early-bird"
+import { getPhaseState } from "@/app/lib/early-bird"
+import { useSiteConfig } from "@/contexts/site-config-context"
 
 // Seiten, die als ViewContent zählen (Produkt- und Infoseiten des Camps)
 const CONTENT_PAGES: Record<string, string> = {
@@ -57,6 +58,9 @@ export default function MetaPixel() {
   const { consent } = useCookieConsent()
   const pathname = usePathname()
   const lastTracked = useRef<string | null>(null)
+  const { phases } = useSiteConfig()
+  const phasesRef = useRef(phases)
+  phasesRef.current = phases
   const allowed = consent.marketing === true
 
   // Laden bzw. Einwilligung widerrufen
@@ -164,7 +168,7 @@ export default function MetaPixel() {
         if (sessionStorage.getItem(key)) return
         sessionStorage.setItem(key, "1")
       } catch {}
-      const live = SALE_PHASES.find((p) => getPhaseState(p) === "live" && p.price)
+      const live = phasesRef.current.find((p) => getPhaseState(p) === "live" && p.price)
       window.fbq?.(
         "track",
         "Purchase",

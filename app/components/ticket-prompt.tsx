@@ -1,11 +1,15 @@
 "use client"
+// @block 00 Ticket-Hinweis (Popup)
+
+import { copy } from "@/app/lib/texts"
+import { useSiteConfig } from "@/contexts/site-config-context"
 
 import { useEffect, useState } from "react"
 import { AnimatePresence, motion, useReducedMotion } from "framer-motion"
 import { Ticket, X } from "lucide-react"
 import { useLanguage } from "@/contexts/language-context"
 import { useCookieConsent } from "@/contexts/cookie-consent-context"
-import { SALE_PHASES, TICKET_URL, getPhaseState, getTimeParts } from "@/app/lib/early-bird"
+import { TICKET_URL, getPhaseState, getTimeParts } from "@/app/lib/early-bird"
 
 /**
  * Kauf-Popup: erscheint nach DELAY_MS auf der Seite, solange eine Preisphase
@@ -59,7 +63,7 @@ function writeStore(store: "local" | "session", key: string, value: string) {
 export default function TicketPrompt() {
   const { language } = useLanguage()
   const lang = language as "de" | "en"
-  const c = COPY[lang]
+  const c = copy(lang, "start.ticket-prompt", COPY)
   const { showBanner } = useCookieConsent()
   const prefersReducedMotion = useReducedMotion()
 
@@ -76,6 +80,7 @@ export default function TicketPrompt() {
     return () => window.clearTimeout(t)
   }, [])
 
+  const { phases: SALE_PHASES } = useSiteConfig()
   const live = SALE_PHASES.find((p) => getPhaseState(p, now) === "live")
   const later = Math.max(...SALE_PHASES.map((p) => p.price ?? 0))
   const save = live?.price != null ? later - live.price : 0

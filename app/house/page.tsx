@@ -66,6 +66,7 @@ export default function HousePage() {
     },
   ]
 
+  // @block 01 Kopfbereich
   return (
     <div className="min-h-screen bg-white text-gray-900">
 
@@ -113,6 +114,7 @@ export default function HousePage() {
             transition={{ duration: 0.8 }}
             className="mb-16"
           >
+            {/* @block 02 Beschreibung */}
             <h2 className="mb-6 text-3xl font-bold text-gray-900">{t("houseDescription")}</h2>
             <p className="mb-4 text-gray-700">{t("houseMainDescription")}</p>
             <p className="text-gray-700">{t("houseMeals")}</p>
@@ -124,6 +126,7 @@ export default function HousePage() {
             transition={{ duration: 0.8, delay: 0.2 }}
             className="mb-16"
           >
+            {/* @block 03 Ausstattung */}
             <h2 className="mb-8 text-2xl font-bold uppercase text-gray-900">{t("facilitiesTitle")}</h2>
             <div className="grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-3">
               {facilities.map((facility, index) => (
@@ -149,6 +152,7 @@ export default function HousePage() {
             transition={{ duration: 0.8, delay: 0.4 }}
             className="mb-16"
           >
+            {/* @block 04 Zimmer */}
             <h2 className="mb-8 text-2xl font-bold uppercase text-gray-900">{t("roomsTitle")}</h2>
             <div className="grid grid-cols-1 gap-8 md:grid-cols-2">
               <div className="relative h-80 overflow-hidden">
@@ -187,6 +191,7 @@ export default function HousePage() {
             transition={{ duration: 0.8, delay: 0.6 }}
             className="mb-16"
           >
+            {/* @block 05 Bäder */}
             <h2 className="mb-8 text-2xl font-bold uppercase text-gray-900">{t("bathroomFacilities")}</h2>
             <div className="grid grid-cols-1 gap-6 md:grid-cols-3">
               <div className="relative h-64 overflow-hidden">
@@ -239,6 +244,7 @@ export default function HousePage() {
             transition={{ duration: 0.8, delay: 0.8 }}
             className="mb-16"
           >
+            {/* @block 06 Lage */}
             <h2 className="mb-8 text-2xl font-bold uppercase text-gray-900">{t("locationTitle")}</h2>
             <div className="relative aspect-video overflow-hidden">
               <iframe
@@ -257,6 +263,7 @@ export default function HousePage() {
         </div>
       </div>
 
+      {/* @block 07 Footer */}
       <footer className="border-t border-gray-200 bg-gray-100 py-8">
         <div className="container mx-auto px-4">
           <div className="flex flex-col items-center justify-between md:flex-row">

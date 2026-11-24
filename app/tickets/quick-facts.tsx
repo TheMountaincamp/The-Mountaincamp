@@ -1,7 +1,10 @@
 "use client"
+// @block 03 Auf einen Blick
 
+import { copy, tx } from "@/app/lib/texts"
 import { Check } from "lucide-react"
-import { SALE_PHASES, getPhaseState } from "@/app/lib/early-bird"
+import { getPhaseState } from "@/app/lib/early-bird"
+import { useSiteConfig } from "@/contexts/site-config-context"
 
 /**
  * Kurzinfo direkt über der Buchungsmaske: Preis, Frist, Leistungen in Stichworten.
@@ -20,7 +23,7 @@ const COPY = {
     ],
     extras: [
       "Zubuchbar: Workshops wie Yoga, Töpfern und Aquarell",
-      "Shuttle ab Berlin 140 €, München 80 €, Jenbach 40 €",
+      "Shuttle ab Berlin {berlin} €, München {muenchen} €, Jenbach {jenbach} €",
       "Die meisten reisen allein oder zu zweit an",
       "7 Tage nach Buchung kostenlos stornieren (bei Buchung bis 30 Tage vor Camp-Start), danach bis 30 Tage vorher 20 %",
     ],
@@ -38,7 +41,7 @@ const COPY = {
     ],
     extras: [
       "Add-ons: workshops such as yoga, pottery and watercolour",
-      "Shuttle from Berlin 140 €, Munich 80 €, Jenbach 40 €",
+      "Shuttle from Berlin {berlin} €, Munich {muenchen} €, Jenbach {jenbach} €",
       "Most people come alone or as a pair",
       "Free cancellation within 7 days of booking (if booked at least 30 days before the camp), then 20 % up to 30 days before",
     ],
@@ -54,14 +57,16 @@ function fmtDate(iso: string, lang: "de" | "en") {
 }
 
 export default function QuickFacts({ lang }: { lang: "de" | "en" }) {
-  const t = COPY[lang]
+  const t = copy(lang, "tickets.quick-facts", COPY)
+  const { phases: SALE_PHASES, shuttles } = useSiteConfig()
+  const fillPrices = (x: string) => x.replace(/\{(berlin|muenchen|jenbach)\}/g, (_, id) => String(shuttles.find((s) => s.id === id)?.price ?? ""))
   const idx = SALE_PHASES.findIndex((p) => getPhaseState(p) === "live" && p.price)
   const live = idx >= 0 ? SALE_PHASES[idx] : null
   const next = live ? SALE_PHASES.slice(idx + 1).find((p) => p.price) : null
 
   return (
     <section
-      aria-label={lang === "de" ? "Das Wichtigste auf einen Blick" : "At a glance"}
+      aria-label={tx(lang, "tickets.das-wichtigste-auf-einen-blick", "Das Wichtigste auf einen Blick", "At a glance")}
       className="mx-auto mb-6 max-w-3xl md:mb-10"
     >
       {live && (
@@ -87,7 +92,7 @@ export default function QuickFacts({ lang }: { lang: "de" | "en" }) {
 
       <ul className="mt-3 space-y-1 text-xs text-gray-500 md:text-sm">
         {t.extras.map((e) => (
-          <li key={e}>{e}</li>
+          <li key={e}>{fillPrices(e)}</li>
         ))}
       </ul>
 

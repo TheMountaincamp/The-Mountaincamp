@@ -1,4 +1,9 @@
 "use client"
+// @block 00 Preis-Banner oben
+
+import { copy } from "@/app/lib/texts"
+import { useSiteConfig } from "@/contexts/site-config-context"
+import { fruehbucherEnd } from "@/app/lib/site-config"
 
 import { useEffect, useRef, useState } from "react"
 import { motion, AnimatePresence, useReducedMotion } from "framer-motion"
@@ -14,7 +19,6 @@ import {
   PHASE_2_LABEL,
   NEXT_LAUNCH_START_MS,
   NEXT_LAUNCH_LABEL,
-  PHASE_FRUEHBUCHER_END,
   TICKET_URL,
   getOverallPhase,
   getTimeParts,
@@ -72,7 +76,6 @@ const COPY = {
 
 type Parts = ReturnType<typeof getTimeParts>
 
-const FRUEHBUCHER_END_MS = new Date(PHASE_FRUEHBUCHER_END).getTime()
 
 function BigUnit({ value, label }: { value: number; label: string }) {
   return (
@@ -119,7 +122,7 @@ interface EarlyBirdBannerProps {
 export default function EarlyBirdBanner({ delayMs = 3_000, onHeightChange }: EarlyBirdBannerProps = {}) {
   const { language } = useLanguage()
   const prefersReducedMotion = useReducedMotion()
-  const c = COPY[language]
+  const c = copy(language, "start.early-bird-banner", COPY)
   const earlyBirdLabel = EARLY_BIRD_LABEL[language]
   const phase2Label = PHASE_2_LABEL[language]
   const nextLaunchLabel = NEXT_LAUNCH_LABEL[language]
@@ -165,6 +168,9 @@ export default function EarlyBirdBanner({ delayMs = 3_000, onHeightChange }: Ear
     }
   }, [armed, onHeightChange])
 
+  const fruehEnd = fruehbucherEnd(useSiteConfig())
+  const FRUEHBUCHER_END_MS = fruehEnd ? new Date(fruehEnd).getTime() : 0
+
   useEffect(() => {
     setMounted(true)
 
@@ -195,7 +201,7 @@ export default function EarlyBirdBanner({ delayMs = 3_000, onHeightChange }: Ear
     tick()
     const id = window.setInterval(tick, 1000)
     return () => window.clearInterval(id)
-  }, [])
+  }, [FRUEHBUCHER_END_MS])
 
   const isLive = phase === "earlybird-live" || phase === "phase2-live" || phase === "next-launch-live"
   const showPhase2Hint = phase === "earlybird-upcoming" || phase === "earlybird-live"

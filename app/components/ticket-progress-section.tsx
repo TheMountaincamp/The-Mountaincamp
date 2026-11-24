@@ -1,14 +1,15 @@
 "use client"
+// @block 14 Ticketphasen
+
+import { copy } from "@/app/lib/texts"
+import { useSiteConfig } from "@/contexts/site-config-context"
 
 import { useEffect, useState } from "react"
 import { motion, useReducedMotion } from "framer-motion"
 import { Check, Ticket, Clock } from "lucide-react"
 import { useLanguage } from "@/contexts/language-context"
 import {
-  TOTAL_TICKETS,
-  TICKETS_SOLD,
   TICKET_URL,
-  SALE_PHASES,
   getPhaseState,
   getTimeParts,
   type PhaseState,
@@ -73,7 +74,7 @@ function formatStart(iso: string, language: "de" | "en") {
 function PhaseCard({ phase, index, now }: { phase: SalePhaseConfig; index: number; now: number | null }) {
   const { language } = useLanguage()
   const prefersReducedMotion = useReducedMotion()
-  const c = COPY[language]
+  const c = copy(language, "start.ticket-progress-section", COPY)
   const lang = language as "de" | "en"
   const state: PhaseState = now === null ? (index === 0 ? "ended" : "upcoming") : getPhaseState(phase, now)
   const live = state === "live"
@@ -166,10 +167,13 @@ function PhaseCard({ phase, index, now }: { phase: SalePhaseConfig; index: numbe
 
 export default function TicketProgressSection() {
   const { language } = useLanguage()
-  const c = COPY[language]
+  const c = copy(language, "start.ticket-progress-section", COPY)
+  const { tickets, phases } = useSiteConfig()
+  const TICKETS_SOLD = tickets.sold
+  const TOTAL_TICKETS = tickets.total
 
-  const ratio = TICKETS_SOLD / TOTAL_TICKETS
-  const remaining = TOTAL_TICKETS - TICKETS_SOLD
+  const ratio = TOTAL_TICKETS ? Math.min(1, TICKETS_SOLD / TOTAL_TICKETS) : 0
+  const remaining = Math.max(0, TOTAL_TICKETS - TICKETS_SOLD)
 
   // null bis zum Mount, damit Server- und Client-Render identisch sind
   const [now, setNow] = useState<number | null>(null)
@@ -222,7 +226,7 @@ export default function TicketProgressSection() {
         </motion.div>
 
         <div className="mx-auto grid max-w-6xl gap-4 md:grid-cols-2 lg:grid-cols-4">
-          {SALE_PHASES.map((phase, i) => (
+          {phases.map((phase, i) => (
             <PhaseCard key={phase.id} phase={phase} index={i} now={now} />
           ))}
         </div>

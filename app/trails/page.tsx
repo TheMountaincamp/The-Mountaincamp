@@ -166,6 +166,7 @@ export default function TrailsPage() {
     },
   ]
 
+  // @block 01 Kopfbereich
   return (
     <div className="min-h-screen bg-white text-gray-900">
 
@@ -213,6 +214,7 @@ export default function TrailsPage() {
             transition={{ duration: 0.8 }}
             className="mb-10"
           >
+            {/* @block 02 Beschreibung */}
             <h2 className="mb-6 text-3xl font-bold">{t("trailsDescription")}</h2>
             <p className="mb-4 text-gray-600">{t("trailsMainDescription")}</p>
             <p className="text-gray-600">{t("trailsGuideDescription")}</p>
@@ -224,6 +226,7 @@ export default function TrailsPage() {
             transition={{ duration: 0.8, delay: 0.2 }}
             className="mb-10"
           >
+            {/* @block 03 Routen */}
             <h2 className="mb-8 text-2xl font-bold uppercase">{t("routesTitle")}</h2>
 
             <div className="mb-12">
@@ -283,6 +286,7 @@ export default function TrailsPage() {
             transition={{ duration: 0.8, delay: 0.4 }}
             className="mb-10"
           >
+            {/* @block 04 Tägliche Trailruns */}
             <h2 className="mb-8 text-2xl font-bold uppercase">{t("dailyTrailRunsTitle")}</h2>
             <div className="border border-gray-200 bg-gray-50 p-8">
               <h3 className="mb-4 text-xl font-bold">{t("dailyGuidedRuns")}</h3>
@@ -325,6 +329,7 @@ export default function TrailsPage() {
             transition={{ duration: 0.8, delay: 0.6 }}
             className="mb-10"
           >
+            {/* @block 05 Tipps */}
             <h2 className="mb-8 text-2xl font-bold uppercase">{t("trailTipsTitle")}</h2>
 
             <div className="grid grid-cols-1 gap-8 md:grid-cols-2">
@@ -365,6 +370,7 @@ export default function TrailsPage() {
         </div>
       </div>
 
+      {/* @block 06 Footer */}
       <footer className="bg-gray-100 border-t border-gray-200 py-8">
         <div className="container mx-auto px-4">
           <div className="flex flex-col items-center justify-between md:flex-row">

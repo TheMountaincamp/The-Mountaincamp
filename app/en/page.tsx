@@ -3,6 +3,8 @@ import HomePageClient from "@/app/home-page-client"
 import { faqsEN } from "@/app/data/faq"
 import { SITE_URL, SITE_NAME, OG_IMAGE, jsonLd, languageAlternates } from "@/app/lib/seo"
 import { eventSchema } from "@/app/lib/event-schema"
+import { getSiteConfig } from "@/app/lib/site-config-server"
+import type { SiteConfig } from "@/app/lib/site-config"
 
 // Stündlich neu erzeugen, damit der Preis im Event-Schema der aktuellen Verkaufsphase folgt
 export const revalidate = 3600
@@ -28,10 +30,11 @@ export const metadata: Metadata = {
   twitter: { card: "summary_large_image", title: TITLE, description: DESCRIPTION, images: [OG_IMAGE.url] },
 }
 
-const structuredData = {
+function buildStructuredData(config: SiteConfig) {
+  return {
   "@context": "https://schema.org",
   "@graph": [
-    eventSchema("en"),
+    eventSchema("en", config),
     {
       "@type": "FAQPage",
       "@id": `${SITE_URL}/en#faq`,
@@ -43,9 +46,11 @@ const structuredData = {
       })),
     },
   ],
+  }
 }
 
-export default function EnHome() {
+export default async function EnHome() {
+  const structuredData = buildStructuredData(await getSiteConfig())
   return (
     <>
       <script type="application/ld+json" dangerouslySetInnerHTML={jsonLd(structuredData)} />

@@ -1,5 +1,7 @@
 "use client"
 
+import { usePathname } from "next/navigation"
+
 import { useState } from "react"
 import { motion, AnimatePresence } from "framer-motion"
 import { useCookieConsent } from "@/contexts/cookie-consent-context"
@@ -8,6 +10,7 @@ import { ChevronDown, ChevronUp } from "lucide-react"
 import Link from "next/link"
 
 export default function CookieBanner() {
+  const pathname = usePathname()
   const { showBanner, acceptAll, rejectAll, savePreferences } = useCookieConsent()
   const [showDetails, setShowDetails] = useState(false)
   const [preferences, setPreferences] = useState({
@@ -27,7 +30,7 @@ export default function CookieBanner() {
     savePreferences(preferences)
   }
 
-  if (!showBanner) return null
+  if (!showBanner || pathname?.startsWith("/admin")) return null
 
   return (
     <AnimatePresence>

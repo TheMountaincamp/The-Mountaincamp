@@ -1,4 +1,8 @@
-import { TICKETS_SOLD, TOTAL_TICKETS } from "@/app/lib/early-bird"
+"use client"
+// @block skip
+
+import { copy, tx } from "@/app/lib/texts"
+import { useSiteConfig } from "@/contexts/site-config-context"
 
 /**
  * Soziale Bestätigung über der Buchungsmaske.
@@ -47,7 +51,10 @@ function Label({ children }: { children: React.ReactNode }) {
 }
 
 export default function SocialProof({ lang }: { lang: "de" | "en" }) {
-  const t = T[lang]
+  const t = copy(lang, "tickets.social-proof.t", T)
+  const { tickets } = useSiteConfig()
+  const TICKETS_SOLD = tickets.sold
+  const TOTAL_TICKETS = tickets.total
   const sold = Math.min(TICKETS_SOLD, TOTAL_TICKETS)
   const pct = TOTAL_TICKETS ? (sold / TOTAL_TICKETS) * 100 : 0
   const num = (v: number) => v.toLocaleString(lang === "de" ? "de-DE" : "en-GB")
@@ -55,7 +62,7 @@ export default function SocialProof({ lang }: { lang: "de" | "en" }) {
 
   return (
     <section
-      aria-label={lang === "de" ? "Wer dabei ist" : "Who is coming"}
+      aria-label={tx(lang, "tickets.wer-dabei-ist", "Wer dabei ist", "Who is coming")}
       className="mx-auto mb-5 max-w-3xl border-b border-gray-200 pb-5 md:mb-12 md:pb-10"
     >
       <p className="text-lg font-semibold leading-snug tracking-tight md:text-3xl">
