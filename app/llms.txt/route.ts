@@ -34,7 +34,7 @@ Also written as: The Mountaincamp, Mountain Camp.
 - Included: 4 nights, full board, daily trail runs in groups by pace, technique training, recovery lounge, community evenings and the summit rave
 - Bookable extras: some workshops (others are free), room upgrades, bus shuttles
 - Language: German and English
-- Tickets: https://www.themountaincamp.de/tickets
+- Tickets: https://themountaincamp.de/tickets
 
 ## Prices 2027
 
@@ -48,7 +48,7 @@ Shared bus and train shuttles to the camp, return trip prices:
 - From Berlin (train and bus): ${p("berlin")} €
 - From Munich (bus): ${p("muenchen")} €
 - From Jenbach (bus): ${p("jenbach")} €
-Details: https://www.themountaincamp.de/bus-departures
+Details: https://themountaincamp.de/bus-departures
 
 ## Who it is for
 
@@ -56,12 +56,12 @@ Road runners who want to start trail running, and trail runners who want to run 
 
 ## Pages
 
-- Home: https://www.themountaincamp.de (English: https://www.themountaincamp.de/en)
-- Tickets: https://www.themountaincamp.de/tickets
-- Trails around Hochkrimml: https://www.themountaincamp.de/trails
-- Accommodation: https://www.themountaincamp.de/house
-- Bus travel: https://www.themountaincamp.de/bus-departures
-- Terms (AGB): https://www.themountaincamp.de/agb
+- Home: https://themountaincamp.de (English: https://themountaincamp.de/en)
+- Tickets: https://themountaincamp.de/tickets
+- Trails around Hochkrimml: https://themountaincamp.de/trails
+- Accommodation: https://themountaincamp.de/house
+- Bus travel: https://themountaincamp.de/bus-departures
+- Terms (AGB): https://themountaincamp.de/agb
 
 ## Social
 

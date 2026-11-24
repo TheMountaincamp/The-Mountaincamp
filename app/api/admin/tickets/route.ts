@@ -7,7 +7,7 @@ export const dynamic = "force-dynamic"
 /**
  * Ticketstand für Automationen, z. B. die tägliche Auswertung der Paxliste:
  *
- *   curl -X POST https://www.themountaincamp.de/api/admin/tickets \
+ *   curl -X POST https://themountaincamp.de/api/admin/tickets \
  *     -H "Authorization: Bearer $ADMIN_API_TOKEN" \
  *     -H "Content-Type: application/json" -d '{"sold": 85}'
  *

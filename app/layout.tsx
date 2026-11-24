@@ -32,7 +32,7 @@ export const viewport: Viewport = {
 }
 
 export const metadata: Metadata = {
-  metadataBase: new URL("https://www.themountaincamp.de"),
+  metadataBase: new URL("https://themountaincamp.de"),
 
   title: {
     default: "Trailrunning Camp Österreich 2027 | Mountaincamp",
@@ -43,7 +43,7 @@ export const metadata: Metadata = {
     "5 Tage Trailrunning in Hochkrimml: tägliche Trailruns für alle Level, Vollpension, Workshops und Bus ab Berlin und München. 18. bis 22. August 2027.",
 
   applicationName: "Mountaincamp",
-  authors: [{ name: "Mountaincamp", url: "https://www.themountaincamp.de" }],
+  authors: [{ name: "Mountaincamp", url: "https://themountaincamp.de" }],
   creator: "Mountaincamp",
   publisher: "Mountaincamp",
   formatDetection: { telephone: false, email: false, address: false },
@@ -52,7 +52,7 @@ export const metadata: Metadata = {
     title: "Mountaincamp 2027 | Trailrunning Camp in Österreich",
     description:
       "5 Tage Trailrunning, Workshops und Community in den österreichischen Alpen. Hochkrimml, 18. bis 22. August 2027.",
-    url: "https://www.themountaincamp.de",
+    url: "https://themountaincamp.de",
     siteName: "Mountaincamp",
     images: [OG_IMAGE],
     locale: "de_DE",
