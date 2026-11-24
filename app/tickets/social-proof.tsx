@@ -1,4 +1,5 @@
 "use client"
+// @block skip
 
 import { copy, tx } from "@/app/lib/texts"
 import { useSiteConfig } from "@/contexts/site-config-context"

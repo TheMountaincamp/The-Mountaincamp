@@ -1,4 +1,5 @@
 "use client"
+// @block 05 Ticket-Details
 
 import { copy } from "@/app/lib/texts"
 import { useSiteConfig } from "@/contexts/site-config-context"

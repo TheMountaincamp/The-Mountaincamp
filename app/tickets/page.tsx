@@ -16,6 +16,7 @@ export default function TicketsPage() {
   const { tickets } = useSiteConfig()
   const soldOut = tickets.sold >= tickets.total
 
+  // @block 01 Kopfbereich
   return (
     <div className="min-h-screen bg-white text-gray-900">
       <SiteHeader transparent={false} />
@@ -33,6 +34,7 @@ export default function TicketsPage() {
       </div>
 
       <div className="container mx-auto px-4 py-5 md:py-10">
+        {/* @block 02 Warteliste (nur wenn ausgebucht) */}
         {soldOut && (
           <section id="warteliste" className="mx-auto mb-8 max-w-3xl border border-gray-900 p-5 md:p-6">
             <h2 className="text-xl font-bold md:text-2xl">
@@ -51,6 +53,7 @@ export default function TicketsPage() {
         <div id="details" className="scroll-mt-20">
           <TicketInfo lang={lang} />
         </div>
+        {/* @block 09 Hilfe bei der Buchung */}
         <p className="mt-10 text-center text-sm text-gray-500">
           {tx(lang, "tickets.probleme-bei-der-buchung", "Probleme bei der Buchung? ", "Trouble booking? ")}
           <a href={BOOKING_URL} target="_blank" rel="noopener noreferrer" className="underline">

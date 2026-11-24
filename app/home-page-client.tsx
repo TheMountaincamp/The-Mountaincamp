@@ -148,6 +148,7 @@ function PartnerCarousel() {
  * Text der Buchungsbox: nennt Enddatum und Ersparnis der laufenden Preisphase.
  * Läuft keine Phase mit Enddatum, kommt ein neutraler Satz.
  */
+// @block 15 Anmeldung
 function bookingBoxText(lang: "de" | "en", SALE_PHASES: SalePhaseConfig[]) {
   const now = Date.now()
   const live = SALE_PHASES.find((p) => p.price !== null && getPhaseState(p, now) === "live")
@@ -259,6 +260,7 @@ export default function HomePageClient() {
     return () => window.removeEventListener("scroll", handleScroll)
   }, [hasScrolled])
 
+  // @block 11 Erfahrungen
   const testimonials = [
     {
       quote:
@@ -291,6 +293,7 @@ export default function HomePageClient() {
   ]
 
 
+  // @block 09 Eindrücke (Galerie)
   const galleryImages = [
     {
       src: "/images/camp-social-gathering.jpg",
@@ -378,6 +381,7 @@ export default function HomePageClient() {
     },
   ]
 
+  // @block 07 Aktivitäten
   const activities = [
     {
       title: tx(language, "start.outdoor-movie-night", "Outdoor Movie Night", "Outdoor Movie Night"),
@@ -511,6 +515,7 @@ export default function HomePageClient() {
 
 
 
+      {/* @block 01 Navigation */}
       <header
         className={`absolute z-50 w-full transition-[background-color,top] duration-300 md:fixed ${
           scrollY > 80 ? "md:bg-black/80 md:backdrop-blur-sm" : "bg-transparent"
@@ -652,6 +657,7 @@ export default function HomePageClient() {
       </AnimatePresence>
 
       <main className="w-full overflow-x-hidden">
+        {/* @block 02 Startbild */}
         <section ref={heroRef} className="relative min-h-[140vh] overflow-hidden">
           <div className="absolute inset-0">
             <motion.div style={{ scale: heroScale }} className="h-full w-full">
@@ -791,6 +797,7 @@ export default function HomePageClient() {
           </motion.div>
         </section>
 
+        {/* @block 03 Intro */}
         {/* SEO Content Section 1 - Intro */}
         <section className="bg-white py-10 md:py-14">
           <div className="container max-w-4xl">
@@ -836,6 +843,7 @@ export default function HomePageClient() {
           </div>
         </section>
 
+        {/* @block 04 Laufband */}
         <Marquee
           items={
             language === "de"
@@ -844,6 +852,7 @@ export default function HomePageClient() {
           }
         />
 
+        {/* @block 05 Über uns */}
         <section id="about" className="relative z-30 grid lg:grid-cols-2">
           <div className="flex items-center bg-[#EFE7DC] px-6 py-14 md:px-12 md:py-20 lg:min-h-[720px] lg:px-16 xl:px-24">
             <motion.div
@@ -903,6 +912,7 @@ export default function HomePageClient() {
           />
         </section>
 
+        {/* @block 06 Erlebnis */}
         <section id="experience" className="bg-gray-50 py-16 md:py-24">
           <div className="container">
             <SectionTitle
@@ -978,6 +988,7 @@ export default function HomePageClient() {
           </div>
         </section>
 
+        {/* @block 07 Aktivitäten */}
         <section className="bg-white py-24">
           <div className="container">
             <SectionTitle
@@ -1058,6 +1069,7 @@ export default function HomePageClient() {
 
         <RouteOverviewSection />
 
+        {/* @block 09 Eindrücke (Galerie) */}
         <section className="bg-gray-50 py-24">
           <div className="container">
             <SectionTitle
@@ -1075,6 +1087,7 @@ export default function HomePageClient() {
 
         <InstagramReelsSection />
 
+        {/* @block 11 Erfahrungen */}
         <section id="testimonials" className="relative overflow-hidden bg-white py-24">
           <div className="absolute left-0 top-0 h-full w-full bg-[radial-gradient(ellipse_at_top_right,_var(--tw-gradient-stops))] from-primary/10 via-transparent to-transparent" />
 
@@ -1093,6 +1106,7 @@ export default function HomePageClient() {
 
         <FAQSection />
 
+        {/* @block 13 Partner */}
         <section className="overflow-hidden bg-gray-900 py-12 md:py-24">
           <div className="container mb-12">
             <SectionTitle
@@ -1115,6 +1129,7 @@ export default function HomePageClient() {
 
         <TicketProgressSection />
 
+        {/* @block 15 Anmeldung */}
         <section id="register" className="frost-grey py-16 text-white md:py-24">
           <div className="container">
             <div className="grid items-center gap-8 lg:grid-cols-2 md:gap-16">
@@ -1192,6 +1207,7 @@ export default function HomePageClient() {
           </div>
         </section>
 
+        {/* @block 16 Abschluss */}
         <section className="relative overflow-hidden bg-neutral-600 py-16 text-white md:py-24">
           <div className="absolute inset-0">
             <Image
@@ -1238,6 +1254,7 @@ export default function HomePageClient() {
         </section>
       </main>
 
+      {/* @block 17 Footer */}
       <footer className="footer pb-24 md:pb-16">
         <div className="container">
           <div className="mb-12 flex flex-col items-center justify-between gap-8 md:flex-row">

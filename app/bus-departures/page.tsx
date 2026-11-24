@@ -20,6 +20,7 @@ export default function BusDeparturesPage() {
     setIsLoaded(true)
   }, [])
 
+  // @block 03 Anreise und Preise
   const busRoutes = [
     {
       city: txo("anreise.berlin", "Berlin", "Berlin"),
@@ -50,6 +51,7 @@ export default function BusDeparturesPage() {
 
   const fmt = (n: number) => (language === "de" ? `${n} €` : `€${n}`)
 
+  // @block 01 Kopfbereich
   return (
     <div className="min-h-screen bg-white text-gray-900">
       <div className="relative h-[60vh] min-h-[420px]">
@@ -107,6 +109,7 @@ export default function BusDeparturesPage() {
             transition={{ duration: 0.8 }}
             className="mb-16 text-center"
           >
+            {/* @block 02 Intro */}
             <h2 className="mb-6 text-3xl font-bold uppercase text-gray-900">
               {tx(language, "anreise.dein-camp-beginnt-schon-unterwegs", "Dein Camp beginnt schon unterwegs", "Your camp starts on the way")}
             </h2>
@@ -129,6 +132,7 @@ export default function BusDeparturesPage() {
             transition={{ duration: 0.8, delay: 0.2 }}
             className="mb-16"
           >
+            {/* @block 03 Anreise und Preise */}
             <h2 className="mb-8 flex items-center gap-3 text-2xl font-bold uppercase text-gray-900">
               <Bus className="h-6 w-6 text-primary" />
               {tx(language, "anreise.anreise-und-preise", "Anreise und Preise", "Route and prices")}
@@ -205,6 +209,7 @@ export default function BusDeparturesPage() {
             transition={{ duration: 0.8, delay: 0.4 }}
             className="mb-16"
           >
+            {/* @block 04 Wichtige Informationen */}
             <h2 className="mb-8 text-2xl font-bold uppercase text-gray-900">
               {tx(language, "anreise.wichtige-informationen", "Wichtige Informationen", "Important information")}
             </h2>
@@ -241,6 +246,7 @@ export default function BusDeparturesPage() {
             transition={{ duration: 0.8, delay: 0.6 }}
             className="border border-primary/30 bg-primary/10 p-8 text-center"
           >
+            {/* @block 05 Fragen zur Anreise */}
             <h3 className="mb-4 text-2xl font-bold text-gray-900">
               {tx(language, "anreise.fragen-zur-anreise", "Fragen zur Anreise?", "Questions about getting there?")}
             </h3>
@@ -259,6 +265,7 @@ export default function BusDeparturesPage() {
         </div>
       </div>
 
+      {/* @block 06 Footer */}
       <footer className="border-t border-gray-200 bg-white py-8">
         <div className="container mx-auto px-4">
           <div className="flex flex-col items-center justify-between md:flex-row">

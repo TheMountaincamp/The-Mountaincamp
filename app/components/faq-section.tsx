@@ -1,4 +1,5 @@
 "use client"
+// @block 12 FAQ
 
 import { copy, tx } from "@/app/lib/texts"
 import { useState } from "react"

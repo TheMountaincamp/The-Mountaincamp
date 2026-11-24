@@ -137,6 +137,34 @@ function section(file) {
   return SECTION[base] ?? base
 }
 
+// Blöcke so, wie man sie auf der Website sieht: Marker "@block 05 Name" im Code.
+// Alles nach einem Marker (in derselben Datei) gehört zu diesem Block.
+const markerCache = new Map()
+function markers(sf) {
+  if (!markerCache.has(sf.fileName)) {
+    const list = []
+    const re = /@block\s+(\d+|skip)\s*([^*\n]*?)\s*(?:\*\/|\n|$)/g
+    let m
+    while ((m = re.exec(sf.text))) list.push({ pos: m.index, order: m[1], name: m[2].trim() })
+    markerCache.set(sf.fileName, list)
+  }
+  return markerCache.get(sf.fileName)
+}
+function blockAt(sf, pos) {
+  let b = null
+  for (const m of markers(sf)) if (m.pos <= pos) b = m
+  return b
+}
+
+// Unterblöcke für große COPY-Objekte, nach Schlüssel
+const KEY_BLOCKS = [
+  [/^tickets\.ticket-info\.(included)/, "05", "Im Ticket enthalten"],
+  [/^tickets\.ticket-info\.(prices|phase)/, "06", "Preise 2027"],
+  [/^tickets\.ticket-info\.(rooms|travel)/, "07", "Zimmer und Anreise"],
+  [/^tickets\.ticket-info\.(cancel|agb)/, "08", "Storno"],
+  [/^tickets\.ticket-info\.(faq)/, "8.5", "Kurz gefragt"],
+]
+
 const entries = []
 const seen = new Set()
 const tUsage = new Map() // translation key -> erste Datei
@@ -156,9 +184,9 @@ for (const file of DIRS.flatMap((d) => walk(path.join(ROOT, d)))) {
       const fn = node.expression.text
       const a = node.arguments
       if (fn === "tx" && a.length === 4 && isStr(a[1]) && isStr(a[2]) && isStr(a[3])) {
-        add({ key: a[1].text, de: a[2].text, en: a[3].text, file: rel })
+        add({ key: a[1].text, de: a[2].text, en: a[3].text, file: rel, block: blockAt(sf, node.getStart(sf)), pos: node.getStart(sf) })
       } else if (fn === "txo" && a.length === 3 && isStr(a[0]) && isStr(a[1]) && isStr(a[2])) {
-        add({ key: a[0].text, de: a[1].text, en: a[2].text, file: rel })
+        add({ key: a[0].text, de: a[1].text, en: a[2].text, file: rel, block: blockAt(sf, node.getStart(sf)), pos: node.getStart(sf) })
       } else if (fn === "copy" && a.length === 3 && isStr(a[1])) {
         const dict = deref(sf, a[2])
         if (dict.node && ts.isObjectLiteralExpression(dict.node)) {
@@ -169,10 +197,12 @@ for (const file of DIRS.flatMap((d) => walk(path.join(ROOT, d)))) {
           const out = []
           const de = get("de")
           if (de) flatten(de, get("en"), a[1].text, out)
-          for (const e of out) add({ ...e, file: rel })
+          out.forEach((e, i) => add({ ...e, file: rel, block: blockAt(sf, node.getStart(sf)), pos: node.getStart(sf) + i / 1000 }))
         }
-      } else if (fn === "t" && a.length === 1 && isStr(a[0]) && !tUsage.has(a[0].text)) {
-        tUsage.set(a[0].text, rel)
+      } else if (fn === "t" && a.length === 1 && isStr(a[0])) {
+        const list = tUsage.get(a[0].text) ?? []
+        list.push({ file: rel, block: blockAt(sf, node.getStart(sf)), pos: node.getStart(sf) })
+        tUsage.set(a[0].text, list)
       }
     }
     ts.forEachChild(node, visit)
@@ -189,23 +219,37 @@ if (tr && ts.isObjectLiteralExpression(tr.node)) {
   flatten({ sf: tr.sf, node: de.initializer }, { sf: tr.sf, node: en.initializer }, "t", out)
   for (const e of out) {
     const key = e.key.slice(2)
-    const file = tUsage.get(key)
-    if (!file) continue
-    const page = FILE_PAGE.find(([re]) => re.test(file))?.[1] ?? "allgemein"
-    add({ key, de: e.de, en: e.en, file, page, section: SECTION.translations })
+    const uses = tUsage.get(key)
+    if (!uses) continue
+    const pageOf = (u) => FILE_PAGE.find(([re]) => re.test(u.file))?.[1] ?? "allgemein"
+    const use = uses.find((u) => pageOf(u) !== "allgemein") ?? uses[0]
+    const pages = new Set(uses.map(pageOf))
+    add({ key, de: e.de, en: e.en, file: use.file, page: pageOf(use), block: use.block, pos: use.pos, shared: pages.size > 1 })
   }
 }
 
 const PAGES = ["start", "tickets", "anreise", "haus", "trails", "allgemein"]
 const result = entries
-  .map((e) => ({
-    key: e.key,
-    page: e.page ?? (PAGES.includes(e.key.split(".")[0]) ? e.key.split(".")[0] : "allgemein"),
-    section: e.section ?? section(e.file) ?? "Seite",
-    de: e.de,
-    en: e.en,
-  }))
+  .filter((e) => e.block?.order !== "skip")
+  .map((e) => {
+    const kb = KEY_BLOCKS.find(([re]) => re.test(e.key))
+    const order = kb?.[1] ?? e.block?.order ?? "99"
+    const name = kb?.[2] ?? e.block?.name ?? section(e.file) ?? "Weitere Texte"
+    return {
+      key: e.key,
+      page: e.page ?? (PAGES.includes(e.key.split(".")[0]) ? e.key.split(".")[0] : "allgemein"),
+      section: name,
+      order: Number(order),
+      ...(e.shared ? { shared: true } : {}),
+      de: e.de,
+      en: e.en,
+      _file: e.file,
+      _pos: e.pos ?? 0,
+    }
+  })
   .filter((e) => /[A-Za-zÄÖÜäöü]/.test(e.de))
+  .sort((a, b) => a.page.localeCompare(b.page) || a.order - b.order || a.section.localeCompare(b.section) || a._file.localeCompare(b._file) || a._pos - b._pos)
+  .map(({ _file, _pos, ...e }) => e)
 
 fs.writeFileSync(path.join(ROOT, OUT), JSON.stringify(result, null, 1) + "\n")
 const byPage = {}

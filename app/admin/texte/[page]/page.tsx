@@ -54,14 +54,25 @@ export default async function TextsPage({
         Ein geleertes Feld stellt den Standardtext wieder her. Zeilenumbrüche bleiben dort erhalten, wo die Seite sie schon nutzt.
       </p>
 
+      <nav className="mt-4 flex flex-wrap gap-x-4 gap-y-1 text-sm">
+        {sections.map((s, i) => (
+          <a key={s} href={`#block-${i}`} className="text-gray-600 underline">
+            {s}
+          </a>
+        ))}
+      </nav>
+
       <div className="sticky top-0 z-10 mt-4 bg-gray-50 py-2">
         <TextFilter />
       </div>
 
       <form method="post" action={`/admin/texte/save?page=${page.id}`} className="mt-2 space-y-8">
-        {sections.map((s) => (
-          <section key={s}>
-            <h2 className="mb-2 text-sm font-bold uppercase tracking-wide text-gray-500">{s}</h2>
+        {sections.map((s, i) => (
+          <section key={s} id={`block-${i}`} className="scroll-mt-16" data-text-block>
+            <h2 className="mb-2 text-base font-bold">
+              <span className="mr-2 text-gray-400">{i + 1}.</span>
+              {s}
+            </h2>
             <div className="divide-y divide-gray-100 border border-gray-200 bg-white">
               {entries
                 .filter((e) => e.section === s)
@@ -76,6 +87,9 @@ export default async function TextsPage({
                       data-search={`${de} ${en} ${e.de} ${e.en}`.toLowerCase()}
                       className="grid gap-2 p-3 md:grid-cols-2"
                     >
+                      {e.shared && (
+                        <p className="text-[11px] text-gray-500 md:col-span-2">Wird auch auf anderen Seiten angezeigt, die Änderung gilt überall.</p>
+                      )}
                       <label className="block">
                         <span className="mb-1 flex items-center gap-2 text-[11px] font-semibold uppercase text-gray-400">
                           Deutsch {o?.de && <span className="bg-amber-100 px-1 text-amber-800">geändert</span>}

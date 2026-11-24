@@ -1,4 +1,5 @@
 "use client"
+// @block 00 Preis-Banner oben
 
 import { copy } from "@/app/lib/texts"
 import { useSiteConfig } from "@/contexts/site-config-context"

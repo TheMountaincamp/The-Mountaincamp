@@ -1,4 +1,5 @@
 "use client"
+// @block 00 Ticket-Hinweis (Popup)
 
 import { copy } from "@/app/lib/texts"
 import { useSiteConfig } from "@/contexts/site-config-context"

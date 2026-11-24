@@ -1,6 +1,6 @@
 import registry from "@/app/data/text-registry.json"
 
-export type TextEntry = { key: string; page: string; section: string; de: string; en: string }
+export type TextEntry = { key: string; page: string; section: string; order: number; shared?: boolean; de: string; en: string }
 
 export const TEXT_ENTRIES = registry as TextEntry[]
 
