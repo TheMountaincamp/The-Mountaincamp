@@ -1,5 +1,8 @@
 "use client"
 
+import { useSiteConfig } from "@/contexts/site-config-context"
+import { fruehbucherEnd } from "@/app/lib/site-config"
+
 import { useEffect, useRef, useState } from "react"
 import { motion, AnimatePresence, useReducedMotion } from "framer-motion"
 import { Ticket, Clock } from "lucide-react"
@@ -14,7 +17,6 @@ import {
   PHASE_2_LABEL,
   NEXT_LAUNCH_START_MS,
   NEXT_LAUNCH_LABEL,
-  PHASE_FRUEHBUCHER_END,
   TICKET_URL,
   getOverallPhase,
   getTimeParts,
@@ -72,7 +74,6 @@ const COPY = {
 
 type Parts = ReturnType<typeof getTimeParts>
 
-const FRUEHBUCHER_END_MS = new Date(PHASE_FRUEHBUCHER_END).getTime()
 
 function BigUnit({ value, label }: { value: number; label: string }) {
   return (
@@ -165,6 +166,9 @@ export default function EarlyBirdBanner({ delayMs = 3_000, onHeightChange }: Ear
     }
   }, [armed, onHeightChange])
 
+  const fruehEnd = fruehbucherEnd(useSiteConfig())
+  const FRUEHBUCHER_END_MS = fruehEnd ? new Date(fruehEnd).getTime() : 0
+
   useEffect(() => {
     setMounted(true)
 
@@ -195,7 +199,7 @@ export default function EarlyBirdBanner({ delayMs = 3_000, onHeightChange }: Ear
     tick()
     const id = window.setInterval(tick, 1000)
     return () => window.clearInterval(id)
-  }, [])
+  }, [FRUEHBUCHER_END_MS])
 
   const isLive = phase === "earlybird-live" || phase === "phase2-live" || phase === "next-launch-live"
   const showPhase2Hint = phase === "earlybird-upcoming" || phase === "earlybird-live"

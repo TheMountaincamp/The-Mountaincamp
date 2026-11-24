@@ -10,8 +10,17 @@ import { trackMeta } from "@/lib/meta-pixel"
 
 type Status = "idle" | "submitting" | "success" | "error"
 
-export default function NotifySignupForm({ className }: { className?: string }) {
-  const { t } = useLanguage()
+export default function NotifySignupForm({
+  className,
+  interest = "ticket-notify",
+  source,
+}: {
+  className?: string
+  /** ticket-notify, waitlist, performance oder adventure */
+  interest?: "ticket-notify" | "waitlist" | "performance" | "adventure"
+  source?: string
+}) {
+  const { t, language } = useLanguage()
   const [email, setEmail] = useState("")
   const [status, setStatus] = useState<Status>("idle")
   const [errorMessage, setErrorMessage] = useState("")
@@ -24,10 +33,10 @@ export default function NotifySignupForm({ className }: { className?: string }) 
     setErrorMessage("")
 
     try {
-      const response = await fetch("/api/notify", {
+      const response = await fetch("/api/leads", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ email }),
+        body: JSON.stringify({ email, interest, locale: language, source }),
       })
 
       if (!response.ok) {
@@ -42,7 +51,7 @@ export default function NotifySignupForm({ className }: { className?: string }) 
       }
 
       setStatus("success")
-      trackMeta("Lead", { content_name: "Ticket-Benachrichtigung" })
+      trackMeta("Lead", { content_name: interest === "ticket-notify" ? "Ticket-Benachrichtigung" : interest })
     } catch (error) {
       console.error("[v0] Error submitting notify form:", error)
       setErrorMessage(t("notifyErrorGeneric"))

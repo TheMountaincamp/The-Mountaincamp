@@ -1,5 +1,7 @@
 "use client"
 
+import { useSiteConfig } from "@/contexts/site-config-context"
+
 import { useState, useEffect, useRef } from "react"
 import Image from "next/image"
 import Link from "@/app/components/locale-link"
@@ -38,7 +40,7 @@ import InstagramReelsSection from "@/app/components/instagram-reels-section"
 import FAQSection from "@/app/components/faq-section"
 import RouteOverviewSection from "@/app/components/route-overview-section"
 import MasonryGallery from "@/app/components/masonry-gallery"
-import { getOverallPhase, PHASE_2_LABEL, NEXT_LAUNCH_LABEL, TICKET_URL, SALE_PHASES, getPhaseState, type OverallPhase } from "@/app/lib/early-bird"
+import { getOverallPhase, PHASE_2_LABEL, NEXT_LAUNCH_LABEL, TICKET_URL, getPhaseState, type OverallPhase, type SalePhaseConfig } from "@/app/lib/early-bird"
 
 const SECTION_IMAGES = ["/images/mountaincamp-logo-white.png"]
 const HOUSE_PAGE_IMAGES = ["/images/mountain-lodge.jpeg"]
@@ -145,7 +147,7 @@ function PartnerCarousel() {
  * Text der Buchungsbox: nennt Enddatum und Ersparnis der laufenden Preisphase.
  * Läuft keine Phase mit Enddatum, kommt ein neutraler Satz.
  */
-function bookingBoxText(lang: "de" | "en") {
+function bookingBoxText(lang: "de" | "en", SALE_PHASES: SalePhaseConfig[]) {
   const now = Date.now()
   const live = SALE_PHASES.find((p) => p.price !== null && getPhaseState(p, now) === "live")
   const later = Math.max(...SALE_PHASES.map((p) => p.price ?? 0))
@@ -167,6 +169,7 @@ function bookingBoxText(lang: "de" | "en") {
 }
 
 export default function HomePageClient() {
+  const siteConfig = useSiteConfig()
   const { t, language } = useLanguage()
   const isMobile = useMobile()
 
@@ -1257,7 +1260,7 @@ export default function HomePageClient() {
                     {isBookable ? (language === "de" ? "Hol dir jetzt dein Ticket" : "Get your ticket now") : t("notifyTitle")}
                   </h3>
                   <p className="mb-6 text-center text-sm text-white/70">
-                    {isBookable ? bookingBoxText(language as "de" | "en") : t("notifyDesc")}
+                    {isBookable ? bookingBoxText(language as "de" | "en", siteConfig.phases) : t("notifyDesc")}
                   </p>
                   {isBookable ? (
                     <Button size="lg" className="w-full bg-primary text-white hover:bg-primary/90" asChild>
